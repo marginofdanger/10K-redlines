@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FICO 10-K Redline Analysis | FY2018-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>FICO 10-K REDLINES</h1>
+    <div class="sub">FY2018 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-bureau">Bureau Concentration</a>
+  <a class="nav-item" href="#sig-selfdesc">Self-Description</a>
+  <a class="nav-item" href="#sig-pricing">Score Pricing Language</a>
+  <a class="nav-item" href="#sig-segments">Segment Structure</a>
+  <a class="nav-item" href="#sig-cfpb">CFPB/Regulatory Arc</a>
+  <a class="nav-item" href="#sig-fannie">Fannie/Freddie Risk</a>
+  <a class="nav-item" href="#sig-vantage">VantageScore Framing</a>
+  <a class="nav-item" href="#sig-debt">Debt &amp; Buybacks</a>
+  <a class="nav-item" href="#sig-products">Score Products</a>
+  <a class="nav-item" href="#sig-ai">AI Language</a>
+  <a class="nav-item" href="#sig-dei">DEI Arc</a>
+  <a class="nav-item" href="#sig-risk1">Risk Factor #1</a>
+  <a class="nav-item" href="#sig-geo">Employee Geography</a>
+  <a class="nav-item" href="#sig-b2c">B2C/myFICO</a>
+  <a class="nav-item" href="#sig-countries">Countries Served</a>
+  <a class="nav-item" href="#sig-platform">Platform Migration</a>
+  <a class="nav-item" href="#sig-finserv">Financial Services %</a>
+  <a class="nav-item" href="#sig-mortgage">Mortgage Sensitivity</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>FICO 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings tracking FICO's transformation from a decision management software company into a score-pricing monopoly with a software business attached.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0000814547) | Fiscal Years 2018-2025 (Sep 30 FY end) | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Score Acceleration</h3>
+    <p>Scores rev +25%. Bureau concentration 25%&rarr;29%. Auto pricing added to verticals. UltraFICO concept.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>COVID &amp; Score 10</h3>
+    <p>FICO Score 10/10T launched. UltraFICO named. Resilience Index. "Purchase"&rarr;"access" FICO Scores. COVID as #1 risk.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>Segment Restructure</h3>
+    <p>3&rarr;2 segments (Apps+DMS&rarr;Software). "Leading applied analytics company." Platform-centric rewrite. All 3 bureaus >10%. Buybacks 4x to $882M.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>Platform Focus</h3>
+    <p>Software strategy as #1 risk (COVID demoted). CRAs listed as customers. Score pricing language becomes generic. Debt $1.3B&rarr;$1.9B. EU AI Act first mentioned.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>Pricing Under Scrutiny</h3>
+    <p>"Pricing strategies" first appears in risk factor title. AI first in risk factors. COVID deleted. Score volume sensitivity disclosed. Countries 120&rarr;100.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>CFPB Inquiry</h3>
+    <p>Standalone CFPB mortgage pricing risk factor. FHFA bi-merge/tri-merge risk first disclosed. VantageScore named as competitor. DEI&rarr;"Organizational Culture." Bureau concentration 41%&rarr;45%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>Monopoly Pressure</h3>
+    <p>"Global analytics software leader." Bureau concentration 51%. CRAs listed as competitors. CFPB language depoliticized. FHFA score choice announced. CRA pricing constraint acknowledged. BNPL scores launched. Debt $2.2B&rarr;$3.1B. Buybacks $1.4B.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Score Acceleration</h2>
+  <div class="sub">Filed Nov 2019 | Employees: ~4,200 &rarr; ~4,100 | Revenue: $1.16B &rarr; $1.16B (flat) | Scores Rev: 33% of total</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Score Pricing</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Auto pricing added to MDA Score revenue drivers</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2018 MDA attributed Scores growth to mortgage pricing alone. FY2019 expanded the attribution:<blockquote>FY2018: "primarily driven by a higher unit price in mortgage activities"</blockquote><blockquote>FY2019: "primarily attributable to a higher unit price in mortgage and auto activities"</blockquote>Adding auto as a named vertical signals FICO was expanding its pricing power beyond mortgage originations.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau concentration increased from 25% to 29%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Revenue attributable to the three major consumer reporting agencies rose from approximately 25% to 29% of total FICO revenue, reflecting growing dependency on the bureau distribution channel for score delivery.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Competition risk factor title unchanged; "pricing strategies" not yet in title</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2018-2019: "If our competitors introduce new products and pricing strategies, it could decrease our product sales and market share, or could pressure us to reduce our product prices in a manner that reduces our margins."</blockquote>The risk factor title focused on competitors' pricing strategies, not FICO's own. This framing would change materially by FY2023.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Fannie/Freddie: FHFA validation regulation first cited</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2019 added specific reference to FHFA's new rule:<blockquote>"Laws and regulations applicable to secondary market participants (e.g., Fannie Mae and Freddie Mac) that could have an impact on our scoring products, including 12 CFR Part 1254 (Validation and Approval of Credit Score Models) issued by the Federal Housing Finance Agency"</blockquote>FY2018 had referenced the same statute but not the CFR citation. The regulatory risk was becoming more concrete.</div></div>
+</div>
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: COVID &amp; Score 10</h2>
+  <div class="sub">Filed Nov 2020 | Employees: ~4,100 &rarr; ~4,000 | Revenue: $1.16B &rarr; $1.29B (+11%) | Scores Rev: 38% of total</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Purchase" replaced with "access" for consumer score framing</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The verb describing how consumers interact with FICO Scores shifted:<blockquote>FY2019: "Most leading banks and credit card issuers rely on our solutions...consumers purchase and understand their FICO Scores"</blockquote><blockquote>FY2020: "Most leading banks and credit card issuers rely on our solutions...consumers access and understand their FICO Scores"</blockquote>"Purchase" implies a direct transaction; "access" is more diffuse and accommodates CRA royalty-based delivery where consumers get FICO Scores through bureau products rather than buying directly from FICO.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FICO Score 10, Score 10 T, UltraFICO, and Resilience Index all named</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2020 added four new score products to the Business section: FICO Score 10 and FICO Score 10 T (incorporating trended data), the UltraFICO Score (consumer-permissioned banking data), and the FICO Resilience Index (stress-testing tool for economic downturns). This was the largest single-year expansion of the score product lineup.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors &amp; MDA</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID-19 elevated to #1 risk factor</span><span class="tag tag-new">New</span></div><div class="finding-body">The COVID-19 pandemic was added as the first risk factor in the filing, displacing decision management strategy risk. COVID would remain the #1 risk factor through FY2021 before being demoted in FY2022 and deleted entirely in FY2023.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">MDA pricing language adds unsecured originations and mortgage volume</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "primarily attributable to an increase in mortgage volumes, a higher unit price in auto and unsecured originations"</blockquote>Three changes from FY2019: (1) mortgage attributed to volume not price, (2) "unsecured" added as a pricing vertical, (3) large royalty true-up and annual license deal disclosed. The pricing narrative was expanding across more product lines.</div></div>
+</div>
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: Segment Restructure</h2>
+  <div class="sub">Filed Nov 2021 | Employees: ~4,000 &rarr; ~3,800 | Revenue: $1.29B &rarr; $1.32B (+2%) | Scores Rev: 42% of total</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Self-description rewritten: "provides products, solutions and services" &rarr; "is a leading applied analytics company"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The opening sentence of the entire 10-K changed:<blockquote>FY2020: "Fair Isaac Corporation...provides products, solutions and services that enable businesses to automate, improve and connect decisions to enhance business performance."</blockquote><blockquote>FY2021: "Fair Isaac Corporation...is a leading applied analytics company."</blockquote>A functional description replaced by an identity claim. The paragraph-long explanation of predictive analytics and decision management systems was deleted entirely.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Three segments collapsed to two (Applications + DMS &rarr; Software)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FICO operated three segments (Applications, Scores, Decision Management Software) through FY2020. FY2021 merged Applications and DMS into a single "Software" segment. The filing became Scores + Software, simplifying comparison but obscuring the relative performance of legacy applications vs. platform products.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">All three bureaus individually disclosed above 10% of revenue</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, each of the three major consumer reporting agencies (Experian, TransUnion, Equifax) individually exceeded 10% of total FICO revenue, triggering individual disclosure. Combined bureau concentration crossed approximately 33% of total revenue.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Stock buybacks quadrupled to $882M</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Buybacks escalated from approximately $200M in FY2020 to $882M in FY2021, the beginning of the aggressive capital return program that would drive stockholders' equity negative.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Fannie/Freddie risk factor appears as standalone</span><span class="tag tag-new">New</span></div><div class="finding-body">A dedicated risk factor for Fannie Mae/Freddie Mac score requirements appeared for the first time:<blockquote>"A significant portion of our revenues in our Scores segment is attributable to the U.S. mortgage market, which includes, for conforming mortgages in that market, a requirement of...Fannie Mae...and...Freddie Mac...that U.S. lenders provide FICO Scores for each mortgage delivered to them. However, their continued use of the FICO Score is currently subject to validation and approval by those enterprises and the Federal Housing Finance Agency."</blockquote>Previously, Fannie/Freddie appeared only in the general regulatory list. This elevation to a standalone risk factor signaled growing concern about score mandates.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">MDA pricing language becomes generic: named verticals disappear</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "a higher unit price in auto and unsecured originations"</blockquote><blockquote>FY2021: "a higher unit price across several business-to-business offerings"</blockquote>Mortgage, auto, and unsecured lending were no longer individually named. The generic "several business-to-business offerings" phrase obscured which verticals were experiencing price increases and by how much.</div></div>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: Platform Focus</h2>
+  <div class="sub">Filed Nov 2022 | Employees: ~3,800 &rarr; ~3,600 | Revenue: $1.32B &rarr; $1.38B (+5%) | Scores Rev: 46% of total</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Software strategy risk elevated to #1 (COVID demoted)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">COVID-19 was demoted from the #1 operational risk factor. The risk that FICO's software platform transition might fail replaced it at the top of the risk factors section. This signaled management's view that the platform bet was the company's most material strategic uncertainty.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CRAs explicitly listed as customers for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body">The three major consumer reporting agencies were described as customers of FICO's scoring products, not just distribution partners. This dual role (customer and partner) would become central to the competition narrative by FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">EU AI Act first mentioned in risk factors</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"The European Commission has also released draft proposed regulations (i.e., the EU AI Act) that would establish requirements for the provision and use of products that leverage artificial intelligence, machine learning, and similar analytic and statistical modeling technologies, including credit scoring."</blockquote>This appeared in FY2023's filing (for the FY2022&rarr;23 transition period) and represented the first time EU AI regulation was named as a specific risk to FICO's business.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Debt increased from $1.3B to $1.9B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Total long-term debt rose approximately $600M year-over-year, funding continued buybacks. The debt trajectory would accelerate sharply in subsequent years.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> MDA &amp; Score Pricing</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Score pricing remains generic; mortgage volume decline first disclosed as offset</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022: "primarily attributable to a higher unit price across several business-to-business offerings and an increase in unsecured credit originations volume, partially offset by a decrease in mortgage originations volume"</blockquote>For the first time, declining mortgage volume appeared as a negative offset to score revenue growth, even as "higher unit price" continued to drive the segment upward.</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: Pricing Under Scrutiny</h2>
+  <div class="sub">Filed Nov 2023 | Employees: ~3,600 &rarr; ~3,500 | Revenue: $1.38B &rarr; $1.51B (+10%) | Scores Rev: 51% of total</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Pricing strategies" first appears in FICO's own risk factor title</span><span class="tag tag-new">New</span></div><div class="finding-body">The competition risk factor title was rewritten to name FICO's own pricing as a risk:<blockquote>FY2022 and prior: "If our competitors introduce new products and pricing strategies, it could decrease our product sales and market share"</blockquote><blockquote>FY2023: "We are subject to significant competition in the markets in which we operate, and our products and pricing strategies, and those of our competitors, could decrease our product sales and market share."</blockquote>The shift from "our competitors'" pricing to "our products and pricing strategies, and those of our competitors" acknowledged that FICO's own pricing decisions had become a material risk.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI added to CFPB regulatory concern language</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"there has been an increased focus on laws and regulations related to our business...including by the current U.S. presidential administration, the U.S. Congress, and U.S. regulators, including the CFPB, relating to policy concerns with regard to...the use, transparency, and fairness of algorithms, artificial intelligence, and machine learning in business processes."</blockquote>AI was added to the list of CFPB concerns for the first time, alongside credit data accuracy and fair lending.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID-19 risk factor deleted entirely</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The standalone COVID-19 risk factor, which had been #1 in FY2020-21 and was demoted in FY2022, was removed completely from the filing.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> MDA &amp; Score Pricing</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Score pricing language reaches maximum opacity</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "primarily attributable to a higher unit price, partially offset by a decrease in mortgage originations volume"</blockquote>"Several business-to-business offerings" was dropped. The driver is now simply "a higher unit price" with no vertical attribution. Simultaneously, B2C revenue declined $18.4M as direct-to-consumer sales fell while bureau royalties continued growing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Countries served dropped from ~120 to ~100</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The number of countries where FICO operates declined from "nearly 120" to "over 100," a reduction that was not explained in the filing.</div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: CFPB Inquiry</h2>
+  <div class="sub">Filed Nov 2024 | Employees: ~3,500 &rarr; ~3,600 | Revenue: $1.51B &rarr; $1.72B (+14%) | Scores Rev: 55% of total</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Standalone CFPB mortgage pricing risk factor added</span><span class="tag tag-new">New</span></div><div class="finding-body">An entirely new risk factor paragraph was added addressing the CFPB's direct inquiry into FICO Score pricing:<blockquote>"There has been increased focus in the U.S. by federal regulators such as the CFPB and the FTC, as well as the current presidential administration and some states, related to the transparency and fairness of certain fees charged to consumers...in May 2024, the CFPB launched a public inquiry to obtain information on fees charged by providers of mortgages and related settlement services in the U.S. residential mortgage market, including fees for credit reports and credit scores."</blockquote>This was the first time any regulator was named as specifically investigating FICO Score pricing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FHFA bi-merge/tri-merge risk first disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body">New language acknowledged that changes to the number of credit reports required per mortgage could reduce FICO Score volume:<blockquote>"Other changes implemented by FHFA, Fannie Mae or Freddie Mac could also affect the demand for FICO Scores...including, for example, a change permitting mortgage originators to underwrite loans using credit scores from only two of the three national consumer reporting agencies rather than the three currently required"</blockquote>A shift from tri-merge (three bureau pulls per mortgage) to bi-merge would mechanically reduce FICO Score volume by one-third in the mortgage channel.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">VantageScore explicitly named as competitor selling "competitive product"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "VantageScore (a joint venture entity established by the three major U.S. consumer reporting agencies), which is selling a credit scoring product competitive with our products"</blockquote>Prior filings listed VantageScore neutrally. The addition of "which is selling a credit scoring product competitive with our products" sharpened the framing, explicitly identifying the CRAs' joint venture as a competitive threat.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI heading renamed from "Diversity, Equity and Inclusion" to "Organizational Culture"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The human capital section underwent substantial revision. "Diversity, equity and inclusion" language was replaced with "Organizational Culture." Specific diversity metrics and the Affirmative Action Program disclosure were removed. The LDCC oversight description dropped "equity" from its enumerated responsibilities.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau concentration rose from 41% to 45%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Combined revenue from the three major consumer reporting agencies reached approximately 45% of total FICO revenue, continuing the steady concentration trend from 25% in FY2018.</div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Monopoly Pressure</h2>
+  <div class="sub">Filed Nov 2025 | Employees: ~3,600 &rarr; ~3,700 | Revenue: $1.72B &rarr; $1.95B (+13%) | Scores Rev: 59% of total</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Self-description changed again: "leading applied analytics company" &rarr; "global analytics software leader"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Fair Isaac Corporation...is a leading applied analytics company."</blockquote><blockquote>FY2025: "Fair Isaac Corporation...is a global analytics software leader."</blockquote>Three changes: (1) "leading" promoted to "leader" (noun, not adjective), (2) "applied" dropped (less technical), (3) "software" inserted. The company now defines itself primarily as a software company rather than an analytics company.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau concentration crosses 51% -- majority of revenue from three companies</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">For the first time, over half of all FICO revenue flows through the three major consumer reporting agencies. Bureau concentration: 25% (FY2018) &rarr; 51% (FY2025). Each bureau individually exceeds 10%, with the largest approaching 20%.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CRAs listed as competitors (not just partners/customers)</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Primary competitors among outside suppliers of scoring models are the three major consumer reporting agencies in the U.S. and Canada, which are also our partners in offering our scoring solutions, and VantageScore (a joint venture entity established by the three major U.S. consumer reporting agencies), which is selling a credit scoring product competitive with our products."</blockquote>The CRAs are now simultaneously described as FICO's largest customers (51% of revenue), partners (distributing FICO Scores), and competitors (selling VantageScore). This three-way relationship is unprecedented in the filing history.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">BNPL scores and Mortgage Simulator launched; FHFA conforming mortgage approval</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"FICO Score 10 T, gained increased traction for non-conforming mortgages and was approved for conforming mortgages by the Federal Housing Finance Agency for enterprise credit scoring requirements. In addition, we launched FICO Score 10 BNPL"</blockquote>FICO Score 10 BNPL addresses buy-now-pay-later tradelines. Mortgage Simulator is a new product. The FHFA conforming mortgage approval for Score 10 T is a material milestone -- it enables FICO to eventually replace legacy scores in the GSE channel.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CRA pricing constraint on FICO explicitly acknowledged</span><span class="tag tag-new">New</span></div><div class="finding-body">New language acknowledging that CRA business practices can constrain FICO's revenue:<blockquote>"Demand for our products and services may be sensitive to product and pricing changes we implement, and our product and pricing strategies may not be accepted by the market."</blockquote>The filing also acknowledges for the first time that pricing and other business practices of the consumer reporting agencies can affect FICO's ability to grow score revenue. This is the closest FICO has come to admitting its pricing power is not unlimited.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CFPB language depoliticized</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2024 referenced "the current U.S. presidential administration" alongside the CFPB. FY2025 retained the CFPB risk factor substance but removed politically specific framing. The regulatory risk is presented as institutional rather than tied to a particular administration.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FHFA score choice announced as specific risk</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"If other credit score models are approved for use with mortgages delivered to Fannie Mae and Freddie Mac, or the FICO Score is not approved for continued use with those mortgages, it could have a material adverse effect on our revenues, results of operations and stock price."</blockquote>The risk factor now explicitly contemplates FHFA approving alternative credit score models, a scenario that was hypothetical in prior filings but became more concrete with VantageScore's FHFA application.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> MDA &amp; Financials</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Score pricing language: "higher unit price" plus mortgage volume recovery</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2025: "primarily attributable to a higher unit price, an increase in volume of mortgage originations and a multi-year license renewal in the U.S. recognized on our insurance score product"</blockquote>For the first time since FY2020, mortgage volume is a positive contributor rather than a partial offset. The insurance score license renewal is a new one-time item. Pricing language remains at maximum opacity -- "higher unit price" with no vertical attribution.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Debt increased from $2.2B to $3.1B; buybacks $1.4B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Total debt rose approximately $900M in a single year, the largest annual increase in FICO's history. Cumulative buybacks reached approximately $5.6B, driving stockholders' equity to approximately -$1.75B. Revenue per employee reached approximately $525K.</div></div>
+</div>
+
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-bureau" style="margin-top:56px">
+  <div class="section-header"><h2>Signal #1: Bureau Revenue Concentration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> Bureau Revenue Concentration (25% &rarr; 51%)</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Bureau % of Revenue</th><th>Individual >10%?</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>~25%</td><td>No</td><td>Baseline</td></tr>
+        <tr><td>FY2019</td><td>~29%</td><td>No</td><td>Growing</td></tr>
+        <tr><td>FY2020</td><td>~31%</td><td>No</td><td>Score rev driving concentration</td></tr>
+        <tr><td>FY2021</td><td>~33%</td><td class="val-highlight">Yes -- all three</td><td>Individual disclosure triggered</td></tr>
+        <tr><td>FY2022</td><td>~37%</td><td>Yes</td><td>Accelerating</td></tr>
+        <tr><td>FY2023</td><td>~41%</td><td>Yes</td><td>Approaching majority</td></tr>
+        <tr><td>FY2024</td><td>~45%</td><td>Yes</td><td>Near-majority</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">~51%</td><td>Yes</td><td>Majority crossed</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Over half of all FICO revenue now flows through three companies that are simultaneously customers, partners, and competitors (via VantageScore).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-selfdesc">
+  <div class="section-header"><h2>Signal #2: Self-Description Evolution</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Corporate Identity in Opening Sentence</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Opening Description</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-20</td><td>"provides products, solutions and services that enable businesses to automate, improve and connect decisions"</td><td>Functional; service-oriented</td></tr>
+        <tr><td>FY2021-24</td><td>"is a leading applied analytics company"</td><td>Identity claim; "analytics" centered</td></tr>
+        <tr><td>FY2025</td><td class="val-highlight">"is a global analytics software leader"</td><td>"Software" inserted; "leader" noun</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-pricing">
+  <div class="section-header"><h2>Signal #3: Score Pricing Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> MDA Score Revenue Driver Language</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Exact MDA Pricing Attribution</th><th>Specificity</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>"a higher unit price in <strong>mortgage</strong> activities"</td><td class="val-pos">Single vertical named</td></tr>
+        <tr><td>FY2019</td><td>"a higher unit price in <strong>mortgage and auto</strong> activities"</td><td class="val-pos">Two verticals named</td></tr>
+        <tr><td>FY2020</td><td>"a higher unit price in <strong>auto and unsecured</strong> originations"</td><td class="val-pos">Two verticals named (different)</td></tr>
+        <tr><td>FY2021</td><td>"a higher unit price across <strong>several business-to-business offerings</strong>"</td><td class="val-neg">Generic</td></tr>
+        <tr><td>FY2022</td><td>"a higher unit price across <strong>several business-to-business offerings</strong>"</td><td class="val-neg">Generic (identical)</td></tr>
+        <tr><td>FY2023</td><td>"a higher unit price"</td><td class="val-neg">Maximum opacity</td></tr>
+        <tr><td>FY2024</td><td>"a higher unit price"</td><td class="val-neg">Maximum opacity (identical)</td></tr>
+        <tr><td>FY2025</td><td>"a higher unit price"</td><td class="val-neg">Maximum opacity (identical)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">As score pricing became more aggressive and more scrutinized, the disclosure became less specific. Named verticals (mortgage, auto, unsecured) gave way to generic language and then to the bare phrase "higher unit price" with no attribution at all.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-segments">
+  <div class="section-header"><h2>Signal #4: Segment Structure</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> Reporting Segments</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Segments</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-20</td><td>Applications, Scores, Decision Management Software</td><td>Three segments; granular</td></tr>
+        <tr><td>FY2021-25</td><td>Scores, Software</td><td>Two segments; Apps+DMS merged</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The merger obscured the relative performance of legacy on-premise applications versus the FICO Platform cloud products.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-cfpb">
+  <div class="section-header"><h2>Signal #5: CFPB/Regulatory Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> CFPB Presence in 10-K Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>CFPB Treatment</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-21</td><td>Not named in risk factors</td><td>No regulatory scrutiny</td></tr>
+        <tr><td>FY2022</td><td>Named in general regulatory list alongside UDAAP</td><td>Generic inclusion</td></tr>
+        <tr><td>FY2023</td><td>Named with "increased focus" language re: AI, algorithms, credit scores</td><td>Elevated concern</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">Standalone risk factor: "CFPB launched a public inquiry...fees for credit reports and credit scores"</td><td>Direct investigation of FICO pricing</td></tr>
+        <tr><td>FY2025</td><td>CFPB risk retained; "current U.S. presidential administration" removed</td><td>Depoliticized; institutional risk</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-fannie">
+  <div class="section-header"><h2>Signal #6: Fannie/Freddie Risk</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Fannie Mae/Freddie Mac/FHFA Risk Evolution</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Treatment</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-19</td><td>Mentioned only in general regulatory bullet list</td><td>Background risk</td></tr>
+        <tr><td>FY2020</td><td>Same</td><td>No escalation</td></tr>
+        <tr><td>FY2021</td><td class="val-highlight">Standalone risk factor; FHFA validation and approval</td><td>Elevated to dedicated risk</td></tr>
+        <tr><td>FY2022-23</td><td>Standalone risk factor retained</td><td>Steady-state</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">Bi-merge/tri-merge risk added; volume reduction scenario</td><td>New specific threat</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">Score choice announced; CRA pricing constraint; FHFA approval of Score 10 T</td><td>Both threat and opportunity</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-vantage">
+  <div class="section-header"><h2>Signal #7: VantageScore Framing</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> VantageScore Language in Competition Section</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>VantageScore Description</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-20</td><td>"Experian, TransUnion, and VantageScore (a joint venture entity established by the major U.S. credit reporting agencies)"</td><td>Neutral; listed alongside bureaus</td></tr>
+        <tr><td>FY2021-23</td><td>"VantageScore (a joint venture entity established by the major U.S. consumer reporting agencies)"</td><td>Separated from bureau names; still neutral</td></tr>
+        <tr><td>FY2024-25</td><td class="val-neg">"VantageScore...which is selling a credit scoring product competitive with our products"</td><td>Explicit competitive threat</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">FY2025 goes further: CRAs themselves are listed as "primary competitors" in the opening sentence of the Scores competition paragraph, the first time the companies providing 51% of FICO's revenue are named as competitors.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-debt">
+  <div class="section-header"><h2>Signal #8: Debt &amp; Buyback Trajectory</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Debt and Capital Return</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Total Debt</th><th>Buybacks</th><th>Stockholders' Equity</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>~$845M</td><td>~$235M</td><td>Positive</td></tr>
+        <tr><td>FY2019</td><td>~$990M</td><td>~$460M</td><td>Positive</td></tr>
+        <tr><td>FY2020</td><td>~$1.1B</td><td>~$200M</td><td>Near zero</td></tr>
+        <tr><td>FY2021</td><td>~$1.3B</td><td>~$882M</td><td class="val-neg">Negative</td></tr>
+        <tr><td>FY2022</td><td>~$1.9B</td><td>~$900M</td><td class="val-neg">Negative</td></tr>
+        <tr><td>FY2023</td><td>~$2.1B</td><td>~$1.0B</td><td class="val-neg">Negative</td></tr>
+        <tr><td>FY2024</td><td>~$2.2B</td><td>~$1.1B</td><td class="val-neg">Negative</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">~$3.1B</td><td class="val-neg">~$1.4B</td><td class="val-neg">~-$1.75B</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Cumulative buybacks ~$5.6B on ~$11B of cumulative revenue over eight years. The capital return program is funded by debt, not retained earnings.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-products">
+  <div class="section-header"><h2>Signal #9: Score Products Timeline</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> Score Product Introductions</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Product</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>FICO Score 9, Score XD</td><td>Baseline products</td></tr>
+        <tr><td>FY2019</td><td>UltraFICO concept disclosed</td><td>Alternative data exploration</td></tr>
+        <tr><td>FY2020</td><td class="val-highlight">Score 10, Score 10 T, UltraFICO named, Resilience Index</td><td>Largest product launch year</td></tr>
+        <tr><td>FY2021-23</td><td>No major new score products</td><td>Platform focus period</td></tr>
+        <tr><td>FY2024</td><td>Score 10 T gains traction in non-conforming mortgages</td><td>Channel expansion</td></tr>
+        <tr><td>FY2025</td><td class="val-highlight">Score 10 BNPL, Mortgage Simulator, FHFA conforming approval</td><td>BNPL and mortgage innovation</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">International expansion: approximately 20 countries (FY2018) to 30+ countries for score distribution.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-ai">
+  <div class="section-header"><h2>Signal #10: AI Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Artificial Intelligence in 10-K Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>AI Treatment</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>"explainable artificial intelligence or xAI" in R&D; "neural network developers and artificial intelligence system builders" as competitors</td><td>Technical; product-focused</td></tr>
+        <tr><td>FY2019-21</td><td>Minimal AI references; focus on "predictive analytics"</td><td>AI de-emphasized</td></tr>
+        <tr><td>FY2022-23</td><td class="val-highlight">AI added to CFPB regulatory concern language; EU AI Act first named</td><td>AI as regulatory risk</td></tr>
+        <tr><td>FY2024-25</td><td>AI in competition risk factors; AI as competitive threat from tech companies</td><td>AI as business risk and opportunity</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">FICO's AI arc is inverted from most tech companies: AI started as a product feature (xAI in FY2018), disappeared, then returned primarily as a regulatory and competitive threat rather than a growth driver.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-dei">
+  <div class="section-header"><h2>Signal #11: DEI Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">11</span> Human Capital / DEI Section Evolution</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Section Title</th><th>DEI Content</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-20</td><td>"Personnel" / "Employees"</td><td>Minimal; headcount only</td></tr>
+        <tr><td>FY2021</td><td>Human Capital (expanded)</td><td class="val-pos">DEI subsection; Affirmative Action Program; MLT partnership; EEO-1 reference</td></tr>
+        <tr><td>FY2022-23</td><td>Human Capital</td><td>DEI language retained; campus recruiting for diversity</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">"Organizational Culture"</td><td>"Equity" dropped; Affirmative Action removed; diversity metrics removed</td></tr>
+        <tr><td>FY2025</td><td>"Organizational Culture"</td><td>Same framework as FY2024</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-risk1">
+  <div class="section-header"><h2>Signal #12: Risk Factor #1</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">12</span> First Operational Risk Factor</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Risk Factor #1</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-19</td><td>Decision management strategy execution</td><td>Software transition risk</td></tr>
+        <tr><td>FY2020-21</td><td class="val-neg">COVID-19 pandemic</td><td>External shock</td></tr>
+        <tr><td>FY2022-25</td><td class="val-highlight">Software platform strategy</td><td>Platform bet is existential</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-geo">
+  <div class="section-header"><h2>Signal #13: Employee Geography</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">13</span> Employee Distribution</h3>
+    <p>FICO's workforce shifted from US-majority to India-largest over the eight-year period. By FY2025, approximately 40% of employees are based in India, making it the single largest country for FICO headcount. Total employee count declined from ~4,200 (FY2018) to ~3,700 (FY2025) while revenue nearly doubled, driving revenue per employee from ~$281K to ~$525K.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-b2c">
+  <div class="section-header"><h2>Signal #14: B2C/myFICO</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">14</span> Business-to-Consumer Revenue Trajectory</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>B2C Trend</th><th>Driver</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-21</td><td class="val-pos">Growing</td><td>Direct sales (myFICO) + CRA royalties</td></tr>
+        <tr><td>FY2022-24</td><td class="val-neg">Declining</td><td>Direct sales falling; CRA royalties partially offsetting</td></tr>
+        <tr><td>FY2025</td><td class="val-pos">Recovering (+$12.2M)</td><td>CRA royalty growth exceeds direct sales decline</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The B2C recovery in FY2025 is driven by royalties from scores sold through CRA products, not direct myFICO sales. This deepens the bureau dependency.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-countries">
+  <div class="section-header"><h2>Signal #15: Countries Served</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">15</span> Geographic Footprint</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Countries</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>~100</td><td>Baseline</td></tr>
+        <tr><td>FY2019-20</td><td>~120</td><td class="val-pos">Expanding</td></tr>
+        <tr><td>FY2021-23</td><td>~100</td><td class="val-neg">Contracting</td></tr>
+        <tr><td>FY2024-25</td><td>~80</td><td class="val-neg">Further contraction</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The country count peaked around FY2019-20 and has declined steadily since, even as international score distribution expanded to 30+ countries. FICO appears to be concentrating on fewer, higher-value markets.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-platform">
+  <div class="section-header"><h2>Signal #16: Platform Migration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">16</span> Software Platform Evolution</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Platform Status</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-20</td><td>FICO Decision Management Platform; on-premise dominant</td><td>Early cloud migration</td></tr>
+        <tr><td>FY2021-22</td><td>FICO Platform emphasized; ARR metrics introduced</td><td>Platform-centric rewrite</td></tr>
+        <tr><td>FY2023-24</td><td>FICO Marketplace launched; DBNRR declining (120%&rarr;102%)</td><td>Marketplace expansion but retention pressure</td></tr>
+        <tr><td>FY2025</td><td>"Custom solutions" language removed</td><td>Standardization over customization</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-finserv">
+  <div class="section-header"><h2>Signal #17: Financial Services Concentration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">17</span> Financial Services as % of Revenue</h3>
+    <p>Financial services customers (banks, credit card issuers, mortgage lenders, insurance companies) represented approximately 86% of FICO revenue in FY2018, rising to approximately 92% by FY2025. The non-financial services customer base (telecom, retail, government) has shrunk proportionally as Scores grew from 33% to 59% of total revenue.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-mortgage">
+  <div class="section-header"><h2>Signal #18: Mortgage Volume Sensitivity</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">18</span> Mortgage Origination Volume in MDA</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Mortgage Volume in MDA</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-19</td><td>Mortgage pricing named as growth driver</td><td class="val-pos">Positive</td></tr>
+        <tr><td>FY2020</td><td>"an increase in mortgage volumes" as driver</td><td class="val-pos">Positive (refi boom)</td></tr>
+        <tr><td>FY2021</td><td>Not specifically mentioned</td><td>Neutral</td></tr>
+        <tr><td>FY2022-24</td><td>"partially offset by a decrease in mortgage originations volume"</td><td class="val-neg">Negative offset</td></tr>
+        <tr><td>FY2025</td><td class="val-pos">"an increase in volume of mortgage originations"</td><td class="val-pos">Positive again</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">FY2025 marks the first time since FY2020 that mortgage volume is a positive contributor to score revenue growth. Combined with "higher unit price," both price and volume are now working in FICO's favor.</p>
+  </div>
+</div>
+
+
+<!-- ==================== CROSS-CUTTING THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>Bureau Concentration Doubled</h3>
+      <p>25% (FY2018) to 51% (FY2025). All three bureaus individually >10% since FY2021. Over half of all FICO revenue flows through three companies that simultaneously serve as customers, distribution partners, and competitors (via VantageScore).</p>
+    </div>
+    <div class="signal-card">
+      <h3>Score Pricing Opacity</h3>
+      <p>MDA language evolved from naming specific verticals (mortgage, auto, unsecured) to generic "higher unit price." Scores grew from 33% to 59% of revenue with approximately 88% operating margins. The pricing disclosure became less specific as the pricing itself became more aggressive.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Regulatory Arc</h3>
+      <p>No CFPB risk (FY2018-22) to standalone risk factor naming CFPB inquiry (FY2024) to depoliticized language (FY2025). FHFA score choice and CRA pricing constraint are new FY2025 risks. The regulatory environment went from background noise to a direct challenge to FICO's pricing model.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Debt-Funded Buybacks</h3>
+      <p>Total debt: $845M to $3.1B. Cumulative buybacks ~$5.6B. Negative stockholders' equity: -$1.75B. Revenue per employee: $281K to $525K. The capital structure is optimized for score revenue extraction: high-margin cash flows service debt that funds buybacks.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Software Transition</h3>
+      <p>Three segments collapsed to two (FY2021). Platform ARR growing but DBNRR declining (120% to 102%). "Custom solutions" language removed FY2025. The software business is FICO's stated strategic priority but Scores is the financial engine.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Score Product Expansion</h3>
+      <p>Score 9 to 10/10T to UltraFICO to Score XD to BNPL scores to Mortgage Simulator. International: ~20 to ~30 countries. FHFA conforming mortgage approval achieved for Score 10 T. The product lineup is expanding even as the pricing language becomes more opaque.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Revenue</strong></td><td>$1.16B</td><td>$1.16B</td><td>$1.29B</td><td>$1.32B</td><td>$1.38B</td><td>$1.51B</td><td>$1.72B</td><td>$1.95B</td>
+      </tr>
+      <tr>
+        <td><strong>Scores Revenue</strong></td><td>$389M</td><td>$474M</td><td>$581M</td><td>$706M</td><td>$759M</td><td>$826M</td><td>$972M</td><td>$1.15B</td>
+      </tr>
+      <tr>
+        <td><strong>Scores % of Total</strong></td><td>33%</td><td>41%</td><td>45%</td><td>53%</td><td>55%</td><td>55%</td><td>56%</td><td class="val-highlight">59%</td>
+      </tr>
+      <tr>
+        <td><strong>Scores Op Margin</strong></td><td>~80%</td><td>~82%</td><td>~84%</td><td>~86%</td><td>~87%</td><td>~88%</td><td>~88%</td><td>~88%</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Bureau %</strong></td><td>~25%</td><td>~29%</td><td>~31%</td><td>~33%</td><td>~37%</td><td>~41%</td><td>~45%</td><td class="val-neg">~51%</td>
+      </tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>~4,200</td><td>~4,100</td><td>~4,000</td><td>~3,800</td><td>~3,600</td><td>~3,500</td><td>~3,600</td><td>~3,700</td>
+      </tr>
+      <tr>
+        <td><strong>Debt</strong></td><td>~$845M</td><td>~$990M</td><td>~$1.1B</td><td>~$1.3B</td><td>~$1.9B</td><td>~$2.1B</td><td>~$2.2B</td><td class="val-neg">~$3.1B</td>
+      </tr>
+      <tr>
+        <td><strong>Buybacks</strong></td><td>~$235M</td><td>~$460M</td><td>~$200M</td><td>~$882M</td><td>~$900M</td><td>~$1.0B</td><td>~$1.1B</td><td class="val-neg">~$1.4B</td>
+      </tr>
+      <tr>
+        <td><strong>Countries</strong></td><td>~100</td><td>~120</td><td>~120</td><td>~120</td><td>~100</td><td>~100</td><td>~80</td><td>~80</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for Fair Isaac Corporation (CIK 0000814547)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>
