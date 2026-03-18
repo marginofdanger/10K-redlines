@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>META 10-K Redline Analysis | FY2020-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header - the year-over-year title bars */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+  /* signal-grid already 1fr */
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>META 10-K REDLINES</h1>
+    <div class="sub">FY2020 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-expense">Expense Ordering Tells</a>
+  <a class="nav-item" href="#sig-headcount">Headcount Growth/Decline</a>
+  <a class="nav-item" href="#sig-guidance">Forward Guidance Language</a>
+  <a class="nav-item" href="#sig-investment-philosophy">Investment Philosophy &amp; AI Language</a>
+  <a class="nav-item" href="#sig-products">Product Listing Evolution</a>
+  <a class="nav-item" href="#sig-sbc">SBC Disclosure Retreat</a>
+  <a class="nav-item" href="#sig-competitors">Competitor Naming</a>
+  <a class="nav-item" href="#sig-accounting">Accounting Estimates</a>
+  <a class="nav-item" href="#sig-regulatory">Regulatory Acceleration</a>
+  <a class="nav-item" href="#sig-dei">DEI Language Retreat</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>Meta Platforms 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings reveals strategic pivots, expense signals, and forward guidance tells invisible to surface-level reading.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001326801) | Fiscal Years 2020-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>The Metaverse Pivot</h3>
+    <p>Facebook &rarr; Meta. Two-segment reporting. "Metaverse" embedded in mission. RL losses disclosed at $10.2B. Apple ATT realized. TikTok named.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>The Reckoning</h3>
+    <p>First-ever revenue decline. "Growth" &rarr; "scale." First debt ($10B). $4.6B restructuring. "Discovery engine" and "generative AI" first appear.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>The Turnaround</h3>
+    <p>Year of Efficiency: headcount -22%, margin +10pp. AI = #1 priority. First dividend. China advertisers disclosed. "Discipline and habits."</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>AI Infrastructure Era</h3>
+    <p>Mission rewritten. "Metaverse" &rarr; "next computing platform." CapEx $60-65B guided. Ad pricing inflects +10%. FTC trial set.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>The Superintelligence Bet</h3>
+    <p>Superintelligence as stated goal. CapEx $72B actual, $115-135B guided. RL losses stabilize. FTC trial won. "Discipline and habits" retired. Debt doubled to $59B.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES (ALL INLINE) ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: The Metaverse Pivot</h2>
+  <div class="sub">Filed Feb 2022 | Headcount: 58,604 &rarr; 71,970 (+23%) | Revenue: $86.0B &rarr; $117.9B (+37%) | Op Margin: 38% &rarr; 40%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Mission statement reframed around metaverse</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2020's mission: "to give people the power to build community and bring the world closer together." FY2021 appended:<blockquote>"All of our products, including our apps, share the vision of helping to bring the metaverse to life."</blockquote>The entire company reframed around a new strategic concept in a single sentence.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Two-segment reporting (FoA / Reality Labs) introduced</span><span class="tag tag-new">New</span></div><div class="finding-body">Products reorganized under "Family of Apps" and "Reality Labs" with separate financials. First time investors could see FoA operating income (<strong>$56.9B, 49% margin</strong>) versus RL operating loss (<strong>$10.2B</strong>). Previously a single segment.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">European data transfer: "may be unable" escalated to "will likely be unable"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "we may be unable to operate material portions of our business in Europe"</blockquote><blockquote>FY2021: "we will likely be unable to offer a number of our most significant products and services, including Facebook and Instagram, in Europe"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">IGTV removed, Reels elevated; Digital Markets Act disclosed; remote work codified</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Instagram dropped "IGTV" from its product listing. DMA disclosed as "proposed" regulation for the first time. Remote work policy formalized: "We offer most of our full-time employees the option to work remotely on a regular basis."</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New standalone risk: "We may not be successful in our metaverse strategy"</span><span class="tag tag-new">New</span></div><div class="finding-body">Acknowledged the metaverse bet may fail and <strong>"may also divert resources and management attention from other areas of our business."</strong> RL losses quantified at "$10 billion" in risk factors for the first time.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Apple ATT: prospective &rarr; past tense ("has negatively impacted")</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: Apple "plans to make certain changes... that will reduce"</blockquote><blockquote>FY2021: Apple "made certain changes... which has negatively impacted, and we expect will continue to negatively impact"</blockquote>Specific attribution added: "our advertising revenue in the second half of 2021 was negatively impacted."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">TikTok explicitly named; first-ever global DAU decline; Haugen whistleblower</span><span class="tag tag-new">New</span></div><div class="finding-body">TikTok named as having "reduced some users' engagement" (previously only "ByteDance"). Q4 2021: first-ever global quarter-over-quarter DAU decline. Frances Haugen spawned new "user well-being" language, government investigations, and securities class actions.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Reels monetization gap; climate risk; "opt in or out" replaces "opt out"</span><span class="tag tag-new">New</span></div><div class="finding-body">"We plan to continue to promote Reels, which we do not currently monetize at the same rate as our feed or Stories products." Climate change risk added. "Opt out" updated to "opt in or out" reflecting Apple's ATT opt-in framework.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Legal Proceedings</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FTC antitrust survived dismissal; whistleblower litigation; IDPC stay lifted</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">FTC amended complaint sustained January 2022 -- existential divestiture risk for Instagram/WhatsApp remains. Illinois biometrics ($650M) and 2018 cyberattack settlements resolved. New stockholder derivative action. Whistleblower-related securities class actions filed. IDPC data transfer inquiry stay lifted.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Key Forward Guidance</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Unprecedented bearish margin warning; CapEx guided $29-34B; headcount "foreseeable future"</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"In 2022, we also expect that our year-over-year total expense growth rates may significantly exceed our year-over-year revenue growth rates, which would adversely affect our operating margin and profitability."</blockquote>This sentence appeared <strong>only once</strong> in the entire 5-year corpus and proved prophetic. CapEx guided at $29-34B (vs $19B actual). Headcount guidance still: "We expect headcount growth to continue for the foreseeable future."</div></div>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: The Reckoning</h2>
+  <div class="sub">Filed Feb 2023 | Headcount: 71,970 &rarr; 86,482 (+20%, but 11K layoff announced) | Revenue: $117.9B &rarr; $116.6B (-1%) | Op Margin: 40% &rarr; 25%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Discovery engine" and "generative AI" appear for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2022 Technology section: "we are making significant investments in AI and machine learning, including to recommend relevant unconnected content across our products through our AI-powered discovery engine... and to develop new product features using generative AI." This is the earliest filing signal of the AI pivot.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">All named competitors removed from Business section</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2021 named 8 competitors (Alphabet, Amazon, Apple, ByteDance/TikTok, Microsoft, Snap, Tencent, Twitter). FY2022 deleted the entire list. Coincides with FTC antitrust discovery -- naming competitors defines relevant markets.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Expect headcount growth to continue" &rarr; 11,000-employee layoff disclosure</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2021: "We expect headcount growth to continue for the foreseeable future." FY2022 replaced this with detailed layoff disclosure -- "one of the most difficult changes in Meta's history" -- including severance terms (16 weeks + 2 per year of service). "Growth" replaced by "scale" throughout the filing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FoA/RL cost split disclosed; Portal killed; DEI goals removed; "Feed" replaces "News Feed"</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">First-ever FoA/RL cost split (82%/18%) with admission: "our ability to support our metaverse efforts is dependent on generating sufficient profits from other areas of our business." Portal removed from product listings. Specific diversity targets deleted. "News Feed" became simply "Feed"; Reels moved to 2nd position.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">First-ever debt ($10B) as risk; "financial results will fluctuate" elevated to standalone</span><span class="tag tag-new">New</span></div><div class="finding-body">Meta went from zero debt to $10B in fixed-rate notes. New risk: "the incurrence of indebtedness." "Financial results will fluctuate" elevated to its own risk factor -- the era of predictable growth officially declared over.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Cost-cutting acknowledged as risk; Apple accused; DMA/DSA enacted; Section 230 SCOTUS</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">"Cost reduction measures... may adversely affect these or other business initiatives." Apple described as "expanding their own advertising business" while restricting others. DMA/DSA shifted from "proposed" to enacted. Section 230 Supreme Court review disclosed. Russia/Ukraine war added.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Risk ordering: Competition now #1 (was COVID); COVID dropped to bottom</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The first operational risk factor in FY2021 was COVID. FY2022 moved Competition to #1 and pushed COVID to near the bottom. The top-3 operational risks became: (1) Competition, (2) Metaverse strategy [new], (3) Financial fluctuations.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Legal Proceedings</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">$725M Cambridge Analytica; social media addiction lawsuits; EU Marketplace tying</span><span class="tag tag-new">New</span></div><div class="finding-body">$725M Cambridge Analytica settlement (largest consumer privacy settlement at the time). Social media addiction lawsuits (new category): alleging "addiction" in teenagers. FTC challenge to Within Unlimited acquisition. European Commission Marketplace tying complaint. Texas biometrics lawsuit. Ad audience inflation class certified. Q4 2021 earnings securities class action filed.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Key Forward Guidance</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CapEx guidance $30-33B ("anticipate" replaces "expect"); no total expense range; restructuring $4.6B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Modal verb shifted from "expect" to "anticipate" (weaker commitment). Total expense dollar range eliminated for the first time -- replaced by qualitative warning: "investments will continue to drive expense growth in 2023, which will adversely affect our operating margin." Restructuring section (new): $4.61B in charges across facilities ($2.30B), severance ($975M), data center assets ($1.34B).</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: The Turnaround</h2>
+  <div class="sub">Filed Feb 2024 | Headcount: 86,482 &rarr; 67,317 (-22%) | Revenue: $116.6B &rarr; $134.9B (+16%) | Op Margin: 25% &rarr; 35%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI elevated to strategic centerpiece; six investment priorities named for first time</span><span class="tag tag-new">New</span></div><div class="finding-body">New sentence: <blockquote>"Across our work, we are innovating in artificial intelligence (AI) technologies to build new experiences."</blockquote>Six explicit priorities: AI, metaverse, discovery engine, monetization, regulatory readiness, developer efficiency. FY2022 had no structured framework. Investment Philosophy rewritten from aspirational to: <strong>"We expect to continue to build on the discipline and habits that we developed in 2022."</strong></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Threads, WhatsApp Channels, "Subscription for no ads" in EU</span><span class="tag tag-new">New</span></div><div class="finding-body">Three major disclosures: Threads (Twitter competitor), WhatsApp Channels (broadcast messaging), and "subscription for no ads" -- a fundamental change to the European business model where Meta changed its legal basis for behavioral advertising from "legitimate interests" to "consent."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Metaverse stripped from RL segment definition; Ray-Ban glasses get Meta AI</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022: "RL reflects our efforts to develop the metaverse and generates revenue..."</blockquote><blockquote>FY2023: "RL generates revenue from sales of consumer hardware products..."</blockquote>Ray-Ban upgraded from "Stories" (no AI) to featuring "Meta AI, our advanced conversational assistant."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Headcount -22%; "Equity" dropped from DEI heading; COVID language removed; Shops dropped from Instagram</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Headcount declined from 86,482 to 67,317. "Diversity, Equity and Inclusion" renamed "Diverse and Inclusive Workplace." Specific ethnicity breakdowns replaced with broad "underrepresented people" percentages. COVID language almost entirely removed. Instagram dropped "Shops" and "Video" from its feature list. Horizon Workrooms dropped.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Entirely new AI risk factor (7 paragraphs) -- most significant addition in the filing</span><span class="tag tag-new">New</span></div><div class="finding-body">Covers: harmful content, misinformation, bias, IP infringement, open-source risks (Llama), hardware dependency (<strong>"processing hardware and network capacity, as to which we cannot control the availability or pricing"</strong>), and regulatory uncertainty. Did not exist in any form in FY2022.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Zuckerberg key-person risk: "combat sports, extreme sports, recreational aviation"</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Mr. Zuckerberg and certain other members of management participate in various high-risk activities, such as combat sports, extreme sports, and recreational aviation, which carry the risk of serious injury and death."</blockquote>Unusual and specific enough to suggest legal/insurance counsel required it.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID standalone risk eliminated; infrastructure risk expanded for AI compute; EUR 1.2B IDPC fine</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">COVID absorbed into general "catastrophic events" risk. Infrastructure risk adds "availability of components, power, or network capacity." "Platform Integrity" added to risk category name. "Costs are continuing to grow" softened to "We incur significant expenses." EU-U.S. Data Privacy Framework adopted but CJEU invalidation warning added. EUR 1.2B IDPC fine disclosed.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Legal Proceedings</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Section restructured with new categories; FTC administrative proceeding; AI copyright suits</span><span class="tag tag-new">New</span></div><div class="finding-body">Legal Proceedings reorganized into labeled categories: Privacy, Competition, Securities, <strong>Youth-Related</strong> (new), Other. Opening preamble: <em>"the number and potential significance of the litigation and investigations involving the company have increased."</em> FTC proceeding seeking to prohibit minors' data for commercial purposes. AI copyright litigation (Kadrey v. Meta, Chabon v. Meta). Multi-state AG youth lawsuits expanded. $725M Cambridge Analytica settlement paid.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Key Forward Guidance</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">RL losses "increase meaningfully in 2024"; first dividend; FB metrics discontinued; China advertisers disclosed</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>RL:</strong> "we expect our RL operating losses to increase <strong>meaningfully</strong> in 2024" -- the intensifier was deliberately strong. <strong>Dividend:</strong> First-ever cash dividend ($0.50/quarter). <strong>Metrics:</strong> "we will no longer report DAUs, MAUs, ARPU, and MAP" -- major transparency reduction. <strong>Revenue:</strong> Growth "driven mainly by marketer spending in online commerce, which benefited from marketers based in China" -- Temu/Shein implied. CapEx guided $30-37B ($7B range = widest ever, peak uncertainty).</div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: AI Infrastructure Era</h2>
+  <div class="sub">Filed Feb 2025 | Headcount: 67,317 &rarr; 74,067 (+10%) | Revenue: $134.9B &rarr; $164.5B (+22%) | Op Margin: 35% &rarr; 42%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Mission statement rewritten for first time in a decade</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "Our mission is to give people the power to build community and bring the world closer together."</blockquote><blockquote>FY2024: "Our mission is to build the future of human connection and the technology that makes it possible."</blockquote>Shifts from empowering users ("give people the power") to Meta building technology. A decade-old mission statement abandoned.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Metaverse" systematically replaced with "next computing platform"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">"Helping to bring the metaverse to life" -- <strong>removed entirely</strong>. "Build the metaverse" replaced with "build the next computing platform" throughout. Metaverse risk factor retitled from "metaverse strategy" to "Reality Labs strategy." RL restructured into "metaverse" (~50%) and "wearables" (~50%). The term became a liability.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Meta AI, Llama, and Orion AR glasses disclosed; Threads + infrastructure added as priorities</span><span class="tag tag-new">New</span></div><div class="finding-body">Meta AI assistant disclosed as a named product across apps/glasses/web. Llama open-source models disclosed in Business section for first time. Orion AR glasses prototype unveiled. Investment priorities reshaped: "generative AI" (more specific), "Threads" and "infrastructure capacity" added, "regulatory readiness" removed. Meta Spark shut down.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI completely overhauled: all stats removed, programs ended, "political views" added</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">"Diverse and Inclusive Workplace" renamed "The Strength of Our Workforce and People Processes." All diversity statistics removed. <strong>"In early 2025, we announced changes to our diversity programs in light of the shifting legal and policy landscape."</strong> "Political views" added as a valued form of diversity alongside knowledge, skills, backgrounds, and perspectives.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Content moderation relaxation self-flagged as risk</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"We may also be subject to increased risk as a result of changes to our content policies and enforcement efforts which we began to implement in January 2025 to further free expression on our platform and mitigate over-enforcement of certain of our content policies."</blockquote>Meta voluntarily flagged its own January 2025 policy change as a risk factor.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Tariffs, energy, AI as co-equal margin drag, ad enforcement as revenue headwind</span><span class="tag tag-new">New</span></div><div class="finding-body">Tariffs risk: "the implementation of tariffs by the United States, China, or other governments." Energy: "computing power, and related energy requirements." AI investments now co-equal with RL as named margin drag. New admission: ad policy enforcement "will have an impact on our revenue in the future, <strong>which may be material</strong>."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">EU regulatory progression; youth laws expanded; deepfakes; EU AI Act + UK DMCC</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">EU "subscription for no ads" DMA investigation detailed (March 2024 proceedings, July 2024 adverse findings). "Less personalized ads" option launched. Youth regulation: named Arkansas, Utah, Texas, California, Florida + Australia social media ban for under-16s. "Deepfakes" added to AI risks. EU AI Act and UK DMCC added as new regulatory regimes. Google Chrome cookie deprecation language softened ("previously proposed").</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Legal Proceedings</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FTC antitrust trial April 2025; EUR 798M Marketplace fine; mass youth arbitration; CFPB</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>FTC antitrust trial set for April 14, 2025</strong> after summary judgment partially denied. EUR 798M European Commission Marketplace fine (graduated from Statement of Objections). FTC consent order modification proceeding advancing -- Meta's constitutional challenge largely rejected. Youth-related: Brazil, Canada, tribal nations added; mass arbitration from thousands of claimants; DSA investigation opened. CFPB NORA process initiated for financial advertising. Derivative litigation trial April 2, 2025 -- insider trading claim against Zuckerberg survived.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Key Forward Guidance</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">RL "meaningfully" dropped; CapEx $60-65B; ad price +10% inflection; depreciation boost $2.9B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>RL:</strong> "we continue to expect our RL operating losses to increase in 2025" -- "meaningfully" dropped, "continue to" added. Actual RL loss growth decelerated to +10% (from +18%). <strong>CapEx:</strong> $60-65B guided for 2025 "to support our core business and generative AI efforts." <strong>Ad pricing:</strong> Inflected from -9% to +10% -- the most important monetization signal. <strong>Depreciation:</strong> Server useful life extended to 5.5 years, expected to reduce FY2025 depreciation by ~$2.9B. Online commerce disclosed as largest ad revenue vertical.</div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: The Superintelligence Bet</h2>
+  <div class="sub">Filed Jan 2026 | Headcount: 74,067 &rarr; 78,865 (+6%) | Revenue: $164.5B &rarr; $201.0B (+22%) | Op Margin: 42% &rarr; 41%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Superintelligence declared as a corporate goal -- most material addition</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"We are also working to develop the next generation of AI models and advance our vision to build superintelligence, which we define as AI that surpasses human intelligence."</blockquote>FY2024 did not mention "superintelligence" at all. FY2025 uses it multiple times, including the new framing: "deliver personal superintelligence for everyone." The company is defining and committing to a specific AI end-state.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Meta AI elevated to standalone FoA product; standalone app launched</span><span class="tag tag-new">New</span></div><div class="finding-body">Meta AI now listed as a full bullet-point product under FoA, between Messenger and Threads: "Meta AI is an assistant that's available across our apps, <strong>as a stand-alone app</strong>, on our AI glasses, and on the web." The standalone app is new.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Investment priorities reshuffled: "Metaverse" dropped, "Youth" and "Reels" added</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "generative AI, our discovery engine, the metaverse and wearables, Threads, monetization..."</blockquote><blockquote>FY2025: "AI, Reels and our discovery engine, wearables, monetization, youth, platform integrity..."</blockquote>"Generative AI" simplified to "AI." "Metaverse" dropped from priorities entirely. "Threads" dropped. "Youth" added as a new named priority. "Reels" promoted to #2.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">RL expense split: wearables 70% / VR 30% (was 50/50); "metaverse" renamed to "VR and Horizon"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "approximately 50% wearables, 50% metaverse initiatives"</blockquote><blockquote>FY2025: "approximately 70% wearables, 30% VR and Horizon initiatives"</blockquote>A dramatic 20-point reallocation toward wearables. "Metaverse initiatives" renamed to "VR and Horizon initiatives." Also: "mixed reality" dropped from all descriptions; "AR" rebranded as "AI glasses."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Open source language hedged; new hardware products; Threads/WhatsApp as ad surfaces</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "We also believe in the power of open source innovation and have released our Llama models"</blockquote><blockquote>FY2025: "We have not released everything we have developed historically and expect to continue training a combination of open and closed models going forward."</blockquote>Open source commitment explicitly hedged. New hardware: Oakley Meta glasses, Meta Ray-Ban Display, Meta Neural Band (EMG wrist device -- now shipping, not exploratory). Threads and WhatsApp added as named ad placement surfaces for the first time. Pay equity disclosures removed. Meta stores disclosed as RL sales channel.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI risk factor expanded: "superintelligence," "products liability," FTC/AG scrutiny of AI chatbots</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">AI risk factor now covers "including generative AI <strong>and superintelligence</strong>" (FY2024: only "generative AI"). Added "products liability" to AI risk list. Added: "we have been the subject of media and government scrutiny relating to AI and AI chatbots, including inquiries and investigations by the FTC, members of Congress and state attorneys general." New: "specialized personnel in a limited and competitive talent market." Frontier AI model competition explicitly called out.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Tariff language broadened; DMA fine landed; capital-raising language added to expense risk</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">"Tariffs" broadened to "tariffs or other existing or future trade policies." DMA updated: "In April 2025, the European Commission issued a final decision that our 'subscription for no ads' model does not comply." New: "From time to time we may also seek to raise additional capital through debt, equity, or other financing arrangements." TikTok removed from named competitors in Risk Factors user engagement paragraph in FY2025 (was still named in FY2024).</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Computing needs driver officially shifted from user engagement to frontier AI training</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "as engagement with products like video, VR, and MR increases... our computing needs continue to expand"</blockquote><blockquote>FY2025: "Historically, the increases in our computing needs have been driven by growth in our user base... Our increased efforts toward building frontier AI models have driven a significant further expansion in our computing needs"</blockquote>The driver of computing expansion has officially shifted from user engagement to frontier AI model training.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Legal Proceedings</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FTC antitrust trial won; derivative settled; youth exposure "hundreds of billions"; Flo Health $8B risk</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>FTC antitrust: Meta won.</strong> Trial concluded May 27, 2025; judgment in Meta's favor November 18, 2025. FTC appealing. Derivative litigation settled in principle July 2025. FTC consent order modification: DC Circuit reversed on jurisdictional grounds, proceeding stayed. <strong>Youth litigation:</strong> Trials commencing (first personal injury Jan 2026, first AG trial Feb 2026). Mass arbitration expanded from "thousands" to <strong>"over one hundred thousand"</strong> demands. New disclosure: <strong>"the maximum aggregate monetary damages or penalties sought across our various legal proceedings could amount to an aggregate of up to hundreds of billions of dollars."</strong> Flo Health Meta Pixel case: adverse jury verdict, potential $8B exposure. AMI v. Meta (Spain): EUR 542M adverse judgment. DMA "subscription for no ads" fine: EUR 200M. AI copyright: won fair use summary judgment for named plaintiffs, but new cases added.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Key Forward Guidance</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">RL losses "remain similar" (the inflection signal); "discipline and habits" retired</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>RL losses -- the exact inflection signal we were watching for:</strong><blockquote>FY2024: "we continue to expect our RL operating losses to increase in 2025"</blockquote><blockquote>FY2025: "we expect our 2026 RL operating losses to remain similar to 2025"</blockquote>"Increase" &rarr; "remain similar." Also: "continue to expect" (reiteration framing) &rarr; "we expect" (new statement). And in the Business section, the RL purpose framing shifted from "the next chapter of the internet" (FY2024 Business + MD&A) to "the next computing platform" (FY2025 MD&A), though the Business section inconsistently retained "the next chapter of the internet."<br><br><strong>"Discipline and habits" retired entirely:</strong><blockquote>FY2024: "We expect to continue to build on the discipline and habits that we developed in 2022 when we initiated several efforts to increase our operating efficiency, while still remaining focused on investing in significant opportunities."</blockquote><blockquote>FY2025: "We remain focused on operating efficiently while investing in significant opportunities."</blockquote>The Year of Efficiency callback -- retained verbatim for 2 years -- is gone. What was a 2-line sentence became half a line.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Headcount dropped from forward investment language; R&D definition reordered for AI infrastructure</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>Forward AI investment -- "headcount" silently removed:</strong><blockquote>FY2024: "we expect our AI initiatives will require increased investment in infrastructure and headcount."</blockquote><blockquote>FY2025: "we expect our AI initiatives will require significantly increased investment in infrastructure."</blockquote>Three changes in one sentence: (1) "headcount" removed entirely, (2) "significantly" added as intensifier, (3) the object is now singular. This signals headcount growth may moderate while capex accelerates.<br><br><strong>R&D definition -- infrastructure costs promoted ahead of RL tech:</strong><blockquote>FY2024 R&D definition: "...employee compensation; RL technology development costs; infrastructure costs; facilities"</blockquote><blockquote>FY2025 R&D definition: "...employee compensation; infrastructure costs; RL technology development costs; facilities"</blockquote>Infrastructure costs moved from 3rd to 2nd position, ahead of RL tech costs. AI infrastructure spend now exceeds RL-specific technology development within R&D.<br><br><strong>R&D expense driver -- SBC explicitly called out again:</strong><blockquote>FY2024: "higher employee compensation was mainly from a 13% growth in employee headcount... in engineering and other technical functions supporting our continued investment in our family of products and Reality Labs."</blockquote><blockquote>FY2025: "higher employee compensation was primarily from an 8% growth in employee headcount... in engineering and other technical functions and an increase in share-based compensation expense."</blockquote>Headcount growth decelerated (13%&rarr;8%). SBC explicitly named as a driver again (only happened once before, in FY2023). The "supporting our continued investment in our family of products and Reality Labs" purpose clause was dropped entirely.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CapEx $115-135B guided; AI listed first; ad surfaces expanded; OBBBA tax; debt doubled</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>CapEx guidance nearly doubled:</strong><blockquote>FY2024: "approximately $60 billion to $65 billion in 2025 to support our core business and generative AI efforts"</blockquote><blockquote>FY2025: "approximately $115 billion to $135 billion in 2026 to support our AI efforts and core business"</blockquote>Ordering flipped: "AI efforts" is now first, "core business" second. "Generative AI" simplified to "AI." Range width expanded from $5B to $20B -- significant uncertainty at this scale.<br><br><strong>Ad surfaces expanded:</strong><blockquote>FY2024: "ads that can appear... on Facebook, Instagram, Messenger, and third-party applications"</blockquote><blockquote>FY2025: "ads that can appear... on Facebook, Instagram, Messenger, Threads, and WhatsApp, as well as third-party applications"</blockquote>Threads and WhatsApp added as named ad placement surfaces for the first time -- material monetization milestone.<br><br><strong>Open source hedged:</strong><blockquote>FY2024: "We also believe in the power of open source innovation and have released our Llama models"</blockquote><blockquote>FY2025: "We have not released everything we have developed historically and expect to continue training a combination of open and closed models going forward."</blockquote><br><strong>OBBBA tax:</strong> $15.93B one-time charge. Effective rate 12%&rarr;30%. Net income declined -3% despite revenue +22%. <strong>Debt:</strong> Doubled $29B&rarr;$59B. $103.77B in not-yet-commenced lease obligations. FX hedging initiated for the first time. Non-marketable equity investments tripled ($6B&rarr;$27.5B including new equity method investments).</div></div>
+</div>
+
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-expense" style="margin-top:56px">
+  <div class="section-header"><h2>Expense Ordering Tells</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">1</span> G&A Legal Cost Ordering</h3>
+    <p>Management lists the largest G&A driver first. When legal-related costs are #1, look for unusual settlements or fine accruals inflating the line.</p>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>#1 Driver</th><th>#2 Driver</th><th>G&A YoY</th><th>Legal Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td class="val-neg">Legal-related costs</td><td>Salaries/SBC</td><td>+20%</td><td>FTC consent order era</td></tr>
+        <tr><td>FY2021</td><td class="val-neg">Legal-related costs</td><td>Payroll</td><td class="val-neg">+50%</td><td>Haugen, FTC antitrust, settlements</td></tr>
+        <tr><td>FY2022</td><td>Payroll/related</td><td>Legal</td><td>+20%</td><td>Legal plateaued; headcount dominant</td></tr>
+        <tr><td>FY2023</td><td class="val-neg">Legal-related costs</td><td>Payroll</td><td>-3%</td><td>Legal returned to #1 (large accrual)</td></tr>
+        <tr><td>FY2024</td><td>Employee comp</td><td>Legal</td><td class="val-pos">-15%</td><td>$1.55B favorable legal swing disclosed</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">Legal-related costs (back to #1)</td><td>Employee comp</td><td>+25%</td><td>$1.55B prior-year benefit lapsed; legal costs surging again</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The $1.55B favorable YoY swing in FY2024 confirms FY2023 had an outsized legal accrual that didn't repeat.</p>
+  </div>
+
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3><span class="num">2</span> R&D: Headcount vs. SBC</h3>
+      <p>FY2023 is the <strong>only year</strong> SBC was named as the R&D driver -- because headcount fell -22% yet R&D still grew +9%. The entire increase came from higher SBC per remaining employee.</p>
+      <ul>
+        <li>Headcount % disclosed when growing (40%, 30%, 26%, 13%)</li>
+        <li><strong>Refused to disclose</strong> decline % during layoff year</li>
+        <li>FY2024: "infrastructure costs for R&D" appears as new named driver -- the AI compute signal</li>
+        <li>FY2025: R&D +31%, driven by "higher employee compensation and infrastructure costs related to research and development, including our AI initiatives." SBC explicitly mentioned again. Infrastructure costs moved ahead of RL tech costs in the R&D definition -- reflecting AI infrastructure now dominating.</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3><span class="num">3</span> Cost of Revenue: Depreciation Signature</h3>
+      <p>FY2024 cost of revenue growth: "primarily due to higher operational expenses... <strong>mostly from higher depreciation expense.</strong>" The dominant cost of delivering Meta's products is now depreciation on infrastructure -- not people, not content. This is the financial signature of an AI infrastructure company.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Headcount Signal -->
+<div class="section" id="sig-headcount">
+  <div class="section-header"><h2>Headcount Growth & Decline Language</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">4</span> Headcount Forward Guidance: The Leading Indicator</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Headcount</th><th>YoY</th><th>Forward Guidance Language</th><th>What Happened Next</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>58,604</td><td class="val-pos">+30%</td><td>"We <strong>expect headcount growth to continue for the foreseeable future</strong>"</td><td>Continued hiring</td></tr>
+        <tr><td>FY2021</td><td>71,970</td><td class="val-pos">+23%</td><td>"We <strong>expect headcount growth to continue for the foreseeable future</strong>" (identical)</td><td class="val-neg">Largest layoff in company history 9 months later</td></tr>
+        <tr><td>FY2022</td><td>86,482</td><td class="val-pos">+20%</td><td class="val-neg">Language deleted entirely. Replaced with layoff disclosure (~11,000)</td><td>Continued layoffs in 2023</td></tr>
+        <tr><td>FY2023</td><td>67,317</td><td class="val-neg">-22%</td><td>No forward guidance. Only: "a decrease of 22% year-over-year"</td><td>Rehiring began</td></tr>
+        <tr><td>FY2024</td><td>74,067</td><td class="val-pos">+10%</td><td>"we expect our AI initiatives <strong>will require increased investment in infrastructure and headcount</strong>"</td><td>TBD</td></tr>
+        <tr><td>FY2025</td><td>78,865</td><td class="val-pos">+6%</td><td>"we expect our AI initiatives will require <strong>significantly increased investment in infrastructure</strong>" (headcount DROPPED from guidance)</td><td>TBD</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> The FY2021 filing still said "foreseeable future" 9 months before the layoffs -- boilerplate was a <em>lagging</em> indicator, but its <em>removal</em> in FY2022 was a leading indicator. The FY2024 return included "headcount" alongside "infrastructure." FY2025 then <strong>silently dropped "headcount"</strong> from the same sentence while adding "significantly" to infrastructure. This is the clearest signal yet that Meta's growth model has shifted from people-intensive to capital-intensive. Headcount growth decelerated from +10% to +6% while capex nearly doubled.</p>
+  </div>
+
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3><span class="num">5</span> Headcount % Disclosure Asymmetry</h3>
+      <p>In expense driver explanations, management always quantified headcount <strong>growth</strong> percentages by function:</p>
+      <ul>
+        <li>FY2020: R&D +40%, M&S +16%, G&A +23%</li>
+        <li>FY2021: R&D +30%, M&S +9%, G&A +25%</li>
+        <li>FY2022: R&D +26%, G&A +20% (M&S % dropped)</li>
+        <li><strong>FY2023: No % for any line</strong> -- only "a decrease in employee headcount"</li>
+        <li>FY2024: R&D +13% (M&S, G&A not given)</li>
+        <li>FY2025: R&D headcount % not separately broken out; total headcount +6% but forward guidance drops "headcount" from investment language entirely</li>
+      </ul>
+      <p>Management is comfortable quantifying growth but refuses to quantify contraction. The disclosure granularity is also narrowing -- FY2020 gave all 3 functions, FY2024 gives only R&D.</p>
+    </div>
+    <div class="signal-card">
+      <h3><span class="num">6</span> The Layoff Language Arc</h3>
+      <ul>
+        <li><strong>FY2020-21:</strong> No mention of restructuring or layoffs anywhere</li>
+        <li><strong>FY2022:</strong> "One of the most difficult changes in Meta's history." Detailed severance terms. Restructuring charges ($4.61B) appear in every expense line. Restructuring added to expense definitions.</li>
+        <li><strong>FY2023:</strong> "We took a number of steps to reduce our expense base." Emotional framing replaced with operational language. Restructuring "substantially completed."</li>
+        <li><strong>FY2024:</strong> "Lower restructuring charges" appears as a <em>benefit</em> in M&S and G&A. Restructuring removed from expense definitions entirely. The cycle is over.</li>
+        <li><strong>FY2025:</strong> "Lower restructuring" no longer mentioned at all. Restructuring cycle fully behind. Headcount growing +6% but forward guidance drops "headcount" from investment language.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-guidance">
+  <div class="section-header"><h2>Forward Guidance Language</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">7</span> RL Loss Guidance: The "Meaningfully" Tell</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Exact Language</th><th>RL Loss</th><th>YoY Increase</th><th>YoY %</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020-21</td><td><em>No RL loss guidance</em></td><td>$6.62B / $10.19B</td><td>--</td><td>+54%</td></tr>
+        <tr><td>FY2022</td><td>"loss <strong>for the foreseeable future</strong>"</td><td>$13.72B</td><td>+$3.53B</td><td>+35%</td></tr>
+        <tr><td>FY2023</td><td>"increase <strong class="val-neg">meaningfully</strong> in 2024"</td><td>$16.12B</td><td>+$2.40B</td><td>+18%</td></tr>
+        <tr><td>FY2024</td><td>"<strong>continue to</strong> expect... increase in 2025"</td><td>$17.73B</td><td>+$1.61B</td><td>+10%</td></tr>
+        <tr><td>FY2025</td><td>"<strong>remain similar</strong> to 2025"</td><td>$19.19B</td><td>+$1.46B</td><td>+8%</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Losses increasing at a <strong>decelerating rate</strong> (54% &rarr; 35% &rarr; 18% &rarr; 10% &rarr; 8%). The inflection signal we were watching for has arrived. "Increase" changed to "remain similar" -- the exact language shift predicted. The "foreseeable future" loss language has persisted unchanged for 3 years with zero break-even framing, but the growth trajectory is now officially flattening.</p>
+  </div>
+
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3><span class="num">8</span> CapEx: Modal Verbs & Range Width</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Range</th><th>Modal</th><th>Width</th></tr></thead>
+        <tbody>
+          <tr><td>FY2020</td><td>$21-23B</td><td><strong>expect</strong></td><td>$2B</td></tr>
+          <tr><td>FY2021</td><td>$29-34B</td><td><strong>expect</strong></td><td>$5B</td></tr>
+          <tr><td>FY2022</td><td>$30-33B</td><td>anticipate</td><td>$3B</td></tr>
+          <tr><td>FY2023</td><td>$30-37B</td><td>anticipate</td><td class="val-neg">$7B</td></tr>
+          <tr><td>FY2024</td><td class="val-highlight">$60-65B</td><td>anticipate</td><td>$5B</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">$115-135B</td><td>anticipate</td><td class="val-neg">$20B</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:8px">"Expect" &rarr; "anticipate" = weaker commitment. $7B range (FY2023) = peak uncertainty about AI buildout. FY2024 is first year CapEx guidance names AI: "to support our core business <strong>and generative AI efforts</strong>." FY2025's $20B range width is the widest ever, reflecting massive uncertainty in AI infrastructure scaling.</p>
+    </div>
+    <div class="signal-card">
+      <h3><span class="num">9</span> The Warning That Appeared Once</h3>
+      <p><strong>FY2021 only:</strong></p>
+      <blockquote style="border-left:3px solid var(--red);padding:8px 14px;background:rgba(207,34,46,0.06);border-radius:0 6px 6px 0;font-style:italic;margin:8px 0">"we expect that our year-over-year total expense growth rates <strong>may significantly exceed</strong> our year-over-year revenue growth rates"</blockquote>
+      <p>Most bearish statement Meta ever published. Proved prophetic. <strong>Never repeated.</strong> FY2023-24 replaced it with: "discipline and habits" -- identical language retained for 2 years, positioning efficiency as cultural, not cyclical. FY2025 REMOVED this language entirely, replacing it with "We remain focused on operating efficiently." The Year of Efficiency callback is retired after 2 years. The spending acceleration cycle has begun.</p>
+    </div>
+  </div>
+
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Total Expense Guidance: From Specific to Qualitative</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Forward Guidance</th><th>Format</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>"$68-73 billion" in 2021</td><td class="val-pos">Specific dollar range</td></tr>
+        <tr><td>FY2021</td><td>"$90-95 billion" in 2022</td><td class="val-pos">Specific dollar range</td></tr>
+        <tr><td>FY2022</td><td>"investments... will continue to drive expense growth in 2023"</td><td class="val-neg">Qualitative only</td></tr>
+        <tr><td>FY2023</td><td>"discipline and habits"</td><td class="val-neg">Qualitative only</td></tr>
+        <tr><td>FY2024</td><td>"AI initiatives will require increased investment"</td><td class="val-neg">Qualitative only</td></tr>
+        <tr><td>FY2025</td><td>"AI initiatives will require significantly increased investment in infrastructure"</td><td class="val-neg">Qualitative only</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Specific ranges create accountability; qualitative language provides flexibility. The switch coincided exactly with the efficiency pivot.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-investment-philosophy">
+  <div class="section-header"><h2>Investment Philosophy Language</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">11</span> The Exact Wording of the Investment Philosophy</h3>
+    <p>The opening sentence of the Investment Philosophy section in MD&A is one of the most concentrated signals in the entire filing. It encodes management's self-conception of the spending regime.</p>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Opening Sentence</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>"We invest in our business based on our company priorities, and the majority of our investments are directed toward developing our family of apps."</td><td>Reactive -- no strategic framing</td></tr>
+        <tr><td>FY2023</td><td>"We <strong>expect to continue to build on the discipline and habits</strong> that we developed in 2022 when we initiated several efforts to increase our operating efficiency, while still remaining focused on investing in significant opportunities."</td><td>Efficiency mantra born</td></tr>
+        <tr><td>FY2024</td><td>Identical to FY2023 (verbatim)</td><td>Mantra retained -- cultural, not cyclical</td></tr>
+        <tr><td>FY2025</td><td>"We <strong>remain focused on operating efficiently</strong> while investing in significant opportunities."</td><td class="val-neg">Mantra retired. Efficiency compressed to a clause. Spending acceleration begun.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">12</span> AI Investment Language: What's Named and in What Order</h3>
+    <p>The sentence describing AI investment in the Investment Philosophy section reveals both what Meta is building and how confidently they frame it.</p>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>AI Investment Description</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>"significant investments in AI initiatives, including to recommend relevant content... enhance advertising tools... and develop new product features <strong>using generative AI</strong>"</td><td>GenAI as a tool for product features</td></tr>
+        <tr><td>FY2023</td><td>"significant investments in AI initiatives, <strong>including generative AI</strong>, to... recommend content... enhance advertising... develop new products as well as new features"</td><td>GenAI promoted to a category; "new products" added (not just features)</td></tr>
+        <tr><td>FY2024</td><td>Similar to FY2023; "including to recommend relevant content... develop new products, and develop new features for existing products <strong>using generative AI</strong>"</td><td>GenAI still a tool at end of sentence</td></tr>
+        <tr><td>FY2025</td><td>"significant investments in AI initiatives, <strong>including generative AI and superintelligence</strong>, to, among other things, recommend relevant content... develop new products, and develop new features"</td><td class="val-highlight">Superintelligence added. "Using generative AI" at end dropped. GenAI is now a category, not a tool.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">13</span> CapEx Guidance Attribution: What the Money Is For</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>CapEx Guidance Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020-21</td><td>"to be in the range of $X-Y billion" (no purpose statement)</td><td>Generic infrastructure</td></tr>
+        <tr><td>FY2022-23</td><td>"approximately $X to $Y billion in [year]" (no purpose statement)</td><td>Same -- no attribution</td></tr>
+        <tr><td>FY2024</td><td>"approximately $60-65B in 2025 to support our <strong>core business and generative AI efforts</strong>"</td><td>First purpose statement. Core business listed first, AI second.</td></tr>
+        <tr><td>FY2025</td><td>"approximately $115-135B in 2026 to support our <strong>AI efforts and core business</strong>"</td><td class="val-highlight">Ordering flipped. AI is now first. "Generative" dropped.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The ordering flip from "core business and generative AI" to "AI efforts and core business" is a subtle but significant signal: AI is now the primary purpose of the capex program, with the core business as secondary.</p>
+  </div>
+
+  <div class="signal-card full">
+    <h3><span class="num">14</span> Ad Surface Evolution</h3>
+    <p>The sentence listing where ads can appear is a monetization milestone tracker.</p>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Named Ad Surfaces</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020-23</td><td>"Facebook, Instagram, Messenger, and third-party applications and websites"</td><td>Three FoA surfaces + third-party</td></tr>
+        <tr><td>FY2024</td><td>Same as above</td><td>No change</td></tr>
+        <tr><td>FY2025</td><td>"Facebook, Instagram, Messenger, <strong>Threads, and WhatsApp</strong>, as well as third-party applications"</td><td class="val-highlight">Threads and WhatsApp added. Five FoA surfaces. Material monetization milestone.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Adding Threads and WhatsApp as named ad surfaces is the clearest signal that these products have crossed a monetization threshold. WhatsApp in particular has been a "when will they monetize it?" question for a decade.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-products">
+  <div class="section-header"><h2>Product Listing Evolution</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">15</span> Facebook Feature Order</h3>
+    <p>Products listed earlier signal management priority. <strong>Reels jumped from 6th to 2nd in a single year.</strong></p>
+    <table class="data-table">
+      <thead><tr><th>Position</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023-24</th><th>FY2025</th></tr></thead>
+      <tbody>
+        <tr><td>1st</td><td>News Feed</td><td>News Feed</td><td>Feed</td><td>Feed</td><td>Feed</td></tr>
+        <tr><td>2nd</td><td>Stories</td><td>Stories</td><td class="val-highlight">Reels</td><td class="val-highlight">Reels</td><td class="val-highlight">Reels</td></tr>
+        <tr><td>3rd</td><td>Groups</td><td>Groups</td><td>Stories</td><td>Stories</td><td>Stories</td></tr>
+        <tr><td>4th</td><td>Shops</td><td>Watch</td><td>Groups</td><td>Groups</td><td>Groups</td></tr>
+        <tr><td>5th</td><td>Marketplace</td><td>Marketplace</td><td>--</td><td>Marketplace</td><td>Marketplace</td></tr>
+        <tr><td>6th</td><td>News</td><td class="val-highlight">Reels</td><td>--</td><td>--</td><td>--</td></tr>
+        <tr><td>7th</td><td>Watch</td><td>Dating</td><td>--</td><td>--</td><td>--</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">RL hardware: FY2025 adds Oakley Meta glasses, Meta Ray-Ban Display, and Meta Neural Band (EMG wrist device). Meta Spark was already removed in FY2024.</p>
+  </div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">16</span> Reality Labs Expense Split: The Strategic Reallocation</h3>
+    <p>Meta disclosed a forward RL expense split starting in FY2022. The evolution tells a clear story: AR/wearables steadily gained share while VR and social platforms lost it, and the reporting categories themselves were simplified to obscure the declining VR commitment.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Forward Year</th><th>Category 1</th><th>Category 2</th><th>Category 3</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>2023</td><td>~50% AR</td><td>~40% VR</td><td>~10% social platforms</td><td>3-way split; AR already dominant</td></tr>
+        <tr><td>FY2023</td><td>2024</td><td>~50% AR</td><td>~40% VR (incl. MR)</td><td>~10% social platforms</td><td>Identical split; "MR" added to VR</td></tr>
+        <tr><td>FY2024</td><td>2025</td><td>~50% wearables</td><td>~50% metaverse</td><td class="val-neg">eliminated</td><td>Collapsed to 2-way; social folded into "metaverse"</td></tr>
+        <tr><td>FY2025</td><td>2026</td><td class="val-highlight">~70% wearables</td><td>~30% VR and Horizon</td><td class="val-neg">--</td><td>20pp swing to wearables; "metaverse" renamed "VR and Horizon"</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px"><strong>Key observations:</strong> (1) Social platforms / Horizon went from its own 10% category to being bundled into VR -- a de-emphasis. (2) The collapse from 3 categories to 2 in FY2024 obscured the declining VR share. (3) "Metaverse" was renamed to "VR and Horizon" in FY2025 -- even internally, the metaverse branding is being retired. (4) The framing of short-term vs. long-term projects flipped: FY2022-23 said AR was "primarily longer-term R&D" while VR had "shorter-term products." FY2025 dropped this distinction entirely.</p>
+  </div>
+
+  <div class="signal-card full">
+    <h3><span class="num">17</span> Products That Appeared and Disappeared</h3>
+    <p>Every deletion is a write-off of strategic ambition.</p>
+    <table class="data-table">
+      <thead><tr><th>Product</th><th>Appeared</th><th>Disappeared</th><th>Lifespan</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>Facebook News</td><td>FY2020</td><td class="val-neg">FY2021</td><td>1 yr</td><td>News tab abandoned</td></tr>
+        <tr><td>Facebook Watch</td><td>FY2020</td><td class="val-neg">FY2022</td><td>2 yrs</td><td>Long-form video killed</td></tr>
+        <tr><td>IGTV / "Video"</td><td>FY2020</td><td class="val-neg">FY2023</td><td>3 yrs</td><td>IG long-form abandoned</td></tr>
+        <tr><td>Facebook Dating</td><td>FY2021</td><td class="val-neg">FY2022</td><td>1 yr</td><td>Dating de-prioritized</td></tr>
+        <tr><td>Instagram Shops</td><td>FY2020</td><td class="val-neg">FY2023</td><td>3 yrs</td><td>Commerce retreat</td></tr>
+        <tr><td>Portal</td><td>FY2020</td><td class="val-neg">FY2022</td><td>2 yrs</td><td>Hardware product killed</td></tr>
+        <tr><td>Horizon Workrooms</td><td>FY2022</td><td class="val-neg">FY2023</td><td>1 yr</td><td>Enterprise VR dropped</td></tr>
+        <tr><td>Meta Spark</td><td>FY2022</td><td class="val-neg">FY2024</td><td>2 yrs</td><td>AR creator platform shut</td></tr>
+        <tr><td class="val-new">Oakley Meta glasses</td><td class="val-new">FY2025</td><td>--</td><td>--</td><td class="val-new">Wearables expansion (Luxottica)</td></tr>
+        <tr><td class="val-new">Meta Ray-Ban Display</td><td class="val-new">FY2025</td><td>--</td><td>--</td><td class="val-new">Display-equipped smart glasses</td></tr>
+        <tr><td class="val-new">Meta Neural Band</td><td class="val-new">FY2025</td><td>--</td><td>--</td><td class="val-new">EMG wrist device (now shipping)</td></tr>
+        <tr><td class="val-new">Meta AI standalone app</td><td class="val-new">FY2025</td><td>--</td><td>--</td><td class="val-new">AI assistant as independent product</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-sbc">
+  <div class="section-header"><h2>SBC Disclosure Retreat</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">18</span> SBC Transparency Declining as Amounts Rise</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>SBC</th><th>% Rev</th><th>Breakout Table?</th><th>Terminology</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>$6.54B</td><td>~8%</td><td class="val-pos">Yes</td><td>"salaries, benefits, and share-based compensation"</td></tr>
+        <tr><td>FY2021</td><td>$9.16B</td><td>~8%</td><td class="val-pos">Yes</td><td>"payroll and related expenses which include SBC"</td></tr>
+        <tr><td>FY2022</td><td>$11.99B</td><td>~10%</td><td class="val-neg">Removed</td><td>Same</td></tr>
+        <tr><td>FY2023</td><td>$14.03B</td><td>~10%</td><td class="val-neg">No</td><td>Same</td></tr>
+        <tr><td>FY2024</td><td>$16.69B</td><td>~10%</td><td class="val-neg">No</td><td class="val-new">"employee compensation" (SBC buried)</td></tr>
+        <tr><td>FY2025</td><td>$20.43B</td><td>~10%</td><td class="val-neg">No</td><td>"employee compensation" (same as FY2024)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">SBC grew <strong>155%</strong> over 5 years vs. revenue +91%. Breakout table removed the year SBC crossed $10B. FY2024's "employee compensation" umbrella term further obscures SBC.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-competitors">
+  <div class="section-header"><h2>Competitor Naming & Antitrust</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">19</span> Named Competitors Removed</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Competitors in Business Section</th><th>TikTok in Risk Factors?</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>Google, Apple, YouTube, Tencent, Snap, Twitter, ByteDance, Microsoft, Amazon</td><td>No ("ByteDance" only)</td></tr>
+        <tr><td>FY2021</td><td>Alphabet, Amazon, Apple, ByteDance (TikTok), Microsoft, Snap, Tencent, Twitter</td><td class="val-pos">Yes (first time)</td></tr>
+        <tr><td>FY2022-24</td><td class="val-neg">All removed</td><td>Yes</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">All removed</td><td class="val-neg">No -- TikTok removed from user engagement paragraph (now generic "competitive products")</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Removal coincides with FTC antitrust discovery. Naming competitors defines relevant markets. TikTok stayed in Risk Factors through FY2024 for shareholder disclosure protection, but was removed in FY2025 -- potentially reflecting TikTok's changed regulatory status.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-accounting">
+  <div class="section-header"><h2>Accounting Estimate Changes</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">20</span> Server Useful Life Extensions: Recurring Earnings Boost</h3>
+    <table class="data-table">
+      <thead><tr><th>Disclosed In</th><th>Change</th><th>Depreciation Reduction</th><th>EPS Impact</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021</td><td>Extended server/network useful lives</td><td class="val-pos">-$620M</td><td class="val-pos">+$0.18</td></tr>
+        <tr><td>FY2022</td><td>Extended server/network useful lives</td><td class="val-pos">-$860M</td><td>Not quantified</td></tr>
+        <tr><td>FY2024</td><td>Extended to 5.5 years (effective FY2025)</td><td class="val-pos">-$2.9B expected</td><td>~5% of net income</td></tr>
+        <tr><td>FY2025</td><td>Server useful life extension reducing depreciation growth rate</td><td class="val-pos">Mentioned as cost of revenue driver explanation</td><td>Partially offsetting $72B capex impact</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The $2.9B FY2025 extension is the primary tool to prevent $60-65B capex from crushing reported margins. Accounting judgment, not operational improvement. FY2025 continues to benefit from the extension, using it to moderate the depreciation impact of $72B in actual capex.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-regulatory">
+  <div class="section-header"><h2>Regulatory Acceleration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">21</span> New Regulatory Regimes Named per Year</h3>
+    <p>Government Regulation section: ~2 pages (FY2020) &rarr; ~5 pages (FY2024). Fines description evolved from "penalties" to <strong>"significant fines that increasingly may be calculated based on global revenue."</strong></p>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>New Laws/Regulators First Named</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021</td><td>CPRA, Digital Markets Act (proposed), India data localization</td></tr>
+        <tr><td>FY2022</td><td>DMA (enacted), DSA, EU-U.S. DPF, Turkey fines, Russia blocking</td></tr>
+        <tr><td>FY2023</td><td>COPPA, IDPC EUR 1.2B fine, Online Safety Acts (UK/IE), Canada news, Korean PIPA, Indian DPDP</td></tr>
+        <tr><td>FY2024</td><td>EU AI Act, NIS2, CFPB, Australia ban, AR/UT/TX/CA/FL youth laws, Brazil Supreme Court</td></tr>
+        <tr><td>FY2025</td><td>OBBBA tax law, EUR 200M DMA fine, DSA preliminary findings (illegal content, data access), Spanish unfair competition judgment EUR 542M</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-dei">
+  <div class="section-header"><h2>DEI Language Retreat</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">22</span> DEI Disclosure Evolution</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Section Title</th><th>Specific Metrics?</th><th>Goals?</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>Diversity and Inclusion</td><td class="val-pos">Full ethnicity breakdown</td><td class="val-pos">50% underrepresented by 2024</td></tr>
+        <tr><td>FY2021</td><td>Diversity, <strong>Equity</strong> and Inclusion</td><td class="val-pos">Yes</td><td class="val-pos">Same</td></tr>
+        <tr><td>FY2022</td><td>Diversity, Equity and Inclusion</td><td class="val-pos">Yes</td><td class="val-neg">Goals removed</td></tr>
+        <tr><td>FY2023</td><td>Diverse and Inclusive Workplace</td><td>Broad categories only</td><td class="val-neg">No</td></tr>
+        <tr><td>FY2024</td><td>The Strength of Our Workforce</td><td class="val-neg">All removed</td><td class="val-neg">"Political views" added</td></tr>
+        <tr><td>FY2025</td><td>The Strength of Our Workforce</td><td class="val-neg">All removed; pay equity removed</td><td class="val-neg">"cognitive diversity"; "political views" retained</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Each step visible a year before the next: goals removed &rarr; "Equity" dropped &rarr; demographics removed &rarr; DEI branding removed, programs ended. FY2025 continues the retreat with pay equity disclosures removed.</p>
+  </div>
+</div>
+
+
+<!-- ==================== CROSS-CUTTING THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>Strategic Pivots Visible in Language First</h3>
+      <p>Three eras traced through filing language, each visible 6-12 months before market pricing:</p>
+      <ul>
+        <li><strong>2020-21:</strong> "Metaverse" inserted everywhere</li>
+        <li><strong>2022-23:</strong> "Efficiency" and "AI" inserted</li>
+        <li><strong>2024:</strong> "Metaverse" actively removed; AI organizing principle</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>Capital Structure Transformation</h3>
+      <ul>
+        <li><strong>FY2020:</strong> $0 debt, $62B cash, no dividends</li>
+        <li><strong>FY2024:</strong> $29B debt, $78B cash, $35B capital return</li>
+        <li><strong>FY2025:</strong> $59B debt, $82B cash, $115-135B capex guided, $103B lease obligations</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>Legal Risk Compounding</h3>
+      <p>Legal text: <strong>11K &rarr; 32K &rarr; 39K chars</strong>. FTC antitrust &rarr; trial &rarr; won but appeal pending. Youth safety: nonexistent &rarr; mass arbitration &rarr; "hundreds of billions" exposure. EU fines calculated on global revenue.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Metric Transparency Declining</h3>
+      <p>6+ user metrics (FY2020) &rarr; only DAP + ARPP (FY2024). SBC breakout removed. Expense guidance: dollar ranges &rarr; qualitative. Headcount %: all functions &rarr; R&D only.</p>
+    </div>
+    <div class="signal-card">
+      <h3>The "Currently" Qualifier</h3>
+      <p>FY2022 added "Currently" to revenue description -- temporal hedge signaling diversification beyond ads. Retained through FY2024.</p>
+    </div>
+    <div class="signal-card">
+      <h3>The "Discipline and Habits" Mantra</h3>
+      <p>Identical language FY2023-24. Positions efficiency as cultural, not cyclical. FY2025 REMOVED this language entirely, replacing it with "We remain focused on operating efficiently." The Year of Efficiency callback is retired after 2 years. The spending acceleration cycle has begun.</p>
+    </div>
+    <div class="signal-card full">
+      <h3>The Superintelligence Bet</h3>
+      <p>Meta became the first major public company to name superintelligence as a corporate goal in its 10-K. Combined with $115-135B capex guidance and debt doubling to $59B, this represents the largest single-company infrastructure bet in corporate history. The filing defines superintelligence as "AI that surpasses human intelligence" and commits to delivering "personal superintelligence for everyone." This is no longer an R&D aspiration -- it is a stated business objective with tens of billions in committed capital behind it.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Revenue</strong></td><td>$85.97B</td><td>$117.93B</td><td>$116.61B</td><td>$134.90B</td><td>$164.50B</td><td>$200.97B</td>
+      </tr>
+      <tr>
+        <td>YoY Growth</td><td>+22%</td><td class="val-pos">+37%</td><td class="val-neg">-1%</td><td class="val-pos">+16%</td><td class="val-pos">+22%</td><td class="val-pos">+22%</td>
+      </tr>
+      <tr>
+        <td><strong>Operating Income</strong></td><td>$32.67B</td><td>$46.75B</td><td>$28.94B</td><td>$46.75B</td><td>$69.38B</td><td>$83.28B</td>
+      </tr>
+      <tr>
+        <td><strong>Operating Margin</strong></td><td>38%</td><td>40%</td><td class="val-neg">25%</td><td>35%</td><td class="val-pos">42%</td><td>41%</td>
+      </tr>
+      <tr>
+        <td><strong>Diluted EPS</strong></td><td>$10.09</td><td>$13.77</td><td class="val-neg">$8.59</td><td>$14.87</td><td class="val-pos">$23.86</td><td>$23.49</td>
+      </tr>
+      <tr>
+        <td>EPS YoY Growth</td><td>+58%</td><td class="val-pos">+36%</td><td class="val-neg">-38%</td><td class="val-pos">+73%</td><td class="val-pos">+60%</td><td class="val-neg">-2%</td>
+      </tr>
+      <tr><td colspan="7" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>FoA Operating Income</td><td>$39.29B</td><td>$56.95B</td><td>$42.66B</td><td>$62.87B</td><td>$88.35B</td><td>$102.47B</td>
+      </tr>
+      <tr>
+        <td>FoA Operating Margin</td><td>46%</td><td>49%</td><td class="val-neg">37%</td><td>47%</td><td class="val-pos">54%</td><td>52%</td>
+      </tr>
+      <tr>
+        <td>RL Operating Loss</td><td class="val-neg">($6.62B)</td><td class="val-neg">($10.19B)</td><td class="val-neg">($13.72B)</td><td class="val-neg">($16.12B)</td><td class="val-neg">($17.73B)</td><td class="val-neg">($19.19B)</td>
+      </tr>
+      <tr><td colspan="7" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>Headcount</td><td>58,604</td><td>71,970</td><td>86,482</td><td class="val-neg">67,317</td><td>74,067</td><td>78,865</td>
+      </tr>
+      <tr>
+        <td>CapEx</td><td>$15.72B</td><td>$19.24B</td><td>$32.04B</td><td>$28.10B</td><td>$39.23B</td><td>$72.22B</td>
+      </tr>
+      <tr>
+        <td>Long-term Debt</td><td>$0</td><td>$0</td><td>$9.92B</td><td>$18.39B</td><td>$28.83B</td><td>$58.74B</td>
+      </tr>
+      <tr>
+        <td>Cash & Securities</td><td>$61.95B</td><td>$48.00B</td><td>$40.74B</td><td>$65.40B</td><td>$77.81B</td><td>$81.59B</td>
+      </tr>
+      <tr>
+        <td>SBC</td><td>$6.54B</td><td>$9.16B</td><td>$11.99B</td><td>$14.03B</td><td>$16.69B</td><td>$20.43B</td>
+      </tr>
+      <tr><td colspan="7" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>Avg Price Per Ad (YoY)</td><td>-10%</td><td class="val-pos">+24%</td><td class="val-neg">-16%</td><td class="val-neg">-9%</td><td class="val-pos">+10%</td><td class="val-pos">+9%</td>
+      </tr>
+      <tr>
+        <td>Ad Impressions (YoY)</td><td>+34%</td><td>+10%</td><td>+18%</td><td class="val-pos">+28%</td><td>+11%</td><td>+12%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for Meta Platforms, Inc. (CIK 0001326801)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>

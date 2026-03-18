@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO 10-K Redline Analysis | FY2018-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>APO 10-K REDLINES</h1>
+    <div class="sub">FY2018 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Signals</div>
+  <a class="nav-item" href="#sig-identity">Identity Evolution</a>
+  <a class="nav-item" href="#sig-taxonomy">Strategy Taxonomy</a>
+  <a class="nav-item" href="#sig-aum">AUM Trajectory</a>
+  <a class="nav-item" href="#sig-origination">Origination Platform</a>
+  <a class="nav-item" href="#sig-black">Leon Black Arc</a>
+  <a class="nav-item" href="#sig-athene">Athene Integration</a>
+  <a class="nav-item" href="#sig-esg">ESG Rise and Fall</a>
+  <a class="nav-item" href="#sig-yield">Safe Yield Narrative</a>
+  <a class="nav-item" href="#sig-perpetual">Perpetual Capital</a>
+  <a class="nav-item" href="#sig-employees">Employee Growth</a>
+  <a class="nav-item" href="#sig-risk">Risk Factor Volume</a>
+  <a class="nav-item" href="#sig-capsol">Capital Solutions</a>
+  <a class="nav-item" href="#sig-dc">DC/401k Strategy</a>
+  <a class="nav-item" href="#sig-competition">Competition Framework</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>APO 10-K Redline Analysis</h1>
+  <div class="tagline">Seven years of Apollo Global Management SEC filings reveal a complete metamorphosis: from a contrarian distressed-debt shop run by named founders to a $938B origination platform powering retirement services, with every pivot visible in the language before the financials.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001411494 / 0001858681) | Fiscal Years 2018-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Steady State</h3>
+    <p>AUM $280B&rarr;$331B. Identical boilerplate. "Contrarian, value-oriented." Black/Harris/Rowan named.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>COVID &amp; Governance</h3>
+    <p>AUM +38% to $455B. Permanent capital 60%. Leon Black removed from risk heading. COVID 32 mentions.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>The Rebranding</h3>
+    <p>"High-growth" adopted. Yield/Hybrid/Equity replaces Credit/PE/Real Assets. "Distressed" removed. Leadership names removed.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>Athene Merger</h3>
+    <p>Business 7x expansion. Three segments. Risk factors -49%. Human Capital + ESG added. Athene AUM $236B.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>Integration</h3>
+    <p>AUM $651B. PPVAs launched. Bermuda&rarr;Iowa HQ. ESG&rarr;"Sustainability."</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>Credit/Equity</h3>
+    <p>Hybrid eliminated. New credit pillars. Capital Solutions elevated. AAA fund named. Direct Origination $251B.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>Origination Platform</h3>
+    <p>AUM $938B. $309B origination. 16 platforms. 6 buyer pools. Vitera DC strategy. Bridge RE. ESG removed. AI risk added.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Steady State</h2>
+  <div class="sub">Employees: 1,143 &rarr; 1,421 | AUM: $280B &rarr; $331B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Metrics only; identical boilerplate year-over-year</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The FY2018 and FY2019 10-Ks are virtually identical in their business description language. The same "contrarian, value-oriented" identity paragraph, the same Credit/Private Equity/Real Assets taxonomy, the same named founders. Only the AUM figures changed. This textual stasis is itself a signal -- it establishes the baseline against which all subsequent rewrites should be measured.<blockquote>"We are a leading global alternative investment manager... contrarian, value-oriented investment approach... distressed debt and other credit-oriented expertise"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Real Assets AUM doubled: $18B &rarr; $39B</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">While the language remained static, the Real Assets segment quietly doubled from $18B to $39B in AUM. This was the fastest-growing segment by percentage, though it remained the smallest in absolute terms. The lack of narrative attention to this doubling is notable -- the filing treated it as unremarkable despite being the standout growth metric.</div></div>
+</div>
+
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: COVID &amp; Governance</h2>
+  <div class="sub">Employees: 1,421 &rarr; 1,729 | AUM: $331B &rarr; $455.5B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; Governance</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Leon Black removed from risk factor heading</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Leon Black's name was removed from the risk factor heading that had previously singled out the firm's dependence on named individuals. This was the first textual signal of the governance transition that would culminate in Black's departure. In the prior filing, the risk factor explicitly named Black; in the FY2020 filing, the heading was generalized. The body text changes preceded the public announcement by months.<blockquote>FY2019: Risk factor heading naming Leon Black specifically</blockquote><blockquote>FY2020: Heading generalized to senior personnel broadly</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Permanent capital 50% &rarr; 60%; threshold loosened from 7yr to 5yr</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The definition of "permanent capital" was quietly loosened. The threshold for what counted as permanent capital shifted from 7-year to 5-year lock-up periods, and the reported percentage jumped from 50% to 60%. Part of this increase was genuine capital raising; part was definitional expansion. The methodological change was buried in the filing without explicit disclosure of its impact on the reported figure.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID: 32 mentions; governance restructuring language</span><span class="tag tag-new">New</span></div><div class="finding-body">COVID-19 appeared 32 times in the filing, transforming the risk factor section. New language addressed business continuity, remote operations, and market disruption. Simultaneously, governance restructuring language appeared for the first time, foreshadowing the leadership transition that would unfold over the next two filings. The pandemic provided both a risk narrative and cover for organizational changes already underway.</div></div>
+</div>
+
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: The Rebranding</h2>
+  <div class="sub">Employees: 1,729 &rarr; 2,153 | AUM: $455.5B &rarr; $497.6B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Identity &amp; Strategy</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Identity rewritten: "contrarian, value-oriented...distressed expertise" &rarr; "high-growth...yield, hybrid and equity"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The single most significant language change in Apollo's filing history. The entire identity paragraph was rewritten. "Contrarian, value-oriented" -- language that had been unchanged since the earliest filings -- was replaced with "high-growth." "Distressed debt and other credit-oriented expertise" became "yield, hybrid and equity investing." This was not an incremental edit; it was a wholesale identity replacement.<blockquote>FY2020: "contrarian, value-oriented investment approach... distressed debt and other credit-oriented expertise"</blockquote><blockquote>FY2021: "high-growth alternative asset manager... yield, hybrid and equity investing"</blockquote>The new language positioned Apollo as a growth-oriented, institutional-grade platform -- the opposite of the scrappy distressed-debt shop the founders had built.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Distressed" and "contrarian" removed from identity</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">Both "distressed" and "contrarian" -- the two words most associated with Apollo's founding identity -- were removed from the business description. These were not just descriptor changes; they represented a fundamental repositioning. Apollo was signaling to institutional allocators and potential merger partners (Athene) that it was no longer a niche distressed-debt firm but a broad-based asset manager suitable for retirement assets and investment-grade capital.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Leadership sentence removed; no individuals named in business description</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The sentence naming Black, Harris, and Rowan as the firm's leaders was removed entirely. No individuals were named in the business description. This completed the de-personalization of the firm that began with Black's removal from the risk factor heading in FY2020. Apollo's narrative shifted from a founder-led firm to an institutional platform -- a necessary precondition for the Athene merger.</div></div>
+</div>
+
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: Athene Merger</h2>
+  <div class="sub">Employees: 2,153 &rarr; ~4,258 | AUM: $497.6B &rarr; $547.6B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; Structure</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Business section 7.1x expansion (Athene merger)</span><span class="tag tag-new">New</span></div><div class="finding-body">The business description section expanded by approximately 7.1 times in word count. The Athene merger transformed Apollo from an asset management firm into a combined asset management and retirement services company. The filing now contained extensive descriptions of insurance products, regulatory frameworks, and actuarial concepts that had never appeared in prior Apollo filings. This was not an incremental change -- it was a complete reconstitution of what Apollo was.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Three segments: Asset Management + Retirement Services + Principal Investing</span><span class="tag tag-new">New</span></div><div class="finding-body">Apollo went from a single-segment asset manager to a three-segment reporting structure: Asset Management, Retirement Services, and Principal Investing. The Retirement Services segment (Athene) was by far the largest addition, bringing insurance liabilities, regulatory capital requirements, and a fundamentally different business model under the Apollo umbrella.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Athene products: FIAs, Fixed Rate, RILAs, Payout, Group, Funding Agreements</span><span class="tag tag-new">New</span></div><div class="finding-body">An entirely new product taxonomy appeared: Fixed Indexed Annuities (FIAs), Fixed Rate Annuities, Registered Index-Linked Annuities (RILAs), Payout Annuities, Group Annuities (pension risk transfer), and Funding Agreements. Each product category received detailed disclosure. Apollo was now in the business of manufacturing retirement products, not just managing alternative assets.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Yield disaggregated: 5 sub-categories including Direct Origination $35.5B</span><span class="tag tag-new">New</span></div><div class="finding-body">The "Yield" strategy -- previously a monolithic category -- was broken into five sub-categories for the first time. Most significantly, <strong>Direct Origination at $35.5B</strong> appeared as a named sub-category. This was the first appearance of origination as a distinct, quantified capability -- the seed of what would become Apollo's defining strategy by FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Risk factors -49% (pass-through entity risks removed)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The risk factor section shrank by approximately 49% in word count. The primary driver was the removal of pass-through entity tax risks that were specific to Apollo's prior partnership structure. The C-corp conversion that accompanied the Athene merger eliminated an entire category of structural risks. However, the net reduction also reflected a general streamlining that removed some risks without replacing them with new insurance-related risks of comparable detail.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent2)"></span> Human Capital &amp; ESG</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Human Capital and ESG sections added for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body">The FY2022 filing introduced both a Human Capital section and an ESG section for the first time. The Human Capital section disclosed employee demographics, DEI initiatives, and benefits programs. The ESG section described responsible investment principles and frameworks. Both additions reflected the institutional credibility requirements of being a combined asset management and insurance platform managing retirement assets.</div></div>
+</div>
+
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: Integration</h2>
+  <div class="sub">Employees: ~4,258 &rarr; ~4,622 | AUM: $547.6B &rarr; $650.8B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">PPVAs launched (wealth channel via insurance wrapper)</span><span class="tag tag-new">New</span></div><div class="finding-body">Private Placement Variable Annuities (PPVAs) appeared for the first time -- a product that used an insurance wrapper to deliver alternative investment access to the wealth channel. This was a significant innovation: it used Athene's insurance infrastructure to distribute Apollo's alternative investment products to high-net-worth individuals, creating a new capital formation channel that neither company could have built alone.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Athene HQ: Bermuda &rarr; West Des Moines, Iowa</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Athene's headquarters was redomiciled from Bermuda to West Des Moines, Iowa. This was more than an address change -- it reflected a shift in regulatory posture. Iowa's insurance regulatory framework provided a more stable and transparent regulatory environment, and the move signaled that Athene was positioning itself as a mainstream U.S. insurance company rather than an offshore reinsurance vehicle.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG &rarr; "Sustainability and Corporate Responsibility"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The section previously titled "ESG" was renamed to "Sustainability and Corporate Responsibility." This was the first of several rebrandings of this section, reflecting the broader industry trend of moving away from the politically charged "ESG" label while maintaining the substance of environmental and social governance disclosures. The content was largely preserved; the framing shifted.</div></div>
+</div>
+
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: Credit/Equity</h2>
+  <div class="sub">Employees: ~4,622 &rarr; 5,108 | AUM: $650.8B &rarr; $751.0B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Strategy &amp; Taxonomy</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Yield/Hybrid/Equity &rarr; Credit/Equity; Hybrid eliminated</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The three-part strategy taxonomy introduced in FY2021 was collapsed to two: Credit and Equity. The "Hybrid" category -- which had served as a bridge between yield and equity strategies -- was eliminated entirely, with its assets redistributed. This simplification reflected Apollo's increasing focus on credit as its core competency and the recognition that the hybrid category created more confusion than clarity for investors and allocators.<blockquote>FY2023: Yield / Hybrid / Equity</blockquote><blockquote>FY2024: Credit / Equity</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New credit pillars: Direct Origination $251B, Asset-Backed Finance $229B, Opportunistic Credit $40B, Multi-Credit $25B</span><span class="tag tag-new">New</span></div><div class="finding-body">The Credit strategy was disaggregated into four named pillars with individual AUM figures. <strong>Direct Origination at $251B</strong> was now the largest pillar -- up from $35.5B when it was first named in FY2022. Asset-Backed Finance ($229B), Opportunistic Credit ($40B), and Multi-Credit ($25B) completed the framework. This level of credit granularity had never appeared in prior filings and signaled that Apollo viewed itself primarily as a credit origination platform.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Capital Solutions elevated to own section</span><span class="tag tag-new">New</span></div><div class="finding-body">Capital Solutions -- previously mentioned in passing -- received its own dedicated section in the business description. This elevation reflected the growing importance of Apollo's ability to structure and distribute investment products across multiple channels: institutional, wealth, and retail. Capital Solutions was becoming the connective tissue between origination (supply) and distribution (demand).</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AAA fund $19.5B named for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body">The AAA fund at $19.5B in AUM was named explicitly for the first time. This was notable because it represented Apollo's push into investment-grade credit products -- the polar opposite of its distressed-debt origins. A fund literally named "AAA" being highlighted in the filing was a powerful signal of identity transformation.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG &rarr; "Sustainable Investing and Corporate Responsibility"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Another year, another renaming of the sustainability section. "Sustainability and Corporate Responsibility" became "Sustainable Investing and Corporate Responsibility." The addition of "Investing" narrowed the framing from broad corporate sustainability to investment-specific practices. Each renaming moved the section further from the original "ESG" label while maintaining disclosure content -- until the section would be removed entirely in the next filing.</div></div>
+</div>
+
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Origination Platform</h2>
+  <div class="sub">Employees: 5,108 &rarr; ~6,140 | AUM: $751.0B &rarr; $938.4B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; Strategy</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Origination" section: $309B volumes, 16 platforms</span><span class="tag tag-new">New</span></div><div class="finding-body">Origination received its own dedicated section for the first time -- not a sub-category, not a bullet point, but a full section of the business description. The disclosure quantified <strong>$309B in origination volumes across 16 platforms</strong>. This was the culmination of a journey that began with a single mention of Direct Origination at $35.5B in FY2022. In three filings, origination went from a sub-bullet to the defining capability of the firm.<blockquote>"$309 billion in origination volume across 16 origination platforms"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Capital Formation" section: 6 buyer pools including DC/401k</span><span class="tag tag-new">New</span></div><div class="finding-body">A new "Capital Formation" section identified six distinct buyer pools: institutional, wealth, retail, insurance, pension/sovereign wealth, and -- most significantly -- <strong>defined contribution/401k</strong>. The DC/401k pool represented an entirely new market for alternative investments. By naming it as one of six buyer pools, Apollo was signaling its intention to bring alternative investment products into the largest pool of retirement savings in the world.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vitera: group FIAs for defined contribution; GICs</span><span class="tag tag-new">New</span></div><div class="finding-body">Vitera appeared for the first time -- a product specifically designed to deliver fixed indexed annuities (FIAs) and guaranteed investment contracts (GICs) into defined contribution plans. This was the specific mechanism for Apollo's DC market entry: using Athene's insurance manufacturing capability to create retirement products suitable for 401k plans. Vitera was the product-level execution of the "DC/401k buyer pool" strategy.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bridge acquired: RE Equity AUM $16.6B &rarr; $47.9B</span><span class="tag tag-new">New</span></div><div class="finding-body">The acquisition of Bridge Investment Group transformed Apollo's real estate equity capabilities. Real Estate Equity AUM nearly tripled from $16.6B to $47.9B. Bridge brought a diversified real estate platform including multifamily, workforce housing, and logistics -- filling a significant gap in Apollo's equity strategy and adding a new origination platform to the growing network.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> ESG &amp; Risk</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG/Sustainability section completely removed; "Impact" removed</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The sustainability section -- which had been renamed three times over three filings (ESG &rarr; Sustainability and Corporate Responsibility &rarr; Sustainable Investing and Corporate Responsibility) -- was removed entirely. The word "Impact" as an investment category was also removed. This completed a four-year arc: introduced in FY2022, renamed in FY2023, renamed again in FY2024, deleted in FY2025. The section's lifecycle precisely mirrored the broader institutional ESG backlash.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI risk factor added (14 mentions vs 7 prior year)</span><span class="tag tag-new">New</span></div><div class="finding-body">AI-related language doubled from 7 mentions to 14, and a dedicated AI risk factor was added for the first time. The risk factor addressed AI's potential impact on investment processes, operational efficiency, and competitive dynamics. The timing aligned with the broader industry adoption of AI risk disclosures following the generative AI wave, and reflected Apollo's own investment in AI-driven origination and underwriting capabilities.</div></div>
+</div>
+
+
+<!-- ==================== SIGNALS ==================== -->
+
+<div class="section" id="sig-identity">
+  <div class="section-header"><h2>Identity Evolution</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">1</span> Identity Evolution</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Identity Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-20</td><td>"contrarian, value-oriented... distressed debt expertise"</td><td>Founder-era identity</td></tr>
+          <tr><td>FY2021</td><td class="val-highlight">"high-growth... yield, hybrid and equity"</td><td>Complete rewrite</td></tr>
+          <tr><td>FY2022</td><td>"high-growth AM + retirement services"</td><td>Athene integrated</td></tr>
+          <tr><td>FY2024-25</td><td class="val-highlight">Origination platform + capital formation</td><td>Manufacturing identity</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Four distinct identities in seven filings. From a contrarian distressed-debt shop to a high-growth yield platform to a retirement services conglomerate to an origination-driven capital formation engine. Each identity change preceded the strategic execution by 12-18 months.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-taxonomy">
+  <div class="section-header"><h2>Strategy Taxonomy</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">2</span> Strategy Taxonomy</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Taxonomy</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-20</td><td>Credit / Private Equity / Real Assets</td><td>Traditional alt-manager categories</td></tr>
+          <tr><td>FY2021-23</td><td class="val-highlight">Yield / Hybrid / Equity</td><td>Reframed around risk/return, not asset class</td></tr>
+          <tr><td>FY2024-25</td><td class="val-highlight">Credit / Equity</td><td>Simplified; Hybrid eliminated</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Each taxonomy change reflected a deeper strategic shift. Credit/PE/Real Assets was an asset-class view. Yield/Hybrid/Equity was a risk-return view. Credit/Equity was an origination view -- Credit meant "things we originate" and Equity meant "things we buy."</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-aum">
+  <div class="section-header"><h2>AUM Trajectory</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">3</span> AUM Trajectory</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>AUM</th><th>YoY Change</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018</td><td>$280B</td><td>--</td><td>Baseline</td></tr>
+          <tr><td>FY2019</td><td>$331B</td><td class="val-pos">+18%</td><td>Organic growth</td></tr>
+          <tr><td>FY2020</td><td>$455.5B</td><td class="val-pos">+38%</td><td>COVID deployment + Athene growth</td></tr>
+          <tr><td>FY2021</td><td>$497.6B</td><td>+9%</td><td>Pre-merger</td></tr>
+          <tr><td>FY2022</td><td>$547.6B</td><td>+10%</td><td>Athene consolidated</td></tr>
+          <tr><td>FY2023</td><td>$650.8B</td><td class="val-pos">+19%</td><td>Integration synergies</td></tr>
+          <tr><td>FY2024</td><td>$751.0B</td><td class="val-pos">+15%</td><td>Credit origination scaling</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">$938.4B</td><td class="val-pos">+25%</td><td>Origination + Bridge + DC</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">$280B to $938B in seven years -- a 3.4x increase. The growth was not linear: it came in waves driven by Athene consolidation, credit origination scaling, and the Bridge acquisition. Apollo is on a clear trajectory toward $1T in AUM.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-origination">
+  <div class="section-header"><h2>Origination Platform</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">4</span> Origination Platform</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Origination Language</th><th>Volume</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-21</td><td>Not mentioned as distinct capability</td><td>--</td><td>No origination identity</td></tr>
+          <tr><td>FY2022</td><td>Sub-category under Yield</td><td class="val-new">$35.5B</td><td>First quantified</td></tr>
+          <tr><td>FY2023</td><td>Growing emphasis</td><td>--</td><td>Scaling narrative</td></tr>
+          <tr><td>FY2024</td><td>Named credit pillar</td><td class="val-highlight">$251B</td><td>Largest pillar</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">Dedicated section</td><td class="val-pos">$309B / 16 platforms</td><td>Defining capability</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">From zero mentions to a dedicated section with $309B in volumes across 16 platforms. Origination went from invisible to the defining capability of the firm in four filings. This is the single most important strategic evolution in the entire filing series.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-black">
+  <div class="section-header"><h2>Leon Black Arc</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">5</span> Leon Black Arc</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Filing Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-19</td><td>Named in business description + risk factors</td><td>Founder-led firm</td></tr>
+          <tr><td>FY2020</td><td class="val-neg">Removed from risk factor heading</td><td>Governance shift begins</td></tr>
+          <tr><td>FY2021</td><td class="val-neg">Removed from business description entirely</td><td>De-personalization complete</td></tr>
+          <tr><td>FY2022+</td><td>No individuals named in leadership narrative</td><td>Institutional platform identity</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The textual removal of Leon Black from the filing preceded his departure from the firm. The de-personalization served dual purposes: managing the governance crisis and enabling the Athene merger by positioning Apollo as an institutional platform rather than a founder-dependent vehicle.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-athene">
+  <div class="section-header"><h2>Athene Integration</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">6</span> Athene Integration</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Athene Status</th><th>Products</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-21</td><td>Off-balance-sheet client</td><td>--</td><td>Arm's length relationship</td></tr>
+          <tr><td>FY2022</td><td class="val-highlight">Full segment ($236B AUM)</td><td>FIAs, Fixed Rate, RILAs, Payout, Group, Funding</td><td>Merger complete</td></tr>
+          <tr><td>FY2023</td><td>Integrated ($283B AUM)</td><td class="val-new">+ PPVAs</td><td>Wealth channel created</td></tr>
+          <tr><td>FY2024</td><td>Integrated ($331.5B AUM)</td><td>Deepening</td><td>Scaling</td></tr>
+          <tr><td>FY2025</td><td>Integrated ($392.2B AUM)</td><td class="val-new">+ Vitera DC / GICs</td><td>DC market entry</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Athene went from an off-balance-sheet client to the engine of Apollo's transformation. Each filing added new product capabilities: PPVAs for wealth, Vitera for DC. Athene AUM grew from $236B at merger to $392B -- a 66% increase in three years as a consolidated entity.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-esg">
+  <div class="section-header"><h2>ESG Rise and Fall</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">7</span> ESG Rise and Fall</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Section Title</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-21</td><td>None</td><td>No ESG disclosure</td></tr>
+          <tr><td>FY2022</td><td class="val-new">"ESG"</td><td>Introduced with Athene merger</td></tr>
+          <tr><td>FY2023</td><td class="val-highlight">"Sustainability and Corporate Responsibility"</td><td>ESG label dropped</td></tr>
+          <tr><td>FY2024</td><td class="val-highlight">"Sustainable Investing and Corporate Responsibility"</td><td>Narrowed to investing</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">Removed entirely</td><td>Section deleted; "Impact" removed</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">A complete lifecycle in four filings: introduced, renamed, renamed again, deleted. The ESG section's trajectory perfectly mirrored the broader institutional backlash against ESG frameworks. Apollo added ESG when institutional credibility demanded it and removed it when the political calculus shifted.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-yield">
+  <div class="section-header"><h2>"Safe Yield" Narrative</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">8</span> "Safe Yield" Narrative</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-20</td><td>"distressed debt and other credit-oriented expertise"</td><td>Distressed identity</td></tr>
+          <tr><td>FY2021-22</td><td class="val-highlight">"safe-yielding assets" / yield strategies</td><td>Safety narrative introduced</td></tr>
+          <tr><td>FY2023-24</td><td class="val-highlight">"investment-grade" / AAA fund named</td><td>IG identity solidified</td></tr>
+          <tr><td>FY2025</td><td>Origination of investment-grade credit</td><td>Manufacturing safe assets</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">From "distressed expertise" to "safe-yielding assets" to "investment-grade" to manufacturing AAA-rated credit. The credit quality narrative inverted completely: Apollo went from buying distressed assets cheaply to originating investment-grade assets at scale. This repositioning was essential for managing retirement assets.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-perpetual">
+  <div class="section-header"><h2>Perpetual Capital</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">9</span> Perpetual Capital</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Perpetual %</th><th>Terminology</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018</td><td>49%</td><td>"Permanent capital"</td><td>Baseline</td></tr>
+          <tr><td>FY2019</td><td>50%</td><td>"Permanent capital"</td><td>Crossed 50%</td></tr>
+          <tr><td>FY2020</td><td class="val-highlight">60%</td><td>"Permanent capital" (threshold loosened)</td><td>Definition change + growth</td></tr>
+          <tr><td>FY2021</td><td>59%</td><td>"Perpetual capital"</td><td class="val-highlight">Terminology shift</td></tr>
+          <tr><td>FY2022</td><td>58.7%</td><td>"Perpetual capital"</td><td>Stabilized</td></tr>
+          <tr><td>FY2023</td><td>59.8%</td><td>"Perpetual capital"</td><td>Stabilized</td></tr>
+          <tr><td>FY2024</td><td>59.5%</td><td>"Perpetual capital"</td><td>Stabilized</td></tr>
+          <tr><td>FY2025</td><td>57.1%</td><td>"Perpetual capital"</td><td>Slight decline (mix shift)</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The terminology shift from "permanent" to "perpetual" was subtle but deliberate -- "perpetual" sounds more institutional and less aggressive than "permanent." The percentage has stabilized around 58-60%, with a slight decline in FY2025 reflecting the mix shift from the Bridge acquisition and new fund raises.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-employees">
+  <div class="section-header"><h2>Employee Growth</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">10</span> Employee Growth</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Employees</th><th>YoY Change</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018</td><td>1,143</td><td>--</td><td>AM-only baseline</td></tr>
+          <tr><td>FY2019</td><td>1,421</td><td class="val-pos">+24%</td><td>Organic growth</td></tr>
+          <tr><td>FY2020</td><td>1,729</td><td class="val-pos">+22%</td><td>Continued build-out</td></tr>
+          <tr><td>FY2021</td><td>2,153</td><td class="val-pos">+25%</td><td>Pre-merger hiring</td></tr>
+          <tr><td>FY2022</td><td>~4,258</td><td class="val-pos">+98%</td><td class="val-highlight">Athene merger (doubled)</td></tr>
+          <tr><td>FY2023</td><td>~4,622</td><td>+9%</td><td>Integration</td></tr>
+          <tr><td>FY2024</td><td>5,108</td><td>+11%</td><td>Platform scaling</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">~6,140</td><td class="val-pos">+20%</td><td>Bridge + origination platforms</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">From 1,143 to ~6,140 -- a 5.4x increase driven primarily by the Athene merger (which doubled headcount in one year) and the subsequent build-out of origination platforms and the Bridge acquisition. Apollo is no longer a lean alternative asset manager; it is an industrial-scale financial services platform.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-risk">
+  <div class="section-header"><h2>Risk Factor Volume</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">11</span> Risk Factor Volume</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Approximate Word Count</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-20</td><td>~476K</td><td>Partnership-era risk factors</td></tr>
+          <tr><td>FY2021</td><td class="val-pos">~537K</td><td>Peak: pre-merger complexity</td></tr>
+          <tr><td>FY2022</td><td class="val-neg">~273K</td><td>-49%: C-corp simplification</td></tr>
+          <tr><td>FY2023-25</td><td>~328K</td><td>Stabilized at lower level</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The Athene merger and C-corp conversion cut risk factor volume nearly in half. The partnership-era filing carried extensive pass-through entity risks, tax distribution risks, and structural complexity that disappeared with the corporate simplification. The post-merger filing stabilized at a lower level despite the addition of insurance-specific risks.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-capsol">
+  <div class="section-header"><h2>Capital Solutions</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">12</span> Capital Solutions</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Capital Solutions Status</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-22</td><td>Not mentioned or mentioned in passing</td><td>No distinct identity</td></tr>
+          <tr><td>FY2023</td><td>Growing references</td><td>Building narrative</td></tr>
+          <tr><td>FY2024</td><td class="val-highlight">Own dedicated section</td><td>Elevated to strategic pillar</td></tr>
+          <tr><td>FY2025</td><td>Integrated with Capital Formation</td><td>Core to platform thesis</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Capital Solutions followed the same trajectory as origination: from invisible to dedicated section. It represents the distribution side of Apollo's platform -- matching origination supply with capital demand across channels. The elevation of Capital Solutions completed the "origination + distribution" platform narrative.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-dc">
+  <div class="section-header"><h2>DC/401k Strategy</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">13</span> DC/401k Strategy</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>DC Language</th><th>Product</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-23</td><td>Not mentioned</td><td>--</td><td>No DC presence</td></tr>
+          <tr><td>FY2024</td><td>Referenced as growth opportunity</td><td>--</td><td>Aspirational</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">Named as one of 6 buyer pools</td><td class="val-new">Vitera + GICs + group FIAs</td><td>Product-level execution</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The DC/401k market represents the largest untapped pool of retirement capital for alternative investments. Apollo went from no mention to product-level execution (Vitera) in a single filing cycle. Vitera uses Athene's insurance wrapper to deliver alternative investment exposure through a defined contribution-compatible structure -- potentially the most consequential product launch in the filing series.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-competition">
+  <div class="section-header"><h2>Competition: 6 Buyer Pools</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">14</span> Competition: 6 Buyer Pools Framework</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Competitive Framework</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-23</td><td>Generic "highly competitive" language</td><td>Standard boilerplate</td></tr>
+          <tr><td>FY2024</td><td>Emerging channel framework</td><td>More structured view</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">6 buyer pools: institutional, wealth, retail, insurance, pension/SWF, DC/401k</td><td>Platform distribution thesis</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The 6 buyer pools framework replaced generic competitive language with a structured distribution thesis. Apollo no longer competes for capital -- it manufactures assets (origination) and distributes them across six distinct channels. This reframing transformed the competitive narrative from "we compete with other alt managers for allocations" to "we are a platform that serves every type of capital."</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>Distressed &rarr; IG Originator</h3>
+      <p>Apollo's founding identity -- "contrarian, value-oriented, distressed expertise" -- was systematically replaced with "high-growth," "safe-yielding," "investment-grade," and ultimately "origination platform." The firm that built its reputation buying distressed assets cheaply now manufactures investment-grade assets at scale. A fund literally named "AAA" is now a named product. The credit quality narrative inverted completely over seven filings.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Athene Transformation</h3>
+      <p>The Athene merger was the most consequential event in the filing series. It doubled headcount, expanded the business section 7x, created three segments, introduced insurance product manufacturing, and ultimately enabled every subsequent strategic initiative: PPVAs, Vitera, the DC/401k strategy, and the origination platform thesis. Without Athene, Apollo would still be a large alternative asset manager. With Athene, it is a vertically integrated financial services platform.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Origination as Center</h3>
+      <p>Origination went from invisible (FY2018-21) to a sub-bullet ($35.5B, FY2022) to the largest credit pillar ($251B, FY2024) to the defining section of the business ($309B across 16 platforms, FY2025). This is the single most important strategic evolution visible in the filings. Apollo repositioned from a buyer of assets to a manufacturer of assets -- a fundamentally different business with different economics, different moats, and different growth trajectories.</p>
+    </div>
+    <div class="signal-card">
+      <h3>AUM $280B &rarr; $938B</h3>
+      <p>A 3.4x increase in seven years, driven by three waves: organic growth (FY2018-21), Athene consolidation (FY2022), and origination/acquisition scaling (FY2023-25). Apollo is on a clear trajectory toward $1T in AUM. The growth was not just quantitative but qualitative -- the composition shifted from predominantly third-party fund capital to a mix of insurance reserves, perpetual capital, and originated assets.</p>
+    </div>
+    <div class="signal-card">
+      <h3>ESG Rise and Fall</h3>
+      <p>A complete lifecycle in four filings: introduced (FY2022), renamed to "Sustainability" (FY2023), renamed to "Sustainable Investing" (FY2024), deleted (FY2025). The ESG section's trajectory precisely mirrored the broader institutional backlash. Apollo added ESG when the Athene merger required institutional credibility and removed it when the political calculus shifted. The "Impact" investment category was removed alongside the section.</p>
+    </div>
+    <div class="signal-card">
+      <h3>DC Market Entry</h3>
+      <p>The defined contribution / 401k market appeared from nowhere in FY2025 as one of six named buyer pools, with a specific product (Vitera) and specific mechanisms (group FIAs, GICs). This represents the convergence of every prior strategic move: Athene's insurance manufacturing, Apollo's origination capability, and the perpetual capital structure. If successful, DC market penetration could be the largest growth driver of the next decade.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>AUM</strong></td><td>$280B</td><td>$331B</td><td>$455.5B</td><td>$497.6B</td><td>$547.6B</td><td>$650.8B</td><td>$751.0B</td><td class="val-pos">$938.4B</td>
+      </tr>
+      <tr>
+        <td><strong>Perpetual %</strong></td><td>49%</td><td>50%</td><td class="val-highlight">60%</td><td>59%</td><td>58.7%</td><td>59.8%</td><td>59.5%</td><td>57.1%</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>1,143</td><td>1,421</td><td>1,729</td><td>2,153</td><td class="val-highlight">~4,258</td><td>~4,622</td><td>5,108</td><td class="val-pos">~6,140</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Athene AUM</strong></td><td>--</td><td>--</td><td>--</td><td>--</td><td class="val-new">$236B</td><td>$283B</td><td>$331.5B</td><td class="val-pos">$392.2B</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function toggle(el) {
+  el.parentElement.classList.toggle('open');
+}
+function toggleAll() {
+  const findings = document.querySelectorAll('.finding');
+  const btn = document.getElementById('global-expand');
+  const allOpen = [...findings].every(f => f.classList.contains('open'));
+  findings.forEach(f => {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  btn.textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+
+</body>
+</html>

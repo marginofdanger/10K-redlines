@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEEV 10-K Redline Analysis | FY2018-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>VEEV 10-K REDLINES</h1>
+    <div class="sub">FY2018 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-product">Product Categories</a>
+  <a class="nav-item" href="#sig-salesforce">Salesforce Dependency</a>
+  <a class="nav-item" href="#sig-revenue">Revenue Trajectory</a>
+  <a class="nav-item" href="#sig-crm">CRM Platform Migration</a>
+  <a class="nav-item" href="#sig-datacloud">Data Cloud Evolution</a>
+  <a class="nav-item" href="#sig-nonls">Non-LS Expansion</a>
+  <a class="nav-item" href="#sig-ai">AI Language</a>
+  <a class="nav-item" href="#sig-employees">Employee Trajectory</a>
+  <a class="nav-item" href="#sig-dei">DEI Arc</a>
+  <a class="nav-item" href="#sig-concentration">Customer Concentration</a>
+  <a class="nav-item" href="#sig-quality">Quality Cloud Emergence</a>
+  <a class="nav-item" href="#sig-pbc">PBC Status</a>
+  <a class="nav-item" href="#sig-competition">Competition</a>
+  <a class="nav-item" href="#sig-retention">Retention Rate</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>Veeva Systems 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings tracking Veeva's evolution from a Salesforce-dependent CRM provider to a four-cloud platform company for life sciences.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001393052) | Fiscal Years 2018-2025 (Jan 31 FY end) | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Data Cloud Emerges</h3>
+    <p>"A leading" &rarr; "the leading." Products &rarr; solutions. Data Cloud concept introduced. Veeva Way codified. Crossix acquired.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>COVID &amp; Crossix</h3>
+    <p>COVID-19 as #1 risk factor. Crossix integrated. Safety.AI announced. Data centers expand. Three non-LS industries named.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>PBC Conversion</h3>
+    <p>Public Benefit Corporation. Human Capital added (42% female, 38% URM). Data Cloud goes live. MyVeeva products. Attrition "comparatively low."</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>Development Cloud</h3>
+    <p>Vault reorganized as "Development Cloud." Digital Trials Platform. MedTech CRM announced. Attrition "higher than historical norms" disclosed.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>Salesforce Migration</h3>
+    <p>Migration from Salesforce announced. Dev Cloud listed before Commercial (priority flip). Compass replaces Data Cloud name. COVID risk removed.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>Vault CRM &amp; Data Cloud</h3>
+    <p>Vault CRM introduced. Data Cloud elevated to 3rd product category. Salesforce named as competitor. "Supported until September 1, 2030."</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>Quality Cloud &amp; Legacy</h3>
+    <p>Quality Cloud carved as 4th category. Veeva CRM called "legacy product." Salesforce is "primary CRM competitor" with IQVIA. Customer loss acknowledged. AI risk factor. DEI metrics removed.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Data Cloud Emerges</h2>
+  <div class="sub">Filed Mar 2019 | Employees: 2,171 &rarr; 2,553 (+18%) | Revenue: $678M &rarr; $862M (+27%) | Sub %: 80%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"A leading" upgraded to "the leading"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2018: "Veeva is a leading provider of industry cloud solutions for the global life sciences industry."</blockquote><blockquote>FY2019: "Veeva is the leading provider of industry cloud solutions for the global life sciences industry."</blockquote>A single-word change from "a" to "the" signals confidence in market dominance. This language persisted unchanged through FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Products" replaced by "solutions" throughout</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2018: "Our products are designed to meet the unique needs of our customers"</blockquote><blockquote>FY2019: "Our solutions are designed to meet the unique needs of our customers"</blockquote>"Products" became "solutions" across the Business section. This reflects a repositioning from product vendor to strategic partner.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Crossix acquired; Nitro commercial data warehouse added</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Crossix, which we acquired in November 2019, provides pharmaceutical brands privacy-safe U.S. patient data and a best-in-class analytics platform to maximize media investments and drive greater marketing effectiveness."</blockquote>Crossix added patient-level data capabilities. Veeva Nitro added as a commercial data warehouse with "industry-specific data model and standard data connectors." Both laid the groundwork for what would become Veeva Data Cloud.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Non-LS target industries expanded from unnamed to named</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2018: "a new set of customers in process and discrete manufacturing, consumer packaged goods, and highly regulated services industries"</blockquote><blockquote>FY2019: "a new set of customers outside of life sciences in regulated industries, including consumer goods, chemicals, and cosmetics"</blockquote>The target industries were refined from generic manufacturing categories to three specific regulated sectors.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Salesforce Relationship</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Mutually beneficial strategic relationship" with salesforce.com</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"We believe that we have a mutually beneficial strategic relationship with salesforce.com."</blockquote>Veeva described as salesforce.com's "preferred and recommended" application provider. Agreement expires September 1, 2025, renewable for five-year periods. Minimum order commitments of $500 million over the agreement term. This language would be entirely rewritten within four years.</div></div>
+</div>
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: COVID &amp; Crossix</h2>
+  <div class="sub">Filed Mar 2020 | Employees: 2,553 &rarr; 3,501 (+37%) | Revenue: $862M &rarr; $1,104M (+28%) | Sub %: 80%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Product areas expanded from two to three: Veeva Data Cloud concept introduced</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2019: "grouped into two key product areas--Veeva Commercial Cloud and Veeva Vault"</blockquote><blockquote>FY2020: "grouped into three key product areas--Veeva Commercial Cloud, Veeva Data Cloud, and Veeva Vault"</blockquote>Veeva Data Cloud first appeared as a named product area, described as providing "longitudinal U.S. patient data for both retail and specialty distribution channels." It was "powered by the Crossix Data Platform."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Safety.AI announced; Veeva Vault Safety suite expanded</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Veeva Vault Safety.AI is an artificial intelligence application that automates case intake to reduce the time and effort of manual data entry for more efficient case processing. Safety.AI is planned for availability in 2020."</blockquote>This is the earliest AI-specific product announcement in Veeva's 10-K filings.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Non-LS narrowed to three named industries</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"We are now also bringing the benefits of our content and data management solutions to a new set of customers outside of life sciences in three regulated industries: consumer goods, chemicals, and cosmetics."</blockquote>The word "three" was added, making the non-LS target more specific and bounded.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID-19 added as standalone risk factor</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"The worldwide outbreak of COVID-19 may negatively impact our business."</blockquote>Added as a new standalone risk factor. COVID was described as potentially affecting customer operations, field representative interactions with healthcare professionals, and professional services delivery.</div></div>
+</div>
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: PBC Conversion</h2>
+  <div class="sub">Filed Mar 2021 | Employees: 3,501 &rarr; 4,506 (+29%) | Revenue: $1,104M &rarr; $1,465M (+33%) | Sub %: 80%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Public Benefit Corporation conversion disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"On February 1, 2021, after approval by our stockholders, we became a Delaware public benefit corporation (PBC). A PBC is a for-profit company operating under subchapter XV of the General Corporation Law of the State of Delaware (i) that has adopted a public benefit purpose intended to provide benefits beyond just stockholder financial returns, and (ii) whose directors have a fiduciary duty to balance the financial interests of stockholders, the best interests of other stakeholders materially affected by the company's conduct."</blockquote>Public benefit purpose: "to provide products and services that are intended to help make the industries we serve more productive, and to create high-quality employment opportunities in the communities in which we operate." Core values stated: <strong>"do the right thing, customer success, employee success, and speed."</strong> This PBC language remained unchanged through FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Product areas reduced from three to two; Data Cloud absorbed into Commercial Cloud</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "grouped into three key product areas--Veeva Commercial Cloud, Veeva Data Cloud, and Veeva Vault"</blockquote><blockquote>FY2021: "grouped into two key product areas--Veeva Commercial Cloud and Veeva Vault"</blockquote>Data Cloud was folded back into Commercial Cloud as a data and analytics sub-section. Products like Crossix, OpenData, Link, and Data Cloud were listed under "Veeva Commercial Cloud data and analytics solutions."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Human Capital Resources section added; DEI metrics disclosed for first time</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Our workforce is diverse in many respects. As of January 31, 2021, 42% of our global employee population self-identified as female, and as of December 31, 2020, approximately 38% of our U.S. workforce self-identified as members of underrepresented racial or ethnic groups."</blockquote>This was the first time Veeva disclosed workforce demographics. Also added: <strong>"Our rate of voluntary attrition has been comparatively low historically."</strong></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">MyVeeva for Doctors and Veeva Data Cloud go live</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"MyVeeva for Doctors is a digital platform to connect healthcare professionals with the life sciences industry."</blockquote>Veeva Data Cloud also described as providing "longitudinal U.S. patient data for both retail and specialty distribution channels for commercial use cases." Veeva Link expanded from oncology experts to "key scientific experts" with planned expansion to additional therapeutic areas.</div></div>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: Development Cloud</h2>
+  <div class="sub">Filed Mar 2022 | Employees: 4,506 &rarr; 5,482 (+22%) | Revenue: $1,465M &rarr; $1,855M (+27%) | Sub %: 80%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vault reorganized as "Veeva Development Cloud"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2021: "grouped into two key product areas--Veeva Commercial Cloud and Veeva Vault"</blockquote><blockquote>FY2022: "grouped into two major areas--Veeva Commercial Cloud and Veeva Development Cloud"</blockquote>The Vault platform was rebranded as "Development Cloud" encompassing clinical, regulatory, quality, and safety applications. This established the cloud-as-category naming pattern that would expand to four clouds by FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">MedTech CRM announced; Digital Trials Platform introduced</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"We have also announced our intent to build Veeva MedTech CRM"</blockquote>A dedicated MedTech section was added describing unified cloud solutions for medical devices and diagnostics companies. The clinical platform was described as enabling "seamless execution and flow of data between clinical trial stakeholders--including patients, research sites, contract research organizations (CROs), and trial sponsors."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Employee attrition disclosed as "higher than historical norms"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2021: "Our rate of voluntary attrition has been comparatively low historically."</blockquote><blockquote>FY2022: "While we experience intense competition for talent and in our fiscal year ended January 31, 2022 we experienced employee attrition higher than our historical norms, we believe we have been effective at attracting and retaining talented employees."</blockquote>The first explicit acknowledgment of elevated attrition, coinciding with the broader tech industry's Great Resignation period.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Non-LS narrowed from three industries to two</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2021: "three regulated industries: consumer goods, chemicals, and cosmetics"</blockquote><blockquote>FY2022: "customers in the consumer products and chemical industries"</blockquote>"Cosmetics" was dropped as a separately named target industry. The three-industry framing reduced to two.</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: Salesforce Migration</h2>
+  <div class="sub">Filed Mar 2023 | Employees: 5,482 &rarr; 6,744 (+23%) | Revenue: $1,855M &rarr; $2,155M (+16%) | Sub %: 80%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Salesforce migration announced</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"We recently announced that we intend to migrate our applications built on the Salesforce platform to our own Veeva Vault platform."</blockquote>This single sentence in the Technology Infrastructure section was the first 10-K disclosure of the platform migration. It would transform the company's competitive positioning over the following two years.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Development Cloud listed before Commercial Cloud (priority flip)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022: "two major areas--Veeva Commercial Cloud and Veeva Development Cloud"</blockquote><blockquote>FY2023: "two major product families--Veeva Development Cloud and Veeva Commercial Cloud"</blockquote>Development Cloud was listed first for the first time, signaling its growing strategic importance relative to Commercial Cloud. Revenue reporting also changed: R&D Solutions classified first.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Veeva Compass replaces "Data Cloud" naming within Commercial Cloud</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Veeva Data Cloud was rebranded as <strong>Veeva Compass</strong> within the Commercial Cloud data offerings, described as "a suite of de-identified U.S. longitudinal patient, projected prescriber, and national data." The "Data Cloud" name was preserved but repositioned as a brand under which Compass, OpenData, and Link operated.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Veeva Way section removed from Business overview</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The "Executing in the Veeva Way" section, present since FY2018 and describing the company's disciplined approach (clear and correct target markets, running to complexity, product excellence, customer success, reference selling), was removed in FY2023. The Veeva Way framework was no longer described in the 10-K.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID standalone risk factor removed</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The standalone COVID-19 risk factor was removed after three years of inclusion (FY2020-FY2022). COVID-related language was absorbed into general macroeconomic risk factors.</div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: Vault CRM &amp; Data Cloud</h2>
+  <div class="sub">Filed Mar 2024 | Employees: 6,744 &rarr; 7,172 (+6%) | Revenue: $2,155M &rarr; $2,364M (+10%) | Sub %: 82%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vault CRM introduced; Data Cloud elevated to third product category</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Veeva Vault CRM is our next generation CRM solution that is built on our proprietary Veeva Vault platform and will include the full functionality of Veeva CRM. Vault CRM is currently used by early adopters and planned for general availability in April 2024."</blockquote>Product categories expanded from two to three: <strong>Veeva Development Cloud, Veeva Commercial Cloud, and Veeva Data Cloud</strong>. Data Cloud was elevated back to a standalone third category for the first time since FY2020.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Supported until September 1, 2030" first disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Veeva CRM and some of its applications are built on a platform provided by Salesforce, Inc. and will be supported until September 1, 2030."</blockquote>This was the first explicit end-of-support date for the Salesforce-based Veeva CRM in the Business section. The five-year wind-down period from September 2025 was publicly framed as a hard deadline.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Salesforce named as competitor for first time in Competition section</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2023's Competition section did not name Salesforce as a direct competitor. FY2024 added Salesforce to the Competition section for the first time as a platform that customers "may also choose to use" for functions Veeva applications provide. The relationship shifted from partner to named competitive alternative.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Hiring deceleration: +428 employees vs. +1,262 prior year</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"As of January 31, 2024, we had 7,172 employees worldwide, up by 428 from the previous year."</blockquote>Employee growth decelerated from +1,262 (FY2023) to +428 (FY2024), a 66% reduction in net new hires. Revenue growth also decelerated from 16% to 10%.</div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Quality Cloud &amp; Legacy</h2>
+  <div class="sub">Filed Mar 2025 | Employees: 7,172 &rarr; 7,291 (+2%) | Revenue: $2,364M &rarr; $2,747M (+16%) | Sub %: 83%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Quality Cloud carved out as fourth product category</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Our industry cloud solutions for the life sciences industry are grouped into four major product categories--Veeva Development Cloud, Veeva Quality Cloud, Veeva Commercial Cloud, and Veeva Data Cloud"</blockquote>Quality Cloud was separated from Development Cloud as a standalone category. It was described as unifying "quality applications, processes, and partners across content management, training, quality management, quality assurance, and quality control lab solutions." Notably, Quality Cloud serves "customers in the life sciences and consumer products industries"--the primary vehicle for non-LS expansion.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Veeva CRM called "legacy product" for the first time</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"Vault CRM includes the full functionality of our legacy product, Veeva CRM, with additional applications like Campaign Manager for coordination across engagement channels and Service Center for customer support."</blockquote>The Salesforce-based Veeva CRM was explicitly described as a "legacy product" for the first time. The Vault CRM description was expanded to include new applications not available on the Salesforce platform.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Non-LS overview paragraph removed; "chemical" dropped</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2024 included a standalone overview paragraph: "We also bring the benefits of our content and data management solutions to customers in the consumer products and chemical industries." FY2025 removed this paragraph entirely. Non-LS activity is now mentioned only within the Quality Cloud description and a brief customer reference. "Chemical" is no longer named as a target industry.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Goal statement rewritten to include quality and manufacturing</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Our goal is to become the most strategic technology partner to the life sciences industry and achieve long-term leadership with our solutions that support the R&D and commercial functions of life sciences companies."</blockquote><blockquote>FY2025: "Our goal is to become the most strategic software, data, and business consulting partner to the life sciences industry, supporting the industry's most critical drug development, quality and manufacturing, and commercialization functions."</blockquote>"Technology partner" became "software, data, and business consulting partner." "Quality and manufacturing" was added as a named function for the first time, aligning with Quality Cloud's new standalone status.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Employee growth nearly flat: +119 (vs. +428 prior year)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"As of January 31, 2025, we had 7,291 employees worldwide, up by 119 from the previous year."</blockquote>Net employee additions declined from +428 to +119, the lowest level since before COVID. Headcount growth of 2% is a fraction of the 22-37% annual growth seen in FY2019-FY2022.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors &amp; Competition</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Salesforce named as "primary CRM competitor" with IQVIA partnership</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Our CRM solutions primarily compete with Salesforce, Inc., which is developing a life sciences industry-specific CRM application and has entered into a partnership with IQVIA Holdings, which also offers various data products and other applications that compete with our products."</blockquote>FY2024 did not name Salesforce as the primary CRM competitor or mention its IQVIA partnership. This language appeared in both the Competition section and Risk Factors.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Customer loss acknowledged for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"As we transition from our legacy Veeva CRM application to our Vault CRM application, as discussed in more detail below, certain customers have chosen, and other customers may in the future choose, to purchase CRM solutions from a competitor. For example, Salesforce, our primary CRM competitor, recently announced that a large Veeva CRM customer has committed to purchasing its CRM solutions."</blockquote>The first acknowledgment that a specific large customer had committed to a competing CRM solution. The language "certain customers have chosen" confirms this was not merely hypothetical.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI risk factor added</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Incorporating AI in our solutions may result in reputational harm and increased liability."</blockquote><blockquote>"We recently began incorporating AI capabilities into certain of our solutions, which presents new risks and challenges that could affect the adoption of our solutions and our business."</blockquote>A new standalone AI risk factor covering: controversy around AI impact on privacy, security, efficacy, bias, and discrimination; loss of user confidence; evolving legal obligations; and potential restrictions on AI use. This risk factor did not exist in prior filings.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI metrics removed entirely</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2024 disclosed: "44% of our global employee population self-identified as female and approximately 42% of our U.S. workforce self-identified as members of underrepresented racial or ethnic groups." FY2025 removed all diversity statistics. The Human Capital Resources section retained only headcount, compensation overview, and talent retention language. No explanation was provided for the removal.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">IQVIA data restrictions expanded; Salesforce termination details disclosed</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"IQVIA has stated publicly that it will deny all customer requests for use of new IQVIA data types in Veeva applications, including, as examples, real world data, real world evidence, and genomics."</blockquote>IQVIA restrictions expanded from specific product limitations to a blanket denial of new data types. Separately, Salesforce agreement wind-down terms were disclosed in detail: no new customers after September 2025, existing customer seats capped at 150% of September 2025 levels, full termination after September 2030.</div></div>
+</div>
+
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-product" style="margin-top:56px">
+  <div class="section-header"><h2>Signal #1: Product Categories</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> Product Category Evolution: 2 to 4 Areas in 7 Years</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Categories</th><th>Named Product Areas</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>2</td><td>Veeva Commercial Cloud, Veeva Vault</td></tr>
+        <tr><td>FY2019</td><td>2</td><td>Veeva Commercial Cloud, Veeva Vault</td></tr>
+        <tr><td>FY2020</td><td class="val-new">3</td><td>Veeva Commercial Cloud, Veeva Data Cloud, Veeva Vault</td></tr>
+        <tr><td>FY2021</td><td>2</td><td>Veeva Commercial Cloud, Veeva Vault (Data Cloud absorbed)</td></tr>
+        <tr><td>FY2022</td><td>2</td><td>Veeva Commercial Cloud, Veeva Development Cloud (Vault rebranded)</td></tr>
+        <tr><td>FY2023</td><td>2</td><td>Veeva Development Cloud, Veeva Commercial Cloud (order flipped)</td></tr>
+        <tr><td>FY2024</td><td class="val-new">3</td><td>Veeva Development Cloud, Veeva Commercial Cloud, Veeva Data Cloud</td></tr>
+        <tr><td>FY2025</td><td class="val-new">4</td><td>Veeva Development Cloud, Veeva Quality Cloud, Veeva Commercial Cloud, Veeva Data Cloud</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Data Cloud appeared in FY2020, was absorbed back in FY2021, and re-emerged as a standalone category in FY2024. Quality Cloud was carved from Development Cloud in FY2025. The consistent listing of Development Cloud first (from FY2023 onward) signals its strategic primacy.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-salesforce">
+  <div class="section-header"><h2>Signal #2: Salesforce Dependency</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Salesforce: "Preferred Partner" to "Primary Competitor"</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Relationship Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>"salesforce.com's preferred and recommended" provider; "mutually beneficial strategic relationship"</td><td>Partnership language</td></tr>
+        <tr><td>FY2019-FY2022</td><td>Partnership language unchanged</td><td>Status quo</td></tr>
+        <tr><td>FY2023</td><td>"We recently announced that we intend to migrate our applications built on the Salesforce platform"</td><td class="val-highlight">Migration announced</td></tr>
+        <tr><td>FY2024</td><td>"Salesforce, Inc." named in Competition section; "supported until September 1, 2030"</td><td class="val-neg">Competitor named</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">"Salesforce, our primary CRM competitor"; IQVIA partnership disclosed; customer loss acknowledged</td><td class="val-neg">Adversarial relationship</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Salesforce terminated its competition restrictions on May 1, 2023, releasing Veeva from minimum order commitments. FY2025 disclosed that Salesforce is "developing a life sciences industry-specific CRM application" in partnership with IQVIA. A "large Veeva CRM customer" committed to purchasing Salesforce CRM solutions.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-revenue">
+  <div class="section-header"><h2>Signal #3: Revenue Trajectory</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Revenue: $678M to $2,747M; Subscription 80% to 83%</h3>
+    <table class="data-table">
+      <thead><tr><th>FY</th><th>Total Rev</th><th>YoY Growth</th><th>Sub %</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>$678M</td><td>+25%</td><td>80%</td><td>CRM-led growth</td></tr>
+        <tr><td>FY2019</td><td>$862M</td><td>+27%</td><td>80%</td><td>Crossix acquired</td></tr>
+        <tr><td>FY2020</td><td>$1,104M</td><td>+28%</td><td>80%</td><td>COVID-driven digital adoption</td></tr>
+        <tr><td>FY2021</td><td>$1,465M</td><td class="val-pos">+33%</td><td>80%</td><td>Peak growth rate</td></tr>
+        <tr><td>FY2022</td><td>$1,855M</td><td>+27%</td><td>80%</td><td>Development Cloud growing</td></tr>
+        <tr><td>FY2023</td><td>$2,155M</td><td>+16%</td><td>80%</td><td>Growth decelerating</td></tr>
+        <tr><td>FY2024</td><td>$2,364M</td><td class="val-neg">+10%</td><td>82%</td><td>Trough growth; migration uncertainty</td></tr>
+        <tr><td>FY2025</td><td>$2,747M</td><td class="val-pos">+16%</td><td>83%</td><td>Re-acceleration; Vault CRM ramping</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Revenue grew 4x over 7 years. Growth decelerated from 33% (FY2021) to 10% (FY2024), then re-accelerated to 16% (FY2025). Subscription share held at 80% for six consecutive years before rising to 82-83% as professional services became a smaller share. FY2025 noted: "Total revenues for the fiscal year ended January 31, 2025 increased $383 million, all of which was from growth in subscription services revenues."</p>
+  </div>
+</div>
+
+<div class="section" id="sig-crm">
+  <div class="section-header"><h2>Signal #4: CRM Platform Migration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> Salesforce to Vault: "Legacy Product" in Two Years</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>CRM Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-FY2022</td><td>Veeva CRM built on "Salesforce1 Platform"; no alternative mentioned</td><td>Full dependency</td></tr>
+        <tr><td>FY2023</td><td>"We recently announced that we intend to migrate"</td><td class="val-highlight">Migration announced</td></tr>
+        <tr><td>FY2024</td><td>"Veeva Vault CRM is our next generation CRM solution"; "planned for general availability in April 2024"</td><td>Next-gen introduced</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">"Vault CRM includes the full functionality of our legacy product, Veeva CRM"</td><td class="val-neg">"Legacy" label applied</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">From announcement to "legacy" label in two filings. FY2025 added that Veeva CRM "will be supported until September 1, 2030" and disclosed the wind-down terms: no new customers after September 2025, existing customer seats capped at 150% of September 2025 levels. The migration also created a competitive vulnerability, with Salesforce and IQVIA partnering to offer an alternative.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-datacloud">
+  <div class="section-header"><h2>Signal #5: Data Cloud Evolution</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Data Cloud: Concept to Standalone Category</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Data Cloud Status</th><th>Key Products</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-FY2019</td><td>No Data Cloud; data products under Commercial Cloud</td><td>OpenData, Oncology Link, Nitro</td></tr>
+        <tr><td>FY2020</td><td class="val-new">Veeva Data Cloud named as 3rd product area</td><td>Data Cloud added (Crossix-powered)</td></tr>
+        <tr><td>FY2021</td><td>Absorbed back into Commercial Cloud</td><td>Crossix, OpenData, Link, Data Cloud, Nitro</td></tr>
+        <tr><td>FY2022-FY2023</td><td>Data offerings within Commercial Cloud</td><td>Compass replaces Data Cloud naming</td></tr>
+        <tr><td>FY2024</td><td class="val-new">Re-elevated to standalone 3rd category</td><td>OpenData, Link, Compass</td></tr>
+        <tr><td>FY2025</td><td>Standalone 4th category (of 4)</td><td>OpenData, Link, Compass, CRM Pulse (new)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Data Cloud's journey from concept (FY2020) to absorption (FY2021) to re-emergence as a standalone category (FY2024-FY2025) reflects the growing strategic importance of proprietary data in Veeva's competitive positioning, particularly against IQVIA.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-nonls">
+  <div class="section-header"><h2>Signal #6: Non-LS Expansion</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Non-Life Sciences: 3 Industries to 1; Overview Paragraph Removed</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Non-LS Language in Overview</th><th>Named Industries</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>Standalone paragraph</td><td>Process/discrete manufacturing, CPG, regulated services</td></tr>
+        <tr><td>FY2019</td><td>Standalone paragraph</td><td>Consumer goods, chemicals, cosmetics</td></tr>
+        <tr><td>FY2020-FY2021</td><td>Standalone paragraph</td><td>Consumer goods, chemicals, cosmetics (3)</td></tr>
+        <tr><td>FY2022-FY2023</td><td>Standalone paragraph</td><td>Consumer products, chemical (2)</td></tr>
+        <tr><td>FY2024</td><td>Standalone paragraph</td><td>Consumer products (1; "chemical" dropped)</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">Paragraph removed</td><td>Consumer products (mentioned only in Quality Cloud description)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The non-LS narrative progressively narrowed from three industries with a standalone overview paragraph to a brief mention embedded in the Quality Cloud description. Quality Cloud is now the primary vehicle for non-LS expansion.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-ai">
+  <div class="section-header"><h2>Signal #7: AI Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> AI: Safety.AI to Risk Factor; Notably Restrained vs. Peers</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>AI Mentions</th><th>Context</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>Minimal</td><td>Nitro described as "foundation for artificial intelligence and advanced analytics"</td></tr>
+        <tr><td>FY2019</td><td>Product-specific</td><td>CRM Approved Notes "leverage the power of artificial intelligence"</td></tr>
+        <tr><td>FY2020</td><td class="val-new">Safety.AI announced</td><td>"Artificial intelligence application that automates case intake"</td></tr>
+        <tr><td>FY2021-FY2024</td><td>Minimal</td><td>No prominent AI product marketing in 10-K</td></tr>
+        <tr><td>FY2025</td><td class="val-new">AI risk factor added</td><td>"Incorporating AI in our solutions may result in reputational harm and increased liability"</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Veeva's AI language in the 10-K is notably restrained compared to technology peers. The FY2025 filing acknowledged "recently began incorporating AI capabilities into certain of our solutions" while adding a risk factor. There is no prominent AI product marketing or AI-first strategic framing in the filing, consistent with Veeva's regulated-industry focus where AI claims carry compliance implications.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-employees">
+  <div class="section-header"><h2>Signal #8: Employee Trajectory</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Employees: 2,171 to 7,291; Hiring Slowed FY2024-25</h3>
+    <table class="data-table">
+      <thead><tr><th>FY</th><th>Employees</th><th>Net Adds</th><th>YoY Growth</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>2,171</td><td>--</td><td>--</td><td>Baseline</td></tr>
+        <tr><td>FY2019</td><td>2,553</td><td>+382</td><td>+18%</td><td>--</td></tr>
+        <tr><td>FY2020</td><td>3,501</td><td class="val-pos">+948</td><td class="val-pos">+37%</td><td>COVID hiring surge</td></tr>
+        <tr><td>FY2021</td><td>4,506</td><td class="val-pos">+1,005</td><td>+29%</td><td>Peak net adds</td></tr>
+        <tr><td>FY2022</td><td>5,482</td><td>+976</td><td>+22%</td><td>Attrition "higher than norms"</td></tr>
+        <tr><td>FY2023</td><td>6,744</td><td class="val-pos">+1,262</td><td>+23%</td><td>Post-attrition refill</td></tr>
+        <tr><td>FY2024</td><td>7,172</td><td>+428</td><td>+6%</td><td class="val-neg">Sharp deceleration</td></tr>
+        <tr><td>FY2025</td><td>7,291</td><td>+119</td><td>+2%</td><td class="val-neg">Near-zero net growth</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Employee growth decelerated from 20-37% annual growth (FY2019-FY2023) to 2% in FY2025. Net additions of 119 in FY2025 represent the lowest level since before COVID. This coincides with revenue re-accelerating to 16%, suggesting improving operating leverage.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-dei">
+  <div class="section-header"><h2>Signal #9: DEI Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> DEI: None to 42% Female / 38% URM to Metrics Removed</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Section Title</th><th>Female %</th><th>URM %</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-FY2020</td><td>Employees (no DEI section)</td><td>--</td><td>--</td><td>No diversity metrics</td></tr>
+        <tr><td>FY2021</td><td class="val-new">Human Capital Resources</td><td class="val-pos">42%</td><td class="val-pos">38%</td><td>First DEI disclosure</td></tr>
+        <tr><td>FY2022</td><td>Human Capital Resources</td><td>42%</td><td>39%</td><td>URM definition added</td></tr>
+        <tr><td>FY2023</td><td>Human Capital Resources</td><td>44%</td><td>39%</td><td>--</td></tr>
+        <tr><td>FY2024</td><td>Human Capital Resources</td><td>44%</td><td>42%</td><td>Peak URM %</td></tr>
+        <tr><td>FY2025</td><td>Human Capital Resources</td><td class="val-neg">Removed</td><td class="val-neg">Removed</td><td>All diversity statistics removed</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Diversity metrics were disclosed for four years (FY2021-FY2024) and then removed entirely in FY2025. No explanation was provided. The FY2025 Human Capital Resources section contains only headcount, compensation, and general talent language.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-concentration">
+  <div class="section-header"><h2>Signal #10: Customer Concentration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Top 10 Customers: 42% to 28%</h3>
+    <table class="data-table">
+      <thead><tr><th>FY</th><th>Top 10 % of Revenue</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2016</td><td>50%</td><td>High concentration</td></tr>
+        <tr><td>FY2017</td><td>45%</td><td>Declining</td></tr>
+        <tr><td>FY2018</td><td>42%</td><td>Declining</td></tr>
+        <tr><td>FY2023</td><td>29%</td><td>Continued decline</td></tr>
+        <tr><td>FY2024</td><td>28%</td><td>--</td></tr>
+        <tr><td>FY2025</td><td>28%</td><td>Stable</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Customer concentration steadily declined from 50% (FY2016) to 28% (FY2024-FY2025). No single customer represented over 10% of total revenues in any year. The declining concentration reflects broadening of the customer base across more products and smaller life sciences companies.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-quality">
+  <div class="section-header"><h2>Signal #11: Quality Cloud Emergence</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">11</span> Quality Cloud: Part of Dev Cloud to Standalone 4th Category</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Quality Positioning</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-FY2021</td><td>Vault Quality within Vault/Development Cloud; "when available" qualifier on safety</td></tr>
+        <tr><td>FY2022</td><td>Vault Quality within Development Cloud; described as "only unified suite" for quality</td></tr>
+        <tr><td>FY2023-FY2024</td><td>Vault Quality within Development Cloud; expanded description</td></tr>
+        <tr><td>FY2025</td><td class="val-new">Veeva Quality Cloud as standalone 4th category; serves "life sciences and consumer products industries"</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Quality Cloud's elevation to a standalone category in FY2025 serves two purposes: (1) it signals the growing commercial importance of quality management solutions, and (2) it is the primary vehicle for non-LS expansion, serving "customers in the life sciences and consumer products industries." Development Cloud's description was narrowed to "clinical, regulatory, and safety functions" with quality removed.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-pbc">
+  <div class="section-header"><h2>Signal #12: PBC Status</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">12</span> Public Benefit Corporation: Converted FY2021; Unchanged Since</h3>
+    <p>Veeva converted to a Delaware Public Benefit Corporation on February 1, 2021. The PBC paragraph has remained substantively unchanged for four consecutive filings (FY2021-FY2025):</p>
+    <blockquote style="border-left:3px solid var(--accent);padding:8px 14px;background:rgba(9,105,218,0.06);border-radius:0 6px 6px 0;font-style:italic;margin:8px 0">"Our public benefit purpose, as reflected in our certificate of incorporation, is 'to provide products and services that are intended to help make the industries we serve more productive, and to create high-quality employment opportunities in the communities in which we operate.'"</blockquote>
+    <p>Core values stated consistently: <strong>"do the right thing, customer success, employee success, and speed."</strong> The PBC status provides a structural differentiator in a regulated industry where long-term trust is commercially valuable.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-competition">
+  <div class="section-header"><h2>Signal #13: Competition</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">13</span> Competition: IQVIA Primary to Salesforce+IQVIA Partnership</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Primary CRM Competitor Named</th><th>IQVIA Relationship</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-FY2022</td><td>No direct CRM competitor named (Salesforce = partner)</td><td>IQVIA: data restrictions on Veeva Network</td></tr>
+        <tr><td>FY2023</td><td>Salesforce in infrastructure context only</td><td>IQVIA: restrictions continued</td></tr>
+        <tr><td>FY2024</td><td>Salesforce named in Competition section</td><td>IQVIA: competitor across Development Cloud</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">Salesforce = "primary CRM competitor"</td><td class="val-neg">Salesforce-IQVIA partnership disclosed; blanket denial of new IQVIA data types</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The competitive landscape shifted from IQVIA as the primary competitor to a Salesforce-IQVIA partnership combining CRM platform capability with data assets. FY2025 disclosed that IQVIA "will deny all customer requests for use of new IQVIA data types in Veeva applications."</p>
+  </div>
+</div>
+
+<div class="section" id="sig-retention">
+  <div class="section-header"><h2>Signal #14: Retention Rate</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">14</span> Subscription Services Revenue Retention Rate: 122% to 119% to Dropped</h3>
+    <table class="data-table">
+      <thead><tr><th>FY</th><th>Retention Rate</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2017</td><td>127%</td><td>Peak</td></tr>
+        <tr><td>FY2018</td><td>121%</td><td>--</td></tr>
+        <tr><td>FY2019</td><td>122%</td><td>Stable</td></tr>
+        <tr><td>FY2020</td><td>121%</td><td>Stable</td></tr>
+        <tr><td>FY2021</td><td>124%</td><td>PBC year; expanded deployments</td></tr>
+        <tr><td>FY2022</td><td>119%</td><td class="val-neg">Declining</td></tr>
+        <tr><td>FY2023-FY2025</td><td class="val-neg">Not disclosed</td><td class="val-neg">Metric dropped from MD&A</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Veeva disclosed its subscription services revenue retention rate annually from FY2017 through FY2022. The rate peaked at 127% (FY2017), stabilized around 121-124% (FY2018-FY2021), and declined to 119% (FY2022). The metric was then dropped entirely and has not appeared in subsequent filings. The removal coincided with the Salesforce migration announcement and growth deceleration period.</p>
+  </div>
+</div>
+
+
+<!-- ==================== CROSS-CUTTING THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>Salesforce: Partner to Competitor</h3>
+      <p>From "mutually beneficial strategic relationship" (FY2018) to "our primary CRM competitor" (FY2025). Migration deadline September 2030. Customer loss disclosed.</p>
+      <ul>
+        <li><strong>FY2018:</strong> salesforce.com's "preferred and recommended" provider</li>
+        <li><strong>FY2023:</strong> Migration to Veeva Vault platform announced</li>
+        <li><strong>FY2024:</strong> Salesforce named as competitor; "supported until September 1, 2030"</li>
+        <li><strong>FY2025:</strong> "Primary CRM competitor"; Salesforce-IQVIA partnership; "a large Veeva CRM customer has committed to purchasing its CRM solutions"</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>Four Product Categories</h3>
+      <p>Product organization grew from 2 areas (FY2018) to 4 (FY2025): Development Cloud, Quality Cloud, Commercial Cloud, Data Cloud.</p>
+      <ul>
+        <li><strong>FY2018:</strong> Commercial Cloud + Vault (2 areas)</li>
+        <li><strong>FY2022:</strong> Commercial Cloud + Development Cloud (Vault rebranded)</li>
+        <li><strong>FY2024:</strong> Development Cloud + Commercial Cloud + Data Cloud (3 categories)</li>
+        <li><strong>FY2025:</strong> Development Cloud + Quality Cloud + Commercial Cloud + Data Cloud (4 categories)</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>Revenue: $678M to $2,747M</h3>
+      <p>4x in 7 years. Subscription share rose from 80% to 83%. Growth decelerated from 33% to 10% then re-accelerated to 16%.</p>
+      <ul>
+        <li><strong>FY2018-FY2021:</strong> 25-33% annual growth</li>
+        <li><strong>FY2023-FY2024:</strong> Growth decelerated to 16% then 10% (migration uncertainty)</li>
+        <li><strong>FY2025:</strong> Re-accelerated to 16%; all revenue growth from subscription services</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>Life Sciences Focus Narrowed</h3>
+      <p>Non-LS target narrowed from 3 industries to 1. Overview paragraph removed. Quality Cloud is the primary outside-LS vehicle.</p>
+      <ul>
+        <li><strong>FY2019:</strong> Consumer goods, chemicals, cosmetics (3 named)</li>
+        <li><strong>FY2022:</strong> Consumer products, chemical (2 named; cosmetics dropped)</li>
+        <li><strong>FY2024:</strong> Consumer products (1 named; chemical dropped)</li>
+        <li><strong>FY2025:</strong> Overview paragraph removed; "consumer products" mentioned only within Quality Cloud</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>AI Restrained</h3>
+      <p>AI language notably minimal vs. technology peers. FY2025 added AI risk factor but no prominent AI product marketing in the 10-K.</p>
+      <ul>
+        <li><strong>FY2018-FY2019:</strong> AI mentioned in context of Nitro analytics and CRM notes</li>
+        <li><strong>FY2020:</strong> Safety.AI announced as specific product</li>
+        <li><strong>FY2021-FY2024:</strong> No significant new AI language</li>
+        <li><strong>FY2025:</strong> "Recently began incorporating AI capabilities"; AI risk factor added; no AI-first strategic framing</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>PBC as Differentiator</h3>
+      <p>Converted to Public Benefit Corporation FY2021. Language unchanged for 4 years. Core values: "do the right thing, customer success, employee success, and speed."</p>
+      <ul>
+        <li>PBC paragraph inserted in FY2021 and retained verbatim through FY2025</li>
+        <li>Provides structural alignment with life sciences industry's mission to improve health</li>
+        <li>Unique among enterprise software companies of Veeva's scale</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Revenue</strong></td><td>$678M</td><td>$862M</td><td>$1,104M</td><td>$1,465M</td><td>$1,855M</td><td>$2,155M</td><td>$2,364M</td><td>$2,747M</td>
+      </tr>
+      <tr>
+        <td>YoY Growth</td><td>+25%</td><td>+27%</td><td>+28%</td><td class="val-pos">+33%</td><td>+27%</td><td>+16%</td><td class="val-neg">+10%</td><td class="val-pos">+16%</td>
+      </tr>
+      <tr>
+        <td><strong>Subscription %</strong></td><td>80%</td><td>80%</td><td>80%</td><td>80%</td><td>80%</td><td>80%</td><td>82%</td><td>83%</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>2,171</td><td>2,553</td><td>3,501</td><td>4,506</td><td>5,482</td><td>6,744</td><td>7,172</td><td>7,291</td>
+      </tr>
+      <tr>
+        <td>YoY Growth</td><td>--</td><td>+18%</td><td class="val-pos">+37%</td><td>+29%</td><td>+22%</td><td>+23%</td><td class="val-neg">+6%</td><td class="val-neg">+2%</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Top 10 Cust. %</strong></td><td>42%</td><td>--</td><td>--</td><td>--</td><td>--</td><td>29%</td><td>28%</td><td>28%</td>
+      </tr>
+      <tr>
+        <td><strong>Retention Rate</strong></td><td>121%</td><td>122%</td><td>121%</td><td>124%</td><td>119%</td><td class="val-neg">n/d</td><td class="val-neg">n/d</td><td class="val-neg">n/d</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Product Categories</strong></td><td>2</td><td>2</td><td>3</td><td>2</td><td>2</td><td>2</td><td>3</td><td class="val-highlight">4</td>
+      </tr>
+      <tr>
+        <td><strong>Non-LS Industries</strong></td><td>3</td><td>3</td><td>3</td><td>3</td><td>2</td><td>2</td><td>1</td><td class="val-neg">0*</td>
+      </tr>
+      <tr>
+        <td><strong>DEI Metrics?</strong></td><td>No</td><td>No</td><td>No</td><td class="val-pos">Yes</td><td class="val-pos">Yes</td><td class="val-pos">Yes</td><td class="val-pos">Yes</td><td class="val-neg">Removed</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--text-dim);margin-top:8px">* FY2025: Non-LS overview paragraph removed. Consumer products mentioned only within Quality Cloud description. n/d = not disclosed.</p>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for Veeva Systems Inc. (CIK 0001393052)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>

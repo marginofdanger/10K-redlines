@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP 10-K Redline Analysis | FY2021-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>APP 10-K REDLINES</h1>
+    <div class="sub">FY2021 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Signals</div>
+  <a class="nav-item" href="#sig-mission">Mission Statement Evolution</a>
+  <a class="nav-item" href="#sig-axon">AXON/AI Engine Language</a>
+  <a class="nav-item" href="#sig-segment">Segment Evolution</a>
+  <a class="nav-item" href="#sig-apps">Apps Arc: Rise and Fall</a>
+  <a class="nav-item" href="#sig-rev-employee">Revenue Per Employee</a>
+  <a class="nav-item" href="#sig-ecommerce">E-Commerce Expansion</a>
+  <a class="nav-item" href="#sig-ebitda">EBITDA Margin Trajectory</a>
+  <a class="nav-item" href="#sig-culture">Values / Culture Language</a>
+  <a class="nav-item" href="#sig-att">ATT/Privacy Risk Language</a>
+  <a class="nav-item" href="#sig-acquisitions">Acquisition Strategy</a>
+  <a class="nav-item" href="#sig-adjust">Adjust Firewall Language</a>
+  <a class="nav-item" href="#sig-psu">PSU Market Cap Milestones</a>
+  <a class="nav-item" href="#sig-install">Installation vs Rev/Install</a>
+  <a class="nav-item" href="#sig-debt-transform">Capital Structure</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>APP 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of AppLovin's SEC filings reveals the cleanest pivot in recent tech history: from mobile gaming company to pure-play AI advertising platform in four filings.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001751008) | Fiscal Years 2021-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>The Pivot Begins</h3>
+    <p>Mission broadened from "developers" to "companies." Apps strategic review commenced: "no longer required." Flywheel language gutted. Studios 19&rarr;11. Segment reporting created. Wurl (CTV) acquired.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>The AI Rebranding</h3>
+    <p>Mission: "meaningful connections between companies and ideal customers." AXON: "machine-learning" &rarr; "AI-powered." "Mobile app ecosystem" &rarr; "advertising ecosystem." Values rewritten to performance culture. 1.4B DAUs disclosed. GenAI risk factor added.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>The Harvest</h3>
+    <p>Segment renamed "Software Platform" &rarr; "Advertising." Apps sale announced ($900M). E-commerce customer traction disclosed. Revenue model detailed. EBITDA margin 58%. Revenue/install +22%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>Pure-Play AI Advertising</h3>
+    <p>Apps sold. Single segment. AppDiscovery &rarr; "Axon Ads Manager." Blog &rarr; axon.ai. 898 employees, $5.5B revenue, 82% EBITDA margin. "Apps and websites" (web expansion). Securities litigation disclosed. Rev/install +72%.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: The Pivot Begins</h2>
+  <div class="sub">Filed Mar 2023 | Employees: 1,594 &rarr; 1,707 | Revenue: $2.79B &rarr; $2.82B (flat) | Ad Revenue: 24% &rarr; 37%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Mission: "enabling success of mobile app developers" &rarr; "help companies grow their apps"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The mission statement broadened from serving a narrow constituency ("mobile app developers") to an expansive one ("companies"). This single word change telegraphed the entire strategic pivot -- AppLovin was no longer a developer tools company but an advertising platform serving any business.<blockquote>FY2021: "Our mission is enabling the success of mobile app developers"</blockquote><blockquote>FY2022: "Our mission is to help companies grow their apps"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Apps strategic review commenced: "no longer required access to a first-party portfolio of Apps"</span><span class="tag tag-new">New</span></div><div class="finding-body">Management disclosed for the first time that the Apps business was under strategic review, with the extraordinary statement that access to first-party apps was no longer necessary for the core software platform business.<blockquote>"We no longer required access to a first-party portfolio of Apps to support the growth and development of our Software Platform"</blockquote>This sentence is the kill shot for the apps business, appearing two years before the actual sale.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Flywheel language reduced from 4 paragraphs to 1 sentence; studios 19 &rarr; 11</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2021 devoted four full paragraphs to the "flywheel" concept -- how first-party apps fed data into the advertising engine. FY2022 compressed this to a single sentence. The studio count dropped from 19 to 11. The narrative that apps were strategically essential to the ad platform was being dismantled in real time.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Wurl (CTV) added as 4th Software Platform component</span><span class="tag tag-new">New</span></div><div class="finding-body">The acquisition of Wurl was disclosed as adding a connected TV (CTV) capability, expanding the Software Platform from three components to four. This represented an attempt to diversify the advertising platform beyond mobile -- a precursor to the later web expansion language.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk / Financial</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Growth strategy: "Grow AppLovin Apps" &rarr; "Optimize AppLovin Apps"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">A subtle but telling language shift in the growth strategy section. "Grow" implies investment and expansion; "Optimize" implies extraction and efficiency. The Apps business had been reclassified from a growth engine to a cost-optimization target.<blockquote>FY2021: "Grow AppLovin Apps"</blockquote><blockquote>FY2022: "Optimize AppLovin Apps"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Net income: +$35M &rarr; -$193M (Apps impairments $128M)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The company swung from $35M net income to a $193M net loss, driven in part by $128M in Apps-related asset impairments. The financial statements were confirming what the language changes had already signaled: the Apps business was being written down while the Software Platform was being elevated.</div></div>
+</div>
+
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: The AI Rebranding</h2>
+  <div class="sub">Filed Feb 2024 | Employees: 1,707 &rarr; 1,745 | Revenue: $2.82B &rarr; $3.28B (+16%) | Ad Revenue: 37% &rarr; 56%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Mission: "help companies grow their apps" &rarr; "create meaningful connections between companies and their ideal customers"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The second mission rewrite in two years removed all references to "apps" from the mission itself. The company now described its purpose in pure advertising-platform language -- connecting companies to customers. The word "apps" in the mission was eliminated.<blockquote>FY2022: "Our mission is to help companies grow their apps"</blockquote><blockquote>FY2023: "Our mission is to create meaningful connections between companies and their ideal customers"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AXON: "machine-learning recommendation engine" &rarr; "AI-powered advertising engine"; "mobile app ecosystem" &rarr; "advertising ecosystem"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Two critical rebrandings in one filing. "Machine-learning" became "AI-powered" -- perfectly timed with the generative AI wave. And "mobile app ecosystem" became simply "advertising ecosystem," dropping both "mobile" and "app" as scope limiters.<blockquote>FY2022: "AXON, our machine-learning recommendation engine... within the mobile app ecosystem"</blockquote><blockquote>FY2023: "AXON, our AI-powered advertising engine... within the advertising ecosystem"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Values completely rewritten: DEI ("culture of equality") &rarr; performance culture ("Hire and Reward Doers")</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The corporate values section was gutted and rewritten from a standard corporate DEI framework to an aggressive performance culture manifesto. Key new phrases included:<blockquote>"Think Like an Entrepreneur," "Hire and Reward Doers," "not afraid to part ways with underperformers"</blockquote>The previous "culture of equality" language was entirely removed. This is among the most dramatic values rewrites in public company filing history.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">1.4B daily active users disclosed for first time; SparkLabs creative team added</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, AppLovin quantified the reach of its advertising platform: <strong>1.4 billion daily active users</strong>. This placed AppLovin's reach among the largest advertising platforms globally. SparkLabs, the in-house creative team, was also disclosed as a new capability for the first time.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">GenAI risk factor added: "uncertain regulatory environment"</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor specifically addressing generative AI was added for the first time, citing the "uncertain regulatory environment" around AI technologies. This reflected both the company's increasing reliance on AI-powered advertising technology and the broader regulatory concerns emerging around generative AI in 2023.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Core Technologies" section eliminated; App Graph concept disappeared</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The "Core Technologies" section that had described the company's technical architecture -- including the "App Graph" concept of interconnected app data -- was entirely removed. This reflected the shift from a data-network-effects narrative to a pure AI-engine narrative. AXON replaced everything.</div></div>
+</div>
+
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: The Harvest</h2>
+  <div class="sub">Filed Feb 2025 | Employees: 1,745 &rarr; 1,563 (-10%) | Revenue: $3.28B &rarr; $4.71B (+44%) | Ad Revenue: 56% &rarr; 68%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Segment renamed: "Software Platform" &rarr; "Advertising"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The core segment was renamed from "Software Platform" to simply "Advertising." This removed the last pretense that AppLovin was a software infrastructure company. The segment name now described exactly what it did: sell advertising.<blockquote>FY2023: "Software Platform" segment</blockquote><blockquote>FY2024: "Advertising" segment</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Revenue model detailed: "charged dynamically based on the revenue they receive from acquired users"</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, AppLovin disclosed the mechanics of its pricing model in explicit detail. Advertisers were charged dynamically based on downstream revenue outcomes -- a performance-based model that explained the platform's pricing power and margin expansion.<blockquote>"Advertisers are charged dynamically based on the revenue they receive from acquired users"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">E-commerce: "e-commerce customers to date have experienced positive results"</span><span class="tag tag-new">New</span></div><div class="finding-body">The first concrete disclosure of e-commerce advertiser traction. This was significant because it proved AXON's capabilities extended beyond mobile gaming -- the traditional concern about AppLovin's total addressable market.<blockquote>"e-commerce customers to date have experienced positive results"</blockquote>This sentence transformed the bull thesis from "best mobile gaming ad platform" to "AI advertising platform for all verticals."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Apps sale announced ($900M); seasonality section added</span><span class="tag tag-new">New</span></div><div class="finding-body">The sale of the Apps portfolio for $900M was disclosed, along with a new seasonality discussion. The Apps business that once generated 76% of revenue was being divested entirely. A new seasonality section was added to help investors understand the pure advertising revenue pattern without the smoothing effect of subscription game revenue.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Revenue concentration risk: "Revenue from AppDiscovery comprises a vast majority"</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor acknowledged the extreme revenue concentration in AppDiscovery. With the Apps business being sold, essentially all revenue would flow through a single product built on a single AI engine.<blockquote>"Revenue from AppDiscovery comprises a vast majority of our total revenue"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AXON singled out in R&D: "continued development of our AI-powered AXON advertising engine is critical"</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, AXON was explicitly called out in R&D discussion as critical to the company's future. The language was unusually direct for a 10-K filing, using the word "critical" -- a term companies typically avoid in forward-looking statements.<blockquote>"The continued development of our AI-powered AXON advertising engine is critical to our business"</blockquote></div></div>
+</div>
+
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Pure-Play AI Advertising</h2>
+  <div class="sub">Filed Feb 2026 | Employees: 1,563 &rarr; 898 (-43%) | Revenue: $4.71B &rarr; $5.48B (+16%) | Ad Revenue: 100%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AppDiscovery &rarr; "Axon Ads Manager"; AXON &rarr; "Axon AI"; blog moved to axon.ai</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The product and technology rebranding was completed. AppDiscovery -- the self-serve advertising product -- was renamed to "Axon Ads Manager," explicitly tying the product to the AI engine. AXON itself became "Axon AI." The company blog was moved to axon.ai. The Axon brand now owned the entire customer-facing identity.<blockquote>FY2024: "AppDiscovery" + "AXON"</blockquote><blockquote>FY2025: "Axon Ads Manager" + "Axon AI" | Blog: axon.ai</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Apps sold: single operating segment; "apps and websites" -- web expansion language</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The Apps sale to Tripledot was completed. AppLovin now operated as a single segment with 100% advertising revenue. The language expanded from mobile-only to explicitly include web: <strong>"apps and websites"</strong> appeared for the first time, signaling the platform's expansion beyond mobile app install advertising.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Revenue model broadened: "based on their campaign goals" (not just "revenue from acquired users")</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The revenue model description shifted from the specific ("based on the revenue they receive from acquired users") to the general ("based on their campaign goals"). This reflected the expansion beyond mobile app install campaigns to include e-commerce, web, and brand advertising -- where "revenue from acquired users" is not the relevant metric.<blockquote>FY2024: "charged dynamically based on the revenue they receive from acquired users"</blockquote><blockquote>FY2025: "based on their campaign goals"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Revenue drivers: installations +3%, revenue/installation +72% -- monetization-driven not volume-driven</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The disclosed revenue drivers revealed a company growing primarily through pricing power, not volume. Installations grew only 3%, while revenue per installation surged 72%. This is the signature of a platform with increasing pricing power -- extracting dramatically more value per transaction rather than processing more transactions.<blockquote>Installations: +3% | Revenue per installation: +72%</blockquote>This is a monetization story, not a volume story.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors / Legal</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Adjust firewall cracked: "unless directed by a customer" (6 words added)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "data generated by Adjust's services is not shared with AppLovin or incorporated into or used to optimize its recommendation engine or other technologies."</blockquote><blockquote>FY2025: "data generated by Adjust's services is not shared with AppLovin or incorporated into or used to optimize its recommendation engine or other technologies <strong>unless directed by a customer</strong>."</blockquote>Six words that create a consent-based pathway for Adjust's measurement data to flow into Axon AI. If advertisers opt in, this could unlock a major data advantage -- measurement data combined with recommendation data is the holy grail of ad targeting.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">PSU market cap milestones: $300B to $1 trillion, 7-year horizon, for engineering employees</span><span class="tag tag-new">New</span></div><div class="finding-body">In October 2025, 920,526 PSUs granted to "certain key non-executive engineering employees" with market capitalization milestones:<blockquote>"including an initial milestone of $300.0 billion and, with respect to certain PSUs, additional milestones up to $1.0 trillion, based on the Company's market capitalization over any 30 consecutive trading days during a 7-year performance period"</blockquote>Three escalating PSU programs tell the story:<br><strong>Mar 2023:</strong> Stock price targets $36-$79, 5-year period. All vested by Dec 2024.<br><strong>Nov 2024:</strong> Stock price targets $184-$295, 2.5-year period. Vested almost immediately.<br><strong>Oct 2025:</strong> Market CAP targets $300B-$1T, 7-year period. None vested.<br><br>The shift from stock price to market cap milestones, the 7-year horizon (longest ever), and the targeting of engineering employees signals this is a retention tool for the Axon AI team. Grant-date fair value: $446/share at $621 stock price. Management is betting on a path to $1T.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Seasonality: "several periods" + "large e-commerce advertisers" (confirms e-commerce is material)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "may experience seasonality in the fourth quarter of the year due in part to seasonal holiday demand"</blockquote><blockquote>FY2025: "Our revenue may experience seasonality during several periods throughout the year driven by fluctuations in advertising demand associated with mobile gaming and e-commerce activity. These fluctuations may be influenced by factors such as major holidays, promotional events, school-related cycles... including increased participation from large e-commerce advertisers"</blockquote>The expansion from "fourth quarter" to "several periods" and the explicit mention of "large e-commerce advertisers" confirms e-commerce has become material enough to create its own seasonal patterns -- not just Q4 holiday but also "promotional events" (Black Friday, Prime Day) and "school-related cycles."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Meta/Google now "significant partners of AppLovin AND Adjust"; TikTok purchase disclosed</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Facebook and Google are also significant partners of Adjust"</blockquote><blockquote>FY2025: "Meta and Google are also significant partners of AppLovin and Adjust"</blockquote>The addition of "AppLovin" (not just Adjust) to the partner relationship disclosure is new and material -- it means Meta and Google are now significant commercial partners of the core advertising business. Also: "In April 2025, we confirmed that we had provided an indication of interest to the President of the United States to explore a <strong>purchase of TikTok</strong> in all markets outside of China, but we ultimately did not enter into a transaction."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Securities litigation: Brownback Action, class period Nov 7 2024 - Mar 27 2025</span><span class="tag tag-new">New</span></div><div class="finding-body">Three class actions filed March-April 2025, consolidated into the Brownback Action. Defendants: Foroughi (CEO), Stumpf (CFO), Chen (President), Shikin (CTO). Allegations: "materially false and misleading statements regarding the Company's advertising solutions and financial growth." Class period: November 7, 2024 through March 27, 2025. Motion to dismiss hearing March 2026. Derivative complaints stayed pending.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Revenue concentration; debt transformation; SBC cliff; "substantial" removed from indebtedness</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><strong>Concentration:</strong> "vast majority" → "substantially all of our revenue." <strong>Debt:</strong> Transformed from variable-rate bank debt to fixed-rate unsecured notes ($3.55B) laddered 2029-2054. Interest expense -35%. <strong>SBC cliff:</strong> $358M→$208M as 2023 PSUs vested; future PSU expense from $300B-$1T tranche will build. <strong>Risk factor:</strong> "our <em>substantial</em> indebtedness" softened to "our indebtedness." <strong>Cloud commitments:</strong> $702.8M non-cancelable purchase obligations (third-party cloud), $140M server/network leases. <strong>Tax:</strong> Rate normalized from 1.4% to 13.1% as SBC deductions expired.</div></div>
+</div>
+
+
+<!-- ==================== SIGNALS ==================== -->
+
+<div class="section" id="sig-mission">
+  <div class="section-header"><h2>Mission Statement Evolution</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">1</span> Mission Statement Evolution</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Mission Statement</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>"enabling the success of mobile app developers"</td><td>Narrow: mobile gaming tools</td></tr>
+          <tr><td>FY2022</td><td>"help companies grow their apps"</td><td>"developers" &rarr; "companies"</td></tr>
+          <tr><td>FY2023</td><td class="val-highlight">"create meaningful connections between companies and their ideal customers"</td><td>Pure advertising platform language</td></tr>
+          <tr><td>FY2024</td><td>Same as FY2023</td><td>Stabilized</td></tr>
+          <tr><td>FY2025</td><td>Same as FY2023</td><td>Stabilized</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Three missions in three years, then locked. The trajectory: mobile gaming &rarr; app growth &rarr; universal advertising platform. Each rewrite expanded the addressable market by an order of magnitude.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-axon">
+  <div class="section-header"><h2>AXON/AI Engine Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">2</span> AXON/AI Engine Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Engine Description</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021-22</td><td>"AXON, our machine-learning recommendation engine"</td><td>Technical component, buried</td></tr>
+          <tr><td>FY2023</td><td class="val-highlight">"AXON, our AI-powered advertising engine"</td><td>ML &rarr; AI; recommendation &rarr; advertising</td></tr>
+          <tr><td>FY2024</td><td>"AXON, our AI-powered advertising engine"</td><td>Same</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">"Axon AI, our advertising recommendation engine" + "Axon Ads Manager"</td><td>Engine becomes company brand identity</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">From buried technical component to company identity. Blog at axon.ai. Product named Axon Ads Manager. The ML &rarr; AI rebranding was perfectly timed with the generative AI wave.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-segment">
+  <div class="section-header"><h2>Software Platform &rarr; Advertising &rarr; Single Segment</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">3</span> The Most Dramatic Segment Evolution in Recent IPO History</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Segment Name</th><th>Ad Revenue</th><th>% of Total</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>"Business Revenue"</td><td>$674M</td><td>24%</td><td>Minority segment</td></tr>
+          <tr><td>FY2022</td><td>"Software Platform"</td><td>$1.05B</td><td>37%</td><td>Renamed, growing fast</td></tr>
+          <tr><td>FY2023</td><td>"Software Platform"</td><td>$1.84B</td><td class="val-highlight">56%</td><td>Crossed majority threshold</td></tr>
+          <tr><td>FY2024</td><td class="val-highlight">"Advertising"</td><td>$3.22B</td><td>68%</td><td>Renamed to match reality</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">Single segment</td><td>$5.48B</td><td class="val-pos">100%</td><td>Apps divested entirely</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">From 24% of revenue to 100% in four filings. From "Business Revenue" to "Software Platform" to "Advertising" to the only segment. This is the cleanest segment evolution in recent public company history.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-apps">
+  <div class="section-header"><h2>Apps Arc: Rise and Fall</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">4</span> Apps Arc: Rise and Fall</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Apps Revenue</th><th>Studios</th><th>Narrative</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>$2.12B</td><td>19</td><td>"Strategic flywheel"</td><td>Core to identity</td></tr>
+          <tr><td>FY2022</td><td class="val-neg">$1.77B</td><td>11</td><td>"No longer required"</td><td>Strategic review</td></tr>
+          <tr><td>FY2023</td><td class="val-neg">$1.44B</td><td>11</td><td>"Financial return"</td><td>Pure financial asset</td></tr>
+          <tr><td>FY2024</td><td>$1.49B</td><td>10</td><td>Sale announced ($900M)</td><td>Divesting</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">Disc.</td><td>0</td><td>Sold to Tripledot</td><td>Gone</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The language told the story two years before the sale. "Strategic flywheel" &rarr; "no longer required" &rarr; "financial return" &rarr; sold. Every step was visible in the filing language before it was visible in the financials.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-rev-employee">
+  <div class="section-header"><h2>Revenue Per Employee</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">5</span> Revenue Per Employee</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Employees</th><th>Revenue</th><th>Rev/Employee</th><th>YoY Change</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>1,594</td><td>$2.79B</td><td>$1.75M</td><td>--</td></tr>
+          <tr><td>FY2022</td><td>1,707</td><td>$2.82B</td><td class="val-neg">$1.65M</td><td>-6%</td></tr>
+          <tr><td>FY2023</td><td>1,745</td><td>$3.28B</td><td>$1.88M</td><td>+14%</td></tr>
+          <tr><td>FY2024</td><td class="val-neg">1,563</td><td>$4.71B</td><td class="val-pos">$3.01M</td><td>+60%</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">898</td><td>$5.48B</td><td class="val-pos">$6.10M</td><td class="val-pos">+103%</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">From $1.75M to $6.10M per employee in four years -- a 3.5x improvement. One of the most dramatic efficiency gains in public company history. The AI-driven asset-light model in its purest form: 898 people generating $5.5 billion in revenue.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-ecommerce">
+  <div class="section-header"><h2>E-Commerce Expansion Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">6</span> E-Commerce Expansion Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>E-Commerce Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021-22</td><td>Aspiration only</td><td>No traction disclosed</td></tr>
+          <tr><td>FY2023</td><td>"e-commerce and social media" advertisers mentioned</td><td>Verticals named</td></tr>
+          <tr><td>FY2024</td><td class="val-highlight">"e-commerce customers to date have experienced positive results"</td><td>Concrete traction</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">"web-based advertisers" + "apps and websites"</td><td>Mobile-only &rarr; web-based</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The expansion from mobile app install advertising to web-based e-commerce is the next TAM expansion. "Apps and websites" is two words that potentially double the addressable market.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-ebitda">
+  <div class="section-header"><h2>EBITDA Margin Trajectory</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">7</span> EBITDA Margin Trajectory</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Revenue</th><th>Adj. EBITDA</th><th>EBITDA Margin</th><th>YoY Change</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>$2.79B</td><td>$727M</td><td>26.0%</td><td>--</td></tr>
+          <tr><td>FY2022</td><td>$2.82B</td><td>$1.06B</td><td>37.7%</td><td class="val-pos">+11.7pp</td></tr>
+          <tr><td>FY2023</td><td>$3.28B</td><td>$1.50B</td><td>45.8%</td><td class="val-pos">+8.1pp</td></tr>
+          <tr><td>FY2024</td><td>$4.71B</td><td>$2.72B</td><td>57.8%</td><td class="val-pos">+12.0pp</td></tr>
+          <tr><td>FY2025</td><td>$5.48B</td><td>$4.51B</td><td class="val-pos">82.3%</td><td class="val-pos">+24.5pp</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">26% &rarr; 82% in four years. Among the highest EBITDA margins in adtech or public software. The operating leverage of an AI advertising engine with minimal variable costs -- once the model works, incremental revenue drops almost entirely to profit.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-culture">
+  <div class="section-header"><h2>Values / Culture Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">8</span> Values / Culture Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Culture Framework</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021-22</td><td>"culture of equality"</td><td>Standard corporate DEI</td></tr>
+          <tr><td>FY2023</td><td class="val-highlight">"Think Like an Entrepreneur," "Hire and Reward Doers," "not afraid to part ways with underperformers"</td><td>Aggressive performance culture</td></tr>
+          <tr><td>FY2024-25</td><td>Same performance framework</td><td>Locked in</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The culture rewrite preceded the headcount reduction from 1,745 to 898. Standard corporate values &rarr; performance culture manifesto in a single filing. The language told you the workforce would shrink before the numbers confirmed it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-att">
+  <div class="section-header"><h2>ATT/Privacy Risk Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">9</span> ATT/Privacy Risk Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>ATT/Privacy Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021-22</td><td>Heavy IDFA/ATT concern; prominent risk factor</td><td>Existential-sounding risk</td></tr>
+          <tr><td>FY2023</td><td class="val-pos">"has not had a significant impact on our overall business"</td><td>Successfully navigated</td></tr>
+          <tr><td>FY2024-25</td><td>De-emphasized; routine disclosure</td><td>Non-issue</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">AppLovin successfully navigated the privacy transition that crippled competitors. The ATT language went from existential threat to "has not had a significant impact" -- AXON's contextual and predictive capabilities proved resilient to the loss of device-level identifiers.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-acquisitions">
+  <div class="section-header"><h2>Acquisition Strategy Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">10</span> Acquisition Strategy Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Acquisition Language</th><th>Cumulative Spend</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>"Invested $2.5B across 27 acquisitions"</td><td>$2.5B / 27 deals</td><td>Active M&A era</td></tr>
+          <tr><td>FY2022</td><td>"$4.0B across 29 acquisitions"</td><td>$4.0B / 29 deals</td><td>Continued acquisition spree</td></tr>
+          <tr><td>FY2023</td><td>"continue to explore"</td><td>--</td><td class="val-neg">M&A era winding down</td></tr>
+          <tr><td>FY2024-25</td><td>"continue to consider"</td><td>--</td><td class="val-neg">"Explore" &rarr; "consider" (weaker)</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The massive M&A era ended. "Invested" (past tense, quantified) &rarr; "explore" (aspirational) &rarr; "consider" (even weaker). The company shifted from buying growth to organic AI-driven growth. The acquisition machine was turned off as AXON proved it could drive growth without bolt-on deals.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="section" id="sig-adjust">
+  <div class="section-header"><h2>Adjust Firewall Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">11</span> The Six Words That Could Unlock a Data Moat</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Exact Firewall Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY2023-24</td><td>"data generated by Adjust's services is <strong>not shared with AppLovin</strong> or incorporated into or used to optimize its recommendation engine or other technologies."</td></tr>
+        <tr><td>FY2025</td><td>Same, <strong>plus: "unless directed by a customer"</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Six words that create a consent-based pathway for Adjust measurement data to flow into Axon AI. If advertisers opt in, this combines attribution data with recommendation data -- the combination that makes Meta's ad engine so powerful. This is potentially the most important 6 words in the filing.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-psu">
+  <div class="section-header"><h2>PSU Market Cap Milestones</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">12</span> Three PSU Tranches: Escalating Ambition</h3>
+    <table class="data-table">
+      <thead><tr><th>Grant Date</th><th>Recipients</th><th>Targets</th><th>Metric</th><th>Period</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Mar 2023</td><td>CEO + CTO + employees</td><td>$36 - $79</td><td>Stock price</td><td>5 years</td><td class="val-pos">All vested by Dec 2024</td></tr>
+        <tr><td>Nov 2024</td><td>Non-executive employees</td><td>$184 - $295</td><td>Stock price</td><td>2.5 years</td><td class="val-pos">Vested almost immediately</td></tr>
+        <tr><td>Oct 2025</td><td><strong>Non-exec engineering</strong></td><td class="val-highlight">$300B - $1T</td><td class="val-highlight">Market cap</td><td><strong>7 years</strong></td><td>None vested</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The shift from stock price to market cap milestones, the 7-year horizon (vs 2.5-5 years prior), and the targeting of engineering employees (not executives) signals management is retaining the core Axon AI team for a decade-scale bet. Grant-date fair value: $446/share at $621 stock. Expected volatility: 71%. The $1T milestone implies ~4-5x from current levels.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-install">
+  <div class="section-header"><h2>Installation vs Revenue/Install</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">13</span> The Growth Model Inversion</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Installation Growth</th><th>Rev/Install Growth</th><th>Revenue Growth</th><th>Driver</th></tr></thead>
+      <tbody>
+        <tr><td>FY2023</td><td>+17%</td><td>+35%</td><td>+76%</td><td>Balanced</td></tr>
+        <tr><td>FY2024</td><td class="val-pos">+50%</td><td>+22%</td><td>+75%</td><td>Volume-led</td></tr>
+        <tr><td>FY2025</td><td>+3%</td><td class="val-highlight">+72%</td><td>+70%</td><td class="val-highlight">Monetization-led</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The near-zero installation growth (+3%) signals mobile gaming install TAM may be approaching saturation. All growth in FY2025 came from Axon AI extracting more value per impression. This is either (a) dramatically better AI matching, (b) higher-value e-commerce advertiser mix, or (c) both. Future growth depends on new verticals (web/e-commerce) reopening the volume driver.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-debt-transform">
+  <div class="section-header"><h2>Capital Structure Transformation</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">14</span> Variable Bank Debt to Fixed-Rate Investment Grade Notes</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Debt Structure</th><th>Total Debt</th><th>Interest Expense</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021-23</td><td>Variable-rate term loans (credit agreement)</td><td>$3.0-3.3B</td><td>$241-317M</td></tr>
+        <tr><td>FY2024</td><td>Refinanced: $4.2B repaid, $4.6B new issuance</td><td>$3.5B</td><td>$317M</td></tr>
+        <tr><td>FY2025</td><td class="val-highlight">100% fixed-rate unsecured notes: 5.125%-5.95%, maturities 2029-2054</td><td>$3.55B</td><td class="val-pos">$207M (-35%)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Complete transformation from variable-rate bank debt to investment-grade-style fixed unsecured notes laddered over 30 years. Risk factor language softened from "substantial indebtedness" to "indebtedness." Net debt ~$1.05B on $4.5B EBITDA (0.2x leverage). $2.2B buybacks + $703M cloud commitments funded from cash flow.</p>
+  </div>
+</div>
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>The Cleanest Pivot in Tech</h3>
+      <p>From mobile gaming company (76% Apps) to pure AI advertising platform (100% Advertising) in 4 filings. Every non-core element stripped: studios from 19 to 0, flywheel narrative gutted, Apps sold to Tripledot. The language preceded the financials at every turn -- "no longer required" appeared two years before the sale closed.</p>
+    </div>
+    <div class="signal-card">
+      <h3>898 People, $5.5B Revenue</h3>
+      <p>Revenue per employee 3.5x'd in 4 years ($1.75M &rarr; $6.10M). The AI-driven asset-light model in its purest form. Headcount declined 43% in the final year while revenue grew 16%. No other public company at this revenue scale operates with so few employees.</p>
+    </div>
+    <div class="signal-card">
+      <h3>AXON Becomes the Identity</h3>
+      <p>From buried technical component ("machine-learning recommendation engine") to company brand. Blog at axon.ai. Product named Axon Ads Manager. Engine renamed Axon AI. The ML &rarr; AI rebranding was perfectly timed with the generative AI wave, even though AXON's core technology predated it.</p>
+    </div>
+    <div class="signal-card">
+      <h3>From Mobile to Web</h3>
+      <p>"Apps" &rarr; "apps and websites." E-commerce from aspiration to deployment. Campaign goals broadened beyond install-based revenue. Revenue model language shifted from "revenue from acquired users" to "campaign goals" -- reflecting the expansion to web-based advertisers and non-install objectives.</p>
+    </div>
+    <div class="signal-card full">
+      <h3>82% EBITDA Margins on $5.5B</h3>
+      <p>The operating leverage of an AI advertising engine with minimal variable costs. From 26% to 82% in four years. Among the highest margins in public software or adtech at any revenue scale. Once the AI model works, incremental revenue drops almost entirely to profit -- the economics of a pure software business with no content costs, no hardware, and a shrinking workforce.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Revenue</strong></td><td>$2.79B</td><td>$2.82B</td><td>$3.28B</td><td>$4.71B</td><td>$5.48B</td>
+      </tr>
+      <tr>
+        <td><strong>Ad Revenue</strong></td><td>$674M</td><td>$1.05B</td><td>$1.84B</td><td>$3.22B</td><td>$5.48B</td>
+      </tr>
+      <tr>
+        <td>Ad % of Revenue</td><td>24%</td><td>37%</td><td class="val-highlight">56%</td><td>68%</td><td class="val-pos">100%</td>
+      </tr>
+      <tr>
+        <td><strong>Apps Revenue</strong></td><td>$2.12B</td><td class="val-neg">$1.77B</td><td class="val-neg">$1.44B</td><td>$1.49B</td><td class="val-neg">Disc.</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Net Income</strong></td><td>$35M</td><td class="val-neg">($193M)</td><td class="val-pos">$357M</td><td class="val-pos">$1.58B</td><td class="val-pos">$3.33B</td>
+      </tr>
+      <tr>
+        <td><strong>Adj. EBITDA</strong></td><td>$727M</td><td>$1.06B</td><td>$1.50B</td><td>$2.72B</td><td class="val-pos">$4.51B</td>
+      </tr>
+      <tr>
+        <td>EBITDA Margin</td><td>26%</td><td>37.7%</td><td>45.8%</td><td>57.8%</td><td class="val-pos">82.3%</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>Employees</td><td>1,594</td><td>1,707</td><td>1,745</td><td class="val-neg">1,563</td><td class="val-neg">898</td>
+      </tr>
+      <tr>
+        <td>Rev/Employee</td><td>$1.75M</td><td class="val-neg">$1.65M</td><td>$1.88M</td><td class="val-pos">$3.01M</td><td class="val-pos">$6.10M</td>
+      </tr>
+      <tr>
+        <td>FCF</td><td>$345M</td><td>$388M</td><td>$1.04B</td><td>$2.07B</td><td class="val-pos">$3.95B</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>Studios</td><td>19</td><td class="val-neg">11</td><td>11</td><td>10</td><td class="val-neg">0</td>
+      </tr>
+      <tr>
+        <td>DAUs</td><td>--</td><td>--</td><td class="val-new">1.4B</td><td>1.6B</td><td>--</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for AppLovin Corporation (CIK 0001751008)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>

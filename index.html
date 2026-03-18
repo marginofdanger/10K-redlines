@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10-K Redline Analysis</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: #ffffff; color: #1f2328; min-height: 100vh;
+  padding: 48px 24px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.subtitle { font-size: 14px; color: #59636e; margin-bottom: 32px; line-height: 1.6; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+a.card {
+  display: block; background: #f6f8fa; border: 1px solid #d1d9e0;
+  border-radius: 8px; padding: 16px; text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+a.card:hover { border-color: #0969da; transform: translateY(-1px); }
+.card-ticker { font-size: 18px; font-weight: 700; color: #1f2328; margin-bottom: 4px; }
+.card-name { font-size: 11px; color: #59636e; margin-bottom: 8px; line-height: 1.4; }
+.card-meta { font-size: 10px; color: #8b949e; }
+.card-meta span { display: inline-block; margin-right: 8px; }
+.section-label {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: #8b949e; margin: 28px 0 12px; padding-bottom: 6px;
+  border-bottom: 1px solid #d1d9e0;
+}
+.footer { margin-top: 40px; font-size: 11px; color: #8b949e; text-align: center; }
+@media (max-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>10-K Redline Analysis</h1>
+  <p class="subtitle">Year-over-year textual analysis of SEC filings. Each dashboard tracks wording changes, ordering shifts, additions, and deletions across 6-8 years of 10-K/20-F filings, surfacing strategic pivots and disclosure signals.</p>
+
+  <div class="section-label">Technology</div>
+  <div class="grid">
+    <a class="card" href="meta/">
+      <div class="card-ticker">META</div>
+      <div class="card-name">Meta Platforms</div>
+      <div class="card-meta"><span>FY2020-25</span><span>22 signals</span></div>
+    </a>
+    <a class="card" href="goog/">
+      <div class="card-ticker">GOOG</div>
+      <div class="card-name">Alphabet</div>
+      <div class="card-meta"><span>FY2018-25</span><span>15 signals</span></div>
+    </a>
+    <a class="card" href="amzn/">
+      <div class="card-ticker">AMZN</div>
+      <div class="card-name">Amazon</div>
+      <div class="card-meta"><span>FY2018-25</span><span>15 signals</span></div>
+    </a>
+    <a class="card" href="app/">
+      <div class="card-ticker">APP</div>
+      <div class="card-name">AppLovin</div>
+      <div class="card-meta"><span>FY2021-25</span><span>14 signals</span></div>
+    </a>
+    <a class="card" href="veev/">
+      <div class="card-ticker">VEEV</div>
+      <div class="card-name">Veeva Systems</div>
+      <div class="card-meta"><span>FY2018-25</span><span>14 signals</span></div>
+    </a>
+  </div>
+
+  <div class="section-label">Semiconductors</div>
+  <div class="grid">
+    <a class="card" href="avgo/">
+      <div class="card-ticker">AVGO</div>
+      <div class="card-name">Broadcom</div>
+      <div class="card-meta"><span>FY2018-25</span><span>12 signals</span></div>
+    </a>
+    <a class="card" href="tsm/">
+      <div class="card-ticker">TSM</div>
+      <div class="card-name">TSMC (20-F)</div>
+      <div class="card-meta"><span>FY2018-24</span><span>18 signals</span></div>
+    </a>
+    <a class="card" href="NVDA/">
+      <div class="card-ticker">NVDA</div>
+      <div class="card-name">NVIDIA</div>
+      <div class="card-meta"><span>FY2020-26</span><span>12 signals</span></div>
+    </a>
+  </div>
+
+  <div class="section-label">Healthcare</div>
+  <div class="grid">
+    <a class="card" href="unh/">
+      <div class="card-ticker">UNH</div>
+      <div class="card-name">UnitedHealth Group</div>
+      <div class="card-meta"><span>FY2018-25</span><span>16 signals</span></div>
+    </a>
+    <a class="card" href="hca/">
+      <div class="card-ticker">HCA</div>
+      <div class="card-name">HCA Healthcare</div>
+      <div class="card-meta"><span>FY2018-25</span><span>12 signals</span></div>
+    </a>
+  </div>
+
+  <div class="section-label">Insurance</div>
+  <div class="grid">
+    <a class="card" href="pgr/">
+      <div class="card-ticker">PGR</div>
+      <div class="card-name">Progressive</div>
+      <div class="card-meta"><span>FY2018-25</span><span>14 signals</span></div>
+    </a>
+  </div>
+
+  <div class="section-label">Financials</div>
+  <div class="grid">
+    <a class="card" href="apo/">
+      <div class="card-ticker">APO</div>
+      <div class="card-name">Apollo Global Management</div>
+      <div class="card-meta"><span>FY2018-25</span><span>14 signals</span></div>
+    </a>
+  </div>
+
+  <div class="section-label">Consumer</div>
+  <div class="grid">
+    <a class="card" href="cvna/">
+      <div class="card-ticker">CVNA</div>
+      <div class="card-name">Carvana</div>
+      <div class="card-meta"><span>FY2018-25</span><span>15 signals</span></div>
+    </a>
+  </div>
+
+  <div class="footer">Source: SEC EDGAR | Analysis: March 2026</div>
+</div>
+</body>
+</html>

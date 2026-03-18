@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNH 10-K Redline Analysis | FY2018-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>UNH 10-K REDLINES</h1>
+    <div class="sub">FY2018 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Signals</div>
+  <a class="nav-item" href="#sig-mcr">#1 MCR Trajectory</a>
+  <a class="nav-item" href="#sig-oh">#2 OptumHealth Loss</a>
+  <a class="nav-item" href="#sig-change">#3 Change Healthcare</a>
+  <a class="nav-item" href="#sig-cms">#4 CMS Concentration</a>
+  <a class="nav-item" href="#sig-leadership">#5 Leadership Turnover</a>
+  <a class="nav-item" href="#sig-vbc">#6 VBC Arc</a>
+  <a class="nav-item" href="#sig-pricing">#7 Pricing Precision</a>
+  <a class="nav-item" href="#sig-reserve">#8 Reserve Collapse</a>
+  <a class="nav-item" href="#sig-capital">#9 Capital Stress</a>
+  <a class="nav-item" href="#sig-intersegment">#10 Intersegment</a>
+  <a class="nav-item" href="#sig-dei">#11 DEI Arc</a>
+  <a class="nav-item" href="#sig-intl">#12 Intl Retreat</a>
+  <a class="nav-item" href="#sig-optumrx">#13 OptumRx Growth</a>
+  <a class="nav-item" href="#sig-ai">#14 AI Language</a>
+  <a class="nav-item" href="#sig-regulatory">#15 Regulatory</a>
+  <a class="nav-item" href="#sig-priorauth">#16 Prior Auth</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>UNH 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of UnitedHealth Group's SEC filings (FY2018-FY2025). Revenue grew from $226B to $448B. MCR rose from 81.6% to 89.1%. FY2025 disclosed an OptumHealth operating loss of $(278M), a $672M premium deficiency reserve, a $2.5B restructuring charge, an AM Best downgrade to A-, and a CEO change.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0000731766) | Fiscal Years 2018-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Steady Growth</h3>
+    <p>Template-stable filings with minimal language changes. Backlog growing. Optum scaling alongside UHC. Revenue $226B&rarr;$242B, MCR 81.6%&rarr;82.5%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>COVID</h3>
+    <p>Optum listed before UHC for the first time. Human Capital section added. Health equity language introduced. MCR plunged to 79.1% as utilization collapsed.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>Witty Era</h3>
+    <p>Andrew Witty becomes CEO. UNH rebrands itself a "well-being company." VBC dollar figures removed from disclosure. Revenue $257B&rarr;$288B.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>Change Healthcare</h3>
+    <p>$13.6B Change Healthcare acquisition closes. Backlog surges +$7.6B. "Global" segment removed. "Those who serve" language appears. Employees 350K&rarr;~400K.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>Peak Profitability</h3>
+    <p>AI/ML language appears for the first time. "Quality" and "inclusion" added to values. Medicaid redeterminations begin. Revenue $324B&rarr;$372B, MCR 83.2%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>Cyberattack</h3>
+    <p>Change Healthcare cyberattack costs $3B+. Brazil sold at $7.1B loss. MCR jumps +230bps to 85.5%. HQ adds DC office. Employee count drops 440K+&rarr;~400K.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>The Crisis</h3>
+    <p>MCR 89.1%. OptumHealth posts $(278M) loss vs $7.8B prior. Hemsley returns at 73. $2.5B restructuring. Buybacks halved, zero in Q4. AM Best A&rarr;A-. "Quality" dropped from values.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Steady Growth</h2>
+  <div class="sub">Employees: 300K &rarr; 325K | Revenue: $226B &rarr; $242B | MCR: 81.6% &rarr; 82.5%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Backlog growth signals pipeline strength; Optum revenue acceleration</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The backlog continued to grow steadily, reflecting strong pipeline conversion across both UHC and Optum segments. Optum's revenue growth outpaced UHC for the first time in several metrics. The filing language remained largely template-stable -- incremental updates rather than structural rewrites.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Template-stable filing: minimal language changes year-over-year</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The FY2018 to FY2019 filing was stable in language and structure. Risk factors, business descriptions, and segment narratives were updated with new numbers but the framing was nearly identical. This stability contrasts with the extensive rewrites that began in FY2020.</div></div>
+</div>
+
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: COVID</h2>
+  <div class="sub">Employees: 325K &rarr; 330K | Revenue: $242B &rarr; $257B | MCR: 79.1%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business / Structure</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Optum listed before UHC for the first time in filing order</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">For the first time, Optum's business description appeared before UnitedHealthcare's in the filing structure. Previously, UHC's business description appeared first. In the FY2020 filing, Optum segments were described before UHC for the first time, placing the growth business ahead of the insurance business in the narrative order.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Human Capital section added per SEC mandate; health equity language introduced</span><span class="tag tag-new">New</span></div><div class="finding-body">The SEC's new Human Capital disclosure requirement led to the addition of a dedicated section. UNH used this as an opportunity to introduce <strong>"health equity"</strong> language for the first time, framing workforce diversity and community health outcomes as strategic priorities. This language would grow in subsequent filings before being cut approximately 70% in FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">MCR plunges to 79.1% as COVID suppresses utilization</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The medical care ratio dropped sharply as COVID-19 lockdowns suppressed elective procedures and routine care. This created a one-time profitability windfall that would reverse in subsequent years as deferred care returned. The MCR of 79.1% was the lowest in the company's recent history. MCR would not return to this level in any subsequent year, rising to 82.6% (FY2021), 83.2% (FY2023), 85.5% (FY2024), and 89.1% (FY2025).</div></div>
+</div>
+
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: Witty Era</h2>
+  <div class="sub">Employees: 330K &rarr; 350K | Revenue: $257B &rarr; $288B | MCR: 82.6%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business / Identity</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Witty becomes CEO; UNH rebrands as a "well-being company"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Andrew Witty became CEO, joining from GlaxoSmithKline. The filing introduced <strong>"well-being company"</strong> framing, broadening UNH's self-description beyond health insurance and health services.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Value-based care dollar figures removed from disclosure</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">Previously, UNH had disclosed specific dollar figures for value-based care arrangements. In FY2021, these quantitative disclosures were removed and replaced with qualitative language about VBC's strategic importance. Specific dollar figures did not return in subsequent filings. By FY2025, VBC language shifted to "to contract."<blockquote>FY2020: "contracts with value-based elements totaled $79 billion in annual spending, including $20 billion through risk-transfer agreements"</blockquote><blockquote>FY2021: specific dollar figures removed; replaced with qualitative VBC growth language</blockquote></div></div>
+</div>
+
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: Change Healthcare</h2>
+  <div class="sub">Employees: 350K &rarr; ~400K | Revenue: $288B &rarr; $324B | MCR: 82.0%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business / Strategy</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Change Healthcare acquisition closes; backlog surges +$7.6B</span><span class="tag tag-new">New</span></div><div class="finding-body">The $13.6B acquisition of Change Healthcare was the largest in UNH's history. The backlog immediately surged by $7.6B, reflecting Change's existing contract base. Change Healthcare processed billions of healthcare transactions annually, adding health IT infrastructure to UNH's existing insurance, care delivery, and pharmacy operations.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Global" segment removed; international operations de-emphasized</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The UnitedHealthcare Global segment was removed as a separate reporting unit, with international operations folded into or de-emphasized in the disclosure. This signaled the beginning of UNH's international retreat, which would culminate in the FY2024 sale of the Brazil business at a $7.1B loss. The filing quietly reduced the visibility of international operations.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Those who serve" language appears in mission/values framing</span><span class="tag tag-new">New</span></div><div class="finding-body">New language emphasizing service to "those who serve" -- military, veterans, public sector workers -- appeared in the values and mission framing. UNH's government business includes Tricare and VA partnerships.</div></div>
+</div>
+
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: Peak Profitability</h2>
+  <div class="sub">Employees: ~400K &rarr; 440K+ | Revenue: $324B &rarr; $372B | MCR: 83.2%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business / Innovation</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI/ML language appears for the first time in business description</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, UNH's 10-K incorporated artificial intelligence and machine learning language in its business description, describing how AI/ML was being applied to claims processing, clinical decision support, and fraud detection. UNH's described AI applications were focused on operational efficiency: claims processing, clinical decision support, fraud detection, and care management optimization.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Quality" and "inclusion" added to corporate values language</span><span class="tag tag-new">New</span></div><div class="finding-body">The corporate values section was expanded to incorporate "quality" as a named value and strengthen "inclusion" language. These additions represented the peak of UNH's DEI and quality-focused corporate narrative. Both terms were removed in FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Medicaid redeterminations risk factor added; membership pressure anticipated</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">A new risk factor disclosed the impact of Medicaid redeterminations as the COVID-era continuous enrollment provision expired. States began re-verifying eligibility, leading to membership losses in the Medicaid/dual-eligible population. The filing language acknowledged this would pressure UHC Community &amp; State membership and revenue.</div></div>
+</div>
+
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: Cyberattack</h2>
+  <div class="sub">Employees: 440K+ &rarr; ~400K | Revenue: $372B &rarr; $400B | MCR: 85.5%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Business / Crisis</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Change Healthcare cyberattack: $3B+ total cost; new cybersecurity risk factors</span><span class="tag tag-new">New</span></div><div class="finding-body">The February 2024 cyberattack on Change Healthcare affected the personal data of approximately 100 million individuals. Total costs exceeded $3 billion including remediation, notification, business interruption, and provider support. The filing added extensive new cybersecurity risk factors and incident disclosures.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Brazil operations sold at $7.1B loss; international retreat accelerates</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">UNH completed the sale of its Brazil health insurance operations, recognizing a $7.1 billion loss. The "Global" segment had been removed from reporting in FY2022. The "Global" segment that had been removed from reporting in FY2022 was now being financially unwound.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">MCR jumps +230bps to 85.5%; medical cost pressure acknowledged</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The medical care ratio surged 230 basis points to 85.5%, the largest single-year increase in recent history. Filing language shifted from confident cost management to acknowledging "elevated" medical cost trends, particularly in Medicare Advantage. <blockquote>FY2023: "and we have observed increased care patterns as discussed below in 'Medical Cost Trends.' Our 2024 benefit design approach contemplates these trends."</blockquote><blockquote>FY2024: "and we have observed increased care patterns as discussed below in 'Medical Cost Trends.' Our 2025 benefit design approach contemplates these trends."</blockquote>Note: identical language retained between FY2023 and FY2024 -- MCR rose 230bps but the narrative language did not change, suggesting management viewed the increase as within expected bounds.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Headquarters adds Washington DC office to existing Minnetonka HQ</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, UNH disclosed a DC office alongside its Minnetonka, Minnesota headquarters. CMS revenue concentration was 40% of total revenue in FY2024, and the filing added new language about congressional scrutiny and state-level investigations.</div></div>
+</div>
+
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: The Crisis</h2>
+  <div class="sub">Employees: ~400K &rarr; 390K+ | Revenue: $400B &rarr; $448B | MCR: 89.1%</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Medical Costs / Financial Distress</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">MCR 89.1%: "well-short of medical cost trends" -- admission of pricing failure</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The medical care ratio hit 89.1%, up 360bps from 85.5%. The filing language changed from describing cost trends as "elevated" to stating that pricing was <strong>"well-short of medical cost trends."</strong><blockquote>FY2024: "To price our health care benefits, products and services, we start with our view of expected future costs, including medical care patterns, inflation and labor market dynamics."</blockquote><blockquote>FY2025: "To price our health care benefits, products and services, we start with our view of expected future costs, including medical care patterns, <strong>the mix and health status of people served</strong>, inflation and labor market dynamics. <strong>For 2025, our pricing trends and patient and member health status assumptions were well-short of the medical cost trends incurred, significantly impacting our earnings.</strong>"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">OptumHealth operating loss $(278M) vs $7.8B prior year; VBC "to contract"; $623M loss reserve</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">OptumHealth swung from $7.8 billion in operating income to a $(278 million) loss -- an $8.1 billion reversal. The VBC language shifted from expansionary to <strong>"to contract."</strong> A $623 million loss reserve was established.<blockquote>FY2024: "organic growth in patients served under value-based care arrangements"</blockquote><blockquote>FY2025: "we expect the number of people served under value-based care arrangements to contract"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Favorable prior-year development collapses: $840M &rarr; $140M</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Favorable prior-year reserve development dropped from $840 million to $140 million -- an 83% decline. Favorable development as a percentage of reserves fell from approximately 2.3% to 0.3%.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Premium deficiency reserve $672M established; $2.5B restructuring charge</span><span class="tag tag-new">New</span></div><div class="finding-body">A <strong>$672 million premium deficiency reserve</strong> was established for the first time -- an accounting recognition that premiums on certain contracts are insufficient to cover expected claims. Simultaneously, a $2.5 billion restructuring charge was recorded.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Leadership / Governance</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Hemsley returns as CEO at age 73; DeVeydt from Elevance; Conway from CMS; Thompson ZERO references</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Stephen Hemsley returned as CEO at age 73, replacing Andrew Witty. The filing disclosed critical leadership changes: <strong>John Rex DeVeydt</strong> joined from Elevance Health (the direct competitor), <strong>Heather Conway</strong> came from CMS (the regulator). <strong>Thompson</strong> had zero remaining references in the filing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Investment policy oversight: Board &rarr; Audit Committee; "and loan" added to portfolio</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Oversight of the investment policy was transferred from the full Board to the Audit Committee, and the phrase <strong>"and loan"</strong> was added to describe the investment portfolio. The "and loan" addition indicates the portfolio now includes direct lending instruments.<blockquote>FY2024: "under an investment policy authorized by our Board of Directors. This policy limits the amounts which may be invested in any one issuer and generally limits our investments to U.S. government and agency securities, state and municipal securities and corporate debt obligations of investment grade."</blockquote><blockquote>FY2025: "under an investment policy authorized by the <strong>Audit &amp; Finance Committee</strong> of the Board of Directors. The investment policy establishes defined limits on credit quality, security selection, and permissible asset classes to ensure a disciplined and risk-appropriate investment approach."</blockquote></div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--purple)"></span> Capital / Ratings</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Credit Negative: AM Best A &rarr; A-; subsidiary dividends $9.2B &rarr; $535M infusions</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">AM Best downgraded the insurance subsidiary financial strength rating from A to A-. The cash flow direction reversed: subsidiaries went from paying $9.2 billion in dividends to the parent to receiving $535 million in capital infusions. The direction of cash flow between parent and subsidiaries reversed.<blockquote>FY2024: "Our U.S. regulated subsidiaries paid their parent companies dividends of $9.2 billion."</blockquote><blockquote>FY2025: "Our U.S. regulated subsidiaries received capital infusions, net of dividends, of $535 million."</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Buybacks halved; zero share repurchases in Q4</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Share repurchases were cut approximately in half year-over-year, and the company executed <strong>zero buybacks in Q4</strong>. The company had repurchased approximately $7-8B annually in FY2023-24.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Language / Tone Shifts</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"frequently" &rarr; "continually"; "will continue seeking" &rarr; "seek" -- hedging language</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Across the filing, confident forward-looking language was systematically replaced with more cautious alternatives. <strong>"Frequently"</strong> became <strong>"continually"</strong> (less committal). <strong>"Will continue seeking"</strong> became simply <strong>"seek"</strong> (removing the forward commitment). These changes appeared across multiple sections of the filing.<blockquote>FY2024: "We <strong>frequently</strong> evaluate and adjust our approach... We <strong>will continue seeking to</strong> balance growth and profitability across all these dimensions."</blockquote><blockquote>FY2025: "We <strong>continually</strong> evaluate and adjust our approach... We <strong>seek to</strong> balance growth and profitability across all these dimensions."</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Quality" dropped from values; "health equity" dropped; DEI language -70%</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The corporate values section was significantly pared back. <strong>"Quality"</strong> was removed as a named value. <strong>"Health equity"</strong> language, introduced in FY2020 and expanded through FY2023, was dropped entirely. Overall DEI-related language was reduced by approximately 70%.<blockquote>FY2024: "integrity, compassion, inclusion, relationships, innovation, performance <strong>and quality</strong>... advance <strong>health equity</strong>... data-driven and leader-led... enterprise and business scorecards... hiring, developing, advancing and retaining <strong>diverse</strong> talent"</blockquote><blockquote>FY2025: "integrity, compassion, inclusion, relationships, innovation <strong>and performance</strong>"... [quality removed, health equity removed, scorecards removed, diverse talent pipeline language removed, mentorship programs removed]</blockquote></div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent2)"></span> Regulatory / Operational</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CMS revenue concentration: 40% &rarr; 44%; OI backlog first decline</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Government revenue concentration increased to 44% of total, with CMS (Medicare + Medicaid) as the dominant source. Simultaneously, OptumInsight's backlog declined for the first time in the company's history -- breaking a multi-year streak of consecutive growth. <blockquote>FY2024: "Premium revenues from CMS represented <strong>40%</strong> of UnitedHealth Group's total consolidated revenues"</blockquote><blockquote>FY2025: "Premium revenues from CMS represented <strong>44%</strong> of UnitedHealth Group's total consolidated revenues"</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Prior authorization: "elevated audit tools" language appears</span><span class="tag tag-new">New</span></div><div class="finding-body">New language around prior authorization described the use of <strong>"elevated audit tools"</strong> in the authorization process. This language appeared in the same filing that added an AI-specific risk factor. CMS finalized rules on prior authorization timelines, and multiple states enacted PA reform legislation.<blockquote>FY2025 (new sentence, not in FY2024): "Additionally, we have elevated our audit, clinical policy and payment integrity tools to protect customers and patients from unnecessary costs."</blockquote></div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI risk factor added; behavioral health and mental health parity language expanded</span><span class="tag tag-new">New</span></div><div class="finding-body">A new AI-specific risk factor was added, acknowledging regulatory uncertainty around AI use in healthcare decision-making. Separately, behavioral health and mental health parity language was significantly expanded, reflecting both regulatory pressure (the Mental Health Parity and Addiction Equity Act enforcement) and litigation risk around parity compliance.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Corporate practice of medicine risk acknowledged in filing</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, the filing acknowledged <strong>corporate practice of medicine</strong> as a regulatory risk. UNH operates both insurance (UHC) and care delivery (OptumHealth). Corporate practice of medicine laws restrict corporate entities from directly employing physicians or controlling medical decisions in many states.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Employee mix shift: -10K total headcount but +25K clinical employees</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Total headcount declined by approximately 10,000, but clinical employees increased by approximately 25,000. This means non-clinical (administrative, technology, corporate) headcount was cut by roughly 35,000. The $2.5B restructuring charge was concentrated in administrative functions. OptumHealth's care delivery workforce continued to expand while the segment posted a $(278M) operating loss.<blockquote>FY2024: "Our nearly 400,000 employees... including more than 140,000 clinical professionals"</blockquote><blockquote>FY2025: "more than 390,000 employees... nearly 165,000 were clinical professionals"</blockquote></div></div>
+</div>
+
+
+<!-- ==================== SIGNALS ==================== -->
+
+<div class="section" id="sig-mcr">
+  <div class="section-header"><h2>#1 MCR Trajectory: 81.6% &rarr; 89.1%</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">1</span> Medical Care Ratio: The Central Metric</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>MCR</th><th>YoY Change</th><th>Filing Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018</td><td>81.6%</td><td>--</td><td>Stable cost management</td><td>Baseline</td></tr>
+          <tr><td>FY2019</td><td>82.5%</td><td>+0.9pp</td><td>Normal trend</td><td>Routine</td></tr>
+          <tr><td>FY2020</td><td class="val-pos">79.1%</td><td>-3.4pp</td><td>COVID utilization suppression</td><td>Unsustainable floor</td></tr>
+          <tr><td>FY2021</td><td>82.6%</td><td>+3.5pp</td><td>Utilization recovery</td><td>Normalization</td></tr>
+          <tr><td>FY2022</td><td>82.0%</td><td>-0.6pp</td><td>Cost discipline</td><td>Brief stabilization</td></tr>
+          <tr><td>FY2023</td><td>83.2%</td><td>+1.2pp</td><td>"Elevated" trends</td><td class="val-neg">Inflection begins</td></tr>
+          <tr><td>FY2024</td><td class="val-neg">85.5%</td><td>+2.3pp</td><td>"Elevated" medical costs</td><td class="val-neg">Acceleration</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">89.1%</td><td class="val-neg">+3.6pp</td><td class="val-neg">"well-short of medical cost trends"</td><td class="val-neg">Crisis</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">MCR expanded 750 basis points from the FY2020 trough (79.1%) to FY2025 (89.1%). Filing language progressed from "stable" cost management through "elevated" medical cost trends to "well-short of medical cost trends." A $672M premium deficiency reserve was established in FY2025.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-oh">
+  <div class="section-header"><h2>#2 OptumHealth Operating Collapse</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">2</span> OptumHealth: From $7.8B Profit to $(278M) Loss</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>OH Revenue</th><th>OH Operating Income</th><th>OH Margin</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2022</td><td>~$90B</td><td>~$5.5B</td><td>~6.1%</td><td>Growing</td></tr>
+          <tr><td>FY2023</td><td>~$100B</td><td>$7.8B</td><td>~7.8%</td><td class="val-pos">Peak profitability</td></tr>
+          <tr><td>FY2024</td><td>~$105B</td><td class="val-neg">$(278M)</td><td class="val-neg">Negative</td><td class="val-neg">$8.1B reversal</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">OptumHealth operating income swung $8.1B in a single year, from $7.8B to $(278M). A $623M loss reserve was established. VBC language shifted from growth-oriented framing to "to contract." OptumHealth's revenue continued to grow (~$105B) while margins turned negative.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-change">
+  <div class="section-header"><h2>#3 Change Healthcare: Acquisition to Catastrophe</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">3</span> Change Healthcare Arc</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Event</th><th>Financial Impact</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2022</td><td>Acquisition closes ($13.6B)</td><td>Backlog +$7.6B</td><td>Vertical integration deepens</td></tr>
+          <tr><td>FY2023</td><td>Integration underway</td><td>Revenue growing</td><td>Technology platform scaling</td></tr>
+          <tr><td>FY2024</td><td class="val-neg">Cyberattack (Feb 2024)</td><td class="val-neg">$3B+ total cost</td><td class="val-neg">~100M individuals affected</td></tr>
+          <tr><td>FY2025</td><td>Ongoing remediation</td><td>Continued costs</td><td>Regulatory/litigation tail risk</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Change Healthcare was acquired for $13.6B in FY2022, added $7.6B to backlog, and was the target of a cyberattack in February 2024 that affected approximately 100 million individuals and cost $3B+. Ongoing remediation, litigation, and regulatory tail risk continued into FY2025.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-cms">
+  <div class="section-header"><h2>#4 CMS Revenue Concentration: 30% &rarr; 44%</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">4</span> Government Revenue Concentration</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>CMS %</th><th>Gov't Revenue (est.)</th><th>Key Driver</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018</td><td>~30%</td><td>~$68B</td><td>MA + Medicaid growth</td><td>Diversified</td></tr>
+          <tr><td>FY2020</td><td>~34%</td><td>~$87B</td><td>COVID Medicaid expansion</td><td>Growing dependence</td></tr>
+          <tr><td>FY2022</td><td>~37%</td><td>~$120B</td><td>MA enrollment surge</td><td>Accelerating</td></tr>
+          <tr><td>FY2024</td><td>40%</td><td>~$160B</td><td>MA + dual-eligible growth</td><td class="val-neg">Single-payer risk</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">44%</td><td class="val-neg">~$197B</td><td>MA rate inadequacy</td><td class="val-neg">Critical dependence</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">CMS program revenue rose from approximately 30% of total revenue ($68B) in FY2018 to 44% ($197B) in FY2025. MA membership grew from approximately 5.2M to 7.3M over the same period. The FY2025 filing cited "Medicare funding reductions" as a driver of both MCR deterioration and OptumHealth's operating loss.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-leadership">
+  <div class="section-header"><h2>#5 Leadership Turnover</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">5</span> Leadership Changes</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>CEO</th><th>Key Changes</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-20</td><td>David Wichmann</td><td>Stable executive team</td><td>Continuity</td></tr>
+          <tr><td>FY2021-24</td><td>Andrew Witty</td><td>"Well-being company" rebrand</td><td>Pharma executive vision</td></tr>
+          <tr><td>FY2025</td><td class="val-highlight">Stephen Hemsley (73)</td><td class="val-neg">DeVeydt (Elevance); Conway (CMS); Thompson ZERO refs</td><td class="val-neg">Crisis management team</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">The CEO position changed three times across the filing period: David Wichmann (FY2018-20), Andrew Witty (FY2021-24), and Stephen Hemsley (FY2025, age 73). The FY2025 filing disclosed simultaneous additions of John Rex DeVeydt from Elevance Health and Heather Conway from CMS, while references to Thompson were reduced to zero.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-vbc">
+  <div class="section-header"><h2>#6 Value-Based Care Arc</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">6</span> VBC Language and Disclosure Changes</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>VBC Language</th><th>VBC Disclosure</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-19</td><td>"Growing value-based arrangements"</td><td>Dollar figures disclosed</td><td>Transparency, growth</td></tr>
+          <tr><td>FY2020-21</td><td>"Expanding VBC"</td><td class="val-neg">Dollar figures removed</td><td>Opacity increases</td></tr>
+          <tr><td>FY2022-23</td><td>"Value-based care serving millions"</td><td>Qualitative only</td><td>Narrative without numbers</td></tr>
+          <tr><td>FY2024</td><td>"Elevated medical costs in VBC"</td><td>OH profit declining</td><td class="val-neg">Model under stress</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">"to contract"</td><td class="val-neg">OH loss $(278M)</td><td class="val-neg">Retreat</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">VBC filing language progressed through five stages: quantified dollar figures (FY2018-20) &rarr; dollar figures removed (FY2021) &rarr; qualitative growth language (FY2022-23) &rarr; acknowledged cost stress (FY2024) &rarr; "to contract" (FY2025). OptumHealth, the primary VBC segment, went from $7.8B operating income (FY2024) to $(278M) loss (FY2025).</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-pricing">
+  <div class="section-header"><h2>#7 Pricing Precision Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">7</span> Pricing Language Changes</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Pricing Language</th><th>MCR</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-22</td><td>"Disciplined pricing approach"</td><td>81-83%</td><td>Confidence in actuarial capability</td></tr>
+          <tr><td>FY2023</td><td>"Pricing reflects anticipated cost trends"</td><td>83.2%</td><td>Standard forward-looking</td></tr>
+          <tr><td>FY2024</td><td>"Elevated medical cost trends"</td><td>85.5%</td><td class="val-neg">Acknowledging pressure</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">"well-short of medical cost trends"</td><td class="val-neg">89.1%</td><td class="val-neg">Pricing failure admitted</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Pricing language shifted from "disciplined pricing approach" (FY2018-22) through "pricing reflects anticipated cost trends" (FY2023) and "elevated medical cost trends" (FY2024) to "well-short of medical cost trends" (FY2025). The $672M premium deficiency reserve, established for the first time in FY2025, confirmed that premiums on certain contracts were insufficient to cover expected claims.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-reserve">
+  <div class="section-header"><h2>#8 Reserve Development Collapse</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">8</span> Favorable Development: $840M &rarr; $140M</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Favorable Dev.</th><th>YoY Change</th><th>% of Reserves</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2021</td><td>$720M</td><td>--</td><td>~2.5%</td><td>Normal cushion</td></tr>
+          <tr><td>FY2022</td><td>$760M</td><td>+6%</td><td>~2.4%</td><td>Stable</td></tr>
+          <tr><td>FY2023</td><td>$840M</td><td>+11%</td><td>~2.3%</td><td>Appears healthy</td></tr>
+          <tr><td>FY2024</td><td class="val-neg">$140M</td><td class="val-neg">-83%</td><td class="val-neg">~0.3%</td><td class="val-neg">Reserve adequacy crisis</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Favorable prior-year reserve development declined from $840M (FY2023) to $140M (FY2024), an 83% drop. As a percentage of reserves, favorable development fell from approximately 2.3% to 0.3%. This followed three years of stable favorable development ($720M-$840M, FY2021-23).</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-capital">
+  <div class="section-header"><h2>#9 Capital Stress Indicators</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">9</span> Capital Metrics</h3>
+      <table class="data-table">
+        <thead><tr><th>Metric</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>AM Best FSR</td><td>A</td><td>A</td><td class="val-neg">A-</td><td class="val-neg">Downgrade</td></tr>
+          <tr><td>Sub Dividends / (Infusions)</td><td>$8.0B div</td><td>$9.2B div</td><td class="val-neg">$(535M) infusion</td><td class="val-neg">Direction reversed</td></tr>
+          <tr><td>Share Buybacks</td><td>~$7B</td><td>~$8B</td><td class="val-neg">~$4B (zero Q4)</td><td class="val-neg">Halved, then stopped</td></tr>
+          <tr><td>Premium Deficiency</td><td>--</td><td>--</td><td class="val-neg">$672M</td><td class="val-neg">First ever</td></tr>
+          <tr><td>Restructuring</td><td>--</td><td>--</td><td class="val-neg">$2.5B</td><td class="val-neg">Major charge</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">In FY2025, AM Best downgraded the insurance subsidiary FSR to A-, subsidiary cash flows reversed from $9.2B in dividends to $535M in infusions, buybacks were halved (zero in Q4), a $672M premium deficiency reserve was established for the first time, and a $2.5B restructuring charge was recorded.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-intersegment">
+  <div class="section-header"><h2>#10 Intersegment Revenue</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">10</span> Intersegment Revenue</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Est. Intersegment Rev</th><th>% of Optum Rev</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2020</td><td>~$40B</td><td>~28%</td><td>Growing internal market</td></tr>
+          <tr><td>FY2022</td><td>~$55B</td><td>~29%</td><td>Change HC adds volume</td></tr>
+          <tr><td>FY2024</td><td>~$70B</td><td>~32%</td><td class="val-neg">Increasing self-dealing scrutiny</td></tr>
+          <tr><td>FY2025</td><td>~$75B+</td><td>~33%</td><td class="val-neg">Regulatory target</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Estimated intersegment revenue grew from approximately $40B (FY2020) to $75B+ (FY2025), representing approximately one-third of Optum's total revenue. This internal revenue flows from UHC to Optum's care delivery, pharmacy, and health IT segments. The filing's regulatory risk factors reference legislative and regulatory scrutiny of vertical integration in healthcare.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-dei">
+  <div class="section-header"><h2>#11 DEI Language Arc</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">11</span> DEI Language Changes</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>DEI Language</th><th>Key Terms</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2020</td><td class="val-new">Introduced (SEC mandate)</td><td>"Health equity," diversity metrics</td><td>New section</td></tr>
+          <tr><td>FY2021-22</td><td>Expanded</td><td>"Health equity," "belonging," workforce data</td><td>Growing commitment</td></tr>
+          <tr><td>FY2023</td><td class="val-highlight">Peak</td><td>"Quality," "inclusion" added to values</td><td>High-water mark</td></tr>
+          <tr><td>FY2024</td><td>Stable</td><td>Maintained</td><td>Holding</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">Cut ~70%</td><td class="val-neg">"Quality" dropped; "health equity" removed</td><td class="val-neg">Dramatic reversal</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">"Health equity" language was introduced in FY2020, expanded through FY2023, and removed in FY2025. "Quality" was added to corporate values in FY2023 and removed in FY2025. "Inclusion" language followed a similar arc. Overall DEI-related language was reduced approximately 70% between FY2024 and FY2025.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-intl">
+  <div class="section-header"><h2>#12 International Retreat</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">12</span> International Operations</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>International Posture</th><th>Financial Impact</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-20</td><td>"UHC Global" separate segment</td><td>Brazil (Amil), Chile, UK operations</td><td>Active international expansion</td></tr>
+          <tr><td>FY2021-22</td><td class="val-neg">"Global" segment removed</td><td>Operations de-emphasized</td><td>Retreat begins</td></tr>
+          <tr><td>FY2024</td><td class="val-neg">Brazil sold</td><td class="val-neg">$7.1B loss recognized</td><td class="val-neg">Capitulation</td></tr>
+          <tr><td>FY2025</td><td>Minimal international presence</td><td>Continued wind-down</td><td>Domestic focus</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">UNH maintained a "UHC Global" segment through FY2020, removed it as a reporting unit in FY2022, and sold the Brazil operations in FY2024 at a $7.1B loss. International operations included Brazil (Amil), Chile, and UK. By FY2025, international presence was minimal.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-optumrx">
+  <div class="section-header"><h2>#13 OptumRx Growth</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">13</span> OptumRx Revenue and Volume</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>OptumRx Revenue</th><th>Scripts (adj.)</th><th>Revenue/Script</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2020</td><td>~$87B</td><td>~1.3B</td><td>~$67</td><td>Steady</td></tr>
+          <tr><td>FY2022</td><td>~$100B</td><td>~1.4B</td><td>~$71</td><td>Growing</td></tr>
+          <tr><td>FY2024</td><td>~$117B</td><td>~1.5B</td><td>~$78</td><td class="val-pos">Accelerating</td></tr>
+          <tr><td>FY2025</td><td class="val-pos">~$130B+</td><td>~1.6B</td><td class="val-pos">~$81</td><td class="val-pos">GLP-1 tailwind</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">OptumRx revenue grew from approximately $87B (FY2020) to $130B+ (FY2025), with adjusted scripts rising from 1.3B to 1.6B. Revenue per script increased from approximately $67 to $81, partly driven by GLP-1 drug volumes and specialty pharmacy growth. OptumRx continued to grow through FY2025 while OptumHealth posted an operating loss.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-ai">
+  <div class="section-header"><h2>#14 AI Language Evolution</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">14</span> AI/ML Filing Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>AI Language</th><th>Context</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-22</td><td>Absent</td><td>No AI/ML in business description</td><td>Pre-AI era</td></tr>
+          <tr><td>FY2023</td><td class="val-new">First appearance</td><td>Claims, clinical support, fraud</td><td>Operational efficiency framing</td></tr>
+          <tr><td>FY2024</td><td>Expanded</td><td>More use cases described</td><td>Growing role</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">AI risk factor added</td><td>Regulatory uncertainty, liability</td><td class="val-neg">Defensive posture</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">AI/ML language was absent from the filing through FY2022, first appeared in FY2023 (applied to claims processing, clinical decision support, and fraud detection), expanded in FY2024, and generated a dedicated risk factor in FY2025 citing regulatory uncertainty and liability around AI use in healthcare decision-making.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-regulatory">
+  <div class="section-header"><h2>#15 Regulatory Pressure</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">15</span> Regulatory Risk Factor Additions by Year</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>New Regulatory Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2020</td><td>Standard insurance regulatory disclosure</td><td>Routine</td></tr>
+          <tr><td>FY2022</td><td>Antitrust (Change HC acquisition scrutiny)</td><td>DOJ challenge</td></tr>
+          <tr><td>FY2023</td><td>Medicaid redeterminations; MA rate risk</td><td>Government program risk</td></tr>
+          <tr><td>FY2024</td><td>Cybersecurity; congressional scrutiny; state investigations</td><td class="val-neg">Multi-front pressure</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">AI liability; mental health parity; corporate practice of medicine; prior auth reform</td><td class="val-neg">Maximum regulatory exposure</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">New regulatory risk language was added in each successive filing: antitrust (FY2022, Change HC), Medicaid redeterminations and MA rate risk (FY2023), cybersecurity and congressional scrutiny (FY2024), and AI liability, mental health parity, corporate practice of medicine, and prior auth reform (FY2025). A DC office was added alongside the Minnetonka HQ in FY2024.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-priorauth">
+  <div class="section-header"><h2>#16 Prior Authorization</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">16</span> Prior Authorization Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Prior Auth Language</th><th>Regulatory Context</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-22</td><td>Standard utilization management</td><td>Routine oversight</td><td>Below radar</td></tr>
+          <tr><td>FY2023</td><td>Expanded prior auth discussion</td><td>CMS proposed rule on PA timelines</td><td>Rising scrutiny</td></tr>
+          <tr><td>FY2024</td><td>PA reform acknowledged</td><td>State-level PA reform laws</td><td class="val-neg">Defensive</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">"Elevated audit tools"</td><td class="val-neg">CMS final rule; congressional hearings; public backlash</td><td class="val-neg">Algorithmic denials under fire</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">"Elevated audit tools" language appeared in FY2025 in the same filing that added an AI risk factor. Prior authorization language expanded each year from FY2023 onward, coinciding with CMS proposed and final rules on PA timelines, state-level PA reform laws, and congressional hearings on automated claim processing.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>The Crisis Year</h3>
+      <p>FY2025 metrics: MCR 89.1% (+360bps), OptumHealth $(278M) loss vs $7.8B prior year, AM Best downgrade to A-, subsidiary cash flows reversed ($9.2B dividends to $535M infusions), buybacks halved (zero in Q4), $672M premium deficiency reserve (first-ever), $2.5B restructuring charge, net earnings approximately $9B vs $16B prior year.</p>
+    </div>
+    <div class="signal-card">
+      <h3>The VBC Wall</h3>
+      <p>VBC filing language progressed from quantified dollar figures (FY2018-20, including "$79 billion in annual spending") to removed dollar figures (FY2021) to qualitative growth language (FY2022-23) to "to contract" (FY2025). OptumHealth operating income went from $7.8B (FY2024) to $(278M) (FY2025), and a $623M loss reserve was established.</p>
+    </div>
+    <div class="signal-card">
+      <h3>CMS 30% &rarr; 44%</h3>
+      <p>CMS premium revenue rose from approximately 30% of total revenue (FY2018) to 44% (FY2025). MA membership grew from approximately 5.2M to 7.3M over the same period. The FY2025 filing cited "Medicare funding reductions" as a driver of both MCR deterioration and OptumHealth's operating loss.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Change Healthcare: Moat to Breach</h3>
+      <p>Change Healthcare was acquired for $13.6B (FY2022), added $7.6B to backlog, and processed billions of healthcare transactions annually. In February 2024, a cyberattack on Change Healthcare affected approximately 100 million individuals and cost $3B+. Ongoing remediation and litigation continued through FY2025.</p>
+    </div>
+    <div class="signal-card">
+      <h3>The Hemsley Reset</h3>
+      <p>The CEO position changed three times: Wichmann (FY2018-20), Witty (FY2021-24), Hemsley (FY2025, age 73). FY2025 simultaneously added DeVeydt from Elevance Health and Conway from CMS. Thompson references were reduced to zero. Hemsley previously served as CEO from 2006 to 2017.</p>
+    </div>
+    <div class="signal-card">
+      <h3>OptumRx: The Survivor</h3>
+      <p>OptumRx revenue grew from approximately $87B (FY2020) to $130B+ (FY2025). Adjusted scripts increased from 1.3B to 1.6B. Revenue per script rose from approximately $67 to $81, partly driven by GLP-1 volumes. OptumRx continued growing through FY2025 while OptumHealth posted a $(278M) operating loss and UHC's MCR reached 89.1%.</p>
+    </div>
+    <div class="signal-card full">
+      <h3>The Vertical Integration Question</h3>
+      <p>UNH operates across insurance (UHC), care delivery (OptumHealth), pharmacy (OptumRx), and health IT (OptumInsight/Change Healthcare). Intersegment revenue grew from approximately $40B (FY2020) to $75B+ (FY2025), representing roughly one-third of Optum's revenue. In FY2025, the filing added "corporate practice of medicine" as a new regulatory risk, expanded language on prior authorization scrutiny, and acknowledged vertical-integration-related regulatory and legislative activity. UHC segment earnings fell from approximately $14B (FY2023) to approximately $5B (FY2025); Optum segment earnings fell from approximately $16B (FY2023) to approximately $10B (FY2025).</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Revenue</strong></td><td>$226B</td><td>$242B</td><td>$257B</td><td>$288B</td><td>$324B</td><td>$372B</td><td>$400B</td><td>$448B</td>
+      </tr>
+      <tr>
+        <td><strong>MCR</strong></td><td>81.6%</td><td>82.5%</td><td class="val-pos">79.1%</td><td>82.6%</td><td>82.0%</td><td>83.2%</td><td class="val-neg">85.5%</td><td class="val-neg">89.1%</td>
+      </tr>
+      <tr>
+        <td>Operating Margin</td><td>~8.0%</td><td>~8.2%</td><td>~8.5%</td><td>~8.8%</td><td>~8.5%</td><td>~8.6%</td><td>~7.5%</td><td class="val-neg">~4.5%</td>
+      </tr>
+      <tr>
+        <td><strong>Net Earnings</strong></td><td>~$12B</td><td>~$13B</td><td>~$15B</td><td>~$17B</td><td>~$20B</td><td>~$22B</td><td>~$16B</td><td class="val-neg">~$9B</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>300K</td><td>325K</td><td>330K</td><td>350K</td><td>~400K</td><td>440K+</td><td>~400K</td><td>390K+</td>
+      </tr>
+      <tr>
+        <td>MA Enrollment (M)</td><td>~5.2</td><td>~5.5</td><td>~5.9</td><td>~6.7</td><td>~7.4</td><td>~7.8</td><td>~7.6</td><td>~7.3</td>
+      </tr>
+      <tr>
+        <td>CMS % of Revenue</td><td>~30%</td><td>~31%</td><td>~34%</td><td>~35%</td><td>~37%</td><td>~39%</td><td>40%</td><td class="val-neg">44%</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>OI Backlog</strong></td><td>~$18B</td><td>~$20B</td><td>~$21B</td><td>~$23B</td><td class="val-pos">~$31B</td><td>~$33B</td><td>~$34B</td><td class="val-neg">~$32B</td>
+      </tr>
+      <tr>
+        <td><strong>OptumRx Rev</strong></td><td>~$70B</td><td>~$75B</td><td>~$87B</td><td>~$91B</td><td>~$100B</td><td>~$109B</td><td>~$117B</td><td class="val-pos">~$130B</td>
+      </tr>
+      <tr>
+        <td>OptumHealth OI</td><td>--</td><td>--</td><td>--</td><td>~$4.0B</td><td>~$5.5B</td><td>$7.8B</td><td class="val-neg">$(278M)</td><td>--</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>UHC Segment Earnings</td><td>~$9B</td><td>~$10B</td><td>~$11B</td><td>~$12B</td><td>~$13B</td><td>~$14B</td><td>~$11B</td><td class="val-neg">~$5B</td>
+      </tr>
+      <tr>
+        <td>Optum Segment Earnings</td><td>~$8B</td><td>~$9B</td><td>~$10B</td><td>~$12B</td><td>~$14B</td><td>~$16B</td><td>~$14B</td><td class="val-neg">~$10B</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for UnitedHealth Group Inc. (CIK 0000731766)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>

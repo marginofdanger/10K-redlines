@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSM 20-F Redline Analysis | FY2018-FY2024</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>TSM 20-F REDLINES</h1>
+    <div class="sub">FY2018 - FY2024 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-node">Technology Node Mix</a>
+  <a class="nav-item" href="#sig-platform">Platform Revenue</a>
+  <a class="nav-item" href="#sig-ai">AI/HPC Language Arc</a>
+  <a class="nav-item" href="#sig-export">Export Control Arc</a>
+  <a class="nav-item" href="#sig-geo">Geographic Revenue</a>
+  <a class="nav-item" href="#sig-customer">Customer Concentration</a>
+  <a class="nav-item" href="#sig-arizona">Arizona Fab Progression</a>
+  <a class="nav-item" href="#sig-japan">Japan/Germany Expansion</a>
+  <a class="nav-item" href="#sig-capex">Capex Trajectory</a>
+  <a class="nav-item" href="#sig-self">Self-Description</a>
+  <a class="nav-item" href="#sig-cross">Cross-Strait Risk</a>
+  <a class="nav-item" href="#sig-compete">Competition Language</a>
+  <a class="nav-item" href="#sig-asp">Pricing/ASP</a>
+  <a class="nav-item" href="#sig-nanjing">Nanjing Location Ordering</a>
+  <a class="nav-item" href="#sig-capacity">Capacity Location Listing</a>
+  <a class="nav-item" href="#sig-endmarket">End-Market Listing Order</a>
+  <a class="nav-item" href="#sig-employee">Employee Count</a>
+  <a class="nav-item" href="#sig-share">Market Share Redefinition</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>TSM 20-F Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of Taiwan Semiconductor Manufacturing Company's 20-F filings reveals the arc from pure foundry to geopolitical linchpin -- export controls, geographic expansion, AI demand, and market redefinition tracked through seven years of SEC disclosure.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001046179) | 20-F Filings, FY2018-2024 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Export Controls Emerge</h3>
+    <p>End-market categories rewritten. Export controls added to customer risk. #2 customer crosses 10% threshold. GlobalFoundries litigation.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>Huawei &amp; Arizona</h3>
+    <p>Huawei shipments halted September 2020. Arizona fab first disclosed. Droughts added to disaster risks. China blocking statute.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>Global Expansion</h3>
+    <p>"Military" added to geopolitical heading. Japan (JASM) disclosed. Global subsidy race language. "Large capacity" becomes "scale and capacity."</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>CHIPS Act &amp; Controls</h3>
+    <p>CHIPS Act named. October 2022 export controls. Global operations complexity risk factor added. Nuclear-free language dropped. Nanjing demoted behind Arizona.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>AI Surge</h3>
+    <p>AI first appears in risk factors. "Highly competitive" becomes "fierce." HPC listed before Smartphone. AI in cybersecurity risk. Supply chain diversification as competitive factor.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>AI Dominance &amp; Antitrust</h3>
+    <p>"World's largest dedicated foundry" removed. Antitrust self-targeting. Trump tariffs. January 2025 16nm rules. "Foundry 2.0" replaces prior market share metric. CHIPS Act $6.6B+$5B secured.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Export Controls Emerge</h2>
+  <div class="sub">Filed April 2020 | Revenue: NT$1,031.5B &rarr; NT$1,069.9B (+4%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; Risk Factors</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">End-market categories rewritten from product types to application types</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2018: "derived from customers who use our services in communication products, computing products, consumer electronics products and industrial/standard products"</blockquote><blockquote>FY2019: "who use our products in smartphones, high performance computing, IoT, automotive electronics, and digital consumer electronics"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Export control added to customer concentration risk</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"regulatory restrictions such as export control directed at our major customers could impact our ability to supply products to those customers, reduce those customers demand for our products and services and impact their business operations"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">#2 customer crosses 10% revenue threshold at 14%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Second-largest customer share rose to 14% of net revenue, crossing the named-disclosure threshold for the first time.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">GlobalFoundries patent infringement litigation disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"assertions and litigations initiated by semiconductor companies seeking to disrupt our business such as the patent infringement lawsuits in August 2019 filed by GlobalFoundries (GF)"</blockquote></div></div>
+</div>
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: Huawei &amp; Arizona</h2>
+  <div class="sub">Filed April 2021 | Revenue: NT$1,069.9B &rarr; NT$1,339.3B (+25%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Export Controls &amp; Geopolitics</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Huawei shipments halted -- first named customer cutoff in TSMC history</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"In May 2020 and again in August 2020, the U.S. tightened its export control measures against Huawei Technology Co. Ltd. and its affiliates (collectively, Huawei), including an expanded license requirement for providing Huawei with items subject to the U.S. export control jurisdiction. To comply with relevant laws and regulations, we have discontinued shipment of products to Huawei since September 15, 2020."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">China blocking statute disclosed as counter-measure</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"in January 2021, China adopted a blocking statute that, among other matters, entitles Chinese entities incurring damages from a multinationals compliance with foreign laws to seek civil remedies"</blockquote></div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Capacity &amp; Operations</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Arizona fab first disclosed in capital expenditure plans</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"expanding buildings/facilities for Fab 18 and a 300mm wafer fab in Arizona, United States of America"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Droughts" added to disaster risk heading</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"materially and adversely affected by disruptive events, such as earthquakes and droughts"</blockquote>Taiwan experienced a severe drought in 2020-2021 that forced water rationing at fabs.</div></div>
+</div>
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: Global Expansion</h2>
+  <div class="sub">Filed April 2022 | Revenue: NT$1,339.3B &rarr; NT$1,587.4B (+19%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Geopolitical &amp; Risk Language</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Military" added to geopolitical risk heading</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "risks associated with political, economic, financial or other conditions or developments"</blockquote><blockquote>FY2021: "risks associated with political, economic, financial, military or other conditions or developments in various jurisdictions"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Global subsidy race language introduced</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"The governments of Europe, the United States, South Korea, and Japan also have incentive programs to incentivize developments of their domestic semiconductor industries."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Distributor" dropped from inventory adjustment language</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "the timing of customer or distributor inventory adjustments"</blockquote>FY2021 removed "or distributor" -- reflecting the shift toward direct fabless-to-foundry relationships.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Capacity &amp; Competitive</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Japan (JASM) first disclosed as subsidiary</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Japan Advanced Semiconductor Manufacturing (JASM)"</blockquote>Construction commenced 2022, commercial production expected 2024. TSMC owned approximately 81.0% of JASM equity as of February 28, 2022.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Large capacity" upgraded to "scale and capacity"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "We believe that our large capacity, particularly for advanced technologies, is a major competitive advantage."</blockquote><blockquote>FY2021: "We believe that our scale and capacity, particularly for advanced technologies, is a major competitive advantage."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Construction risk added to expansion plans</span><span class="tag tag-new">New</span></div><div class="finding-body">With Arizona and JASM under construction simultaneously, new risk language addressed fab buildout delays, cost overruns, and hiring challenges for overseas operations.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">HPC enters customer concentration rationale</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Customer concentration explanation updated to reference the "structural shift to mobile and high performance computing" as a driver of top-customer revenue share.</div></div>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: CHIPS Act &amp; Controls</h2>
+  <div class="sub">Filed April 2023 | Revenue: NT$1,587.4B &rarr; NT$2,263.9B (+43%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Export Controls &amp; Regulation</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CHIPS Act named by full title for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"the Creating Helpful Incentives to Produce Semiconductors and Science Act of 2022 (the 'U.S. CHIPS Act'), which provides financial incentives to incentivize the development of U.S. semiconductor industry"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">October 2022 export controls disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"In October 2022, the U.S. adopted additional export controls over specified countries (including China) under the U.S. Export Administration Regulations on certain advanced computing integrated circuits, computer commodities that contain such ICs, and certain semiconductor manufacturing items"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Global operations complexity as standalone risk factor</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"If we are unable to successfully manage the complexity of our global operations and deal with the challenges and risks related to our overseas expansion, our business, financial condition and results of operations could be adversely affected."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Forced labor prohibition" added to compliance language</span><span class="tag tag-new">New</span></div><div class="finding-body">Forced labor prohibition language appeared in the compliance and regulatory sections for the first time, reflecting both U.S. and EU supply chain due diligence requirements.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Capacity &amp; Positioning</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nuclear-free language dropped from environmental section</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2021 included "nuclear-free" in energy policy references. FY2022 removed this language entirely, coinciding with Taiwan's evolving energy policy debate as power demands for advanced fabs increased.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nanjing demoted in capacity location ordering -- Arizona listed first</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2021: "including in Taiwan, in Nanjing, China, in Arizona, U.S., and in Kumamoto, Japan"</blockquote><blockquote>FY2022: "including in Taiwan, in Arizona, U.S., in Nanjing, China and in Kumamoto, Japan"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AWS added to named customer list</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"including, but not limited to, Advanced Micro Devices, Inc., Amazon Web Services, Inc., Broadcom Limited, Intel Corporation, MediaTek Inc., NVIDIA Corporation"</blockquote>AWS appeared for the first time in FY2022, reflecting system companies designing their own silicon.</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: AI Surge</h2>
+  <div class="sub">Filed April 2024 | Revenue: NT$2,263.9B &rarr; NT$2,161.7B (-5%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> AI &amp; Competition</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI appears in risk factors for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"the global surge in the development of artificial intelligence ('AI') has had a significant impact on customer demand for advanced semiconductor chips and the market dynamics in our industry"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Highly competitive" upgraded to "fierce"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022: "The markets for our foundry services are highly competitive."</blockquote><blockquote>FY2023: "The competition in the semiconductor foundry industry is fierce."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Supply chain diversification added as competitive factor</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2023 added "supply chain diversification and resilience" to the list of dimensions on which TSMC competes, alongside technology, capacity, quality, and customer satisfaction.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">HPC listed before Smartphone in end-market ordering</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Prior filings listed "smartphones, high performance computing" in that order. FY2023 reversed to HPC first, reflecting that HPC overtook Smartphone as the largest revenue platform.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> AI Risk &amp; Cybersecurity</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI in cybersecurity risk -- attackers using AI</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"as AI continues to evolve, cyber-attackers could also use AI to develop malicious codes and sophisticated phishing attempts"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI in internal operations acknowledged as competitive necessity</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"We also believe that the effective use of AI in our internal operations is important to our long-term success. As the AI technologies are rapidly evolving, if we are unable to deploy new AI technologies in our internal operations as effectively as our competitors, it may hurt our competitive position."</blockquote></div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: AI Dominance &amp; Antitrust</h2>
+  <div class="sub">Filed April 2025 | Revenue: NT$2,161.7B &rarr; NT$2,894.3B (+34%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Self-Description &amp; Market Position</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"World's largest dedicated foundry" removed from self-description</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2023: "We believe we are currently the world's largest dedicated foundry in the semiconductor industry."</blockquote>FY2024 removed this sentence entirely, replacing it with a broader "Foundry 2.0" framing.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Foundry 2.0" introduced as new market definition</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"We produced 34% of the 'Foundry 2.0' industry, which we define as all logic wafer manufacturing, packaging, testing, mask-making and others, an increase from 28% in 2023."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Antitrust risk now self-targeting with "concentration" language</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"With our success in the foundry business and the increasing criticism on the concentration of the semiconductor industry and sometimes directly on us, we are subject to heightened risks of antitrust investigations."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Equal access to governmental financial incentives" added to competition risk heading</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"if we are unable to compete effectively in the highly competitive foundry segment of the semiconductor industry, including through equal access to governmental financial incentives, especially those available to our competitors, we may lose customers"</blockquote></div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Export Controls &amp; Trade</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Trump tariffs disclosed with specific detail</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"U.S. President Donald Trump announced on April 2, 2025 a 10% baseline tariff on imports into the United States from all countries, as well as varying reciprocal tariffs on certain trading partners, including Taiwan."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">January 2025 rules extend controls to 16nm and below globally</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Under the new rules, we may need to obtain an export license prior to shipping products using 16-nanometer or below process to any global destination unless specific conditions are met."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Chip diversion incident disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"In October 2024, we notified relevant U.S. and Taiwan authorities that one type of our customer's chip manufactured by us might have been diverted to a restricted entity or incorporated into a restricted entity's product"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Downstream visibility limitation formally acknowledged</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Our role in the semiconductor supply chain inherently limits our visibility and information available to us regarding the downstream use or user of final products that incorporate semiconductors manufactured by us."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">VEU authorization obtained for Nanjing fab</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"we obtained from the U.S. Department of Commerce a Validated End-User (the 'VEU') authorization for our fab located in Nanjing, China, which is a permanent authorization that allows our fab in Nanjing to receive exports of eligible items from the U.S. without separate licenses"</blockquote></div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Subsidies &amp; Expansion</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CHIPS Act funding secured: $6.6B direct + $5B proposed loans</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"TSMC Arizona Corporation entered into agreements with the U.S. Department of Commerce for the receipt of certain incentives pursuant to the U.S. CHIPS Act, which includes up to US$6.6 billion in total direct funding and up to US$5 billion of proposed loans"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">European Chips Act: EUR5 billion state aid for Dresden</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"ESMC, our subsidiary in Germany, entered into an agreement with the Federal Republic of Germany for the receipt of up to EUR5 billion state aid under the European Chips Act"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nanjing dropped from capacity expansion list</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2023: "including in Taiwan, in Arizona, U.S., in Nanjing, China, in Kumamoto, Japan and in Dresden, Germany"</blockquote><blockquote>FY2024: "including in Taiwan, in Arizona, U.S., in Kumamoto, Japan and in Dresden, Germany"</blockquote></div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--purple)"></span> AI &amp; Market Dynamics</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI volatility warning: growth "not sustainable"</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"These shifting business models could lead to significant variations in our sales if the growth of their products and services, particularly in the AI sector, is volatile or not sustainable."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">HPC rebranded to "HPC (including AI applications)"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "HPC (including AI applications), smartphones, IoT, automotive, and digital consumer electronics"</blockquote>Prior years used "smartphones, high performance computing" or "HPC" without AI qualifier.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ASP language: "historical and current" becomes "historical"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2018-FY2023: "the historical and current trend of declining average selling prices"</blockquote><blockquote>FY2024: "the historical trend of declining average selling prices"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Semiconductor industry has become increasingly competitive"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"since the global semiconductor industry has become increasingly competitive, some of our customers have engaged in industry consolidations in order to remain competitive"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Electricity tariff increases: +25% then +14%</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"effective from April 1, 2024, we became subject to a higher electricity tariff rate in Taiwan, which increased by 25% as compared to the tariff rate applicable to us in 2023. In October 2024, the electricity tariff rate further increased by 14%."</blockquote></div></div>
+</div>
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-node">
+  <div class="section-header"><h2>Deep Signals</h2></div>
+</div>
+
+<div class="signal-grid">
+
+<div class="signal-card">
+  <h3><span class="num">1</span> Technology Node Mix</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Advanced (7nm &amp; below)</th><th>Mainstream</th><th>Specialty</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>9%</td><td>~50%</td><td>~41%</td></tr>
+      <tr><td>FY2019</td><td>27%</td><td>~40%</td><td>~33%</td></tr>
+      <tr><td>FY2020</td><td>41%</td><td>~33%</td><td>~26%</td></tr>
+      <tr><td>FY2021</td><td>50%</td><td>~28%</td><td>~22%</td></tr>
+      <tr><td>FY2022</td><td>54%</td><td>~27%</td><td>~19%</td></tr>
+      <tr><td>FY2023</td><td>58%</td><td>~24%</td><td>~18%</td></tr>
+      <tr><td>FY2024</td><td class="val-pos">69%</td><td>~18%</td><td>~13%</td></tr>
+    </tbody>
+  </table>
+  <p>Advanced node revenue share increased from 9% to 69% across the period, driven first by 7nm smartphone demand, then by 5nm/3nm AI accelerator demand.</p>
+</div>
+
+<div class="signal-card" id="sig-platform">
+  <h3><span class="num">2</span> Platform Revenue Mix</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Smartphone</th><th>HPC</th><th>IoT</th><th>Automotive</th><th>DCE</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>49%</td><td>30%</td><td>8%</td><td>5%</td><td>8%</td></tr>
+      <tr><td>FY2019</td><td>49%</td><td>30%</td><td>8%</td><td>4%</td><td>9%</td></tr>
+      <tr><td>FY2020</td><td>46%</td><td>33%</td><td>8%</td><td>3%</td><td>10%</td></tr>
+      <tr><td>FY2021</td><td>44%</td><td>37%</td><td>8%</td><td>4%</td><td>7%</td></tr>
+      <tr><td>FY2022</td><td>40%</td><td>41%</td><td>9%</td><td>5%</td><td>5%</td></tr>
+      <tr><td>FY2023</td><td>38%</td><td>43%</td><td>6%</td><td>7%</td><td>6%</td></tr>
+      <tr><td>FY2024</td><td class="val-neg">35%</td><td class="val-pos">51%</td><td>5%</td><td>5%</td><td>4%</td></tr>
+    </tbody>
+  </table>
+  <p>HPC overtook Smartphone in FY2022 (41% vs 40%) and reached 51% in FY2024. Smartphone declined from 49% to 35%.</p>
+</div>
+
+<div class="signal-card" id="sig-ai">
+  <h3><span class="num">3</span> AI/HPC Language Arc</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>AI Language in Filing</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>No AI references in risk factors or business description</td></tr>
+      <tr><td>FY2019</td><td>No AI references in risk factors or business description</td></tr>
+      <tr><td>FY2020</td><td>No AI references in risk factors or business description</td></tr>
+      <tr><td>FY2021</td><td>No AI references in risk factors or business description</td></tr>
+      <tr><td>FY2022</td><td>No AI references in risk factors or business description</td></tr>
+      <tr><td>FY2023</td><td class="val-new">"global surge in AI" in risk factors; AI in cybersecurity; AI in internal ops</td></tr>
+      <tr><td>FY2024</td><td class="val-new">"HPC (including AI applications)"; "AI sector volatile or not sustainable"; "Foundry 2.0"</td></tr>
+    </tbody>
+  </table>
+  <p>AI went from zero mentions to the central organizing concept in two filing years.</p>
+</div>
+
+<div class="signal-card" id="sig-export">
+  <h3><span class="num">4</span> Export Control Arc</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Key Development</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>No export control references</td></tr>
+      <tr><td>FY2019</td><td class="val-new">"export control directed at our major customers" added</td></tr>
+      <tr><td>FY2020</td><td class="val-neg">Huawei cutoff September 2020; China blocking statute</td></tr>
+      <tr><td>FY2021</td><td>Ukraine conflict sanctions added; export controls framework expanded</td></tr>
+      <tr><td>FY2022</td><td class="val-neg">October 2022 rules; advanced computing IC controls; CHIPS Act named</td></tr>
+      <tr><td>FY2023</td><td>October 2023 rules tightened further</td></tr>
+      <tr><td>FY2024</td><td class="val-neg">January 2025 16nm rules; VEU for Nanjing; chip diversion incident; Trump tariffs</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="signal-card" id="sig-geo">
+  <h3><span class="num">5</span> Geographic Revenue Mix</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>North America</th><th>China</th><th>APAC</th><th>EMEA</th><th>Japan</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>60%</td><td>20%</td><td>10%</td><td>5%</td><td>5%</td></tr>
+      <tr><td>FY2019</td><td>60%</td><td>20%</td><td>10%</td><td>6%</td><td>4%</td></tr>
+      <tr><td>FY2020</td><td>62%</td><td>17%</td><td>10%</td><td>6%</td><td>5%</td></tr>
+      <tr><td>FY2021</td><td>65%</td><td>10%</td><td>13%</td><td>6%</td><td>6%</td></tr>
+      <tr><td>FY2022</td><td>68%</td><td>12%</td><td>9%</td><td>6%</td><td>5%</td></tr>
+      <tr><td>FY2023</td><td>68%</td><td>11%</td><td>9%</td><td>6%</td><td>6%</td></tr>
+      <tr><td>FY2024</td><td class="val-pos">70%</td><td class="val-neg">11%</td><td>8%</td><td>5%</td><td>6%</td></tr>
+    </tbody>
+  </table>
+  <p>North America grew from 60% to 70%. China dropped from 20% to 11%, with the sharpest decline in FY2021 (post-Huawei cutoff).</p>
+</div>
+
+<div class="signal-card" id="sig-customer">
+  <h3><span class="num">6</span> Customer Concentration</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Top 10 Share</th><th>#1 Customer</th><th>#2 Customer</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>68%</td><td>23%</td><td>&lt;10%</td></tr>
+      <tr><td>FY2019</td><td>~70%</td><td>23%</td><td>14%</td></tr>
+      <tr><td>FY2020</td><td>~71%</td><td>25%</td><td>&lt;10%</td></tr>
+      <tr><td>FY2021</td><td>~72%</td><td>25%</td><td>&lt;10%</td></tr>
+      <tr><td>FY2022</td><td>68%</td><td>23%</td><td>&lt;10%</td></tr>
+      <tr><td>FY2023</td><td>70%</td><td>25%</td><td>11%</td></tr>
+      <tr><td>FY2024</td><td class="val-pos">76%</td><td>22%</td><td>12%</td></tr>
+    </tbody>
+  </table>
+  <p>Top-10 concentration rose to 76% in FY2024. Second-largest customer crossed the 10% threshold again in FY2023 (11%) and grew to 12% in FY2024.</p>
+</div>
+
+<div class="signal-card" id="sig-arizona">
+  <h3><span class="num">7</span> Arizona Fab Progression</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>FY2019</td><td>No mention</td></tr>
+      <tr><td>FY2020</td><td class="val-new">"300mm wafer fab in Arizona" first disclosed in capex plans</td></tr>
+      <tr><td>FY2021</td><td>Arizona listed in capacity expansion; construction underway</td></tr>
+      <tr><td>FY2022</td><td>Arizona listed before Nanjing in location ordering; second fab announced</td></tr>
+      <tr><td>FY2023</td><td>Three fabs planned; N4/N3/N2 technology roadmap</td></tr>
+      <tr><td>FY2024</td><td class="val-pos">CHIPS Act $6.6B + $5B secured; two fabs in Arizona listed in facilities</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="signal-card" id="sig-japan">
+  <h3><span class="num">8</span> Japan/Germany Expansion</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Japan (JASM)</th><th>Germany (ESMC)</th></tr></thead>
+    <tbody>
+      <tr><td>FY2020</td><td>No mention</td><td>No mention</td></tr>
+      <tr><td>FY2021</td><td class="val-new">JASM disclosed; 81% ownership; construction commenced 2022</td><td>No mention</td></tr>
+      <tr><td>FY2022</td><td>Listed in capacity plan; production expected 2024</td><td class="val-new">ESMC/Dresden first disclosed</td></tr>
+      <tr><td>FY2023</td><td>Listed in capacity plan; second fab under discussion</td><td>Listed in capacity plan; EUR5B under discussion</td></tr>
+      <tr><td>FY2024</td><td>Fab 23 operational; Kumamoto in facilities list</td><td class="val-pos">EUR5B state aid agreement signed December 2024</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="signal-card" id="sig-capex">
+  <h3><span class="num">9</span> Capex Trajectory</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Capex (US$)</th><th>YoY</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>$10.3B</td><td>--</td></tr>
+      <tr><td>FY2019</td><td>$14.9B</td><td>+45%</td></tr>
+      <tr><td>FY2020</td><td>$17.2B</td><td>+15%</td></tr>
+      <tr><td>FY2021</td><td>$30.4B</td><td class="val-pos">+77%</td></tr>
+      <tr><td>FY2022</td><td>$36.3B</td><td>+19%</td></tr>
+      <tr><td>FY2023</td><td>$30.5B</td><td class="val-neg">-16%</td></tr>
+      <tr><td>FY2024</td><td class="val-pos">$29.8B</td><td>-2%</td></tr>
+    </tbody>
+  </table>
+  <p>Capex tripled from FY2018 to FY2022 as overseas expansion accelerated. NT-dollar capex continued rising through FY2024.</p>
+</div>
+
+<div class="signal-card" id="sig-self">
+  <h3><span class="num">10</span> Self-Description Evolution</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Self-Description</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018-FY2023</td><td>"the world's largest dedicated foundry in the semiconductor industry"</td></tr>
+      <tr><td>FY2024</td><td class="val-new">Removed "world's largest dedicated foundry"; introduced "Foundry 2.0" (34% share of all logic manufacturing + packaging + testing)</td></tr>
+    </tbody>
+  </table>
+  <p>The shift from "largest foundry" to "Foundry 2.0" redefines the addressable market to include packaging and testing -- a larger TAM that dilutes share concentration concerns.</p>
+</div>
+
+<div class="signal-card" id="sig-cross">
+  <h3><span class="num">11</span> Cross-Strait Risk Language Stability</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Key Geopolitical Language</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018-FY2019</td><td>"political, economic, financial or other conditions"</td></tr>
+      <tr><td>FY2020</td><td>Same; Huawei/blocking statute added to trade section</td></tr>
+      <tr><td>FY2021</td><td class="val-new">"political, economic, financial, military or other conditions" -- "military" added</td></tr>
+      <tr><td>FY2022</td><td>Ukraine conflict added; "military conflicts" now plural</td></tr>
+      <tr><td>FY2023-FY2024</td><td>Maintained; no further escalation of cross-strait language</td></tr>
+    </tbody>
+  </table>
+  <p>The core cross-strait risk factor has remained structurally stable since FY2021. Changes have been additive (military, Ukraine) rather than escalatory regarding Taiwan specifically.</p>
+</div>
+
+<div class="signal-card" id="sig-compete">
+  <h3><span class="num">12</span> Competition Language</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Key Language</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018-FY2022</td><td>"highly competitive"; Chinese government subsidies noted</td></tr>
+      <tr><td>FY2023</td><td class="val-new">"fierce"; supply chain diversification as competitive dimension; CHIPS Act named</td></tr>
+      <tr><td>FY2024</td><td class="val-new">"equal access to governmental financial incentives" added to risk heading</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="signal-card" id="sig-asp">
+  <h3><span class="num">13</span> Pricing/ASP Language</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>ASP Language</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018-FY2023</td><td>"the historical and current trend of declining average selling prices"</td></tr>
+      <tr><td>FY2024</td><td class="val-new">"the historical trend of declining average selling prices" -- "and current" dropped</td></tr>
+    </tbody>
+  </table>
+  <p>Removing "and current" signals that TSMC no longer views ASP decline as an active trend -- consistent with pricing power from AI demand.</p>
+</div>
+
+<div class="signal-card" id="sig-nanjing">
+  <h3><span class="num">14</span> Nanjing in Location Ordering</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Capacity Expansion Order</th></tr></thead>
+    <tbody>
+      <tr><td>FY2020</td><td>Taiwan, Nanjing, Washington</td></tr>
+      <tr><td>FY2021</td><td>Taiwan, <strong>Nanjing</strong>, Arizona, Kumamoto</td></tr>
+      <tr><td>FY2022</td><td>Taiwan, <strong>Arizona</strong>, Nanjing, Kumamoto</td></tr>
+      <tr><td>FY2023</td><td>Taiwan, Arizona, Nanjing, Kumamoto, Dresden</td></tr>
+      <tr><td>FY2024</td><td>Taiwan, Arizona, Kumamoto, Dresden -- <span class="val-neg">Nanjing dropped</span></td></tr>
+    </tbody>
+  </table>
+  <p>Nanjing went from listed before Arizona (FY2021) to after Arizona (FY2022) to dropped entirely (FY2024).</p>
+</div>
+
+<div class="signal-card" id="sig-capacity">
+  <h3><span class="num">15</span> Capacity Location Listing Order</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Fab Facilities Listed</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>Hsinchu, Taichung, Tainan, Washington, Shanghai, Nanjing</td></tr>
+      <tr><td>FY2021</td><td>Hsinchu, Taichung, Tainan, Washington, Shanghai, Nanjing, Arizona (under construction), Kumamoto (under construction)</td></tr>
+      <tr><td>FY2024</td><td>Hsinchu, Taichung, Tainan, Kaohsiung, Washington, Shanghai, Nanjing, <strong>Arizona (2 fabs)</strong>, Kumamoto, Dresden (planned)</td></tr>
+    </tbody>
+  </table>
+  <p>Arizona expanded from zero to two operational fabs. Kaohsiung added as a new Taiwan site. Total fab count grew from 16 to 21.</p>
+</div>
+
+<div class="signal-card" id="sig-endmarket">
+  <h3><span class="num">16</span> End-Market Listing Order</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Listing Order</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>communication, computing, consumer electronics, industrial</td></tr>
+      <tr><td>FY2019-FY2022</td><td>smartphones, high performance computing, IoT, automotive, DCE</td></tr>
+      <tr><td>FY2023</td><td class="val-new">HPC, smartphones, IoT, automotive, DCE</td></tr>
+      <tr><td>FY2024</td><td class="val-new">HPC (including AI applications), smartphones, IoT, automotive, DCE</td></tr>
+    </tbody>
+  </table>
+  <p>Smartphone was listed first from FY2019-FY2022. HPC displaced it in FY2023 and gained the "(including AI applications)" qualifier in FY2024.</p>
+</div>
+
+<div class="signal-card" id="sig-employee">
+  <h3><span class="num">17</span> Employee Count</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Headcount</th><th>YoY</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>48,752</td><td>--</td></tr>
+      <tr><td>FY2019</td><td>51,297</td><td>+5%</td></tr>
+      <tr><td>FY2020</td><td>56,831</td><td>+11%</td></tr>
+      <tr><td>FY2021</td><td>65,152</td><td>+15%</td></tr>
+      <tr><td>FY2022</td><td>73,090</td><td>+12%</td></tr>
+      <tr><td>FY2023</td><td>76,478</td><td>+5%</td></tr>
+      <tr><td>FY2024</td><td class="val-pos">83,825</td><td>+10%</td></tr>
+    </tbody>
+  </table>
+  <p>Total headcount grew 72% from 48,752 to 83,825. Hiring accelerated in FY2021 (+15%) for overseas expansion and again in FY2024 (+10%) for Arizona/Japan ramp.</p>
+</div>
+
+<div class="signal-card" id="sig-share">
+  <h3><span class="num">18</span> Market Share Metric Redefinition</h3>
+  <table class="data-table">
+    <thead><tr><th>Year</th><th>Metric</th><th>Share</th></tr></thead>
+    <tbody>
+      <tr><td>FY2018</td><td>Foundry market share (dedicated foundries)</td><td>56%</td></tr>
+      <tr><td>FY2019-FY2022</td><td>Foundry market share</td><td>~52-56%</td></tr>
+      <tr><td>FY2023</td><td class="val-new">World semiconductor excluding memory output value</td><td>28%</td></tr>
+      <tr><td>FY2024</td><td class="val-new">"Foundry 2.0" (all logic manufacturing + packaging + testing + mask-making)</td><td>34%</td></tr>
+    </tbody>
+  </table>
+  <p>Three distinct metrics in seven years. Each redefinition expanded the denominator: dedicated foundry (56%) to semiconductor ex-memory (28%) to "Foundry 2.0" (34%). The FY2024 metric yields a lower share figure that addresses antitrust concentration optics while framing a larger addressable market.</p>
+</div>
+
+</div><!-- end signal-grid -->
+
+<!-- ==================== THEMES ==================== -->
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+</div>
+
+<div class="signal-grid">
+
+<div class="signal-card">
+  <h3>1. Export Control Escalation Ladder</h3>
+  <p>Export controls went from absent (FY2018) to generic risk (FY2019) to named customer cutoff (FY2020 Huawei) to comprehensive regime (FY2022 October rules) to global 16nm licensing requirements (FY2024). Each year added a new layer. TSMC obtained VEU authorization for Nanjing and disclosed a chip diversion incident, indicating active compliance management.</p>
+</div>
+
+<div class="signal-card">
+  <h3>2. Geographic Diversification Under Geopolitical Pressure</h3>
+  <p>Arizona appeared in FY2020, Japan (JASM) in FY2021, Germany (ESMC) in FY2022. By FY2024, TSMC had secured $6.6B + $5B from U.S. CHIPS Act and EUR5B from the European Chips Act. Nanjing was simultaneously demoted from second in location ordering (FY2021) to dropped entirely from the expansion list (FY2024). Capacity location listing shifted from 6 sites in 3 geographies to 10+ sites in 5 geographies.</p>
+</div>
+
+<div class="signal-card">
+  <h3>3. AI as Revenue and Risk Driver</h3>
+  <p>AI was absent from all filings through FY2022. In FY2023, it appeared in risk factors, cybersecurity warnings, and internal operations language simultaneously. By FY2024, HPC was rebranded "HPC (including AI applications)" at 51% of revenue, and TSMC warned that AI-sector growth may be "volatile or not sustainable." AI transformed from zero to majority revenue driver in two disclosure cycles.</p>
+</div>
+
+<div class="signal-card">
+  <h3>4. Market Definition as Strategic Tool</h3>
+  <p>TSMC's share metric changed three times: 56% of dedicated foundries (FY2018), 28% of semiconductor ex-memory (FY2023), 34% of "Foundry 2.0" (FY2024). The FY2024 shift removed "world's largest dedicated foundry" and introduced a metric encompassing packaging and testing. This coincided with new antitrust self-targeting language acknowledging "increasing criticism on the concentration of the semiconductor industry and sometimes directly on us."</p>
+</div>
+
+<div class="signal-card">
+  <h3>5. Pricing Power Inflection</h3>
+  <p>From FY2018 through FY2023, every filing described "the historical and current trend of declining average selling prices." FY2024 dropped "and current," acknowledging that ASP decline is no longer the present-tense reality. The competition heading simultaneously added "equal access to governmental financial incentives" -- TSMC now frames competition as subsidy-driven rather than price-driven. "Highly competitive" became "fierce" in FY2023, but the underlying competitive dynamic shifted from price to capacity access.</p>
+</div>
+
+<div class="signal-card">
+  <h3>6. Customer Concentration and Platform Shift</h3>
+  <p>Top-10 customer concentration rose from 68% (FY2018) to 76% (FY2024). The #2 customer crossed 10% at 14% in FY2019, dropped below 10% after FY2020, then returned above 10% in FY2023 (11%) and grew to 12% in FY2024. AWS was added to the named customer list in FY2022, reflecting the system-company-as-chip-designer trend. HPC overtook Smartphone as the largest platform in FY2022 (41% vs 40%) and reached 51% by FY2024.</p>
+</div>
+
+</div><!-- end themes signal-grid -->
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th></th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Revenue (NT$B)</strong></td><td>1,031.5</td><td>1,069.9</td><td>1,339.3</td><td>1,587.4</td><td>2,263.9</td><td>2,161.7</td><td class="val-pos">2,894.3</td>
+      </tr>
+      <tr>
+        <td>YoY Growth</td><td>+6%</td><td>+4%</td><td class="val-pos">+25%</td><td>+19%</td><td class="val-pos">+43%</td><td class="val-neg">-5%</td><td class="val-pos">+34%</td>
+      </tr>
+      <tr>
+        <td><strong>Gross Margin</strong></td><td>48.3%</td><td>46.0%</td><td>53.1%</td><td>51.6%</td><td>59.6%</td><td>54.4%</td><td class="val-pos">56.1%</td>
+      </tr>
+      <tr>
+        <td><strong>Operating Margin</strong></td><td>37.2%</td><td>34.8%</td><td>42.3%</td><td>41.5%</td><td>49.5%</td><td>42.6%</td><td class="val-pos">45.7%</td>
+      </tr>
+      <tr>
+        <td><strong>Net Income (NT$B)</strong></td><td>351.1</td><td>345.3</td><td>517.9</td><td>596.5</td><td>1,016.5</td><td>838.5</td><td class="val-pos">1,173.3</td>
+      </tr>
+      <tr><td colspan="8" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Capex (US$B)</strong></td><td>10.3</td><td>14.9</td><td>17.2</td><td>30.4</td><td>36.3</td><td>30.5</td><td>29.8</td>
+      </tr>
+      <tr>
+        <td><strong>Headcount</strong></td><td>48,752</td><td>51,297</td><td>56,831</td><td>65,152</td><td>73,090</td><td>76,478</td><td class="val-pos">83,825</td>
+      </tr>
+      <tr>
+        <td><strong>Advanced Node (%)</strong></td><td>9%</td><td>27%</td><td>41%</td><td>50%</td><td>54%</td><td>58%</td><td class="val-pos">69%</td>
+      </tr>
+      <tr>
+        <td><strong>HPC Revenue (%)</strong></td><td>30%</td><td>30%</td><td>33%</td><td>37%</td><td>41%</td><td>43%</td><td class="val-pos">51%</td>
+      </tr>
+      <tr>
+        <td><strong>Smartphone Rev (%)</strong></td><td>49%</td><td>49%</td><td>46%</td><td>44%</td><td>40%</td><td>38%</td><td class="val-neg">35%</td>
+      </tr>
+      <tr>
+        <td><strong>N. America Rev (%)</strong></td><td>60%</td><td>60%</td><td>62%</td><td>65%</td><td>68%</td><td>68%</td><td class="val-pos">70%</td>
+      </tr>
+      <tr>
+        <td><strong>China Rev (%)</strong></td><td>20%</td><td>20%</td><td>17%</td><td>10%</td><td>12%</td><td>11%</td><td class="val-neg">11%</td>
+      </tr>
+      <tr>
+        <td><strong>Top 10 Customer (%)</strong></td><td>68%</td><td>~70%</td><td>~71%</td><td>~72%</td><td>68%</td><td>70%</td><td class="val-pos">76%</td>
+      </tr>
+      <tr>
+        <td><strong>Market Share Metric</strong></td><td>56% foundry</td><td>--</td><td>--</td><td>--</td><td>--</td><td>28% ex-memory</td><td class="val-new">34% "Foundry 2.0"</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for Taiwan Semiconductor Manufacturing Company (CIK 0001046179)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>

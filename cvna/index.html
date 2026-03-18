@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVNA 10-K Redline Analysis | FY2018-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header - the year-over-year title bars */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>CVNA 10-K REDLINES</h1>
+    <div class="sub">FY2018 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-priority">Priority Language Arc</a>
+  <a class="nav-item" href="#sig-units">Unit Trajectory</a>
+  <a class="nav-item" href="#sig-self">Self-Description</a>
+  <a class="nav-item" href="#sig-adesa">ADESA Integration</a>
+  <a class="nav-item" href="#sig-debt">Debt Arc</a>
+  <a class="nav-item" href="#sig-inventory">Inventory &amp; Acquisition</a>
+  <a class="nav-item" href="#sig-gpu">GPU Trajectory</a>
+  <a class="nav-item" href="#sig-structure">Business Section Structure</a>
+  <a class="nav-item" href="#sig-competition">Competition</a>
+  <a class="nav-item" href="#sig-profitability">Profitability Language</a>
+  <a class="nav-item" href="#sig-recon">Recon Capacity &amp; Vending</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>Carvana 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings tracks the full arc from hypergrowth through near-death to recovery. Filing language changes preceded each operational shift.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001690820) | Fiscal Years 2018-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Hypergrowth</h3>
+    <p>Units +89%. Markets 85&rarr;146. Employees doubled. "Third largest retailer." Vehicle selling becomes co-equal theme.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>COVID Scale-Up</h3>
+    <p>"Second largest retailer." Human Capital section added. Markets 146&rarr;266. Securitization first mentioned. IRCs 7&rarr;9.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>Peak &amp; Leverage</h3>
+    <p>"The leading" (from "a leading"). Units 425K. Employees 21K. Debt $2.4B. Inventory 71K. Customer-sourced vehicles become primary acquisition source.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>ADESA &amp; Crisis</h3>
+    <p>$2.2B ADESA acquisition. First unit decline. $847M goodwill impairment. "Path to profitability." Tax Asset Preservation Plan. Short squeeze risk added.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>Near-Death</h3>
+    <p>Debt exchange (unsecured&rarr;secured). ATM equity program. Units -24%. Inventory halved to 33K. "Rapidly decrease expenses." Ranking downgraded to "one of the largest."</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>Recovery &amp; Rewrite</h3>
+    <p>Complete business section restructure. AI first mentioned. Named competitors added. GPU $6,908. "History of losses" risk removed. Regulatory section expanded.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>Full Recovery</h3>
+    <p>Record 597K units. GAAP net income (9.3% margin). Inventory 75K. Employees 23K+. 16 ADESA sites converted. "Digital auction platform." Market share 1.6%.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Hypergrowth</h2>
+  <div class="sub">Filed Feb 2020 | Employees: 3,879 &rarr; 7,324 (+89%) | Units: ~94K &rarr; ~177K (+89%) | GPU: $2,219 &rarr; $2,852</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vehicle selling elevated to co-equal with buying in company description</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2018 described Carvana as a platform "for buying and selling used cars" but the body text focused on buying. FY2019 added a full paragraph on selling vehicles: <blockquote>"Alternatively, a customer can obtain a firm offer online for their vehicle by answering a few questions without needing to provide photos or service records."</blockquote>The "Sell a vehicle" section appeared in the Customer Lifecycle for the first time.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Markets 85&rarr;146; "third largest" retailer claimed; population coverage disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Since launching Carvana seven years ago, our growth strategy has vaulted us to being the third largest used automotive retailer in the U.S. for the year ended December 31, 2019."</blockquote>Population coverage metric introduced: 66.9% of U.S. population served. Markets expanded from 85 to 146 (+72%). 61 new markets added in a single year.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Inventory 14K&rarr;25K; IRCs 5&rarr;7; recon capacity 250K&rarr;350K</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Website inventory grew from "over 14,000 vehicles" to "over 25,000 vehicles." IRC network expanded from 5 to 7 locations. Reconditioning capacity increased from 250,000 to 350,000 vehicles per year. Debt grew from $350M to $600M in senior unsecured notes.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vehicle acquisition: customer sourcing emphasized alongside auctions</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2018: <blockquote>"We acquire the substantial majority of our used vehicle inventory through the large and liquid national used-car auction market."</blockquote>FY2019: <blockquote>"We primarily acquire our used vehicle inventory through the large and liquid national used-car auction market and directly from customers when they trade in or sell us their vehicles."</blockquote>Customer sourcing added as a co-equal channel. "Acquiring directly from customers eliminates auction fees and provides more diverse vehicles."</div></div>
+</div>
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: COVID Scale-Up</h2>
+  <div class="sub">Filed Feb 2021 | Employees: 7,324 &rarr; 10,400 (+42%) | Units: ~177K &rarr; ~244K (+38%) | GPU: $2,852 &rarr; $3,656</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Second largest" retailer; markets 146&rarr;266; 120 new markets in one year</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"Since launching Carvana eight years ago, our growth strategy has vaulted us to being the second largest used automotive retailer in the U.S. for the year ended December 31, 2020."</blockquote>Upgraded from "third largest." 120 new markets added in 2020 alone -- nearly doubling the network. Population coverage rose from 66.9% to 73.7%.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Human Capital section added for the first time</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2019 had a simple "Employees" section (3 sentences). FY2020 introduced a full "Human Capital" section with employee development programs, diversity and inclusion language, Carvana Communities affinity groups, and Learning Management System. This aligned with SEC requirements effective November 2020.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Securitization first mentioned in financing technology section</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2019: loans sold "to our financing partners." FY2020 added: <blockquote>"the premium we can capture when we sell them through securitization transactions or to our financing partners."</blockquote>Securitization would become a significant revenue stream and later a source of risk during the debt crisis.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vehicle acquisition source ordering: customers moved ahead of auctions</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2019: <blockquote>"We primarily acquire our used vehicle inventory through the large and liquid national used-car auction market and directly from customers..."</blockquote>FY2020: <blockquote>"We primarily acquire our used vehicle inventory directly from customers when they trade in or sell us their vehicles and through the large and liquid national used-car auction market."</blockquote>Customers moved to first position. This ordering would persist through all subsequent filings.</div></div>
+</div>
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: Peak &amp; Leverage</h2>
+  <div class="sub">Filed Feb 2022 | Employees: 10,400 &rarr; 21,000+ (+102%) | Units: ~244K &rarr; ~425K (+74%) | GPU: $3,656 &rarr; $3,473</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"A leading" upgraded to "the leading" -- most significant language change</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "Carvana is a leading e-commerce platform for buying and selling used cars."</blockquote><blockquote>FY2021: "Carvana is the leading e-commerce platform for buying and selling used cars."</blockquote>The change from indefinite to definite article is a material claim of market primacy. This language persisted through all subsequent filings including the near-death period.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Inventory 25K&rarr;71K; IRCs 9&rarr;14; recon capacity 600K&rarr;800K</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Website inventory nearly tripled from "over 25,000" to "over 71,000 total website units." IRC count jumped from 9 (FY2020 disclosed 11, but 9 in FY2019) to 14. Reconditioning capacity reached 800,000 vehicles per year. Markets expanded to 311 covering 81.0% of U.S. population. Cumulative vehicles sold crossed 1 million.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Debt escalation: $1.1B&rarr;$2.4B in senior unsecured notes</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Senior unsecured notes grew from $1.1B to $2.4B. Two new issuances: $600M (March 2021) and $750M (August 2021). Short-term revolving facilities grew from $2.25B to $4.3B capacity with $2.1B outstanding. The leverage that would fuel the 2022 crisis was being built.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Priority language unchanged: "rapidly scale vehicle unit sales"</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"Our primary goal is to rapidly scale vehicle unit sales by focusing on delivering an unparalleled customer experience."</blockquote>This exact sentence appeared identically in FY2018, FY2019, FY2020, and FY2021. The growth-at-all-costs mandate remained unchanged through the peak.</div></div>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: ADESA &amp; Crisis</h2>
+  <div class="sub">Filed Feb 2023 | Employees: 21,000+ &rarr; ~17,000 | Units: ~425K &rarr; ~412K (-3%) | GPU: $3,473 &rarr; $3,022</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ADESA acquisition: $2.2B for 56 auction sites</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"On May 9, 2022, we completed the acquisition of 100% of the equity interests in the U.S. physical auction business of ADESA U.S. Auction, LLC ('ADESA') from KAR Auction Services, Inc. ('KAR') for approximately $2.2 billion in cash."</blockquote>The acquisition included "56 auction sites throughout the U.S. with 6.5 million square feet of buildings on more than 4,000 acres of land." This would produce an $847M goodwill impairment by year-end.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Priority language rewritten: growth&rarr;efficiency</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2021: <blockquote>"Our primary goal is to rapidly scale vehicle unit sales by focusing on delivering an unparalleled customer experience."</blockquote>FY2022: <blockquote>"During current macroeconomic uncertainty, our highest priority remains to provide exceptional customer experiences while increasing operating efficiency."</blockquote>Also: <blockquote>"In 2022, as a result of changes in the economy, the market, and the industry, we shifted our priorities to focus on driving profitability through operating efficiency and reducing expenses."</blockquote>The word "rapidly" disappeared. "Scale" replaced by "efficiency." Four years of identical growth language replaced in a single filing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"In the long-term" qualifiers added throughout</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Multiple growth strategy sentences received "in the long-term" qualifiers: "In the long-term, we will continue to make significant investments." "In the long-term, we intend to grow our logistics network." "In the long-term, we plan to continue to expand our population coverage." These hedges signal short-term survival mode.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Still claimed "second largest" despite first unit decline</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"Since launching Carvana ten years ago, our growth strategy has vaulted us to being the second largest used automotive retailer in the U.S. for the year ended December 31, 2022."</blockquote>Despite the first-ever unit decline and mounting losses, the ranking claim was retained. This would be downgraded in the next filing.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors &amp; Capital Structure</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">$847M goodwill impairment; Tax Asset Preservation Plan; short squeeze risk added</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"During the year ended December 31, 2022, we recorded a non-cash goodwill impairment charge of $847 million."</blockquote>New risk factors: Tax Asset Preservation Plan adopted to protect NOL carryforwards -- a distress signal. Short squeeze risk added: <blockquote>"A 'short squeeze' due to a sudden increase in demand for shares of our Class A common stock that largely exceeds supply has led to, and may continue to lead to, extreme price volatility."</blockquote>Stock had traded as low as $3.50.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Recon capacity 800K&rarr;1.1M (from ADESA); inventory dropped 71K&rarr;63K</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Despite the crisis, reconditioning capacity increased from ~800K to ~1.1M due to ADESA sites. But inventory was being reduced: 71,000 to 63,000 total website units. The 150-point inspection process was simplified to just "our inspection process" -- removing the specific number.</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: Near-Death</h2>
+  <div class="sub">Filed Feb 2024 | Employees: ~17,000 | Units: ~412K &rarr; ~313K (-24%) | GPU: $3,022 &rarr; $5,511</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Ranking downgraded: "second largest" &rarr; "one of the largest"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2022: <blockquote>"our growth strategy has vaulted us to being the second largest used automotive retailer in the U.S."</blockquote>FY2023: <blockquote>"our vertically integrated, customer-centered offering has enabled us to become one of the largest used automotive retailers in the U.S."</blockquote>The specific ranking claim was dropped. "Vaulted us to being" replaced by "enabled us to become." The confidence of the growth era language was gone.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Rapidly decrease expenses" -- the survival language</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"Throughout 2023, we have sought to rapidly decrease expenses while optimizing for volume flexibility to adjust the business to changes in unit sales."</blockquote>Units fell 24% to 312,847. Inventory halved from 63K to 33K. The word "rapidly" returned -- but now applied to cost-cutting, not growth. Same urgency, opposite direction.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Network logistics qualifier: "allow us to offer" &rarr; "when fully utilized, could allow us to offer almost"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2022: <blockquote>"Our logistics capabilities allow us to offer every car in our inventory to customers across all of our markets."</blockquote>FY2023: <blockquote>"Our logistics capabilities, when fully utilized, could allow us to offer almost every car in the Carvana inventory to customers across all of our markets."</blockquote>Three hedges added in a single sentence: "when fully utilized," "could," and "almost." The network was no longer fully operational.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Same-day delivery in certain markets; recon capacity 1.1M&rarr;1.3M</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">"Next day" delivery upgraded to "as soon as same day deliveries, depending on the market." Reconditioning capacity increased to 1.3M despite unit declines -- ADESA buildout continuing. 38 vending machines disclosed (static from prior year). Vending machines appeared in 38 markets, down from the expansion pace of earlier years.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Debt &amp; Capital</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Debt exchange: unsecured&rarr;secured; ATM equity program</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The debt exchange converted senior unsecured notes to secured debt, subordinating existing creditors. An at-the-market (ATM) equity program was established, allowing dilutive share issuance to raise capital. These are distress-level capital structure actions. No going concern language was filed despite the stock trading near $3.50.</div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: Recovery &amp; Rewrite</h2>
+  <div class="sub">Filed Feb 2025 | Employees: ~17,000 &rarr; 17,400+ | Units: ~313K &rarr; ~416K (+33%) | GPU: $5,511 &rarr; $6,908</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Complete business section restructure: story format &rarr; operational format</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The entire Business section was rewritten. FY2023 retained the original format from IPO era: Industry Background, What Auto Consumers Want, Carvana's Solution, Strengths & Competitive Advantages. FY2024 replaced this with an operational format: Vehicle Acquisition, Inspection and Reconditioning, Online Search and Shopping, Financing, Complementary Products, Nationwide Logistics Network. The evangelistic story-driven growth company format was replaced by a mature operational description. The "Industry Background & Market Opportunity" section -- which had run unchanged since FY2018 -- was eliminated entirely.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI first mentioned in Technology section</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2024 added a new technology bullet: <blockquote>"artificial intelligence technology used to power chatbots that streamline customer communication paths and assist customers and customer advocates in navigating the purchase process, to improve internal work efficiencies, and to enhance our recruitment and hiring processes"</blockquote>AI did not appear in any prior filing's Business section.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Named competitors listed for the first time: CarMax, Amazon, Tesla, etc.</span><span class="tag tag-new">New</span></div><div class="finding-body">Prior filings used only generic categories (franchised dealerships, independent dealerships, online dealerships/marketplaces). FY2024 named specific competitors for the first time: <blockquote>"traditional used vehicle dealerships such as CarMax; internet and online automotive sites, such as Amazon, Autobytel, AutoTrader, Cars, Carfax, CarGurus, eBay Motors, Edmunds, Google, KBB, and TrueCar; providers of offline, membership-based car-buying services such as the Costco Auto Program; automobile manufacturers such as Ford, General Motors, Toyota, Volkswagen, Tesla, Rivian, and Lucid"</blockquote>Shift Technologies and Vroom -- both now defunct -- were not listed.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Priority language: "profitability" through "profitable growth"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"In 2022 and 2023, as a result of changes in the economy, the market, and the industry, we shifted our focus to driving profitability through fundamental operating efficiency. We believe these profitability initiatives allowed us to deliver substantial cost efficiency improvements and build a strong operational foundation for future growth. Throughout 2024, we remained focused on driving operational efficiency and profitability while also shifting towards the long-term phase of driving profitable growth."</blockquote>The priority evolution is explicit: profitability first, then profitable growth. The word "profitability" appears 4 times in this paragraph.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"History of losses" risk factor removed; Government Regulation section expanded</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The risk factor "We have a history of losses and we may not achieve or maintain profitability in the future" appeared in every filing from FY2018 through FY2023. It was removed in FY2024. Simultaneously, a new "Government Regulation" section was added to the Business section for the first time, covering federal, state, and municipal regulators, dealer licensing, installment sales licenses, and environmental laws.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ADESA: 6 sites converted to IRCs; ~1% market share disclosed</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"Six of these ADESA auction sites have been built out to provide IRC capabilities, and the remaining sites provide continued potential for further growth."</blockquote>Market share quantified for the first time: <blockquote>"Carvana currently holds only approximately 1% of the market share."</blockquote>Reconditioning capacity reached "more than 1 million cars per year." Inventory recovered to 53K.</div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Full Recovery</h2>
+  <div class="sub">Filed Feb 2026 | Employees: 17,400+ &rarr; 23,100+ (+33%) | Units: ~416K &rarr; ~597K (+44%) | GPU: $6,908 &rarr; $7,026</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Record 597K units; $20.4B revenue; GAAP net income with 9.3% margin</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Cumulative vehicles sold: 2.2M (FY2024) to 2.8M (FY2025). Revenue: $63.7B cumulative (FY2024) to $84.1B (FY2025), meaning $20.4B in FY2025 alone. Units surpassed the prior peak of ~425K by 40%. GAAP profitability achieved for the first time.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Digital auction platform" added to vehicle acquisition</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2024: <blockquote>"We primarily acquire our used vehicle inventory directly from customers, used car auctions, and wholesale used vehicle suppliers"</blockquote>FY2025: <blockquote>"We primarily acquire our used vehicle inventory directly from customers, used car auctions, including by use of our growing digital auction platform, and wholesale used vehicle suppliers"</blockquote>The digital auction platform represents the ADESA transformation from physical auction liability to digital technology asset.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">16 ADESA sites converted (from 6); recon capacity 1M&rarr;1.5M</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2024: "Six of these ADESA auction sites have been built out to provide IRC capabilities." FY2025: <blockquote>"As of December 31, 2025, 16 of these ADESA auction sites have been built out to provide IRC capabilities, and the remaining sites provide continued potential for further growth."</blockquote>Also new: "We are integrating ADESA sites to combine retail and wholesale capabilities within single locations over time." Reconditioning capacity increased from "more than 1 million" to "approximately 1.5 million cars per year."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Market share ~1%&rarr;~1.6%; inventory 53K&rarr;75K; employees 17.4K&rarr;23.1K</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Market share increased from ~1% to ~1.6%. Inventory nearly recovered to peak levels at 75,000 total website units (vs. 71K at peak). Employees grew 33% to over 23,100. 39 vending machines unchanged. Licensed facilities expanded from 39 states to 40 states. Sales finance licenses from 31 to 33 states.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Priority language: "profitable growth" with new operational detail</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"Throughout 2025, we remained focused on profitable growth and fundamental operating efficiency, balancing long-term benefits of scale with the continued opportunities we see to further enhance customer experiences."</blockquote>Also new: <blockquote>"We continue to prioritize initiatives that raise conversion, improve delivery speed, and streamline customer support, each of which we believe reinforces brand trust and drives sustained demand."</blockquote>The filing now describes specific operational levers rather than abstract strategic priorities.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Develop New Products" expanded to "Develop New Products and Expand Lines of Business"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2024: "Develop New Products." FY2025: <blockquote>"Develop New Products and Expand Lines of Business"</blockquote>Also added: "partnerships with celebrities" to brand development strategies. Subtle expansion signals: the company is looking beyond its core used car retail model.</div></div>
+</div>
+
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-priority" style="margin-top:56px">
+  <div class="section-header"><h2>Signal #1: Priority Language Arc</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">1</span> Filed Priority Statement by Year</h3>
+    <p>The opening priority statement in the Strengths/Growth Strategies section changed each year, encoding management's shifting focus.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Exact Priority Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-21</td><td>"Our primary goal is to <strong>rapidly scale vehicle unit sales</strong> by focusing on delivering an unparalleled customer experience."</td><td>Growth at all costs</td></tr>
+        <tr><td>FY2022</td><td>"During current macroeconomic uncertainty, our highest priority remains to provide exceptional customer experiences while <strong>increasing operating efficiency</strong>."</td><td>Efficiency pivot</td></tr>
+        <tr><td>FY2023</td><td>"During the current macroeconomic uncertainty... our highest priority will continue to be providing exceptional customer experiences while <strong>improving efficiency</strong> and maximizing our infrastructure"</td><td>Efficiency + survival</td></tr>
+        <tr><td>FY2024</td><td>"Throughout 2024, we remained focused on driving operational efficiency and <strong>profitability</strong> while also shifting towards the long-term phase of driving <strong>profitable growth</strong>."</td><td>Profitability declared</td></tr>
+        <tr><td>FY2025</td><td>"Throughout 2025, we remained focused on <strong>profitable growth</strong> and fundamental operating efficiency"</td><td>Growth returns -- qualified by profitability</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Each rewording preceded the operational shift by one reporting cycle. The arc: rapidly scale &rarr; efficiency &rarr; profitability &rarr; profitable growth.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-units">
+  <div class="section-header"><h2>Signal #2: Unit Trajectory</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Retail Units Sold</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Units</th><th>YoY</th><th>Filing Context</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>~94K</td><td>--</td><td>"rapidly scale" (identical for 4 years)</td></tr>
+        <tr><td>FY2019</td><td>~177K</td><td class="val-pos">+89%</td><td>"third largest retailer"</td></tr>
+        <tr><td>FY2020</td><td>~244K</td><td class="val-pos">+38%</td><td>"second largest retailer"</td></tr>
+        <tr><td>FY2021</td><td>~425K</td><td class="val-pos">+74%</td><td>"the leading" (from "a leading")</td></tr>
+        <tr><td>FY2022</td><td>~412K</td><td class="val-neg">-3%</td><td>First decline; "efficiency" priority</td></tr>
+        <tr><td>FY2023</td><td>~313K</td><td class="val-neg">-24%</td><td>"rapidly decrease expenses"</td></tr>
+        <tr><td>FY2024</td><td>~416K</td><td class="val-pos">+33%</td><td>"profitable growth"</td></tr>
+        <tr><td>FY2025</td><td>~597K</td><td class="val-pos">+44%</td><td>Record units; GAAP net income</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-self">
+  <div class="section-header"><h2>Signal #3: Self-Description Ranking</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> How Carvana Described Itself</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Opening Line</th><th>Ranking Claim</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>"Carvana is <strong>a leading</strong> e-commerce platform"</td><td>No specific rank</td></tr>
+        <tr><td>FY2019</td><td>"Carvana is <strong>a leading</strong> e-commerce platform"</td><td>"third largest used automotive retailer"</td></tr>
+        <tr><td>FY2020</td><td>"Carvana is <strong>a leading</strong> e-commerce platform"</td><td>"second largest used automotive retailer"</td></tr>
+        <tr><td>FY2021</td><td>"Carvana is <strong>the leading</strong> e-commerce platform"</td><td>"second largest used automotive retailer"</td></tr>
+        <tr><td>FY2022</td><td>"Carvana is <strong>the leading</strong> e-commerce platform"</td><td>"second largest used automotive retailer"</td></tr>
+        <tr><td>FY2023</td><td>"Carvana is <strong>the leading</strong> e-commerce platform"</td><td class="val-neg">"one of the largest used automotive retailers"</td></tr>
+        <tr><td>FY2024</td><td>"Carvana is <strong>the leading</strong> e-commerce platform"</td><td>"one of the largest and fastest growing"</td></tr>
+        <tr><td>FY2025</td><td>"Carvana is <strong>the leading</strong> e-commerce platform"</td><td>"one of the largest and fastest growing"</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">"The leading" (definite article) was adopted in FY2021 and never reverted, even during the near-death period. But the specific ranking ("second largest") was downgraded to "one of the largest" in FY2023 and never restored, even after surpassing peak unit volumes.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-adesa">
+  <div class="section-header"><h2>Signal #4: ADESA Integration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> ADESA: From Acquisition to Asset</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>ADESA Language</th><th>Sites Converted</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>"$2.2 billion in cash... 56 auction sites... 6.5M sq ft... 4,000+ acres"</td><td>0</td><td>Acquisition + $847M goodwill impairment</td></tr>
+        <tr><td>FY2023</td><td>"56 auction sites throughout the U.S., which enhance our customer offering"</td><td>0 (implied)</td><td>Framed as logistics benefit</td></tr>
+        <tr><td>FY2024</td><td>"Six of these ADESA auction sites have been built out to provide IRC capabilities"</td><td class="val-pos">6</td><td>First conversion disclosure</td></tr>
+        <tr><td>FY2025</td><td>"16 of these ADESA auction sites have been built out to provide IRC capabilities... growing digital auction platform"</td><td class="val-pos">16</td><td>Digital auction platform; integrating retail + wholesale</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The ADESA arc: $2.2B acquisition &rarr; $847M impairment &rarr; 6 sites converted &rarr; 16 sites converted + digital auction platform. The asset that nearly destroyed the company is now a growth engine providing 1.5M annual reconditioning capacity.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-debt">
+  <div class="section-header"><h2>Signal #5: Debt Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Senior Unsecured Notes &amp; Capital Structure</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Senior Notes</th><th>Short-term Facilities</th><th>Key Event</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>$350M</td><td>$650M capacity</td><td>First debt issuance (Sep 2018)</td></tr>
+        <tr><td>FY2019</td><td>$600M</td><td>$1.6B capacity</td><td>Second issuance</td></tr>
+        <tr><td>FY2020</td><td>$1.1B</td><td>$2.25B capacity</td><td>Oct 2020: $1.1B due 2025/2028</td></tr>
+        <tr><td>FY2021</td><td>$2.4B</td><td>$4.3B capacity ($2.1B outstanding)</td><td>Mar + Aug 2021: $1.35B more</td></tr>
+        <tr><td>FY2022</td><td class="val-neg">~$6.6B total long-term</td><td>Multiple facilities</td><td>ADESA financed; Tax Asset Preservation Plan</td></tr>
+        <tr><td>FY2023</td><td class="val-neg">Exchange: unsecured &rarr; secured</td><td>ATM equity program</td><td>Debt restructuring; near-death</td></tr>
+        <tr><td>FY2024-25</td><td>Deleveraging</td><td>Normalized</td><td>GAAP profitability; recovery</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-inventory">
+  <div class="section-header"><h2>Signals #6-7: Inventory &amp; Vehicle Acquisition Source</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">6</span> Inventory Trajectory</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Website Units</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>14,000+</td><td>--</td></tr>
+        <tr><td>FY2019</td><td>25,000+</td><td class="val-pos">+79%</td></tr>
+        <tr><td>FY2020</td><td>~35,000</td><td class="val-pos">+40%</td></tr>
+        <tr><td>FY2021</td><td>71,000+</td><td class="val-pos">+103%</td></tr>
+        <tr><td>FY2022</td><td>63,000+</td><td class="val-neg">-11%</td></tr>
+        <tr><td>FY2023</td><td>33,000+</td><td class="val-neg">-48%</td></tr>
+        <tr><td>FY2024</td><td>53,000+</td><td class="val-pos">+61%</td></tr>
+        <tr><td>FY2025</td><td>75,000+</td><td class="val-pos">+42%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Vehicle Acquisition Source Ordering</h3>
+    <p>The first-named acquisition source reveals management's primary channel.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>First-Named Source</th><th>Exact Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>Auctions</td><td>"We acquire the <strong>substantial majority</strong> of our used vehicle inventory through the large and liquid national used-car auction market."</td></tr>
+        <tr><td>FY2019</td><td>Auctions (co-equal)</td><td>"We <strong>primarily</strong> acquire our used vehicle inventory through the... auction market <strong>and directly from customers</strong>"</td></tr>
+        <tr><td>FY2020-21</td><td class="val-highlight">Customers</td><td>"We primarily acquire our used vehicle inventory <strong>directly from customers</strong> when they trade in or sell us their vehicles and through the... auction market."</td></tr>
+        <tr><td>FY2022-23</td><td class="val-highlight">Customers</td><td>Same ordering retained through crisis</td></tr>
+        <tr><td>FY2024-25</td><td class="val-highlight">Customers</td><td>"We primarily acquire our used vehicle inventory <strong>directly from customers</strong>, used car auctions... and wholesale used vehicle suppliers"</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The reversal happened in FY2020 and was never reversed. Customer-sourced vehicles eliminate auction fees and provide more diverse inventory. By FY2025, "digital auction platform" was added as a qualifier to the auction channel.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-gpu">
+  <div class="section-header"><h2>Signals #8-10: Employees, Vending Machines, GPU</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">8</span> Employee Count</h3>
+    <table class="data-table">
+      <thead><tr><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+      <tbody>
+        <tr><td>3,879</td><td>7,324</td><td>10,400+</td><td>21,000+</td><td class="val-neg">~17,000</td><td class="val-neg">~17,000</td><td>17,400+</td><td class="val-pos">23,100+</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:8px">Employees peaked at 21K+ (FY2021), fell to ~17K during the crisis, then recovered to 23K+ by FY2025 -- surpassing the prior peak.</p>
+  </div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">9</span> Vending Machines: Central Story &rarr; Static Asset</h3>
+    <p>Vending machines were a central element of the early Carvana growth narrative. FY2018-FY2021 filings described them extensively as growth drivers and brand-building tools. By FY2024-25, the count plateaued at 39 and they were described in purely operational terms.</p>
+    <table class="data-table">
+      <thead><tr><th>Era</th><th>Count</th><th>Filing Treatment</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-19</td><td>Growing</td><td>Central to growth narrative; "patented"; "exciting pick-up experience"; "meaningful increase" in market penetration</td></tr>
+        <tr><td>FY2020-21</td><td>~33</td><td>Still prominently featured; "build vending machines in many of the metropolitan markets that we serve"</td></tr>
+        <tr><td>FY2022-23</td><td>38-39</td><td>"In the long-term, we intend to grow"; growth hedged</td></tr>
+        <tr><td>FY2024-25</td><td>39</td><td>Static count; purely operational description; no expansion plans mentioned</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="signal-card full">
+    <h3><span class="num">10</span> GPU Trajectory: The Recovery Metric</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Total GPU</th><th>YoY</th><th>Context</th></tr></thead>
+      <tbody>
+        <tr><td>FY2019</td><td>$2,852</td><td>--</td><td>Growth phase</td></tr>
+        <tr><td>FY2020</td><td>$3,656</td><td class="val-pos">+28%</td><td>COVID pricing benefit</td></tr>
+        <tr><td>FY2021</td><td>$3,473</td><td class="val-neg">-5%</td><td>Peak volume, margin compression</td></tr>
+        <tr><td>FY2022</td><td>$3,022</td><td class="val-neg">-13%</td><td>Crisis year</td></tr>
+        <tr><td>FY2023</td><td>$5,511</td><td class="val-pos">+82%</td><td>Efficiency gains; volume sacrifice</td></tr>
+        <tr><td>FY2024</td><td>$6,908</td><td class="val-pos">+25%</td><td>Recovery with profitability</td></tr>
+        <tr><td>FY2025</td><td>$7,026</td><td class="val-pos">+2%</td><td>Record GPU; volume + margin</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">GPU improvement drove profitability even before units recovered. The $5,511 GPU in FY2023 (at only 313K units) demonstrated that the efficiency pivot was working. By FY2025, GPU exceeded $7,000 at record volume -- the combination that produced GAAP net income.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-structure">
+  <div class="section-header"><h2>Signal #11: Business Section Structure</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">11</span> From Evangelistic Story to Operational Maturity</h3>
+    <table class="data-table">
+      <thead><tr><th>Era</th><th>Section Structure</th><th>Format</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-23</td><td>Industry Background & Market Opportunity; Exceptionally Large and Fragmented Market; The Way Consumers Buy Cars Is Changing; What Auto Consumers Want; Carvana's Solution; Strengths & Competitive Advantages; Our Growth Strategies</td><td>Story-driven: educate reader on market opportunity, then explain Carvana's solution</td></tr>
+        <tr><td>FY2024-25</td><td>Vehicle Acquisition; Inspection and Reconditioning; Online Search and Shopping; Financing; Complementary Products; Nationwide Logistics Network; Post-sale Customer Support; Strengths and Competitive Advantages; Business and Growth Strategies</td><td>Operational: describe what the company does, in operational order</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The FY2023 filing retained the IPO-era format that had been used for 6 years. The FY2024 filing eliminated the entire "Industry Background & Market Opportunity" section -- including the consumer pain points, market size data, and disruption narrative that had been the filing's opening argument since inception. This is the structural signature of a company that no longer needs to explain itself.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-competition">
+  <div class="section-header"><h2>Signal #12: Competition Section</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">12</span> From Generic to Named Competitors</h3>
+    <table class="data-table">
+      <thead><tr><th>Era</th><th>Competition Format</th><th>Named Companies</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-23</td><td>Generic categories only</td><td>"franchised dealerships -- 37%; independent dealerships -- 63%; online dealerships/marketplaces"</td></tr>
+        <tr><td>FY2024-25</td><td>Named competitors</td><td>CarMax, Amazon, AutoTrader, CarGurus, eBay Motors, Google, Costco Auto Program, Ford, GM, Toyota, Tesla, Rivian, Lucid</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Shift Technologies and Vroom -- both of which were e-commerce used car competitors -- are absent from the FY2024-25 lists. Both companies ceased operations. Their removal from the competitive landscape is itself a signal of Carvana's survival advantage.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-profitability">
+  <div class="section-header"><h2>Signal #13: Profitability Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">13</span> "History of Losses" Risk Factor Arc</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Risk Factor Present?</th><th>Exact Title</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>Yes</td><td>"We have a history of losses and we may not achieve or maintain profitability in the future."</td></tr>
+        <tr><td>FY2019</td><td>Yes</td><td>Identical</td></tr>
+        <tr><td>FY2020</td><td>Yes</td><td>Identical</td></tr>
+        <tr><td>FY2021</td><td>Yes</td><td>Identical</td></tr>
+        <tr><td>FY2022</td><td>Yes</td><td>Identical</td></tr>
+        <tr><td>FY2023</td><td>Yes</td><td>Identical</td></tr>
+        <tr><td>FY2024</td><td class="val-pos">Removed</td><td>--</td></tr>
+        <tr><td>FY2025</td><td class="val-pos">Removed</td><td>--</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">This risk factor appeared identically for six consecutive years (FY2018-FY2023). Its removal in FY2024 coincided with the filing that first disclosed "profitable growth" as a priority. By FY2025, GAAP net income made the risk factor factually obsolete.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-recon">
+  <div class="section-header"><h2>Signals #14-15: Reconditioning Capacity &amp; Market Share</h2></div>
+
+  <div class="signal-card full" style="margin-bottom:20px">
+    <h3><span class="num">14</span> Reconditioning Capacity</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>IRCs</th><th>Capacity</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>5</td><td>~250K</td><td>--</td></tr>
+        <tr><td>FY2019</td><td>7</td><td>~350K</td><td class="val-pos">+40%</td></tr>
+        <tr><td>FY2020</td><td>11</td><td>~600K</td><td class="val-pos">+71%</td></tr>
+        <tr><td>FY2021</td><td>14</td><td>~800K</td><td class="val-pos">+33%</td></tr>
+        <tr><td>FY2022</td><td>14 + 56 ADESA</td><td>~1.1M</td><td class="val-pos">+38%</td></tr>
+        <tr><td>FY2023</td><td>Reconditioning centers + ADESA</td><td>~1.3M</td><td class="val-pos">+18%</td></tr>
+        <tr><td>FY2024</td><td>Reconditioning Sites</td><td>1M+</td><td>Restated metric</td></tr>
+        <tr><td>FY2025</td><td>Reconditioning Sites</td><td>~1.5M</td><td class="val-pos">+50%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="signal-card full">
+    <h3><span class="num">15</span> Market Share</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Market Share</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-23</td><td>Not disclosed</td><td>--</td></tr>
+        <tr><td>FY2024</td><td class="val-highlight">~1%</td><td>"Carvana currently holds only approximately 1% of the market share"</td></tr>
+        <tr><td>FY2025</td><td class="val-highlight">~1.6%</td><td>"Carvana currently has an estimated market share of only approximately 1.6%"</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Market share was not disclosed in any filing before FY2024. Its introduction coincides with the operational rewrite and recovery narrative. The "only" qualifier positions 1.6% as small relative to the ~37M annual used vehicle transactions, emphasizing remaining growth opportunity.</p>
+  </div>
+</div>
+
+
+<!-- ==================== CROSS-CUTTING THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>The Full Cycle</h3>
+      <p>Units: 94K &rarr; 425K &rarr; 312K &rarr; 597K. Revenue: $1.96B &rarr; $13.6B &rarr; $10.8B &rarr; $20.4B. The filing language tracks the arc from hypergrowth through near-death to recovery. "Rapidly scale" became "rapidly decrease expenses" became "profitable growth." Same word, opposite direction, same company.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Priority Rewrite</h3>
+      <p>Filed priority statement changed each year from "rapidly scale" (FY2018-21) to "efficiency" (FY2022) to "profitability" (FY2023-24) to "profitable growth" (FY2024-25). Each rewording preceded the operational shift. The filing language was a leading indicator of strategic direction.</p>
+    </div>
+    <div class="signal-card">
+      <h3>ADESA: From Liability to Asset</h3>
+      <p>$2.2B acquisition with $847M goodwill impairment in FY2022. By FY2025: 16 sites converted to IRCs, "digital auction platform" introduced, reconditioning capacity reached 1.5M. The acquisition that nearly destroyed the company became its infrastructure advantage.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Business Section Transformation</h3>
+      <p>FY2023 filing retained the IPO-era format: industry education, consumer pain points, disruption narrative. FY2024 replaced this with operational description: vehicle acquisition, reconditioning, logistics, technology. Story-driven growth company format replaced by mature operational format. The company no longer needed to explain its market opportunity.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Debt Restructuring Arc</h3>
+      <p>Senior unsecured notes grew from $350M (FY2018) to ~$6.6B (FY2022), then exchanged to secured. Tax Asset Preservation Plan adopted FY2022 (distress signal). ATM equity program in FY2023. No going concern language filed despite stock at $3.50. The capital structure survived without bankruptcy.</p>
+    </div>
+    <div class="signal-card">
+      <h3>GPU as the Recovery Metric</h3>
+      <p>$2,852 (FY2019) &rarr; $3,022 (FY2022) &rarr; $5,511 (FY2023) &rarr; $7,026 (FY2025). GPU improvement drove profitability even before units recovered. The FY2023 GPU of $5,511 at only 313K units proved the efficiency pivot was working. By FY2025, GPU exceeded $7,000 at record volume -- the combination that produced GAAP net income.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Retail Units</strong></td><td>~94K</td><td>~177K</td><td>~244K</td><td>~425K</td><td>~412K</td><td>~313K</td><td>~416K</td><td>~597K</td>
+      </tr>
+      <tr>
+        <td>Units YoY</td><td>--</td><td class="val-pos">+89%</td><td class="val-pos">+38%</td><td class="val-pos">+74%</td><td class="val-neg">-3%</td><td class="val-neg">-24%</td><td class="val-pos">+33%</td><td class="val-pos">+44%</td>
+      </tr>
+      <tr>
+        <td><strong>Revenue</strong></td><td>$1.96B</td><td>$3.94B</td><td>$5.59B</td><td>$12.81B</td><td>$13.60B</td><td>$10.77B</td><td>$13.67B</td><td>$20.41B</td>
+      </tr>
+      <tr>
+        <td><strong>Total GPU</strong></td><td>$2,219</td><td>$2,852</td><td>$3,656</td><td>$3,473</td><td>$3,022</td><td class="val-pos">$5,511</td><td class="val-pos">$6,908</td><td class="val-pos">$7,026</td>
+      </tr>
+      <tr>
+        <td><strong>Inventory (Website)</strong></td><td>14K+</td><td>25K+</td><td>~35K</td><td>71K+</td><td>63K+</td><td class="val-neg">33K+</td><td>53K+</td><td>75K+</td>
+      </tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>3,879</td><td>7,324</td><td>10,400+</td><td>21,000+</td><td>~17,000</td><td>~17,000</td><td>17,400+</td><td>23,100+</td>
+      </tr>
+      <tr>
+        <td><strong>Markets</strong></td><td>85</td><td>146</td><td>266</td><td>311</td><td>~316</td><td>316</td><td>316</td><td>316</td>
+      </tr>
+      <tr>
+        <td><strong>Recon Capacity</strong></td><td>~250K</td><td>~350K</td><td>~600K</td><td>~800K</td><td>~1.1M</td><td>~1.3M</td><td>1M+</td><td>~1.5M</td>
+      </tr>
+      <tr>
+        <td><strong>Vending Machines</strong></td><td>Growing</td><td>Growing</td><td>~33</td><td>~33</td><td>~38</td><td>38</td><td>39</td><td>39</td>
+      </tr>
+      <tr>
+        <td><strong>Market Share</strong></td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>~1%</td><td>~1.6%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for Carvana Co. (CIK 0001690820)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>

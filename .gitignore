@@ -1,0 +1,17 @@
+*/raw/
+*/sections/
+*_full.txt
+extract_sections.py
+*/extract_sections.py
+analysis.json
+test.json
+*.pyc
+__pycache__/
+*-Copy.html
+*-dark.html
+*-sonnet.html
+*-other-instance.html
+*.md
+.claude/
+*Copy*.html
+build_dashboard.py

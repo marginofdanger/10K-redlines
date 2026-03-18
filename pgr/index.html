@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGR 10-K Redline Analysis | FY2018-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header - the year-over-year title bars */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+  /* signal-grid already 1fr */
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>PGR 10-K REDLINES</h1>
+    <div class="sub">FY2018 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-96cr">96 Combined Ratio</a>
+  <a class="nav-item" href="#sig-priorities">Investment Priority Order</a>
+  <a class="nav-item" href="#sig-ai">AI/Technology Risk</a>
+  <a class="nav-item" href="#sig-distribution">Distribution Channel Shift</a>
+  <a class="nav-item" href="#sig-property">Property Integration</a>
+  <a class="nav-item" href="#sig-propclaims">Property Claims Staffing</a>
+  <a class="nav-item" href="#sig-reinsurance">RL Expense / Reinsurance</a>
+  <a class="nav-item" href="#sig-retention">Reinsurance Retention</a>
+  <a class="nav-item" href="#sig-snapshot">Snapshot/UBI Language</a>
+  <a class="nav-item" href="#sig-climate">Climate/ESG Language</a>
+  <a class="nav-item" href="#sig-esg-invest">ESG Investment Language</a>
+  <a class="nav-item" href="#sig-di">D&amp;I Disclosure Retreat</a>
+  <a class="nav-item" href="#sig-cl">Commercial Lines Ebb</a>
+  <a class="nav-item" href="#sig-npw">NPW Growth &amp; Scale</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>Progressive Corporation 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings reveals strategic pivots, underwriting discipline signals, distribution shifts, and AI risk language evolution invisible to surface-level reading.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0000080661) | Fiscal Years 2018-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Destination Era Expands</h3>
+    <p>BOP launched (GL + property for small biz). TNC hits 7% of CL. Next-gen products for PL and CL. ARX buyout accelerated. HQX: 4&rarr;14 states. Rating factor restrictions emerge. Direct hits 51%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>COVID &amp; Modernization</h3>
+    <p>COVID dominates. SEC human capital disclosure added. ESG/climate language first appears. Reinsurance restructured (ASL ended). Snapshot ProView for CL. ARX 100% acquired. HQX: 14&rarr;23 states. BOP: 8&rarr;17 states.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>Post-COVID Acceleration</h3>
+    <p>Protective Insurance acquired. WC/fleet added. HQX rollout to nearly all states. Climate language upgraded from "may" to "have been." ESG investment risk factor added. Headcount +13%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>The Inflationary Shock</h3>
+    <p>Vision statement and four pillars formalized. TNC at 10% of CL. Combined ratio under pressure from severity. Investment total return -$4.3B. Diversity metrics first disclosed. ESG investment language strengthened.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>Rate-Driven Recovery</h3>
+    <p>NPW +21% from rate increases. GenAI risk factor added (standalone). Commercial Lines pulled back (18%&rarr;16% of NPW). NAIC AI model bulletin first cited. Patents for chatbots added.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>Structural Integration</h3>
+    <p>Property folded into Personal Lines. "Profitability takes precedence over growth" added to 96 CR language. P/S regulatory relief (3.5:1). GenAI risk expanded. Direct hits 55%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>The AI &amp; Efficiency Pivot</h3>
+    <p>"Agentic AI" added. ESG&rarr;"Sustainability". D&amp;I demographics removed. Embedded renters insurance. Platinum agents decline -15%. Direct hits 57%. RL expense model 9.0. NPW $83.2B.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES (ALL INLINE) ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Destination Era Expands</h2>
+  <div class="sub">Filed Feb 2019 | Headcount: 37,346 &rarr; 41,571 (+11%) | NPW: $32.6B &rarr; $37.6B (+15%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">BOP insurance launched in 8 states -- CL expanded beyond auto into GL and property</span><span class="tag tag-new">New</span></div><div class="finding-body">Progressive launched its BusinessOwners Policy (BOP) in 8 states, expanding Commercial Lines beyond auto into general liability and property coverage for small businesses. This marked a significant diversification of the CL product suite and laid the groundwork for broader small-business offerings.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">TNC business detailed for first time: 7% of CL NPW; Uber in 13 states, Lyft in 3</span><span class="tag tag-new">New</span></div><div class="finding-body">Transportation Network Company (TNC) insurance was detailed for the first time, comprising <strong>7% of Commercial Lines NPW</strong>. Uber coverage was available in 13 states and Lyft in 3 states. This disclosure revealed the emerging importance of rideshare insurance as a distinct CL sub-segment.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">HQX buy button: 4&rarr;14 states; portfolio quoting: 3&rarr;33 states; Platinum agents: ~3,300&rarr;~3,700</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">HomeQuote Explorer (HQX) buy button expanded from 4 to <strong>14 states</strong>, while portfolio quoting grew dramatically from 3 to <strong>33 states</strong>. Platinum agent count increased from ~3,300 to <strong>~3,700</strong>. These metrics reflected the rapid scaling of Progressive's Destination Era bundling strategy.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Property reporting moved from CFO to PL President -- deeper integration signal</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Property reporting was moved from the CFO to the Personal Lines President, signaling a shift in how Progressive viewed its property business -- less as a financial line item and more as an <strong>integrated component of the personal lines strategy</strong>. This organizational change foreshadowed the eventual absorption of property into PL.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Rating factor restrictions: new paragraph on legislative/regulatory pressure to limit pricing variables</span><span class="tag tag-new">New</span></div><div class="finding-body">A new paragraph was added addressing legislative and regulatory pressure to restrict the use of certain rating factors in insurance pricing. This was an early signal of the growing scrutiny around data-driven pricing practices that would intensify over subsequent years with AI and algorithmic pricing concerns.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vehicle manufacturing companies (Tesla) added as potential competitors</span><span class="tag tag-new">New</span></div><div class="finding-body">Vehicle manufacturers, specifically <strong>Tesla</strong>, were added as potential competitors for the first time. This reflected early recognition that OEMs with direct customer relationships and vehicle data access could enter the insurance market -- a threat that would only grow as connected vehicle technology advanced.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Tariff risk and TNC customer risk profile added to pricing uncertainties</span><span class="tag tag-new">New</span></div><div class="finding-body">New risk language was added around tariff-related cost pressures on auto parts and the unique risk profile of TNC customers. These additions reflected Progressive's growing awareness of macroeconomic and gig-economy factors that could affect loss costs and pricing adequacy.</div></div>
+</div>
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: COVID &amp; Modernization</h2>
+  <div class="sub">Filed Mar 2021 | Headcount: 41,571 &rarr; 43,326 (+4%) | NPW: $37.6B &rarr; $40.6B (+8%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID-19 risk factor section added (entirely new Section VII) with comprehensive pandemic impacts</span><span class="tag tag-new">New</span></div><div class="finding-body">An entirely new Section VII was added to risk factors dedicated to <strong>COVID-19</strong>, covering comprehensive pandemic impacts including operational disruptions, claims frequency changes, investment volatility, and workforce safety. This was the most significant single risk factor addition in the filing's history.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Human Capital section replaces "Employees" line -- diversity, retention 91%, 9 ERGs, Gainshare</span><span class="tag tag-new">New</span></div><div class="finding-body">The simple "Employees" line item was replaced with a full <strong>Human Capital</strong> section, driven by new SEC disclosure requirements. The section detailed employee retention at <strong>91%</strong>, 9 Employee Resource Groups, and the Gainshare profit-sharing program. This marked a significant expansion in workforce-related disclosure.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ARX 100% ownership completed (April 2020); ARX/NCI discussion removed from filing</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Progressive completed its acquisition of <strong>100% ownership of ARX</strong> (American Strategic Insurance) in April 2020. The ARX/non-controlling interest discussion was subsequently removed from the filing, reflecting the simplified corporate structure post-acquisition.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">BOP expanded from 8 to 17 states; Snapshot ProView launched for CL without ELDs</span><span class="tag tag-new">New</span></div><div class="finding-body">The BusinessOwners Policy expanded from 8 to <strong>17 states</strong>, more than doubling its geographic reach. Additionally, <strong>Snapshot ProView</strong> was launched for Commercial Lines, enabling usage-based insurance for commercial vehicles without requiring Electronic Logging Devices (ELDs) -- a significant friction reduction.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Product model development language generalized from "next generation" event to ongoing process</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The language describing product model development shifted from characterizing updates as discrete <strong>"next generation"</strong> events to describing an <strong>ongoing, continuous process</strong>. This subtle change reflected the maturation of Progressive's product development approach from episodic upgrades to continuous improvement.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG/social responsibility language appears for first time -- brand risk, investment risk, stakeholder language</span><span class="tag tag-new">New</span></div><div class="finding-body">ESG and social responsibility language appeared in the 10-K for the <strong>first time</strong>, covering brand risk, investment risk, and broader stakeholder considerations. This marked the beginning of Progressive's ESG disclosure journey that would evolve significantly over subsequent years.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Climate language elevated to risk factor heading: "changing climate conditions may be exacerbating these impacts"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Climate language was elevated from incidental mention to a <strong>risk factor heading</strong>, with the specific language: <blockquote>"changing climate conditions may be exacerbating these impacts"</blockquote>This set the stage for the further escalation in FY2021 when "may" would change to "have been."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">LIBOR/SOFR transition risk factor added</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor was added addressing the <strong>LIBOR-to-SOFR transition</strong>, reflecting the industry-wide shift from the London Interbank Offered Rate to the Secured Overnight Financing Rate. This affected Progressive's investment portfolio and any floating-rate financial instruments.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Work-from-home, ransom payments, cyber insurance (self-insurance sentence removed) risks updated</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Cyber risk language was updated to address <strong>work-from-home vulnerabilities and ransom payment risks</strong>. Notably, a sentence about self-insurance for cyber risk was removed, suggesting Progressive may have obtained external cyber coverage. These changes reflected the rapidly evolving cyber threat landscape during the pandemic.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Financial/Forward Indicators</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Reinsurance fundamentally restructured: ASL ended; aggregate excess of loss introduced; retention $60M&rarr;$80M; Florida coverage $1.8B&rarr;$1.95B</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Progressive's reinsurance program was <strong>fundamentally restructured</strong>. The Aggregate Stop Loss (ASL) program was ended, replaced by an aggregate excess of loss structure. Per-event retention increased from <strong>$60M to $80M</strong>, and Florida catastrophe coverage expanded from <strong>$1.8B to $1.95B</strong>. This shift reflected growing confidence in the balance sheet and a more sophisticated approach to catastrophe risk management.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">HQX: 14&rarr;23 states; portfolio quoting: 33&rarr;46 states + DC; agencies: 35,000+&rarr;40,000+</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">HomeQuote Explorer expanded from 14 to <strong>23 states</strong>, while portfolio quoting grew from 33 to <strong>46 states plus DC</strong>. Total agency count increased from 35,000+ to <strong>40,000+</strong>. These metrics demonstrated continued rapid scaling of the Destination Era distribution infrastructure.</div></div>
+</div>
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: Post-COVID Acceleration</h2>
+  <div class="sub">Filed Mar 2022 | Headcount: 43,326 &rarr; ~49,000 (+13%) | NPW: $40.6B &rarr; $46.4B (+14%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Protective Insurance acquired for ~$338M (workers' comp, fleet commercial auto)</span><span class="tag tag-new">New</span></div><div class="finding-body">Progressive acquired Protective Insurance Corporation, adding workers' compensation and fleet commercial auto to its product portfolio. This marked a significant expansion beyond core personal and commercial auto insurance, diversifying Progressive's underwriting base for the first time in years. Deal valued at approximately <strong>$338 million</strong>.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">HQX buy button expanded from 23 states to "almost all states"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">HomeQuote Explorer (HQX), Progressive's property insurance quoting platform, expanded from availability in 23 states to <strong>"almost all states."</strong> This signals the acceleration of Progressive's property bundling strategy -- making home insurance available alongside auto at nearly every point of sale.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Snapshot driving data: 35B &rarr; 43B miles; commercial UBI expanded</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Snapshot usage-based insurance data grew from <strong>35 billion to 43 billion miles</strong> collected. Commercial UBI expanded to <strong>"almost all states."</strong> Progressive continued to lead the industry in telematics data collection, reinforcing its pricing advantage in both personal and commercial lines.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID responses section removed from Human Capital</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The dedicated COVID-19 workplace response section that appeared in the FY2020 filing was removed entirely from the Human Capital discussion. This signals Progressive's view that COVID-related operational disruptions had been fully absorbed into normal business operations.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Climate language: "may be adversely affected" &rarr; "have been and will likely continue to be"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2020: "may be adversely affected"</blockquote><blockquote>FY2021: "have been and will likely continue to be adversely affected"</blockquote>A significant escalation from prospective to retrospective language. Progressive acknowledged climate impacts as <strong>realized</strong>, not merely theoretical. This is the strongest climate language upgrade in the entire 7-year corpus.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG investment risk factor added</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor addressing ESG-related investment considerations was added for the first time. This reflected growing regulatory and investor pressure around environmental, social, and governance factors in Progressive's substantial investment portfolio ($51.5B).</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ML/AI risk first mentioned: "challenges in using machine learning and artificial intelligence"</span><span class="tag tag-new">New</span></div><div class="finding-body">First appearance of AI/ML risk language in Progressive's 10-K filings. The language was broad and prospective, identifying <strong>"challenges in using machine learning and artificial intelligence"</strong> as a risk factor. This planted the seed for what would become an increasingly detailed AI risk disclosure over subsequent years.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Workplace policy risk (remote/hybrid) added</span><span class="tag tag-new">New</span></div><div class="finding-body">New risk language addressing the challenges of remote and hybrid work policies, reflecting post-COVID workforce management concerns including talent retention, productivity, and workplace culture in a distributed environment.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Key Forward Indicators</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Platinum agents: 3,976 &rarr; ~4,500; Investment portfolio: $47.5B &rarr; $51.5B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Platinum agent count grew ~13%, tracking headcount growth. Investment portfolio expanded to $51.5B as premium volume growth flowed into investable assets. Both metrics signal Progressive's accelerating scale in the post-COVID recovery period.</div></div>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: The Inflationary Shock</h2>
+  <div class="sub">Filed Feb 2023 | Headcount: ~49,000 &rarr; ~55,100 (+12%) | NPW: $46.4B &rarr; $51.1B (+10%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vision statement and four strategic pillars formalized for first time</span><span class="tag tag-new">New</span></div><div class="finding-body">Progressive formalized its vision statement and four strategic pillars for the first time in its 10-K filing. This represented a shift from implicit strategy to <strong>explicit strategic framework</strong> communicated to investors. The pillars provided a structured lens for evaluating management's priorities across subsequent filings.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">TNC (Uber/Lyft) at 10% of Commercial Lines NPW (was 6%)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Transportation Network Company insurance grew from 6% to <strong>10% of Commercial Lines NPW</strong>. This near-doubling of TNC share reflects both the post-COVID rideshare recovery and Progressive's success in capturing share in this specialized segment.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Property claims staff first disclosed (~880); plan to increase</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, Progressive disclosed its property claims staffing level at approximately <strong>880 employees</strong>, along with plans to increase this number. This disclosure signaled management's commitment to building property claims capabilities as the segment grew in strategic importance.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Diversity metrics first disclosed: 59% women, 39% POC</span><span class="tag tag-new">New</span></div><div class="finding-body">Progressive disclosed detailed workforce diversity metrics for the first time: <strong>59% women and 39% people of color</strong>. This represented the high-water mark of D&amp;I disclosure granularity, which would later be scaled back significantly.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">96 combined ratio goal first formally disclosed in risk factors</span><span class="tag tag-new">New</span></div><div class="finding-body">The 96 combined ratio target was formally disclosed in risk factors for the first time with the language: <blockquote>"growing as fast as we can as long as we can provide high-quality customer service at or below a companywide 96 combined ratio"</blockquote>This codified what had been an understood but informal target, creating an explicit accountability benchmark in the filing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI/ML risk expanded: added "and effective manner"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The AI/ML risk factor language was incrementally expanded, adding <strong>"and effective manner"</strong> to the risk description. A small but notable tightening -- signaling that effectiveness, not just implementation, was now recognized as a risk dimension.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Big data" regulatory scrutiny language added</span><span class="tag tag-new">New</span></div><div class="finding-body">New language addressing regulatory scrutiny of "big data" usage in insurance pricing. This foreshadowed the more specific AI/algorithm regulatory language that would appear in subsequent filings as state regulators began examining insurer use of data and algorithms.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Financial Signals</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Investment total return swung from +$1.2B to -$4.3B (rate-driven fixed income losses)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Progressive's investment portfolio total return swung dramatically from <strong>+$1.2 billion to -$4.3 billion</strong>, driven by unrealized losses in the fixed income portfolio as interest rates rose sharply. This was the most severe investment result in the 7-year period and highlighted the interest rate sensitivity of Progressive's large investment portfolio.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG investment language strengthened to affirmative risk belief</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">ESG investment language was strengthened from passive acknowledgment to an <strong>affirmative statement of risk belief</strong>. Progressive moved from noting ESG as a consideration to actively incorporating ESG factors into investment risk assessment. This language would persist even as the "ESG" label was later changed to "Sustainability."</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: Rate-Driven Recovery</h2>
+  <div class="sub">Filed Feb 2024 | Headcount: ~55,100 &rarr; ~61,400 (+11%) | NPW: $51.1B &rarr; $61.6B (+21%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Commercial Lines deliberately pulled back (18% &rarr; 16% of NPW)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Commercial Lines' share of total NPW declined from 18% to <strong>16%</strong>, reflecting a deliberate strategic pullback. Progressive chose to prioritize underwriting profitability over top-line growth in commercial, redirecting capacity to personal lines where rate adequacy was improving more rapidly.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Snapshot mileage dropped from "over 48 billion" to generic "billions of"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022: "over 48 billion miles"</blockquote><blockquote>FY2023: "billions of miles"</blockquote>The shift from specific to generic language suggests Snapshot/UBI data collection had matured to the point where specific mileage figures were no longer a competitive differentiator worth highlighting. The program had become table stakes.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Patents added for chatbots, commercial classification, document classification</span><span class="tag tag-new">New</span></div><div class="finding-body">Progressive disclosed new patents related to <strong>chatbots, commercial classification, and document classification</strong>. These patent filings signal investment in AI-powered customer service and underwriting automation -- the operational infrastructure for scaling without proportional headcount growth.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Property claims staff: 880 &rarr; ~1,100</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Property claims staff grew approximately 25% from ~880 to <strong>~1,100</strong>, reflecting Progressive's continued investment in building property claims capabilities. This growth outpaced overall headcount growth (+11%), signaling property as a priority investment area.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Standalone GenAI risk factor added -- biased datasets, discriminatory outcomes, NAIC model bulletin, Colorado SB 169</span><span class="tag tag-new">New</span></div><div class="finding-body">A standalone generative AI risk factor was added for the first time, covering: <strong>biased datasets, discriminatory outcomes, the NAIC AI model bulletin, and Colorado SB 169</strong>. This was a significant escalation from the generic ML/AI language in prior years, reflecting the rapid emergence of GenAI as both an operational tool and a regulatory concern in the insurance industry.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Rating factor restrictions strengthened: "algorithms, AI, and complex models" under scrutiny</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Regulatory language around rating factors was strengthened to explicitly name <strong>"algorithms, AI, and complex models"</strong> as subject to increased scrutiny. This reflected the growing state-level regulatory focus on algorithmic pricing transparency in insurance.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Financial Signals</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">NPW surge +21% from rate increases flowing through</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Net premiums written surged <strong>21% to $61.6 billion</strong>, driven primarily by rate increases flowing through the book. This was the culmination of Progressive's pricing response to 2022 severity trends, demonstrating the company's ability to achieve rate adequacy faster than competitors.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Investment total return recovered: -$4.3B &rarr; +$3.8B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Investment portfolio total return recovered sharply from <strong>-$4.3 billion to +$3.8 billion</strong>, a swing of over $8 billion. The recovery reflected stabilizing interest rates and the benefit of reinvesting at higher yields, creating a tailwind that would persist into subsequent years.</div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: Structural Integration</h2>
+  <div class="sub">Filed Mar 2025 | Headcount: ~61,400 &rarr; ~65,600 (+7%) | NPW: $61.6B &rarr; $74.4B (+21%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Property segment absorbed into Personal Lines (Q4 2024) -- major structural change</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The Property segment was absorbed into Personal Lines effective Q4 2024, eliminating it as a standalone reporting segment. This was the <strong>most significant structural change</strong> in the 7-year period, reflecting Progressive's "Destination Era" strategy of treating property as a bundling enabler rather than a standalone business.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Profitability takes precedence over growth" added to 96 CR language</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "growing as fast as we can as long as we can provide high-quality customer service at or below a companywide 96 combined ratio"</blockquote><blockquote>FY2024: "growing as fast as we can, at or below a companywide 96 combined ratio... Our focus on achieving our underwriting profitability goal takes precedence over growth."</blockquote>The reordering and addition of the precedence statement is a material shift in tone -- explicitly subordinating growth to profitability for the first time.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Premiums-to-surplus regulatory relief: states permitting >3:1</span><span class="tag tag-new">New</span></div><div class="finding-body">New disclosure of states permitting premiums-to-surplus ratios exceeding <strong>3:1</strong>. This regulatory relief signals Progressive's growing influence with state regulators and enables continued premium growth without proportional capital increases -- a significant competitive advantage at scale.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Personal umbrella reinsurance dropped for 2025</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Progressive dropped its personal umbrella reinsurance program for 2025, signaling increased confidence in retaining umbrella risk on its own balance sheet. This reflects both improved loss experience and the company's growing capital base ($27.2B statutory surplus).</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Platinum agents: ~5,800 &rarr; ~7,100 (+22%)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Platinum agent count surged 22% from ~5,800 to <strong>~7,100</strong>, far outpacing overall headcount growth (+7%). This spike in top-tier agency appointments would prove to be the peak -- the following year saw a significant decline, suggesting Progressive had reached saturation in agency recruitment.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">GenAI risk expanded: IP ownership, model training inputs, ~half of state DOIs adopted NAIC AI bulletin</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The GenAI risk factor was significantly expanded to address <strong>IP ownership concerns, model training input risks, and the fact that approximately half of state Departments of Insurance had adopted the NAIC AI bulletin</strong>. The regulatory coverage broadened from specific state laws to a national pattern of adoption.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Autonomous or semi-autonomous vehicles" terminology updated</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The autonomous vehicle risk language was updated to use <strong>"autonomous or semi-autonomous vehicles"</strong>, broadening the scope to include ADAS systems and partial autonomy. This reflects the reality that semi-autonomous features (not full autonomy) are the near-term risk to auto insurance pricing models.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Financial Signals</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">NPW +21% to $74.4B; Investment income: $2.3B &rarr; $3.1B; PL 85% of NPW</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Another 21% NPW growth year, reaching <strong>$74.4 billion</strong>. Investment income grew 35% to $3.1 billion as the higher-rate environment benefited the growing portfolio. Personal Lines reached 85% of NPW, continuing the structural shift toward personal lines dominance.</div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: The AI &amp; Efficiency Pivot</h2>
+  <div class="sub">Filed Mar 2026 | Headcount: ~65,600 &rarr; ~70,000 (+7%) | NPW: $74.4B &rarr; $83.2B (+12%)</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Embedded renters insurance as endorsement to auto policy (product model 9.0)</span><span class="tag tag-new">New</span></div><div class="finding-body">Progressive introduced <strong>embedded renters insurance as an endorsement to auto policies</strong> under product model 9.0. This represents a fundamental shift in product architecture -- bundling property coverage directly into the auto policy rather than requiring a separate purchase. It lowers friction for multi-policy customers and creates a structural retention advantage.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Property next-gen models: 20 states (55% of NPW) &rarr; 39 states (90%)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Property next-generation pricing models expanded from <strong>20 states covering 55% of NPW to 39 states covering 90% of NPW</strong>. This near-complete rollout signals that Progressive's property pricing sophistication is approaching parity with its auto pricing -- a critical milestone for the bundling strategy.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Platinum agents DECLINED: ~7,100 &rarr; ~6,000 (-15%)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Platinum agent count <strong>declined 15%</strong> from ~7,100 to ~6,000 -- the first decline in the 7-year series. This coincides with the direct channel reaching 57% of PL vehicle and may signal a strategic de-emphasis of the agency channel as direct distribution economics prove superior at scale.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"States" systematically replaced with "jurisdictions" in regulatory section</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The systematic replacement of <strong>"states" with "jurisdictions"</strong> across the regulatory section reflects Progressive's expanding geographic footprint and regulatory awareness beyond the 50 U.S. states to include territories and other jurisdictions.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Premiums-to-surplus further expanded: 3.5:1 allowed for 91% of NPW</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The premiums-to-surplus regulatory relief expanded further, with <strong>3.5:1 ratios now permitted for 91% of NPW</strong>. This continued expansion provides Progressive with significant capital efficiency advantages, enabling premium growth without proportional surplus requirements.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Agentic AI" added alongside generative AI; "GenAI" rebranded to "Advanced AI"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The AI risk factor underwent significant rebranding: <strong>"agentic AI"</strong> was added as a new concept alongside generative AI, while the overall category was rebranded from "GenAI" to <strong>"Advanced AI."</strong> This reflects both the rapid evolution of AI capabilities and Progressive's attempt to future-proof its risk disclosure language.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Competitor risk: "replace legacy systems" -- first mention</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, Progressive disclosed competitor risk language referencing the ability to <strong>"replace legacy systems."</strong> This signals awareness that technology-native competitors or insurtech entrants could leapfrog Progressive's existing infrastructure, even as Progressive itself invests heavily in modernization.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG &rarr; "Sustainability" in risk factors</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The label <strong>"ESG" was replaced with "Sustainability"</strong> in risk factor headings and language. Notably, the underlying investment approach language remained largely unchanged -- suggesting this was a politically-aware rebranding rather than a substantive policy change.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--purple)"></span> Human Capital</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">D&amp;I demographics removed entirely; directed to EEO-1 on website</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">All workforce diversity demographic data was <strong>removed entirely</strong> from the 10-K filing. Readers were instead directed to the EEO-1 report on Progressive's website. This completed a multi-year retreat from detailed D&amp;I disclosure in the SEC filing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Supporting An Inclusive Workplace" replaces detailed D&amp;I section</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The detailed D&amp;I section was replaced with a generic <strong>"Supporting An Inclusive Workplace"</strong> heading with qualitative language only. No specific metrics, goals, or demographic breakdowns. This represents the most significant single-year retreat in D&amp;I disclosure in the 7-year period.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Financial Signals</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">NPW $83.2B (+12%); Investment portfolio $97.4B; PL 87% / CL 13%; Direct 57%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">NPW reached <strong>$83.2 billion</strong>, up 12%. Investment portfolio grew to $97.4 billion. Personal Lines now represents 87% of NPW while Commercial Lines returned to 13% -- the same level as FY2020, completing a round-trip after the Protective acquisition. Direct channel reached 57% of PL vehicle, continuing its steady march higher.</div></div>
+</div>
+
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-96cr">
+  <div class="section-header"><h2>The 96 Combined Ratio Language Evolution</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> The 96 Combined Ratio Language Evolution</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Exact Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-19</td><td>Not disclosed in risk factors or business section</td></tr>
+        <tr><td>FY2020-21</td><td>Not formally disclosed in risk factors</td></tr>
+        <tr><td>FY2022</td><td>"growing as fast as we can as long as we can provide high-quality customer service <strong>at or below a companywide 96 combined ratio</strong>"</td></tr>
+        <tr><td>FY2023</td><td>Identical</td></tr>
+        <tr><td>FY2024-25</td><td class="val-highlight">Reordered: "growing as fast as we can, <strong>at or below a companywide 96 combined ratio</strong>... Our focus on achieving our underwriting profitability goal <strong>takes precedence over growth.</strong>"</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> The shift from "as long as" (conditional) to "takes precedence over" (hierarchical) is a material change in strategic emphasis. Growth was previously presented as the objective with profitability as a constraint. Now profitability is the objective with growth as the outcome.</p>
+    <p style="margin-top:10px"><strong>The REORDERING is the key signal:</strong> Listing "96 combined ratio" before "high-quality customer service" reversed the priority implied by word order, and the explicit "takes precedence" sentence removed all ambiguity. This is the PGR equivalent of Meta's "Year of Efficiency" -- a single sentence that redefines the entire strategic framework.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-priorities">
+  <div class="section-header"><h2>Investment Priority Listing Order</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Investment Priority Listing Order</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Vision / Pillars</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018-21</td><td>No formal vision statement or strategic pillars in 10-K</td><td>Strategy communicated outside SEC filings</td></tr>
+        <tr><td>FY2022</td><td class="val-new">First formal "vision" + 4 strategic pillars: <strong>(1) people and culture, (2) broad needs, (3) leading brand, (4) competitive prices</strong></td><td class="val-highlight">Formalization of strategy in SEC filing</td></tr>
+        <tr><td>FY2023</td><td>Identical pillars and ordering</td><td>Stable</td></tr>
+        <tr><td>FY2024</td><td>Identical pillars and ordering</td><td>Stable</td></tr>
+        <tr><td>FY2025</td><td>Identical pillars and ordering</td><td>Stable -- 4 years unchanged</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> The FY2022 formalization of four pillars in a specific order (people first, prices last) signals management's belief about what drives long-term competitive advantage. The fact that this ordering has not changed in 4 years suggests it is a stable strategic framework, not a transient marketing message. Watch for any reordering or addition of pillars as a leading indicator of strategic shift.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-ai">
+  <div class="section-header"><h2>AI/Technology Risk Factor Evolution</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> AI/Technology Language Precision</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Exact Language</th><th>Specificity</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>No mention of AI/ML in risk factors</td><td>--</td></tr>
+        <tr><td>FY2021</td><td>"challenges in using machine learning and artificial intelligence <strong>in our business processes in a responsible and compliant manner</strong>"</td><td>Generic</td></tr>
+        <tr><td>FY2022</td><td>Added "<strong>and effective manner</strong>" -- three words that shifted the framing from compliance to performance</td><td>Generic+</td></tr>
+        <tr><td>FY2023</td><td class="val-new">Full standalone GenAI risk factor: biased datasets, discriminatory outcomes, NAIC bulletin, CO SB 169, patents for chatbots</td><td class="val-highlight">Highly specific</td></tr>
+        <tr><td>FY2024</td><td>Expanded with IP ownership, training inputs; "<strong>nearly half</strong>" of state DOIs adopted NAIC AI bulletin</td><td class="val-highlight">Regulatory scope</td></tr>
+        <tr><td>FY2025</td><td class="val-new">"<strong>generative and agentic artificial intelligence</strong>" + "GenAI" rebranded to "<strong>Advanced AI</strong>" + "<strong>replace legacy systems</strong>" as competitor risk</td><td class="val-highlight">Strategic threat</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">Seven-year arc: from no mention to "agentic AI" as a named competitive threat. Each year's language addition was additive, never replacing prior risks -- indicating compounding concern rather than shifting focus. The FY2022 addition of "and effective" (three words) was the subtle inflection point: it shifted AI risk from a compliance concern to a competitive performance concern.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-distribution">
+  <div class="section-header"><h2>Distribution Channel Shift</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> Distribution Channel Shift</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Direct % PL Vehicle</th><th>Agency % PL Vehicle</th><th>Direct Property %</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>50%</td><td>50%</td><td>--</td></tr>
+        <tr><td>FY2019</td><td>51%</td><td>49%</td><td>--</td></tr>
+        <tr><td>FY2020</td><td>52%</td><td>48%</td><td>23%</td></tr>
+        <tr><td>FY2021</td><td>52%</td><td>48%</td><td>24%</td></tr>
+        <tr><td>FY2022</td><td>53%</td><td>47%</td><td>25%</td></tr>
+        <tr><td>FY2023</td><td>54%</td><td>46%</td><td>26%</td></tr>
+        <tr><td>FY2024</td><td class="val-pos">55%</td><td>45%</td><td>27%</td></tr>
+        <tr><td>FY2025</td><td class="val-highlight">57%</td><td>43%</td><td>28%</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> Direct channel gained 7 percentage points in 7 years -- a structural margin shift. The 2pp jump from FY2024 to FY2025 is the largest single-year gain in the series, coinciding with the Platinum agent decline (-15%). Property direct at 28% still lags vehicle, suggesting further runway for direct property growth.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-property">
+  <div class="section-header"><h2>Property Segment Integration Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Property Segment Integration Arc</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Segment Status</th><th>Claims Staff</th><th>Next-Gen Models</th><th>Key Development</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>Standalone segment</td><td>Not disclosed</td><td>Not disclosed</td><td>HQX in 23 states</td></tr>
+        <tr><td>FY2021</td><td>Standalone segment</td><td>Not disclosed</td><td>Not disclosed</td><td>HQX in "almost all states"</td></tr>
+        <tr><td>FY2022</td><td>Standalone segment</td><td class="val-new">~880</td><td>Not disclosed</td><td>Claims staff first disclosed</td></tr>
+        <tr><td>FY2023</td><td>Standalone segment</td><td>~1,100</td><td>Not disclosed</td><td>Staff +25% YoY</td></tr>
+        <tr><td>FY2024</td><td class="val-highlight">Absorbed into PL (Q4)</td><td>~1,250</td><td>20 states (55% NPW)</td><td>Segment eliminated</td></tr>
+        <tr><td>FY2025</td><td>Part of Personal Lines</td><td>~1,270</td><td class="val-pos">39 states (90% NPW)</td><td>Embedded renters; model 9.0</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">The arc from standalone segment to integrated personal lines product mirrors Progressive's "Destination Era" strategy. Claims staff growth slowed dramatically (1,250 &rarr; 1,270) once integration was complete, suggesting operational efficiencies from integration. Next-gen model rollout nearly doubled in one year.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-propclaims">
+  <div class="section-header"><h2>Property/Homeowners Claims Staff as Growth Indicator</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Property/Homeowners Claims Staff as Growth Indicator</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Claims Staff Count</th><th>Forward-Looking Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020-21</td><td>Not disclosed</td><td>--</td><td>Pre-disclosure: property not yet a strategic priority for staffing transparency</td></tr>
+        <tr><td>FY2022</td><td class="val-new">~880</td><td class="val-highlight">"plan to continue to increase"</td><td>First disclosure + growth commitment</td></tr>
+        <tr><td>FY2023</td><td>~1,100 (+25%)</td><td>"plan to increase"</td><td>Rapid build-out continuing</td></tr>
+        <tr><td>FY2024</td><td>~1,250 (+14%)</td><td class="val-neg">No longer says "plan to increase"</td><td>Growth language removed -- approaching target</td></tr>
+        <tr><td>FY2025</td><td>~1,270 (+2%)</td><td>Not mentioned</td><td>Stable -- target reached</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> The staffing trajectory (880 &rarr; 1,100 &rarr; 1,250 &rarr; 1,270) is a leading indicator of property growth commitment. The removal of "plan to increase" language in FY2024, followed by near-flat staffing in FY2025, signals that Progressive has reached its target infrastructure level for property claims. This is a classic operational signal: when a company stops promising to grow a resource, it has achieved the capacity it needs.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-reinsurance">
+  <div class="section-header"><h2>RL Expense Split / Reinsurance Program</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Reinsurance &amp; Capital Efficiency</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Statutory Surplus</th><th>P/S Ratio</th><th>Reinsurance Signal</th><th>Regulatory Relief</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>$15.2B</td><td>2.7:1</td><td>Standard program</td><td>Standard 3:1</td></tr>
+        <tr><td>FY2021</td><td>$16.4B</td><td>2.8:1</td><td>Standard program</td><td>Standard 3:1</td></tr>
+        <tr><td>FY2022</td><td>$17.9B</td><td>2.9:1</td><td>Standard program</td><td>Standard 3:1</td></tr>
+        <tr><td>FY2023</td><td>$22.2B</td><td>2.8:1</td><td>Standard program</td><td>Standard 3:1</td></tr>
+        <tr><td>FY2024</td><td>$27.2B</td><td>2.7:1</td><td class="val-new">Personal umbrella reinsurance dropped</td><td class="val-new">&gt;3:1 permitted</td></tr>
+        <tr><td>FY2025</td><td>$28.4B</td><td>2.9:1</td><td>Retained</td><td class="val-highlight">3.5:1 for 91% of NPW</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">Progressive's capital efficiency is improving on two fronts: (1) increasing reinsurance retention as the balance sheet grows, and (2) obtaining regulatory relief to write more premium per dollar of surplus. The 3.5:1 ratio for 91% of NPW provides significant growth runway without capital raises.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-retention">
+  <div class="section-header"><h2>Reinsurance Retention as Risk Appetite Indicator</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Reinsurance Retention as Risk Appetite Indicator</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Retention Threshold</th><th>Guidance / Forward Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>$60M retention</td><td>--</td><td>Baseline</td></tr>
+        <tr><td>FY2019</td><td>$60M retention</td><td class="val-highlight">Guided $70M+ for mid-2020</td><td>Forward guidance signals confidence</td></tr>
+        <tr><td>FY2020</td><td class="val-pos">$80M retention</td><td class="val-highlight">Guided $100M+ for mid-2021</td><td>Accelerating -- exceeded own guidance</td></tr>
+        <tr><td>FY2021</td><td>$100M+ retention</td><td>Continued upward trajectory</td><td>Balance sheet growing faster than risk tolerance</td></tr>
+        <tr><td>FY2022</td><td>Retention maintained</td><td>--</td><td>Stable through inflationary shock</td></tr>
+        <tr><td>FY2023</td><td>Retention maintained</td><td>--</td><td>Stable</td></tr>
+        <tr><td>FY2024</td><td>Maintained + <span class="val-new">personal umbrella reinsurance dropped</span></td><td>--</td><td class="val-highlight">Increased net appetite -- willing to retain umbrella risk</td></tr>
+        <tr><td>FY2025</td><td>Maintained</td><td>--</td><td>Stable at elevated level</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> Reinsurance retention thresholds are a direct, quantitative measure of capital confidence. Progressive's arc from $60M to $100M+ retention (a 67%+ increase) over 3 years signals growing confidence in underwriting results and balance sheet strength. The FY2024 decision to drop personal umbrella reinsurance entirely is a qualitatively different signal -- it indicates Progressive is comfortable retaining risk it previously ceded, a mark of matured risk management capability.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-snapshot">
+  <div class="section-header"><h2>Snapshot/UBI Language Evolution</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> Snapshot/UBI Language: From Growth Story to Table Stakes</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Mileage Disclosure</th><th>State Detail</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>27B+ miles</td><td>HW in ~47 states, mobile 42 states</td><td>Detailed by platform</td></tr>
+        <tr><td>FY2019</td><td>~33B miles</td><td>Mobile 42 states</td><td>Growth story</td></tr>
+        <tr><td>FY2020</td><td>35 billion miles</td><td>State-by-state availability</td><td>Growth story</td></tr>
+        <tr><td>FY2021</td><td>43 billion miles</td><td>"Almost all states"</td><td>Expansion narrative</td></tr>
+        <tr><td>FY2022</td><td>"Over 48 billion" miles</td><td>Generalized</td><td>Rounding up -- still showing growth</td></tr>
+        <tr><td>FY2023</td><td class="val-neg">"Billions of" miles</td><td>Generic</td><td>Specific figures dropped</td></tr>
+        <tr><td>FY2024</td><td>"Billions of" miles</td><td>Generic</td><td>Identical -- mature infrastructure</td></tr>
+        <tr><td>FY2025</td><td>"Billions of" miles</td><td>Generic</td><td>Table stakes -- no longer differentiating</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">The progression from specific (35B, 43B, 48B) to generic ("billions of") mirrors a product moving from competitive differentiator to mature infrastructure. When management stops quantifying a metric, it has either plateaued or become so embedded that specific figures no longer tell a meaningful story.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-climate">
+  <div class="section-header"><h2>Climate/ESG Language Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Climate/ESG Language Arc</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Climate Risk Language</th><th>ESG/Sustainability Label</th><th>Investment ESG Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>"may be adversely affected"</td><td>Not disclosed</td><td>Not disclosed</td></tr>
+        <tr><td>FY2021</td><td class="val-highlight">"have been and will likely continue to be"</td><td>ESG</td><td>ESG risk factor added</td></tr>
+        <tr><td>FY2022</td><td>Retained</td><td>ESG</td><td class="val-highlight">Strengthened to affirmative risk belief</td></tr>
+        <tr><td>FY2023</td><td>Retained</td><td>ESG</td><td>Retained</td></tr>
+        <tr><td>FY2024</td><td>Retained</td><td>ESG</td><td>Retained</td></tr>
+        <tr><td>FY2025</td><td>Retained</td><td class="val-new">"Sustainability"</td><td>Unchanged despite label change</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> The climate risk language upgrade in FY2021 ("may" &rarr; "have been") was the most significant single change and has persisted unchanged for 4 years. The ESG &rarr; "Sustainability" label change in FY2025 is cosmetic -- the underlying investment approach language is identical. Political awareness without substantive policy change.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-esg-invest">
+  <div class="section-header"><h2>ESG &rarr; Sustainability: Exact Investment Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">11</span> ESG &rarr; Sustainability: Exact Investment Language</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Investment Section ESG Language</th><th>Risk Factor Label</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>No ESG language in investment section</td><td>No ESG risk factor</td><td>Pre-ESG era</td></tr>
+        <tr><td>FY2021</td><td class="val-new">"consider various ESG factors... understanding these factors <strong>may help assess risk</strong>"</td><td>ESG</td><td>Tentative -- hedged with "may"</td></tr>
+        <tr><td>FY2022</td><td class="val-highlight">"we believe... there is <strong>less risk in securities that score higher</strong> across various ESG factors"</td><td>ESG</td><td class="val-highlight">Strengthened to affirmative belief statement</td></tr>
+        <tr><td>FY2023</td><td>Identical to FY2022</td><td>ESG</td><td>Stable</td></tr>
+        <tr><td>FY2024</td><td>Identical to FY2022</td><td>ESG</td><td>Stable</td></tr>
+        <tr><td>FY2025</td><td>Identical to FY2022 -- <strong>retained "ESG" in investment section</strong></td><td class="val-new">"Sustainability" (renamed from ESG)</td><td class="val-highlight">Label changed but investment approach language unchanged</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>Key insight:</strong> The disconnect is telling: the risk factors section renamed "ESG" to "Sustainability" (responding to political pressure), but the investment section retained the exact "ESG" language and affirmative belief statement unchanged. This reveals a two-track approach -- cosmetic relabeling in politically visible sections while preserving the substantive investment methodology. The FY2022 upgrade from "may help assess risk" to "we believe there is less risk" was the real policy change; everything since has been window dressing.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-di">
+  <div class="section-header"><h2>D&amp;I Disclosure Retreat</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">12</span> D&amp;I Disclosure Retreat</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Section Approach</th><th>Demographics?</th><th>Specific Goals?</th></tr></thead>
+      <tbody>
+        <tr><td>FY2020</td><td>Qualitative D&amp;I language</td><td class="val-neg">No</td><td class="val-neg">No</td></tr>
+        <tr><td>FY2021</td><td>Qualitative D&amp;I language</td><td class="val-neg">No</td><td class="val-neg">No</td></tr>
+        <tr><td>FY2022</td><td class="val-pos">Detailed demographics first disclosed</td><td class="val-pos">Yes: 59% women, 39% POC</td><td class="val-neg">No</td></tr>
+        <tr><td>FY2023</td><td>Demographics retained</td><td class="val-pos">Yes</td><td class="val-neg">No</td></tr>
+        <tr><td>FY2024</td><td>Demographics retained</td><td class="val-pos">Yes</td><td class="val-neg">No</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">"Supporting An Inclusive Workplace"</td><td class="val-neg">Removed -- directed to EEO-1</td><td class="val-neg">No</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">Progressive's D&amp;I arc differs from peers: demographics were added later (FY2022 vs. FY2020 for many companies) and removed in a single year (FY2025). The entire lifecycle from first disclosure to removal was just 3 years.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-cl">
+  <div class="section-header"><h2>Commercial Lines Strategic Ebb &amp; Flow</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">13</span> Commercial Lines Strategic Ebb &amp; Flow</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>CL % of NPW</th><th>Direction</th><th>Driver</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>12%</td><td>--</td><td>Pre-BOP baseline</td></tr>
+        <tr><td>FY2019</td><td>13%</td><td>&uarr;</td><td>TNC at 7%; BOP launched</td></tr>
+        <tr><td>FY2020</td><td>13%</td><td>--</td><td>Pre-acquisition baseline</td></tr>
+        <tr><td>FY2021</td><td class="val-pos">17%</td><td>&uarr;</td><td>Protective Insurance acquisition</td></tr>
+        <tr><td>FY2022</td><td class="val-pos">18%</td><td>&uarr;</td><td>Post-acquisition growth</td></tr>
+        <tr><td>FY2023</td><td>16%</td><td>&darr;</td><td>Deliberate pullback for profitability</td></tr>
+        <tr><td>FY2024</td><td>15%</td><td>&darr;</td><td>Continued discipline</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">13%</td><td>&darr;</td><td>Return to pre-acquisition share</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">CL share completed a full round-trip: 13% &rarr; 18% &rarr; 13%. The Protective acquisition temporarily inflated CL's share, but Progressive's strategic preference for personal lines reasserted itself. The deliberate pullback from FY2023 onward signals that CL profitability did not meet expectations at higher volumes.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-npw">
+  <div class="section-header"><h2>NPW Growth and Scale</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">14</span> NPW Growth and Scale</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>NPW</th><th>YoY Growth</th><th>Cumulative Growth</th></tr></thead>
+      <tbody>
+        <tr><td>FY2018</td><td>$32.6B</td><td>--</td><td>--</td></tr>
+        <tr><td>FY2019</td><td>$37.6B</td><td class="val-pos">+15%</td><td>+15%</td></tr>
+        <tr><td>FY2020</td><td>$40.6B</td><td class="val-pos">+8%</td><td>+25%</td></tr>
+        <tr><td>FY2021</td><td>$46.4B</td><td class="val-pos">+14%</td><td>+42%</td></tr>
+        <tr><td>FY2022</td><td>$51.1B</td><td class="val-pos">+10%</td><td>+57%</td></tr>
+        <tr><td>FY2023</td><td>$61.6B</td><td class="val-pos">+21%</td><td>+89%</td></tr>
+        <tr><td>FY2024</td><td>$74.4B</td><td class="val-pos">+21%</td><td>+128%</td></tr>
+        <tr><td>FY2025</td><td class="val-highlight">$83.2B</td><td class="val-pos">+12%</td><td class="val-highlight">+155%</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px"><strong>$32.6B &rarr; $83.2B in 7 years -- a 155% increase (2.5x).</strong> One of the fastest scale-ups in P&amp;C insurance history. Growth was driven by rate increases (FY2022-24) and market share gains in a hardening market. The deceleration to +12% in FY2025 suggests rate adequacy has been largely achieved and growth is returning to a more sustainable trajectory.</p>
+  </div>
+</div>
+
+
+<!-- ==================== CROSS-CUTTING THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>Profitability Over Growth</h3>
+      <p>The 96 CR language hardened from conditional ("as long as") to hierarchical ("takes precedence over"). Rate &gt; volume in FY2022-2024. Commercial Lines deliberately pulled back to preserve margins. The 96 target moved from implicit to explicit to prioritized.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Direct Channel Winning</h3>
+      <p>50% &rarr; 57% in PL vehicle; 23% &rarr; 28% in property. A structural margin shift accelerating in the most recent year (+2pp). Platinum agent decline (-15%) coincides with direct's fastest growth. The economics of direct distribution are winning at scale.</p>
+    </div>
+    <div class="signal-card">
+      <h3>AI as Competitive Threat</h3>
+      <p>From no mention (FY2020) to "agentic AI" and "replace legacy systems" (FY2025) in 7 years. Each year added risk dimensions without removing prior ones -- indicating compounding concern. GenAI went from zero to standalone risk factor in 2 years.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Property as Bundling Enabler</h3>
+      <p>Separate segment &rarr; integrated into PL. Destination Era executing: HQX in almost all states, next-gen models at 90% coverage, embedded renters as auto endorsement. Property is no longer a standalone business -- it's a retention tool.</p>
+    </div>
+    <div class="signal-card">
+      <h3>NPW 2.5x in 7 Years ($32.6B &rarr; $83.2B)</h3>
+      <p>$32.6B &rarr; $83.2B. Rate + share gains in a hardening market. Investment portfolio grew from $33.6B to $97.4B. Statutory surplus more than doubled ($11.7B &rarr; $28.4B). One of the fastest scale-ups in P&amp;C history.</p>
+    </div>
+    <div class="signal-card">
+      <h3>ESG &rarr; Sustainability</h3>
+      <p>Label changed but investment approach unchanged. Climate risk language ("have been and will likely continue to be") locked in since FY2021. D&amp;I demographics appeared for 3 years then removed. Political awareness without substantive policy change.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>NPW</strong></td><td>$32.6B</td><td>$37.6B</td><td>$40.6B</td><td>$46.4B</td><td>$51.1B</td><td>$61.6B</td><td>$74.4B</td><td>$83.2B</td>
+      </tr>
+      <tr>
+        <td><strong>Statutory Surplus</strong></td><td>$11.7B</td><td>$13.7B</td><td>$15.2B</td><td>$16.4B</td><td>$17.9B</td><td>$22.2B</td><td>$27.2B</td><td>$28.4B</td>
+      </tr>
+      <tr>
+        <td><strong>P/S Ratio</strong></td><td>2.8:1</td><td>2.7:1</td><td>2.7:1</td><td>2.8:1</td><td>2.9:1</td><td>2.8:1</td><td>2.7:1</td><td>2.9:1</td>
+      </tr>
+      <tr>
+        <td><strong>Investment Portfolio FV</strong></td><td>$33.6B</td><td>$39.3B</td><td>$47.5B</td><td>$51.5B</td><td>$53.5B</td><td>$66.0B</td><td>$80.3B</td><td>$97.4B</td>
+      </tr>
+      <tr>
+        <td><strong>Investment Income (pretax TR)</strong></td><td>--</td><td>--</td><td>$3.3B</td><td>$1.2B</td><td class="val-neg">-$4.3B</td><td class="val-pos">$3.8B</td><td>$3.3B</td><td class="val-pos">$6.2B</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>37,346</td><td>41,571</td><td>43,326</td><td>~49,000</td><td>~55,100</td><td>~61,400</td><td>~65,600</td><td>~70,000</td>
+      </tr>
+      <tr>
+        <td><strong>PL % of NPW</strong></td><td>83%</td><td>83%</td><td>82%</td><td>78%</td><td>82%</td><td>84%</td><td>85%</td><td>87%</td>
+      </tr>
+      <tr>
+        <td><strong>CL % of NPW</strong></td><td>12%</td><td>13%</td><td>13%</td><td>17%</td><td>18%</td><td>16%</td><td>15%</td><td>13%</td>
+      </tr>
+      <tr>
+        <td><strong>Direct % PL Vehicle</strong></td><td>50%</td><td>51%</td><td>52%</td><td>52%</td><td>53%</td><td>54%</td><td>55%</td><td>57%</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Platinum Agents</strong></td><td>~3,300</td><td>~3,700</td><td>3,976</td><td>~4,500</td><td>~5,200</td><td>~5,800</td><td>~7,100</td><td class="val-neg">~6,000</td>
+      </tr>
+      <tr>
+        <td><strong>Property Claims Staff</strong></td><td>--</td><td>~370</td><td>--</td><td>--</td><td>~880</td><td>~1,100</td><td>~1,250</td><td>~1,270</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for The Progressive Corporation (CIK 0000080661)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>

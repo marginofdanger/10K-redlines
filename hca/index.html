@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA 10-K Redline Analysis | FY2018-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>HCA 10-K REDLINES</h1>
+    <div class="sub">FY2018 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2019">FY2018 &rarr; FY2019</a>
+  <a class="nav-item" href="#yoy-2020">FY2019 &rarr; FY2020</a>
+  <a class="nav-item" href="#yoy-2021">FY2020 &rarr; FY2021</a>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Signals</div>
+  <a class="nav-item" href="#sig-strategy">Strategy Language Evolution</a>
+  <a class="nav-item" href="#sig-ai">AI/Technology Progression</a>
+  <a class="nav-item" href="#sig-dei">DEI Disclosure Evolution</a>
+  <a class="nav-item" href="#sig-climate">Climate/ESG Language Arc</a>
+  <a class="nav-item" href="#sig-covid">COVID Language Arc</a>
+  <a class="nav-item" href="#sig-debt">Debt/Leverage Language</a>
+  <a class="nav-item" href="#sig-facilities">Facility Count Evolution</a>
+  <a class="nav-item" href="#sig-payer">Payer Mix: MA Surge</a>
+  <a class="nav-item" href="#sig-capex">Capex &amp; Backlog</a>
+  <a class="nav-item" href="#sig-buybacks">Share Repurchase Acceleration</a>
+  <a class="nav-item" href="#sig-labor">Contract Labor / Staffing</a>
+  <a class="nav-item" href="#sig-behavioral">Psychiatric to Behavioral</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>HCA Healthcare 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings reveals strategic pivots, payer mix shifts, and language signals invisible to surface-level reading.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0000860730) | Fiscal Years 2018-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2018 &rarr; FY2019</div>
+    <h3>Pre-COVID Growth</h3>
+    <p>Hospitals 179&rarr;184. Revenue +10%. Mission Health acquired ($1.68B). Strongest organic growth year.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2019 &rarr; FY2020</div>
+    <h3>COVID &amp; Modernization</h3>
+    <p>CARES Act $6.2B received then returned. Human Capital section added. COVID risk factors dominate. Capex cut to $2.84B. Endoscopy centers first broken out.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2020 &rarr; FY2021</div>
+    <h3>Recovery &amp; Capital Return</h3>
+    <p>$8.2B share buybacks begin. Climate/ESG language first appears (scope 1/2 baselining). Human capital risks become standalone category. Vaccine mandates disclosed.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>Strategy Rewrite</h3>
+    <p>"Health care system of choice" replaces "provider system of choice." Galen College nursing expansion. ESG risk factor added. Managed Medicare surges to 15.2%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>Behavioral &amp; AI Emerge</h3>
+    <p>"Psychiatric" renamed to "behavioral." AI first mentioned (physician note-taking). "Highly leveraged" dropped. Value-based purchasing risk added. COVID merged into "public health crises."</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>DEI/Climate Retreat</h3>
+    <p>DEI section completely removed. "Climate change" renamed "changing global weather patterns." AI language expanded (state laws). Rehabilitation hospitals doubled (2&rarr;4). Election uncertainty risk added.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>AI Strategic Pillar &amp; Policy Risk</h3>
+    <p>AI becomes 6th growth agenda pillar with full MDA subsection. New EHR platform implementation disclosed. FBA/Medicaid risk dominates. Climate/ESG language stripped to bare compliance. $10.1B buybacks (record). $7.1B construction backlog.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES (ALL INLINE) ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2018 -> FY2019 -->
+<div class="transition-header" id="yoy-2019">
+  <h2>FY2018 &rarr; FY2019: Pre-COVID Growth</h2>
+  <div class="sub">Filed Feb 2019 | Employees: ~262K &rarr; ~275K | Revenue: $46.7B &rarr; $51.3B (+10%) | Hospitals: 179 &rarr; 184</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Mission Health acquisition; hospitals +5, entered new state</span><span class="tag tag-new">New</span></div><div class="finding-body">HCA completed the acquisition of Mission Health System in North Carolina for approximately <strong>$1.68 billion</strong>, adding 5 hospitals and marking entry into a new state. This was the largest single acquisition in the period and represented the peak of the acquisition-led growth strategy before the pivot to organic capex.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Strategy language unchanged; five-pillar growth agenda stable</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The core strategy description and five-pillar growth agenda remained essentially unchanged from the prior year. This stability is itself a signal -- the pre-COVID business model was operating as designed, with <strong>+10% revenue growth</strong> representing the strongest organic growth year in the analysis period.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Minimal changes; pre-COVID baseline</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Risk factors saw minimal year-over-year changes, establishing the pre-COVID baseline against which all subsequent filings would diverge dramatically. The stability of this filing makes it the cleanest control period in the corpus.</div></div>
+</div>
+
+<!-- FY2019 -> FY2020 -->
+<div class="transition-header" id="yoy-2020">
+  <h2>FY2019 &rarr; FY2020: COVID &amp; Modernization</h2>
+  <div class="sub">Filed Feb 2021 | Employees: ~275K &rarr; 275K | Revenue: $51.3B &rarr; $51.5B (flat) | Hospitals: 184 &rarr; 185</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID-19 subsection added; CARES Act $6.2B received then returned</span><span class="tag tag-new">New</span></div><div class="finding-body">An entirely new COVID-19 subsection was added to the Business section, detailing the pandemic's operational impact. HCA disclosed receiving approximately <strong>$6.2 billion</strong> in CARES Act provider relief funds, which were subsequently returned. Revenue was essentially flat at $51.5B despite massive operational disruption.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Human Capital Resources section added (SEC mandate): Culture, DEI, Recruitment</span><span class="tag tag-new">New</span></div><div class="finding-body">Responding to SEC modernization requirements, HCA added a new Human Capital Resources section covering corporate culture, diversity/equity/inclusion initiatives, and recruitment strategies. This section would undergo dramatic evolution over subsequent years, culminating in complete DEI removal by FY2024.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Strategy language added: "provider system of choice" + enterprise capabilities</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">New strategic framing introduced:<blockquote>"provider system of choice" + "unique enterprise capabilities and best in class economies of scale"</blockquote>This language would persist until the FY2022 filing, when it was replaced with "health care system of choice" -- a subtle but significant shift from provider identity to system identity.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Freestanding endoscopy centers (21) first reported as separate category</span><span class="tag tag-new">New</span></div><div class="finding-body">Endoscopy centers were broken out as their own facility category for the first time, with 21 centers disclosed. This category would grow to <strong>31 centers by FY2025</strong>, making it the fastest-growing facility type in HCA's portfolio -- a signal of the shift toward procedure-specific ambulatory settings.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Summary Risk Factors section added (SEC modernization)</span><span class="tag tag-new">New</span></div><div class="finding-body">A new Summary Risk Factors section was added at the top of Item 1A, consistent with SEC disclosure modernization efforts. This condensed overview format would be retained through all subsequent filings.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID risk category with vaccine, PPE, unemployment, stay-at-home impacts</span><span class="tag tag-new">New</span></div><div class="finding-body">COVID-19 became the dominant risk category, with extensive new language covering vaccine distribution challenges, PPE supply chain disruption, unemployment-driven shifts in payer mix, and the impact of state stay-at-home orders on elective procedure volumes.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Capex cut from $4.16B to $2.84B: "reduced certain planned projects"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Capital expenditures were cut by <strong>32%</strong>, from $4.16B to $2.84B, with the filing noting HCA <blockquote>"reduced certain planned projects"</blockquote> in response to COVID uncertainty. This was the low point in the capex cycle -- spending would steadily increase to $4.94B by FY2025.</div></div>
+</div>
+
+<!-- FY2020 -> FY2021 -->
+<div class="transition-header" id="yoy-2021">
+  <h2>FY2020 &rarr; FY2021: Recovery &amp; Capital Return</h2>
+  <div class="sub">Filed Feb 2022 | Employees: 275K &rarr; 284K | Revenue: $51.5B &rarr; $58.8B (+14%) | Hospitals: 185 &rarr; 182</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Climate/ESG language first appears: scope 1/2 GHG baselining, four-pillar environmental strategy</span><span class="tag tag-new">New</span></div><div class="finding-body">For the first time, HCA introduced substantive climate and ESG language including <strong>scope 1 and scope 2 greenhouse gas emissions baselining</strong> and a four-pillar environmental strategy. This represented peak ESG ambition -- all of this language would be systematically stripped by FY2025.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Human capital risks become standalone category; vaccine mandates, nursing shortage, labor unions</span><span class="tag tag-new">New</span></div><div class="finding-body">Human capital risks were elevated to a standalone risk factor category for the first time, reflecting the acute labor crisis. Specific disclosures included <strong>vaccine mandates</strong>, the nursing shortage, and labor union organizing activity -- all new risk dimensions that had not appeared in prior filings.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID recovery: "patient volumes improved as effects of pandemic moderated"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">COVID language shifted from crisis mode to recovery framing:<blockquote>"patient volumes improved as effects of pandemic moderated"</blockquote>Revenue surged <strong>+14%</strong> to $58.8B, the strongest growth rate in the period, driven by pent-up demand for deferred procedures.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Risks related to human capital" as new standalone risk category</span><span class="tag tag-new">New</span></div><div class="finding-body">The elevation of human capital to a standalone risk category -- separate from general operational risks -- signaled that labor had become an existential concern. This category would persist through all subsequent filings, becoming permanently embedded even as the acute crisis moderated.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">LIBOR replaced with "borrowing costs" (more specific)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">References to LIBOR transition risk were replaced with more specific "borrowing costs" language, reflecting the completion of the LIBOR-to-SOFR transition.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Financial</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Share repurchases begin: $8.2B in FY2021</span><span class="tag tag-new">New</span></div><div class="finding-body">HCA initiated its massive capital return program with <strong>$8.2 billion</strong> in share repurchases in FY2021 alone. This would grow to $10.1B by FY2025, totaling $35.5B in buybacks over five years on a ~$75B revenue company -- one of the most aggressive capital return programs in healthcare.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Debt grew $31.0B to $34.6B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Total debt increased from $31.0B to $34.6B, the beginning of a steady leverage expansion that would reach <strong>$46.5B by FY2025</strong> (+42% from FY2021). Notably, the "highly leveraged" language was still present at this point -- it would not be dropped until the FY2023 filing.</div></div>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: Strategy Rewrite</h2>
+  <div class="sub">Filed Feb 2023 | Employees: 284K &rarr; 294K | Revenue: $58.8B &rarr; $60.2B (+2%) | Hospitals: 182 &rarr; 182</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Strategy major rewrite: "provider system of choice" replaced with "health care system of choice"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The core strategic identity underwent a significant rewrite:<blockquote>FY2021: "provider system of choice" + "unique enterprise capabilities and best in class economies of scale"</blockquote><blockquote>FY2022: "health care system of choice" + "comprehensive networks locally" + "enterprise expertise and economies of scale"</blockquote>The shift from "provider" to "health care system" signals a broadening of scope beyond acute care hospitals to an integrated delivery network. "Comprehensive networks locally" emphasizes geographic density as a moat.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Growth agenda expanded: added "retain," "digital capabilities," "innovative care solutions," "workforce development"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The growth agenda was meaningfully updated: <strong>"retain"</strong> was added alongside "recruit" (reflecting the labor crisis), and three new priorities appeared: <strong>"digital capabilities," "innovative care solutions,"</strong> and <strong>"workforce development."</strong> These additions foreshadowed the AI and Galen College disclosures that would follow.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Galen College nursing expansion disclosed for nursing shortage</span><span class="tag tag-new">New</span></div><div class="finding-body">HCA disclosed its expansion of <strong>Galen College of Nursing</strong> as a strategic response to the nursing shortage. Rather than relying solely on labor markets, HCA was vertically integrating its workforce pipeline -- a differentiated approach among large hospital systems.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">ESG risk factor added: "achieve our ESG goals"</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor was added related to ESG:<blockquote>"achieve our ESG goals"</blockquote>This represented the peak of ESG commitment in HCA's filings. The ESG risk factor would be removed from the summary by FY2024 and ESG language would be stripped to bare compliance by FY2025.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Technology/cybersecurity becomes standalone risk category</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Technology and cybersecurity risks were elevated from embedded discussion to a <strong>standalone risk category</strong>, reflecting increasing digital dependence and the growing threat landscape in healthcare IT.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID language softened: "is significantly affecting" became "has affected, and may continue to affect"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">COVID risk language shifted from present tense to past tense with a prospective hedge:<blockquote>FY2021: "is significantly affecting"</blockquote><blockquote>FY2022: "has affected, and may continue to affect"</blockquote>The transition from active crisis to historical reference had begun.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Vaccine mandate language dropped</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">Vaccine mandate risk language was removed entirely, reflecting the end of federal vaccine requirements and the normalization of workforce COVID policies.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Financial</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Managed care dropped 51.6% to 48.3%; managed Medicare surged 13.7% to 15.2%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">The payer mix continued its structural shift: managed care (commercial) declined from 51.6% to 48.3% while managed Medicare surged from 13.7% to <strong>15.2%</strong>. This ~$6B+ revenue shift carries different reimbursement dynamics and margin profiles, and managed Medicare continued rising every single year through FY2025.</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: Behavioral &amp; AI Emerge</h2>
+  <div class="sub">Filed Feb 2024 | Employees: 294K &rarr; 310K | Revenue: $60.2B &rarr; $65.0B (+8%) | Hospitals: 182 &rarr; 186</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Psychiatric" renamed to "behavioral" hospitals (5 to 6)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">All references to "psychiatric hospitals" were changed to <strong>"behavioral hospitals,"</strong> and the count increased from 5 to 6. This reflects industry-wide destigmatization and an expanded service scope beyond acute psychiatry to include addiction, eating disorders, and other behavioral health conditions.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI first mentioned: "our physicians use generative AI to assist with the taking of medical notes"</span><span class="tag tag-new">New</span></div><div class="finding-body">AI appeared in HCA's filing for the first time:<blockquote>"our physicians use generative AI to assist with the taking of medical notes"</blockquote>Notably, this was framed as <strong>deployment, not aspiration</strong> -- HCA was already using AI in clinical settings. This first mention would escalate to AI becoming a strategic pillar within just three filings.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Highly leveraged" dropped from MD&amp;A; now "significant debt service requirements"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The characterization of HCA's leverage softened:<blockquote>FY2018-22: "We are a highly leveraged company with significant debt service requirements"</blockquote><blockquote>FY2023-25: "significant debt service requirements"</blockquote>The "highly leveraged" self-description was dropped even as total debt continued growing -- from $38.1B at drop to <strong>$46.5B by FY2025</strong> (+22%).</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI regulatory risk added: "development and use of artificial intelligence and other predictive algorithms"</span><span class="tag tag-new">New</span></div><div class="finding-body">Alongside the business disclosure of AI deployment, a new risk factor was added covering:<blockquote>"development and use of artificial intelligence and other predictive algorithms"</blockquote>This dual disclosure -- AI as both opportunity and risk -- is a pattern seen across industries as companies navigated the early regulatory landscape for AI in healthcare.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Value-based purchasing risk: "The industry trend toward value-based purchasing may negatively impact our revenues"</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor explicitly addressed value-based care:<blockquote>"The industry trend toward value-based purchasing may negatively impact our revenues"</blockquote>This acknowledges the structural shift from fee-for-service to outcomes-based reimbursement as a threat to HCA's volume-driven model.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID category renamed "Risks related to public health crises"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The dedicated COVID risk category was renamed to the generic <strong>"Risks related to public health crises,"</strong> absorbing COVID-specific language into a broader framework. This is the penultimate step before complete COVID removal -- which would come by FY2025.</div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: DEI/Climate Retreat</h2>
+  <div class="sub">Filed Feb 2025 | Employees: 310K &rarr; 316K | Revenue: $65.0B &rarr; $70.6B (+9%) | Hospitals: 186 &rarr; 190</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI section completely removed; "diverse" dropped from workforce language</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The entire DEI subsection was <strong>completely removed</strong> from the Human Capital section. The word "diverse" was also dropped from workforce-related language throughout the filing. This represents one of the most dramatic DEI retreats among S&amp;P 500 companies, going from a full subsection with metrics to complete absence in a single year.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Climate change" renamed to "changing global weather patterns"; ESG risk dropped from summary</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Climate language was systematically softened:<blockquote>"Climate change" &rarr; "changing global weather patterns"</blockquote><blockquote>"Climate resilience" &rarr; "preparing for weather impacts"</blockquote>The ESG risk factor was also dropped from the summary risk factors section. This reframing avoids politically charged terminology while maintaining disclosure of physical weather risks -- likely reflecting political dynamics in HCA's core Texas and Florida markets.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI expanded into technology risk factor header; state AI laws (CA, UT, CO) disclosed</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">AI risk language was expanded and elevated into the technology risk factor header. Specific <strong>state AI laws</strong> were named for the first time -- California, Utah, and Colorado -- alongside FDA clinical decision support guidance. This reflects the rapidly evolving state-level regulatory landscape for AI in healthcare.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Rehabilitation hospitals doubled (2 to 4); ASCs renamed to "ambulatory surgery centers"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Rehabilitation hospitals doubled from 2 to <strong>4 facilities</strong>, signaling expansion into post-acute care. "ASCs" were renamed to the full term "ambulatory surgery centers" throughout the filing -- a minor but notable standardization of terminology.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Election uncertainty: "outcome of 2024 federal election may increase regulatory uncertainty"</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor addressed the 2024 election:<blockquote>"outcome of 2024 federal election may increase regulatory uncertainty"</blockquote>This is notable given HCA's significant exposure to Medicaid (which varies by state expansion decisions) and Medicare reimbursement policy.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Loper Bright (Chevron deference overturned) referenced</span><span class="tag tag-new">New</span></div><div class="finding-body">The Supreme Court's <strong>Loper Bright</strong> decision overturning Chevron deference was referenced in the filing. This is significant for healthcare because it affects the legal authority of CMS and HHS to interpret ambiguous statutes -- potentially creating more litigation risk around Medicare/Medicaid reimbursement rules.</div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: AI Strategic Pillar &amp; Policy Risk</h2>
+  <div class="sub">Filed Feb 2026 | Employees: 316K &rarr; 320K | Revenue: $70.6B &rarr; $75.6B (+7%) | Hospitals: 190 &rarr; 190</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI becomes 6th growth agenda pillar: "advance our digital and artificial intelligence capabilities"</span><span class="tag tag-new">New</span></div><div class="finding-body">AI was elevated from a point deployment to a <strong>6th strategic growth pillar</strong>:<blockquote>"advance our digital and artificial intelligence capabilities"</blockquote>This is accompanied by a full MDA subsection dedicated to AI initiatives. The progression from zero AI mentions (FY2018-22) to strategic pillar (FY2025) in just three filings represents the fastest AI adoption arc of any major hospital company.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New EHR platform implementation disclosed: "complex and time-intensive"</span><span class="tag tag-new">New</span></div><div class="finding-body">HCA disclosed a new enterprise-wide EHR (electronic health record) platform implementation, described as <blockquote>"complex and time-intensive"</blockquote>EHR implementations at this scale are multi-billion dollar, multi-year projects. The candid description of complexity and the addition of a dedicated EHR failure risk factor signal the magnitude of this undertaking.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FBA/Medicaid risk: work requirements, premium tax credit expiration, "financial resiliency initiatives"</span><span class="tag tag-new">New</span></div><div class="finding-body">New policy risk language addressed potential Medicaid disruption through <strong>work requirements</strong>, premium tax credit expiration, and what HCA termed "financial resiliency initiatives" -- euphemistic language for potential government spending cuts. This reflects the dominant policy uncertainty facing hospital operators under the current administration.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Climate/ESG stripped to bare compliance: four-pillar strategy, scope 1/2, GHG all removed</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">The environmental section was stripped to bare minimum compliance language. <strong>All removed:</strong> four-pillar environmental strategy, scope 1/2 GHG emissions baselining, ESG objectives language. What took two years to build (FY2021-22) was dismantled in two years (FY2024-25). The complete arc from expansion to removal likely reflects political risk in HCA's core Texas and Florida markets.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">EHR platform failure risk factor added</span><span class="tag tag-new">New</span></div><div class="finding-body">A dedicated risk factor was added for the EHR implementation, acknowledging the possibility of failure, cost overruns, and operational disruption. The addition of a standalone risk factor for a technology implementation signals both its scale and the seriousness with which management views execution risk.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Third-party systems risk: "or those of third parties on whose systems our business relies"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Technology risk language was expanded to explicitly cover third-party system dependencies:<blockquote>"or those of third parties on whose systems our business relies"</blockquote>This broadening reflects increasing reliance on cloud infrastructure, AI platforms, and external technology vendors in healthcare operations.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">All COVID references removed; generic pandemic risk only</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">All remaining COVID-specific references were eliminated from the filing. Only generic pandemic risk language remains. This completes the five-year arc: from dominant risk factor (FY2020) through progressive softening to complete absence (FY2025).</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> Financial</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">$10.1B share buybacks (record); $7.1B construction backlog (+51%)</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2025 saw record share repurchases of <strong>$10.1 billion</strong>, bringing the five-year total to $35.5B. Simultaneously, the construction backlog surged to <strong>$7.1 billion</strong>, a 51% year-over-year increase from $4.7B. Planned capex of $5.0-5.5B signals an accelerating investment cycle. HCA is simultaneously returning massive capital to shareholders and investing heavily in organic growth.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Behavioral hospitals 6 to 7; endoscopy centers 26 to 31; states dropped 20 to 19</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Facility expansion continued in specialty areas: behavioral hospitals grew to 7 and endoscopy centers expanded from 26 to <strong>31</strong> (+19% in a single year). Meanwhile, HCA's state footprint contracted from 20 to 19 states, suggesting geographic consolidation rather than expansion. Hospital count held flat at 190.</div></div>
+</div>
+
+
+<!-- ==================== SIGNALS ==================== -->
+
+<div class="section" id="sig-strategy" style="margin-top:56px">
+  <div class="section-header"><h2>Strategy Language Evolution</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">1</span> Strategy Language Evolution</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Strategy Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-19</td><td>"committed to providing high quality, cost-effective health care while growing our business"</td><td>Scale/cost framing</td></tr>
+          <tr><td>FY2020-21</td><td>Added "provider system of choice" + "unique enterprise capabilities and best in class economies of scale"</td><td>Provider identity + scale moat</td></tr>
+          <tr><td>FY2022-24</td><td>"health care system of choice" + "comprehensive networks locally" + "enterprise expertise and economies of scale"</td><td>System identity + network moat</td></tr>
+          <tr><td>FY2025</td><td>Added 6th pillar: "advance our digital and artificial intelligence capabilities"</td><td class="val-highlight">AI/digital moat added</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Moat narrative evolved from scale/cost &rarr; network/coordination &rarr; AI/digital. Each shift reflects management's evolving understanding of what creates durable competitive advantage in healthcare delivery.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-ai">
+  <div class="section-header"><h2>AI/Technology Language Progression</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">2</span> AI/Technology Language Progression</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>AI Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-22</td><td>Zero AI mentions</td><td>No AI awareness in filings</td></tr>
+          <tr><td>FY2023</td><td>"physicians use generative AI to assist with medical notes"</td><td class="val-new">First mention -- deployment, not aspiration</td></tr>
+          <tr><td>FY2024</td><td>AI in risk factor header; state AI laws (CA, UT, CO); FDA clinical decision support</td><td>Regulatory awareness</td></tr>
+          <tr><td>FY2025</td><td>AI as 6th strategic pillar; full MDA AI subsection; new EHR platform</td><td class="val-highlight">Strategic pillar with execution vehicle</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Zero to strategic pillar in 3 filings -- the fastest AI adoption arc of any hospital company. The EHR platform implementation is the execution vehicle for the AI strategy.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-dei">
+  <div class="section-header"><h2>DEI Disclosure Evolution</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">3</span> DEI Disclosure Evolution</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>DEI Status</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-19</td><td>No human capital section</td><td>Pre-SEC mandate</td></tr>
+          <tr><td>FY2020</td><td class="val-pos">New "Diversity, Equity and Inclusion" subsection (SEC mandate + social environment)</td><td>Peak commitment begins</td></tr>
+          <tr><td>FY2021-23</td><td class="val-pos">Peak DEI language; expanded with pay equity, EEO-1, Board diversity policy</td><td>Maximum disclosure</td></tr>
+          <tr><td>FY2024</td><td class="val-neg">DEI header removed; "diverse" dropped from workforce risk; Board diversity removed</td><td>Complete removal</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">Complete erasure of DEI language</td><td>No residual traces</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Among the most dramatic DEI retreats in the S&amp;P 500. From full subsection with metrics to zero in a single filing cycle.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-climate">
+  <div class="section-header"><h2>Climate/ESG Language Arc</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">4</span> Climate/ESG Language Arc</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Climate/ESG Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-20</td><td>Minimal; boilerplate environmental compliance</td><td>Baseline</td></tr>
+          <tr><td>FY2021</td><td class="val-pos">Major expansion: climate change risk factor, scope 1/2 GHG, four-pillar environmental strategy</td><td>Peak ambition</td></tr>
+          <tr><td>FY2022-23</td><td class="val-pos">Peak: ESG risk factor, "ESG objectives," four pillars retained</td><td>Sustained commitment</td></tr>
+          <tr><td>FY2024</td><td class="val-neg">"Climate change" &rarr; "changing global weather patterns"; "climate resilience" &rarr; "preparing for weather impacts"</td><td>Reframing</td></tr>
+          <tr><td>FY2025</td><td class="val-neg">Environmental section stripped to bare compliance. All GHG, scope 1/2, four pillars removed.</td><td>Complete reversal</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Complete reversal in 2 years. Likely reflects political risk in core TX/FL markets. What took two years to build was dismantled in two years.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-covid">
+  <div class="section-header"><h2>COVID Language Arc</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">5</span> COVID Language Arc</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>COVID Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2020</td><td class="val-neg">Dominant; new subsection, CARES Act details, extensive risk factors</td><td>Crisis mode</td></tr>
+          <tr><td>FY2021</td><td>Recovery language; shortened but retained</td><td>Recovery framing</td></tr>
+          <tr><td>FY2022</td><td>2 sentences; risk factors softened</td><td>Fading</td></tr>
+          <tr><td>FY2023</td><td>Merged into "public health crises"</td><td>Generalized</td></tr>
+          <tr><td>FY2024</td><td>All COVID-specific risk removed</td><td>Minimal</td></tr>
+          <tr><td>FY2025</td><td>All COVID references eliminated</td><td>Complete removal</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> 5-year arc from dominant to absent. A textbook example of how crisis-specific disclosure evolves through softening, generalization, and eventual removal.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-debt">
+  <div class="section-header"><h2>Debt/Leverage Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">6</span> Debt/Leverage Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Self-Description</th><th>Total Debt</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-22</td><td>"We are a <strong>highly leveraged</strong> company with significant debt service requirements"</td><td>$32.8B &rarr; $38.1B</td><td>Candid self-assessment</td></tr>
+          <tr><td>FY2023-25</td><td class="val-neg">Dropped "highly leveraged"; now "significant debt service requirements"</td><td>$39.6B &rarr; $46.5B</td><td>Language softened as debt grew</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Language softened as debt grew 42% ($32.8B &rarr; $46.5B). The removal of "highly leveraged" coincided with the period of greatest leverage expansion.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-facilities">
+  <div class="section-header"><h2>Facility Count Evolution</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">7</span> Facility Count Evolution</h3>
+      <table class="data-table">
+        <thead><tr><th>Facility Type</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Hospitals</strong></td><td>179</td><td>184</td><td>185</td><td>182</td><td>182</td><td>186</td><td>190</td><td>190</td></tr>
+          <tr><td><strong>Behavioral</strong></td><td>3</td><td>3</td><td>5</td><td>5</td><td>5</td><td>6</td><td>6</td><td class="val-pos">7</td></tr>
+          <tr><td><strong>Rehab</strong></td><td>1</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>2</td><td class="val-pos">4</td></tr>
+          <tr><td><strong>ASCs</strong></td><td>123</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>121</td></tr>
+          <tr><td><strong>Endoscopy</strong></td><td>--</td><td>--</td><td>21</td><td>21</td><td>21</td><td>24</td><td>26</td><td class="val-pos">31</td></tr>
+          <tr><td><strong>Licensed Beds</strong></td><td>46,687</td><td>48,443</td><td>48,492</td><td>48,030</td><td>48,508</td><td>48,755</td><td>49,114</td><td class="val-pos">50,436</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Behavioral hospitals more than doubled (3&rarr;7). Endoscopy is the fastest-growing category (0&rarr;31). ASCs are flat -- growth is in procedure-specific ambulatory settings. Rehab hospitals doubled in one year (2&rarr;4).</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-payer">
+  <div class="section-header"><h2>Payer Mix: Managed Medicare Surge</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">8</span> Payer Mix: Managed Medicare Surge</h3>
+      <table class="data-table">
+        <thead><tr><th>Payer Category</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Traditional Medicare</strong></td><td>21.1%</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td class="val-neg">18.7%</td></tr>
+          <tr><td><strong>Managed Medicare</strong></td><td>11.8%</td><td>12.6%</td><td>13.4%</td><td>13.7%</td><td>15.2%</td><td>15.6%</td><td>16.3%</td><td class="val-highlight">16.5%</td></tr>
+          <tr><td><strong>Managed Care</strong></td><td>52.4%</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td class="val-neg">48.9%</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Managed Medicare rose every single year without exception. Approximately <strong>$6B+ in revenue</strong> shifted from traditional Medicare to MA plans over the period. This structural shift carries different reimbursement dynamics, prior authorization requirements, and margin profiles.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-capex">
+  <div class="section-header"><h2>Capex Attribution &amp; Construction Backlog</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">9</span> Capex Attribution &amp; Construction Backlog</h3>
+      <table class="data-table">
+        <thead><tr><th>Metric</th><th>FY2018</th><th>FY2020</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Capex</strong></td><td>$3.57B</td><td>$2.84B</td><td>$4.40B</td><td>$4.74B</td><td>$4.88B</td><td class="val-pos">$4.94B</td></tr>
+          <tr><td><strong>Acquisitions</strong></td><td>$1.25B</td><td>--</td><td>--</td><td>--</td><td>--</td><td>$0.40B</td></tr>
+          <tr><td><strong>Backlog</strong></td><td>$3.5B</td><td>$3.2B</td><td>$4.7B</td><td>$4.1B</td><td>$4.7B</td><td class="val-highlight">$7.1B</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Strategy pivoted from acquisition-led growth to organic capex. Acquisitions fell from $1.68B (Mission Health) to $0.40B while organic capex rose steadily. The <strong>$7.1B backlog (+51% YoY)</strong> signals an accelerating investment cycle. Planned capex of $5.0-5.5B for the next year.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-buybacks">
+  <div class="section-header"><h2>Share Repurchase Acceleration</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">10</span> Share Repurchase Acceleration</h3>
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Buybacks</strong></td><td>$0.4B</td><td class="val-highlight">$8.2B</td><td>$7.0B</td><td>$3.8B</td><td>$6.0B</td><td class="val-highlight">$10.1B (record)</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> $35.5B total buybacks in 5 years on a ~$75B revenue company. FY2025's $10.1B was a new record, funded by $12.6B operating cash flow. HCA is simultaneously the largest capital returner and largest organic investor among hospital companies.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-labor">
+  <div class="section-header"><h2>Contract Labor / Staffing Language</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">11</span> Contract Labor / Staffing Language</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Staffing Language</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-19</td><td>No labor shortage language</td><td>Baseline</td></tr>
+          <tr><td>FY2020</td><td>Human capital risks first appear</td><td>SEC mandate + COVID</td></tr>
+          <tr><td>FY2021</td><td class="val-neg">Vaccine mandates, nursing shortage, labor unions</td><td>Peak crisis</td></tr>
+          <tr><td>FY2022</td><td>Galen College expansion for nursing pipeline</td><td>Strategic response</td></tr>
+          <tr><td>FY2023-25</td><td>"Nurse and medical support personnel availability" standard language</td><td>Normalized but permanent</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Labor crisis peaked FY2021-22 and is now normalized but permanently embedded in risk factors. The Galen College nursing pipeline represents HCA's unique vertical integration response.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sig-behavioral">
+  <div class="section-header"><h2>"Psychiatric" to "Behavioral" Terminology</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card full">
+      <h3><span class="num">12</span> "Psychiatric" to "Behavioral" Terminology</h3>
+      <table class="data-table">
+        <thead><tr><th>Period</th><th>Terminology</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>FY2018-22</td><td>"psychiatric hospitals"</td><td>Legacy terminology</td></tr>
+          <tr><td>FY2023-25</td><td class="val-highlight">"behavioral hospitals"</td><td>Industry-wide destigmatization</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px"><strong>Signal:</strong> Reflects industry-wide destigmatization and expanded service scope beyond acute psychiatry to include addiction treatment, eating disorders, and broader behavioral health conditions. Facility count grew from 3 to 7 over the period.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>From Scale to Network to AI</h3>
+      <p>Moat narrative evolved from cost advantage &rarr; network coordination &rarr; AI/digital in 7 years. Each evolution visible in the exact strategy language of the Business section, tracking management's evolving understanding of durable competitive advantage.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Organic Over Acquisitive</h3>
+      <p>Acquisitions fell from $1.68B (Mission Health, FY2019) to $0.40B (FY2025) while organic capex rose steadily. The <strong>$7.1B construction backlog</strong> (+51% YoY) signals HCA has entered a buildout era, favoring de novo development over M&amp;A.</p>
+    </div>
+    <div class="signal-card">
+      <h3>The MA Substitution</h3>
+      <p>Managed Medicare: 11.8% &rarr; 16.5%, rising every single year without exception. Approximately <strong>$6B+ in revenue</strong> shifted from traditional Medicare to MA plans, carrying different reimbursement dynamics, prior authorization requirements, and margin profiles.</p>
+    </div>
+    <div class="signal-card">
+      <h3>The DEI/ESG Reversal</h3>
+      <p>Peak-to-trough in 2 years. Among the most dramatic reversals in large-cap healthcare. DEI went from full subsection with metrics to complete absence. Climate went from scope 1/2 GHG baselining to bare compliance. Both likely reflect political dynamics in TX/FL markets.</p>
+    </div>
+    <div class="signal-card">
+      <h3>AI: Zero to Strategic Pillar in 3 Filings</h3>
+      <p>From no mention (FY2018-22) to 6th growth agenda item with full MDA subsection (FY2025). The <strong>new EHR platform</strong> is the execution vehicle. First mention was deployment ("physicians use generative AI"), not aspiration -- HCA skipped the aspiration phase entirely.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Capital Return Machine</h3>
+      <p><strong>$35.5B buybacks in 5 years. $10.1B in FY2025 alone.</strong> Funded by $12.6B operating cash flow. Simultaneously, organic capex rose to $4.94B with a $7.1B construction backlog. HCA is the rare company that is both the largest capital returner and largest organic investor in its sector.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Revenue</strong></td><td>$46.7B</td><td>$51.3B</td><td>$51.5B</td><td>$58.8B</td><td>$60.2B</td><td>$65.0B</td><td>$70.6B</td><td>$75.6B</td>
+      </tr>
+      <tr>
+        <td><strong>Hospitals</strong></td><td>179</td><td>184</td><td>185</td><td>182</td><td>182</td><td>186</td><td>190</td><td>190</td>
+      </tr>
+      <tr>
+        <td><strong>Behavioral</strong></td><td>3</td><td>3</td><td>5</td><td>5</td><td>5</td><td>6</td><td>6</td><td>7</td>
+      </tr>
+      <tr>
+        <td><strong>Endoscopy</strong></td><td>--</td><td>--</td><td>21</td><td>21</td><td>21</td><td>24</td><td>26</td><td>31</td>
+      </tr>
+      <tr>
+        <td><strong>Licensed Beds</strong></td><td>46,687</td><td>48,443</td><td>48,492</td><td>48,030</td><td>48,508</td><td>48,755</td><td>49,114</td><td>50,436</td>
+      </tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>~262K</td><td>~275K</td><td>275K</td><td>284K</td><td>294K</td><td>310K</td><td>316K</td><td>320K</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Managed Medicare %</strong></td><td>11.8%</td><td>12.6%</td><td>13.4%</td><td>13.7%</td><td>15.2%</td><td>15.6%</td><td>16.3%</td><td class="val-highlight">16.5%</td>
+      </tr>
+      <tr><td colspan="9" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Capex</strong></td><td>$3.57B</td><td>$4.16B</td><td class="val-neg">$2.84B</td><td>$3.58B</td><td>$4.40B</td><td>$4.74B</td><td>$4.88B</td><td>$4.94B</td>
+      </tr>
+      <tr>
+        <td><strong>Debt</strong></td><td>$32.8B</td><td>$33.7B</td><td>$31.0B</td><td>$34.6B</td><td>$38.1B</td><td>$39.6B</td><td>$43.0B</td><td class="val-neg">$46.5B</td>
+      </tr>
+      <tr>
+        <td><strong>Buybacks</strong></td><td>--</td><td>--</td><td>$0.4B</td><td class="val-highlight">$8.2B</td><td>$7.0B</td><td>$3.8B</td><td>$6.0B</td><td class="val-highlight">$10.1B</td>
+      </tr>
+      <tr>
+        <td><strong>Backlog</strong></td><td>$3.5B</td><td>--</td><td>$3.2B</td><td>--</td><td>$4.7B</td><td>$4.1B</td><td>$4.7B</td><td class="val-highlight">$7.1B</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for HCA Healthcare, Inc. (CIK 0000860730)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>
