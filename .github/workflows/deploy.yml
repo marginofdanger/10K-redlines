@@ -31,6 +31,11 @@ jobs:
       - name: Install StatiCrypt
         run: npm install -g staticrypt
 
+      - name: Download shared password template
+        run: |
+          curl -sL "https://raw.githubusercontent.com/marginofdanger/proxy-tool/main/password_template.html" \
+            -o /tmp/password_template.html
+
       - name: Encrypt HTML files
         env:
           STATICRYPT_PASSWORD: ${{ secrets.SITE_PASSWORD }}
@@ -43,10 +48,8 @@ jobs:
               --short \
               --salt "${{ secrets.STATICRYPT_SALT }}" \
               --remember 30 \
-              --template-title "Research Tools" \
+              -t /tmp/password_template.html \
               --template-instructions "Enter the password to access this site." \
-              --template-color-primary "#1e3a5f" \
-              --template-color-secondary "#eef2ff" \
               --template-button "Unlock"
           fi
 
