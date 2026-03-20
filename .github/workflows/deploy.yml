@@ -41,6 +41,7 @@ jobs:
             echo "$files" | xargs staticrypt \
               -d . \
               --short \
+              --salt "${{ secrets.STATICRYPT_SALT }}" \
               --remember 30 \
               --template-title "Research Tools" \
               --template-instructions "Enter the password to access this site." \
