@@ -35,18 +35,19 @@ jobs:
         env:
           STATICRYPT_PASSWORD: ${{ secrets.SITE_PASSWORD }}
         run: |
-          shopt -s globstar nullglob
-          files=$(find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*' -not -name 'password_template.html')
-          if [ -n "$files" ]; then
-            echo "$files" | xargs staticrypt \
-              -d . \
+          find . -name '*.html' \
+            -not -path './.git/*' \
+            -not -path './node_modules/*' \
+            -not -name 'password_template.html' | while read f; do
+            dir=$(dirname "$f")
+            staticrypt "$f" -d "$dir" \
               --short \
               --salt "${{ secrets.STATICRYPT_SALT }}" \
               --remember 30 \
               -t password_template.html \
               --template-instructions "Enter the password to access this site." \
               --template-button "Unlock"
-          fi
+          done
 
       - uses: actions/configure-pages@v5
 
