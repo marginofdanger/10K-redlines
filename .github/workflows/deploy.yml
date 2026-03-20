@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages (encrypted)
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install StatiCrypt
+        run: npm install -g staticrypt
+
+      - name: Encrypt HTML files
+        env:
+          STATICRYPT_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+        run: |
+          shopt -s globstar nullglob
+          files=$(find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*')
+          if [ -n "$files" ]; then
+            echo "$files" | xargs staticrypt \
+              -d . \
+              --short \
+              --remember 30 \
+              --template-title "Research Tools" \
+              --template-instructions "Enter the password to access this site." \
+              --template-color-primary "#1e3a5f" \
+              --template-color-secondary "#eef2ff" \
+              --template-button "Unlock"
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
