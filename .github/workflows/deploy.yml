@@ -31,24 +31,19 @@ jobs:
       - name: Install StatiCrypt
         run: npm install -g staticrypt
 
-      - name: Download shared password template
-        run: |
-          curl -sL "https://raw.githubusercontent.com/marginofdanger/proxy-tool/main/password_template.html" \
-            -o /tmp/password_template.html
-
       - name: Encrypt HTML files
         env:
           STATICRYPT_PASSWORD: ${{ secrets.SITE_PASSWORD }}
         run: |
           shopt -s globstar nullglob
-          files=$(find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*')
+          files=$(find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*' -not -name 'password_template.html')
           if [ -n "$files" ]; then
             echo "$files" | xargs staticrypt \
               -d . \
               --short \
               --salt "${{ secrets.STATICRYPT_SALT }}" \
               --remember 30 \
-              -t /tmp/password_template.html \
+              -t password_template.html \
               --template-instructions "Enter the password to access this site." \
               --template-button "Unlock"
           fi
