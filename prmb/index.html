@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRMB 10-K Redline Analysis | FY2022-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>PRMB 10-K REDLINES</h1>
+    <div class="sub">FY2022 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-integration">Merger Integration Arc</a>
+  <a class="nav-item" href="#sig-concentration">Customer Concentration</a>
+  <a class="nav-item" href="#sig-spring">Spring Asset Retraction</a>
+  <a class="nav-item" href="#sig-debt">Debt &amp; Cash Flow</a>
+  <a class="nav-item" href="#sig-legal">Legal Proceedings</a>
+  <a class="nav-item" href="#sig-carbon">Carbon Neutrality to Silence</a>
+  <a class="nav-item" href="#sig-dei">DEI Language Arc</a>
+  <a class="nav-item" href="#sig-infra">Infrastructure Rationalization</a>
+  <a class="nav-item" href="#sig-leadership">Leadership Instability</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>Primo Brands 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings tracking Primo Water Corporation through European divestiture, transformational merger with BlueTriton Brands, and first-year integration stress.</div>
+  <div class="source">Source: SEC EDGAR | Fiscal Years 2022-2025 | Analysis: March 2026 | FY2022-23: Primo Water Corp (Ontario) | FY2024-25: Primo Brands Corp (Delaware)</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>European Divestiture</h3>
+    <p>Sold European business for $575M to Culligan. Collapsed from 2 segments to 1. Dropped from 21-country to North America-only. Headcount fell from 9,240 to 6,400. Facilities: 63 to 38.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>BlueTriton Merger</h3>
+    <p>Primo Water + BlueTriton closed November 2024. New entity (Delaware). Brand portfolio replaced. $5B+ debt. One customer at 24% of net sales. Headcount doubled to ~13,700. Complete filing rewrite.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>Integration Stress</h3>
+    <p>CEO replaced within one year. Infrastructure aggressively rationalized (70+ to 50+ facilities). Securities and consumer class actions filed. Brand growth claims softened. Spring asset exclusivity retracted. $5.16B debt.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: European Divestiture</h2>
+  <div class="sub">Filed Feb 2024 | Primo Water Corporation | Headcount: 9,240 &rarr; 6,400 (-31%) | Net Sales (cont. ops): ~$2.2B &rarr; $1,771.8M | Facilities: 63 &rarr; 38 | Branches: 318 &rarr; 186</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Geographic description narrowed: Europe removed, revenue figure dropped</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022: "Primo is a leading pure-play water solutions provider in North America and Europe and generates approximately $2.2 billion in annual revenue."</blockquote><blockquote>FY2023: "Primo is a leading North America-focused pure-play water solutions provider that operates largely under a recurring revenue model in the large format water category"</blockquote>Europe removed from geographic description. Revenue figure ($2.2B) eliminated. "North America-focused" inserted.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">European divestiture disclosed as first step in full international exit</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2023: "This deal is the first of several transactions that will occur in 2024 as part of a Board-approved plan to sell all of our international businesses representing a strategic shift in our operations."</blockquote>European Business sold to Culligan for $575.0M ($565.9M after adjustments). Remaining International Businesses (UK, Israel, Portugal operations) reclassified to discontinued operations.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Segments collapsed from two to one</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2022 reported two segments: North America and Europe (plus Other category including Israel, Aimia, Farrers). FY2023 collapsed to a single North America segment. Eden Springs brand removed from listing. All international businesses moved to discontinued operations.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Infrastructure contracted: facilities, branches, country footprint</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Production facilities: 63 to 38. Branches: 318 to 186. Country footprint: 21 countries to North America only. "Self-service refill drinking water machines" changed to "stations" in FY2023. Water filtration offering narrowed from "across its 21-country footprint" to "across North America."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Global" removed from strategic pillar language</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2022 strategic pillars referenced "global" operations multiple times. FY2023 removed "global" throughout, consistent with the North America-only focus. Watercoolers Europe association membership dropped; only International Bottled Water Association retained.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Carbon neutrality: European claim dropped, U.S. only retained</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022: "Our European operations have maintained carbon neutrality for more than eleven years, and our U.S. operations achieved carbon neutral certification in 2020 under the CarbonNeutral Protocol... In 2021, the Company achieved carbon neutrality on a global basis."</blockquote><blockquote>FY2023: "Our U.S. operations achieved carbon neutral certification in 2020 under the Carbon Neutral Protocol, an international standard administered by Climate Impact Partners."</blockquote>European carbon neutrality claims and the global achievement statement removed.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI: Chief Diversity Officer paragraph removed</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2022 included a paragraph naming CDO Shayron Barnes-Selby and describing the DEI Strategy Committee and recruitment lens. FY2023 removed this paragraph entirely.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Supply chain tense shifted from present to past</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2022 used present-tense language for supply chain disruptions ("are having," "have experienced," "has been able"). FY2023 shifted to past tense ("had," "experienced," "was able"), indicating supply chain pressures had eased.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID-19 replaced by extreme weather as named disruption risk</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2022 referenced "COVID-19 pandemic" as a supply chain and operational risk. FY2023 replaced this with "extreme weather-related incidents and natural disasters" as the named disruption risk.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nanoplastics added to BPA risk factor</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2023 added "or the presence of nanoplastics in water generally" to the existing BPA/packaging safety risk factor.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Dividend increased: $0.08/share to $0.09/share</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Quarterly dividend per share increased from $0.08 (FY2022) to $0.09 (FY2023).</div></div>
+</div>
+
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: BlueTriton Merger</h2>
+  <div class="sub">Filed Feb 2025 | Primo Water Corp &rarr; Primo Brands Corp | Headcount: 6,400 &rarr; ~13,700 (+114%) | Net Sales: $1,771.8M &rarr; $5,152.5M | Facilities: 38 &rarr; 70+ | Complete filing rewrite</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Entity changed: Ontario corporation to Delaware corporation</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Primo Water Corporation (Ontario) became Primo Brands Corporation (Delaware). Organized in 2024 initially as Triton US HoldCo, Inc. The entire filing was rewritten for the new entity.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Self-description transformed: water solutions provider to branded beverage company</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "Primo is a leading North America-focused pure-play water solutions provider that operates largely under a recurring revenue model"</blockquote><blockquote>FY2024: "Primo Brands is a leading North American branded beverage company with a focus on healthy hydration, delivering responsibly and domestically sourced diversified offerings across products, formats, channels, price points and consumer occasions"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Razor-razorblade" recurring revenue model language eliminated</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2023 described the business strategy as "commonly referred to as 'razor-razorblade' because the initial sale of a product creates a base of users who frequently purchase complementary consumable products." FY2024 eliminated this framework entirely. The dispenser-driven recurring revenue model was replaced by a retail-heavy branded beverage model.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Brand portfolio wholesale replacement: BlueTriton brands added</span><span class="tag tag-new">New</span></div><div class="finding-body">Legacy HOD brands (Crystal Springs, Crystal Rock, etc.) replaced by BlueTriton brands: Poland Spring, Pure Life, Arrowhead, Deer Park, Ice Mountain, Ozarka, Zephyrhills, Saratoga, AC+ION, Splash Refresher. Multiple billion-dollar brands (those generating more than $1B in annual net sales) now in portfolio.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Customer concentration: from "no customer >10%" to one customer at 24%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2023: "We have limited customer concentration as no customer accounts for more than 10% of our net revenues."</blockquote><blockquote>FY2024: "we have one customer who makes up approximately 20% of Trade receivables, net and 24% of Net sales."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Spring water sources and asset ownership first disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "We have more than 90 spring water sources located across North America, and we are the only branded beverage company whose brands own their spring assets, which strengthens our profitability and helps us further support our sustainability and water stewardship efforts."</blockquote>Also disclosed: 38 company-owned sites, 5 joint-relationship sites, 3 owned artesian wells plus 1 leased.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Infrastructure scaled: 70+ facilities, 240+ depots, 200,000+ retail outlets</span><span class="tag tag-new">New</span></div><div class="finding-body">Post-merger infrastructure: 70+ production facilities (was 38), 240+ depots (was 186), delivery fleet of approximately 5,900 vehicles, 200,000+ retail outlets. Combined Primo Water and BlueTriton footprints.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">$300M cost synergy target and $204.1M integration costs disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "we expect more improvements to our distribution capabilities as we look to capture an estimated $300 million cost synergy opportunity that includes optimization of our combined manufacturing locations, routes, branches, and inventory management."</blockquote>Integration costs: $204.1M. Management fees to One Rock Capital Partners: $53.4M.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Water Your Way" strategic pillars and "Customer for Life Promise" eliminated</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2023 strategic framework "Inspire Healthier Lives With Water Your Way" and its pillars, including the "Customer for Life Promise," were entirely eliminated in FY2024. Replaced by a new framework organized around brand portfolio, distribution infrastructure, and product diversification.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI section eliminated; carbon neutrality claims dropped</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">DEI section entirely removed from the filing. Replaced with "values-driven culture" language. All carbon neutrality claims dropped -- no reference to carbon neutral certification in FY2024.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Seasonality statement added; competition section expanded</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "Our water sales are generally higher during the warmer months."</blockquote>Competition section expanded from brief paragraph to multiple paragraphs covering private-label competition and tap filtration. Government Regulation section expanded from approximately 2 paragraphs to multiple pages covering FDA, FFDCA, FSMA, FTC, EPA, Prop 65, SB 253/261.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Risk factor #1: Integration and expanded operations (new category)</span><span class="tag tag-new">New</span></div><div class="finding-body">The first risk factor in FY2024 concerned the merger integration and challenges of managing the combined entity. This risk category did not exist in FY2023.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">$5B+ debt introduced; new "Risks Related to Our Indebtedness" category</span><span class="tag tag-new">New</span></div><div class="finding-body">An entirely new risk category for indebtedness appeared. Total debt exceeded $5 billion. <blockquote>FY2024: "we may not be able to generate sufficient cash flows from operations to service all of our indebtedness and may be forced to take other actions to satisfy our obligations under our indebtedness, which may not be successful"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">PFAS first mentioned as contamination risk</span><span class="tag tag-new">New</span></div><div class="finding-body">Per- and polyfluoroalkyl substances (PFAS) first disclosed as a contamination and regulatory risk. Not present in any Primo Water filing.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Geographic concentration: U.S. 97.4%, Canada 2.6%</span><span class="tag tag-new">New</span></div><div class="finding-body">First explicit geographic revenue split disclosed. U.S. accounted for 97.4% of net sales, Canada 2.6%. Named leadership: CEO Robbert Rietbroek, Non-Executive Chairman Dean Metropoulos, CFO David Hass, COO Rob Austin.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Legal Proceedings</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Legal proceedings collapsed to minimal disclosure</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Legal proceedings text went from ~24,050 characters (FY2023) to 595 characters (FY2024). The only matter mentioned was the ongoing Patane class action against Nestle Waters (Poland Spring labeling). This minimal disclosure coincides with the merger year transition.</div></div>
+</div>
+
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Integration Stress</h2>
+  <div class="sub">Filed Feb 2026 | Primo Brands Corporation | Headcount: ~13,700 &rarr; ~12,600 (-8%) | Net Sales: $5,152.5M &rarr; $6,664.0M | Facilities: 70+ &rarr; 50+ | CEO replaced</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CEO replaced: Rietbroek out, Foss in as Executive Chairman &amp; CEO</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">FY2024 named CEO Robbert Rietbroek and Non-Executive Chairman Dean Metropoulos. FY2025 executive officer list shows Eric J. Foss as Chief Executive Officer and Executive Chairman. The CEO was replaced within one year of the merger close (November 2025).</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Brand growth claim softened: "Nearly all" to "A majority"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Nearly all of our core brands have demonstrated strong, volume-driven growth in recent years."</blockquote><blockquote>FY2025: "A majority of our core brands have demonstrated strong, volume-driven growth in recent years."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Spring asset exclusivity claim retracted</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "we are the only branded beverage company whose brands own their spring assets, which strengthens our profitability"</blockquote><blockquote>FY2025: "We are a leading branded beverage company whose brands own a material amount of spring assets, which strengthens our ability to supply our products"</blockquote>"The only" became "a leading." "Own their spring assets" became "own a material amount of spring assets." "Profitability" softened to "ability to supply our products."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Infrastructure aggressively contracted in a single year</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Production facilities: 70+ to 50+. Depots: 240+ to 200+. Delivery fleet: ~5,900 to ~4,800 vehicles. Spring sources: 90+ to 80+. Company-owned spring sites: 38 to 36. Artesian wells disclosure removed entirely. Headcount: ~13,700 to ~12,600 (1,100 reduction).</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Delivery quality language softened: "ensuring" to "supporting"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Our differentiated logistics model enables us to deliver water efficiently from the spring source directly to customers, ensuring reliability and quality."</blockquote><blockquote>FY2025: "Our differentiated logistics model enables us to deliver water efficiently from the spring source directly to customers, supporting reliability and quality."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Domestically" removed from sourcing description</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "delivering responsibly and domestically sourced diversified offerings"</blockquote><blockquote>FY2025: "delivering responsibly sourced diversified offerings"</blockquote>"Domestically" was removed. "Every state and Canada" became "every U.S. state and Canada."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Coffee removed from product listing entirely</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2024: "Our products consist primarily of premium spring and sparkling water, purified water, self-service refill drinking water, flavored and enhanced beverages, water dispensers, filtration equipment and coffee."</blockquote><blockquote>FY2025: "Our products consist primarily of premium spring and sparkling water, purified water, self-service refill drinking water, flavored and enhanced beverages, water dispensers, and filtration equipment."</blockquote>Coffee and coffee services removed from all product descriptions.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">$300M synergy target removed; integration language added</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2024 disclosed "an estimated $300 million cost synergy opportunity." FY2025 removed this specific target, replacing it with general optimization language. Simultaneously, FY2024's aspiration about "opportunities to further streamline our operations" was replaced with:<blockquote>FY2025: "The optimization of our complete footprint across our manufacturing locations, routes and branches remains in focus."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Beverage market size estimates revised upward</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Non-alcoholic beverage market: "$130+ billion" (FY2024) to "$150+ billion" (FY2025). Bottled water segment: "$25 billion" (FY2024) to "$30 billion" (FY2025).</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Integration disruption explicitly acknowledged</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2025: "We have experienced disruption to our supply chain as well as technology transfer issues, and we may continue to experience interruptions in our business activities, including deterioration in our associate and customer relationships, increased costs of integration, and harm to our reputation"</blockquote>This acknowledgment of actual disruption replaced FY2024's forward-looking integration risk language.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Cash flow language escalated: "may not" to "do not expect"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "we may not be able to generate sufficient cash flows from operations to service all of our indebtedness"</blockquote><blockquote>FY2025: "we do not expect to be able to generate sufficient cash flows from operations to service all of our indebtedness"</blockquote>The modal verb shifted from conditional possibility ("may not") to stated expectation ("do not expect"), a material escalation.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Moody's downgrade disclosed (March 2025)</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2025: "in March 2025, Moody's Ratings downgraded the ratings on certain of our debt securities, and it is possible that a ratings agency may take action to downgrade our credit ratings, or the ratings of our debt securities, in the future."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">PFAS risk expanded with specific liability paragraph</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2024 mentioned PFAS as a general contamination risk. FY2025 expanded with a specific paragraph about PFAS liability at current and former properties.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">SEC climate rules: "SEC voted to end its defense"</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2025: "We may also be subject to the SEC's climate disclosure rules, if enforced by the SEC leadership and if such rules survive litigation pending in the Eighth Circuit Court of Appeals challenging them. In March 2025, the SEC voted to end its defense of the rules and as a result, the rules remain in effect but are not currently enforceable."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Geographic shift: U.S. 97.4% to 98.5%, Canada 2.6% to 1.5%</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">U.S. share of net sales increased from 97.4% to 98.5%. Canada declined from 2.6% to 1.5%. UK and Israel operations (Eden Springs) divested.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Customer concentration slightly improved: 24% to 21% of net sales</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "we have one customer who makes up approximately 20% of Trade receivables, net and 24% of Net sales."</blockquote><blockquote>FY2025: "we have one customer who makes up approximately 20% of Trade receivables, net of allowance for expected credit losses and 21% of Net sales."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Raw materials: polycarbonate removed; glass, aluminum, LDPE added</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2025 added glass, aluminum, and LDPE to the raw materials listing. Polycarbonate bottles removed. Intangible asset impairment of $35.6M disclosed (not present in FY2024).</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--orange)"></span> Legal Proceedings</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Legal proceedings text: 595 chars (FY2024) to ~101,548 chars (FY2025)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Legal proceedings expanded from a single paragraph referencing only the Patane class action to extensive disclosure spanning multiple lawsuits. FY2025 includes securities class action, derivative action, consumer class action, and ongoing Patane litigation. The Patane class action (Poland Spring labeling) has been ongoing since 2017.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Securities class action filed; class period June 2024 to November 2025</span><span class="tag tag-new">New</span></div><div class="finding-body">Securities class action filed alleging misleading statements regarding merger integration. Class period spans from June 2024 through November 2025.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Consumer class action and derivative action filed</span><span class="tag tag-new">New</span></div><div class="finding-body">Consumer class action alleges post-merger service failures from facility closures and staff reductions. Derivative action filed against directors and officers for breach of fiduciary duty.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Share repurchase and dividend disclosures</span><span class="tag tag-new">New</span></div><div class="finding-body">Share repurchase program: $300M authorized, $119.6M repurchased in Q4 2025. Stock closed at $16.35. Quarterly dividend increased to $0.10/share ($150.4M aggregate for the year).</div></div>
+</div>
+
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-integration" style="margin-top:56px">
+  <div class="section-header"><h2>Signal 1: The Merger Integration Arc</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">1</span> Integration Language: From Aspirational to Distressed</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Integration Language</th><th>Costs</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2024</td><td>"opportunities to further streamline our operations and improve our distribution efficiency"</td><td>$204.1M</td><td>Aspirational; forward-looking</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">"We have experienced disruption to our supply chain as well as technology transfer issues"</td><td class="val-neg">$271.8M</td><td>Acknowledged problems; past tense</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">FY2024 framed integration as an opportunity to "capture an estimated $300 million cost synergy." FY2025 dropped the $300M target entirely. CEO replaced within 12 months of merger close. Infrastructure aggressively rationalized (20+ facilities, 40+ depots, 1,100 vehicles cut in one year). Securities class action, consumer class action, and derivative action all filed within the first year post-merger.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-concentration">
+  <div class="section-header"><h2>Signal 2: Customer Concentration Emergence</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Single Customer as Percentage of Net Sales</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Disclosure</th><th>% of Net Sales</th><th>% of Trade Receivables</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>"no customer accounts for more than 10% of our net revenues"</td><td class="val-pos">&lt;10%</td><td>N/A</td></tr>
+        <tr><td>FY2023</td><td>"no customer accounts for more than 10% of our net revenues"</td><td class="val-pos">&lt;10%</td><td>N/A</td></tr>
+        <tr><td>FY2024</td><td>One customer disclosed</td><td class="val-neg">~24%</td><td>~20%</td></tr>
+        <tr><td>FY2025</td><td>One customer retained</td><td class="val-neg">~21%</td><td>~20%</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">Pre-merger Primo Water had no customer exceeding 10% of net revenues. The BlueTriton merger introduced a retail-heavy business with one customer at 24% of net sales (FY2024), improving slightly to 21% (FY2025). The customer is not named in the filing.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-spring">
+  <div class="section-header"><h2>Signal 3: Spring Asset Claim Retraction</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Spring Asset Language and Metrics</h3>
+    <table class="data-table">
+      <thead><tr><th>Metric</th><th>FY2024</th><th>FY2025</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>Exclusivity claim</td><td>"the only branded beverage company whose brands own their spring assets"</td><td class="val-neg">"a leading branded beverage company whose brands own a material amount of spring assets"</td><td>"The only" &rarr; "a leading"</td></tr>
+        <tr><td>Spring sources</td><td>90+</td><td class="val-neg">80+</td><td>-10+</td></tr>
+        <tr><td>Company-owned sites</td><td>38</td><td class="val-neg">36</td><td>-2</td></tr>
+        <tr><td>Joint-relationship sites</td><td>5</td><td>N/A (removed)</td><td>Disclosure removed</td></tr>
+        <tr><td>Artesian wells</td><td>3 owned + 1 leased</td><td class="val-neg">Not disclosed</td><td>Disclosure removed entirely</td></tr>
+        <tr><td>Value proposition</td><td>"strengthens our profitability"</td><td>"strengthens our ability to supply our products"</td><td>"Profitability" &rarr; "ability to supply"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-debt">
+  <div class="section-header"><h2>Signal 4: Debt and Cash Flow Trajectory</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">4</span> Cash Flow Sufficiency Language</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Exact Language</th><th>Total Debt</th><th>Interest Expense</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022-23</td><td>No indebtedness risk category</td><td>N/A</td><td>N/A</td></tr>
+        <tr><td>FY2024</td><td>"we <strong>may not</strong> be able to generate sufficient cash flows"</td><td>~$5.16B</td><td>$339.6M</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">"we <strong>do not expect</strong> to be able to generate sufficient cash flows"</td><td>$5,157.9M</td><td>$326.5M</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">The escalation from "may not" to "do not expect" is a material change in risk disclosure. Moody's downgraded the company's debt securities in March 2025. The filing explicitly states: "We do not expect to be able to generate sufficient cash flows from operations to repay all of our indebtedness at maturity and may be forced to take other actions to satisfy our obligations under our indebtedness, which may not be successful." Revolving facility availability declined from $750M to $612.6M.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-legal">
+  <div class="section-header"><h2>Signal 5: Legal Proceedings</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Legal Proceedings Text Volume</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Characters</th><th>Active Matters</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>~21,967</td><td>Pre-merger legacy matters</td><td>Baseline</td></tr>
+        <tr><td>FY2023</td><td>~24,050</td><td>Pre-merger legacy matters</td><td>Slight increase</td></tr>
+        <tr><td>FY2024</td><td class="val-pos">595</td><td>Patane only</td><td>Merger year -- minimal disclosure</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">~101,548</td><td>Securities, derivative, consumer class actions + Patane</td><td>170x increase from FY2024</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">FY2024's 595-character disclosure was the brief calm of the merger transition year. FY2025 brought a securities class action (alleging misleading integration statements, class period June 2024 through November 2025), a derivative action against directors and officers for breach of fiduciary duty, and a consumer class action alleging post-merger service failures from facility closures and staff reductions.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-carbon">
+  <div class="section-header"><h2>Signal 6: Carbon Neutrality to Silence</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Carbon Neutrality Disclosure Arc</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Carbon Neutrality Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>"Company achieved carbon neutrality on a global basis" (European ops 11+ years, U.S. since 2020)</td><td>Full global claim</td></tr>
+        <tr><td>FY2023</td><td>"Our U.S. operations achieved carbon neutral certification in 2020"</td><td>European claim dropped; U.S. only retained</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">No carbon neutrality claims</td><td>Replaced with "circular packaging" and water stewardship</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">No carbon neutrality claims</td><td>Same -- silence continued</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-dei">
+  <div class="section-header"><h2>Signal 7: DEI Language Arc</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">7</span> DEI Disclosure Evolution</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>DEI Content</th><th>Named CDO?</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>Full section with DEI Strategy Committee, recruitment lens</td><td class="val-pos">Shayron Barnes-Selby</td><td>Active DEI program</td></tr>
+        <tr><td>FY2023</td><td>CDO paragraph removed</td><td class="val-neg">Removed</td><td>De-emphasis began</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">Section entirely eliminated</td><td class="val-neg">N/A</td><td>Replaced with "values-driven culture"</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">No DEI section</td><td class="val-neg">N/A</td><td>"Values-driven culture" and "sense of belonging" retained</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-infra">
+  <div class="section-header"><h2>Signal 8: Infrastructure Rationalization</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Infrastructure Metrics Across All Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Metric</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+      <tbody>
+        <tr><td>Production facilities</td><td>63</td><td class="val-neg">38</td><td class="val-pos">70+</td><td class="val-neg">50+</td></tr>
+        <tr><td>Depots / branches</td><td>318</td><td class="val-neg">186</td><td class="val-pos">240+</td><td class="val-neg">200+</td></tr>
+        <tr><td>Delivery fleet</td><td>N/A</td><td>N/A</td><td>~5,900</td><td class="val-neg">~4,800</td></tr>
+        <tr><td>Spring sources</td><td>N/A</td><td>N/A</td><td>90+</td><td class="val-neg">80+</td></tr>
+        <tr><td>Employees</td><td>9,240</td><td class="val-neg">6,400</td><td class="val-pos">~13,700</td><td class="val-neg">~12,600</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">The post-merger contraction in a single year (20+ facilities, 40+ depots, 1,100 vehicles, 1,100 employees) is the most aggressive rationalization in the filing history. Combined with $271.8M in integration costs and the consumer class action alleging service failures from these specific cuts.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-leadership">
+  <div class="section-header"><h2>Signal 9: Leadership Instability</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">9</span> Executive Leadership Changes</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>CEO</th><th>Chairman</th><th>CLO</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2024</td><td>Robbert Rietbroek</td><td>Dean Metropoulos (Non-Executive)</td><td>Not disclosed</td><td>Post-merger leadership team</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">Eric J. Foss</td><td class="val-neg">Eric J. Foss (Executive Chairman)</td><td>Hih Song Kim</td><td>CEO replaced; Foss holds both roles</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px">CEO Robbert Rietbroek was replaced by Eric Foss within one year of the merger close (November 2025). Foss assumed both Executive Chairman and CEO roles. Stock price declined to $16.35 close. Share repurchase program ($300M authorized) commenced, with $119.6M repurchased in Q4 2025.</p>
+  </div>
+</div>
+
+
+<!-- ==================== CROSS-CUTTING THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>Merger Stress</h3>
+      <p>The Primo Water + BlueTriton merger produced a $6.7B revenue company with $5.2B debt, integration disruption acknowledged in the filing, CEO replacement within 12 months, three lawsuits including a securities class action, and a consumer class action alleging post-merger service failures from facility closures and staff reductions. Integration costs totaled $271.8M in FY2025 (up from $204.1M in FY2024).</p>
+    </div>
+    <div class="signal-card">
+      <h3>From Subscription to Retail</h3>
+      <p>Pre-merger Primo Water was a "razor-razorblade" recurring revenue business with no customer exceeding 10% of net revenues. Post-merger Primo Brands is a retail-heavy branded beverage company with one customer at 21% of net sales and competition from private-label water. The razor-razorblade framework was eliminated entirely from the filing.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Claims Retracted Under Pressure</h3>
+      <ul>
+        <li><strong>"The only"</strong> branded beverage company owning spring assets &rarr; <strong>"a leading"</strong></li>
+        <li><strong>"Nearly all"</strong> core brands with strong growth &rarr; <strong>"A majority"</strong></li>
+        <li><strong>"Ensuring"</strong> reliability and quality &rarr; <strong>"supporting"</strong></li>
+        <li><strong>"Responsibly and domestically sourced"</strong> &rarr; <strong>"responsibly sourced"</strong></li>
+        <li><strong>$300M synergy target</strong> &rarr; removed</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>Debt Dependency</h3>
+      <p>$5.16B in total debt with the filing explicitly stating the company does not expect to generate sufficient cash flows to service it at maturity. Moody's downgrade in March 2025. Management fees to One Rock ($53.4M in FY2024) eliminated in FY2025. Debt structure requires sustained refinancing access. Interest expense: $326.5M in FY2025.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Entity</strong></td><td>Primo Water Corp</td><td>Primo Water Corp</td><td>Primo Brands Corp</td><td>Primo Brands Corp</td>
+      </tr>
+      <tr>
+        <td><strong>Net Sales (cont. ops)</strong></td><td>~$2.2B</td><td>$1,771.8M</td><td>$5,152.5M</td><td>$6,664.0M</td>
+      </tr>
+      <tr>
+        <td>Adjusted EBITDA</td><td>N/A</td><td>N/A</td><td>$994.6M</td><td>$1,446.8M</td>
+      </tr>
+      <tr>
+        <td>Gross Margin</td><td>N/A</td><td>N/A</td><td>31.5%</td><td class="val-neg">30.3%</td>
+      </tr>
+      <tr><td colspan="5" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Total Debt</strong></td><td>N/A</td><td>N/A</td><td>~$5.16B</td><td>$5,157.9M</td>
+      </tr>
+      <tr>
+        <td>Interest Expense</td><td>N/A</td><td>N/A</td><td>$339.6M</td><td>$326.5M</td>
+      </tr>
+      <tr>
+        <td>SBC</td><td>N/A</td><td>N/A</td><td>$8.3M</td><td>$49.9M</td>
+      </tr>
+      <tr>
+        <td>Integration Costs</td><td>$15.3M</td><td>$9.5M</td><td class="val-neg">$204.1M</td><td class="val-neg">$271.8M</td>
+      </tr>
+      <tr>
+        <td>Management Fees</td><td>N/A</td><td>$17.8M</td><td class="val-neg">$53.4M</td><td class="val-pos">$0</td>
+      </tr>
+      <tr>
+        <td>Effective Tax Rate</td><td>40.0%</td><td>29.7%</td><td class="val-neg">160.9%</td><td>44.6%</td>
+      </tr>
+      <tr><td colspan="5" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Employees</strong></td><td>9,240</td><td class="val-neg">6,400</td><td class="val-pos">~13,700</td><td class="val-neg">~12,600</td>
+      </tr>
+      <tr>
+        <td>Production Facilities</td><td>63</td><td class="val-neg">38</td><td class="val-pos">70+</td><td class="val-neg">50+</td>
+      </tr>
+      <tr>
+        <td>Depots</td><td>318</td><td class="val-neg">186</td><td class="val-pos">240+</td><td class="val-neg">200+</td>
+      </tr>
+      <tr>
+        <td>Delivery Fleet</td><td>N/A</td><td>N/A</td><td>~5,900</td><td class="val-neg">~4,800</td>
+      </tr>
+      <tr>
+        <td>Spring Sources</td><td>N/A</td><td>N/A</td><td>90+</td><td class="val-neg">80+</td>
+      </tr>
+      <tr><td colspan="5" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>Largest Customer % Sales</td><td>&lt;10%</td><td>&lt;10%</td><td class="val-neg">~24%</td><td class="val-neg">~21%</td>
+      </tr>
+      <tr>
+        <td>Dividend/Share (quarterly)</td><td>$0.08</td><td>$0.09</td><td>$0.09</td><td>$0.10</td>
+      </tr>
+      <tr>
+        <td>Share Repurchase</td><td>$27.7M</td><td>$0</td><td>$0</td><td class="val-highlight">$119.6M</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for Primo Brands Corporation (formerly Primo Water Corporation)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>
