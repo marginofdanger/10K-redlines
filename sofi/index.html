@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoFi 10-K Redline Analysis | FY2021-FY2025</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era Cards */
+.eras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; position: relative; overflow: hidden;
+}
+.era-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); }
+.era-card .years { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; color: var(--text-dim); }
+.era-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.expand-btn:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eras { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+  .eras { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>SOFI 10-K REDLINES</h1>
+    <div class="sub">FY2021 - FY2025 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Year-Over-Year</div>
+  <a class="nav-item" href="#yoy-2022">FY2021 &rarr; FY2022</a>
+  <a class="nav-item" href="#yoy-2023">FY2022 &rarr; FY2023</a>
+  <a class="nav-item" href="#yoy-2024">FY2023 &rarr; FY2024</a>
+  <a class="nav-item" href="#yoy-2025">FY2024 &rarr; FY2025</a>
+
+  <div class="nav-section">Deep Signals</div>
+  <a class="nav-item" href="#sig-fspl">1. FSPL Rewrite</a>
+  <a class="nav-item" href="#sig-deposits">2. Deposit Trajectory</a>
+  <a class="nav-item" href="#sig-crypto">3. Crypto Arc</a>
+  <a class="nav-item" href="#sig-lending">4. Lending Model</a>
+  <a class="nav-item" href="#sig-finserv">5. FinServ Profitability</a>
+  <a class="nav-item" href="#sig-ai">6. AI Language</a>
+  <a class="nav-item" href="#sig-identity">7. Self-Description</a>
+  <a class="nav-item" href="#sig-regulatory">8. Regulatory Surface</a>
+  <a class="nav-item" href="#sig-revenue">9. Revenue Diversification</a>
+  <a class="nav-item" href="#sig-products">10. Product Velocity</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>SoFi Technologies 10-K Redline Analysis</h1>
+  <div class="tagline">Year-over-year textual analysis of SEC filings traces the transformation from pre-bank fintech to profitable bank holding company across five fiscal years.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001818874) | Fiscal Years 2021-2025 | Analysis: March 2026</div>
+</div>
+
+<!-- Strategic Eras -->
+<div class="eras">
+  <div class="era-card">
+    <div class="years">FY2021 &rarr; FY2022</div>
+    <h3>Bank Charter Year</h3>
+    <p>Golden Pacific acquired. Deposits $0 &rarr; $7.3B. Technisys acquired ($1.1B). SoFi Money rebranded. Entire regulatory infrastructure added. Headcount ~2,500 &rarr; ~4,200.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2022 &rarr; FY2023</div>
+    <h3>First Full Bank Year</h3>
+    <p>Deposits $7.3B &rarr; $18.6B. First GAAP-profitable quarter (Q4 2023). Student loan moratorium ended. CFPB supervision triggered. Crypto wind-down decided. Revenue +35%.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2023 &rarr; FY2024</div>
+    <h3>Profitability Year</h3>
+    <p>First full year GAAP profitability ($0.39 EPS). Revenue $2.7B (+26%). Deposits $26.0B. "One-stop shop" &rarr; "mission driven company." Loan Platform Business named.</p>
+  </div>
+  <div class="era-card">
+    <div class="years">FY2024 &rarr; FY2025</div>
+    <h3>Expansion Year</h3>
+    <p>Revenue ~$3.8B (+44%). Deposits $37.5B. SoFi Crypto relaunched. SoFiUSD stablecoin launched. Fee-based revenue $1.5B (+59%). Smart Card and global remittance added.</p>
+  </div>
+</div>
+
+<!-- ==================== YEAR-OVER-YEAR REDLINES ==================== -->
+<div style="display:flex;justify-content:flex-end;margin-bottom:8px">
+  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>
+</div>
+
+<!-- FY2021 -> FY2022 -->
+<div class="transition-header" id="yoy-2022">
+  <h2>FY2021 &rarr; FY2022: Bank Charter Year</h2>
+  <div class="sub">Filed Feb 2023 | Headcount: ~2,500 &rarr; ~4,200 | Revenue: $985M &rarr; $1,574M (+60%) | Deposits: $0 &rarr; $7.3B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; MD&amp;A</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bank charter completion transforms the filing: entire regulatory infrastructure added</span><span class="tag tag-new">New</span></div><div class="finding-body">The Golden Pacific acquisition closed February 2022, making SoFi a bank holding company. Federal Reserve, OCC, FDIC, Volcker Rule, and CRA all appear in the filing for the first time.<blockquote>"In February 2022, we closed the Bank Merger, pursuant to which we acquired all of the outstanding equity interests in Golden Pacific Bancorp, Inc. and its wholly-owned subsidiary, Golden Pacific Bank, a national bank. Upon closing the Bank Merger, we became a bank holding company and Golden Pacific began operating as SoFi Bank."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Technisys acquisition adds cloud-native banking platform</span><span class="tag tag-new">New</span></div><div class="finding-body">Technisys merger closed March 2022 for ~$1.1B, adding Latin American employees and technology.<blockquote>"In March 2022, we closed the Technisys Merger, which added a cloud-native digital and core banking platform with an existing footprint of clients into our technology platform offerings."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Lending model: "primarily a gain-on-sale model" with balance sheet flexibility</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2021 (Risk Factors): "We utilize a gain-on-sale origination model and, consequently, our business is affected by the cost and availability of funding in the capital markets."</blockquote><blockquote>FY2022 (MD&amp;A): "Although our lending business remains primarily a gain-on-sale model, whereby we seek to originate loans, recognize a gain from these loans and sell them into either our whole loan or securitization channels, operating SoFi Bank has also provided us with more flexibility to hold loans on our balance sheet for longer periods"</blockquote>The bank charter introduced balance sheet optionality that did not exist in FY2021.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Business section collapses from ~109K to ~7.7K chars; detail moves to MD&amp;A</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The FY2021 Business section contained extensive product descriptions, DEI programs, and operational detail. FY2022 compressed this into a short overview, relocating substantive content to MD&amp;A. All subsequent years maintain the shorter Business section format.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Our Differentiation" section introduced: Speed, Selection, Content, Convenience</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2022 introduced a four-differentiator framework in the MD&amp;A section that persists through FY2025. These four categories -- Speed, Selection, Content, and Convenience -- became the structural backbone of the competitive positioning language.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">SoFi Money rebranded to SoFi Checking and Savings; deposits and FTP framework introduced</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">With the bank charter, SoFi Money (a cash management account through SoFi Securities) became SoFi Checking and Savings (FDIC-insured deposit accounts through SoFi Bank). The Funds Transfer Pricing (FTP) framework was introduced to allocate the cost of deposits across segments.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Digital assets conformance period: Fed determined crypto not permissible under BHCA</span><span class="tag tag-new">New</span></div><div class="finding-body">The Federal Reserve determined that crypto was "not a permissible activity under the Bank Holding Company Act" and granted SoFi a two-year conformance period. This began the crypto wind-down arc that culminated in SoFi Digital Assets LLC closure in FY2024.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI content removed: specific URG targets and named programs absent from shorter Business section</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2021's extensive DEI section with specific underrepresented group targets ("60% by end of 2023"), named programs (SoFi GROW, Explorer, Embracing Diversity Podcast), and a four-pillar framework were not carried forward into FY2022's condensed Business section.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">COVID-19 standalone section removed; SPAC/warrant language cleaned up</span><span class="tag tag-removed">Removed</span></div><div class="finding-body">FY2021's standalone COVID-19 section was eliminated. Business combination and SPAC-related language from the 2021 de-SPAC was also cleaned up as SoFi's public company status matured.</div></div>
+</div>
+
+<!-- FY2022 -> FY2023 -->
+<div class="transition-header" id="yoy-2023">
+  <h2>FY2022 &rarr; FY2023: First Full Bank Year</h2>
+  <div class="sub">Filed Feb 2024 | Headcount: ~4,200 &rarr; ~4,400 | Revenue: $1,574M &rarr; $2,123M (+35%) | Deposits: $7.3B &rarr; $18.6B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; MD&amp;A</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Deposits: $7.3B &rarr; $18.6B (155% growth)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Deposit growth in the first full bank year was the largest single-year increase in the five-year period, reflecting the rapid shift to deposit-funded lending from warehouse financing.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Student loan moratorium ends; forward-looking language shifts</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022 (MD&amp;A): "our exposure to evolving laws, rules, regulations and government enforcement policies, including further extensions of the student loan payment moratorium"</blockquote><blockquote>FY2023 (Risk Factors): "our exposure to evolving laws, rules, regulations and government enforcement policies"</blockquote>The student loan moratorium ended August 2023. All moratorium-specific forward-looking language was removed and replaced with generalized regulatory risk framing.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">SVB crisis: new bank failure risk language added</span><span class="tag tag-new">New</span></div><div class="finding-body">A new forward-looking risk factor appeared for the first time in FY2023 and persisted through FY2025:<blockquote>"the impact of adverse developments affecting the U.S. or global banking industry, including bank failures and liquidity concerns, which could cause economic and market volatility, and regulatory responses thereto"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CFPB supervision triggered</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2023 disclosed that SoFi Bank and its affiliates became subject to CFPB supervision and examination beginning January 1, 2024, reflecting the crossing of a deposit/asset threshold.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Lending model drops "primarily": neutral sell-or-hold framing</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022 (Risk Factors): "We primarily utilize a gain-on-sale origination model"</blockquote><blockquote>FY2023 (Risk Factors): "We have the option of pursuing a gain-on-sale origination model"</blockquote>The word "primarily" was dropped, and the framing shifted to presenting hold-or-sell as a neutral choice: "holding loans on our balance sheet when advantageous."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">First GAAP-profitable quarter (Q4 2023)</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"While we achieved net income profitability for the first time during the fourth quarter of 2023, changing business, macroeconomic or other conditions could potentially lead us, in the future, to raise additional capital"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Crypto wind-down decided Q4 2023</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The decision to wind down SoFi Digital Assets LLC was made in Q4 2023, completing the second step of the crypto exit arc that began with the Fed conformance period in FY2022.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"AI-based virtual assistant" first appears in Technology Platform description</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2023 was the first year any AI language appeared in SoFi's filing, with the Technology Platform segment description adding an "AI-based virtual assistant" as a product offering for bank and financial institution clients.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Underwriting methodology: income verification &rarr; free cash flow; debt service &rarr; credit experience</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022 (MD&amp;A): "ability to pay (measured through income verification), and stability (measured by debt service in relation to other loans)"</blockquote><blockquote>FY2023 (MD&amp;A): "ability to pay (measured through income and free cash flow), and stability (measured by credit experience)"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FDIC insurance expense: $4.3M &rarr; $21.7M (5x increase); VA/FHA loans added</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FDIC insurance expense increased fivefold as the deposit base grew from $7.3B to $18.6B. Home loan products expanded to include VA and FHA government loans for the first time.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FINRA enforcement: SoFi Securities failed supervisory system for fully paid securities lending</span><span class="tag tag-new">New</span></div><div class="finding-body">In December 2023, FINRA found that SoFi Securities failed to establish, maintain, and enforce a supervisory system reasonably designed to supervise its fully paid securities lending offerings.</div></div>
+</div>
+
+<!-- FY2023 -> FY2024 -->
+<div class="transition-header" id="yoy-2024">
+  <h2>FY2023 &rarr; FY2024: Profitability Year</h2>
+  <div class="sub">Filed Feb 2025 | Headcount: ~4,400 &rarr; ~5,000 | Revenue: $2,123M &rarr; $2,675M (+26%) | Deposits: $18.6B &rarr; $26.0B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; MD&amp;A</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Self-description rewritten: "one-stop shop" &rarr; "mission driven company"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023 (Business): "We are a member-centric, one-stop shop for financial services that, through our Lending and Financial Services products, allows members to borrow, save, spend, invest and protect their money."</blockquote><blockquote>FY2024 (MD&amp;A): "We are a mission driven company designed to help our members achieve financial independence in order to realize their ambitions."</blockquote>The MD&amp;A overview section adopted the new identity language while the competitive positioning sections retained "one-stop shop."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FSPL rewritten: "trust and a lifetime relationship" &rarr; "durable relationship"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022-23 (MD&amp;A): "Our strategy, which is rooted in what we refer to as our 'Financial Services Productivity Loop', is centered around building trust and a lifetime relationship with our members"</blockquote><blockquote>FY2024 (MD&amp;A): "A central part of our strategy is rooted in what we refer to as our 'Financial Services Productivity Loop', which is focused on building a durable relationship with our members"</blockquote>Also changed: "best-in-class unit economics and best-in-class products" became "a comprehensive set of best-in-class products." The FSPL description shifted from aspirational to operational.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Lending as a service" renamed to "Loan Platform Business"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023 (Business): "Lending as a service includes referred loans which are originated by a third-party partner to which we provide pre-qualified borrower referrals"</blockquote><blockquote>FY2024 (Risk Factors): "Loan Platform Business, formerly referred to as lending as a service, includes activity related to (i) certain loans which we originate on behalf of third-party partners"</blockquote>The renaming elevated the activity from a service description to a named business line.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Profitability language: "achieve and maintain" &rarr; "maintain or enhance"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022-23 (Risk Factors): "our ability to achieve and maintain profitability in the future"</blockquote><blockquote>FY2024 (Risk Factors): "our ability to maintain or enhance profitability in the future"</blockquote>With GAAP profitability achieved, "achieve" was replaced by "enhance" -- the risk shifted from whether profitability could be reached to whether it could be sustained.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI language upgraded: "AI-based virtual assistant" &rarr; "conversational AI engine"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The Technology Platform description upgraded from "AI-based virtual assistant" to "conversational AI engine" and added "employs AI and machine learning technology" for the payment risk platform. AI expanded from a single product mention to a capability embedded across multiple offerings.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Three credit card products; home equity loans and HELOCs launched</span><span class="tag tag-new">New</span></div><div class="finding-body">Credit card offerings expanded from one to three products. Home equity loans and home equity lines of credit were launched as new lending products, expanding the home lending suite beyond purchase and refinance.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Technology Platform adds "government entities"; billing shifts from "per use" to "stand ready obligation"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Technology Platform customer description added "government entities" alongside financial and non-financial institutions. Revenue recognition language shifted from "per use basis" to "stand ready obligation," reflecting a change in the accounting treatment of platform fees.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"member home feed" &rarr; "member home experience"; "unemployment protection" dropped</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The member interface was renamed from "member home feed" to "member home experience." Unemployment protection was dropped from the personal loan product description. Named acquisitions (Bank Merger, Technisys, Wyndham) were generalized to "prior acquisitions."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"increased tariffs" and "executive actions" added to macro and regulatory risk</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024 (Risk Factors): "elevated and fluctuating interest rates, inflationary pressures, increased tariffs, counterparty risk, changing customer demand and employment rates, capital markets volatility, instability in the financial services industry, a potential U.S. government shutdown, uncertainty stemming from recent changes to the U.S. presidential administration and its regulatory priorities and focus"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">SoFi Plus named in FSPL context; "integrate Galileo and Technisys" still named</span><span class="tag tag-new">New</span></div><div class="finding-body">SoFi Plus premium membership was first referenced within the FSPL strategy description. The Technology Platform segment still referenced integration of Galileo and Technisys by name:<blockquote>"continue to leverage investments made to integrate Galileo and Technisys and position the Technology Platform segment for diversified durable growth."</blockquote></div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Expansion Year</h2>
+  <div class="sub">Filed Feb 2026 | Headcount: ~5,000 &rarr; ~6,100 | Revenue: $2,675M &rarr; ~$3,841M (+44%) | Deposits: $26.0B &rarr; $37.5B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business &amp; MD&amp;A</h3>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">SoFi Crypto relaunched through SoFi Bank -- fundamentally different structure</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"During the fourth quarter of 2025, we launched SoFi Crypto, a new digital asset trading platform, as part of our Financial Services segment that is structured differently from the prior offering and is designed to operate within the Company's current regulatory framework."</blockquote>The same activity (crypto trading) that was forced out as an LLC-based MSB was brought back through a nationally chartered bank.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">SoFiUSD stablecoin: "first national bank to issue a stablecoin"</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"we took another step forward with crypto through the launch of our own stablecoin, SoFiUSD. This launch made SoFi the first national bank to issue a stablecoin on a public, permissionless blockchain."</blockquote>Future products named: "stablecoin issuance and tokenized deposits."</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Fee-based revenue: record $1.5B (+59% YoY); new forward-looking bullet</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>"total fee-based revenue reached a record of $1.5 billion, compared to $969.9 million in the same period of 2024, a year-over-year increase of 59%"</blockquote>A new forward-looking risk factor bullet appeared:<blockquote>"our ability to continue to grow our fee-based revenue, expand our Loan Platform Business and diversify our sources of income"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bank Merger historical narrative replaced with declarative present tense</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024 (Business): "In February 2022, we closed the Bank Merger, pursuant to which we became a bank holding company and began operating as SoFi Bank."</blockquote><blockquote>FY2025 (Business): "SoFi Technologies is a bank holding company, and SoFi Bank is a nationally chartered association."</blockquote>The historical acquisition narrative was replaced with a declarative statement of current status. Bank holding company identity is now treated as a foundational fact rather than a historical event.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"integrate Galileo and Technisys" &rarr; "integrate our services and offerings"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024 (MD&amp;A): "continue to leverage investments made to integrate Galileo and Technisys"</blockquote><blockquote>FY2025 (MD&amp;A): "continue to leverage investments made to integrate our services and offerings"</blockquote>Acquisition-specific brand names were normalized to generic references, consistent with the Bank Merger narrative change.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">SoFi Smart Card launched; global remittance services in 30+ countries</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"In 2025, we launched SoFi Smart Card to SoFi Plus members, a charge card secured by a SoFi Money checking and savings account."</blockquote><blockquote>"we launched global remittance services, which leverages blockchain technology to provide fast, seamless, low cost and safe international payments, in over 30 countries"</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Tariff language expanded; political language depoliticized</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024 (Risk Factors): "increased tariffs...uncertainty stemming from recent changes to the U.S. presidential administration and its regulatory priorities and focus"</blockquote><blockquote>FY2025 (Risk Factors): "trade restrictions such as sanctions, tariffs, reciprocal and retaliatory tariffs, and other tariff-related measures, global trade relations...uncertainty stemming from government actions and policies and regulatory priorities"</blockquote>Administration-specific language was replaced with generic governmental framing.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Convenience differentiator adds conversational AI for members</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2025 (MD&amp;A): "such as supporting our members by offering a conversational AI engine to enhance the overall member experience."</blockquote>AI moved from a Technology Platform enterprise offering to a member-facing differentiator in the Convenience pillar.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New competition category: digital asset trading platforms and banks offering crypto</span><span class="tag tag-new">New</span></div><div class="finding-body">With the SoFi Crypto relaunch, the competition section added "other digital asset trading platforms and banks that offer digital asset trading" as a new competitive category.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FINRA 2026 priorities: generative AI-enabled fraud, off-channel communications, extended hours trading</span><span class="tag tag-new">New</span></div><div class="finding-body">FY2025 added extensive FINRA 2026 exam priorities language:<blockquote>"FINRA is explicitly focused on vendor outages and cyber incidents, generative AI-enabled fraud, and controls over fractional shares and after hours trading."</blockquote></div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FDIC coverage: $2M &rarr; $3M; Switzerland added; in-school loan terms extended to 20 years</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FDIC Insured Deposit Program coverage increased from $2M to $3M. Switzerland was added as a new international operations geography. In-school student loan terms were extended from 5-15 years to 5-20 years. Home equity products shifted to brokering model with a third-party wholesale lender.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FSPL adds operating efficiency language; deposits described as "a channel to obtain meaningful member data"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2025 (MD&amp;A): "the Financial Services Productivity Loop strategy delivers operating and technology efficiencies to deliver improved unit economics."</blockquote>The SoFi Bank section added "a channel to obtain" before "meaningful member data" when describing deposit benefits -- explicitly framing deposits as a data acquisition tool.</div></div>
+
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Underwriting: "overlays" &rarr; "criteria"; income verification dropped from ability-to-pay measure</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2022 (MD&amp;A): "ability to pay (measured through income verification), and stability (measured by debt service in relation to other loans)"</blockquote><blockquote>FY2025 (MD&amp;A): "ability to pay (measured through free cash flow), and stability (measured by credit experience)"</blockquote>The underwriting language evolved across multiple years, with income verification giving way to free cash flow as the primary ability-to-pay metric.</div></div>
+</div>
+
+
+<!-- ==================== DEEP SIGNALS ==================== -->
+
+<div class="section" id="sig-fspl" style="margin-top:56px">
+  <div class="section-header"><h2>Signal 1: The Financial Services Productivity Loop Rewrite</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">1</span> FSPL Language Evolution</h3>
+    <p>The FSPL is SoFi's core strategic concept. Tracking its exact wording reveals the shift from aspirational to operational.</p>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>FSPL Core Language</th><th>Supporting Framing</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021-23</td><td>"centered around building trust and a lifetime relationship with our members"</td><td>"best-in-class unit economics and best-in-class products"</td></tr>
+        <tr><td>FY2024</td><td class="val-highlight">"focused on building a durable relationship with our members"</td><td>"a comprehensive set of best-in-class products"</td></tr>
+        <tr><td>FY2025</td><td>"focused on building a durable relationship with our members"</td><td class="val-new">Adds: "delivers operating and technology efficiencies to deliver improved unit economics"</td></tr>
+      </tbody>
+    </table>
+    <table class="data-table">
+      <thead><tr><th>Metric</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+      <tbody>
+        <tr><td>Products/Member</td><td>1.49</td><td>1.52</td><td>1.48</td><td>1.46</td><td>1.49</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Products/member has remained remarkably flat (1.46-1.52 range) across five years despite the FSPL being the stated strategic driver. The FY2024 rewrite from "lifetime relationship" to "durable relationship" and from "unit economics" emphasis to "comprehensive products" emphasis reflected a recalibration of the loop's stated goals. FY2025's addition of "operating and technology efficiencies" signals the loop is now primarily a cost-efficiency argument.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-deposits">
+  <div class="section-header"><h2>Signal 2: Deposit Trajectory</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">2</span> From Zero to $37.5B in Four Years</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Total Deposits</th><th>YoY Growth</th><th>FDIC Insurance Expense</th><th>IDP FDIC Coverage</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021</td><td>$0</td><td>--</td><td>N/A</td><td>N/A</td></tr>
+        <tr><td>FY2022</td><td class="val-pos">$7.3B</td><td>N/A</td><td>$4.3M</td><td>N/A</td></tr>
+        <tr><td>FY2023</td><td class="val-pos">$18.6B</td><td>+155%</td><td class="val-neg">$21.7M</td><td>$2M</td></tr>
+        <tr><td>FY2024</td><td>$26.0B</td><td>+40%</td><td>$12.4M</td><td>$2M</td></tr>
+        <tr><td>FY2025</td><td class="val-pos">$37.5B</td><td>+44%</td><td>$19.3M</td><td class="val-highlight">$3M</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Deposits became the primary funding source, replacing warehouse and securitization financing. FDIC coverage expansion from $2M to $3M through the Insured Deposit Program signals confidence in attracting higher-balance depositors.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-crypto">
+  <div class="section-header"><h2>Signal 3: Crypto Arc -- Exit and Reentry</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Full Circle in Four Years</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Crypto Status</th><th>Entity</th><th>Regulatory Context</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021</td><td>Active crypto trading</td><td>SoFi Digital Assets LLC</td><td>Pre-bank charter; state MSB licensing</td></tr>
+        <tr><td>FY2022</td><td class="val-neg">Conformance period</td><td>SoFi Digital Assets LLC</td><td>Fed: not permissible under BHCA; 2-year conformance</td></tr>
+        <tr><td>FY2023</td><td class="val-neg">Wind-down decided (Q4)</td><td>SoFi Digital Assets LLC</td><td>Conformance period nearing expiry</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">Closure completed</td><td>SoFi Digital Assets LLC dissolved</td><td>Conformance period expired</td></tr>
+        <tr><td>FY2025</td><td class="val-pos">Relaunched (Q4)</td><td class="val-new">SoFi Crypto (through SoFi Bank)</td><td>Through bank regulatory framework + stablecoin</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The same activity was forced out through one regulatory structure (LLC-based MSB) and brought back through another (nationally chartered bank). FY2025 went further with SoFiUSD stablecoin issuance and named "tokenized deposits" as a planned future product.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-lending">
+  <div class="section-header"><h2>Signal 4: Lending Model Evolution</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">4</span> From Pure Gain-on-Sale to Platform</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Lending Model Language</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021</td><td>"We utilize a gain-on-sale origination model"</td><td>Pure originate-and-sell</td></tr>
+        <tr><td>FY2022</td><td>"our lending business remains <strong>primarily</strong> a gain-on-sale model"</td><td>Qualifier added; balance sheet flexibility acknowledged</td></tr>
+        <tr><td>FY2023</td><td>"We have the <strong>option</strong> of pursuing a gain-on-sale origination model...or holding loans on our balance sheet <strong>when advantageous</strong>"</td><td>"Primarily" dropped; neutral sell-or-hold framing</td></tr>
+        <tr><td>FY2024-25</td><td>Same as FY2023 + Loan Platform Business added</td><td>Fee-based origination for third parties layered on</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The Loan Platform Business generated $575.9M from $11B in personal loans originated for third parties in FY2025, adding a fee-based revenue layer to the originate-hold-or-sell model.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-finserv">
+  <div class="section-header"><h2>Signal 5: Financial Services Segment Profitability Arc</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">5</span> From Deepest Loss to Fastest-Growing Profit Contributor</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>FinServ Revenue</th><th>FinServ Contribution Profit/(Loss)</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021</td><td>$58M</td><td class="val-neg">($135M)</td><td>Heavy investment phase</td></tr>
+        <tr><td>FY2022</td><td>$168M</td><td class="val-neg">($199M)</td><td>Deepest loss; products scaling</td></tr>
+        <tr><td>FY2023</td><td>$437M</td><td>($0.3M)</td><td>Near-breakeven</td></tr>
+        <tr><td>FY2024</td><td>$822M</td><td class="val-pos">$307M</td><td>First profitable year</td></tr>
+        <tr><td>FY2025</td><td class="val-pos">$1,542M</td><td class="val-pos">$793M</td><td>+158% contribution profit growth</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Financial Services went from the deepest-loss segment to contributing $793M in profit in four years. Revenue grew 26x from FY2021 to FY2025. This segment now generates more revenue than Lending did in FY2021.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-ai">
+  <div class="section-header"><h2>Signal 6: AI Language Progression</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">6</span> From Absent to Member-Facing Differentiator</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>AI Language in Filing</th><th>Context</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021-22</td><td>None</td><td>No AI references in business or product descriptions</td></tr>
+        <tr><td>FY2023</td><td class="val-new">"AI-based virtual assistant"</td><td>Technology Platform enterprise product</td></tr>
+        <tr><td>FY2024</td><td class="val-highlight">"conversational AI engine" + "AI and machine learning technology"</td><td>Tech Platform + payment risk platform</td></tr>
+        <tr><td>FY2025</td><td class="val-highlight">AI in member-facing Convenience differentiator + "generative AI-enabled fraud" as risk + FINRA AI guidance</td><td>Member-facing, enterprise, and regulatory</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">AI language progressed from absent to enterprise-only product to member-facing differentiator to regulatory risk factor across four years. The FY2025 addition of "generative AI-enabled fraud" as a FINRA focus area added a risk dimension alongside the product dimension.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-identity">
+  <div class="section-header"><h2>Signal 7: Self-Description Evolution</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Corporate Identity Language</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Primary Self-Description</th><th>Other Changes</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021-23</td><td>"member-centric, one-stop shop for financial services"</td><td>--</td></tr>
+        <tr><td>FY2024</td><td class="val-highlight">"mission driven company designed to help our members achieve financial independence"</td><td>"member home feed" &rarr; "member home experience"</td></tr>
+        <tr><td>FY2025</td><td>Same as FY2024</td><td>Bank Merger narrative &rarr; declarative present; Galileo/Technisys names normalized</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">The MD&amp;A overview section adopted "mission driven company" in FY2024, while the competitive positioning section retained "one-stop shop" -- suggesting a dual-track identity where the aspirational mission language coexists with the operational positioning language.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-regulatory">
+  <div class="section-header"><h2>Signal 8: Regulatory Surface Expansion</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">8</span> From Fintech to Bank Holding Company Regulatory Stack</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Key Regulators</th><th>Risk Factor Chars</th><th>New Additions</th></tr></thead>
+      <tbody>
+        <tr><td>FY2021</td><td>SEC, FINRA, FinCEN, state regulators</td><td>266K</td><td>--</td></tr>
+        <tr><td>FY2022</td><td class="val-new">+ Federal Reserve, OCC, FDIC</td><td class="val-neg">414K</td><td>Volcker Rule, CRA, BHCA</td></tr>
+        <tr><td>FY2023</td><td class="val-new">+ CFPB</td><td>435K</td><td>FDIC secondary authority, bank failure risk</td></tr>
+        <tr><td>FY2024</td><td>Same</td><td>443K</td><td>"executive actions," tariffs</td></tr>
+        <tr><td>FY2025</td><td>Same</td><td class="val-neg">485K</td><td>FINRA 2026 priorities, TISA, EFAA, off-channel comms, extended hours trading</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Risk factor text grew 82% from FY2021 to FY2025 (266K &rarr; 485K chars). The bank charter roughly doubled the regulatory surface area in a single year (FY2022), and each subsequent year added incremental regulatory requirements.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-revenue">
+  <div class="section-header"><h2>Signal 9: Revenue Diversification</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">9</span> From Lending-Dominated to Diversified</h3>
+    <table class="data-table">
+      <thead><tr><th>Segment</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lending</strong></td><td>$738M (75%)</td><td>$1,142M (73%)</td><td>$1,371M (65%)</td><td>$1,485M (56%)</td><td>$1,849M (48%)</td></tr>
+        <tr><td><strong>Financial Services</strong></td><td>$58M (6%)</td><td>$168M (11%)</td><td>$437M (21%)</td><td>$822M (31%)</td><td class="val-pos">$1,542M (40%)</td></tr>
+        <tr><td><strong>Technology Platform</strong></td><td>$195M (20%)</td><td>$314M (20%)</td><td>$352M (17%)</td><td>$395M (15%)</td><td>$450M (12%)</td></tr>
+        <tr><td><strong>Fee-Based Revenue</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>$970M</td><td class="val-pos">$1,500M (+59%)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Lending's share of revenue declined from 75% to 48% over five years as Financial Services grew from 6% to 40% of revenue. The explicit naming of fee-based revenue growth as a forward-looking risk factor in FY2025 signals this is now a primary strategic objective.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-products">
+  <div class="section-header"><h2>Signal 10: Product Expansion Velocity</h2></div>
+
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Acceleration from Banking to Blockchain</h3>
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>New Products/Services</th><th>Category</th></tr></thead>
+      <tbody>
+        <tr><td>FY2022</td><td>SoFi Checking &amp; Savings, SoFi Plus, Pay in 4, Options trading</td><td>Banking products</td></tr>
+        <tr><td>FY2023</td><td>SoFi Travel, VA/FHA loans</td><td>Lending variants</td></tr>
+        <tr><td>FY2024</td><td>Home equity loans, HELOCs, 3 credit cards, Loan Platform Business</td><td>Lending + fee-based platform</td></tr>
+        <tr><td>FY2025</td><td class="val-new">SoFi Crypto, SoFiUSD stablecoin, SoFi Smart Card, global remittance, tokenized deposits (planned)</td><td>Crypto/blockchain + international</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Product expansion accelerated from banking fundamentals (FY2022) through lending variants (FY2023-24) to crypto/blockchain and international services (FY2025). Total products grew from 5.2M to 20.2M across the period.</p>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>Bank Charter as Platform</h3>
+      <p>The bank charter (January 2022) transformed every aspect of the filing: deposits went from $0 to $37.5B; lending model shifted from pure gain-on-sale to hold-or-sell flexibility; regulatory surface expanded from SEC/FINRA to include Federal Reserve, OCC, FDIC, CFPB; crypto was forced out then brought back through the bank structure; and FDIC-insured deposits became the primary funding source.</p>
+    </div>
+    <div class="signal-card">
+      <h3>From Loss-Making Fintech to Profitable Bank</h3>
+      <ul>
+        <li>Members: 3.5M &rarr; 13.6M</li>
+        <li>Revenue: $985M &rarr; ~$3.8B</li>
+        <li>Financial Services contribution: ($135M) &rarr; $793M</li>
+        <li>Diluted EPS: negative through FY2023, then $0.39 (FY2024 and FY2025)</li>
+        <li>Profitability language: "may not achieve" &rarr; "achieve and maintain" &rarr; "maintain or enhance"</li>
+      </ul>
+    </div>
+    <div class="signal-card">
+      <h3>Crypto Full Circle</h3>
+      <p>SoFi Digital Assets LLC launched &rarr; Fed conformance period &rarr; wind-down &rarr; closure &rarr; relaunch as SoFi Crypto through SoFi Bank &rarr; stablecoin issuance &rarr; tokenized deposits planned. The same activity was forced out as an LLC-based MSB and brought back through a nationally chartered bank.</p>
+    </div>
+    <div class="signal-card">
+      <h3>Revenue Diversification Strategy</h3>
+      <p>Filing language systematically pivoted from lending-dominated to diversified. "Primarily a gain-on-sale model" was dropped. "Lending as a service" became "Loan Platform Business." Fee-based revenue became a named strategic priority. Financial Services segment revenue grew from $58M to $1.54B. Lending's share fell from 75% to 48%.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Total Net Revenue</strong></td><td>$985M</td><td>$1,574M</td><td>$2,123M</td><td>$2,675M</td><td>~$3,841M</td>
+      </tr>
+      <tr>
+        <td>Net Interest Income</td><td>$252M</td><td>N/A</td><td>N/A</td><td>$1,716M</td><td>$2,219M</td>
+      </tr>
+      <tr>
+        <td>Fee-Based Revenue</td><td>N/A</td><td>N/A</td><td>N/A</td><td>$970M</td><td class="val-pos">$1,500M</td>
+      </tr>
+      <tr>
+        <td><strong>Diluted EPS</strong></td><td class="val-neg">N/A (loss)</td><td class="val-neg">N/A (loss)</td><td class="val-neg">($0.36)</td><td class="val-pos">$0.39</td><td class="val-pos">$0.39</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Total Members</strong></td><td>3.5M</td><td>5.2M</td><td>7.5M</td><td>10.1M</td><td>13.6M</td>
+      </tr>
+      <tr>
+        <td>Total Products</td><td>5.2M</td><td>7.9M</td><td>11.1M</td><td>14.7M</td><td>20.2M</td>
+      </tr>
+      <tr>
+        <td>Products/Member</td><td>1.49</td><td>1.52</td><td>1.48</td><td>1.46</td><td>1.49</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Total Deposits</strong></td><td>$0</td><td>$7.3B</td><td>$18.6B</td><td>$26.0B</td><td class="val-pos">$37.5B</td>
+      </tr>
+      <tr>
+        <td>FDIC Insurance Expense</td><td>N/A</td><td>$4.3M</td><td>$21.7M</td><td>$12.4M</td><td>$19.3M</td>
+      </tr>
+      <tr>
+        <td>FDIC Coverage (IDP)</td><td>N/A</td><td>N/A</td><td>$2M</td><td>$2M</td><td>$3M</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>Galileo Accounts</td><td>~100M</td><td>~131M</td><td>~145M</td><td>~168M</td><td>N/A</td>
+      </tr>
+      <tr>
+        <td>Employees</td><td>~2,500</td><td>~4,200</td><td>~4,400</td><td>~5,000</td><td>~6,100</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td><strong>Lending Revenue</strong></td><td>$738M</td><td>$1,142M</td><td>$1,371M</td><td>$1,485M</td><td>$1,849M</td>
+      </tr>
+      <tr>
+        <td><strong>FinServ Revenue</strong></td><td>$58M</td><td>$168M</td><td>$437M</td><td>$822M</td><td class="val-pos">$1,542M</td>
+      </tr>
+      <tr>
+        <td><strong>Tech Platform Revenue</strong></td><td>$195M</td><td>$314M</td><td>$352M</td><td>$395M</td><td>$450M</td>
+      </tr>
+      <tr>
+        <td>FinServ Contribution Profit/(Loss)</td><td class="val-neg">($135M)</td><td class="val-neg">($199M)</td><td>($0.3M)</td><td class="val-pos">$307M</td><td class="val-pos">$793M</td>
+      </tr>
+      <tr><td colspan="6" style="height:8px;border:none"></td></tr>
+      <tr>
+        <td>Risk Factor Chars</td><td>266K</td><td>414K</td><td>435K</td><td>443K</td><td>485K</td>
+      </tr>
+      <tr>
+        <td>Legal Proceedings Chars</td><td>141K</td><td>120K</td><td>126K</td><td>124K</td><td>129K</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
+  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for SoFi Technologies, Inc. (CIK 0001818874)
+</div>
+
+</div><!-- end .main -->
+
+<script>
+function toggle(header) { header.closest('.finding').classList.toggle('open'); }
+function toggleAll() {
+  var findings = document.querySelectorAll('.finding');
+  var allOpen = Array.from(findings).every(function(f) { return f.classList.contains('open'); });
+  findings.forEach(function(f) {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  document.getElementById('global-expand').textContent = allOpen ? 'Expand all' : 'Collapse all';
+}
+</script>
+</body>
+</html>
