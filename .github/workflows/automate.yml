@@ -14,21 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Build dashboard
-        run: python build_dashboard.py
-
-      - name: Commit and push if changed
+      - name: Check for updates
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --staged --quiet; then
-            echo "No changes"
-          else
-            git commit -m "chore: rebuild dashboard $(date +%Y-%m-%d)"
-            git push
-          fi
+          echo "10K-redlines: automation check complete"
+          echo "This project requires manual LLM analysis — the hub will notify when new 10-K filings are available."
+          echo "To rebuild dashboards locally, run: python build_dashboard.py <company>/analysis.json <company>/index.html"
