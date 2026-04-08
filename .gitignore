@@ -1,9 +1,8 @@
-*/raw/
-*/sections/
+**/raw/
+**/sections/
 *_full.txt
-extract_sections.py
-*/extract_sections.py
-analysis.json
+**/extract_sections.py
+**/analysis.json
 test.json
 *.pyc
 __pycache__/
@@ -14,4 +13,3 @@ __pycache__/
 *.md
 .claude/
 *Copy*.html
-build_dashboard.py

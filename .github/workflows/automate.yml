@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "10K-redlines: automation check complete"
           echo "This project requires manual LLM analysis — the hub will notify when new 10-K filings are available."
-          echo "To rebuild dashboards locally, run: python build_dashboard.py <company>/analysis.json <company>/index.html"
+          echo "To rebuild dashboards locally, run: python scripts/build_dashboard.py companies/<ticker>/analysis.json companies/<ticker>/index.html"
 
       - name: Generate run summary
         run: python .github/scripts/summarize_changes.py

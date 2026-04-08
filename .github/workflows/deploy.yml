@@ -44,7 +44,7 @@ jobs:
               --short \
               --salt "${{ secrets.STATICRYPT_SALT }}" \
               --remember 30 \
-              -t password_template.html \
+              -t scripts/password_template.html \
               --template-instructions "Enter the password to access this site." \
               --template-button "Unlock"
           done
