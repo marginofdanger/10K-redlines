@@ -3,138 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10-K Redline Analysis</title>
+<title>10-K / 20-F Redline Analysis</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  background: #ffffff; color: #1f2328; min-height: 100vh;
-  padding: 48px 24px;
-}
-.container { max-width: 900px; margin: 0 auto; }
-h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-.subtitle { font-size: 14px; color: #59636e; margin-bottom: 32px; line-height: 1.6; }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-a.card {
-  display: block; background: #f6f8fa; border: 1px solid #d1d9e0;
-  border-radius: 8px; padding: 16px; text-decoration: none;
-  transition: border-color 0.15s, transform 0.15s;
-}
-a.card:hover { border-color: #0969da; transform: translateY(-1px); }
-.card-ticker { font-size: 18px; font-weight: 700; color: #1f2328; margin-bottom: 4px; }
-.card-name { font-size: 11px; color: #59636e; margin-bottom: 8px; line-height: 1.4; }
-.card-meta { font-size: 10px; color: #8b949e; }
-.card-meta span { display: inline-block; margin-right: 8px; }
-.section-label {
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 1px; color: #8b949e; margin: 28px 0 12px; padding-bottom: 6px;
-  border-bottom: 1px solid #d1d9e0;
-}
-.footer { margin-top: 40px; font-size: 11px; color: #8b949e; text-align: center; }
-@media (max-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }
+  :root {
+    --dark: #0D1B2A;
+    --accent: #1B365D;
+    --gold: #C8952E;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+    --blue: #2980b9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--dark), var(--accent));
+    color: #fff;
+    padding: 48px 40px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--gold);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header p {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 300;
+    max-width: 600px;
+  }
+  table.portfolio {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    table-layout: auto;
+  }
+  table.portfolio thead th {
+    text-align: left;
+    padding: 12px 14px;
+    background: var(--light-bg);
+    border-bottom: 2px solid var(--border);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  table.portfolio thead th.grip-col {
+    width: 28px;
+    padding: 12px 0 12px 8px;
+    cursor: default;
+  }
+  table.portfolio thead th.grip-col:hover {
+    background: var(--light-bg);
+  }
+  table.portfolio thead th:hover {
+    color: var(--text);
+    background: #eef1f4;
+  }
+  table.portfolio thead th .arrow {
+    display: inline-block;
+    width: 10px;
+    margin-left: 4px;
+    color: var(--blue);
+    font-size: 0.7rem;
+  }
+  table.portfolio thead th.num,
+  table.portfolio tbody td.num {
+    text-align: right;
+  }
+  table.portfolio tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+  }
+  table.portfolio tbody tr:hover {
+    background: #f4f8fc;
+  }
+  table.portfolio tbody tr.dragging {
+    opacity: 0.4;
+  }
+  table.portfolio tbody tr.drop-above td {
+    box-shadow: inset 0 3px 0 0 var(--blue);
+  }
+  table.portfolio tbody tr.drop-below td {
+    box-shadow: inset 0 -3px 0 0 var(--blue);
+  }
+  table.portfolio tbody td {
+    padding: 12px 14px;
+    vertical-align: middle;
+  }
+  table.portfolio tbody td.grip-cell {
+    padding: 12px 0 12px 8px;
+    width: 28px;
+    color: #bbb;
+    cursor: grab;
+    user-select: none;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  table.portfolio tbody td.grip-cell:hover {
+    color: var(--text-muted);
+  }
+  table.portfolio tbody tr.dragging .grip-cell {
+    cursor: grabbing;
+  }
+  table.portfolio tbody td.click-cell {
+    cursor: pointer;
+  }
+  .ticker-pill {
+    display: inline-block;
+    width: 72px;
+    padding: 5px 0;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.8px;
+    color: #fff;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+  }
+  .col-name { font-weight: 600; color: var(--text); }
+  .col-sector { color: var(--text-muted); font-size: 0.82rem; }
+  .col-fy { color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .col-count { font-variant-numeric: tabular-nums; color: var(--text-muted); }
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>10-K Redline Analysis</h1>
-  <p class="subtitle">Year-over-year textual analysis of SEC filings. Each dashboard tracks wording changes, ordering shifts, additions, and deletions across 6-8 years of 10-K/20-F filings, surfacing strategic pivots and disclosure signals.</p>
 
-  <div class="section-label">Technology</div>
-  <div class="grid">
-    <a class="card" href="companies/meta/">
-      <div class="card-ticker">META</div>
-      <div class="card-name">Meta Platforms</div>
-      <div class="card-meta"><span>FY2020-25</span><span>22 signals</span></div>
-    </a>
-    <a class="card" href="companies/goog/">
-      <div class="card-ticker">GOOG</div>
-      <div class="card-name">Alphabet</div>
-      <div class="card-meta"><span>FY2018-25</span><span>15 signals</span></div>
-    </a>
-    <a class="card" href="companies/amzn/">
-      <div class="card-ticker">AMZN</div>
-      <div class="card-name">Amazon</div>
-      <div class="card-meta"><span>FY2018-25</span><span>15 signals</span></div>
-    </a>
-    <a class="card" href="companies/app/">
-      <div class="card-ticker">APP</div>
-      <div class="card-name">AppLovin</div>
-      <div class="card-meta"><span>FY2021-25</span><span>14 signals</span></div>
-    </a>
-    <a class="card" href="companies/veev/">
-      <div class="card-ticker">VEEV</div>
-      <div class="card-name">Veeva Systems</div>
-      <div class="card-meta"><span>FY2018-25</span><span>14 signals</span></div>
-    </a>
-  </div>
-
-  <div class="section-label">Semiconductors</div>
-  <div class="grid">
-    <a class="card" href="companies/avgo/">
-      <div class="card-ticker">AVGO</div>
-      <div class="card-name">Broadcom</div>
-      <div class="card-meta"><span>FY2018-25</span><span>12 signals</span></div>
-    </a>
-    <a class="card" href="companies/tsm/">
-      <div class="card-ticker">TSM</div>
-      <div class="card-name">TSMC (20-F)</div>
-      <div class="card-meta"><span>FY2018-24</span><span>18 signals</span></div>
-    </a>
-    <a class="card" href="companies/NVDA/">
-      <div class="card-ticker">NVDA</div>
-      <div class="card-name">NVIDIA</div>
-      <div class="card-meta"><span>FY2020-26</span><span>12 signals</span></div>
-    </a>
-  </div>
-
-  <div class="section-label">Healthcare</div>
-  <div class="grid">
-    <a class="card" href="companies/unh/">
-      <div class="card-ticker">UNH</div>
-      <div class="card-name">UnitedHealth Group</div>
-      <div class="card-meta"><span>FY2018-25</span><span>16 signals</span></div>
-    </a>
-    <a class="card" href="companies/hca/">
-      <div class="card-ticker">HCA</div>
-      <div class="card-name">HCA Healthcare</div>
-      <div class="card-meta"><span>FY2018-25</span><span>12 signals</span></div>
-    </a>
-  </div>
-
-  <div class="section-label">Insurance</div>
-  <div class="grid">
-    <a class="card" href="companies/pgr/">
-      <div class="card-ticker">PGR</div>
-      <div class="card-name">Progressive</div>
-      <div class="card-meta"><span>FY2018-25</span><span>14 signals</span></div>
-    </a>
-  </div>
-
-  <div class="section-label">Financials</div>
-  <div class="grid">
-    <a class="card" href="companies/apo/">
-      <div class="card-ticker">APO</div>
-      <div class="card-name">Apollo Global Management</div>
-      <div class="card-meta"><span>FY2018-25</span><span>14 signals</span></div>
-    </a>
-    <a class="card" href="companies/fico/">
-      <div class="card-ticker">FICO</div>
-      <div class="card-name">Fair Isaac Corporation</div>
-      <div class="card-meta"><span>FY2018-25</span><span>18 signals</span></div>
-    </a>
-  </div>
-
-  <div class="section-label">Consumer</div>
-  <div class="grid">
-    <a class="card" href="companies/cvna/">
-      <div class="card-ticker">CVNA</div>
-      <div class="card-name">Carvana</div>
-      <div class="card-meta"><span>FY2018-25</span><span>15 signals</span></div>
-    </a>
-  </div>
-
-  <div class="footer">Source: SEC EDGAR | Analysis: March 2026</div>
+<div class="header">
+  <h1>10-K / 20-F Redline Analysis</h1>
+  <p>Year-over-year textual analysis of SEC filings. Each dashboard tracks wording changes, ordering shifts, additions, and deletions across 6-8 years of 10-K/20-F filings, surfacing strategic pivots and disclosure signals.</p>
 </div>
+
+<table class="portfolio" id="portfolio">
+  <thead>
+    <tr>
+      <th class="grip-col" aria-label="Drag handle"></th>
+      <th data-key="ticker">Ticker<span class="arrow"></span></th>
+      <th data-key="name">Company<span class="arrow"></span></th>
+      <th data-key="sector">Sector<span class="arrow"></span></th>
+      <th data-key="years" class="num">#&nbsp;Years<span class="arrow"></span></th>
+      <th data-key="startKey">Start FY<span class="arrow"></span></th>
+      <th data-key="endKey">End FY<span class="arrow"></span></th>
+      <th data-key="signals" class="num">Signals<span class="arrow"></span></th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<div class="footer">
+  <p>Data sourced from <a href="https://www.sec.gov/edgar">SEC EDGAR</a>. Analysis generated with Claude.</p>
+</div>
+
+<script>
+const companies = [
+  {ticker:'META', name:'Meta Platforms',           sector:'Technology / Social Media',                startFY:'FY2020', endFY:'FY2025', signals:22, url:'companies/meta/',  c1:'#0668E1', c2:'#0080FB', c3:'#00C2FF'},
+  {ticker:'GOOG', name:'Alphabet',                 sector:'Technology / Internet Search',             startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/goog/',  c1:'#1a1a2e', c2:'#4285F4', c3:'#EA4335'},
+  {ticker:'AMZN', name:'Amazon',                   sector:'Technology / E-Commerce',                  startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/amzn/',  c1:'#232F3E', c2:'#146EB4', c3:'#FF9900'},
+  {ticker:'APP',  name:'AppLovin',                 sector:'AdTech / Internet Advertising',            startFY:'FY2021', endFY:'FY2025', signals:14, url:'companies/app/',   c1:'#1a1a2e', c2:'#1E3A5F', c3:'#FF6B35'},
+  {ticker:'VEEV', name:'Veeva Systems',            sector:'SaaS / Life Sciences Cloud',               startFY:'FY2018', endFY:'FY2025', signals:14, url:'companies/veev/',  c1:'#1a1a2e', c2:'#F58220', c3:'#2C5234'},
+  {ticker:'AVGO', name:'Broadcom',                 sector:'Semiconductors + Infrastructure Software', startFY:'FY2018', endFY:'FY2025', signals:12, url:'companies/avgo/',  c1:'#1a1a2e', c2:'#CC092F', c3:'#16213e'},
+  {ticker:'TSM',  name:'TSMC (20-F)',              sector:'Semiconductors',                           startFY:'FY2018', endFY:'FY2025', signals:18, url:'companies/tsm/',   c1:'#8B0000', c2:'#C41E3A', c3:'#FFD700'},
+  {ticker:'NVDA', name:'NVIDIA',                   sector:'Semiconductors',                           startFY:'FY2020', endFY:'FY2026', signals:12, url:'companies/NVDA/',  c1:'#1a1a1a', c2:'#333333', c3:'#76b900'},
+  {ticker:'UNH',  name:'UnitedHealth Group',       sector:'Health Insurance / Healthcare Services',   startFY:'FY2018', endFY:'FY2025', signals:16, url:'companies/unh/',   c1:'#1a1a2e', c2:'#002677', c3:'#00BCD4'},
+  {ticker:'HCA',  name:'HCA Healthcare',           sector:'Healthcare / Hospitals',                   startFY:'FY2018', endFY:'FY2025', signals:12, url:'companies/hca/',   c1:'#0D1B2A', c2:'#1B365D', c3:'#C8952E'},
+  {ticker:'PGR',  name:'Progressive',              sector:'Insurance / P&C',                          startFY:'FY2018', endFY:'FY2025', signals:14, url:'companies/pgr/',   c1:'#1a1a2e', c2:'#0033A0', c3:'#00B4D8'},
+  {ticker:'APO',  name:'Apollo Global Management', sector:'Alternative Asset Management',             startFY:'FY2018', endFY:'FY2025', signals:14, url:'companies/apo/',   c1:'#1a1a2e', c2:'#003A70', c3:'#0066B3'},
+  {ticker:'FICO', name:'Fair Isaac Corporation',   sector:'Analytics / Decision Management Software', startFY:'FY2018', endFY:'FY2025', signals:18, url:'companies/fico/',  c1:'#001a4d', c2:'#0033A0', c3:'#00A3E0'},
+  {ticker:'CVNA', name:'Carvana',                  sector:'Automotive / Digital Retail',              startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/cvna/',  c1:'#1a1a2e', c2:'#006D9E', c3:'#00AFF0'},
+];
+
+// Parse "FY2018" -> 2018 (numeric, sortable)
+function fyKey(fy) {
+  const m = String(fy).match(/(\d{4})/);
+  return m ? parseInt(m[1], 10) : 0;
+}
+companies.forEach(c => {
+  c.startKey = fyKey(c.startFY);
+  c.endKey = fyKey(c.endFY);
+  c.years = c.endKey - c.startKey + 1;
+});
+
+const STATE_KEY = 'redline-sort-v1';
+const defaultState = {mode: 'sort', key: 'ticker', dir: 'asc', customOrder: null};
+const STATE = Object.assign({}, defaultState, JSON.parse(localStorage.getItem(STATE_KEY) || '{}'));
+
+function saveState() {
+  localStorage.setItem(STATE_KEY, JSON.stringify(STATE));
+}
+
+function cmp(a, b, key) {
+  const va = a[key], vb = b[key];
+  if (typeof va === 'number') return va - vb;
+  return String(va).localeCompare(String(vb));
+}
+
+function orderedRows() {
+  if (STATE.mode === 'custom' && Array.isArray(STATE.customOrder)) {
+    const byTicker = Object.fromEntries(companies.map(c => [c.ticker, c]));
+    const seen = new Set();
+    const out = [];
+    STATE.customOrder.forEach(t => {
+      if (byTicker[t] && !seen.has(t)) { out.push(byTicker[t]); seen.add(t); }
+    });
+    // Append any companies missing from the stored order (e.g. newly added)
+    companies.forEach(c => { if (!seen.has(c.ticker)) out.push(c); });
+    return out;
+  }
+  return companies.slice().sort((a, b) => {
+    const r = cmp(a, b, STATE.key);
+    return STATE.dir === 'asc' ? r : -r;
+  });
+}
+
+function render() {
+  const rows = orderedRows();
+  const tbody = document.querySelector('#portfolio tbody');
+  tbody.innerHTML = rows.map(c => `
+    <tr draggable="true" data-ticker="${c.ticker}" data-url="${c.url}">
+      <td class="grip-cell" aria-hidden="true">⋮⋮</td>
+      <td class="click-cell"><span class="ticker-pill" style="background:linear-gradient(135deg,${c.c1},${c.c2});border-bottom-color:${c.c3};">${c.ticker}</span></td>
+      <td class="click-cell col-name">${c.name}</td>
+      <td class="click-cell col-sector">${c.sector}</td>
+      <td class="click-cell col-count num">${c.years}</td>
+      <td class="click-cell col-fy">${c.startFY}</td>
+      <td class="click-cell col-fy">${c.endFY}</td>
+      <td class="click-cell col-count num">${c.signals}</td>
+    </tr>
+  `).join('');
+
+  document.querySelectorAll('#portfolio thead th[data-key]').forEach(th => {
+    const arrow = th.querySelector('.arrow');
+    if (STATE.mode === 'sort' && th.dataset.key === STATE.key) {
+      arrow.textContent = STATE.dir === 'asc' ? '▲' : '▼';
+    } else {
+      arrow.textContent = '';
+    }
+  });
+}
+
+// Column sort
+document.querySelectorAll('#portfolio thead th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    if (STATE.mode === 'sort' && STATE.key === key) {
+      STATE.dir = STATE.dir === 'asc' ? 'desc' : 'asc';
+    } else {
+      STATE.mode = 'sort';
+      STATE.key = key;
+      STATE.dir = 'asc';
+    }
+    saveState();
+    render();
+  });
+});
+
+// Row click -> navigate. Only the click-cell cells trigger navigation (not the grip).
+document.querySelector('#portfolio tbody').addEventListener('click', e => {
+  const cell = e.target.closest('td.click-cell');
+  if (!cell) return;
+  const tr = cell.parentElement;
+  if (tr && tr.dataset.url) window.location.href = tr.dataset.url;
+});
+
+// Drag-and-drop reordering
+const tbody = document.querySelector('#portfolio tbody');
+let dragTicker = null;
+
+tbody.addEventListener('dragstart', e => {
+  const tr = e.target.closest('tr');
+  if (!tr) return;
+  dragTicker = tr.dataset.ticker;
+  tr.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  // Firefox needs data set on the transfer
+  e.dataTransfer.setData('text/plain', dragTicker);
+});
+
+tbody.addEventListener('dragend', e => {
+  const tr = e.target.closest('tr');
+  if (tr) tr.classList.remove('dragging');
+  tbody.querySelectorAll('.drop-above, .drop-below').forEach(el => {
+    el.classList.remove('drop-above', 'drop-below');
+  });
+  dragTicker = null;
+});
+
+tbody.addEventListener('dragover', e => {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  const tr = e.target.closest('tr');
+  if (!tr || tr.dataset.ticker === dragTicker) return;
+  const rect = tr.getBoundingClientRect();
+  const above = (e.clientY - rect.top) < rect.height / 2;
+  tbody.querySelectorAll('.drop-above, .drop-below').forEach(el => {
+    el.classList.remove('drop-above', 'drop-below');
+  });
+  tr.classList.add(above ? 'drop-above' : 'drop-below');
+});
+
+tbody.addEventListener('drop', e => {
+  e.preventDefault();
+  const tr = e.target.closest('tr');
+  if (!tr || !dragTicker || tr.dataset.ticker === dragTicker) return;
+  const targetTicker = tr.dataset.ticker;
+  const above = tr.classList.contains('drop-above');
+
+  const order = orderedRows().map(c => c.ticker);
+  const fromIdx = order.indexOf(dragTicker);
+  if (fromIdx !== -1) order.splice(fromIdx, 1);
+  let toIdx = order.indexOf(targetTicker);
+  if (!above) toIdx += 1;
+  order.splice(toIdx, 0, dragTicker);
+
+  STATE.mode = 'custom';
+  STATE.customOrder = order;
+  saveState();
+  render();
+});
+
+render();
+</script>
+
 </body>
 </html>
