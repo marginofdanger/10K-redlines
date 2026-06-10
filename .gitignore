@@ -13,3 +13,4 @@ __pycache__/
 *.md
 .claude/
 *Copy*.html
+**/diffs/

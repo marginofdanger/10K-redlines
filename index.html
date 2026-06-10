@@ -140,6 +140,19 @@
     border-bottom: 2px solid transparent;
     box-sizing: border-box;
   }
+  .q-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.6px;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .q-badge:hover { background: var(--blue); color: #fff; }
   .col-name { font-weight: 600; color: var(--text); }
   .col-sector { color: var(--text-muted); font-size: 0.82rem; }
   .col-fy { color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -160,7 +173,7 @@
 
 <div class="header">
   <h1>10-K / 20-F Redline Analysis</h1>
-  <p>Year-over-year textual analysis of SEC filings. Each dashboard tracks wording changes, ordering shifts, additions, and deletions across 6-8 years of 10-K/20-F filings, surfacing strategic pivots and disclosure signals.</p>
+  <p>Year-over-year textual analysis of SEC filings. Each dashboard tracks wording changes, ordering shifts, additions, and deletions across 6-8 years of 10-K/20-F filings, surfacing strategic pivots and disclosure signals. Companies with a <strong>10-Q</strong> badge also have a quarterly scanner that catches the same signals 3-9 months earlier.</p>
 </div>
 
 <table class="portfolio" id="portfolio">
@@ -174,6 +187,7 @@
       <th data-key="startKey">Start FY<span class="arrow"></span></th>
       <th data-key="endKey">End FY<span class="arrow"></span></th>
       <th data-key="signals" class="num">Signals<span class="arrow"></span></th>
+      <th data-key="qKey">10-Q<span class="arrow"></span></th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -185,19 +199,19 @@
 
 <script>
 const companies = [
-  {ticker:'META', name:'Meta Platforms',           sector:'Technology / Social Media',                startFY:'FY2020', endFY:'FY2025', signals:22, url:'companies/meta/',  c1:'#0668E1', c2:'#0080FB', c3:'#00C2FF'},
+  {ticker:'META', name:'Meta Platforms',           sector:'Technology / Social Media',                startFY:'FY2020', endFY:'FY2025', signals:22, url:'companies/meta/',  tenQ:'companies/meta/10q/', qLabel:'2023Q1–2025Q3', c1:'#0668E1', c2:'#0080FB', c3:'#00C2FF'},
   {ticker:'GOOG', name:'Alphabet',                 sector:'Technology / Internet Search',             startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/goog/',  c1:'#1a1a2e', c2:'#4285F4', c3:'#EA4335'},
   {ticker:'AMZN', name:'Amazon',                   sector:'Technology / E-Commerce',                  startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/amzn/',  c1:'#232F3E', c2:'#146EB4', c3:'#FF9900'},
   {ticker:'APP',  name:'AppLovin',                 sector:'AdTech / Internet Advertising',            startFY:'FY2021', endFY:'FY2025', signals:14, url:'companies/app/',   c1:'#1a1a2e', c2:'#1E3A5F', c3:'#FF6B35'},
   {ticker:'VEEV', name:'Veeva Systems',            sector:'SaaS / Life Sciences Cloud',               startFY:'FY2018', endFY:'FY2025', signals:14, url:'companies/veev/',  c1:'#1a1a2e', c2:'#F58220', c3:'#2C5234'},
-  {ticker:'AVGO', name:'Broadcom',                 sector:'Semiconductors + Infrastructure Software', startFY:'FY2018', endFY:'FY2025', signals:12, url:'companies/avgo/',  c1:'#1a1a2e', c2:'#CC092F', c3:'#16213e'},
+  {ticker:'AVGO', name:'Broadcom',                 sector:'Semiconductors + Infrastructure Software', startFY:'FY2018', endFY:'FY2025', signals:12, url:'companies/avgo/',  tenQ:'companies/avgo/10q/', qLabel:'FY24Q1–FY26Q2', c1:'#1a1a2e', c2:'#CC092F', c3:'#16213e'},
   {ticker:'TSM',  name:'TSMC (20-F)',              sector:'Semiconductors',                           startFY:'FY2018', endFY:'FY2025', signals:18, url:'companies/tsm/',   c1:'#8B0000', c2:'#C41E3A', c3:'#FFD700'},
   {ticker:'NVDA', name:'NVIDIA',                   sector:'Semiconductors',                           startFY:'FY2020', endFY:'FY2026', signals:12, url:'companies/NVDA/',  c1:'#1a1a1a', c2:'#333333', c3:'#76b900'},
   {ticker:'UNH',  name:'UnitedHealth Group',       sector:'Health Insurance / Healthcare Services',   startFY:'FY2018', endFY:'FY2025', signals:16, url:'companies/unh/',   c1:'#1a1a2e', c2:'#002677', c3:'#00BCD4'},
   {ticker:'HCA',  name:'HCA Healthcare',           sector:'Healthcare / Hospitals',                   startFY:'FY2018', endFY:'FY2025', signals:12, url:'companies/hca/',   c1:'#0D1B2A', c2:'#1B365D', c3:'#C8952E'},
   {ticker:'PGR',  name:'Progressive',              sector:'Insurance / P&C',                          startFY:'FY2018', endFY:'FY2025', signals:14, url:'companies/pgr/',   c1:'#1a1a2e', c2:'#0033A0', c3:'#00B4D8'},
   {ticker:'APO',  name:'Apollo Global Management', sector:'Alternative Asset Management',             startFY:'FY2018', endFY:'FY2025', signals:14, url:'companies/apo/',   c1:'#1a1a2e', c2:'#003A70', c3:'#0066B3'},
-  {ticker:'FICO', name:'Fair Isaac Corporation',   sector:'Analytics / Decision Management Software', startFY:'FY2018', endFY:'FY2025', signals:18, url:'companies/fico/',  c1:'#001a4d', c2:'#0033A0', c3:'#00A3E0'},
+  {ticker:'FICO', name:'Fair Isaac Corporation',   sector:'Analytics / Decision Management Software', startFY:'FY2018', endFY:'FY2025', signals:18, url:'companies/fico/',  tenQ:'companies/fico/10q/', qLabel:'FY24Q1–FY26Q2', c1:'#001a4d', c2:'#0033A0', c3:'#00A3E0'},
   {ticker:'CVNA', name:'Carvana',                  sector:'Automotive / Digital Retail',              startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/cvna/',  c1:'#1a1a2e', c2:'#006D9E', c3:'#00AFF0'},
 ];
 
@@ -210,6 +224,7 @@ companies.forEach(c => {
   c.startKey = fyKey(c.startFY);
   c.endKey = fyKey(c.endFY);
   c.years = c.endKey - c.startKey + 1;
+  c.qKey = c.tenQ ? 1 : 0;
 });
 
 const STATE_KEY = 'redline-sort-v1';
@@ -257,6 +272,7 @@ function render() {
       <td class="click-cell col-fy">${c.startFY}</td>
       <td class="click-cell col-fy">${c.endFY}</td>
       <td class="click-cell col-count num">${c.signals}</td>
+      <td>${c.tenQ ? `<a class="q-badge" href="${c.tenQ}" title="Quarterly 10-Q scanner ${c.qLabel || ''}">10-Q</a>` : ''}</td>
     </tr>
   `).join('');
 

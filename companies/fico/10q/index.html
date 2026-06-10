@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FICO 10-Q Quarterly Scanner | FY2024Q1&ndash;FY2026Q2</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.sidebar-header .backlink { display: block; font-size: 11px; margin-top: 6px; }
+.expand-btn {
+  margin: 10px 0 0;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.expand-btn:hover { color: var(--text); border-color: var(--accent); }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Era cards */
+.era-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px; }
+@media (max-width: 900px) { .era-grid { grid-template-columns: 1fr; } }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>FICO 10-Q SCANNER</h1>
+    <div class="sub">FY2024 Q1 &ndash; FY2026 Q2 | SEC EDGAR</div>
+    <a class="backlink" href="../index.html">&larr; FICO 10-K dashboard</a>
+    <a class="backlink" href="../../../index.html">&larr; All companies</a>
+    <button class="expand-btn" id="toggle-all">Expand all</button>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+  <a class="nav-item" href="#era-cards">Transition Summaries</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#t1">FY24 Q1 &rarr; Q2</a>
+  <a class="nav-item" href="#t2">FY24 Q2 &rarr; Q3</a>
+  <a class="nav-item" href="#t3">FY24 Q3 &rarr; FY24 10-K</a>
+  <a class="nav-item" href="#t4">FY24 10-K &rarr; FY25 Q1</a>
+  <a class="nav-item" href="#t5">FY25 Q1 &rarr; Q2</a>
+  <a class="nav-item" href="#t6">FY25 Q2 &rarr; Q3</a>
+  <a class="nav-item" href="#t7">FY25 Q3 &rarr; FY25 10-K</a>
+  <a class="nav-item" href="#t8">FY25 10-K &rarr; FY26 Q1</a>
+  <a class="nav-item" href="#t9">FY26 Q1 &rarr; Q2</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-concentration">Bureau Concentration</a>
+  <a class="nav-item" href="#sig-scores-split">Scores B2B / B2C Revenue</a>
+  <a class="nav-item" href="#sig-driver-arc">B2B Driver Sentence Arc</a>
+  <a class="nav-item" href="#sig-debt">Debt &amp; Covenant Change</a>
+  <a class="nav-item" href="#sig-buybacks">Buybacks &amp; Program Ladder</a>
+  <a class="nav-item" href="#sig-etr">ETR &amp; Tax Language Rotation</a>
+  <a class="nav-item" href="#sig-dbnrr">DBNRR / ARR Trajectory</a>
+  <a class="nav-item" href="#sig-litigation">Antitrust Litigation Timeline</a>
+  <a class="nav-item" href="#sig-fhfa">FHFA / VantageScore (10-K Only)</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>FICO 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of eight Fair Isaac 10-Q filings, FY2024 Q1 (December 2023 quarter) through FY2026 Q2 (March 2026 quarter), with the FY2024 and FY2025 10-K boundary transitions included. The value is speed: quarterly cadence catches language changes 3&ndash;9 months before annual filings would surface them.</div>
+  <div class="source">Source: SEC EDGAR | 8 Quarterly Filings + FY2024/FY2025 10-K Baselines | FY2024 Q1 &ndash; FY2026 Q2 | Analysis: June 2026</div>
+</div>
+
+<!-- ==================== ERA CARDS ==================== -->
+<div class="era-grid" id="era-cards">
+  <div class="signal-card">
+    <h3><a href="#t1">FY24 Q1 &rarr; Q2</a></h3>
+    <p>Mortgage origination volume enters the B2B Scores attribution for the first time &mdash; as a negative offset to pricing. DBNRR is redefined from a period metric ("during the quarter") to a point-in-time metric ("as of"), and ACV Bookings is downgraded from "a more meaningful measure" to "a useful supplemental measure." A new $500.0M January 2024 buyback program replaces the October 2022 program.</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t2">FY24 Q2 &rarr; Q3</a></h3>
+    <p>A new $450M unsecured term loan raises credit agreement capacity to $1.35B, and the buyback authorization doubles to $1.0B in July 2024. Q3 repurchases of $255.5M are the third consecutive quarterly step-up.</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t3">FY24 Q3 &rarr; FY24 10-K</a></h3>
+    <p>The FY2024 10-K adds the first FHFA reference in the data set, a bi-merge/tri-merge risk, and a new risk factor naming the CFPB's May 2024 mortgage-fee inquiry. The bureau "alliance" becomes a "joint venture." None of these terms appears in any 10-Q.</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t4">FY24 10-K &rarr; FY25 Q1</a></h3>
+    <p>Mortgage volume flips from headwind to tailwind in the B2B driver sentence &mdash; the cleanest inflection in the data set. The consolidated antitrust class actions are disclosed for the first time, two months after the FY2024 10-K Item 3 said "Not applicable." The quarter's effective tax rate is (1.6)%.</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t5">FY25 Q1 &rarr; Q2</a></h3>
+    <p>Mortgage drops out of the quarter-level attribution after one quarter (retained at six-month level), and B2C gains a bureau-royalty driver after five filings of myFICO.com declines. Software margin slips to 31% on data center hosting costs and the first headcount decline is referenced.</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t6">FY25 Q2 &rarr; Q3</a></h3>
+    <p>$1.5B of 6.00% senior notes refinance both term loans; the amended credit agreement's covenant sentence no longer lists the 3.0x minimum interest coverage ratio. Buybacks hit a then-record $511.3M under a new $1.0B June 2025 program, and the legal proceedings item adds "vigorously defend."</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t7">FY25 Q3 &rarr; FY25 10-K</a></h3>
+    <p>The FY2025 10-K rewrites the FHFA risk factor around the July 2025 announcement and adds the first language framing bureau pricing as a constraint; the CFPB is de-named. First restructuring disclosure: $10.9M for 226 eliminated positions. Tariffs, an India workforce concentration, and AI language are added throughout.</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t8">FY25 10-K &rarr; FY26 Q1</a></h3>
+    <p>The forward-looking statements boilerplate is rewritten for the first time in nine filings. A new tax sentence attributes a smaller excess tax benefit to the December 2025 stock-price decline, and operating cash flow declines year-over-year for the first time in the data set.</p>
+  </div>
+  <div class="signal-card">
+    <h3><a href="#t9">FY26 Q1 &rarr; Q2</a></h3>
+    <p>Scores revenue rises 60% with no change to the attribution wording; bureau concentration reaches 64% of quarterly revenue. $1.0B of 6.25% 2026 notes retire the 2018 notes early, and a record $611.3M is repurchased under a new $1.5B February 2026 authorization.</p>
+  </div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+<!-- T1: fy2024q1 -> fy2024q2 -->
+<div class="transition-header" id="t1">
+  <h2>FY2024 Q1 &rarr; Q2</h2>
+  <div class="sub">Dec 31, 2023 qtr &rarr; Mar 31, 2024 qtr | Revenue: $382.1M &rarr; $433.8M | Scores: $192.1M &rarr; $236.9M | Buybacks: $71.7M &rarr; $179.5M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Mortgage originations enters the B2B Scores attribution &mdash; as a negative offset</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q1 contains zero occurrences of the word "mortgage" anywhere in the MD&amp;A. FY2024 Q2 introduces it as a volume offset to pricing:</p>
+    <p>FY2024 Q1:</p>
+    <blockquote>"The increase in business-to-business scores revenue was primarily attributable to a higher unit price."</blockquote>
+    <p>FY2024 Q2:</p>
+    <blockquote>"The increase in business-to-business scores revenue was primarily attributable to a higher unit price, <strong>partially offset by a decrease in volume of mortgage originations</strong>."</blockquote>
+    <p>"A higher unit price" is the only pricing language FICO uses in MD&amp;A &mdash; the phrase "special pricing" never appears in any filing in this set.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">DBNRR reframed from a period metric to a point-in-time metric</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q1:</p>
+    <blockquote>"Dollar-Based Net Retention Rate for our Software segment was 114% <strong>during the quarter ended</strong> December 31, 2023."</blockquote>
+    <p>FY2024 Q2:</p>
+    <blockquote>"Dollar-Based Net Retention Rate for our Software segment was 112% <strong>as of</strong> March 31, 2024."</blockquote>
+    <p>The companion table headers changed the same way: the ARR table moved from "at each of the dates presented" to "exiting each of the dates presented," and the DBNRR table moved from "for each of the periods presented" to "exiting each of the dates presented."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">ACV Bookings downgraded from "more meaningful" to "useful supplemental"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q1:</p>
+    <blockquote>"&hellip;we believe ACV Bookings is <strong>a more meaningful measure</strong> of our business&hellip;"</blockquote>
+    <p>FY2024 Q2:</p>
+    <blockquote>"&hellip;we believe ACV Bookings is <strong>a useful supplemental measure</strong> of our business&hellip;"</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New ~30% usage-based-fee estimate disclosure added to the ACV definition</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q2 added a quantified estimate to the Key Performance Metrics subsection:</p>
+    <blockquote>"For each of the periods presented, ACV Bookings related to estimates of future usage-based fees was approximately 30% of the total ACV Bookings amount. Differences between the initial estimates of future usage-based fees and actual results historically have not been material and we do not currently expect that they will be materially different in the future."</blockquote>
+    <p>The FY2024 10-K later refined the 30% figure with "on an annualized basis."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Services" renamed "professional services" and given a strategy attribution</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q1:</p>
+    <blockquote>"&hellip;partially offset by a $1.0 million decrease in <strong>services revenue</strong>."</blockquote>
+    <p>FY2024 Q2:</p>
+    <blockquote>"&hellip;partially offset by a $7.4 million decrease in <strong>professional services revenue</strong>. &hellip; The decrease in professional services revenue was primarily attributable to <strong>our strategy to emphasize higher-margin software over professional services</strong>."</blockquote>
+    <p>This is the first appearance of the software-over-services strategy sentence; it persists through FY2025 Q1 and is dropped from the quarter discussion at FY2025 Q2.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--cyan)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New $500.0M January 2024 repurchase program; quarterly buybacks step up to $179.5M</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The January 2024 program replaced the October 2022 $500.0M program, which had $48.8M remaining at December 31, 2023. It was disclosed in FY2024 Q1 as a subsequent event (one of only two subsequent-events notes across the eight quarters). Q2 repurchases were $179.5M versus $71.7M in Q1.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T2: fy2024q2 -> fy2024q3 -->
+<div class="transition-header" id="t2">
+  <h2>FY2024 Q2 &rarr; Q3</h2>
+  <div class="sub">Mar 31, 2024 qtr &rarr; Jun 30, 2024 qtr | Revenue: $433.8M &rarr; $447.8M | Scores: $236.9M &rarr; $241.5M | Buybacks: $179.5M &rarr; $255.5M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New $450 Million Term Loan disclosed in Liquidity</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q3:</p>
+    <blockquote>"On June 13, 2024, we amended our credit agreement to provide for the issuance of a new $450 million unsecured term loan (the &ldquo;$450 Million Term Loan&rdquo;) with a syndicate of banks, increasing the total capacity of the credit agreement to $1.35 billion. &hellip; We have no obligation to make scheduled principal payments on the $450 Million Term Loan prior to the maturity date&hellip;"</blockquote>
+    <p>The section heading changed from "Revolving Line of Credit and Term Loan" to "Revolving Line of Credit and Term Loans." The new loan matures August 19, 2026, the same date as the existing $300M term loan.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Highlights bullets switch to plural revenue phrasing</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q2:</p>
+    <blockquote>"<strong>Total revenue was</strong> $433&hellip;" / "<strong>Total revenue for</strong> our Scores segment <strong>was</strong> $236&hellip;"</blockquote>
+    <p>FY2024 Q3:</p>
+    <blockquote>"<strong>Total revenues were</strong> $447&hellip;" / "<strong>Revenues for</strong> our Scores segment <strong>were</strong> $241&hellip;"</blockquote>
+    <p>The plural phrasing persists in all later quarters in the data set.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Software operating margin decline disclosed: 38% to 34%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The stated cause is a prior-year comparison effect rather than a current-period cost increase:</p>
+    <blockquote>"&hellip;decreased to 34% from 38%, primarily attributable to a prior-year quarter one-time reimbursement from a third-party data center provider for implementation costs previously incurred."</blockquote>
+    <p>The B2B Scores attribution (higher unit price, partially offset by lower mortgage origination volume) was retained verbatim from Q2.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--cyan)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Buyback authorization doubled to $1.0B (July 2024)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Disclosed via the second (and last) subsequent-events note in the data set:</p>
+    <blockquote>"In July 2024, our Board of Directors approved a new stock repurchase program, replacing the January 2024 program, which was terminated prior to its expiration and under which $29.6 million was remaining for repurchase at the time of termination."</blockquote>
+    <p>The new program is open-ended with a $1.0B aggregate limit &mdash; double the size of the January 2024 and October 2022 programs. Q3 repurchases of $255.5M were the third consecutive quarterly step-up ($71.7M &rarr; $179.5M &rarr; $255.5M).</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T3: fy2024q3 -> FY2024 10-K -->
+<div class="transition-header" id="t3">
+  <h2>FY2024 Q3 &rarr; FY2024 10-K</h2>
+  <div class="sub">Jun 30, 2024 qtr &rarr; FY2024 annual (Sep 30, 2024) | FY2024 revenue: $1.7B (+13%) | Scores: $919.7M (+19%) | FY2024 buybacks: $833.3M | ETR: 20.1%</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A / Business</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First FHFA mention in the data set &mdash; annual filing only</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K business overview:</p>
+    <blockquote>"The adoption of our most predictive scores, FICO Score 10 and 10 T, gained increased traction for non-conforming mortgages and will be implemented for conforming mortgages based on the timeline set forth by the Federal Housing Finance Agency for enterprise credit scoring requirements."</blockquote>
+    <p>No 10-Q in this set ever mentions FHFA, VantageScore, or the CFPB &mdash; these terms appear only in the annual filings.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Platform first named in the Software revenue driver sentence</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The FY2024 full-year Software driver attributes SaaS growth "for our Platform products" &mdash; the first time Platform is named in the revenue driver sentence. The full-year B2B Scores attribution matched the quarters verbatim ("a higher unit price, partially offset by a decrease in volume of mortgage originations"). The ACV usage-based estimate gained the qualifier "on an annualized basis."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New SG&amp;A item: transfer-pricing tax law change at a non-U.S. subsidiary</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"The increase in non-income tax costs was primarily attributable to a tax law change related to transfer pricing effective in fiscal 2024 that impacted a non-U.S. subsidiary."</blockquote>
+    <p>A similar transfer-pricing sentence recurs in the FY2025 Q2 and Q3 10-Qs ("a foreign tax law change related to transfer pricing&hellip; that impacted a non-U.S. subsidiary").</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red)"></span>Risk Factors (FY2023 10-K &rarr; FY2024 10-K)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Bi-merge/tri-merge risk added to the FHFA risk factor</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K:</p>
+    <blockquote>"Other changes implemented by FHFA, Fannie Mae or Freddie Mac could also affect the demand for FICO Scores and thus could have similar adverse effects on our business, including, for example, a change permitting mortgage originators to underwrite loans using credit scores from only two of the three national consumer reporting agencies (a &ldquo;bi-merge report&rdquo;) rather than from all three (a &ldquo;tri-merge report&rdquo;)."</blockquote>
+    <p>The defined terms "bi-merge report" and "tri-merge report" exist only in the FY2024 10-K; the FY2025 10-K replaced them with "fewer than three."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Entirely new risk factor on mortgage-pricing regulation, naming the CFPB inquiry</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K:</p>
+    <blockquote>"Increased regulatory focus on U.S. residential mortgage closing costs may affect our ability to implement price changes for FICO Scores used in mortgage originations and thus limit the revenues and profitability of the FICO Score. &hellip; For example, in May 2024, the CFPB launched a public inquiry to obtain information on fees charged by providers of mortgages and related settlement services in the U.S. residential mortgage market, including fees for credit reports and credit scores."</blockquote>
+    <p>This is the only place FICO links regulation to its mortgage-score pricing. A separate added sentence stated that the CFPB has indicated it intends to issue rules under the FCRA extending the statute to business practices not currently subject to it. Both CFPB references were deleted in the FY2025 10-K.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Bureau "alliance" recharacterized as "joint venture"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2023 10-K:</p>
+    <blockquote>"Experian, TransUnion and Equifax have formed <strong>an alliance</strong> that is selling a credit scoring product competitive with our products&hellip;"</blockquote>
+    <p>FY2024 10-K:</p>
+    <blockquote>"&hellip;have formed <strong>a joint venture</strong> that is selling a credit scoring product&hellip;"</blockquote>
+    <p>VantageScore is named &mdash; identically in FY2024 and FY2025 &mdash; only in the Item 1 competition discussion, as "a joint venture entity established by the three major U.S. consumer reporting agencies."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cybersecurity and technology risk language updated; banking concentration 92%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 additions versus FY2023: "generative artificial intelligence" added to the technology-change risk; "social engineering attacks" added to the cybersecurity factor, while "highly obscure security vulnerabilities" became "security vulnerabilities." COVID-19 references and the remote-work risk factor were removed. The banking concentration figure updated to "92% of our revenues were derived from sales of products and services to the banking industry" (from 91% in fiscal 2023).</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T4: FY2024 10-K -> fy2025q1 -->
+<div class="transition-header" id="t4">
+  <h2>FY2024 10-K &rarr; FY2025 Q1</h2>
+  <div class="sub">FY2024 annual &rarr; Dec 31, 2024 qtr | Revenue: $440.0M (+15%) | Scores: $235.7M (+23%) | Buybacks: $159.7M | ETR: (1.6)%</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Mortgage volume flips from headwind to tailwind</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The single cleanest inflection in the data set, at quarterly resolution nine months before the FY2025 10-K framed the year:</p>
+    <p>FY2024 Q3:</p>
+    <blockquote>"Scores segment revenues increased $39.7 million due to an increase of $40.6 million in our business-to-business scores revenue, <strong>partially offset by a decrease of $0.9 million</strong> in our business-to-consumer revenue. The increase in business-to-business scores revenue was primarily attributable to a higher unit price, <strong>partially offset by a decrease in volume of mortgage originations</strong>."</blockquote>
+    <p>FY2025 Q1:</p>
+    <blockquote>"Scores segment revenues increased $43.6 million due to an increase of $42.0 million in our business-to-business scores revenue <strong>and an increase of $1.6 million</strong> in our business-to-consumer revenue. The increase in business-to-business scores revenue was primarily attributable to a higher unit price <strong>and an increase in volume of mortgage originations</strong>."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">B2C myFICO.com decline sentence dropped</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Present in every FY2024 filing, this sentence disappears at FY2025 Q1:</p>
+    <p>FY2024 Q3 (removed thereafter):</p>
+    <blockquote>"The decrease in business-to-consumer revenue was primarily attributable to a decrease in direct sales generated from the myFICO.com website."</blockquote>
+    <p>FY2025 Q1 gives no attribution for the B2C increase. This is the last quarter myFICO.com is referenced in a revenue driver; the segment-description boilerplate still lists "our myFICO.com subscription offerings."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New Software driver: large license renewal recognized at a point in time</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1:</p>
+    <blockquote>"&hellip;primarily attributable to an increase in license revenue recognized at a point in time due to a large license renewal and an increase in revenue recognized over time largely driven by SaaS growth for our Platform products."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Scores margin dips to 86% on marketing spend</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"&hellip;decreased to 86% from 88%, primarily attributable to an increase in marketing expenses."</blockquote>
+    <p>SG&amp;A rose on a $10.2 million increase in advertising and other promotional expenses. The margin recovered to 88% by FY2026 Q1 and reached 91% in FY2026 Q2.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Negative effective tax rate: (1.6)%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The quarter's ETR was (1.6)% versus 7.3% a year earlier, favorably impacted by excess tax benefits relating to share-based compensation that vests in the December quarter. The same December-quarter effect reversed at FY2026 Q1, when a lower stock price cut the benefit and the ETR rose to 17.5%.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange)"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First-ever litigation disclosure: consolidated antitrust class actions</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1, Part II Item 1:</p>
+    <blockquote>"FICO is a defendant in consolidated putative class action lawsuits brought in the Northern District of Illinois against FICO and the credit bureaus, Equifax, Experian and TransUnion, alleging antitrust claims in connection with the distribution of FICO Scores. On November 24, 2024, the court ruled on FICO's and the credit bureaus' motions to dismiss the plaintiffs' amended complaints. The court dismissed with prejudice all claims in the lawsuit other than a Sherman Act Section 2 claim and accompanying state law claims against FICO, which were allowed to proceed through the discovery stage of the litigation."</blockquote>
+    <p>The FY2024 10-K Item 3, filed about two months earlier, said "Not applicable." The surviving claims run against FICO only; the bureaus are described as co-defendants. The disclosure has never included a loss estimate or accrual, and the matter was never added to the Contingencies footnote.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--cyan)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Segment note: "depreciation amounts" becomes "depreciation and amortization amounts"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q3:</p>
+    <blockquote>"&hellip;rather, <strong>depreciation amounts</strong> are allocated&hellip;"</blockquote>
+    <p>FY2025 Q1:</p>
+    <blockquote>"&hellip;rather, <strong>depreciation and amortization amounts</strong> are allocated&hellip;"</blockquote>
+    <p>No change to the two-segment structure, allocation basis, or unallocated-items list. A second methodology-language change followed at FY2026 Q1 with the ASU 2023-07 interim adoption.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T5: fy2025q1 -> fy2025q2 -->
+<div class="transition-header" id="t5">
+  <h2>FY2025 Q1 &rarr; Q2</h2>
+  <div class="sub">Dec 31, 2024 qtr &rarr; Mar 31, 2025 qtr | Revenue: $440.0M &rarr; $498.7M | Scores: $235.7M &rarr; $297.0M | Buybacks: $159.7M &rarr; $207.0M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Mortgage volume drops out of the quarter-level attribution after one quarter</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1 (quarter):</p>
+    <blockquote>"&hellip;primarily attributable to a higher unit price <strong>and an increase in volume of mortgage originations</strong>."</blockquote>
+    <p>FY2025 Q2 (quarter):</p>
+    <blockquote>"The increase in business-to-business scores revenue was primarily attributable to <strong>a higher unit price.</strong>"</blockquote>
+    <p>The six-month sentence kept both drivers ("a higher unit price and an increase in volume of mortgage originations"). Mortgage returned to the quarter-level attribution at FY2025 Q3.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">B2C gains an explicit new driver: bureau royalties</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2:</p>
+    <blockquote>"The increase in business-to-consumer revenue was primarily attributable to an increase in royalties derived from scores sold indirectly to consumers through credit reporting agencies."</blockquote>
+    <p>This replaces the myFICO.com direct-sales framing that ran through all of FY2024 and carries forward through FY2026 Q2. The FY2025 10-K version says "consumer reporting agencies."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Software-over-services strategy sentence dropped from the quarter discussion</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1 (removed at FY2025 Q2):</p>
+    <blockquote>"The decrease in professional services revenue was primarily attributable to our strategy to emphasize higher-margin software over professional services."</blockquote>
+    <p>The FY2025 Q2 quarter-level software driver narrowed to "an increase in license revenue recognized at a point in time" with no SaaS-growth clause at quarter level.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Software margin pressure attributed to third-party hosting costs</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"&hellip;decreased to 31% from 33%, primarily attributable to the increase in third-party data center hosting costs."</blockquote>
+    <p>The hosting-cost attribution recurs at FY2026 Q1, when the margin fell further to 28% with a second cause added.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First headcount decline reference in the data set</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2, cost of revenues:</p>
+    <blockquote>"The decrease in personnel and labor costs was primarily attributable to decreased headcount."</blockquote>
+    <p>Period-end employee counts kept rising through FY2025 Q3 (3,855) before the FY2025 10-K disclosed a Q4 restructuring; the count was 3,758 at FY2026 Q2.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--cyan)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Receivables concentration: three customers at or above 10%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The revenue note reported three customers each accounting for 10% or more of total consolidated receivables at March 31, 2025, versus one at September 30, 2024. Bureau revenue concentration reached 52% of quarterly revenue (47% a year earlier). The paragraph's wording is unchanged &mdash; the movement is entirely in the numbers.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T6: fy2025q2 -> fy2025q3 -->
+<div class="transition-header" id="t6">
+  <h2>FY2025 Q2 &rarr; Q3</h2>
+  <div class="sub">Mar 31, 2025 qtr &rarr; Jun 30, 2025 qtr | Revenue: $498.7M &rarr; $536.4M | Scores: $297.0M &rarr; $324.3M | Buybacks: $207.0M &rarr; $511.3M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$1.5B senior note issuance and full debt refinancing</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>New highlights bullet, FY2025 Q3:</p>
+    <blockquote>"We issued $1.5 billion of senior notes and used the net proceeds to repay all the outstanding balances on our term loans and revolving line of credit. We also amended our credit agreement to increase our borrowing capacity under the unsecured revolving line of credit to $1.0 billion and extended its maturity. Total debt balance was $2.8 billion as of June 30, 2025, compared with $2.2 billion as of September 30, 2024."</blockquote>
+    <p>Liquidity detail: the May 13, 2025 amendment raised the revolver from $600 million to $1.0 billion and extended maturity to May 13, 2030; the $300 million and $450 million term loans were repaid in full and terminated. The 2025 Senior Notes carry 6.00% and mature May 15, 2033. The 12-month obligations clause rotated from the term-loan principal payments to "the $400.0 million principal payment on the 2018 Senior Notes."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">B2B driver adds a one-time insurance score license renewal; mortgage returns</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2 (quarter):</p>
+    <blockquote>"The increase in business-to-business scores revenue was primarily attributable to <strong>a higher unit price.</strong>"</blockquote>
+    <p>FY2025 Q3 (quarter):</p>
+    <blockquote>"The increase in business-to-business scores revenue was primarily attributable to a higher unit price, <strong>an increase in volume of mortgage originations and a multi-year license renewal in the U.S. recognized on our insurance score product</strong> during the quarter ended June 30, 2025."</blockquote>
+    <p>The insurance-renewal clause appears only in FY2025 Q3 and the FY2025 10-K; it rolled off at FY2026 Q1. Professional services revenue also increased for the first time in the data set ("a $1.6 million increase in professional services revenue"), with no strategy attribution given.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Risk factor stub unchanged despite the July 2025 FHFA announcement</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3 covers the period ended June 30, 2025 and was filed after the FHFA Director's July 2025 announcement on credit score choice at the GSEs. Its Item 1A nevertheless remained the standard one-paragraph stub:</p>
+    <blockquote>"There have been no material changes from the risk factors disclosed in our Annual Report on Form 10-K&hellip;"</blockquote>
+    <p>The referenced FY2024 10-K FHFA risk factor described only a hypothetical bi-merge change. The announcement entered SEC disclosure only in the FY2025 10-K, filed in November 2025.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange)"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">One sentence added to the antitrust disclosure</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The litigation text &mdash; byte-identical between FY2025 Q1 and Q2 &mdash; gained one sentence at the end:</p>
+    <blockquote>"FICO intends to vigorously defend against the remaining claims in this proceeding."</blockquote>
+    <p>The text has been frozen verbatim from this quarter through FY2026 Q2 &mdash; no status update across four subsequent quarters of discovery.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--cyan)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Minimum interest coverage covenant disappears from the credit agreement description</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2:</p>
+    <blockquote>"&hellip;restrictive covenants including a maximum consolidated leverage ratio of 3.5 to 1.0, subject to a step up to 4.0 to 1.0 following certain permitted acquisitions and subject to certain conditions, <strong>and a minimum interest coverage ratio of 3.0 to 1.0</strong>."</blockquote>
+    <p>FY2025 Q3:</p>
+    <blockquote>"The credit agreement contains certain restrictive covenants including a maximum consolidated leverage ratio of 3.5 to 1.0, subject to a step up to 4.0 to 1.0 following certain permitted acquisitions and subject to certain conditions, <strong>and contains other covenants typical of an unsecured credit facility</strong>."</blockquote>
+    <p>The amended agreement's sentence lists only the leverage covenant. Compliance is asserted every quarter. The interest-rate mechanics also changed from one-month adjusted term SOFR to a three-option structure including Daily Simple SOFR.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Record buyback quarter ($511.3M) and a new $1.0B June 2025 program</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In June 2025, our Board of Directors approved a new stock repurchase program&hellip;"</blockquote>
+    <p>The June 2025 program ($1.0B, open-ended) replaced the July 2024 program. The $511.3M repurchased in the quarter was the largest of the data set to that point, in the same quarter as the $1.5B note issuance; it was surpassed by the $611.3M of FY2026 Q2.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OBBBA added to the tax note</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3:</p>
+    <blockquote>"The One Big Beautiful Bill Act (&ldquo;OBBBA&rdquo;) of 2025 was signed into law on July 4, 2025. We continue to monitor the impact of the tax provisions of the OBBBA, most of which are not effective for FICO until fiscal 2026 and after."</blockquote>
+    <p>FY2025 quarters had replaced the FY2024 quarters' Inflation Reduction Act paragraph with OECD Pillar Two language; FY2026 quarters dropped Pillar Two and specified the OBBBA's R&amp;E expensing effects. See the ETR signal section for the full rotation.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T7: fy2025q3 -> FY2025 10-K -->
+<div class="transition-header" id="t7">
+  <h2>FY2025 Q3 &rarr; FY2025 10-K</h2>
+  <div class="sub">Jun 30, 2025 qtr &rarr; FY2025 annual (Sep 30, 2025) | FY2025 revenue: $2.0B (+16%) | Scores: $1.2B (+27%) | FY2025 buybacks: ~$1.4B | ETR: 18.8%</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A / Business</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">FHFA language moves from future implementation to approval</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K:</p>
+    <blockquote>"&hellip;FICO Score <strong>10 and 10 T</strong>, gained increased traction for non-conforming mortgages and <strong>will be implemented</strong> for conforming mortgages <strong>based on the timeline set forth by</strong> the Federal Housing Finance Agency for enterprise credit scoring requirements."</blockquote>
+    <p>FY2025 10-K:</p>
+    <blockquote>"&hellip;FICO Score <strong>10 T</strong>, gained increased traction for non-conforming mortgages and <strong>was approved</strong> for conforming mortgages <strong>by</strong> the Federal Housing Finance Agency for enterprise credit scoring requirements."</blockquote>
+    <p>"Score 10 and 10 T" narrowed to "Score 10 T."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First restructuring disclosure in the data set: $10.9M, 226 positions</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Appears only in the 10-K, never in a 10-Q:</p>
+    <blockquote>"During the fourth quarter of fiscal 2025, we incurred charges of $10.9 million in employee separation costs due to the elimination of 226 positions throughout the Company. Cash payments for all the employee separation costs will be paid by the end of our fiscal 2026."</blockquote>
+    <p>Headcount at FY2025 year-end was 3,811, down from 3,855 at June 30, 2025. 10-Q text searches for restructuring charges and "severance" return zero hits in all eight quarters.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New product language: BNPL scores, Kenya score, Mortgage Simulator, FICO Marketplace</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The FY2025 business overview added FICO Score 10 BNPL and FICO Score 10 T BNPL:</p>
+    <blockquote>"&hellip;the first credit scores from a leading credit scoring provider to incorporate Buy Now, Pay Later (&ldquo;BNPL&rdquo;) data&hellip;"</blockquote>
+    <p>Also added: a FICO Score in Kenya leveraging TransUnion data, the FICO Score Mortgage Simulator, and FICO Marketplace (access to data, AI models, optimization tools, decision rulesets, and machine learning models). The FY2024 overview's Ukrainian credit score, FICO Resilience Index, and UltraFICO Score XD references were dropped.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Credit bureau" / "credit reporting agencies" terminology shifts to "consumer reporting"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>10-Qs through FY2025 Q3, cost of revenues:</p>
+    <blockquote>"&hellip;<strong>credit bureau</strong> data and processing services&hellip;"</blockquote>
+    <p>FY2025 10-K:</p>
+    <blockquote>"&hellip;<strong>consumer reporting agency</strong> data and processing services&hellip;"</blockquote>
+    <p>The B2C revenue attribution similarly says "consumer reporting agencies" in the 10-K. The cost-of-revenues terminology carried into FY2026 Q1, but the B2C attribution there reverted to "credit reporting agencies."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red)"></span>Risk Factors (FY2024 10-K &rarr; FY2025 10-K)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">FHFA risk factor rewritten around the July 2025 announcement; bureau-pricing constraint added</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K:</p>
+    <blockquote>"&hellip;including, for example, <strong>a change permitting mortgage originators to underwrite loans using credit scores from only two of the three national consumer reporting agencies (a &ldquo;bi-merge report&rdquo;) rather than from all three (a &ldquo;tri-merge report&rdquo;)</strong>."</blockquote>
+    <p>FY2025 10-K:</p>
+    <blockquote>"&hellip;including, for example, <strong>the change announced by the FHFA Director in July 2025 permitting mortgage originators to choose the credit score they submit with mortgages delivered to Fannie Mae and Freddie Mac</strong> or a potential future change permitting mortgage originators to underwrite loans using credit scores from <strong>fewer than three</strong> national consumer reporting agencies. <strong>The ability of our FICO Score to compete effectively in the U.S. mortgage market may be constrained by the pricing and other business practices of the consumer reporting agencies, which could have a material adverse effect on our revenues, results of operations and stock price.</strong>"</blockquote>
+    <p>The final sentence is the first risk-factor language framing the consumer reporting agencies' own pricing and business practices as a constraint on the FICO Score at the GSEs.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">CFPB de-named in the mortgage-fee risk factor</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K (deleted in FY2025):</p>
+    <blockquote>"For example, in May 2024, the CFPB launched a public inquiry to obtain information on fees charged by providers of mortgages and related settlement services in the U.S. residential mortgage market, including fees for credit reports and credit scores."</blockquote>
+    <p>FY2025 10-K (replacement):</p>
+    <blockquote>"There has been increased regulatory focus in the U.S. related to the transparency and fairness of certain fees charged to consumers in connection with the closing of a residential mortgage loan, including fees for credit reports and credit scores."</blockquote>
+    <p>The FCRA-rulemaking sentence ("the CFPB has indicated that it intends to issue rules under the FCRA&hellip;") was also deleted. CFPB mentions in the full 10-K fell from 5 (FY2024) to 2 (FY2025), both in the Item 1 regulatory overview.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs added in three places</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K:</p>
+    <blockquote>"&hellip;including any stress or negative volatility related to the imposition of, and threatened imposition of, tariffs and retaliatory tariffs, economic sanctions and increased trade tensions."</blockquote>
+    <p>"Trade policies and tariffs" was also inserted into the credit/equity-market volatility clause and the geopolitical-tensions clause. The international risk bullet was trimmed from "unfavorable tax rules or changes in tariffs and other trade barriers" to "changes in tariffs and other trade barriers." No 10-Q mentions tariffs.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New India workforce concentration disclosure</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K:</p>
+    <blockquote>"For example, approximately one-third of our workforce is located in India, which could be negatively impacted by heightened tensions between India and Pakistan."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI language woven throughout the risk factors</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K, new product-development sentence:</p>
+    <blockquote>"Our use of AI in the development of our products and our incorporation of AI features into some of our products could introduce errors, defects, or delays&hellip;"</blockquote>
+    <p>Other FY2025 additions: a new summary bullet on "changes in technology, including increased use of artificial intelligence"; the competition source expanded to information sources "including those that use AI technologies"; the competitor category "neural network developers and artificial intelligence system builders" became "developers and providers of neural networks, machine learning, and AI systems"; the IP risk notes protection "is rapidly evolving with respect to AI technologies"; and the talent risk now lists data science, AI and cybersecurity roles. Ransomware language added "and may demand payment by us in order to restore access." Banking concentration stayed at 92%.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T8: FY2025 10-K -> fy2026q1 -->
+<div class="transition-header" id="t8">
+  <h2>FY2025 10-K &rarr; FY2026 Q1</h2>
+  <div class="sub">FY2025 annual &rarr; Dec 31, 2025 qtr | Revenue: $512.0M (+16%) | Scores: $304.5M (+29%) | Buybacks: $162.7M | ETR: 17.5%</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Forward-looking statements boilerplate rewritten &mdash; first change in nine filings</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Through FY2025 Q3:</p>
+    <blockquote>"Forward-looking statements are qualified by some or all of these risk factors. Therefore, you should consider these risk factors with caution and <strong>form your own critical and independent conclusions about the likely effect of these risk factors on our future performance</strong>."</blockquote>
+    <p>FY2026 Q1:</p>
+    <blockquote>"<strong>Readers are cautioned not to place undue reliance on forward-looking statements</strong>, which speak only as of the date they are made. <strong>We disclaim any intent or obligation to update or revise any forward-looking statements</strong>, whether as a result of new information, future events or otherwise."</blockquote>
+    <p>The opener also tightened: statements that are not historical fact "should be considered" forward-looking statements became "are" forward-looking statements.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Insurance-renewal driver rolls off; Scores margin recovers to 88%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3 (quarter):</p>
+    <blockquote>"&hellip;a higher unit price, an increase in volume of mortgage originations <strong>and a multi-year license renewal in the U.S. recognized on our insurance score product</strong>&hellip;"</blockquote>
+    <p>FY2026 Q1 (quarter):</p>
+    <blockquote>"&hellip;a higher unit price and an increase in volume of mortgage originations."</blockquote>
+    <p>The margin discussion adds: "Scores segment operating income as a percentage of segment revenue increased to 88% from 86%, primarily due to higher business-to-business scores revenue driven by increased unit pricing and greater mortgage origination volumes."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Software margin slide continues: 30% to 28% with a second cause</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"&hellip;decreased to 28% from 30%, primarily attributable to an increase in third-party data center hosting costs and a decrease in sales of higher-margin software recognized at a point in time."</blockquote>
+    <p>Quarterly Software segment margin across the set: 38% &rarr; 34% (FY2024 Q3), 33% &rarr; 31% (FY2025 Q2), 30% &rarr; 28% (FY2026 Q1). Hosting costs are cited in both of the last two declines.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First filing acknowledgment of the stock-price decline, via the tax note</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (repeated in Q2):</p>
+    <blockquote>"The decrease in stock price for awards that vested in December 2025 resulted in a decreased net excess tax benefit for the quarter ended December 31, 2025."</blockquote>
+    <p>The December-quarter ETR rose to 17.5% from (1.6)% a year earlier. The FY2026 Q1 PSU grant-date fair value of $1,751.69 was below the prior year's $2,227.11. Net income rose 4% and EPS 8% against operating income up 30%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Operating cash flow declines year-over-year for the first time in the data set</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Net cash provided by operating activities decreased to $174.1 million&hellip; from $194.0 million&hellip; attributable to a $43.9 million decrease due to the timing of receipts and payments&hellip;"</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--cyan)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">ASU 2023-07 interim adoption changes the segment note's CODM sentence</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Through FY2025 Q3:</p>
+    <blockquote>"&hellip;evaluates segment financial performance based on segment revenues <strong>and</strong> segment operating income."</blockquote>
+    <p>FY2026 Q1:</p>
+    <blockquote>"&hellip;based on segment revenues, <strong>segment operating expenses in total</strong> and segment operating income."</blockquote>
+    <p>The expense list was reordered from "personnel, facilities, IT infrastructure, consulting, travel and depreciation" to "personnel, facilities, IT infrastructure, depreciation and amortization, consulting and travel." ASU 2024-03 is first cited at FY2026 Q1 and ASU 2025-06 at FY2026 Q2.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Deferred revenue falls below its fiscal-year opening balance &mdash; unique in the set</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 ending deferred revenue of $175.2M was below the FY2026 opening balance of $189.2M &mdash; the only quarter in the set to start its fiscal year with a sequential decline. RPO nevertheless kept rising, reaching $682.2M (and $717.7M by FY2026 Q2, up 52% from FY2024 Q1).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OBBBA R&amp;E expensing specified; Pillar Two dropped</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 tax note:</p>
+    <blockquote>"Included among the provisions is the ability to immediately expense domestic research and experimental (&ldquo;R&amp;E&rdquo;) expenditures, as well as an election to accelerate any unamortized domestic R&amp;E expenditures over a one- or two-year period. Both provisions are effective for FICO in fiscal 2026."</blockquote>
+    <p>The OECD Pillar Two paragraph carried in all three FY2025 quarters was dropped. The note adds: "The impacts of the OBBBA were reflected in FICO's results for the quarter ended December 31, 2025."</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T9: fy2026q1 -> fy2026q2 -->
+<div class="transition-header" id="t9">
+  <h2>FY2026 Q1 &rarr; Q2</h2>
+  <div class="sub">Dec 31, 2025 qtr &rarr; Mar 31, 2026 qtr | Revenue: $512.0M &rarr; $691.7M (+39% YoY) | Scores: $304.5M &rarr; $475.0M (+60% YoY) | Buybacks: $162.7M &rarr; $611.3M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Step-change quarter with no change in attribution wording</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Scores revenue +60% ($475.0M), total revenue +39% ($691.7M), operating income +64%, EPS +69% &mdash; yet the driver sentence is structurally identical to FY2026 Q1:</p>
+    <p>FY2026 Q2:</p>
+    <blockquote>"Scores segment revenues increased $177.9 million due to an increase of $175.1 million in our business-to-business scores revenue and an increase of $2.8 million in our business-to-consumer scores revenue. The increase in business-to-business scores revenue was primarily attributable to a higher unit price and an increase in volume of mortgage originations."</blockquote>
+    <p>Scores segment margin "increased to 91% from 89%." Cost of revenues fell to 13% of revenues from 18%. B2B Scores revenue from the disaggregation note grew 72% year-over-year to $417.6M.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$1.0B 2026 Senior Notes; 2018 notes retired early</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>New highlights bullet, FY2026 Q2:</p>
+    <blockquote>"We issued $1.0 billion of senior notes during March 2026, and used the net proceeds to make a payment against the revolving line of credit and repay the $400 million of senior notes due in May 2026. Total debt balance was $3.6 billion as of March 31, 2026, compared with $3.1 billion as of September 30, 2025."</blockquote>
+    <p>The 2026 Senior Notes carry 6.25% and mature September 15, 2034. The 2018 notes were repaid in full on March 26, 2026, ahead of their May 2026 maturity. Senior notes carrying value: $3.4B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liquidity sentence drops the 12-month obligations clause</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1:</p>
+    <blockquote>"&hellip;<strong>including the $400.0 million principal payment on the 2018 Senior Notes</strong>&hellip;"</blockquote>
+    <p>FY2026 Q2:</p>
+    <blockquote>"&hellip;we have <strong>no significant debt obligations maturing over the next 12 months</strong>."</blockquote>
+    <p>The trailing clause of the liquidity sufficiency sentence has rotated across the set: term loan principal payments (FY2024 Q1&ndash;Q2) &rarr; $300 Million Term Loan (FY2024 Q3&ndash;FY2025 Q2) &rarr; 2018 Senior Notes payment (FY2025 Q3&ndash;FY2026 Q1) &rarr; no significant maturities (FY2026 Q2).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Section heading: "Other Income (Expense)" becomes "Other Expense"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1:</p>
+    <blockquote>"Operating Expenses and Other <strong>Income (Expense)</strong>, Net"</blockquote>
+    <p>FY2026 Q2:</p>
+    <blockquote>"Operating Expenses and Other <strong>Expense</strong>, Net"</blockquote>
+    <p>The line now runs at a net expense, reflecting the larger fixed-rate debt stack.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--cyan)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Largest buyback authorization yet: $1.5B (February 2026); record $611.3M quarter</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In February 2026, our Board of Directors approved a new stock repurchase program (the &ldquo;February 2026 program&rdquo;), replacing the June 2025 program, which was terminated prior to its expiration."</blockquote>
+    <p>The program authorizes repurchases up to an aggregate cost of $1.5 billion &mdash; the largest in the set. Quarter repurchases were a record $611.3M / 484K shares (implied average price ~$1,263 versus ~$1,800 at FY2025 Q3); $1.1B remained at March 31, 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Bureau concentration reaches 64% of quarterly revenue</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2 revenue note:</p>
+    <blockquote>"Revenues collectively generated by agreements with these customers accounted for 64% and 52% of our total revenues in the quarters ended March 31, 2026 and 2025, respectively&hellip;"</blockquote>
+    <p>Three customers accounted for 10% or more of total consolidated receivables at March 31, 2026, versus two at September 30, 2025. The paragraph's wording is otherwise unchanged across all eight quarters &mdash; concentration growth is entirely in the numbers (39% at FY2024 Q1).</p>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-concentration">
+  <div class="section-header"><h2>#1: Credit Bureau Revenue Concentration</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> 39% to 64% of Quarterly Revenue in Nine Quarters</h3>
+    <p>The revenue note in every quarter contains the same paragraph frame ("We derive a substantial portion of revenues from our contracts with the three major consumer reporting agencies, TransUnion, Equifax and Experian&hellip;"). The wording never changed &mdash; the drift is purely numerical.</p>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>CRA % of Revenue (Qtr)</th><th>YTD %</th><th>CRAs Each &gt;10%</th><th>Customers &ge;10% of Receivables</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1</td><td>39% (PY 36%)</td><td>&mdash;</td><td>three (PY two)</td><td>one</td></tr>
+        <tr><td>FY24 Q2</td><td>47% (PY 43%)</td><td>43% (PY 40%)</td><td>all three</td><td>two (vs one at 9/30/23)</td></tr>
+        <tr><td>FY24 Q3</td><td>47% (PY 42%)</td><td>44% (PY 40%)</td><td>all three</td><td>one</td></tr>
+        <tr><td>FY25 Q1</td><td>44% (PY 39%)</td><td>&mdash;</td><td>all three</td><td>one</td></tr>
+        <tr><td>FY25 Q2</td><td>52% (PY 47%)</td><td>49% (PY 43%)</td><td>all three</td><td class="val-new">three (vs one at 9/30/24)</td></tr>
+        <tr><td>FY25 Q3</td><td>54% (PY 47%)</td><td>51% (PY 44%)</td><td>all three</td><td>two</td></tr>
+        <tr><td>FY26 Q1</td><td>51% (PY 44%)</td><td>&mdash;</td><td>all three</td><td>two</td></tr>
+        <tr><td>FY26 Q2</td><td class="val-new">64% (PY 52%)</td><td>58% (PY 49%)</td><td>all three</td><td class="val-new">three (vs two at 9/30/25)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-scores-split">
+  <div class="section-header"><h2>#2: Scores B2B / B2C Revenue by Quarter</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> B2B Nearly Triples; B2C Grows Single Digits</h3>
+    <p>From the revenue disaggregation note (Scores by distribution method, $ thousands). Disaggregation categories were never added, removed, or renamed across the eight quarters.</p>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>B2B Scores ($K)</th><th>B2C Scores ($K)</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1</td><td>140,442</td><td>51,670</td></tr>
+        <tr><td>FY24 Q2</td><td>185,508</td><td>51,377</td></tr>
+        <tr><td>FY24 Q3</td><td>188,754</td><td>52,696</td></tr>
+        <tr><td>FY25 Q1</td><td>182,391</td><td>53,284</td></tr>
+        <tr><td>FY25 Q2</td><td>242,494</td><td>54,545</td></tr>
+        <tr><td>FY25 Q3</td><td>268,479</td><td>55,830</td></tr>
+        <tr><td>FY26 Q1</td><td>248,613</td><td>55,921</td></tr>
+        <tr><td>FY26 Q2</td><td class="val-new">417,629 (+72% YoY)</td><td>57,344 (+5% YoY)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-driver-arc">
+  <div class="section-header"><h2>#3: B2B Driver Sentence &mdash; Verbatim Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Pricing First in Every Period; Mortgage Volume Flips Sign at FY25 Q1</h3>
+    <p>Exact quarter-level clauses following "The increase in business-to-business scores revenue was primarily attributable to&hellip;". "Special pricing" appears in no filing; "a higher unit price" is the only pricing language and is listed first in every single period. Mortgage is never the lead driver.</p>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Quarter-Level B2B Attribution</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1</td><td>"a higher unit price." (no mortgage mention anywhere in MD&amp;A)</td></tr>
+        <tr><td>FY24 Q2</td><td class="val-neg">"a higher unit price, partially offset by a decrease in volume of mortgage originations."</td></tr>
+        <tr><td>FY24 Q3</td><td>same as FY24 Q2 (verbatim)</td></tr>
+        <tr><td>FY2024 10-K</td><td>same (full-year framing)</td></tr>
+        <tr><td>FY25 Q1</td><td class="val-pos">"a higher unit price and an increase in volume of mortgage originations."</td></tr>
+        <tr><td>FY25 Q2</td><td>"a higher unit price." (mortgage retained only in the six-month sentence)</td></tr>
+        <tr><td>FY25 Q3</td><td class="val-new">"a higher unit price, an increase in volume of mortgage originations and a multi-year license renewal in the U.S. recognized on our insurance score product&hellip;"</td></tr>
+        <tr><td>FY2025 10-K</td><td>same as FY25 Q3 (full-year framing; "consumer reporting agencies" in B2C clause)</td></tr>
+        <tr><td>FY26 Q1</td><td>"a higher unit price and an increase in volume of mortgage originations."</td></tr>
+        <tr><td>FY26 Q2</td><td>same as FY26 Q1 (verbatim, against +60% Scores growth)</td></tr>
+      </tbody>
+    </table>
+    <p>B2C arc: FY2024 quarters attributed decreases to myFICO.com direct sales; FY2025 Q1 gave no attribution; from FY2025 Q2 the driver is bureau royalties ("scores sold indirectly to consumers through credit reporting agencies"). From FY2026 Q1 the label tightens to "business-to-consumer <em>scores</em> revenue."</p>
+  </div>
+</div>
+
+<div class="section" id="sig-debt">
+  <div class="section-header"><h2>#4: Debt Structure &amp; Covenant Change</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> $2.0B Floating-Heavy to $3.6B Long-Dated Fixed; Coverage Covenant Disappears</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>Senior Notes (Carrying)</th><th>Revolver Outstanding</th><th>Term Loans</th><th>Total Debt (MD&amp;A)</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1</td><td>$1.3B</td><td>$403.0M @ 6.708%</td><td>$270.0M @ 6.713%</td><td>$2.0B</td></tr>
+        <tr><td>FY24 Q2</td><td>$1.3B</td><td>$488.0M @ 6.673%</td><td>$266.3M @ 6.674%</td><td>$2.0B</td></tr>
+        <tr><td>FY24 Q3</td><td>$1.3B</td><td>$118.0M @ 6.688%</td><td class="val-new">$262.5M + $450.0M</td><td>$2.1B</td></tr>
+        <tr><td>FY25 Q1</td><td>$1.3B</td><td>$425.0M @ 5.762%</td><td>$255.0M + $450.0M</td><td>$2.4B</td></tr>
+        <tr><td>FY25 Q2</td><td>$1.3B</td><td>$535.0M @ 5.673%</td><td>$251.3M + $450.0M</td><td>$2.5B</td></tr>
+        <tr><td>FY25 Q3</td><td class="val-new">$2.8B</td><td>none</td><td class="val-neg">none (repaid/terminated)</td><td>$2.8B</td></tr>
+        <tr><td>FY26 Q1</td><td>$2.8B</td><td>$415.0M @ 5.000%</td><td>&mdash;</td><td>$3.2B</td></tr>
+        <tr><td>FY26 Q2</td><td class="val-new">$3.4B</td><td>$265.0M @ 4.931%</td><td>&mdash;</td><td class="val-new">$3.6B</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Jun 13, 2024 (FY24 Q3):</strong> $450M unsecured term loan added; credit agreement capacity to $1.35B; no scheduled principal before the Aug 19, 2026 maturity.</li>
+      <li><strong>May 13, 2025 (FY25 Q3):</strong> $1.5B 6.00% 2025 Senior Notes due May 15, 2033; both term loans repaid and terminated; revolver upsized to $1.0B, maturity extended to May 13, 2030. The amended agreement's covenant sentence lists only the 3.5x leverage covenant &mdash; the minimum interest coverage ratio (3.0x), described in every prior quarter, no longer appears. Interest mechanics moved from one-month adjusted term SOFR to a three-option structure including Daily Simple SOFR.</li>
+      <li><strong>Mar 20, 2026 (FY26 Q2):</strong> $1.0B 6.25% 2026 Senior Notes due Sep 15, 2034; 2018 notes ($400M, 5.25%) repaid Mar 26, 2026, ahead of maturity.</li>
+      <li><strong>Fixed-rate stack at FY26 Q2:</strong> 2019 $350M 4.00% due 6/15/2028; 2021 $550M 4.00% due 6/15/2028; 2025 $1.5B 6.00% due 5/15/2033; 2026 $1.0B 6.25% due 9/15/2034. Compliance asserted every quarter.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" id="sig-buybacks">
+  <div class="section-header"><h2>#5: Buybacks &amp; Program Ladder</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Five Programs in Nine Quarters; $500M &rarr; $1.5B Authorizations</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>$ Expended</th><th>Shares (K)</th><th>Remaining at Quarter End</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1</td><td>$71.7M</td><td>78</td><td>$48.8M (Oct 2022 prog.)</td></tr>
+        <tr><td>FY24 Q2</td><td>$179.5M</td><td>144</td><td>$366.7M (Jan 2024 prog.)</td></tr>
+        <tr><td>FY24 Q3</td><td>$255.5M</td><td>196</td><td>$113.6M (Jan 2024 prog.)</td></tr>
+        <tr><td>FY25 Q1</td><td>$159.7M</td><td>79</td><td>$600.7M (Jul 2024 prog.)</td></tr>
+        <tr><td>FY25 Q2</td><td>$207.0M</td><td>112</td><td>$394.1M (Jul 2024 prog.)</td></tr>
+        <tr><td>FY25 Q3</td><td class="val-highlight">$511.3M</td><td>284</td><td>$880.1M (Jun 2025 prog.)</td></tr>
+        <tr><td>FY26 Q1</td><td>$162.7M</td><td>95</td><td>$180.9M (Jun 2025 prog.)</td></tr>
+        <tr><td>FY26 Q2</td><td class="val-new">$611.3M</td><td class="val-new">484</td><td>$1.1B (Feb 2026 prog.)</td></tr>
+      </tbody>
+    </table>
+    <table class="data-table">
+      <thead><tr><th>Program</th><th>Size</th><th>Replaced</th><th>Status Note</th></tr></thead>
+      <tbody>
+        <tr><td>October 2022</td><td>$500.0M</td><td>prior program</td><td>terminated by Jan 2024 program ($48.8M remaining at Dec 31, 2023)</td></tr>
+        <tr><td>January 2024</td><td>$500.0M</td><td>Oct 2022</td><td>terminated Jul 2024 with $29.6M remaining</td></tr>
+        <tr><td>July 2024</td><td>$1.0B</td><td>Jan 2024</td><td>terminated Jun 2025</td></tr>
+        <tr><td>June 2025</td><td>$1.0B</td><td>Jul 2024</td><td>terminated Feb 2026 ($180.9M remaining at Dec 31, 2025)</td></tr>
+        <tr><td>February 2026</td><td class="val-new">$1.5B</td><td>Jun 2025</td><td>$1.1B remaining at Mar 31, 2026</td></tr>
+      </tbody>
+    </table>
+    <p>FY26 Q2 is the largest dollar and share-count quarter in the set; implied average price ~$1,263/share versus ~$1,800/share at FY25 Q3. No standing "buyback intent" sentence exists in any quarter's MD&amp;A liquidity discussion. Only FY24 Q1 and FY24 Q3 contain subsequent-events notes (the Jan 2024 and Jul 2024 programs); later programs were approved before quarter-end and disclosed in-period.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-etr">
+  <div class="section-header"><h2>#6: Effective Tax Rate &amp; Tax Language Rotation</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> December-Quarter Swings: 7.3% &rarr; (1.6)% &rarr; 17.5%</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>ETR (Qtr)</th><th>ETR (YTD)</th><th>Stated Driver</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1</td><td>7.3% (PY 17.2%)</td><td>&mdash;</td><td>"excess tax benefit relating to stock awards"</td></tr>
+        <tr><td>FY24 Q2</td><td>24.9% (PY 26.1%)</td><td>17.3% (PY 22.0%)</td><td>excess tax benefit, stock awards</td></tr>
+        <tr><td>FY24 Q3</td><td>24.5% (PY 18.4%)</td><td>19.9% (PY 20.6%)</td><td>PY quarter aided by CA R&amp;D credit valuation allowance release</td></tr>
+        <tr><td>FY25 Q1</td><td class="val-new">(1.6)% (PY 7.3%)</td><td>&mdash;</td><td>"excess tax benefit relating to share-based compensation"</td></tr>
+        <tr><td>FY25 Q2</td><td>23.7% (PY 24.9%)</td><td>13.2% (PY 17.3%)</td><td>same</td></tr>
+        <tr><td>FY25 Q3</td><td>23.3% (PY 24.5%)</td><td>17.2% (PY 19.9%)</td><td>same</td></tr>
+        <tr><td>FY26 Q1</td><td class="val-highlight">17.5% (PY (1.6)%)</td><td>&mdash;</td><td>stock-price decline cut the excess tax benefit</td></tr>
+        <tr><td>FY26 Q2</td><td>25.7% (PY 23.7%)</td><td>22.8% (PY 13.2%)</td><td>same new language</td></tr>
+      </tbody>
+    </table>
+    <p>Legislative paragraph rotation in the tax note:</p>
+    <ul>
+      <li><strong>FY2024 quarters:</strong> 2022 Inflation Reduction Act 15% corporate minimum tax paragraph ("we do not expect any impact").</li>
+      <li><strong>FY2025 quarters:</strong> replaced by OECD Pillar Two ("does not expect Pillar Two to have material impacts on its fiscal 2025 consolidated financial statements").</li>
+      <li><strong>FY25 Q3:</strong> OBBBA added ("signed into law on July 4, 2025&hellip; most of which are not effective for FICO until fiscal 2026 and after").</li>
+      <li><strong>FY2026 quarters:</strong> Pillar Two dropped; OBBBA effects specified (immediate domestic R&amp;E expensing, one-or-two-year acceleration election, "reflected in FICO's results").</li>
+    </ul>
+    <p>The tax-benefit attribution noun also rotated: "stock awards" (FY2024) &rarr; "share-based compensation" (FY2025) &rarr; back to "stock awards" plus the new stock-price-decline sentence (FY2026). A transfer-pricing tax law change affecting a non-U.S. subsidiary appears in the FY2024 10-K and recurs at FY25 Q2/Q3 ("foreign tax law change").</p>
+  </div>
+</div>
+
+<div class="section" id="sig-dbnrr">
+  <div class="section-header"><h2>#7: DBNRR / ARR Trajectory</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Decay Then Recovery, Visible Only at Quarterly Cadence</h3>
+    <p>Total DBNRR fell from 114% to a 102% trough (FY25 Q2) before recovering to 109% (FY26 Q2). Non-platform ARR shrank from $497.4M to $440.0M while platform ARR nearly doubled from $190.3M to $348.8M. The DBNRR definition itself changed at FY24 Q2 (period metric &rarr; point-in-time metric), and ACV Bookings was downgraded to "a useful supplemental measure" in the same quarter.</p>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>ARR ($M, YoY)</th><th>DBNRR Total</th><th>Platform ARR ($M)</th><th>Non-Platform ARR ($M)</th><th>Platform DBNRR</th><th>Non-Platform DBNRR</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1</td><td>687.7 (+18%)</td><td>114%</td><td>190.3</td><td>497.4</td><td>136%</td><td>111%</td></tr>
+        <tr><td>FY24 Q2</td><td>697.0 (+14%)</td><td>112%</td><td>201.4</td><td>495.6</td><td>126%</td><td>108%</td></tr>
+        <tr><td>FY24 Q3</td><td>709.6 (+10%)</td><td>108%</td><td>215.1</td><td>494.5</td><td>124%</td><td>101%</td></tr>
+        <tr><td>FY2024 (Sep)</td><td>721.2 (+8%)</td><td>&mdash;</td><td>227.0</td><td>494.2</td><td>123%</td><td>99%</td></tr>
+        <tr><td>FY25 Q1</td><td>729.3 (+6%)</td><td>105%</td><td>227.7</td><td>501.6</td><td>112%</td><td>100%</td></tr>
+        <tr><td>FY25 Q2</td><td>714.6 (+3%)</td><td class="val-neg">102%</td><td>234.7</td><td>479.9</td><td>110%</td><td class="val-neg">96%</td></tr>
+        <tr><td>FY25 Q3</td><td>739.1 (+4%)</td><td>103%</td><td>254.2</td><td>484.9</td><td>115%</td><td>97%</td></tr>
+        <tr><td>FY2025 (Sep)</td><td>747.3</td><td>&mdash;</td><td>263.6</td><td>483.7</td><td>112%</td><td>97%</td></tr>
+        <tr><td>FY26 Q1</td><td>766.0 (+5%)</td><td>103%</td><td>302.6</td><td class="val-neg">463.4</td><td>122%</td><td class="val-neg">91%</td></tr>
+        <tr><td>FY26 Q2</td><td>788.8 (+10%)</td><td class="val-pos">109%</td><td class="val-pos">348.8</td><td class="val-neg">440.0</td><td class="val-pos">136%</td><td class="val-neg">90%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-litigation">
+  <div class="section-header"><h2>#8: Antitrust Litigation Timeline</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> "Not Applicable" to Discovery; Then Frozen Verbatim for Four Quarters</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Item Text</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q1&ndash;Q3 (all three 10-Qs)</td><td>"Not applicable."</td></tr>
+        <tr><td>FY2024 10-K (Item 3)</td><td>"Not applicable." &mdash; no mention of the antitrust suits anywhere in the filing</td></tr>
+        <tr><td class="val-new">FY25 Q1</td><td>First disclosure: consolidated putative class actions in the Northern District of Illinois against FICO and the credit bureaus (Equifax, Experian, TransUnion), alleging antitrust claims in connection with the distribution of FICO Scores; Nov 24, 2024 ruling dismissed with prejudice all claims except a Sherman Act Section 2 claim and accompanying state law claims against FICO, allowed to proceed through discovery</td></tr>
+        <tr><td>FY25 Q2</td><td>Identical to FY25 Q1 (byte-identical)</td></tr>
+        <tr><td class="val-new">FY25 Q3</td><td>Adds one sentence: "FICO intends to vigorously defend against the remaining claims in this proceeding."</td></tr>
+        <tr><td>FY2025 10-K, FY26 Q1, FY26 Q2</td><td>Identical to FY25 Q3 text &mdash; no status update across four quarters of discovery</td></tr>
+      </tbody>
+    </table>
+    <p>The disclosure has never included a loss estimate or accrual statement, and the matter was never added to the financial-statement Contingencies note, which concludes in every quarter: "we have determined we do not have a material exposure, either individually or in the aggregate." The surviving claims run against FICO only; the bureaus are described as co-defendants. "Antitrust" appears in 10-Qs only via this item (first at FY25 Q1).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-fhfa">
+  <div class="section-header"><h2>#9: FHFA / VantageScore / CFPB &mdash; Annual-Filing-Only Disclosures</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> Zero 10-Q Hits Across Eight Quarters</h3>
+    <p>The terms "FHFA," "VantageScore," "direct licens-," "CFPB," "Consumer Financial," and "Federal Housing" do not appear anywhere in any of the eight 10-Q full texts. Every 10-Q's Item 1A is a one-paragraph incorporation by reference ending verbatim: "There have been no material changes from the risk factors disclosed in our Annual Report on Form 10-K." The three FY2024 stubs are byte-identical to each other, as are the three FY2025 stubs and the two FY2026 stubs (only the referenced 10-K year changes).</p>
+    <table class="data-table">
+      <thead><tr><th>Term</th><th>10-Q Hits (8 Filings)</th><th>FY2024 10-K</th><th>FY2025 10-K</th></tr></thead>
+      <tbody>
+        <tr><td>FHFA / Federal Housing</td><td class="val-neg">0</td><td class="val-new">First mention: Score 10/10 T "will be implemented&hellip; based on the timeline set forth by" FHFA; bi-merge/tri-merge risk added</td><td class="val-new">Rewritten: "was approved for conforming mortgages"; July 2025 FHFA Director announcement; bureau-pricing constraint sentence</td></tr>
+        <tr><td>VantageScore</td><td class="val-neg">0</td><td>Named only in Item 1 competition ("a joint venture entity established by the three major U.S. consumer reporting agencies")</td><td>Identical Item 1 language</td></tr>
+        <tr><td>CFPB</td><td class="val-neg">0</td><td class="val-new">May 2024 inquiry named in new mortgage-pricing risk factor; FCRA rulemaking sentence (5 mentions total)</td><td class="val-neg">De-named in risk factors; 2 mentions, both in Item 1 regulatory overview</td></tr>
+        <tr><td>Tariffs / restructuring / BNPL / bi-merge</td><td class="val-neg">0</td><td>bi-merge/tri-merge defined terms (FY2024 only)</td><td class="val-new">Tariffs (3 places), $10.9M restructuring, BNPL scores</td></tr>
+      </tbody>
+    </table>
+    <p>Notably, FY25 Q3 (period ended June 30, 2025, filed after the FHFA Director's July 2025 announcement) still asserted "no material changes" against the FY2024 10-K, whose FHFA risk factor described only a hypothetical bi-merge change. The 10-Qs carry GSE-related news only implicitly, through the mortgage-volume attribution and the legal proceedings item. "Direct licens(e/ing)" and "direct distribution" appear in no filing in this set through FY26 Q2 (filed April 28, 2026).</p>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. Bureau Channel Concentration Compounds Silently</h3>
+      <p>Bureau revenue concentration went from 39% of quarterly revenue (FY24 Q1) to 64% (FY26 Q2), and receivables-concentrated customers from one to three, with zero wording changes to the revenue-note paragraph across all eight quarters. B2B Scores revenue grew 72% year-over-year in the final quarter while B2C grew 5%.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. The Mortgage-Volume Clause Is the Fastest GSE Signal</h3>
+      <p>The B2B driver clause moved: absent (FY24 Q1) &rarr; "partially offset by a decrease" (FY24 Q2) &rarr; "and an increase" (FY25 Q1) &rarr; out at quarter level for one quarter (FY25 Q2) &rarr; back plus a one-time insurance renewal (FY25 Q3). The FY25 Q1 sign flip preceded the FY2025 10-K's framing of the year by nine months. Pricing is listed first in every period.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. Balance Sheet Rotated to Long-Dated Fixed Debt While Buybacks Scaled</h3>
+      <p>Total debt rose from $2.0B to $3.6B across the nine filings: floating-rate term loans and revolver balances were replaced by $2.5B of new fixed notes at 6.00% (May 2033) and 6.25% (Sep 2034). The May 2025 amendment's covenant sentence dropped the 3.0x minimum interest coverage ratio. Buyback authorizations stepped $500M &rarr; $1.0B &rarr; $1.0B &rarr; $1.5B, with record quarters of $511.3M (FY25 Q3) and $611.3M (FY26 Q2).</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Regulatory Disclosure Lives Only in the 10-Ks</h3>
+      <p>FHFA, VantageScore, CFPB, tariffs, restructuring, BNPL scores, and bi-merge/tri-merge appear exclusively in annual filings; every 10-Q risk-factor item is a verbatim "no material changes" stub &mdash; including FY25 Q3, filed after the July 2025 FHFA announcement. The antitrust class actions, by contrast, surfaced first in a 10-Q (FY25 Q1), two months after the FY2024 10-K said "Not applicable."</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Software KPIs Decayed, Were Redefined, Then Recovered</h3>
+      <p>Total DBNRR fell 114% &rarr; 102% (FY25 Q2 trough) &rarr; 109% (FY26 Q2); non-platform DBNRR ended at 90% with non-platform ARR down from $497.4M to $440.0M, while platform ARR rose from $190.3M to $348.8M. The definitions moved early: at FY24 Q2, DBNRR became a point-in-time metric and ACV Bookings was downgraded from "a more meaningful measure" to "a useful supplemental measure." Software segment margin declined 38% &rarr; 28% across three disclosed step-downs, with third-party data center hosting costs cited in the last two.</p>
+    </div>
+    <div class="signal-card">
+      <h3>6. FY2026 Delivered Magnitude Without Narrative</h3>
+      <p>FY26 Q2 posted Scores +60%, total revenue +39%, 91% Scores margin, a record buyback, and a new $1.5B authorization with zero change in attribution wording. The quarter's only new sentences concern financing (2026 notes, 2018 notes retirement) and the rewritten liquidity clause ("no significant debt obligations maturing over the next 12 months"). The FY26 Q1 tax note carried the set's first acknowledgment of the stock-price decline.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <p style="font-size:13px; color:var(--text-dim); margin-bottom:6px;">Per-quarter values as stated in each filing's highlights bullets and notes. B2B/B2C from the revenue disaggregation note; SBC is unallocated share-based compensation from the segment note; deferred revenue and RPO from the contract-balances note.</p>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Revenue ($M)</th>
+        <th>Scores B2B ($K)</th>
+        <th>Scores B2C ($K)</th>
+        <th>Deferred Rev ($K)</th>
+        <th>RPO ($M)</th>
+        <th>SBC ($K)</th>
+        <th>Total Debt</th>
+        <th>Buybacks ($M)</th>
+        <th>ETR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>FY24 Q1</strong></td>
+        <td>382.1 (+11%)</td>
+        <td>140,442</td>
+        <td>51,670</td>
+        <td>153,405</td>
+        <td>470.8</td>
+        <td>31,574</td>
+        <td>$2.0B</td>
+        <td>71.7</td>
+        <td>7.3%</td>
+      </tr>
+      <tr>
+        <td><strong>FY24 Q2</strong></td>
+        <td>433.8 (+14%)</td>
+        <td>185,508</td>
+        <td>51,377</td>
+        <td>150,076</td>
+        <td>481.7</td>
+        <td>35,448</td>
+        <td>$2.0B</td>
+        <td>179.5</td>
+        <td>24.9%</td>
+      </tr>
+      <tr>
+        <td><strong>FY24 Q3</strong></td>
+        <td>447.8 (+12%)</td>
+        <td>188,754</td>
+        <td>52,696</td>
+        <td>155,783</td>
+        <td>482.9</td>
+        <td>42,435</td>
+        <td>$2.1B</td>
+        <td>255.5</td>
+        <td>24.5%</td>
+      </tr>
+      <tr>
+        <td><strong>FY25 Q1</strong></td>
+        <td>440.0 (+15%)</td>
+        <td>182,391</td>
+        <td>53,284</td>
+        <td>168,579</td>
+        <td>496.3</td>
+        <td>40,654</td>
+        <td>$2.4B</td>
+        <td>159.7</td>
+        <td class="val-new">(1.6)%</td>
+      </tr>
+      <tr>
+        <td><strong>FY25 Q2</strong></td>
+        <td>498.7 (+15%)</td>
+        <td>242,494</td>
+        <td>54,545</td>
+        <td>175,045</td>
+        <td>512.5</td>
+        <td>41,704</td>
+        <td>$2.5B</td>
+        <td>207.0</td>
+        <td>23.7%</td>
+      </tr>
+      <tr>
+        <td><strong>FY25 Q3</strong></td>
+        <td>536.4 (+20%)</td>
+        <td>268,479</td>
+        <td>55,830</td>
+        <td>175,058</td>
+        <td>593.3</td>
+        <td>41,930</td>
+        <td class="val-highlight">$2.8B</td>
+        <td class="val-highlight">511.3</td>
+        <td>23.3%</td>
+      </tr>
+      <tr>
+        <td><strong>FY26 Q1</strong></td>
+        <td>512.0 (+16%)</td>
+        <td>248,613</td>
+        <td>55,921</td>
+        <td>175,237</td>
+        <td>682.2</td>
+        <td>44,269</td>
+        <td>$3.2B</td>
+        <td>162.7</td>
+        <td>17.5%</td>
+      </tr>
+      <tr>
+        <td><strong>FY26 Q2</strong></td>
+        <td class="val-new">691.7 (+39%)</td>
+        <td class="val-new">417,629</td>
+        <td>57,344</td>
+        <td>185,025</td>
+        <td>717.7</td>
+        <td>45,310</td>
+        <td class="val-new">$3.6B</td>
+        <td class="val-new">611.3</td>
+        <td>25.7%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--text-dim); opacity:0.8;">10-K full-year reference: FY2024 revenue $1.7B (+13%), Scores $919.7M (+19%), buybacks $833.3M, ETR 20.1%; FY2025 revenue $2.0B (+16%), Scores $1.2B (+27%), buybacks ~$1.4B, debt $3.1B, ETR 18.8%. Fiscal Q4 buyback amounts are derived (full-year minus nine-month).</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      if (el.classList.contains('finding')) findings.push(el);
+      el.querySelectorAll && el.querySelectorAll('.finding').forEach(f => findings.push(f));
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+
+// Global expand/collapse all
+const toggleBtn = document.getElementById('toggle-all');
+toggleBtn.addEventListener('click', () => {
+  const findings = document.querySelectorAll('.finding');
+  const anyClosed = Array.from(findings).some(f => !f.classList.contains('open'));
+  findings.forEach(f => f.classList.toggle('open', anyClosed));
+  toggleBtn.textContent = anyClosed ? 'Collapse all' : 'Expand all';
+});
+</script>
+</body>
+</html>
