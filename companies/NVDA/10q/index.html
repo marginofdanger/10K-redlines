@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA 10-Q Quarterly Scanner | FY2024Q3&ndash;FY2027Q1</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+.expand-btn {
+  margin-top: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--accent); font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 6px; cursor: pointer;
+}
+.expand-btn:hover { background: var(--surface2); }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>NVDA 10-Q SCANNER</h1>
+    <div class="sub">FY2024 Q3 &ndash; FY2027 Q1 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+  <a class="nav-item" href="#era-overview">Era Overview</a>
+
+  <div class="nav-section">Transitions</div>
+  <a class="nav-item" href="#q3fy24-fy24k">FY24 Q3 &rarr; FY24 10-K</a>
+  <a class="nav-item" href="#fy24k-q1fy25">FY24 10-K &rarr; FY25 Q1</a>
+  <a class="nav-item" href="#q1q2-fy25">FY25 Q1 &rarr; Q2</a>
+  <a class="nav-item" href="#q2q3-fy25">FY25 Q2 &rarr; Q3</a>
+  <a class="nav-item" href="#q3fy25-fy25k">FY25 Q3 &rarr; FY25 10-K</a>
+  <a class="nav-item" href="#fy25k-q1fy26">FY25 10-K &rarr; FY26 Q1</a>
+  <a class="nav-item" href="#q1q2-fy26">FY26 Q1 &rarr; Q2</a>
+  <a class="nav-item" href="#q2q3-fy26">FY26 Q2 &rarr; Q3</a>
+  <a class="nav-item" href="#q3fy26-fy26k">FY26 Q3 &rarr; FY26 10-K</a>
+  <a class="nav-item" href="#fy26k-q1fy27">FY26 10-K &rarr; FY27 Q1</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-export">Export-Control Arc</a>
+  <a class="nav-item" href="#sig-concentration">Customer Concentration</a>
+  <a class="nav-item" href="#sig-commitments">Purchase Commitments</a>
+  <a class="nav-item" href="#sig-investments">Investment / Ecosystem Financing</a>
+  <a class="nav-item" href="#sig-inventory">Inventory + H20 Charge</a>
+  <a class="nav-item" href="#sig-gm">Gross Margin Arc</a>
+  <a class="nav-item" href="#sig-geo">Geography Re-presentation</a>
+  <a class="nav-item" href="#sig-capital">Buybacks / Dividend Ladder</a>
+  <a class="nav-item" href="#sig-verbatim">Verbatim Sentence Traces</a>
+  <a class="nav-item" href="#sig-groq">Groq License + Class Action</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+
+  <div class="nav-section">Links</div>
+  <a class="nav-item" href="../index.html">NVDA 10-K dashboard</a>
+  <a class="nav-item" href="../../../index.html">All companies</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>NVDA 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of NVIDIA's 10-Q filings, from FY2024 Q3 (October 2023, filed just after the October 2023 export rules) through FY2027 Q1 (April 2026, filed May 20, 2026), including the FY2024, FY2025, and FY2026 10-K boundary transitions. NVIDIA restates its full risk factors every quarter, so each transition is a complete redline of Risk Factors, MD&amp;A, Notes, and Legal Proceedings.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001045810) | 8 quarterly filings + 3 10-K baselines | FY2024 Q3 &ndash; FY2027 Q1 | Analysis: June 2026</div>
+  <button class="expand-btn" id="toggle-all">Expand all</button>
+</div>
+
+<!-- ==================== ERA OVERVIEW ==================== -->
+<div class="section" id="era-overview">
+  <div class="section-header"><h2>Era Overview</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3><a href="#q3fy24-fy24k">1. FY24 Q3 &rarr; FY2024 10-K</a></h3>
+      <p>The baseline quarter disclosed that licensable destinations had contributed approximately 20-25% of Data Center revenue and guided to a significant fourth-quarter China decline "more than offset" by other regions. The 10-K then quantified the annual outcome: China fell from 19% to 14% of Data Center revenue, with a "mid-single digit" Q4 run-rate expected to persist. Purchase obligations edged down from $17.1B to $16.1B.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#fy24k-q1fy25">2. FY2024 10-K &rarr; FY25 Q1</a></h3>
+      <p>Blackwell entered disclosure for the first time, with initial demand described as "well ahead of the projected supply." Customer concentration moved to a lettered-customer format (A 13%, B 11%) plus two indirect customers at 10%+, and the Singapore billing-vs-shipping footnote first appeared. Gross margin hit its series peak of 78.4%.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#q1q2-fy25">3. FY25 Q1 &rarr; Q2</a></h3>
+      <p>NVIDIA disclosed a Blackwell GPU mask change and the first Blackwell inventory provisions, formalized an annual architecture cadence, and rewrote the demand-mismatch risk factor header to lead with manufacturing lead times. China commentary reversed from "down significantly" to "grew sequentially," and lettered customers expanded to four (A 14%, B 11%, C 11%, D 10%).</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#q2q3-fy25">4. FY25 Q2 &rarr; Q3</a></h3>
+      <p>The filing added an explicit statement that Blackwell demand "is expected to exceed supply for several quarters in fiscal year 2026" and named Blackwell systems into export-license scope. New risks appeared for U.S. automotive import restrictions and Chinese government steering of customers to local competitors; the "long-term trajectory is unknown" caveat on generative AI was deleted.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#q3fy25-fy25k">5. FY25 Q3 &rarr; FY2025 10-K</a></h3>
+      <p>The 10-K first disclosed the January 15, 2025 "AI Diffusion" IFR with its worldwide licensing requirement. FY2025 closed at $130.5B revenue and 75.0% gross margin, with purchase obligations of $30.8B attributed to Blackwell capacity, and the China sentence softened to "grew in fiscal year 2025... remains well below" pre-control levels.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#fy25k-q1fy26">6. FY2025 10-K &rarr; FY26 Q1 (H20 charge quarter)</a></h3>
+      <p>On April 9, 2025 the USG imposed a license requirement on H20 exports to China, producing a $4.5B charge and conditional foreclosure language ("we would effectively be foreclosed"). The quarter also quantified Singapore at 20% of billings (over 99% for U.S.-based customers), first named DeepSeek/Qwen, the one-year product cadence, U.S.-based manufacturing plans, and the unnamed "AI research and deployment company" in the concentration note. Gross margin fell to 60.5%.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#q1q2-fy26">7. FY26 Q1 &rarr; Q2</a></h3>
+      <p>August 2025 H20 export licenses were disclosed alongside a USG expectation of a 15% revenue share that had not been codified by regulation. MD&amp;A recorded ~$650M of H20 revenue to a non-China customer with a $180M reserve release and zero H20 sales to China. China's government publicly questioned whether H20 chips contain built-in vulnerabilities; a $60B buyback authorization and the OBBBA tax law were disclosed.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#q2q3-fy26">8. FY26 Q2 &rarr; Q3</a></h3>
+      <p>Foreclosure language moved from conditional to actual ("We have effectively been foreclosed"), and a new strategic-investment risk factor covered the OpenAI letter of intent, the up-to-$10B Anthropic agreement, and the $5B Intel commitment. Geography reporting was recast from billing location to headquarters location, eliminating the Singapore line, and a new guarantee/counterparty risk factor disclosed an $860M facility-lease guarantee. China's antitrust regulator published an adverse preliminary finding on the Mellanox commitments.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#q3fy26-fy26k">9. FY26 Q3 &rarr; FY2026 10-K</a></h3>
+      <p>The 10-K moved OpenAI from letter of intent to "finalizing an investment and partnership agreement" and timestamped the China foreclosure as of fiscal year-end. FY2026 closed at $215.9B revenue with gross margin down to 71.1% on the Hopper-HGX-to-full-systems transition and the H20 charge; Note 2 disclosed the December 2025 Groq license: $14.4B goodwill plus a $2.5B intangible with no customer contracts, products, or equity acquired.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#fy26k-q1fy27">10. FY2026 10-K &rarr; FY27 Q1 (filed May 20, 2026)</a></h3>
+      <p>The heaviest quarter in the series: manufacturing/supply commitments reached $119B ($95B payable within FY2027), investment commitments $27B, $18.6B of private-company purchases in one quarter (non-marketable portfolio $42.3B), a $32.4B future lease pipeline, commercial paper capacity raised from $575M to $25B, an $80B buyback authorization with a dividend increase from $0.01 to $0.25, a platform recast to Data Center / Edge Computing, Rubin's first appearance, H200-to-China licenses carrying a 25% re-import tariff, and three customers at 21/17/16% of revenue with letter labels dropped.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== TRANSITIONS ==================== -->
+
+<!-- T1: FY24 Q3 -> FY24 10-K -->
+<div class="transition-header" id="q3fy24-fy24k">
+  <h2>FY2024 Q3 &rarr; FY2024 10-K</h2>
+  <div class="sub">Q ended Oct 29, 2023 &rarr; FY ended Jan 28, 2024 | Q3: Revenue $18.12B (+206%) | Data Center +279% y/y | GM 74.0% | Commitments $17.1B &rarr; $16.1B</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China Data Center contribution: "20-25%" quarterly framing becomes annual 19% &rarr; 14% with "mid-single digit" run-rate</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q3, filed weeks after the October 2023 export rules, disclosed the licensable-destination contribution and guided the decline:</p>
+    <blockquote>"Our sales to China and other affected destinations, derived from products that are now subject to licensing requirements, have consistently contributed approximately <strong>20-25% of Data Center revenue</strong> over the past few quarters. We expect that our sales to these destinations will decline significantly in the fourth quarter of fiscal year 2024, though we believe the decline will be <strong>more than offset by strong growth in other regions</strong>."</blockquote>
+    <p>The FY2024 10-K replaced the quarterly framing with annual percentages and a forward range:</p>
+    <blockquote>"Our sales to China decreased as a percentage of total Data Center revenue <strong>from 19% in fiscal year 2023 to 14% in fiscal year 2024</strong>... China represented a <strong>mid-single digit percentage</strong> of our Data Center revenue in the fourth quarter of fiscal year 2024 due to USG licensing requirements and we expect China to be in a similar range in the first quarter of fiscal year 2025."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Baseline demand sentence: "surged over the last three quarters... visibility extends into next year"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The FY2024 Q3 MD&amp;A contains the starting point of the demand/supply sentence trace (Signal #9):</p>
+    <blockquote>"Demand for our data center systems and products has surged over the last three quarters and our demand visibility extends into next year."</blockquote>
+    <p>This formulation is later superseded by Blackwell-specific supply language in FY2025 Q1 and the demand-exceeds-supply statement in FY2025 Q3.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Purchase obligations $17.11B &rarr; $16.1B; first $25B buyback authorization in baseline quarter</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 Q3 carried $17.11B of inventory purchase and long-term supply obligations plus $4.43B of other non-inventory commitments (including $3.60B multi-year cloud). The FY2024 10-K showed $16.1B plus $4.6B other (including $3.5B cloud) &mdash; the only sequential decline in the entire series before the climb to $119B. Customer concentration: Customer A at 12% of Q3 revenue; one direct customer at 13% for full-year FY2024. The August 21, 2023 $25.0B repurchase authorization was the first rung of a ladder that reaches $80B by May 2026.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T2: FY24 10-K -> FY25 Q1 -->
+<div class="transition-header" id="fy24k-q1fy25">
+  <h2>FY2024 10-K &rarr; FY2025 Q1</h2>
+  <div class="sub">Q ended Apr 28, 2024 | Revenue $26.0B (+262%) | Data Center $22.6B (+427%) | GM 78.4% (series peak)</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Blackwell enters disclosure: in production, demand "well ahead of the projected supply"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1 (new language):</p>
+    <blockquote>"While supply for H100 continued to improve, we are still constrained on H200. Our next generation data center architecture, <strong>Blackwell, is in production</strong>, and we plan on shipping customer samples in the second quarter... We believe the <strong>initial demand for Blackwell is well ahead of the projected supply</strong> for this fiscal year. We expect supply constraints for our Blackwell offerings will continue into next year."</blockquote>
+    <p>First appearance of the Blackwell name in a 10-Q; the supply-constraint expectation is repeated and sharpened in FY2025 Q3 ("expected to exceed supply for several quarters in fiscal year 2026").</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China framing shifts to "down significantly" with compliant-product ramp</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K:</p>
+    <blockquote>"China represented a <strong>mid-single digit percentage</strong> of our Data Center revenue in the fourth quarter of fiscal year 2024 due to USG licensing requirements and we expect China to be in a similar range in the first quarter of fiscal year 2025."</blockquote>
+    <p>FY2025 Q1:</p>
+    <blockquote>"We ramped <strong>new products designed specifically for China that do not require an export control license</strong>. Our Data Center revenue in China is <strong>down significantly</strong> from the level prior to the imposition of new export control restrictions in October 2023. We expect the market in China to remain very competitive going forward."</blockquote>
+    <p>The risk factors continued to state that no licenses had been received to ship restricted products to China.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Concentration moves to lettered customers; indirect 10%+ customers first disclosed in the note</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1 (new format):</p>
+    <blockquote>"Sales to one direct customer, <strong>Customer A</strong>, represented <strong>13%</strong> of total revenue and sales to a second direct customer, <strong>Customer B</strong>, represented <strong>11%</strong>..."</blockquote>
+    <p>Two indirect customers each represented 10% or more of Q1 FY2025 revenue, one purchasing primarily through direct Customer B. The prior-year quarter had no customer at 10% or more. The same note first defined indirect customers as including "public cloud providers, consumer internet companies, enterprises, startups, and public sector entities" &mdash; "startups" is dropped from FY2025 Q2 onward.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Singapore billing-vs-shipping footnote first appears</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1 (new language):</p>
+    <blockquote>"...most of the shipments associated with Singapore revenue went to either the United States or Taiwan in the first quarter of fiscal year 2025. <strong>Shipments to Singapore were insignificant.</strong>"</blockquote>
+    <p>The first rung of a three-step arc: this caveat (FY2025 Q1), the expanded over-99%-U.S.-customers footnote when Singapore reaches 20% of billings (FY2026 Q1), and the headquarters-basis recast that eliminates the Singapore line entirely (FY2026 Q3).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Subsequent events: 10-for-1 split and 150% dividend increase</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>A dedicated subsequent-events note (May 22, 2024) announced the 10-for-1 stock split and an increase in the quarterly dividend from $0.04 to $0.10 per share pre-split &mdash; equivalent to $0.01 post-split, the level that holds until the May 18, 2026 increase to $0.25.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T3: FY25 Q1 -> Q2 -->
+<div class="transition-header" id="q1q2-fy25">
+  <h2>FY2025 Q1 &rarr; Q2</h2>
+  <div class="sub">Q ended Jul 28, 2024 | Revenue $30.0B (+122%) | Data Center $26.3B (+154%) | GM 75.1% | Commitments $18.8B &rarr; $27.8B</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Blackwell GPU mask change and first Blackwell inventory provisions</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2 (new language):</p>
+    <blockquote>"We executed a <strong>change to the Blackwell GPU mask to improve production yield</strong>. Our gross margins in the second quarter of fiscal year 2025 were negatively impacted by <strong>inventory provisions for low-yielding Blackwell material</strong> and they may continue to be impacted in the future."</blockquote>
+    <p>The same MD&amp;A gave the first Blackwell revenue quantification: "In the fourth quarter of fiscal year 2025, we expect to ship several billion dollars in Blackwell revenue." The mask change is reported as completed in FY2025 Q3.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Annual architecture cadence formalized</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2 (new language):</p>
+    <blockquote>"We have introduced a <strong>new cadence of our Data Center architectures where we seek to complete a new GPU computing architecture each year</strong>."</blockquote>
+    <p>This becomes "one-year product cadence" from FY2026 Q1 and "new computing solutions each year" in FY2027 Q1.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China tone reversal: "down significantly" &rarr; "grew sequentially... significant contributor"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1:</p>
+    <blockquote>"Our Data Center revenue in China is <strong>down significantly</strong> from the level prior to the imposition of new export control restrictions in October 2023."</blockquote>
+    <p>FY2025 Q2:</p>
+    <blockquote>"Our Data Center revenue in China <strong>grew sequentially</strong> in the second quarter of fiscal year 2025 and <strong>is a significant contributor</strong> to our Data Center revenue. As a percentage of total Data Center revenue, it remains below levels seen prior to the imposition of export controls in October 2023."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Demand-mismatch risk factor header rewritten to lead with manufacturing lead times</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1 header:</p>
+    <blockquote>"Failure to estimate customer demand accurately has led and could lead to mismatches between supply and demand."</blockquote>
+    <p>FY2025 Q2 header:</p>
+    <blockquote>"<strong>Long manufacturing lead times and uncertain supply and component availability, combined with</strong> a failure to estimate customer demand accurately, has led and could lead to mismatches between supply and demand."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">System-integrator risk first appears</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2 (new language):</p>
+    <blockquote>"We have a small number of partners that are involved in <strong>system integration</strong> with our key customers. As our system design becomes increasingly complex, system integrators may be unable to meet specifications of our key customers."</blockquote>
+    <p>Added in the quarter the product mix began shifting from boards toward rack-scale systems.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Chip-mandate language softens "would disable" to "could disable... if certain events... are detected"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q1 (on potential government-mandated chip controls):</p>
+    <blockquote>"...<strong>would disable or impair GPUs</strong>..."</blockquote>
+    <p>FY2025 Q2:</p>
+    <blockquote>"...<strong>could disable or impair GPUs if certain events, including unauthorized system configuration, use, or location, are detected</strong>..."</blockquote>
+    <p>The same quarter also changed a single conjunction in the infrastructure constraint phrase: "data center capacity <strong>and</strong> energy" became "capacity <strong>or</strong> energy."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Regulatory list grows: U.S. added to information requests; EU AI Act adopted; China compute-per-watt "Action Plan"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The regulatory-request risk factor adds "the United States" to the list of jurisdictions making information requests (the quarter of reported U.S. antitrust inquiries &mdash; "DOJ" and "subpoena" never appear in any 10-Q). The EU AI Act milestone is dated:</p>
+    <blockquote>"...the EU AI Act was <strong>formally adopted in June 2024</strong>..."</blockquote>
+    <p>A China "Action Plan" risk on compute-per-watt and compute-per-joule standards for data centers also appears for the first time.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Concentration steps up to four lettered customers; commitments jump to $27.8B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Direct customers A, B, C and D at 14%, 11%, 11% and 10% of Q2 revenue (vs two customers in Q1); two indirect customers each estimated at 10% or more, purchasing through Customer B and Customer E. Inventory purchase and long-term supply obligations rose from $18.8B to $27.8B, attributed to Hopper and Blackwell capacity and components, plus $12.0B of other commitments including $9.8B cloud. An additional $50.0B buyback authorization was approved August 26, 2024.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T4: FY25 Q2 -> Q3 -->
+<div class="transition-header" id="q2q3-fy25">
+  <h2>FY2025 Q2 &rarr; Q3</h2>
+  <div class="sub">Q ended Oct 27, 2024 | Revenue $35.1B (+94%) | Data Center $30.8B (+112%) | GM 74.6% | Commitments $27.8B &rarr; $28.9B</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Explicit demand-exceeds-supply statement for Blackwell</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3 (new language):</p>
+    <blockquote>"Both Hopper and Blackwell systems have certain supply constraints, and the <strong>demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026</strong>."</blockquote>
+    <p>The most specific forward supply/demand statement in the series &mdash; it extends the FY2025 Q1 formulation ("well ahead of the projected supply for this fiscal year") by a full year.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Blackwell systems named into export-license scope; grace-period removal noted</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3 (new language):</p>
+    <blockquote>"Our upcoming <strong>Blackwell systems, such as GB200 NVL 72 and NVL 36 as well as B200</strong> will also be subject to these requirements..."</blockquote>
+    <p>The same passage adds a parenthetical to the October 23, 2023 effective-immediately disclosure: the licensing requirements applied to A100/A800/H100/H800/L40S shipments "<strong>(removing the grace period granted by the official rule)</strong>."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Connected-vehicle / automotive import restriction risk first appears</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3 (new language):</p>
+    <blockquote>"For example, the USG is considering <strong>restrictions on the import and sale of certain automotive products in the United States</strong>, which if adopted and interpreted broadly, could impact our ability to develop and supply solutions for our automotive customers."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Chinese government "may also encourage customers to purchase from our China-based competitors"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3 (new language):</p>
+    <blockquote>"The Chinese government <strong>may also encourage customers to purchase from our China-based competitors</strong>, or impose restrictions on the sale to certain customers of our products, or any products containing components made by our partners and suppliers."</blockquote>
+    <p>The modal "may also encourage" becomes "has encouraged... and restricted" in FY2026 Q3.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"The long-term trajectory is unknown" deleted from generative-AI demand language</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2:</p>
+    <blockquote>"Recent technologies, such as generative AI models, have emerged, and while they have driven increased demand for Data Center, <strong>the long-term trajectory is unknown</strong>."</blockquote>
+    <p>FY2025 Q3:</p>
+    <blockquote>"<strong>Advancements in accelerated computing and generative AI models, along with the growth in model complexity and scale</strong>, have driven increased demand for our Data Center systems."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Mask change reported complete; Blackwell production shipments scheduled for Q4</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q2:</p>
+    <blockquote>"We executed a <strong>change to the Blackwell GPU mask</strong> to improve production yield."</blockquote>
+    <p>FY2025 Q3:</p>
+    <blockquote>"We completed a <strong>successful mask change for Blackwell</strong>... Blackwell production shipments are scheduled to begin in the fourth quarter..."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Concentration evens out at three customers, 12% each; A&ndash;D relabeling caveat added</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Sales to three direct customers each represented 12% of Q3 revenue; one indirect customer at 10%+ purchased including through Customer C. The note adds a new caveat that "customer references of A-D above may represent different customers than those reported in a previous period." Commitments rose to $28.9B (Blackwell) plus $13.2B other including $11.3B cloud.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T5: FY25 Q3 -> FY25 10-K -->
+<div class="transition-header" id="q3fy25-fy25k">
+  <h2>FY2025 Q3 &rarr; FY2025 10-K</h2>
+  <div class="sub">FY ended Jan 26, 2025 | FY2025: Revenue $130.5B | GM 75.0% | Commitments $30.8B + $14.3B other (incl. $10.9B cloud)</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"AI Diffusion" IFR first disclosed: worldwide licensing requirement</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K (new language):</p>
+    <blockquote>"On January 15, 2025, the USG published the 'AI Diffusion' IFR in the Federal Register. After a 120-day delayed compliance period, the IFR will, unless modified, <strong>impose a worldwide licensing requirement</strong> on all products classified under Export Control Classification Numbers, or ECCNs, 3A090.a, 4A090.a, or corresponding .z ECCNs, including all related software and technology."</blockquote>
+    <p>The rule's rescission is disclosed one quarter later (FY2026 Q1, May 2025), replaced by a forthcoming rule of uncertain scope.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China annual framing: "grew sequentially... below" becomes "grew in fiscal year 2025... well below"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3:</p>
+    <blockquote>"Our Data Center revenue in China grew sequentially in the third quarter of fiscal year 2025. As a percentage of total Data Center revenue, it remains <strong>below</strong> levels seen prior to the <strong>imposition</strong> of export controls in October 2023."</blockquote>
+    <p>FY2025 10-K:</p>
+    <blockquote>"Our Data Center revenue in China <strong>grew in fiscal year 2025</strong>. As a percentage of total Data Center revenue, it remains <strong>well below</strong> levels seen prior to the <strong>onset</strong> of export controls in October 2023."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">FY2025 close: $130.5B revenue, 75.0% GM, $30.8B commitments attributed to Blackwell</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 purchase obligations of $30.8B were described as led by commitments, capacity and components for new product introductions, "<strong>including our new Blackwell architecture</strong>," plus $14.3B of other commitments including $10.9B multi-year cloud. Full-year concentration: three direct customers at 12%, 11%, and 11%. Inventory ended at $10,080M, up from $7,654M at Q3.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T6: FY25 10-K -> FY26 Q1 -->
+<div class="transition-header" id="fy25k-q1fy26">
+  <h2>FY2025 10-K &rarr; FY2026 Q1 &mdash; the H20 charge quarter</h2>
+  <div class="sub">Q ended Apr 27, 2025 | Revenue $44.1B (+69%) | Data Center $39.1B (+73%) | GM 60.5% (&minus;11.0 pts net provisions) | H20 charge $4.5B</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">April 9, 2025: H20 license requirement, $4.5B charge, $4.6B of pre-restriction Q1 H20 sales</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language) &mdash; the core disclosure of the period:</p>
+    <blockquote>"On <strong>April 9, 2025</strong>, the U.S. government, or USG, informed us that it <strong>requires a license for export to China (including Hong Kong and Macau) and D:5 countries</strong>, or to companies headquartered or with an ultimate parent therein, of our H20 integrated circuits and any other circuits achieving the H20's memory bandwidth, interconnect bandwidth, or combination thereof. As a result of these new requirements, we incurred a <strong>$4.5 billion charge</strong> in the first quarter of fiscal year 2026 associated with H20 excess inventory and purchase obligations as the demand for H20 products diminished. The $4.5 billion charge was <strong>less than what we initially anticipated</strong> as we were able to re-use certain materials. Sales of our H20 products were <strong>$4.6 billion</strong> for the first quarter of fiscal year 2026 prior to the new export licensing requirements."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Conditional foreclosure language: "we would effectively be foreclosed"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language):</p>
+    <blockquote>"We may be unable to create a competitive product for China's data center market that receives approval from the USG. In that event, <strong>we would effectively be foreclosed from competing in China's data center computing/compute market</strong>, with a material and adverse impact on our business, operating results, and financial condition."</blockquote>
+    <p>The accompanying market-sizing sentence: "We believe the China AI market to be a significant opportunity and the existing and new export controls will greatly hinder our ability to address this opportunity and will continue to impact our revenue and operational results." The conditional becomes actual in FY2026 Q3.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI Diffusion IFR rescinded; replacement rule of uncertain scope</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K:</p>
+    <blockquote>"On January 15, 2025, the USG published the 'AI Diffusion' IFR in the Federal Register. After a 120-day delayed compliance period, the IFR <strong>will, unless modified, impose a worldwide licensing requirement</strong>..."</blockquote>
+    <p>FY2026 Q1:</p>
+    <blockquote>"In May 2025, the USG announced that it would <strong>rescind the AI Diffusion IFR and implement a replacement rule</strong>. The scope, timing, and requirements of the forthcoming rule remain uncertain."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Demand-estimation bullets add "or tariffs" and "our customers' ability to invest in AI infrastructure"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new bullet language in the demand-mismatch risk factor):</p>
+    <blockquote>"...government actions or changes in governmental policies, such as export controls, increased restrictions on gaming usage, <strong>or tariffs</strong>; and <strong>our customers' ability to invest in AI infrastructure</strong>."</blockquote>
+    <p>Both items are firsts: tariffs as a demand variable and customer financing capacity as a demand variable.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Non-binding announcement caveat on demand estimates</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language, retained in every subsequent quarter):</p>
+    <blockquote>"Publicly announced intentions by governments or other companies to purchase our products can further complicate our demand estimates, <strong>as such announcements are often non-binding</strong> and may not result in committed volumes."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Energy, data center, and capital availability named as constraint on customer buildout</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language):</p>
+    <blockquote>"The availability of <strong>data centers, energy, and capital</strong> to support the buildout of NVIDIA AI infrastructure by our customers is crucial, and any shortage of these resources could impact our future revenue and financial performance."</blockquote>
+    <p>Expanded substantially in FY2026 Q3 with the multi-year energy-capacity and less-capitalized-companies language.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Open-source model risk names DeepSeek and Qwen</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language):</p>
+    <blockquote>"Any regulatory control or other restriction that limits our ability to provide products and services that support third-party applications and models, including applications built on <strong>foundation models originating in China such as DeepSeek or Qwen</strong>, could have a material impact on our business, operating results, and financial condition."</blockquote>
+    <p>"Agentic" AI also first appears this quarter ("generative and agentic AI applications" in MD&amp;A). The open-source framing gains a second, positive-demand sentence in FY2027 Q1.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"One-year product cadence" with Blackwell Ultra timing</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language):</p>
+    <blockquote>"We continue to execute Data Center compute product introductions, bringing new advanced architectures on a <strong>one-year product cadence</strong>. We expect to begin shipping samples and production units of our new <strong>Blackwell Ultra</strong> platforms in the second quarter of fiscal year 2026."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">U.S.-based manufacturing plan first appears</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language):</p>
+    <blockquote>"We plan to <strong>increase our U.S.-based manufacturing</strong> and invest in specialized equipment and processes to support domestic production. This move is expected to strengthen our supply chain, boost resiliency and redundancy, and meet the growing demand for AI infrastructure."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Singapore quantified: 20% of billings, over 99% for U.S.-based customers</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (expanded footnote):</p>
+    <blockquote>"Singapore represented <strong>20%</strong> of the first quarter of fiscal year 2026 total revenue based upon customer billing location. Customers use Singapore to <strong>centralize invoicing</strong> while our products are almost always shipped elsewhere. <strong>Over 99% of controlled Data Center compute revenue billed to Singapore was for orders from U.S.-based customers.</strong>"</blockquote>
+    <p>The footnote also enumerates the controlled-product list by ECCN (3A090.a / 4A090.a). Singapore peaks at 22% of billings in FY2026 Q2 before the line is eliminated by the FY2026 Q3 headquarters-basis recast.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unnamed "AI research and deployment company" enters the concentration note</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new language):</p>
+    <blockquote>"...an <strong>AI research and deployment company</strong> contributed to a meaningful amount of our revenue, through one of the above indirect customers and through other indirect customers that provide cloud services..."</blockquote>
+    <p>The sentence recurs in every subsequent quarter through FY2027 Q1. Direct concentration this quarter: Customer A 16%, Customer B 14%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">H20 charge mechanics: $2.3B inventory provision, $6.2B customer advances in the same quarter</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The inventory note splits the $4.5B charge: a $2.3B provision in cost of revenue including $1.9B "<strong>for H20 product inventory</strong>," with the remainder recorded in excess inventory purchase obligation liabilities. MD&amp;A quantifies net provisions at $5.3B (including the $4.5B H20 charge) against $436M of releases, a &minus;11.0 point gross-margin impact. Separately, deferred-revenue additions of $6,493M included $6.2B of customer advances with $6.0B recognized in-quarter (prior-year Q1: $157M) &mdash; a one-quarter prepayment surge that normalizes afterward.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">CoreWeave reclassified to marketable securities on IPO</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1:</p>
+    <blockquote>"...<strong>reclassified from non-marketable equity securities to marketable securities</strong> following public market trading."</blockquote>
+    <p>The CoreWeave stake was valued at $1B at April 27, 2025, subject to a short-term sale restriction ($2.8B at July 27, 2025; unnamed thereafter). MD&amp;A attributed unrealized losses "particularly [to] CoreWeave and Arm, Inc."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--purple)"></span>Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China Mellanox investigation escalates to export-control discrimination theory</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (new framing of the existing Mellanox-commitments inquiry):</p>
+    <blockquote>"...regulators in China are investigating whether complying with applicable U.S. export controls <strong>discriminates unfairly against customers in the China market</strong>..."</blockquote>
+    <p>The same risk factor broadens the regulatory information-request scope: "broad requests... the markets in which we compete and our competition, our strategies, roadmaps... Such requests have been and are likely to be expensive and burdensome," and adds Japan to the jurisdiction list. The preliminary adverse finding follows in FY2026 Q3.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T7: FY26 Q1 -> Q2 -->
+<div class="transition-header" id="q1q2-fy26">
+  <h2>FY2026 Q1 &rarr; Q2</h2>
+  <div class="sub">Q ended Jul 27, 2025 | Revenue $46.7B (+56%) | Data Center $41.1B (+56%) | GM 72.4% | +$60B buyback authorization</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">August 2025 H20 licenses; USG 15% revenue-share expectation, uncodified</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2 (new language):</p>
+    <blockquote>"In August 2025, the USG <strong>granted licenses</strong> that would allow us to ship certain H20 products to certain China-based customers, but to date, we have not generated any revenue or shipped any H20 products under those licenses. USG officials have expressed an expectation that the USG will receive <strong>15% of the revenue generated from licensed H20 sales</strong>, but to date, the USG has not published a regulation codifying such requirement. Any request for a percentage of the revenue by the USG may subject us to litigation, increase our costs, and harm our competitive position."</blockquote>
+    <p>The 15% sentence is widened to "15% or more... of our products" in FY2026 Q3 and flips to past tense ("did not publish") in FY2027 Q1.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China publicly questions H20 "built-in vulnerabilities"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2 (new language):</p>
+    <blockquote>"...following U.S. legislative proposals calling for mandatory features in our chips, China's government <strong>publicly questioned whether our H20 products have built-in vulnerabilities</strong>, discouraging customers from purchasing our products. We provided a public response explaining that our GPUs, including H20, <strong>do not include such built-in vulnerabilities</strong>..."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">~$650M H20 revenue outside China; $180M reserve release; zero H20 sales to China</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2 (new language):</p>
+    <blockquote>"...we recognized approximately $650 million of H20 revenue from sales to <strong>an unrestricted customer outside of China</strong>, resulting in a <strong>$180 million release of previously reserved H20 inventory</strong>. There were <strong>no H20 sales to China-based customers</strong> in the second quarter."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liquidity enumeration shrinks: "supply obligations and share purchases" &rarr; "supply obligations"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1:</p>
+    <blockquote>"...including our future <strong>supply obligations and share purchases</strong>."</blockquote>
+    <p>FY2026 Q2:</p>
+    <blockquote>"...including our future <strong>supply obligations</strong>."</blockquote>
+    <p>One step in the progressive deletion of enumerated items from the liquidity-sufficiency sentence (see Signal #9), which reaches the unenumerated "our future obligations" in FY2026 Q3.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Offset dilution" purpose sentence deleted from the buyback note</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1 (last appearance):</p>
+    <blockquote>"Our share repurchase program aims to <strong>offset dilution from shares issued to employees</strong> while maintaining adequate liquidity to meet our operating requirements."</blockquote>
+    <p>The sentence does not appear in FY2026 Q2 or any later filing. The same quarter, a $60.0B authorization was approved (August 26, 2025) with Q2 repurchases of $9.7B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OBBBA first disclosed; FDII wording rotates</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2 (new language):</p>
+    <blockquote>"In July 2025, the <strong>One Big Beautiful Bill Act (OBBBA)</strong> was enacted into law and contains several changes to key U.S. federal income tax laws. As of July 27, 2025, we have recognized the tax effects of certain OBBBA provisions, which <strong>did not have a material impact</strong> on our second quarter."</blockquote>
+    <p>The tax-rate driver wording rotates from "foreign-derived intangible income" (through FY2026 Q1) to "foreign-derived deduction eligible income" (FY2026 Q2 onward). ETR steps from 14.3% to 15.3%; FY2026 Q3 adds that fiscal 2026 tax payments will decrease due to currently effective OBBBA provisions.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T8: FY26 Q2 -> Q3 -->
+<div class="transition-header" id="q2q3-fy26">
+  <h2>FY2026 Q2 &rarr; Q3</h2>
+  <div class="sub">Q ended Oct 26, 2025 | Revenue $57.0B (+62%) | Data Center $51.2B (+66%) | GM 73.4% | Geography recast to HQ basis</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Strategic-investment risk factor created: OpenAI letter of intent, Anthropic up to $10B, Intel</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (new language):</p>
+    <blockquote>"In the third quarter of fiscal year 2026, we entered into a <strong>letter of intent with an opportunity to invest in OpenAI</strong>. In November 2025, we entered into an agreement, subject to certain closing conditions, to <strong>invest up to $10 billion in Anthropic</strong>. There is no assurance that we will enter into definitive agreements with respect to the OpenAI opportunity or other potential investments, or that any investment will be completed on expected terms, if at all. The timing and magnitude of these and other investments we may make will depend on various factors, including the <strong>ability of our partners to successfully develop and deploy AI infrastructure</strong>."</blockquote>
+    <p>On Intel:</p>
+    <blockquote>"We have committed to make an equity investment in <strong>Intel Corporation</strong>, subject to regulatory approval. This investment involves <strong>execution, financing, and operational risks</strong>, including dependence on the partner's ability to scale production and deliver competitive technology on schedule. We may not realize the anticipated strategic benefits."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New guarantee / counterparty risk factor</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (new language):</p>
+    <blockquote>"We may be required to satisfy financial obligations under <strong>guarantees and other commercial commitments</strong>. We have entered into, and may in the future enter into, commercial arrangements, including long-term capacity purchase obligations and <strong>financial guarantees supporting our customers' and partners' buildout of datacenter infrastructure</strong>. These arrangements expose us to <strong>counterparty risk</strong>, including customers' or partners' inability to secure necessary financing or infrastructure, significant project delays, or financial distress or insolvency."</blockquote>
+    <p>Promoted to a summary risk factor in the FY2026 10-K ("Commercial arrangements expose us to counterparty risks").</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Foreclosure goes from conditional to actual</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1&ndash;Q2:</p>
+    <blockquote>"We <strong>may be unable</strong> to create a competitive product for China's data center market that receives approval from the USG. <strong>In that event, we would effectively be foreclosed</strong> from competing in China's data center computing/compute market..."</blockquote>
+    <p>FY2026 Q3:</p>
+    <blockquote>"Under the current rules and geopolitical landscape, we <strong>are unable</strong> to create and deliver a competitive product for China's data center market that receives approval from <strong>both the USG and the Chinese government</strong>. We <strong>have effectively been foreclosed</strong> from competing in China's data center computing/compute market, and our effective foreclosure from the China market <strong>will help our competitors build larger developer and customer ecosystems to challenge us worldwide</strong>."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Modal shift: results "may be further harmed" &rarr; "will be further harmed... if the restrictions remain in place"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2:</p>
+    <blockquote>"...our competitive position and future results <strong>may</strong> be further harmed, over the long term, <strong>if there are further changes in the USG's export controls</strong>..."</blockquote>
+    <p>FY2026 Q3:</p>
+    <blockquote>"...<strong>will</strong> be further harmed, over the long term, <strong>if the restrictions remain in place</strong>..."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First H20 license revenue (~$50M); revenue-share expectation widened to "15% or more... of our products"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2:</p>
+    <blockquote>"...the USG will receive <strong>15% of the revenue generated from licensed H20 sales</strong>..."</blockquote>
+    <p>FY2026 Q3:</p>
+    <blockquote>"In August 2025, the USG granted licenses that would allow us to ship certain H20 products to certain China-based customers, but to date, we have generated approximately <strong>$50 million in H20 revenue</strong> under those licenses. USG officials have expressed an expectation that the USG will receive <strong>15% or more of the revenue generated from licensed sales of our products</strong>, but to date, the USG has not published a regulation codifying such requirement."</blockquote>
+    <p>Two scope expansions in one sentence: "or more" on the rate and "of our products" replacing "H20 sales."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">GAIN AI Act passes the Senate in the NDAA</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (new language):</p>
+    <blockquote>"...in October 2025, the Senate passed the '<strong>GAIN AI Act</strong>' in the National Defense Authorization Act, or the NDAA. The GAIN AI Act would restrict the Trump Administration's ability to adapt the Biden Administration's export control rules..."</blockquote>
+    <p>FY2027 Q1 adds RASA (Remote Access Security Act) to the pending-legislation list.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Energy/capital paragraph expanded: multi-year buildout, less-capitalized companies</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q1&ndash;Q2 (single sentence):</p>
+    <blockquote>"The availability of data centers, energy, and capital to support the buildout of NVIDIA AI infrastructure by our customers is crucial..."</blockquote>
+    <p>FY2026 Q3 (expansion appended):</p>
+    <blockquote>"<strong>Expanding energy capacity to meet demand is a complex, multi-year process</strong> that involves significant regulatory, technical, and construction challenges. In addition, <strong>access to capital can be particularly constrained for less-capitalized companies</strong>, which may face difficulties securing financing for large-scale infrastructure projects."</blockquote>
+    <p>A parallel new bullet cites "our customers' and partners' ability to secure capital and energy and to build complex datacenter infrastructure timely."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Chinese government action moves to past/present tense: "has encouraged... and restricted"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 Q3 through FY2026 Q2:</p>
+    <blockquote>"The Chinese government <strong>may also encourage</strong> customers to purchase from our China-based competitors..."</blockquote>
+    <p>FY2026 Q3:</p>
+    <blockquote>"The Chinese government <strong>has encouraged</strong> customers to purchase from our China-based competitors <strong>and restricted customers from purchasing, importing, or using our data center products</strong>, including any China-specific product designed to comply with U.S. export controls."</blockquote>
+    <p>The diversion-allegation language also adds that allegations harm the business "even when unsubstantiated and untrue."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Geography recast from billing location to headquarters location; Singapore line eliminated</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (methodology footnote):</p>
+    <blockquote>"Previously, revenue by geographic area was reported based on the billing location of our customers... We believe changing to revenue based upon the <strong>location of our customers' headquarters</strong> provides a better representation of the geographic profile of our revenue. <strong>Prior period information has been recast</strong> to reflect this change."</blockquote>
+    <p>The Singapore line (22% of billings in Q2) disappears; a new footnote quantifies the Taiwan pass-through:</p>
+    <blockquote>"In the third quarter of fiscal year 2026, we estimate <strong>86% of Data Center revenue from Taiwan-headquartered customers is attributed to end customers based in the United States and Europe</strong>."</blockquote>
+    <p>On the recast basis, China (incl. Hong Kong) was $2,973M in Q3 FY2026 vs $8,142M a year earlier; outside-U.S. share falls to 31%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Customer taxonomy adds "Neocloud builders"; new concentration-trend sentence</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (rewritten definitions):</p>
+    <blockquote>"...indirect customers include CSPs, <strong>Neocloud builders</strong>, hyperscale, consumer internet companies, enterprises, and public sector entities."</blockquote>
+    <blockquote>"Our revenue is concentrated among a limited number of <strong>direct, indirect and cloud service purchasers</strong> and this trend may continue."</blockquote>
+    <p>Direct customers also add "CSPs, hyperscale companies." Quarterly concentration: A 22%, B 15%, C 13%, D 11%; the indirect AI-research-and-deployment-company sentence repeats.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liquidity sentence erodes to unenumerated "our future obligations"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q2:</p>
+    <blockquote>"...for the foreseeable future, including our future <strong>supply obligations</strong>."</blockquote>
+    <p>FY2026 Q3:</p>
+    <blockquote>"...for the foreseeable future, including <strong>our future obligations</strong>."</blockquote>
+    <p>The unenumerated formulation arrives in the same quarter as the Intel/OpenAI/Anthropic commitments and the first lease guarantee. FY2027 Q1 re-anchors the sentence on $30.2B of marketable equity securities.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First facility-lease guarantee: $860M maximum exposure, $470M in escrow</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (new note disclosure):</p>
+    <blockquote>"The maximum gross exposure is <strong>$860 million</strong>, which is reduced as the partner makes payments to the lessor over five years. The partner has placed <strong>$470 million in escrow</strong> and executed an agreement to sell the data center cloud capacity, mitigating our default risk."</blockquote>
+    <p>The agreement lets the partner "secure a limited-availability facility lease backed by our credit profile, in exchange for issuing us warrants." Scales to $3.5B maximum exposure across all agreements by FY2027 Q1.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commitments note restructured: $50.3B mfg/supply + $26B cloud + $6.5B investment commitments</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 splits commitments into manufacturing/supply/capacity ($50.3B, "substantially all... through fiscal year 2027"), cloud ($26B), investment commitments, and other ($2.1B):</p>
+    <blockquote>"Investment commitments are <strong>$6.5 billion</strong> as of October 26, 2025, including <strong>$5 billion in Intel Corporation</strong> which is subject to regulatory approval."</blockquote>
+    <p>A new cloud hedge sentence appears: "Some cloud service capacity may be reduced, terminated or sold to others by the CSPs." The cost-of-revenue definition in MD&amp;A quietly adds "<strong>memory and component costs, tariffs</strong>" to its component list.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--purple)"></span>Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">SAMR preliminary finding: export-control compliance "violated the terms of China's approval" of Mellanox</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (new language) &mdash; the first adverse formal regulatory finding disclosed in the series:</p>
+    <blockquote>"On <strong>September 15, 2025</strong>, China's antitrust regulators published their <strong>preliminary finding</strong> that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, <strong>discriminated unfairly against customers in the China market</strong> and therefore violated the terms of China's approval of our Mellanox acquisition."</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- T9: FY26 Q3 -> FY26 10-K -->
+<div class="transition-header" id="q3fy26-fy26k">
+  <h2>FY2026 Q3 &rarr; FY2026 10-K</h2>
+  <div class="sub">FY ended Jan 25, 2026 | FY2026: Revenue $215.9B | GM 71.1% | Commitments $95.2B mfg + $27B cloud + $11.4B investment | FY buybacks $40.4B</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OpenAI: letter of intent &rarr; "finalizing an investment and partnership agreement"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3:</p>
+    <blockquote>"...we entered into a <strong>letter of intent</strong> with an opportunity to invest in OpenAI."</blockquote>
+    <p>FY2026 10-K:</p>
+    <blockquote>"We are <strong>finalizing an investment and partnership agreement</strong> with OpenAI. There is no assurance that we will enter into an investment and partnership agreement with OpenAI or that a transaction will be completed."</blockquote>
+    <p>By FY2027 Q1 OpenAI is no longer named; the MD&amp;A investment discussion is reduced to "We expect to continue investing in our ecosystem" with a cross-reference to the investments note.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Foreclosure timestamped at fiscal year-end; "will help" becomes "helped"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 10-K:</p>
+    <blockquote>"<strong>As of the end of fiscal year 2026</strong>, we were effectively foreclosed from competing in China's data center computing/compute market, and our effective foreclosure from the China market <strong>helped</strong> our competitors build larger developer and customer ecosystems to challenge us worldwide."</blockquote>
+    <p>Cumulative H20 revenue under the August 2025 licenses reaches approximately $60M.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Counterparty risk promoted to summary risk factor</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 10-K (new summary-level bullet):</p>
+    <blockquote>"Commercial arrangements expose us to <strong>counterparty risks</strong>, which may negatively impact our business, financial condition, or results of operations."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Gross margin 75.0% &rarr; 71.1%: business-model transition plus H20 charge</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 10-K:</p>
+    <blockquote>"Gross margins decreased to <strong>71.1%</strong> in fiscal year 2026 from 75.0% in fiscal year 2025 as our business model <strong>transitioned from offering Hopper HGX systems to Blackwell full-scale datacenter solutions</strong> and a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026."</blockquote>
+    <p>Full-year inventory provisions: $7.2B.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Groq Note 2: $17B non-exclusive license, $14.4B goodwill, no contracts/products/equity acquired</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 10-K (new note):</p>
+    <blockquote>"In December 2025, we entered into a <strong>non-exclusive license agreement with Groq, Inc.</strong>, or Groq, for its language processing unit technology and hired certain Groq employees. <strong>No customer contracts, existing products, or equity interests were purchased.</strong> We recorded <strong>$14.4 billion of goodwill</strong> and a <strong>$2.5 billion developed technology intangible asset</strong>, valued using a cost-to-recreate methodology with a five-year useful life."</blockquote>
+    <blockquote>"Total consideration consists of <strong>$13.0 billion paid at closing</strong> and <strong>$4 billion</strong>, inclusive of imputed interest, payable within one year... <strong>The goodwill is tax deductible.</strong>"</blockquote>
+    <p>FY2027 Q1 carries the echo: accrued purchase consideration of $3,957M related to the Groq agreement. See Signal #10.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">FY2026 aggregates: commitments $95.2B; concentration 22%/14%; buybacks $40.4B; non-marketable $22.3B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Manufacturing commitments nearly doubled from $50.3B (Q3) to $95.2B at fiscal year-end, plus $27B cloud, $11.4B investment commitments, and $3.4B other. Two customers at 22% and 14% of FY2026 revenue. Non-marketable equity reached $22,251M at January 25, 2026 (vs $8,187M at October 26, 2025 &mdash; roughly +$14B implied in Q4, the Groq/ecosystem quarter). Full-year repurchases $40.4B.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T10: FY26 10-K -> FY27 Q1 -->
+<div class="transition-header" id="fy26k-q1fy27">
+  <h2>FY2026 10-K &rarr; FY2027 Q1 &mdash; filed May 20, 2026</h2>
+  <div class="sub">Q ended Apr 26, 2026 | Revenue $81.6B (+85%) | Data Center $75.2B (+92%) | GM 74.9% | Commitments $119B | Non-marketable $42.3B</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Platform recast: Data Center (Hyperscale / ACIE) and Edge Computing; "Gaming" disappears as a platform</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new reporting framework):</p>
+    <blockquote>"We will have <strong>two market platforms &ndash; Data Center and Edge Computing</strong>. Within Data Center, we will report two sub-markets, <strong>Hyperscale and ACIE</strong> which incorporates AI Clouds, Industrial, and Enterprise... <strong>Edge Computing</strong> highlights devices for agentic and physical AI including PCs, game consoles, workstations, AI-RAN base stations, robotics and automotive."</blockquote>
+    <p>Q1 recast figures: Data Center $75,246M split into Hyperscale $37,869M and ACIE $37,377M; Edge Computing $6,369M (+29% y/y). Reportable segments remain Compute &amp; Networking and Graphics. ACIE is described as addressing "AI purpose-built data centers and AI factories across industries and countries" &mdash; the first "AI factories" usage.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New self-description: "data center-scale AI infrastructure company"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new language):</p>
+    <blockquote>"NVIDIA is now a <strong>data center-scale AI infrastructure company</strong> reshaping all industries."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China Hopper shipments zeroed: $4.6B &rarr; $0 year over year</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"<strong>No shipments of Data Center Hopper products to China</strong> occurred during the quarter, compared with <strong>$4.6 billion</strong> in the first quarter of fiscal year 2026."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Sovereign customers" first named in the Data Center mix sentence</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new language):</p>
+    <blockquote>"Hyperscaler revenue increased sequentially and remained at approximately 50% of Data Center revenue, while the remaining 50% came from a continued diversification of customers, including AI Clouds, industrial, enterprise, and <strong>sovereign customers</strong>."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">H200-to-China licenses: U.S. inspection requirement plus 25% re-import tariff</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new language):</p>
+    <blockquote>"Beginning in <strong>February 2026</strong>, the U.S. government, or USG, granted licenses that allow us to ship <strong>small amounts of H200 products to specific China-based customers</strong>. To date, we have not generated any revenue under the H200 licensing program, and do not yet know whether any imports will be allowed into China. The license requires that the H200s go through an <strong>inspection process in the United States</strong> prior to any shipment to the customer. As a result, any H200 shipped under the new licensing program will be subject to a <strong>25% tariff upon importation into the United States</strong>."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Revenue-share sentence flips to past tense: "has not published" &rarr; "did not publish"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3:</p>
+    <blockquote>"...but to date, the USG <strong>has not published</strong> a regulation codifying such requirement."</blockquote>
+    <p>FY2027 Q1:</p>
+    <blockquote>"USG officials expressed an expectation that the USG will receive 15% or more of the revenue generated from licensed sales of our products, but the USG <strong>did not publish</strong> a regulation codifying such requirement."</blockquote>
+    <p>The expectation, first disclosed in FY2026 Q2, was never codified by regulation.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Foreclosure carve-out for uncontrolled products</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (restated foreclosure sentence):</p>
+    <blockquote>"As of the end of the first quarter of fiscal year 2027, <strong>while we were able to ship uncontrolled products to China, such as gaming and workstation GPUs</strong>, we were effectively foreclosed from competing in China's data center computing/compute market..."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Rubin first appears; product-delay language hardens to "has caused"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new language):</p>
+    <blockquote>"We expect our <strong>Rubin platform to start shipping in the second half of fiscal year 2027</strong>."</blockquote>
+    <p>The adjacent delay sentence also changed &mdash; FY2026 10-K: "The complexity of <strong>our product transitions</strong> and sophisticated system configurations <strong>has and may</strong> in the future cause delays in production..." FY2027 Q1: "The complexity of <strong>bringing up our product architecture</strong> and sophisticated system configurations <strong>has caused and may</strong> in the future cause delays in production..."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Memory-cost sentence first appears</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new language):</p>
+    <blockquote>"<strong>Supply availability affecting memory, and other components, as well as rising prices, may drive the prices for data center buildouts higher.</strong>"</blockquote>
+    <p>Raw-materials inventory rose 75% sequentially in the same quarter ($3,807M &rarr; $6,647M). The Edge Computing commentary separately cites consumer PC demand "tempered by elevated memory" costs.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Competition risk factor leads the section; customer ASIC language sharpened</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 reorders the risk factors to open with competition, and sharpens the in-house-silicon language:</p>
+    <blockquote>"Some of our customers are <strong>developing their own ASICs</strong> and other products, including designs optimized for certain workloads that <strong>may not require all of the features and functionality our data center systems provide</strong>."</blockquote>
+    <p>The same passage notes others "may offer cloud-based services that compete with our AI cloud service offerings."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">RASA: potential prohibition on cloud services to China-parented companies</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new language):</p>
+    <blockquote>"Congress is also considering legislation such as the <strong>Remote Access Security Act, or RASA</strong>, which could <strong>prohibit the provision of cloud services to any company with an ultimate parent headquartered in China</strong>. If enacted, RASA could impose new restrictions on cloud service providers and OEMs, and could have a material impact on our business, operating results, and financial condition."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">French Competition Authority questions gaming-vs-data-center GPU product categories</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new language):</p>
+    <blockquote>"...the French Competition Authority (FCA) is questioning whether <strong>gaming GPUs and data center GPUs are separate product categories</strong>, an inquiry that may impact the export controls applicable to gaming products sold in France and Europe."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Open-source framing turns two-sided: demand benefit added</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 adds a demand-side sentence to the open-source risk discussion that FY2026 Q1 introduced as restriction-risk only:</p>
+    <blockquote>"<strong>The demand for open-source foundation models and applications promotes use of our products worldwide.</strong>"</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Manufacturing/supply/capacity commitments reach $119B; $95B payable within FY2027</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"As of April 26, 2026, these commitments were <strong>$119 billion</strong> for which <strong>$95 billion will be paid in the remainder of fiscal year 2027</strong>."</blockquote>
+    <p>Versus $95.2B at the FY2026 10-K and $50.3B two quarters earlier. Cloud commitments $30B; other vendor commitments $6B. The prepaid supply/capacity line also disappears from the Other Assets presentation this quarter.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commitments header rewritten: "long lead and cycle times" &rarr; "data center-scale production and longer future ordering horizons"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 / 10-K:</p>
+    <blockquote>"Manufacturing production, long-term supply and capacity, and other related commitments reflect <strong>long lead and cycle times</strong> for our current and future product architectures. We enter into agreements with <strong>contract manufacturers</strong>..."</blockquote>
+    <p>FY2027 Q1:</p>
+    <blockquote>"Manufacturing, supply, and capacity commitments reflect <strong>data center-scale production and longer future ordering horizons</strong> across current and future product architectures. We enter into agreements with <strong>our supply vendors</strong>..."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$18.6B of private-company purchases in one quarter; NVIDIA's own circularity sentence</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (MD&amp;A investments list):</p>
+    <blockquote>"In the first quarter of fiscal year 2027, we made the following investments: <strong>$18.6 billion in private companies and infrastructure funds</strong>. Some of these investments include <strong>AI model makers that may indirectly purchase or use our products in the cloud</strong>."</blockquote>
+    <p>Non-marketable equity ended at $42,336M (vs $3,240M a year earlier), with $17,899M of net additions in the quarter; the cash-flow statement shows "Purchases of non-marketable securities (18,582)" vs (649) a year earlier. Unrealized investment gains ($13.4B public + $2.6B non-marketable) made up 23% of the quarter's $69.9B pre-tax income.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Equity-method infrastructure funds: $1.0B carried, $2.3B maximum exposure</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new note category):</p>
+    <blockquote>"We have <strong>$1.0 billion of investments in infrastructure funds accounted for using the equity method</strong> as of April 26, 2026."</blockquote>
+    <p>Maximum loss exposure, including invested and future committed amounts, was $2.3 billion as of April 26, 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Investment commitments more than double to $27B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"Total Investment commitments were <strong>$27 billion</strong> as of April 26, 2026, subject to certain contingencies, which we expect will be made <strong>through the remainder of fiscal year 2027</strong>."</blockquote>
+    <p>The ladder: $6.5B (FY2026 Q3) &rarr; $11.4B (FY2026 10-K) &rarr; $27B (FY2027 Q1) in six months.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Record concentration with letter labels dropped: 21/17/16% of revenue; AR 30/18/16%; taxonomy adds "AI model makers" and "AI Clouds"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 indirect-customer definition:</p>
+    <blockquote>"...indirect customers include CSPs, <strong>Neocloud builders, hyperscale, consumer internet companies</strong>, enterprises, and public sector entities."</blockquote>
+    <p>FY2027 Q1:</p>
+    <blockquote>"...indirect customers include CSPs, <strong>AI Clouds, AI model makers</strong>, enterprises, and public sector entities."</blockquote>
+    <p>Direct customers add "AI model makers"; the Customer A/B/C letter labels are discontinued. Three direct customers represented 21%, 17%, and 16% of Q1 revenue (54% combined), and three customers accounted for 30%, 18%, and 16% of accounts receivable (64% combined &mdash; series high). The "AI research and deployment company" sentence repeats.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$32.4B of future data-center leases pre-announced</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (no prior comparable disclosure):</p>
+    <blockquote>"Between the second quarter of fiscal year 2027 and fiscal year 2033, we expect to commence leases with future obligations of <strong>$32.4 billion</strong>, primarily for <strong>data center leases to support our research and development efforts</strong>, with lease terms of 3 to 20 years."</blockquote>
+    <p>Recognized operating lease liabilities on the balance sheet at the same date totaled approximately $4.3B (current + long-term).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commercial paper capacity: $575M &rarr; $25.0B (43x)</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 (unchanged language since the start of the series):</p>
+    <blockquote>"We have a <strong>$575 million commercial paper program</strong> to support general corporate purposes. As of October 26, 2025, we had no commercial paper outstanding."</blockquote>
+    <p>FY2027 Q1:</p>
+    <blockquote>"As of April 26, 2026, our commercial paper program had a capacity of <strong>$25.0 billion</strong>, with no amounts outstanding."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Capital-return regime change: +$80B authorization; dividend $0.01 &rarr; $0.25</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 subsequent events (May 18, 2026):</p>
+    <blockquote>"On May 18, 2026, our Board of Directors approved an additional <strong>$80.0 billion in share repurchase authorization</strong>, without expiration."</blockquote>
+    <blockquote>"On May 18, 2026, we increased our quarterly cash dividend <strong>from $0.01 per share to $0.25 per share</strong> to all shareholders of record on June 4, 2026."</blockquote>
+    <p>Q1 repurchases were $20.2B (108M shares) &mdash; the largest quarter in the series &mdash; leaving $38.5B authorized before the new approval. The authorization ladder: $25B (Aug 2023) &rarr; $50B (Aug 2024) &rarr; $60B (Aug 2025) &rarr; $80B (May 2026).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liquidity sentence re-anchored on $30.2B of marketable equity securities</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2026 Q3 / 10-K:</p>
+    <blockquote>"We believe that we have sufficient liquidity to meet our operating requirements... including <strong>our future obligations</strong>."</blockquote>
+    <p>FY2027 Q1:</p>
+    <blockquote>"As of April 26, 2026, we had $50.3 billion in cash, cash equivalents, and marketable debt securities <strong>as well as $30.2 billion of marketable equity securities</strong>. We believe that we have sufficient liquidity to meet our operating requirements for at least the next twelve months and for the foreseeable future, including our future obligations. We continuously evaluate our liquidity and capital resources, including our access to external capital, to ensure we can finance future capital requirements <strong>and commitments</strong>."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--purple)"></span>Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Securities class action certified; Rule 23(f) petition filed</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (new development in the 2018 securities action):</p>
+    <blockquote>"On <strong>March 25, 2026</strong>, the district court <strong>granted plaintiffs' motion for class certification</strong> and certified a class of investors consisting of all persons or entities who purchased or otherwise acquired NVIDIA common stock between August 10, 2017, and November 15, 2018, inclusive..."</blockquote>
+    <p>NVIDIA filed a petition with the Ninth Circuit on April 8, 2026 for permission to appeal under Federal Rule of Civil Procedure 23(f). The filing also discloses an IRS examination of fiscal years 2023 and 2024; income taxes payable rose from $2,669M to $10,638M in the quarter. As in every quarter of the series, no contingent liabilities were accrued. See Signal #10 for the full procedural history.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-export">
+  <div class="section-header"><h2>#1: Export-Control Language Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> From "20-25% of Data Center Revenue" to Foreclosure to H200 Licenses</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Disclosure</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>Licensable destinations "consistently contributed approximately 20-25% of Data Center revenue"; Q4 decline guided, "more than offset by strong growth in other regions"</td></tr>
+        <tr><td>FY24 10-K</td><td>China 19% &rarr; 14% of Data Center revenue; "mid-single digit" Q4 run-rate expected to persist</td></tr>
+        <tr><td>FY25 Q1</td><td>"Down significantly"; China-specific compliant products ramped; no licenses received for restricted products</td></tr>
+        <tr><td>FY25 Q2</td><td class="val-pos">"Grew sequentially... is a significant contributor... remains below levels seen prior"</td></tr>
+        <tr><td>FY25 Q3</td><td>Blackwell systems (GB200 NVL 72/36, B200) named into license scope; grace-period removal noted</td></tr>
+        <tr><td>FY25 10-K</td><td class="val-new">AI Diffusion IFR (Jan 15, 2025): worldwide licensing requirement after 120-day delay</td></tr>
+        <tr><td>FY26 Q1</td><td class="val-neg">Apr 9, 2025 H20 license requirement; $4.5B charge; $4.6B pre-restriction H20 sales; conditional foreclosure; AI Diffusion rescinded (May 2025)</td></tr>
+        <tr><td>FY26 Q2</td><td class="val-new">Aug 2025 H20 licenses granted; 15% USG revenue-share expectation, uncodified; zero shipments under licenses</td></tr>
+        <tr><td>FY26 Q3</td><td class="val-neg">"We have effectively been foreclosed"; ~$50M H20 license revenue; "15% or more... of our products"; GAIN AI Act passes Senate</td></tr>
+        <tr><td>FY26 10-K</td><td>"As of the end of fiscal year 2026, we were effectively foreclosed"; cumulative H20 license revenue ~$60M</td></tr>
+        <tr><td>FY27 Q1</td><td class="val-new">H200 licenses (Feb 2026): U.S. inspection + 25% re-import tariff, no revenue yet; zero Hopper-to-China vs $4.6B y/y; 15% sentence past tense ("did not publish"); RASA pending</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-concentration">
+  <div class="section-header"><h2>#2: Customer Concentration by Quarter</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Direct Customers &ge;10% of Revenue</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Direct (quarter)</th><th>Indirect disclosure</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>A 12%</td><td>Risk factor: one End Customer ~15% (Q3), a second ~13%</td></tr>
+        <tr><td>FY25 Q1</td><td>A 13%, B 11%</td><td>Two &ge;10%; one primarily through Customer B</td></tr>
+        <tr><td>FY25 Q2</td><td>A 14%, B 11%, C 11%, D 10%</td><td>Two &ge;10%, including through Customer B and Customer E</td></tr>
+        <tr><td>FY25 Q3</td><td>Three at 12% each</td><td>One &ge;10%, including through Customer C</td></tr>
+        <tr><td>FY25 10-K</td><td>FY: one 12%, two at 11%</td><td>&mdash;</td></tr>
+        <tr><td>FY26 Q1</td><td>A 16%, B 14%</td><td class="val-new">"AI research and deployment company... meaningful amount" first appears</td></tr>
+        <tr><td>FY26 Q2</td><td class="val-neg">A 23%, B 16%</td><td>One &ge;10% in H1 primarily via Direct Customer A; AI research and deployment company repeats</td></tr>
+        <tr><td>FY26 Q3</td><td>A 22%, B 15%, C 13%, D 11%</td><td>AI research and deployment company "purchasing cloud services from our customers"</td></tr>
+        <tr><td>FY26 10-K</td><td>FY: 22% and 14%</td><td>"some individually representing 10% or more of our revenue"</td></tr>
+        <tr><td>FY27 Q1</td><td class="val-neg">21%, 17%, 16% &mdash; letter labels dropped (54% combined)</td><td>AI research and deployment company sentence repeats</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top:18px;">Accounts-Receivable Concentration</h3>
+    <table class="data-table">
+      <thead><tr><th>Balance date</th><th>AR concentration</th></tr></thead>
+      <tbody>
+        <tr><td>Oct 29, 2023</td><td>Two customers, 11% each</td></tr>
+        <tr><td>Apr 28, 2024</td><td>Two: 16%, 15%</td></tr>
+        <tr><td>Jul 28, 2024</td><td>Three: 23/15/11%</td></tr>
+        <tr><td>Oct 27, 2024</td><td>Four: 18/13/11/11%</td></tr>
+        <tr><td>Jan 26, 2025</td><td>Two: 17/16%</td></tr>
+        <tr><td>Apr 27, 2025</td><td>Three: 27/18/12%</td></tr>
+        <tr><td>Jul 27, 2025</td><td>Three: 23/19/14%</td></tr>
+        <tr><td>Oct 26, 2025</td><td>Four: 22/17/14/12%</td></tr>
+        <tr><td>Jan 25, 2026</td><td>Three: 25/18/13%</td></tr>
+        <tr><td>Apr 26, 2026</td><td class="val-neg">Three: 30/18/16% (64% combined &mdash; series high)</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Taxonomy rewrites:</strong> FY25 Q1 defines indirect customers (incl. "startups," dropped from Q2); FY26 Q3 adds "Neocloud builders" and the concentration-trend sentence; FY27 Q1 replaces Neocloud/hyperscale/consumer-internet with "AI Clouds" and "AI model makers" and drops the lettered labels.</li>
+      <li>The unnamed "AI research and deployment company" appears in every concentration note from FY2026 Q1 through FY2027 Q1.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" id="sig-commitments">
+  <div class="section-header"><h2>#3: Purchase Commitments Trajectory</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> $17B to $119B in Ten Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Inventory / mfg-supply</th><th>Cloud &amp; other</th><th>Investment commitments</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>$17.11B</td><td>$4.43B (incl. $3.60B cloud)</td><td>&mdash;</td></tr>
+        <tr><td>FY24 10-K</td><td class="val-neg">$16.1B</td><td>$4.6B (incl. $3.5B cloud)</td><td>&mdash;</td></tr>
+        <tr><td>FY25 Q1</td><td>$18.8B</td><td>$10.6B (incl. $8.8B cloud)</td><td>&mdash;</td></tr>
+        <tr><td>FY25 Q2</td><td class="val-pos">$27.8B ("Hopper and Blackwell capacity and components")</td><td>$12.0B (incl. $9.8B cloud)</td><td>&mdash;</td></tr>
+        <tr><td>FY25 Q3</td><td>$28.9B (Blackwell)</td><td>$13.2B (incl. $11.3B cloud)</td><td>&mdash;</td></tr>
+        <tr><td>FY25 10-K</td><td>$30.8B</td><td>$14.3B (incl. $10.9B cloud)</td><td>&mdash;</td></tr>
+        <tr><td>FY26 Q1</td><td>$29.8B</td><td>$13.7B (incl. $10.6B cloud)</td><td>&mdash;</td></tr>
+        <tr><td>FY26 Q2</td><td colspan="2">Note restructured; total $45.8B</td><td>&mdash;</td></tr>
+        <tr><td>FY26 Q3</td><td class="val-pos">$50.3B ("substantially all... through fiscal year 2027")</td><td>$26B cloud; $2.1B other</td><td class="val-new">$6.5B (incl. $5B Intel)</td></tr>
+        <tr><td>FY26 10-K</td><td class="val-pos">$95.2B</td><td>$27B cloud; $3.4B other</td><td>$11.4B</td></tr>
+        <tr><td>FY27 Q1</td><td class="val-neg">$119B ($95B payable within FY2027)</td><td>$30B cloud; $6B other vendor</td><td class="val-neg">$27B</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>FY27 Q1 header rewrite: commitments reflect "data center-scale production and longer future ordering horizons" (was "long lead and cycle times"); counterparties become "our supply vendors" (was "contract manufacturers").</li>
+      <li>FY26 Q3 adds the cloud hedge: "Some cloud service capacity may be reduced, terminated or sold to others by the CSPs."</li>
+      <li>Prepaid supply/capacity agreements: $3.7B (Oct 2023) &rarr; $5.5B (Apr 2024) &rarr; $3.5B (Oct 2025); the line disappears from FY27 Q1's Other Assets presentation.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" id="sig-investments">
+  <div class="section-header"><h2>#4: Investment / Ecosystem-Financing Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> Non-Marketable Portfolio: $1.5B to $42.3B in Two Years</h3>
+    <table class="data-table">
+      <thead><tr><th>Balance date</th><th>Non-marketable equity</th><th>Quarterly net additions</th><th>Cumulative unrealized gains</th></tr></thead>
+      <tbody>
+        <tr><td>Apr 28, 2024</td><td>$1,463M</td><td>$127M</td><td>$285M</td></tr>
+        <tr><td>Jul 28, 2024</td><td>$1,819M</td><td>$294M</td><td>$362M</td></tr>
+        <tr><td>Oct 27, 2024</td><td>$2,237M</td><td>$409M</td><td>$374M</td></tr>
+        <tr><td>Jan 26, 2025</td><td>$3,387M</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Apr 27, 2025</td><td>$3,240M</td><td>$649M (CoreWeave &minus;$843M reclass)</td><td>$396M</td></tr>
+        <tr><td>Jul 27, 2025</td><td>$3,799M</td><td>$299M</td><td>$661M</td></tr>
+        <tr><td>Oct 26, 2025</td><td class="val-pos">$8,187M</td><td class="val-pos">$3,704M</td><td>$1,400M</td></tr>
+        <tr><td>Jan 25, 2026</td><td class="val-pos">$22,251M</td><td>~+$14B implied in Q4</td><td>&mdash;</td></tr>
+        <tr><td>Apr 26, 2026</td><td class="val-neg">$42,336M</td><td class="val-neg">$17,899M</td><td>$5,300M</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>OpenAI:</strong> letter of intent (FY26 Q3) &rarr; "finalizing an investment and partnership agreement" (FY26 10-K) &rarr; no longer named (FY27 Q1).</li>
+      <li><strong>Anthropic:</strong> agreement to invest up to $10B, subject to closing conditions (November 2025, disclosed FY26 Q3 subsequent events).</li>
+      <li><strong>Intel:</strong> $5B commitment subject to regulatory approval (FY26 Q3); new risk factor on execution, financing, and operational risks.</li>
+      <li><strong>Infrastructure funds:</strong> $1.0B equity-method investments, $2.3B maximum exposure (FY27 Q1, new category).</li>
+      <li><strong>Lease guarantees:</strong> $860M maximum exposure / $470M escrow (FY26 Q3) &rarr; $3.5B / $712M across all agreements (FY27 Q1).</li>
+      <li><strong>Circularity sentences in the filings:</strong> "AI model makers that may indirectly purchase or use our products in the cloud" (FY27 Q1); the revenue-side "AI research and deployment company" disclosure runs from FY26 Q1.</li>
+      <li>FY27 Q1 other income $15,929M, "primarily driven by unrealized gains on investments in publicly-held equity securities of $13.4 billion and non-marketable equity securities of $2.6 billion" &mdash; 23% of $69.9B pre-tax income.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" id="sig-inventory">
+  <div class="section-header"><h2>#5: Inventory + H20 Charge Mechanics</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Inventory Up 5.4x in 2.5 Years; the $4.5B H20 Charge Decomposed</h3>
+    <table class="data-table">
+      <thead><tr><th>Balance date</th><th>Raw materials</th><th>WIP</th><th>Finished</th><th>Total</th><th>Provisions</th></tr></thead>
+      <tbody>
+        <tr><td>Oct 29, 2023</td><td>$1,663M</td><td>$1,338M</td><td>$1,778M</td><td>$4,779M</td><td>Q3 ~$208M</td></tr>
+        <tr><td>Apr 28, 2024</td><td>$1,991M</td><td>$1,625M</td><td>$2,248M</td><td>$5,864M</td><td>$210M</td></tr>
+        <tr><td>Jul 28, 2024</td><td>$1,895M</td><td>$2,111M</td><td>$2,669M</td><td>$6,675M</td><td>Q2 $345M (low-yielding Blackwell)</td></tr>
+        <tr><td>Oct 27, 2024</td><td>$1,846M</td><td>$2,881M</td><td>$2,927M</td><td>$7,654M</td><td>Q3 $322M</td></tr>
+        <tr><td>Jan 26, 2025</td><td>$3,408M</td><td>$3,399M</td><td>$3,273M</td><td>$10,080M</td><td>&mdash;</td></tr>
+        <tr><td>Apr 27, 2025</td><td>$2,525M</td><td>$5,339M</td><td>$3,469M</td><td>$11,333M</td><td class="val-neg">$2.3B incl. $1.9B H20</td></tr>
+        <tr><td>Jul 27, 2025</td><td>$1,843M</td><td>$4,411M</td><td class="val-pos">$8,708M</td><td>$14,962M</td><td>Q2 $886M; $180M H20 release</td></tr>
+        <tr><td>Oct 26, 2025</td><td>$4,209M</td><td>$8,735M</td><td>$6,840M</td><td>$19,784M</td><td>Q3 $378M</td></tr>
+        <tr><td>Jan 25, 2026</td><td>$3,807M</td><td>$8,822M</td><td>$8,774M</td><td>$21,403M</td><td>FY26 $7.2B</td></tr>
+        <tr><td>Apr 26, 2026</td><td class="val-neg">$6,647M (+75% q/q)</td><td>$9,949M</td><td>$9,201M</td><td>$25,797M</td><td>$0.8B + $0.3B excess-obligation</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>H20 charge split (FY26 Q1):</strong> $2.3B inventory provision in cost of revenue (incl. $1.9B H20 product inventory) + remainder in excess inventory purchase obligation liabilities = $4.5B total; the charge was "less than what we initially anticipated as we were able to re-use certain materials."</li>
+      <li><strong>Net GM impact of provisions/releases:</strong> FY26 Q1 $5.3B / $436M (&minus;11.0 pts) &rarr; Q2 $1.0B / $501M incl. $180M H20 release (&minus;1.1) &rarr; Q3 $410M / $366M (&minus;0.1) &rarr; FY27 Q1 $1.1B / $103M (&minus;1.2).</li>
+      <li>Excess-inventory purchase obligation liability: $2,739M (Jan 2026) &rarr; $3,121M (Apr 2026).</li>
+      <li>Finished goods spiked 2.7x sequentially in FY26 Q2 (Blackwell racks); raw materials +75% sequentially in FY27 Q1, the quarter the memory-cost sentence appears.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" id="sig-gm">
+  <div class="section-header"><h2>#6: Gross Margin Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> 74.0% &rarr; 78.4% Peak &rarr; 60.5% Trough &rarr; 74.9%</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Revenue</th><th>Data Center</th><th>GM</th><th>Stated driver</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>$18.12B (+206%)</td><td>+279% y/y</td><td>74.0%</td><td>DC mix; net provisions $442M (&minus;2.4 pts)</td></tr>
+        <tr><td>FY25 Q1</td><td>$26.0B (+262%)</td><td>$22.6B (+427%)</td><td class="val-pos">78.4%</td><td>"strong Data Center revenue growth of 427%"</td></tr>
+        <tr><td>FY25 Q2</td><td>$30.0B (+122%)</td><td>$26.3B (+154%)</td><td>75.1%</td><td>"inventory provisions for low-yielding Blackwell material"</td></tr>
+        <tr><td>FY25 Q3</td><td>$35.1B (+94%)</td><td>$30.8B (+112%)</td><td>74.6%</td><td>"mix shift from H100 systems to more complex and higher cost systems"</td></tr>
+        <tr><td>FY25 10-K</td><td>$130.5B</td><td>&mdash;</td><td>75.0%</td><td>&mdash;</td></tr>
+        <tr><td>FY26 Q1</td><td>$44.1B (+69%)</td><td>$39.1B (+73%)</td><td class="val-neg">60.5%</td><td>$4.5B H20 charge (&minus;11.0 pts net provisions)</td></tr>
+        <tr><td>FY26 Q2</td><td>$46.7B (+56%)</td><td>$41.1B (+56%)</td><td>72.4%</td><td>"full-scale datacenter systems compared to Hopper HGX"</td></tr>
+        <tr><td>FY26 Q3</td><td>$57.0B (+62%)</td><td>$51.2B (+66%)</td><td>73.4%</td><td>"Blackwell ramped with an improved mix and cost structure"; cost-of-revenue definition adds "tariffs" and "memory and component costs"</td></tr>
+        <tr><td>FY26 10-K</td><td>$215.9B</td><td>&mdash;</td><td>71.1%</td><td>HGX &rarr; full-systems transition + H20 charge</td></tr>
+        <tr><td>FY27 Q1</td><td>$81.6B (+85%)</td><td>$75.2B (+92%)</td><td>74.9%</td><td>Prior-year charge non-recurrence; provisions $1.1B (&minus;1.2 pts)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-geo">
+  <div class="section-header"><h2>#7: Geography Re-presentation</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Singapore Arc, HQ-Basis Recast, China Zeroing</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>US</th><th>Singapore</th><th>Taiwan</th><th>China+HK</th><th>Total</th><th>Outside-US</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>$6,302M</td><td>$2,702M</td><td>$4,333M</td><td>$4,030M</td><td>$18,120M</td><td>65%</td></tr>
+        <tr><td>FY25 Q1</td><td>$13,496M</td><td>$4,037M</td><td>$4,373M</td><td>$2,491M</td><td>$26,044M</td><td>48%</td></tr>
+        <tr><td>FY25 Q2</td><td>$13,022M</td><td>$5,622M</td><td>$5,740M</td><td>$3,667M</td><td>$30,040M</td><td>57%</td></tr>
+        <tr><td>FY25 Q3</td><td>$14,800M</td><td>$7,697M</td><td>$5,153M</td><td>$5,416M</td><td>$35,082M</td><td>58%</td></tr>
+        <tr><td>FY26 Q1</td><td>$20,739M</td><td class="val-highlight">$9,017M (20%)</td><td>$7,158M</td><td>$5,522M</td><td>$44,062M</td><td>53%</td></tr>
+        <tr><td>FY26 Q2</td><td>$23,470M</td><td class="val-highlight">$10,156M (22%)</td><td>$8,529M</td><td>$2,769M</td><td>$46,743M</td><td>50%</td></tr>
+        <tr><td>FY26 Q3 (HQ basis, recast)</td><td>$39,177M</td><td class="val-neg">&mdash;</td><td>$13,751M</td><td>$2,973M</td><td>$57,006M</td><td>31%</td></tr>
+        <tr><td>FY27 Q1 (HQ basis)</td><td class="val-pos">$63,769M (78%)</td><td>&mdash;</td><td>$12,006M</td><td>$4,550M</td><td>$81,615M</td><td class="val-neg">22%</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Singapore arc:</strong> FY25 Q1 footnote ("most of the shipments... went to either the United States or Taiwan... Shipments to Singapore were insignificant") &rarr; FY26 Q1 quantification (20% of billings, "Over 99% of controlled Data Center compute revenue billed to Singapore was for orders from U.S.-based customers," with the ECCN product list) &rarr; FY26 Q3 recast eliminates the line at its 22%-of-billings peak.</li>
+      <li><strong>HQ-basis footnotes:</strong> "We believe changing to revenue based upon the location of our customers' headquarters provides a better representation... Prior period information has been recast"; 86% of Data Center revenue from Taiwan-headquartered customers is attributed to U.S./Europe end customers.</li>
+      <li><strong>China zeroing:</strong> FY27 Q1 MD&amp;A: "No shipments of Data Center Hopper products to China occurred during the quarter, compared with $4.6 billion in the first quarter of fiscal year 2026."</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" id="sig-capital">
+  <div class="section-header"><h2>#8: Buybacks / Dividend Ladder</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> $25B &rarr; $50B &rarr; $60B &rarr; $80B Authorizations; Dividend 25x</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>Repurchased</th><th>Authorization events</th><th>Dividends paid</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>$3.72B (8.3M sh pre-split)</td><td class="val-new">Aug 21, 2023: +$25.0B</td><td>$99M</td></tr>
+        <tr><td>FY25 Q1</td><td>$8.0B (9.9M pre-split)</td><td>$14.5B remaining; split + dividend +150% announced May 22, 2024</td><td>$98M</td></tr>
+        <tr><td>FY25 Q2</td><td>$7.0B (62.8M)</td><td class="val-new">Aug 26, 2024: +$50.0B</td><td>$246M</td></tr>
+        <tr><td>FY25 Q3</td><td>$11.1B (92M)</td><td>$46.4B remaining</td><td>$245M</td></tr>
+        <tr><td>FY26 Q1</td><td>$14.5B (126M)</td><td>$24.3B remaining; "offset dilution" sentence's last appearance</td><td>$244M</td></tr>
+        <tr><td>FY26 Q2</td><td>$9.7B (67M)</td><td class="val-new">Aug 26, 2025: +$60.0B</td><td>$244M</td></tr>
+        <tr><td>FY26 Q3</td><td>$12.6B (70M)</td><td>$62.2B remaining</td><td>$243M</td></tr>
+        <tr><td>FY26 10-K</td><td>FY2026: $40.4B</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>FY27 Q1</td><td class="val-neg">$20.2B (108M)</td><td class="val-neg">$38.5B remaining; May 18, 2026: +$80.0B; dividend $0.01 &rarr; $0.25</td><td>$243M</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-verbatim">
+  <div class="section-header"><h2>#9: Verbatim Sentence Traces</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> (a) Demand / Supply</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>"Demand... has surged over the last three quarters and our demand visibility extends into next year"</td></tr>
+        <tr><td>FY25 Q1</td><td>"the initial demand for Blackwell is well ahead of the projected supply... While supply for H100 continued to improve, we are still constrained on H200"</td></tr>
+        <tr><td>FY25 Q3</td><td class="val-new">"the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026"</td></tr>
+        <tr><td>FY26 Q1</td><td>Surge sentence dropped for cadence language; non-binding-announcement caveat added (kept thereafter)</td></tr>
+        <tr><td>FY27 Q1</td><td class="val-new">"Supply availability affecting memory, and other components, as well as rising prices, may drive the prices for data center buildouts higher" &mdash; first memory-inflation sentence</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top:18px;">(b) Liquidity Sufficiency &mdash; Progressive Deletion</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Enumerated items after "including..."</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3</td><td>"debt obligations, future supply obligations and vendor and supplier prepayments"</td></tr>
+        <tr><td>FY25 Q1</td><td>+$1.3B debt repayment + share repurchases</td></tr>
+        <tr><td>FY25 Q2&ndash;Q3</td><td>"supply obligations and share repurchases"</td></tr>
+        <tr><td>FY26 Q1</td><td>"our future supply obligations and share purchases" [sic]</td></tr>
+        <tr><td>FY26 Q2</td><td>"our future supply obligations"</td></tr>
+        <tr><td>FY26 Q3</td><td class="val-neg">"our future obligations" &mdash; unenumerated, in the Intel/OpenAI/Anthropic quarter</td></tr>
+        <tr><td>FY27 Q1</td><td class="val-new">Re-anchored: "$50.3 billion in cash, cash equivalents, and marketable debt securities as well as $30.2 billion of marketable equity securities... finance future capital requirements and commitments"</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top:18px;">(c) Gross-Margin Driver</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Driver language</th></tr></thead>
+      <tbody>
+        <tr><td>FY24 Q3 (74.0%)</td><td>Data Center mix</td></tr>
+        <tr><td>FY25 Q1 (78.4%)</td><td>"strong Data Center revenue growth of 427%"</td></tr>
+        <tr><td>FY25 Q2 (75.1%)</td><td>"inventory provisions for low-yielding Blackwell material"</td></tr>
+        <tr><td>FY25 Q3 (74.6%)</td><td>"mix shift from H100 systems to more complex and higher cost systems"</td></tr>
+        <tr><td>FY26 Q1 (60.5%)</td><td class="val-neg">$4.5B H20 charge</td></tr>
+        <tr><td>FY26 Q2 (72.4%)</td><td>"full-scale datacenter systems compared to Hopper HGX"</td></tr>
+        <tr><td>FY26 Q3 (73.4%)</td><td>"improved mix and cost structure"; cost-of-revenue definition quietly adds "memory and component costs, tariffs"</td></tr>
+        <tr><td>FY27 Q1 (74.9%)</td><td>Prior-year charge non-recurrence</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top:18px;">(d) Forward Platform: Blackwell &rarr; Rubin</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY25 Q1</td><td>Blackwell in production; customer samples in Q2</td></tr>
+        <tr><td>FY25 Q2</td><td>"we expect to ship several billion dollars in Blackwell revenue" in Q4</td></tr>
+        <tr><td>FY25 Q3</td><td>Production shipments scheduled for Q4</td></tr>
+        <tr><td>FY26 Q1</td><td>"one-year product cadence"; Blackwell Ultra samples/production in Q2 FY2026</td></tr>
+        <tr><td>FY26 Q2</td><td>Began shipping production units including GB300</td></tr>
+        <tr><td>FY26 Q3</td><td>+ "and continue to sell prior generation architecture"</td></tr>
+        <tr><td>FY27 Q1</td><td class="val-new">"We expect our Rubin platform to start shipping in the second half of fiscal year 2027"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-groq">
+  <div class="section-header"><h2>#10: Groq License + Securities Class Action</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">10</span> A $17B IP License and an Eight-Year-Old Case Reaching Certification</h3>
+    <ul>
+      <li><strong>Groq structure (FY2026 10-K, Note 2):</strong> December 2025 non-exclusive license for Groq's language processing unit technology plus hiring of certain Groq employees. "No customer contracts, existing products, or equity interests were purchased."</li>
+      <li><strong>Accounting:</strong> $14.4B goodwill (85% of consideration, attributed to workforce and future development, recorded in Compute &amp; Networking) + $2.5B developed-technology intangible, cost-to-recreate methodology, five-year useful life. "The goodwill is tax deductible."</li>
+      <li><strong>Consideration:</strong> $13.0B paid at closing + $4B (incl. imputed interest) payable within one year; FY2027 Q1 still carries $3,957M of accrued purchase consideration. Pro forma results not presented because the effect was not material.</li>
+      <li><strong>Securities class action (2018 stock-drop case) procedural arc across the filings:</strong> cert petition (Mar 2024) &rarr; SCOTUS granted (Jun 17, 2024) &rarr; writ dismissed as improvidently granted (Dec 11, 2024) &rarr; remanded (Feb 20, 2025) &rarr; district court granted class certification (Mar 25, 2026), covering purchasers from August 10, 2017 to November 15, 2018 &rarr; Rule 23(f) petition to the Ninth Circuit (Apr 8, 2026).</li>
+      <li>Every quarter in the series states no accrued contingent liabilities; "DOJ" and "subpoena" appear in no 10-Q.</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. Export Controls: Quantified Exposure to Foreclosure in Ten Filings</h3>
+      <p>The arc runs from "approximately 20-25% of Data Center revenue" (FY24 Q3) through annual quantification (19% &rarr; 14%), the AI Diffusion IFR and its rescission, the April 9, 2025 H20 license requirement with its $4.5B charge, conditional foreclosure (FY26 Q1), actual foreclosure with "will be further harmed" (FY26 Q3), and the February 2026 H200 licenses carrying a U.S. inspection requirement and 25% re-import tariff. FY27 Q1 reports zero Data Center Hopper shipments to China against $4.6B a year earlier. The 15% revenue-share expectation was disclosed (FY26 Q2), widened to "15% or more... of our products" (FY26 Q3), and moved to past tense without ever being codified (FY27 Q1).</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. Balance-Sheet Commitment Inflection</h3>
+      <p>Manufacturing/supply commitments went $17.1B &rarr; $30.8B over six filings, then $50.3B &rarr; $95.2B &rarr; $119B over three, with $95B payable within FY2027. The same FY27 Q1 filing added a $32.4B future lease pipeline, raised commercial paper capacity from $575M to $25B, scaled lease guarantees from $860M to $3.5B maximum exposure, and rewrote the commitments header to "data center-scale production and longer future ordering horizons." The liquidity-sufficiency sentence shed its enumerated items quarter by quarter, reaching the unenumerated "our future obligations" in the same quarter the Intel/OpenAI/Anthropic commitments appeared.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. Ecosystem Financing on Both Sides of the Income Statement</h3>
+      <p>The non-marketable portfolio grew from $1.5B to $42.3B in two years, with $18.6B of purchases in FY27 Q1 alone and investment commitments laddering $6.5B &rarr; $11.4B &rarr; $27B in six months. The filings themselves connect the two sides: investments "include AI model makers that may indirectly purchase or use our products in the cloud" (FY27 Q1), while an unnamed "AI research and deployment company" has contributed "a meaningful amount" of revenue through cloud intermediaries every quarter since FY26 Q1. Unrealized investment gains were 23% of FY27 Q1 pre-tax income.</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Concentration Ratchet With Shrinking Labels</h3>
+      <p>The top direct customer went from 12% (FY24 Q3) to 23% (FY26 Q2); FY27 Q1 reports three customers at 21/17/16% of revenue (54%) and 30/18/16% of receivables (64%, series high) &mdash; with the Customer A/B/C letter labels dropped in the same quarter. The customer taxonomy was rewritten twice in three quarters: "Neocloud builders" added (FY26 Q3), then replaced by "AI Clouds" and "AI model makers" (FY27 Q1).</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Reporting Recasts at Peak Visibility</h3>
+      <p>Two re-presentations occurred at the point of maximum attention to each line: the geography table switched from billing location to headquarters location in FY26 Q3, eliminating the Singapore line one quarter after it peaked at 22% of billings (with "over 99%" of its controlled-compute billings attributed to U.S. customers); and the market-platform structure was recast to Data Center (Hyperscale / ACIE) plus Edge Computing in FY27 Q1, retiring "Gaming" as a reported platform. Capital returns inflected the same quarter: an $80B authorization and a 25x dividend increase announced May 18, 2026.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Revenue</th>
+        <th>Data Center</th>
+        <th>GM</th>
+        <th>Inventory</th>
+        <th>Mfg/Supply Commitments</th>
+        <th>Non-Marketable</th>
+        <th>Buybacks</th>
+        <th>ETR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>FY24 Q3</strong></td>
+        <td>$18.12B (+206%)</td>
+        <td>+279% y/y</td>
+        <td>74.0%</td>
+        <td>$4,779M</td>
+        <td>$17.1B</td>
+        <td>&mdash;</td>
+        <td>$3.72B</td>
+        <td>12.2%</td>
+      </tr>
+      <tr>
+        <td><strong>FY24 10-K</strong></td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td>$16.1B</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td><strong>FY25 Q1</strong></td>
+        <td>$26.0B (+262%)</td>
+        <td>$22.6B (+427%)</td>
+        <td class="val-pos">78.4%</td>
+        <td>$5,864M</td>
+        <td>$18.8B</td>
+        <td>$1.46B</td>
+        <td>$8.0B</td>
+        <td>13.9%</td>
+      </tr>
+      <tr>
+        <td><strong>FY25 Q2</strong></td>
+        <td>$30.0B (+122%)</td>
+        <td>$26.3B (+154%)</td>
+        <td>75.1%</td>
+        <td>$6,675M</td>
+        <td>$27.8B</td>
+        <td>$1.82B</td>
+        <td>$7.0B (+$50B auth)</td>
+        <td>13.6%</td>
+      </tr>
+      <tr>
+        <td><strong>FY25 Q3</strong></td>
+        <td>$35.1B (+94%)</td>
+        <td>$30.8B (+112%)</td>
+        <td>74.6%</td>
+        <td>$7,654M</td>
+        <td>$28.9B</td>
+        <td>$2.24B</td>
+        <td>$11.1B</td>
+        <td>13.5%</td>
+      </tr>
+      <tr>
+        <td><strong>FY25 10-K</strong></td>
+        <td>$130.5B</td>
+        <td>&mdash;</td>
+        <td>75.0%</td>
+        <td>$10,080M</td>
+        <td>$30.8B</td>
+        <td>$3.39B</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td><strong>FY26 Q1</strong></td>
+        <td>$44.1B (+69%)</td>
+        <td>$39.1B (+73%)</td>
+        <td class="val-neg">60.5%</td>
+        <td>$11,333M</td>
+        <td>$29.8B</td>
+        <td>$3.24B</td>
+        <td>$14.5B</td>
+        <td>14.3%</td>
+      </tr>
+      <tr>
+        <td><strong>FY26 Q2</strong></td>
+        <td>$46.7B (+56%)</td>
+        <td>$41.1B (+56%)</td>
+        <td>72.4%</td>
+        <td>$14,962M</td>
+        <td>$45.8B (total)</td>
+        <td>$3.80B</td>
+        <td>$9.7B (+$60B auth)</td>
+        <td>15.3%</td>
+      </tr>
+      <tr>
+        <td><strong>FY26 Q3</strong></td>
+        <td>$57.0B (+62%)</td>
+        <td>$51.2B (+66%)</td>
+        <td>73.4%</td>
+        <td>$19,784M</td>
+        <td>$50.3B</td>
+        <td class="val-pos">$8.19B</td>
+        <td>$12.6B</td>
+        <td>15.9%</td>
+      </tr>
+      <tr>
+        <td><strong>FY26 10-K</strong></td>
+        <td>$215.9B</td>
+        <td>&mdash;</td>
+        <td>71.1%</td>
+        <td>$21,403M</td>
+        <td class="val-pos">$95.2B</td>
+        <td class="val-pos">$22.25B</td>
+        <td>$40.4B (FY)</td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td><strong>FY27 Q1</strong></td>
+        <td>$81.6B (+85%)</td>
+        <td>$75.2B (+92%)</td>
+        <td>74.9%</td>
+        <td class="val-neg">$25,797M</td>
+        <td class="val-neg">$119B</td>
+        <td class="val-neg">$42.3B</td>
+        <td class="val-neg">$20.2B (+$80B auth)</td>
+        <td>16.6%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      findings.push(...el.querySelectorAll('.finding'));
+      if (el.classList.contains('finding')) findings.push(el);
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+
+// Single global Expand all / Collapse all button
+const toggleBtn = document.getElementById('toggle-all');
+toggleBtn.addEventListener('click', () => {
+  const findings = document.querySelectorAll('.finding');
+  const allOpen = Array.from(findings).every(f => f.classList.contains('open'));
+  findings.forEach(f => {
+    if (allOpen) f.classList.remove('open');
+    else f.classList.add('open');
+  });
+  toggleBtn.textContent = allOpen ? 'Expand all' : 'Collapse all';
+});
+</script>
+</body>
+</html>
