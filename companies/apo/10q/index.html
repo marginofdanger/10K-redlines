@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO 10-Q Quarterly Scanner | Q1 2024 - Q1 2026</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0066B3;
+  --navy: #003A70;
+  --navy-dark: #1a1a2e;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(0,102,179,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(0,102,179,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+.signal-card blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(0,102,179,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text); font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>APO 10-Q SCANNER</h1>
+    <div class="sub">Q1 2024 &ndash; Q1 2026 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#q1q2-2024">Q1 &rarr; Q2 2024</a>
+  <a class="nav-item" href="#q2q3-2024">Q2 &rarr; Q3 2024</a>
+  <a class="nav-item" href="#q3-2024-q1-2025">Q3 2024 &rarr; Q1 2025 (direct)</a>
+  <a class="nav-item" href="#q1q2-2025">Q1 &rarr; Q2 2025</a>
+  <a class="nav-item" href="#q2q3-2025">Q2 &rarr; Q3 2025</a>
+  <a class="nav-item" href="#q3-2025-q1-2026">Q3 2025 &rarr; Q1 2026 (direct)</a>
+
+  <div class="nav-section">Annual Risk Delta</div>
+  <a class="nav-item" href="#annual-10k">FY2024 vs FY2025 10-K</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-aum">AUM &amp; Headcount</a>
+  <a class="nav-item" href="#sig-taxonomy">Strategy Taxonomy Lifecycle</a>
+  <a class="nav-item" href="#sig-fund8">Fund VIII Escrow Decay</a>
+  <a class="nav-item" href="#sig-timeline">Transaction First Appearances</a>
+  <a class="nav-item" href="#sig-buybacks">Buybacks &amp; 10b5-1 Plans</a>
+  <a class="nav-item" href="#sig-dividends">Dividends</a>
+  <a class="nav-item" href="#sig-item1a">Quarterly Item 1A Behavior</a>
+  <a class="nav-item" href="#sig-legal">Legal Proceedings Stub</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+
+  <div class="nav-section">Links</div>
+  <a class="nav-item" href="../index.html">APO 10-K dashboard</a>
+  <a class="nav-item" href="../../../index.html">All companies</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>APO 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of seven Apollo Global Management 10-Qs, Q1 2024 (quarter ended Mar 31, 2024) through Q1 2026 (Mar 31, 2026). The MD&amp;A chain uses six transitions: four adjacent-quarter diffs plus two direct year-boundary diffs (Q3 2024&rarr;Q1 2025 and Q3 2025&rarr;Q1 2026, skipping the 10-Ks whose MD&amp;A extracts were unusable) &mdash; changes at those two boundaries may have originated in either the 10-K or the Q1 filing. The annual risk-factor signal is a separate direct FY2024-vs-FY2025 10-K comparison.</div>
+  <div class="source">Source: SEC EDGAR | 7 10-Q Filings + FY2024/FY2025 10-K Risk Factors | Q1 2024 &ndash; Q1 2026 | Analysis: June 2026</div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+<!-- Q1 → Q2 2024 -->
+<div class="transition-header" id="q1q2-2024">
+  <h2>Q1 2024 &rarr; Q2 2024</h2>
+  <div class="sub">Total AUM: $671B &rarr; $696B | Employees: 4,945 &rarr; 5,009 | Dry powder: $65B &rarr; $68B</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Athene PGA/ERISA litigation factor (born Q1 2024) softened: "four putative class actions" &rarr; "a number of"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The Q1 2024 Item 1A carried one material-change factor &mdash; third-party litigation against Athene's pension-group-annuity customers:</p>
+    <blockquote>"In addition, our business has been, and may continue to be, the subject of litigation between third parties that could negatively impact us. For example, beginning in March 2024, four putative class actions were filed in federal courts in the U.S. against certain customers of Athene, in their respective capacities as plan sponsors, alleging violations of the Employee Retirement Income Security Act of 1974 ("ERISA") in connection with their transfer of pension obligations under defined benefit plans governed under ERISA and their purchase of pension group annuity ("PGA") contracts from Athene."</blockquote>
+    <blockquote>"Although Athene is not a named defendant, the lawsuits make several negative allegations about Athene and its business, which we believe to be untrue. Negative public perceptions of Athene and its business could adversely affect (and may have already adversely affected) its ability to attract and retain customers... These lawsuits could also spur similar copycat lawsuits, which could further impact Athene's PGA business."</blockquote>
+    <p>Q2 2024 changed the case count:</p>
+    <blockquote>"beginning in March 2024, a number of putative class actions were filed..."</blockquote>
+    <p>The factor also covers DGCL Section 220 books-and-records demands, indemnification limits, and ESG-related litigation risk.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Second Item 1A factor added: extensive regulation, including the IAIG designation (section 7K &rarr; 16K chars)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024 added a second material-change factor under the heading "Extensive regulation of our businesses affects our activities and creates the potential for significant liabilities and penalties. The possibility of increased regulatory focus could result in additional burdens on our businesses." Five paragraphs: a regulatory-regime catalog (Advisers Act, Investment Company Act, Dodd-Frank, AIFMD/MiFID, GDPR, FCPA/OFAC, SFDR/SDR), investigation powers and CFIUS, the private-fund regulation trend, state guaranty-association assessment risk, and:</p>
+    <blockquote>"On February 6, 2024, the IID identified AGM as meeting the criteria as an IAIG and further identified Athene as the Head of the IAIG. As a result of these identifications, we expect Athene to be subject to the relevant capital standard that the U.S. applies to IAIGs. At this time, we do not expect a significant impact on Athene's capital position or capital structure..."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">ADIP sidecar economics surface throughout the MD&amp;A</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>ADIP II (vintage 2024, $6,556M committed) and ADIP I (2020, 24%/20% IRR) were added to the investment record, with a new SRE driver sentence:</p>
+    <blockquote>"Strategic capital management fees increased $8 million due to additional fees received from ADIP II as a result of the sale of a 50% interest in ACRA 2 to ADIP II effective July 1, 2023 and the subsequent increase in the ADIP II ownership of ACRA 2 to 60% effective December 31, 2023."</blockquote>
+    <p>Cost-of-funds drivers gained the ACRA non-controlling-interest offset and new hedging language:</p>
+    <blockquote>"including the additional costs of swapping to or issuing funding agreements as floating rate to mitigate SRE sensitivity to floating rate assets."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New regulatory-matter accrual in the non-GAAP reconciliation</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>A new footnote appears in the non-GAAP reconciliation:</p>
+    <blockquote>"Three and six months ended June 30, 2024 includes an accrual related to an estimated liability associated with a regulatory matter."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Capital solutions record quarter; Q1's FRE-margin expansion sentence dropped</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024 added:</p>
+    <blockquote>"Capital solutions fees in 2024 reflect growth across the broader debt origination ecosystem, including a record quarter of high-grade corporate solutions activity."</blockquote>
+    <p>FRE was framed as "record quarterly fee related revenues." The Q1 2024 sentence guiding "more than 150 basis points of FRE margin expansion in 2024" was dropped. Fee-related performance fees from ADS ($10M) and MidCap Financial ($7M) were attributed to wealth:</p>
+    <blockquote>"reflecting the growing contribution from Apollo's diversified suite of wealth-focused products."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AHL liquidity facility replaced; ALRe net-worth covenant raised $8.8B &rarr; $10.2B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The AHL liquidity facility was replaced June 28, 2024 ($2.6B capacity), with the ALRe minimum net worth covenant raised from $8.8B to $10.2B. The 2024 notes were retired and new 2054 Senior Notes entered the maturity list. Short-term repo went from zero to $1.2B, with a new "based on original issuance" qualifier.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">HVF II crosses hurdle; fund merger costs; Athora driver re-attributed; tax modal change</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>HVF II entered the performance-fee tables ("the fund achieved its annualized hurdle rate in 2024"). Fund merger-related costs ($15&ndash;18M) were first mentioned. Athene alternative-investment drivers were re-attributed: Athora moved from "higher debt costs and operating expenses" to "continued inflationary pressures impacting the valuation"; Catalina was newly named. The income-tax outlook sentence shifted from "does not expect material impacts" to "does not expect a material increase." Fund VIII escrow ratio: 104% &rarr; 102% of unreturned capital.</p>
+  </div>
+</div>
+
+
+<!-- Q2 → Q3 2024 -->
+<div class="transition-header" id="q2q3-2024">
+  <h2>Q2 2024 &rarr; Q3 2024</h2>
+  <div class="sub">Filed Nov 6, 2024 (after the Oct 1, 2024 Investor Day) | Total AUM: $696B &rarr; $733B | Employees: 5,009 &rarr; 5,053</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Asset Management re-segmented: yield/hybrid/equity &rarr; credit/equity; ALL target-return ranges deleted</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2024 introduces a new segmentation sentence:</p>
+    <blockquote>"During the third quarter ended September 30, 2024, we updated our Asset Management strategies to credit and equity, from the previously reported yield, hybrid and equity, which, we believe, better reflects our Asset Management investment strategies. The credit and equity investing strategies of our Asset Management segment reflect the range of investment capabilities across our platform, from investment grade to private equity."</blockquote>
+    <p>The Yield (4&ndash;10% target) and Hybrid (8&ndash;15% target) descriptions &mdash; including the total return yield fund 6%/5% ROE and hybrid fund 11%/7% ROE / 20%/15% IRR track records &mdash; were replaced by a single Credit description:</p>
+    <blockquote>"Our credit strategy spans third-party strategies and Apollo's retirement services business across four main investment pillars: direct origination, asset-backed, multi credit and opportunistic credit."</blockquote>
+    <p>The Equity description lost its "&gt;15%" target, and the intro's entire target-return disclaimer block was deleted:</p>
+    <blockquote>"Target returns included in this report are presented gross... may vary significantly from the target returns set forth herein."</blockquote>
+    <p>Funds were re-bucketed (Accord/ADIP/EPF &rarr; Credit; AIOF/HVF &rarr; Equity); AIF and AFT dropped from perpetual capital (fund mergers); ARIS added.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New key operating metric: Origination</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Origination represents (i) capital that has been invested in new equity, debt or debt-like investments by Apollo's equity and credit strategies (whether purchased by funds and accounts managed by Apollo, or syndicated to third parties) where Apollo or one of Apollo's origination platforms has sourced, negotiated, or significantly affected the commercial terms of the investment; (ii) new capital pools formed by debt issuances, including CLOs; and (iii) net purchases of certain assets by the funds and accounts we manage that we consider to be private, illiquid, and hard to access assets..."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Athene annual assumption unlocking; $172M guaranty-association assessment charge</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The 2024 unlocking increased total benefits and expenses $31M (vs &minus;$22M in 2023). A new charge appears:</p>
+    <blockquote>"$172 million of expense related to estimated guaranty association assessments Athene expects to be levied against it in connection with the Bankers Life Insurance Company and Colorado Bankers Life Insurance Company insolvencies."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">ACRA 2 step-up to 63% ADIP II; Athora driver gains "and regulatory"; Athene dividend of investments to AGM</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Effective October 1, 2024, ACRA 2 repurchased a portion of its shares held by ALRe, which increased ADIP II's ownership of economic interests in ACRA 2 to 63%..."</blockquote>
+    <p>The Athora driver gained a word: "continued inflationary <strong>and regulatory</strong> pressures impacting the valuation of Athora." Athene distributed "certain investments to AGM as a dividend" &mdash; a first mention, including the Challenger stake context.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Q4 subsequent-event issuances: AGM $500M and Athene $600M FRR junior subordinated notes due 2054</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Subsequent events disclose AGM $500M 6.000% fixed-rate reset junior subordinated notes due 2054 and Athene $600M 6.625% fixed-rate reset junior subordinated debentures due 2054, plus a new $72M subsidiary-restructuring charge.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Fed pivot in macro text; Fund VIII escrow 102% &rarr; 90%; no Investor Day mention in MD&amp;A</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The macro section adds:</p>
+    <blockquote>"...4.75% to 5.00%, marking the first significant cut in rates since the pandemic."</blockquote>
+    <p>The Fund VIII escrow ratio fell from 102% to 90%. Despite being the first filing after the October 1, 2024 Investor Day, the MD&amp;A contains no Investor Day or long-term target mention. AUM $733B (credit $598B / equity $135B). The Item 1A material-change factors were carried verbatim from Q2 2024 (page-number changes only).</p>
+  </div>
+</div>
+
+
+<!-- Q3 2024 → Q1 2025 (direct, across the FY2024 10-K) -->
+<div class="transition-header" id="q3-2024-q1-2025">
+  <h2>Q3 2024 &rarr; Q1 2025 <span style="font-weight:400; font-size:14px; color:var(--text-dim);">(direct, across the FY2024 10-K)</span></h2>
+  <div class="sub">Total AUM: $733B &rarr; $785B | Employees: 5,053 &rarr; 5,141 | Changes may have originated in either the FY2024 10-K or the Q1 2025 filing</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs enter the MD&amp;A (new paragraph)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"The ongoing uncertainty regarding trade policy poses a significant downside risk to the current economic outlook. Tariffs, which are inflationary in nature, remain in place and may have a negative impact on GDP growth. The potential impact of tariffs on corporate earnings remains uncertain and will depend on the duration and outcome of related trade negotiations."</blockquote>
+    <p>"changes to U.S. and foreign tariff policies" was also added to the adverse-conditions list. The macro section shows Q1 2025 stress: S&amp;P &minus;4.6%, GDP &minus;0.3% annualized.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Fund VIII fee-paying period expired: $4.5B rolls out of fee-generating AUM</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Fee-generating AUM flows include "$4.5 billion related to the expiration of Fund VIII's fee-paying period," with Fund IX fees declining. New fee drivers appear: Atlas, ADS, and "Apollo S3 Equity and Hybrid Solutions Fund, L.P." (first S3 mention). On Athene:</p>
+    <blockquote>"The increase in management fees earned from Athene was primarily driven by increases in fee-generating AUM as a result of record organic growth at Athene."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$200M Apollo DAF charitable share issuance (February 2025)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The $200M Apollo DAF charitable share issuance is cited as the driver of the other-income decline and in a new non-GAAP footnote. Reconciliation lines were consolidated into "Transaction-related costs, restructuring and other non-operating expenses."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$3.4B credit&rarr;equity strategy realignment; re-segmentation transition sentence deleted</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>New AUM flow footnote:</p>
+    <blockquote>"$3.4 billion for Total AUM related to a strategy realignment of certain funds from Credit to Equity as of January 1, 2025."</blockquote>
+    <p>The Q3 2024 re-segmentation transition sentence is gone &mdash; credit/equity is now a standing fact &mdash; and AUM flow commentary adopts the four credit pillar names.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Cyclically light" monetization sentence born; MidCap stake sale; FCI II performance-fee reversal</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>A new Principal Investing sentence appears (and recurs through 2025):</p>
+    <blockquote>"Realized performance fees continue to be cyclically light as monetization activity from sizeable private equity and hybrid funds remains prudently delayed amid a challenging exit environment."</blockquote>
+    <p>Realized gains "from the sale of a portion of Apollo's stake in MidCap Financial" appear; FCI II's preferred-return threshold is no longer met (performance-fee reversal).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Capital structure reshuffle: AGM $1.25B facility; AOG Unit Payments completed; ACRA 1 ownership first disclosed; dividend raised to $0.51</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The AMH $1.0B facility (Oct 2027) was replaced by an AGM-level $1.25B facility (Nov 21, 2029). The AOG Unit Payment section was removed (installments completed Dec 31, 2024); the 2054 Subordinated Notes were added to guarantees. ADS jumped to the top of the perpetual capital table at $20.1B (from $12.4B). SRE drivers added "an initial mark from cost to fair value on Atlas" and the Challenger stake sale; Athora was reframed to "continued headwinds impacting dividend projections." ACRA 1 ownership was disclosed for the first time (ALRe 37% / ADIP I 63%). The quarterly dividend was raised $0.4625 &rarr; $0.51. RBC ratios: US 419%, Bermuda 450%, consolidated 430%. Fund VIII escrow: 90% &rarr; 85% ($138M gross in escrow, up from $86M).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Quarterly Item 1A reverts to a "no material changes" stub &mdash; both FY2024 factors gone</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>The Athene PGA/ERISA litigation factor (born Q1 2024) and the extensive-regulation/IAIG factor (added Q2 2024) both disappeared at Q1 2025, absorbed into the 2024 Annual Report. From Q1 2025 through Q1 2026 the quarterly Item 1A is a pure "no material changes" stub.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First affiliated-purchaser footnote: Apollo Opportunity Foundation (100,000 shares, March 2025)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Part II Item 2 gains its first "affiliated purchaser" footnote: Apollo Opportunity Foundation, 100,000 shares, March 2025. (A second appears in Q1 2026: MidCap Financial Services, LLC, 97,876 shares, March 2026.)</p>
+  </div>
+</div>
+
+
+<!-- Q1 → Q2 2025 -->
+<div class="transition-header" id="q1q2-2025">
+  <h2>Q1 2025 &rarr; Q2 2025</h2>
+  <div class="sub">Total AUM: $785B &rarr; $840B | Employees: 5,141 &rarr; 5,333 | Dry powder: $64B &rarr; $72B</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$2.0B conditional Athora commitment</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"On July 3, 2025, AAM made a conditional commitment to invest, or cause one or more of its affiliates to invest, in Athora for up to an additional $2.0 billion, in connection with the Athora transaction. The Athora transaction remains subject to closing conditions, including receipt of regulatory approvals."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Redding Ridge acquires Irradiant Partners LP: $9.3B inflows</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>AUM flows include "$9.3 billion in inflows relating to Redding Ridge's acquisition of Irradiant Partners LP."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariff language softened; stagflation risk added</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2025:</p>
+    <blockquote>"The ongoing uncertainty regarding trade policy poses a significant downside risk to the current economic outlook."</blockquote>
+    <p>Q2 2025:</p>
+    <blockquote>"poses a downside risk to the current economic outlook, with lower growth and higher inflationary pressures increasing the risk of a stagflationary environment."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Athene growth language downgraded: "record" &rarr; "strong"; exit environment "challenging" &rarr; "uncertain"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Three word-level downgrades: "record organic growth at Athene" &rarr; "strong organic growth at Athene"; the exit environment moves from "challenging" to "uncertain"; "sizeable private equity franchise" becomes "private equity franchise."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Athene funding mix expanded to defined contribution plans and the FABR program</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Athene's primary product line is annuities, which include fixed, payout and group annuities issued in conjunction with pension group annuity transactions and defined contribution plans. Athene also offers funding agreements and guaranteed investment contracts issued in connection with defined contribution plans."</blockquote>
+    <p>SRE platform drivers were rewritten: Venerable up on "the announcement of a reinsurance transaction with Corebridge Financial, Inc."; Apterra first named; Aqua Finance recovery; Athora's six-month result offset by "increased capital requirements related to expanded solvency requirements impacting the valuation of Athora in 2025."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AHL liquidity facility replaced again: covenant re-based to AARe $23.2B consolidated net worth</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The facility was replaced June 27, 2025, with the covenant re-based from ALRe $10.2B to an "AARe minimum consolidated net worth of no less than $23.2 billion." Athene Series C preferred was redeemed; $1.6B of long-term debt was issued in Q2 2025 (maturity list gains 2055). Holding-company funding language broadened to "distributions and other intercompany transfers."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">No OBBBA mention anywhere in the Q2 2025 MD&amp;A</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Apollo's first post-OBBBA filing (the act was enacted July 4, 2025) carries no tax-legislation discussion in the MD&amp;A (verified). OBBBA first appears in the FY2025 10-K risk factors.</p>
+  </div>
+</div>
+
+
+<!-- Q2 → Q3 2025 -->
+<div class="transition-header" id="q2q3-2025">
+  <h2>Q2 2025 &rarr; Q3 2025</h2>
+  <div class="sub">Filed Nov 10, 2025 | Total AUM: $840B &rarr; $908B | Employees: 5,333 &rarr; 6,104 (incl. 609 Bridge) | Dry powder: $72B &rarr; $75B</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Bridge Investment Group acquisition closed (Sep 2, 2025): +$34.2B equity AUM, new revenue category, new TRA</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"On September 2, 2025, we completed the previously announced acquisition of Bridge in an all-stock transaction. As a result, Bridge became a consolidated subsidiary of AAM, and its results are included in the condensed consolidated financial statements commencing from the Acquisition Date."</blockquote>
+    <p>Ripples through the filing: employees 6,104, "including 1,997 employees of Athene and 609 employees of Bridge"; a new "Property Management, Development and Other Fees" revenue category; a new Bridge tax receivable agreement ("85% of the tax benefits realized from the Bridge acquisition"); a Bridge credit facility ($150M, June 3, 2026 maturity); "$34.2 billion primarily due to the Bridge acquisition" in equity AUM flows; $71M of equity-based compensation from acquisition RSAs; and "Bridge Funds" rows in the performance-fee tables.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Athene net floating-rate position compressed: $15.1B (5%) &rarr; $6.0B (2%) of net invested assets</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Net floating rate assets fell from $15.1B (5% of net invested assets) to $6.0B (2%).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Government-shutdown data lag enters the macro section</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The GDP and unemployment sentences gain the qualifier "the latest date this data is available."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Annual assumption unlocking favorable: &minus;$55M vs +$31M in 2024</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Athene's annual unlocking of assumptions resulted in a decrease in total benefits and expenses of $55 million compared to an increase of $31 million in 2024."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Athora voting power restated post-capital-raise: AAM 19.9% &rarr; 16%; Apollo-managed funds 15.1% &rarr; 3.9%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>AAM's voting power moved from "approximately 19.9%" to "approximately 16%"; Apollo-managed funds from "15.1%" to "3.9%". Athora nine-month performance-allocation losses were "primarily driven by a reduced profits interest."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Wealth framing generalized to "perpetual capital vehicles"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The fee-related performance fee driver changed from "fees earned from ADS, reflecting the growing contribution from Apollo's wealth-focused products" to "sustained growth across a variety of perpetual capital vehicles." The equity-based profit-sharing footnote was compressed to "stock-based grants that are tied to realized performance within the Principal Investing segment."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Fed cuts; rating agencies renamed; new Athene downturn-liquidity sentence; AIOF III final close; legal note renumbered 16 &rarr; 17</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The macro section reflects the Fed cutting to 3.75&ndash;4.00% (September and October cuts). Rating agencies were formally renamed (S&amp;P Global, A.M. Best, Fitch Ratings, Moody's Ratings). New Athene sentence:</p>
+    <blockquote>"In periods of economic downturn, Athene may seek to raise or hold additional cash and liquid assets... to take advantage of market dislocations"</blockquote>
+    <p>AIOF III final close (vintage 2024, $2,442M); HVF III enters the tables; supplemental guarantees add the 2031/2035 Senior Notes. The legal-proceedings reference moves from note 16 to note 17 (note renumbering only).</p>
+  </div>
+</div>
+
+
+<!-- Q3 2025 → Q1 2026 (direct, across the FY2025 10-K) -->
+<div class="transition-header" id="q3-2025-q1-2026">
+  <h2>Q3 2025 &rarr; Q1 2026 <span style="font-weight:400; font-size:14px; color:var(--text-dim);">(direct, across the FY2025 10-K)</span></h2>
+  <div class="sub">Total AUM: $908B &rarr; $1.03T | Dry powder: $75B &rarr; $74B | Employee-count sentence deleted | Changes may have originated in either the FY2025 10-K or the Q1 2026 filing</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Total AUM crosses $1 trillion; Athora's acquisition of PIC adds $65.3B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026: "we had total AUM of $1.03 trillion" (credit $834B / equity $192B), helped by "$65.3 billion of inorganic inflows from Athora's acquisition of PIC." Athora AUM managed/advised jumped $57.5B &rarr; $125.9B. The $2.0B conditional Athora commitment language is gone (transaction closed); remaining Athora equity commitments: $57M.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Bermuda CIT election revoked: $1.7B valuation allowance, 598.6% effective tax rate</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>A new tax section discloses the OECD Side-by-Side guidance and the revocation:</p>
+    <blockquote>"On January 5, 2026, the OECD issued guidance exempting U.S.-parented groups from the IIR or UTPR taxes under the Pillar Two regime. ... in January 2026, the Company revoked ACRA's election to be subject to the Bermuda CIT."</blockquote>
+    <blockquote>"As a result of the foregoing, in the first quarter of 2026, the Company recorded a full valuation allowance against its Bermuda deferred tax assets... equal to the net amount of the Bermuda deferred tax assets of $1.7 billion. Notwithstanding this near-term impact..., the Company believes that these developments... will have favorable implications for the Company's overall tax position over the longer term."</blockquote>
+    <p>The Q1 2026 effective tax rate: 598.6%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New private-credit / non-traded BDC redemption disclosure in Business Environment</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Private credit, which represents an estimated $40 trillion primarily investment-grade market, has experienced heightened focus, generating industry inquiries around liquidity, valuation methodologies, global wealth access and technology-related portfolio allocations. We believe such inquiries are natural to an evolving asset class that is experiencing strong overall growth. However, the magnified focus has corresponded to increased redemption requests within perpetual non-traded business development company structures across the industry, resulting in lower growth for these products."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AP Grange forward gain pre-announced: $673M GAAP / $458M non-operating in Q2 2026</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"During the second quarter of 2026, AP Grange called its outstanding ABS debt and as a result, Athene will recognize a gain of $673 million in GAAP income. Additionally, within our non-GAAP results for the second quarter of 2026, we will recognize a non-operating gain of $458 million, net of the ACRA non-controlling interests."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Distressed" renamed "Deleveraging Investment"; "impact investing" dropped; FIA &rarr; "indexed annuity"; employee sentence deleted</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>In the Fund X/IX/VIII composition tables, "distressed" becomes "deleveraging investment":</p>
+    <blockquote>"The deleveraging investment strategy includes deleveraging for control, non-control deleveraging and other credit..."</blockquote>
+    <p>The distressed-investments since-inception table was removed entirely. "Impact investing" was dropped from the equity strategy list. FIA terminology was systematically replaced with "indexed annuity." The employee-count sentence and the organizational structure diagram were deleted.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Macro recast: stagflation framing out; Iran conflict in; credit fundamentals assessed as improving</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"The ongoing uncertainty regarding U.S. trade policy, the conflict with Iran and continued inflationary pressures pose a downside risk to the current economic outlook. However, solid growth in the U.S. has resulted in the risk of a recession remaining modest."</blockquote>
+    <p>New credit-cycle assessment:</p>
+    <blockquote>"Credit fundamentals are improving: default rates in both high yield and leveraged loans are declining, distressed exchanges are easing, and at this time a broad credit cycle deterioration does not appear likely."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First 10b5-1 adoptions in seven quarters: Belardi 1.5M shares, Zito 50K shares</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>No 10b5-1 plans were disclosed from Q1 2024 through Q3 2025. Q1 2026 breaks the streak:</p>
+    <blockquote>"On February 10, 2026, James Belardi, Executive Chairman and Chief Investment Officer of Athene and member of our board of directors, adopted a Rule 10b5-1 trading arrangement on behalf of an estate planning vehicle... for the sale of up to 1,500,000 shares of the Company's common stock through April 30, 2027."</blockquote>
+    <blockquote>"Additionally, on March 12, 2026, John Zito, Co-President of AAM, adopted a Rule 10b5-1 trading arrangement... for the sale of up to 50,000 shares of the Company's common stock through December 31, 2026."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New $4.0B buyback program (Feb 9, 2026) replaces the Feb 2024 $3.0B program; 7.0M shares purchased in Q1 2026</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Effective February 9, 2026, the February 2024 $3.0B authorization was replaced by a new $4.0B program with the same purpose language:</p>
+    <blockquote>"to opportunistically reduce the Company's share count or offset the dilutive impact of share issuances under the Company's equity incentive plans"</blockquote>
+    <p>Q1 2026 purchases: 7,047,113 shares (~$124 avg), split 0.69M opportunistic / 6.26M equity-offset, plus a 97,876-share MidCap Financial Services, LLC affiliated-purchaser footnote. Remaining authorization: $3.134B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Cyclically light" dropped; Sony block reinsurance; $24.2B private-placement concentration; dividend raised to $0.5625; escrow 81%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The PII "cyclically light" monetization sentence (present all of 2025) was dropped &mdash; Q1 2026 cites "a portfolio company sale and Fund X" realizations. Sony block reinsurance (4Q25) is first mentioned. Redding Ridge's fee-basis change added "$41.6 billion ... fee basis adjustment" to fee-generating AUM. New concentration disclosure: "$24.2 billion of private placements, which represented 8% of Athene's net invested assets." A new Bermuda-vs-US statutory RBC methodology paragraph appears ("Consolidated RBC being approximately 20 RBC points higher... expects this difference... to decline to immaterial levels over the next five years"); RBC: US 436%, Bermuda 454%, consolidated 441%. Dividend raised $0.51 &rarr; $0.5625. Fund VIII escrow: 85% &rarr; 81%. GP obligations $200M &rarr; $334M. New fund first-mentions: ABF, Apollo Credit Strategies Absolute Return Fund, Champ L.P., Accord VII, AMAPS.</p>
+  </div>
+</div>
+
+
+<!-- ==================== ANNUAL 10-K RISK FACTOR DELTA ==================== -->
+
+<div class="section" id="annual-10k">
+  <div class="section-header"><h2>Annual Risk-Factor Delta: FY2024 vs FY2025 10-K</h2></div>
+  <p style="font-size:13px; color:var(--text-dim); margin-bottom:20px;">Because the quarterly Item 1A reverted to "no material changes" stubs from Q1 2025 onward, the FY2025-year risk signal lives in this direct FY2024-vs-FY2025 10-K comparison (read in full; ~45&ndash;55% of diff hunks trivial).</p>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Headings Added / Removed / Retitled</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New headings and bullets: AGM indebtedness factor; cryptocurrencies, AI-transformation, and private-credit bullets</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>A new short AGM-level factor &mdash; "We are subject to operating and financial restrictions arising from our indebtedness." &mdash; replaces the deleted three-paragraph Athene credit-agreement/indentures factor. Three new bullets in the fund-investment factor:</p>
+    <blockquote>"Certain of the funds we manage invest in cryptocurrencies, which may expose us and such funds to increased risks..."</blockquote>
+    <blockquote>"Rapid and unforeseen technological transformations, such as the emergence of large language models and generative AI... may introduce operating risks to certain portfolio companies and other investments, particularly those in the software industry... may cause volatility in their valuations..."</blockquote>
+    <blockquote>"Certain of the funds we manage invest in private credit opportunities (including through direct origination), which may be illiquid, difficult to value and exit prior to maturity, and susceptible to credit deterioration, restructurings or losses."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Headings removed: standalone pandemics factor; Athene credit-agreement/indentures restrictions factor</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>The standalone pandemics factor was removed (a remnant folded into the macro factor). The Athene credit-agreement/letters-of-credit/indentures restrictions factor was deleted (succeeded by the shorter AGM-level indebtedness factor).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retitled: political/market conditions; misconduct broadened; regulation "could" &rarr; "would"; climate relocated</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>"Difficult political, market or economic conditions..." becomes "Evolving political, market and economic conditions, including increased policy uncertainty and market volatility, may adversely affect our businesses and financial results." The body's FY2024 "new U.S. administration"/named-country tariff sentence was replaced by a framework view:</p>
+    <blockquote>"Governments have increasingly relied on tariffs, export controls, investment screening and other policy tools to advance domestic economic and national security objectives..."</blockquote>
+    <p>"Misconduct by our current and former employees..." becomes "Actual or alleged misconduct, unethical behavior and other activities..." (body broadened to perceived misconduct, outside activities, "regardless of whether such activity is related to our business"). The regulation heading hardened: "The possibility of increased regulatory focus could" &rarr; "Increased regulatory focus would result in additional burdens." The climate factor relocated from Macroeconomic Risks to the end of Regulation and Litigation, its summary bullet deleted, with a new sentence:</p>
+    <blockquote>"Conversely, certain fund investors may also be concerned if our funds take climate change-related risks into account when making portfolio management decisions."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Major Substantive Blocks</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI factor retitled "AI Technologies" and roughly tripled in length</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>"Artificial intelligence could increase competitive, operational, legal and regulatory risks..." becomes "AI Technologies could increase..." &mdash; and the body roughly tripled, adding digital-infrastructure valuation risk, internal generative-AI use, AI-washing exposure, competitive-lag risk, and AI-regulation compliance costs:</p>
+    <blockquote>"Advancements in computing and AI Technologies, including efficiency improvements, without related increases in the adoption and development of such technologies, could also negatively impact demand for, and the valuation of, digital infrastructure assets, a sector to which certain of our investment strategies have significant exposure."</blockquote>
+    <blockquote>"We may also communicate externally regarding AI Technology-related initiatives... which subjects us to the risk of being accused of making inaccurate or misleading statements"</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Competition factor expanded from one paragraph to four</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The expanded factor names competition "to source, originate, structure, finance and syndicate investments," retirement-services competition from "alternative capital providers seeking exposure to similar long-duration liabilities," competitors that "may be willing or able to pursue opportunities or strategies or retirement-related transactions on more aggressive terms, including by accepting lower returns or greater risk," and AI/digital-asset disruption pressure.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Digital assets: new technology-factor paragraph and new regulatory paragraph</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>A new paragraph in the technology factor covers blockchain/cryptocurrency/DeFi exposure and crypto collateral, plus a new regulatory paragraph:</p>
+    <blockquote>"As we and the funds we manage become more actively involved in digital asset markets, the regulatory risks described herein will be heightened..."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">ESG &rarr; "sustainability-related" terminology; long new anti-DEI paragraph</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>"ESG" was replaced with "sustainability-related" terminology throughout, and a long new anti-DEI paragraph was added covering executive orders terminating DEI programs, threatened investigations/enforcement, debarment risk, and investor exclusion both for and against.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tax block: OBBBA paragraph, BEAT rate correction, Pillar Two "SbS Safe Harbor," Bermuda CIT revocation with $1.7B equity hit</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>New OBBBA paragraph (TCJA permanence, GILTI/FDII/BEAT changes, 163(j) restoration) and OBBBA CFC-attribution changes; the BEAT rate corrected from 12.5% to 10.5% post-2025; a new Pillar Two "SbS Safe Harbor" paragraph (January 5, 2026 Inclusive Framework agreement; UK implementation pending); and the ACRA Bermuda CIT election revocation with the quantified $1.7B equity hit &mdash; matching the Q1 2026 MD&amp;A disclosure.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Mandatory Convertible Preferred: conversion flagged for July 31, 2026</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>New language flags mandatory conversion "expected... on July 31, 2026" and the resulting dilution/volatility.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retail operational strain, affiliated-fee criticism, and conflicts admissions added</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Retail factor, new sentence:</p>
+    <blockquote>"As the number and complexity of our investment products and vehicles increases, the operational demands and complexity of our business has also increased, which could strain the sufficiency of our systems, infrastructure, and personnel..."</blockquote>
+    <p>Fee-criticism factor: institutional criticism extended to "additional types of fees paid to affiliated service providers, such as syndication, sourcing, structuring and placement fees, many of which are not subject to management fee-offsets." Conflicts: "conflicts of interest can arise" &rarr; "conflicts of interest arise, and may continue to arise in the future," with an admission that circumstances "have, in certain instances, resulted in actual conflicts"; new enumerated conflict "(v) the selection of investments that could generate more fees for service providers affiliated with us"; NAV-based finance facilities added alongside subscription lines.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Item 1 signal: new Origination ($309B, 16 platforms) and Capital Formation sections; Sustainable Investing section deleted; IAIG hardened</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Item 1 adds an "Origination" section ($309B 2025 volume; 16 origination platforms) and a "Capital Formation" section (six buyer pools; perpetual capital "nearly 60% of total AUM and over 70% of total fee-generating AUM"). The "Sustainable Investing and Corporate Responsibility" section was deleted entirely. Athene's Vitera (defined-contribution group FIA) and Guaranteed Investment Contracts products were added. IAIG language hardened: "Athene will therefore be subject to the relevant capital standard that the U.S. applies to IAIGs." Aspen and Athora Ireland insurance entities were deleted from the regulatory footprint.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Carried verbatim (notable negatives)</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Carried unchanged year-over-year: the key-personnel factor (no Rowan-specific change), the PRT/ERISA litigation paragraph (no status update), the ratings-downgrade factor, liquidity and repo factors, dividend-restriction frameworks, and the Delaware exclusive-forum factor. Fund VIII was dropped from the "larger funds" examples list ("e.g., Fund IX, Fund X and AAA"). No short-seller-specific language in either year.</p>
+  </div>
+</div>
+</div>
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-aum">
+  <div class="section-header"><h2>#1: AUM &amp; Headcount</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> $671B to $1.03 Trillion in Seven Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Total AUM</th><th>Strategy Split</th><th>Employees</th><th>Dry Powder</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>$671B</td><td>Yield $501B / Hybrid $64B / Equity $107B</td><td>4,945 (2,005 Athene)</td><td>$65B</td></tr>
+        <tr><td>Q2 2024</td><td>$696B</td><td>Yield $521B / Hybrid $70B / Equity $105B</td><td>5,009 (2,034)</td><td>$68B</td></tr>
+        <tr><td>Q3 2024</td><td>$733B</td><td class="val-new">Credit $598B / Equity $135B (re-segmented)</td><td>5,053 (1,978)</td><td>$64B</td></tr>
+        <tr><td>Q1 2025</td><td>$785B</td><td>$641B / $144B</td><td>5,141 (1,984)</td><td>$64B</td></tr>
+        <tr><td>Q2 2025</td><td>$840B</td><td>$690B / $150B</td><td>5,333 (2,008)</td><td>$72B</td></tr>
+        <tr><td>Q3 2025</td><td>$908B</td><td>$723B / $185B</td><td class="val-new">6,104 (1,997 Athene, 609 Bridge)</td><td>$75B</td></tr>
+        <tr><td>Q1 2026</td><td class="val-highlight">$1.03T</td><td>$834B / $192B</td><td class="val-neg">Not disclosed (sentence deleted)</td><td>$74B</td></tr>
+      </tbody>
+    </table>
+    <p>Inorganic contributions: Redding Ridge/Irradiant +$9.3B (Q2 2025); Bridge acquisition +$34.2B equity AUM (Q3 2025); Athora's acquisition of PIC +$65.3B (Q1 2026).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-taxonomy">
+  <div class="section-header"><h2>#2: Strategy Taxonomy Lifecycle</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Three Strategies With Targets &rarr; Two Strategies Without</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Disclosure</th></tr></thead>
+      <tbody>
+        <tr><td>Q1&ndash;Q2 2024</td><td>Three strategies (yield/hybrid/equity) with explicit target returns (4&ndash;10%, 8&ndash;15%, &gt;15%) and fund-level ROE/IRR stats</td></tr>
+        <tr><td>Q3 2024</td><td class="val-new">Re-segmented to credit/equity; four credit pillars named; ALL target-return ranges and the target-return disclaimer deleted; Origination metric born</td></tr>
+        <tr><td>Q1 2025</td><td>Transition sentence deleted (now standing fact); $3.4B credit&rarr;equity realignment; AUM flow commentary adopts pillar names</td></tr>
+        <tr><td>Q1 2026</td><td class="val-new">"Distressed" &rarr; "deleveraging investment"; "impact investing" dropped from equity list</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-fund8">
+  <div class="section-header"><h2>#3: Fund VIII Escrow Decay</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> 104% &rarr; 81% Against a 115% Requirement</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Q1 2024</th><th>Q2 2024</th><th>Q3 2024</th><th>Q1 2025</th><th>Q2 2025</th><th>Q3 2025</th><th>Q1 2026</th></tr></thead>
+      <tbody>
+        <tr><td>Escrow ratio (of unreturned capital)</td><td>104%</td><td>102%</td><td>90%</td><td>85%</td><td>83%</td><td>85%</td><td class="val-neg">81%</td></tr>
+      </tbody>
+    </table>
+    <p>Q1 2025: $138M gross in escrow, up from $86M. Related Fund VIII events: the fee-paying period expired across the FY2024 boundary ("$4.5 billion related to the expiration of Fund VIII's fee-paying period" rolled out of fee-generating AUM, Q1 2025), and Fund VIII was dropped from the "larger funds" examples list in the FY2025 10-K ("e.g., Fund IX, Fund X and AAA"). GP obligations rose $200M &rarr; $334M at Q1 2026.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-timeline">
+  <div class="section-header"><h2>#4: Transaction First-Appearance Timeline</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> What Each Filing Disclosed First</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>First Appearance</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td>ADIP I/II in investment record; regulatory-matter accrual; fund merger costs; new AHL liquidity facility</td></tr>
+        <tr><td>Q3 2024</td><td class="val-new">Credit/equity re-segmentation; Origination metric; guaranty assessments (BLIC/CBLIC); ACRA 2 &rarr; 63% ADIP II; Q4 junior subordinated issuances</td></tr>
+        <tr><td>Q1 2025</td><td>Tariffs; Apollo DAF $200M; S3; Fund VIII fee expiry; AGM $1.25B facility; MidCap stake sale; ACRA 1 ownership split</td></tr>
+        <tr><td>Q2 2025</td><td>Athora $2.0B conditional commitment; Irradiant Partners ($9.3B); Apterra; Venerable/Corebridge; FABR/defined-contribution funding; AARe covenant</td></tr>
+        <tr><td>Q3 2025</td><td class="val-new">Bridge acquisition (all-stock, Sep 2, 2025); property management fees; Bridge TRA; Athora voting power 16%/3.9%</td></tr>
+        <tr><td>Q1 2026</td><td class="val-new">$1T AUM; Athora/PIC $65.3B; Bermuda CIT revocation ($1.7B VA); private-credit/BDC redemption language; AP Grange $673M gain pre-announcement; Sony block reinsurance; deleveraging rename</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-buybacks">
+  <div class="section-header"><h2>#5: Buybacks &amp; 10b5-1 Plans</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Feb 2024 $3.0B Program &rarr; Feb 2026 $4.0B Program</h3>
+    <p>February 8, 2024 board authorization: $3.0B, "to opportunistically reduce the Company's share count or offset the dilutive impact of share issuances under the Company's equity incentive plans," replacing the terminated prior program. Effective February 9, 2026, replaced by a new $4.0B program (same purpose language).</p>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>Shares Purchased</th><th>~Avg Price</th><th>Opportunistic / Equity-Offset Split</th><th>Remaining Auth</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>4,629,336</td><td>$110.68</td><td>0 / 4.63M</td><td>$2.488B</td></tr>
+        <tr><td>Q2 2024</td><td>975,174</td><td>~$113</td><td>0.65M / 0.33M</td><td>$2.377B</td></tr>
+        <tr><td>Q3 2024</td><td>4,492,833</td><td>~$106</td><td>4.02M / 0.47M</td><td>$1.902B</td></tr>
+        <tr><td>Q1 2025</td><td>4,678,770</td><td>~$157</td><td>0.99M / 3.59M (+100K AOF)</td><td>$1.050B</td></tr>
+        <tr><td>Q2 2025</td><td class="val-neg">112,211</td><td>~$140</td><td>0 / 0.11M</td><td>$1.035B</td></tr>
+        <tr><td>Q3 2025</td><td>2,570,188</td><td>~$139</td><td>1.35M / 1.22M</td><td>$0.678B</td></tr>
+        <tr><td>Q1 2026</td><td class="val-highlight">7,047,113</td><td>~$124</td><td>0.69M / 6.26M (+98K MidCap)</td><td class="val-new">$3.134B (new $4.0B program)</td></tr>
+      </tbody>
+    </table>
+    <p>Affiliated-purchaser footnotes beginning Q1 2025: Apollo Opportunity Foundation (100,000 shares, Mar 2025); MidCap Financial Services, LLC (97,876 shares, Mar 2026).</p>
+  </div>
+  <div class="signal-card full">
+    <h3><span class="num">5b</span> 10b5-1 Plans: None for Seven Quarters, Then Two</h3>
+    <p>No 10b5-1 plans were disclosed Q1 2024 through Q3 2025. Q1 2026:</p>
+    <blockquote>"On February 10, 2026, James Belardi, Executive Chairman and Chief Investment Officer of Athene and member of our board of directors, adopted a Rule 10b5-1 trading arrangement on behalf of an estate planning vehicle... for the sale of up to 1,500,000 shares of the Company's common stock through April 30, 2027."</blockquote>
+    <blockquote>"Additionally, on March 12, 2026, John Zito, Co-President of AAM, adopted a Rule 10b5-1 trading arrangement... for the sale of up to 50,000 shares of the Company's common stock through December 31, 2026."</blockquote>
+  </div>
+</div>
+
+<div class="section" id="sig-dividends">
+  <div class="section-header"><h2>#6: Dividends</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Quarterly Common Dividend</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Dividend per Share</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>2024 (Q1&ndash;Q3 filings)</td><td>$0.4625</td><td>&mdash;</td></tr>
+        <tr><td>Q1 2025 (declared May 2, 2025)</td><td>$0.51</td><td class="val-pos">+10.3%</td></tr>
+        <tr><td>Q1 2026</td><td>$0.5625</td><td class="val-pos">+10.3%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-item1a">
+  <div class="section-header"><h2>#7: Quarterly Item 1A Behavior</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Substantive Only in FY2024; Stub Ever Since</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>Item 1A Content</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td class="val-new">Stub + one material-change factor: third-party litigation (Athene PGA/ERISA class actions) &mdash; 7K chars</td></tr>
+        <tr><td>Q2 2024</td><td class="val-new">Adds a second factor: extensive regulation (incl. IAIG designation) &mdash; 16K chars; "four putative class actions" &rarr; "a number of putative class actions"</td></tr>
+        <tr><td>Q3 2024</td><td>Verbatim carry (page numbers only)</td></tr>
+        <tr><td>Q1 2025 &ndash; Q1 2026</td><td class="val-neg">Pure "no material changes" stubs (Q1 2025&harr;Q2 2025 character-identical; Q2&rarr;Q3 2025 quote-mark styling only; Q1 2026 rolls the reference to the 2025 Annual Report)</td></tr>
+      </tbody>
+    </table>
+    <p>Consequence: from Q1 2025 onward, the annual 10-K comparison (above) is the only source of risk-factor change for Apollo &mdash; the quarterly filings carry no incremental risk disclosure.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-legal">
+  <div class="section-header"><h2>#8: Legal Proceedings Stub</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> One-Line Incorporation by Reference, Every Quarter</h3>
+    <p>Every 10-Q in the set carries a one-line incorporation by reference into the financial-statement notes:</p>
+    <blockquote>"ITEM 1. LEGAL PROCEEDINGS &mdash; See a summary of the Company's legal proceedings set forth in note 16 to our condensed consolidated financial statements, which is incorporated by reference herein."</blockquote>
+    <p>The only change across the quarters is the note number: note 16 through Q2 2025, then note 17 from Q3 2025 onward (a renumbering of the notes, not a change in disclosure approach). Q1&rarr;Q2 2024, Q2&rarr;Q3 2024, and Q1&rarr;Q2 2025 are zero-length diffs (verbatim stub). The substantive quarterly litigation signal lives in the Litigation note inside the full filing, not in Item 1.</p>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. The Q3 2024 Re-Segmentation Was a Single-Quarter Event</h3>
+      <p>In one filing (filed Nov 6, 2024, after the Oct 1, 2024 Investor Day), Apollo collapsed yield/hybrid/equity into credit/equity, deleted every target-return range (4&ndash;10%, 8&ndash;15%, &gt;15%) and the target-return disclaimer block, and introduced the Origination operating metric. By Q1 2025 the transition sentence was already gone. An annual comparison would compress this into a generic year-over-year difference; the quarterly chain dates it to a single quarter.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. AUM Grew $671B &rarr; $1.03T, With Inorganic Step-Ups Dated to the Quarter</h3>
+      <p>Each filing's AUM flows attribute the step-ups: Redding Ridge/Irradiant +$9.3B (Q2 2025), Bridge +$34.2B equity AUM (Q3 2025), Athora/PIC +$65.3B (Q1 2026). The $1.03 trillion total in Q1 2026 splits $834B credit / $192B equity. The employee-count sentence was deleted in the same filing the $1T threshold was crossed.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. The Tax Arc Ran Through Three Filings</h3>
+      <p>Q2 2025 (first post-OBBBA filing): no OBBBA mention in the MD&amp;A. FY2025 10-K: new OBBBA paragraph, BEAT rate correction, and Pillar Two "SbS Safe Harbor" paragraph (Jan 5, 2026 Inclusive Framework agreement). Q1 2026: ACRA's Bermuda CIT election revoked, a full $1.7B valuation allowance against Bermuda deferred tax assets, and a 598.6% quarterly effective tax rate &mdash; with the filing stating the developments "will have favorable implications for the Company's overall tax position over the longer term."</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Quarterly Item 1A Carried Signal Only in FY2024</h3>
+      <p>The Athene PGA/ERISA litigation factor (born Q1 2024 with "four putative class actions," softened to "a number of" in Q2 2024) and the regulation/IAIG factor (added Q2 2024) lived for three quarters, then were absorbed into the 2024 Annual Report. From Q1 2025 through Q1 2026 the quarterly Item 1A is a stub, leaving the FY2024-vs-FY2025 10-K comparison as the sole risk-factor delta &mdash; where the AI factor tripled, competition expanded to four paragraphs, and crypto/digital-asset, anti-DEI, and OBBBA/Pillar Two/Bermuda CIT blocks were added.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Filing</th>
+        <th>Total AUM</th>
+        <th>Strategy Split</th>
+        <th>Employees</th>
+        <th>Dry Powder</th>
+        <th>Dividend/Shr</th>
+        <th>Fund VIII Escrow</th>
+        <th>Shares Repurchased</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Q1 2024</strong></td>
+        <td>$671B</td>
+        <td>Y $501B / H $64B / E $107B</td>
+        <td>4,945</td>
+        <td>$65B</td>
+        <td>$0.4625</td>
+        <td>104%</td>
+        <td>4.63M</td>
+      </tr>
+      <tr>
+        <td><strong>Q2 2024</strong></td>
+        <td>$696B</td>
+        <td>Y $521B / H $70B / E $105B</td>
+        <td>5,009</td>
+        <td>$68B</td>
+        <td>$0.4625</td>
+        <td>102%</td>
+        <td>0.98M</td>
+      </tr>
+      <tr>
+        <td><strong>Q3 2024</strong></td>
+        <td>$733B</td>
+        <td class="val-new">C $598B / E $135B</td>
+        <td>5,053</td>
+        <td>$64B</td>
+        <td>$0.4625</td>
+        <td class="val-neg">90%</td>
+        <td>4.49M</td>
+      </tr>
+      <tr>
+        <td><strong>Q1 2025</strong></td>
+        <td>$785B</td>
+        <td>C $641B / E $144B</td>
+        <td>5,141</td>
+        <td>$64B</td>
+        <td class="val-pos">$0.51</td>
+        <td>85%</td>
+        <td>4.68M</td>
+      </tr>
+      <tr>
+        <td><strong>Q2 2025</strong></td>
+        <td>$840B</td>
+        <td>C $690B / E $150B</td>
+        <td>5,333</td>
+        <td>$72B</td>
+        <td>$0.51</td>
+        <td>83%</td>
+        <td class="val-neg">0.11M</td>
+      </tr>
+      <tr>
+        <td><strong>Q3 2025</strong></td>
+        <td>$908B</td>
+        <td>C $723B / E $185B</td>
+        <td class="val-new">6,104 (incl. 609 Bridge)</td>
+        <td>$75B</td>
+        <td>$0.51</td>
+        <td>85%</td>
+        <td>2.57M</td>
+      </tr>
+      <tr>
+        <td><strong>Q1 2026</strong></td>
+        <td class="val-highlight">$1.03T</td>
+        <td>C $834B / E $192B</td>
+        <td class="val-neg">Not disclosed</td>
+        <td>$74B</td>
+        <td class="val-pos">$0.5625</td>
+        <td class="val-neg">81%</td>
+        <td class="val-highlight">7.05M</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px; font-weight:700; margin:28px 0 4px;">Other Reference Points</h3>
+  <table class="data-table">
+    <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>RBC ratios (Q1 2025)</td><td>US 419% / Bermuda 450% / consolidated 430%</td></tr>
+      <tr><td>RBC ratios (Q1 2026)</td><td>US 436% / Bermuda 454% / consolidated 441% (+ new Bermuda-vs-US methodology paragraph)</td></tr>
+      <tr><td>Athene net floating-rate assets</td><td>$15.1B (5% of net invested assets, Q2 2025) &rarr; $6.0B (2%, Q3 2025)</td></tr>
+      <tr><td>GP obligations</td><td>$200M (Q3 2025) &rarr; $334M (Q1 2026)</td></tr>
+      <tr><td>Private placements (Q1 2026)</td><td>"$24.2 billion of private placements, which represented 8% of Athene's net invested assets"</td></tr>
+      <tr><td>Q1 2026 effective tax rate</td><td class="val-neg">598.6% (Bermuda CIT revocation; $1.7B valuation allowance)</td></tr>
+      <tr><td>AP Grange (pre-announced for Q2 2026)</td><td>$673M GAAP gain / $458M non-operating gain, net of ACRA non-controlling interests</td></tr>
+      <tr><td>Buyback authorization</td><td>$3.0B (Feb 8, 2024) &rarr; $4.0B (effective Feb 9, 2026); $3.134B remaining at Q1 2026</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      if (el.classList.contains('finding')) findings.push(el);
+      if (el.classList.contains('finding-group')) el.querySelectorAll('.finding').forEach(f => findings.push(f));
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+</script>
+</body>
+</html>
