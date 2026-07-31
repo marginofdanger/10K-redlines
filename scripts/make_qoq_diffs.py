@@ -34,7 +34,10 @@ def main(ticker):
         if q.endswith("q3") and os.path.exists(os.path.join(kdir, f"fy{year}_mda.txt")):
             sequence.append((f"fy{year}", kdir))  # 10-K for that fiscal year
 
-    sections = ["mda", "risk_factors", "legal_proceedings"]
+    # "contingencies" covers filers (e.g. AMZN) whose Part II Item 1 is only a
+    # pointer to the commitments-and-contingencies note; tickers without those
+    # section files simply produce no diffs for it.
+    sections = ["mda", "risk_factors", "legal_proceedings", "contingencies"]
     for sn in sections:
         for (p1, d1), (p2, d2) in zip(sequence, sequence[1:]):
             a = load(os.path.join(d1, f"{p1}_{sn}.txt"))
