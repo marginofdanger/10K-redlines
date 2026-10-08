@@ -91,7 +91,10 @@ def reflow(lines):
         return lines
     out = []
     for l in lines:
-        if out and len(out[-1]) >= 80 and UNFINISHED.search(out[-1]) and not ITEM_LINE.match(l):
+        mid_paragraph = out and len(out[-1]) >= 80 and UNFINISHED.search(out[-1])
+        if mid_paragraph and re.fullmatch(r"\d{1,3}|table of contents", l, re.I):
+            continue  # page number or footnote marker splitting a paragraph
+        if mid_paragraph and not ITEM_LINE.match(l):
             out[-1] += " " + l
         else:
             out.append(l)
