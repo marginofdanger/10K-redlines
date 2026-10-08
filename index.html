@@ -188,6 +188,7 @@
       <th data-key="endKey">End FY<span class="arrow"></span></th>
       <th data-key="signals" class="num">Signals<span class="arrow"></span></th>
       <th data-key="qKey">10-Q<span class="arrow"></span></th>
+      <th data-key="updated">Last updated<span class="arrow"></span></th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -198,6 +199,9 @@
 </div>
 
 <script>
+// Filled in at deploy by scripts/stamp_updated.py: ticker -> date of the last change to its dashboards.
+const UPDATED = {};
+
 const companies = [
   {ticker:'META', name:'Meta Platforms',           sector:'Technology / Social Media',                startFY:'FY2020', endFY:'FY2025', signals:22, url:'companies/meta/',  tenQ:'companies/meta/10q/', qLabel:'2023Q1–2026Q2', c1:'#0668E1', c2:'#0080FB', c3:'#00C2FF'},
   {ticker:'GOOG', name:'Alphabet',                 sector:'Technology / Internet Search',             startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/goog/', tenQ:'companies/goog/10q/', qLabel:'2024Q1–2026Q2',  c1:'#1a1a2e', c2:'#4285F4', c3:'#EA4335'},
@@ -215,6 +219,12 @@ const companies = [
   {ticker:'CVNA', name:'Carvana',                  sector:'Automotive / Digital Retail',              startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/cvna/', tenQ:'companies/cvna/10q/', qLabel:'2024Q1–2026Q2',  c1:'#1a1a2e', c2:'#006D9E', c3:'#00AFF0'},
 ];
 
+function fmtDate(iso) {
+  if (!iso) return '\u2014';
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
+}
+
 // Parse "FY2018" -> 2018 (numeric, sortable)
 function fyKey(fy) {
   const m = String(fy).match(/(\d{4})/);
@@ -225,6 +235,7 @@ companies.forEach(c => {
   c.endKey = fyKey(c.endFY);
   c.years = c.endKey - c.startKey + 1;
   c.qKey = c.tenQ ? 1 : 0;
+  c.updated = UPDATED[c.ticker] || '';
 });
 
 const STATE_KEY = 'redline-sort-v1';
@@ -273,6 +284,7 @@ function render() {
       <td class="click-cell col-fy">${c.endFY}</td>
       <td class="click-cell col-count num">${c.signals}</td>
       <td>${c.tenQ ? `<a class="q-badge" href="${c.tenQ}" title="Quarterly 10-Q scanner ${c.qLabel || ''}">10-Q</a>` : ''}</td>
+      <td class="click-cell col-fy">${fmtDate(c.updated)}</td>
     </tr>
   `).join('');
 
