@@ -76,7 +76,26 @@ def clean_lines(path):
     for t in soup.find_all(["td", "th"]):
         t.insert_after(" ")
     lines = [re.sub(r"\s+", " ", l.replace("\xa0", " ")).strip() for l in soup.get_text("").split("\n")]
-    return [l for l in lines if l]
+    return reflow([l for l in lines if l])
+
+
+UNFINISHED = re.compile(r"[^.!?:;”\")]$")
+
+
+def reflow(lines):
+    """Some filings (TSM's 20-F) put each printed line in its own block, so paragraphs
+    arrive hard-wrapped. When most long lines end mid-sentence, join each long line
+    that lacks closing punctuation to the line after it."""
+    long = [l for l in lines if len(l) >= 80]
+    if not long or sum(1 for l in long if UNFINISHED.search(l)) < 0.5 * len(long):
+        return lines
+    out = []
+    for l in lines:
+        if out and len(out[-1]) >= 80 and UNFINISHED.search(out[-1]) and not ITEM_LINE.match(l):
+            out[-1] += " " + l
+        else:
+            out.append(l)
+    return out
 
 
 def headings(lines, titles):
