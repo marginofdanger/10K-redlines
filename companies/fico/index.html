@@ -278,7 +278,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>FICO 10-K Redline Analysis</h1>
   <div class="tagline">Year-over-year textual analysis of SEC filings tracking FICO's transformation from a decision management software company into a score-pricing monopoly with a software business attached.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0000814547) | Fiscal Years 2018-2025 (Sep 30 FY end) | Analysis: March 2026</div>
+  <div class="source">Source: SEC EDGAR (CIK 0000814547) | Fiscal Years 2018-2025 (Sep 30 FY end) | Analysis: March 2026, FY2024&ndash;FY2025 revised October 2026</div>
 </div>
 
 <!-- Strategic Eras -->
@@ -310,13 +310,13 @@ a:hover { text-decoration: underline; }
   </div>
   <div class="era-card">
     <div class="years">FY2023 &rarr; FY2024</div>
-    <h3>CFPB Inquiry</h3>
-    <p>Standalone CFPB mortgage pricing risk factor. FHFA bi-merge/tri-merge risk first disclosed. VantageScore named as competitor. DEI&rarr;"Organizational Culture." Bureau concentration 41%&rarr;45%.</p>
+    <h3>Regulators Reach Score Pricing</h3>
+    <p>New risk factor: CFPB closing-cost inquiry may limit mortgage score price increases. Fannie/Freddie risk moves up and adds bi-merge. FHFA first in MD&amp;A. DBNRR 120%&rarr;106%; ACV Bookings demoted. Bureau share 41%&rarr;45%. Buybacks $407M&rarr;$833M.</p>
   </div>
   <div class="era-card">
     <div class="years">FY2024 &rarr; FY2025</div>
-    <h3>Monopoly Pressure</h3>
-    <p>"Global analytics software leader." Bureau concentration 51%. CRAs listed as competitors. CFPB language depoliticized. FHFA score choice announced. CRA pricing constraint acknowledged. BNPL scores launched. Debt $2.2B&rarr;$3.1B. Buybacks $1.4B.</p>
+    <h3>Score Choice, Antitrust &amp; Leverage</h3>
+    <p>FHFA score choice written into the risk factor; bureau pricing named as a constraint. CFPB and its inquiry deleted. First legal proceeding: Sherman Act &sect;2 claim survives. Bureau share 51%. Software operating income falls; $10.9M restructuring. DEI programs deleted. Interest-coverage covenant dropped; debt $3.1B; buybacks $1.4B.</p>
   </div>
 </div>
 
@@ -421,48 +421,61 @@ a:hover { text-decoration: underline; }
 
 <!-- FY2023 -> FY2024 -->
 <div class="transition-header" id="yoy-2024">
-  <h2>FY2023 &rarr; FY2024: CFPB Inquiry</h2>
-  <div class="sub">Filed Nov 2024 | Employees: ~3,500 &rarr; ~3,600 | Revenue: $1.51B &rarr; $1.72B (+14%) | Scores Rev: 55% of total</div>
-</div>
-
-<div class="finding-group">
-  <h3><span class="dot" style="background:var(--accent)"></span> Risk Factors</h3>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Standalone CFPB mortgage pricing risk factor added</span><span class="tag tag-new">New</span></div><div class="finding-body">An entirely new risk factor paragraph was added addressing the CFPB's direct inquiry into FICO Score pricing:<blockquote>"There has been increased focus in the U.S. by federal regulators such as the CFPB and the FTC, as well as the current presidential administration and some states, related to the transparency and fairness of certain fees charged to consumers...in May 2024, the CFPB launched a public inquiry to obtain information on fees charged by providers of mortgages and related settlement services in the U.S. residential mortgage market, including fees for credit reports and credit scores."</blockquote>This was the first time any regulator was named as specifically investigating FICO Score pricing.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FHFA bi-merge/tri-merge risk first disclosed</span><span class="tag tag-new">New</span></div><div class="finding-body">New language acknowledged that changes to the number of credit reports required per mortgage could reduce FICO Score volume:<blockquote>"Other changes implemented by FHFA, Fannie Mae or Freddie Mac could also affect the demand for FICO Scores...including, for example, a change permitting mortgage originators to underwrite loans using credit scores from only two of the three national consumer reporting agencies rather than the three currently required"</blockquote>A shift from tri-merge (three bureau pulls per mortgage) to bi-merge would mechanically reduce FICO Score volume by one-third in the mortgage channel.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">VantageScore explicitly named as competitor selling "competitive product"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "VantageScore (a joint venture entity established by the three major U.S. consumer reporting agencies), which is selling a credit scoring product competitive with our products"</blockquote>Prior filings listed VantageScore neutrally. The addition of "which is selling a credit scoring product competitive with our products" sharpened the framing, explicitly identifying the CRAs' joint venture as a competitive threat.</div></div>
-</div>
-
-<div class="finding-group">
-  <h3><span class="dot" style="background:var(--red)"></span> Business Overview</h3>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">DEI heading renamed from "Diversity, Equity and Inclusion" to "Organizational Culture"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The human capital section underwent substantial revision. "Diversity, equity and inclusion" language was replaced with "Organizational Culture." Specific diversity metrics and the Affirmative Action Program disclosure were removed. The LDCC oversight description dropped "equity" from its enumerated responsibilities.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau concentration rose from 41% to 45%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Combined revenue from the three major consumer reporting agencies reached approximately 45% of total FICO revenue, continuing the steady concentration trend from 25% in FY2018.</div></div>
-</div>
-
-<!-- FY2024 -> FY2025 -->
-<div class="transition-header" id="yoy-2025">
-  <h2>FY2024 &rarr; FY2025: Monopoly Pressure</h2>
-  <div class="sub">Filed Nov 2025 | Employees: ~3,600 &rarr; ~3,700 | Revenue: $1.72B &rarr; $1.95B (+13%) | Scores Rev: 59% of total</div>
-</div>
-
-<div class="finding-group">
-  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Self-description changed again: "leading applied analytics company" &rarr; "global analytics software leader"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Fair Isaac Corporation...is a leading applied analytics company."</blockquote><blockquote>FY2025: "Fair Isaac Corporation...is a global analytics software leader."</blockquote>Three changes: (1) "leading" promoted to "leader" (noun, not adjective), (2) "applied" dropped (less technical), (3) "software" inserted. The company now defines itself primarily as a software company rather than an analytics company.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau concentration crosses 51% -- majority of revenue from three companies</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">For the first time, over half of all FICO revenue flows through the three major consumer reporting agencies. Bureau concentration: 25% (FY2018) &rarr; 51% (FY2025). Each bureau individually exceeds 10%, with the largest approaching 20%.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CRAs listed as competitors (not just partners/customers)</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"Primary competitors among outside suppliers of scoring models are the three major consumer reporting agencies in the U.S. and Canada, which are also our partners in offering our scoring solutions, and VantageScore (a joint venture entity established by the three major U.S. consumer reporting agencies), which is selling a credit scoring product competitive with our products."</blockquote>The CRAs are now simultaneously described as FICO's largest customers (51% of revenue), partners (distributing FICO Scores), and competitors (selling VantageScore). This three-way relationship is unprecedented in the filing history.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">BNPL scores and Mortgage Simulator launched; FHFA conforming mortgage approval</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>"FICO Score 10 T, gained increased traction for non-conforming mortgages and was approved for conforming mortgages by the Federal Housing Finance Agency for enterprise credit scoring requirements. In addition, we launched FICO Score 10 BNPL"</blockquote>FICO Score 10 BNPL addresses buy-now-pay-later tradelines. Mortgage Simulator is a new product. The FHFA conforming mortgage approval for Score 10 T is a material milestone -- it enables FICO to eventually replace legacy scores in the GSE channel.</div></div>
+  <h2>FY2023 &rarr; FY2024: Regulators Reach Score Pricing</h2>
+  <div class="sub">Filed Nov 6, 2024 | Employees: 3,455 &rarr; 3,586 | Revenue: $1.51B &rarr; $1.72B (+13%) | Scores: $773.8M &rarr; $919.7M (51% &rarr; 54% of revenue) | Bureau share: 41% &rarr; 45% | Buybacks: $407.3M &rarr; $833.3M</div>
 </div>
 
 <div class="finding-group">
   <h3><span class="dot" style="background:var(--red)"></span> Risk Factors</h3>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CRA pricing constraint on FICO explicitly acknowledged</span><span class="tag tag-new">New</span></div><div class="finding-body">New language acknowledging that CRA business practices can constrain FICO's revenue:<blockquote>"Demand for our products and services may be sensitive to product and pricing changes we implement, and our product and pricing strategies may not be accepted by the market."</blockquote>The filing also acknowledges for the first time that pricing and other business practices of the consumer reporting agencies can affect FICO's ability to grow score revenue. This is the closest FICO has come to admitting its pricing power is not unlimited.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CFPB language depoliticized</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">FY2024 referenced "the current U.S. presidential administration" alongside the CFPB. FY2025 retained the CFPB risk factor substance but removed politically specific framing. The regulatory risk is presented as institutional rather than tied to a particular administration.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FHFA score choice announced as specific risk</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>"If other credit score models are approved for use with mortgages delivered to Fannie Mae and Freddie Mac, or the FICO Score is not approved for continued use with those mortgages, it could have a material adverse effect on our revenues, results of operations and stock price."</blockquote>The risk factor now explicitly contemplates FHFA approving alternative credit score models, a scenario that was hypothetical in prior filings but became more concrete with VantageScore's FHFA application.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New risk factor: CFPB's May 2024 closing-cost inquiry may limit FICO's ability to raise mortgage score prices</span><span class="tag tag-new">New</span></div><div class="finding-body">A new risk factor, the first in the filing to tie regulation to FICO's own mortgage score pricing, under the heading:<blockquote>FY2024: "Increased regulatory focus on U.S. residential mortgage closing costs may affect our ability to implement price changes for FICO&reg; Scores used in mortgage originations and thus limit the revenues and profitability of the FICO Score."</blockquote><blockquote>FY2024: "For example, in May 2024, the CFPB launched a public inquiry to obtain information on fees charged by providers of mortgages and related settlement services in the U.S. residential mortgage market, including fees for credit reports and credit scores. ... our ability in the future to increase pricing for FICO Scores used in mortgage originations may be impacted and thus the revenues and profitability of the FICO Score may be adversely affected and the growth of our Scores business may be constrained."</blockquote>Earlier filings described regulatory interest in credit data and algorithms in general terms. This one names mortgage score pricing, the main driver of Scores growth, as the thing a regulator could cap. The same section adds that the CFPB "intends to issue rules under the FCRA that would extend the FCRA to certain business practices not currently subject to that statute," and the broader regulatory paragraph now targets "the sale and distribution of credit scores and credit reports" rather than "the business of our customers."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Fannie/Freddie risk factor moves from 11th to 6th and adds the bi-merge scenario</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The risk factor "If use of the FICO&reg; Score by Fannie Mae and Freddie Mac were to cease or decline..." moved up from paragraph 63 to paragraph 30 of the section, ahead of the competition, third-party, intellectual-property and technology risk factors. It also gained a new sentence:<blockquote>FY2024: "Other changes implemented by FHFA, Fannie Mae or Freddie Mac could also affect the demand for FICO Scores and thus could have similar adverse effects on our business, including, for example, a change permitting mortgage originators to underwrite loans using credit scores from only two of the three national consumer reporting agencies (a &ldquo;bi-merge report&rdquo;) rather than from all three (a &ldquo;tri-merge report&rdquo;)."</blockquote>Until FY2023 the risk was framed only as the FICO Score losing approval. The new sentence names a way FICO could lose mortgage volume while keeping that approval: one fewer bureau pull per loan file means one fewer score sold.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau "alliance" becomes a "joint venture"; Item 1 adds that VantageScore is "selling a credit scoring product competitive with our products"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "For example, Experian, TransUnion and Equifax have formed an alliance that is selling a credit scoring product competitive with our products."</blockquote><blockquote>FY2024: "For example, Experian, TransUnion and Equifax have formed a joint venture that is selling a credit scoring product competitive with our products."</blockquote>In Item 1, the Scores competition sentence keeps naming the three bureaus as "primary competitors" (as in FY2023) and now adds that VantageScore, "a joint venture entity established by the three major U.S. consumer reporting agencies," "is selling a credit scoring product competitive with our products." The bureaus, which generated 45% of FICO's revenue this year, are described in sharper terms as owners of a competing product.</div></div>
 </div>
 
 <div class="finding-group">
-  <h3><span class="dot" style="background:var(--cyan)"></span> MDA &amp; Financials</h3>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Score pricing language: "higher unit price" plus mortgage volume recovery</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2025: "primarily attributable to a higher unit price, an increase in volume of mortgage originations and a multi-year license renewal in the U.S. recognized on our insurance score product"</blockquote>For the first time since FY2020, mortgage volume is a positive contributor rather than a partial offset. The insurance score license renewal is a new one-time item. Pricing language remains at maximum opacity -- "higher unit price" with no vertical attribution.</div></div>
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Debt increased from $2.2B to $3.1B; buybacks $1.4B</span><span class="tag tag-signal">Signal</span></div><div class="finding-body">Total debt rose approximately $900M in a single year, the largest annual increase in FICO's history. Cumulative buybacks reached approximately $5.6B, driving stockholders' equity to approximately -$1.75B. Revenue per employee reached approximately $525K.</div></div>
+  <h3><span class="dot" style="background:var(--cyan)"></span> MD&amp;A &amp; Financials</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FHFA appears in the MD&amp;A for the first time: Score 10 T "will be implemented" for conforming mortgages on FHFA's timeline</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2023: "We continued to promote adoption of our most predictive scores, FICO&reg; Score 10 and 10 T."</blockquote><blockquote>FY2024: "The adoption of our most predictive scores, FICO&reg; Score 10 and 10 T, gained increased traction for non-conforming mortgages and will be implemented for conforming mortgages based on the timeline set forth by the Federal Housing Finance Agency for enterprise credit scoring requirements."</blockquote>"Promote adoption" becomes "will be implemented," with the timing handed to FHFA. The same filing moves the Fannie/Freddie risk factor up and adds the bi-merge risk, so FHFA now appears as both the route for FICO's newest score and the source of its largest mortgage risk.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">B2B Scores +$150.8M on price alone while mortgage volume fell; wording unchanged for a second year</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2023: "The increase in business-to-business scores revenue was primarily attributable to a higher unit price, partially offset by a decrease in mortgage originations volume."</blockquote><blockquote>FY2024: "The increase in business-to-business scores revenue was primarily attributable to a higher unit price, partially offset by a decrease in volume of mortgage originations."</blockquote>B2B scores revenue rose $150.8M (versus $85.6M in FY2023) with mortgage volume still a headwind, so price did all of the work. B2C fell $5.0M on lower myFICO.com direct sales. Scores reached 54% of revenue (51% in FY2023), and segment margin held at 88%. This is the first year in which a new risk factor says a regulator could cap that pricing.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Software DBNRR 120% &rarr; 106% and ARR growth 22% &rarr; 8%; ACV Bookings demoted from "more meaningful" to "useful supplemental"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "However, we believe ACV Bookings is a more meaningful measure of our business as it includes estimated revenues and future billings excluded from Note 11"</blockquote><blockquote>FY2024: "However, we believe ACV Bookings is a useful supplemental measure of our business as it includes estimated revenues and future billings excluded from Note 9"</blockquote>The downgrade came as the headline software metrics slowed: ARR growth fell to 8% ($721.2M) from 22%, and DBNRR, now defined "as of" a date rather than "during the fourth quarter," fell to 106% from 120%. Non-platform DBNRR was 99%. The filing also says for the first time that usage-based estimates make up "approximately 30%" of ACV Bookings. Software margin slipped to 32% from 33%, and a new sentence attributes the professional-services decline to "our strategy to emphasize higher-margin software over professional services."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Buybacks double to $833.3M under a new $1.0B July 2024 program; $450M term loan added</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2024: "Total share repurchases during fiscal 2024 were $833.3 million, compared with $407.3 million during fiscal 2023."</blockquote>Two programs were approved in one year: $500.0M in January 2024 and $1.0B in July 2024, with $760.5M remaining at year end. A new $450M term loan (June 13, 2024) raised credit capacity to $1.35B, and total debt rose to $2.2B from $1.9B. Operating cash flow was $633.0M, so repurchases exceeded it by about $200M. The stockholders' deficit widened to $962.7M from $688.0M.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau concentration rises to 45% of revenue from 41%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2024: "During fiscal 2024, 2023 and 2022, revenues generated from our agreements with Experian, TransUnion and Equifax collectively accounted for 45%, 41% and 39% of our total revenues, respectively."</blockquote>A four-point rise in one year, the largest in the three-year window shown, in the same filing that says these partners own a competing product.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Footprint claims shrink: "more than 100" countries becomes "more than 80"; fewer top-10 insurers and Fortune top-10 clients</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">Both the opening paragraph and the Software description cut the country count:<blockquote>FY2024: "FICO provides software solutions to business customers in more than 80 countries around the world."</blockquote>In the customer list, top-ten U.S. property and casualty insurers using FICO fell from nine to eight, and Fortune 500 top-ten users from eight to seven. None of these cuts is explained. They fit the software strategy of concentrating on North American financial institutions, which the FY2024 MD&amp;A calls "a significant portion of our short-term opportunity."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Diversity, Inclusion and Belonging" heading renamed "Organizational Culture"; the substance stays and diversity metrics are added</span><span class="tag tag-changed">Changed</span></div><div class="finding-body">The human-capital subsection was retitled, and the board committee's remit dropped "inclusion and belonging" (it had listed "diversity, inclusion and belonging"). The underlying commitments stayed, however, and new diversity data was added:<blockquote>FY2024: "Across our global workforce, as of September 30, 2024, the percentage of males and females was 67% and 33%, respectively."</blockquote>The Affirmative Action Program, the employee resource groups and the MLT partnership were all retained, and an HBCU recruiting program was added. FY2024 changed the labels; the content was cut in FY2025 (see next transition).</div></div>
+</div>
+
+<!-- FY2024 -> FY2025 -->
+<div class="transition-header" id="yoy-2025">
+  <h2>FY2024 &rarr; FY2025: Score Choice, Antitrust &amp; Leverage</h2>
+  <div class="sub">Filed Nov 7, 2025 | Employees: 3,586 &rarr; 3,811 | Revenue: $1.72B &rarr; $1.99B (+16%) | Operating income: $733.6M &rarr; $924.9M (+26%) | Scores: $919.7M &rarr; $1.17B (54% &rarr; 59%) | Total debt: $2.2B &rarr; $3.1B | Buybacks: $833.3M &rarr; $1.4B</div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--red)"></span> Risk Factors &amp; Legal Proceedings</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">FHFA risk rewritten around the July 2025 score-choice announcement; bi-merge widened to "fewer than three" bureaus</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "...including, for example, a change permitting mortgage originators to underwrite loans using credit scores from only two of the three national consumer reporting agencies (a &ldquo;bi-merge report&rdquo;) rather than from all three"</blockquote><blockquote>FY2025: "...including, for example, the change announced by the FHFA Director in July 2025 permitting mortgage originators to choose the credit score they submit with mortgages delivered to Fannie Mae and Freddie Mac or a potential future change permitting mortgage originators to underwrite loans using credit scores from fewer than three national consumer reporting agencies."</blockquote>Score choice is now described as an announced change, not a hypothetical, and "two of the three" becomes "fewer than three," which also covers a single-file pull. The MD&amp;A meanwhile reports that Score 10 T "was approved for conforming mortgages" by FHFA, which replaces FY2024's "will be implemented."</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New sentence: bureau pricing "may constrain" the FICO Score's ability to compete in mortgage</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2025: "The ability of our FICO Score to compete effectively in the U.S. mortgage market may be constrained by the pricing and other business practices of the consumer reporting agencies, which could have a material adverse effect on our revenues, results of operations and stock price."</blockquote>This is the first time FICO says in writing that the bureaus' own pricing could cost the FICO Score share once lenders have a choice of score. The wording suggests that what the bureaus charge on top of FICO's royalty is now a competitive issue, though the filing does not say how. It closes the Fannie/Freddie risk factor, so in that paragraph the bureaus appear as a pricing threat, while they generated 51% of FICO's revenue this year.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CFPB, FTC, "the current presidential administration" and the May 2024 inquiry all deleted from the mortgage-fee risk factor</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2024: "There has been increased focus in the U.S. by federal regulators such as the CFPB and the FTC, as well as the current presidential administration and some states, related to the transparency and fairness of certain fees charged to consumers"</blockquote><blockquote>FY2025: "There has been increased regulatory focus in the U.S. related to the transparency and fairness of certain fees charged to consumers in connection with the closing of a residential mortgage loan, including fees for credit reports and credit scores."</blockquote>The May 2024 inquiry, the CFPB's stated questions about "who is benefiting," and the planned FCRA rulemaking were also removed, both here and in Item 1. The risk-factor heading about limits on mortgage score price changes is retained. The agency is gone from the text, but the warning that price increases could be limited remains.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">First legal proceeding disclosed: Sherman Act Section 2 claim against FICO alone survives dismissal</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "Not applicable."</blockquote><blockquote>FY2025: "The court dismissed with prejudice all claims in the lawsuit other than a Sherman Act Section 2 claim and accompanying state law claims against FICO, which were allowed to proceed through the discovery stage of the litigation. FICO intends to vigorously defend against the remaining claims in this proceeding."</blockquote>The consolidated putative class actions in the Northern District of Illinois name FICO and the three bureaus, but only the monopolization claim against FICO survived the November 2024 ruling. In the same filing, "Antitrust and unfair competition laws" is added as a new bullet in the Item 1A regulatory list, and Item 1 adds "and unfair competition" after "antitrust." No loss estimate is given.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">International revenue falls to 23% from 27%; an India&ndash;Pakistan risk is named for the one-third of staff in India</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2025: "For example, approximately one-third of our workforce is located in India, which could be negatively impacted by heightened tensions between India and Pakistan."</blockquote>Item 1 puts India at 1,506 employees (40%), against 1,335 (35%) in the U.S., so India is now the largest location. Tariffs and trade policy were added in three risk-factor passages. The non-U.S. revenue share fell four points as U.S. mortgage scores grew.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--accent)"></span> Business Overview</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Self-description: "leading applied analytics company" &rarr; "global analytics software leader"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Fair Isaac Corporation...is a leading applied analytics company."</blockquote><blockquote>FY2025: "Fair Isaac Corporation...is a global analytics software leader."</blockquote>"Software" enters the opening line in the year Scores reached 59% of revenue and Software segment operating income fell. The identity claim and the financial mix moved in opposite directions.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureaus added to the generic competitor list in Item 1 and Item 1A</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "&bull;providers of credit reports and credit scores;"</blockquote><blockquote>FY2025: "providers of credit reports and credit scores, including consumer reporting agencies"</blockquote>The bureaus had been named as "primary competitors among outside suppliers of scoring models" in the Scores paragraph since at least FY2023. What is new is that they now appear in the general competition lists of both the business section and the risk factors, next to the new FHFA score-choice language.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Affirmative Action Program, employee resource groups and diversity-recruiting programs deleted</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2024: "In addition, in the U.S. we have established an Affirmative Action Program and underlying plans for office locations with 50 or more employees to formally measure, report on, and identify needed actions to close any gaps involving the utilization and advancement of women, minorities, disabled persons, and veterans."</blockquote>That paragraph, the "Commitment to Inclusion and Belonging Policy," the ERG paragraph, the MLT and HBCU diversity-recruiting paragraph, and the "qualified applicant pool diversity" hiring policy were all removed in FY2025. Culture is now described as one "where all employees feel welcome," and "diversity programs" becomes "talent programs." The gender and U.S. diversity percentages (46%) were kept. This, not FY2024, is the substantive DEI retreat.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Bureau concentration crosses half of revenue: 51%, up from 45%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2025: "During fiscal 2025, 2024 and 2023, revenues generated from our agreements with Experian, TransUnion and Equifax collectively accounted for 51%, 45% and 41% of our total revenues, respectively."</blockquote>A six-point rise, the largest in the series, in the same filing that calls these counterparties competitors in two lists and a pricing constraint in the risk factors.</div></div>
+</div>
+
+<div class="finding-group">
+  <h3><span class="dot" style="background:var(--cyan)"></span> MD&amp;A &amp; Financials</h3>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Mortgage volume flips from offset to driver; B2C driver flips from myFICO decline to bureau royalties</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "The increase in business-to-business scores revenue was primarily attributable to a higher unit price, partially offset by a decrease in volume of mortgage originations."</blockquote><blockquote>FY2025: "The increase in business-to-business scores revenue was primarily attributable to a higher unit price, an increase in volume of mortgage originations and a multi-year license renewal in the U.S. recognized on our insurance score product during fiscal 2025."</blockquote><blockquote>FY2025: "The increase in business-to-consumer scores revenue was primarily attributable to an increase in royalties derived from scores sold indirectly to consumers through consumer reporting agencies."</blockquote>Mortgage volume is a tailwind for the first time in this three-filing window, and B2B grew $236.7M. Part of the growth is a one-off: the insurance renewal is a multi-year license recognized up front. B2C rose $12.2M after falling $5.0M, and the stated reason moves from FICO's own website to bureau royalties, which adds to the bureau dependence.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Software segment operating income falls $9.8M (&minus;4%), margin 32% &rarr; 30%; ARR +4%, DBNRR 102%, non-platform ARR shrinking</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2025: "Segment operating income as a percentage of segment revenue for Software decreased to 30% from 32%, primarily attributable to the increases in third-party data center hosting costs and in personnel and labor costs."</blockquote>This is the first decline in Software operating income in the three-year table ($247.7M against $257.5M), on revenue up only 3%, part of which came from "a large license renewal." ARR growth slowed to 4% ($747.3M), DBNRR to 102% (106% a year earlier), and non-platform ARR shrank 2% year over year. The FY2024 claim that "a significant portion of our short-term opportunity remains in North America" was deleted.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">First restructuring charge since FY2021: $10.9M for 226 eliminated positions</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2025: "During the fourth quarter of fiscal 2025, we incurred charges of $10.9 million in employee separation costs due to the elimination of 226 positions throughout the Company."</blockquote>The FY2023 10-K stated there were no restructuring charges in fiscal 2022 or 2023. Year-end headcount still rose to 3,811, so the cuts came after hiring during the year. The FY2024 language about a "remarkably low undesired attrition rate," the lowest "in decades," was also removed.</div></div>
+  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">$1.5B of 6.00% notes replace the term loans; the 3.0x interest-coverage covenant disappears; buybacks reach $1.4B</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "...subject to certain conditions, and a minimum interest coverage ratio of 3.0 to 1.0. The credit agreement also contains other covenants typical of unsecured credit facilities."</blockquote><blockquote>FY2025: "...subject to certain conditions, and contains other covenants typical of an unsecured credit facility."</blockquote>The May 2025 amendment raised the revolver to $1.0B and extended it to 2030, the 2025 Senior Notes (due 2033) repaid both term loans, and the covenant sentence lost its interest-coverage test. Total debt rose to $3.1B from $2.2B, net interest expense rose 27% to $133.6M, and buybacks of $1.4B were nearly double operating cash flow ($778.8M). The stockholders' deficit widened to $1.75B from $963M.</div></div>
 </div>
 
 
@@ -478,11 +491,11 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2018</td><td>~25%</td><td>No</td><td>Baseline</td></tr>
         <tr><td>FY2019</td><td>~29%</td><td>No</td><td>Growing</td></tr>
         <tr><td>FY2020</td><td>~31%</td><td>No</td><td>Score rev driving concentration</td></tr>
-        <tr><td>FY2021</td><td>~33%</td><td class="val-highlight">Yes -- all three</td><td>Individual disclosure triggered</td></tr>
-        <tr><td>FY2022</td><td>~37%</td><td>Yes</td><td>Accelerating</td></tr>
+        <tr><td>FY2021</td><td>~38%</td><td class="val-highlight">Yes -- all three</td><td>Individual disclosure triggered</td></tr>
+        <tr><td>FY2022</td><td>~39%</td><td>Yes</td><td>Accelerating</td></tr>
         <tr><td>FY2023</td><td>~41%</td><td>Yes</td><td>Approaching majority</td></tr>
-        <tr><td>FY2024</td><td>~45%</td><td>Yes</td><td>Near-majority</td></tr>
-        <tr><td>FY2025</td><td class="val-neg">~51%</td><td>Yes</td><td>Majority crossed</td></tr>
+        <tr><td>FY2024</td><td>45%</td><td>Yes</td><td>Near-majority; largest one-year rise to date (+4 pts)</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">51%</td><td>Yes</td><td>Majority crossed (+6 pts)</td></tr>
       </tbody>
     </table>
     <p style="margin-top:10px">Over half of all FICO revenue now flows through three companies that are simultaneously customers, partners, and competitors (via VantageScore).</p>
@@ -550,8 +563,8 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2018-21</td><td>Not named in risk factors</td><td>No regulatory scrutiny</td></tr>
         <tr><td>FY2022</td><td>Named in general regulatory list alongside UDAAP</td><td>Generic inclusion</td></tr>
         <tr><td>FY2023</td><td>Named with "increased focus" language re: AI, algorithms, credit scores</td><td>Elevated concern</td></tr>
-        <tr><td>FY2024</td><td class="val-neg">Standalone risk factor: "CFPB launched a public inquiry...fees for credit reports and credit scores"</td><td>Direct investigation of FICO pricing</td></tr>
-        <tr><td>FY2025</td><td>CFPB risk retained; "current U.S. presidential administration" removed</td><td>Depoliticized; institutional risk</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">New risk factor: May 2024 CFPB inquiry into mortgage closing costs "including fees for credit reports and credit scores"; FCRA rulemaking named</td><td>Regulation tied to FICO&#39;s mortgage score pricing</td></tr>
+        <tr><td>FY2025</td><td>CFPB, FTC, the administration, the May 2024 inquiry and the FCRA rulemaking all deleted; generic "increased regulatory focus" and the price-change heading retained</td><td>Agency de-named; pricing risk kept</td></tr>
       </tbody>
     </table>
   </div>
@@ -568,8 +581,8 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2020</td><td>Same</td><td>No escalation</td></tr>
         <tr><td>FY2021</td><td class="val-highlight">Standalone risk factor; FHFA validation and approval</td><td>Elevated to dedicated risk</td></tr>
         <tr><td>FY2022-23</td><td>Standalone risk factor retained</td><td>Steady-state</td></tr>
-        <tr><td>FY2024</td><td class="val-neg">Bi-merge/tri-merge risk added; volume reduction scenario</td><td>New specific threat</td></tr>
-        <tr><td>FY2025</td><td class="val-neg">Score choice announced; CRA pricing constraint; FHFA approval of Score 10 T</td><td>Both threat and opportunity</td></tr>
+        <tr><td>FY2024</td><td class="val-neg">Bi-merge/tri-merge risk added; risk factor moved up (paragraph 63 &rarr; 30)</td><td>New specific threat</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">July 2025 score-choice announcement; "fewer than three" bureaus; CRA pricing constraint; FHFA approval of Score 10 T</td><td>Both threat and opportunity</td></tr>
       </tbody>
     </table>
   </div>
@@ -587,7 +600,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2024-25</td><td class="val-neg">"VantageScore...which is selling a credit scoring product competitive with our products"</td><td>Explicit competitive threat</td></tr>
       </tbody>
     </table>
-    <p style="margin-top:10px">FY2025 goes further: CRAs themselves are listed as "primary competitors" in the opening sentence of the Scores competition paragraph, the first time the companies providing 51% of FICO's revenue are named as competitors.</p>
+    <p style="margin-top:10px">The three bureaus have been named "primary competitors among outside suppliers of scoring models" since at least FY2023. In FY2024 the risk factor's bureau "alliance" became a "joint venture"; FY2025 adds "including consumer reporting agencies" to the generic competitor lists in Item 1 and Item 1A and says bureau pricing may constrain the FICO Score in mortgage.</p>
   </div>
 </div>
 
@@ -602,13 +615,13 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2019</td><td>~$990M</td><td>~$460M</td><td>Positive</td></tr>
         <tr><td>FY2020</td><td>~$1.1B</td><td>~$200M</td><td>Near zero</td></tr>
         <tr><td>FY2021</td><td>~$1.3B</td><td>~$882M</td><td class="val-neg">Negative</td></tr>
-        <tr><td>FY2022</td><td>~$1.9B</td><td>~$900M</td><td class="val-neg">Negative</td></tr>
-        <tr><td>FY2023</td><td>~$2.1B</td><td>~$1.0B</td><td class="val-neg">Negative</td></tr>
-        <tr><td>FY2024</td><td>~$2.2B</td><td>~$1.1B</td><td class="val-neg">Negative</td></tr>
-        <tr><td>FY2025</td><td class="val-neg">~$3.1B</td><td class="val-neg">~$1.4B</td><td class="val-neg">~-$1.75B</td></tr>
+        <tr><td>FY2022</td><td>~$1.9B</td><td>~$1.1B</td><td class="val-neg">-$802M</td></tr>
+        <tr><td>FY2023</td><td>~$1.9B</td><td>$407M</td><td class="val-neg">-$688M</td></tr>
+        <tr><td>FY2024</td><td>~$2.2B</td><td>$833M</td><td class="val-neg">-$963M</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">~$3.1B</td><td class="val-neg">~$1.4B</td><td class="val-neg">-$1.75B</td></tr>
       </tbody>
     </table>
-    <p style="margin-top:10px">Cumulative buybacks ~$5.6B on ~$11B of cumulative revenue over eight years. The capital return program is funded by debt, not retained earnings.</p>
+    <p style="margin-top:10px">Cumulative buybacks ~$5.5B on ~$11.5B of cumulative revenue over eight years. In FY2025 buybacks ($1.4B) were nearly double operating cash flow ($778.8M), and the revolver amendment dropped the 3.0x interest-coverage covenant. The capital return program is funded by debt, not retained earnings.</p>
   </div>
 </div>
 
@@ -658,8 +671,8 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2018-20</td><td>"Personnel" / "Employees"</td><td>Minimal; headcount only</td></tr>
         <tr><td>FY2021</td><td>Human Capital (expanded)</td><td class="val-pos">DEI subsection; Affirmative Action Program; MLT partnership; EEO-1 reference</td></tr>
         <tr><td>FY2022-23</td><td>Human Capital</td><td>DEI language retained; campus recruiting for diversity</td></tr>
-        <tr><td>FY2024</td><td class="val-neg">"Organizational Culture"</td><td>"Equity" dropped; Affirmative Action removed; diversity metrics removed</td></tr>
-        <tr><td>FY2025</td><td>"Organizational Culture"</td><td>Same framework as FY2024</td></tr>
+        <tr><td>FY2024</td><td>"Organizational Culture"</td><td>Heading renamed from "Diversity, Inclusion and Belonging"; "inclusion and belonging" dropped from board committee remit; Affirmative Action Program and ERGs retained; gender and U.S. diversity metrics added</td></tr>
+        <tr><td>FY2025</td><td class="val-neg">"Organizational Culture"</td><td>Affirmative Action Program, ERGs, inclusion policy and MLT/HBCU diversity recruiting deleted; "diversity programs" &rarr; "talent programs"; metrics kept</td></tr>
       </tbody>
     </table>
   </div>
@@ -684,7 +697,7 @@ a:hover { text-decoration: underline; }
   <div class="section-header"><h2>Signal #13: Employee Geography</h2></div>
   <div class="signal-card full">
     <h3><span class="num">13</span> Employee Distribution</h3>
-    <p>FICO's workforce shifted from US-majority to India-largest over the eight-year period. By FY2025, approximately 40% of employees are based in India, making it the single largest country for FICO headcount. Total employee count declined from ~4,200 (FY2018) to ~3,700 (FY2025) while revenue nearly doubled, driving revenue per employee from ~$281K to ~$525K.</p>
+    <p>FICO's workforce shifted from US-majority to India-largest over the eight-year period. By FY2025, approximately 40% of employees are based in India, making it the single largest country for FICO headcount. Total employee count declined from ~4,200 (FY2018) to ~3,800 (FY2025: 3,811) while revenue nearly doubled, driving revenue per employee from ~$281K to ~$522K. FY2025 adds a risk-factor sentence on India&ndash;Pakistan tensions for the roughly one-third of staff in India.</p>
   </div>
 </div>
 
@@ -730,8 +743,8 @@ a:hover { text-decoration: underline; }
       <tbody>
         <tr><td>FY2018-20</td><td>FICO Decision Management Platform; on-premise dominant</td><td>Early cloud migration</td></tr>
         <tr><td>FY2021-22</td><td>FICO Platform emphasized; ARR metrics introduced</td><td>Platform-centric rewrite</td></tr>
-        <tr><td>FY2023-24</td><td>FICO Marketplace launched; DBNRR declining (120%&rarr;102%)</td><td>Marketplace expansion but retention pressure</td></tr>
-        <tr><td>FY2025</td><td>"Custom solutions" language removed</td><td>Standardization over customization</td></tr>
+        <tr><td>FY2023-24</td><td>Platform ARR 26% &rarr; 31% of software ARR; DBNRR 120% &rarr; 106%; ACV Bookings demoted to "useful supplemental measure"</td><td>Retention pressure</td></tr>
+        <tr><td>FY2025</td><td>FICO Marketplace launch; platform ARR 35%; DBNRR 102%; "custom client solutions" dropped from the Software risk factor; segment operating income &minus;4%</td><td>Standardization; margin pressure</td></tr>
       </tbody>
     </table>
   </div>
@@ -779,15 +792,15 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="signal-card">
       <h3>Regulatory Arc</h3>
-      <p>No CFPB risk (FY2018-22) to standalone risk factor naming CFPB inquiry (FY2024) to depoliticized language (FY2025). FHFA score choice and CRA pricing constraint are new FY2025 risks. The regulatory environment went from background noise to a direct challenge to FICO's pricing model.</p>
+      <p>No CFPB risk (FY2018-22) to a new risk factor tying the CFPB's closing-cost inquiry to FICO's mortgage score price increases (FY2024), to the agency being deleted from that risk factor while the pricing warning stays (FY2025). FY2025 adds FHFA score choice, a bureau-pricing constraint, and the first legal proceeding: a surviving Sherman Act Section 2 claim against FICO. The challenge to the pricing model moved from regulators to the market and the courts.</p>
     </div>
     <div class="signal-card">
       <h3>Debt-Funded Buybacks</h3>
-      <p>Total debt: $845M to $3.1B. Cumulative buybacks ~$5.6B. Negative stockholders' equity: -$1.75B. Revenue per employee: $281K to $525K. The capital structure is optimized for score revenue extraction: high-margin cash flows service debt that funds buybacks.</p>
+      <p>Total debt: $845M to $3.1B. Cumulative buybacks ~$5.5B. Stockholders' deficit: -$1.75B at FY2025 (from -$688M at FY2023). Revenue per employee: $281K to $522K. FY2025 buybacks ($1.4B) ran at nearly twice operating cash flow, and the interest-coverage covenant was removed. High-margin score cash flows service debt that funds buybacks.</p>
     </div>
     <div class="signal-card">
       <h3>Software Transition</h3>
-      <p>Three segments collapsed to two (FY2021). Platform ARR growing but DBNRR declining (120% to 102%). "Custom solutions" language removed FY2025. The software business is FICO's stated strategic priority but Scores is the financial engine.</p>
+      <p>Three segments collapsed to two (FY2021). Platform ARR rose to 35% of software ARR, but total DBNRR fell from 120% (FY2023) to 102% (FY2025), ARR growth to 4%, and Software operating income declined in FY2025 alongside a $10.9M restructuring. The opening sentence calls FICO a "software leader" while Scores supplies 59% of revenue and most of the profit.</p>
     </div>
     <div class="signal-card">
       <h3>Score Product Expansion</h3>
@@ -807,29 +820,29 @@ a:hover { text-decoration: underline; }
     </thead>
     <tbody>
       <tr>
-        <td><strong>Revenue</strong></td><td>$1.16B</td><td>$1.16B</td><td>$1.29B</td><td>$1.32B</td><td>$1.38B</td><td>$1.51B</td><td>$1.72B</td><td>$1.95B</td>
+        <td><strong>Revenue</strong></td><td>$1.16B</td><td>$1.16B</td><td>$1.29B</td><td>$1.32B</td><td>$1.38B</td><td>$1.51B</td><td>$1.72B</td><td>$1.99B</td>
       </tr>
       <tr>
-        <td><strong>Scores Revenue</strong></td><td>$389M</td><td>$474M</td><td>$581M</td><td>$706M</td><td>$759M</td><td>$826M</td><td>$972M</td><td>$1.15B</td>
+        <td><strong>Scores Revenue</strong></td><td>$389M</td><td>$474M</td><td>$581M</td><td>$654M</td><td>$707M</td><td>$774M</td><td>$920M</td><td>$1.17B</td>
       </tr>
       <tr>
-        <td><strong>Scores % of Total</strong></td><td>33%</td><td>41%</td><td>45%</td><td>53%</td><td>55%</td><td>55%</td><td>56%</td><td class="val-highlight">59%</td>
+        <td><strong>Scores % of Total</strong></td><td>33%</td><td>41%</td><td>45%</td><td>50%</td><td>51%</td><td>51%</td><td>54%</td><td class="val-highlight">59%</td>
       </tr>
       <tr>
-        <td><strong>Scores Op Margin</strong></td><td>~80%</td><td>~82%</td><td>~84%</td><td>~86%</td><td>~87%</td><td>~88%</td><td>~88%</td><td>~88%</td>
+        <td><strong>Scores Op Margin</strong></td><td>~80%</td><td>~82%</td><td>~84%</td><td>86%</td><td>88%</td><td>88%</td><td>88%</td><td>88%</td>
       </tr>
       <tr><td colspan="9" style="height:8px;border:none"></td></tr>
       <tr>
-        <td><strong>Bureau %</strong></td><td>~25%</td><td>~29%</td><td>~31%</td><td>~33%</td><td>~37%</td><td>~41%</td><td>~45%</td><td class="val-neg">~51%</td>
+        <td><strong>Bureau %</strong></td><td>~25%</td><td>~29%</td><td>~31%</td><td>38%</td><td>39%</td><td>41%</td><td>45%</td><td class="val-neg">51%</td>
       </tr>
       <tr>
-        <td><strong>Employees</strong></td><td>~4,200</td><td>~4,100</td><td>~4,000</td><td>~3,800</td><td>~3,600</td><td>~3,500</td><td>~3,600</td><td>~3,700</td>
+        <td><strong>Employees</strong></td><td>~4,200</td><td>~4,100</td><td>~4,000</td><td>3,650</td><td>3,404</td><td>3,455</td><td>3,586</td><td>3,811</td>
       </tr>
       <tr>
-        <td><strong>Debt</strong></td><td>~$845M</td><td>~$990M</td><td>~$1.1B</td><td>~$1.3B</td><td>~$1.9B</td><td>~$2.1B</td><td>~$2.2B</td><td class="val-neg">~$3.1B</td>
+        <td><strong>Debt</strong></td><td>~$845M</td><td>~$990M</td><td>~$1.1B</td><td>~$1.3B</td><td>~$1.9B</td><td>~$1.9B</td><td>~$2.2B</td><td class="val-neg">~$3.1B</td>
       </tr>
       <tr>
-        <td><strong>Buybacks</strong></td><td>~$235M</td><td>~$460M</td><td>~$200M</td><td>~$882M</td><td>~$900M</td><td>~$1.0B</td><td>~$1.1B</td><td class="val-neg">~$1.4B</td>
+        <td><strong>Buybacks</strong></td><td>~$235M</td><td>~$460M</td><td>~$200M</td><td>~$882M</td><td>~$1.1B</td><td>$407M</td><td>$833M</td><td class="val-neg">~$1.4B</td>
       </tr>
       <tr>
         <td><strong>Countries</strong></td><td>~100</td><td>~120</td><td>~120</td><td>~120</td><td>~100</td><td>~100</td><td>~80</td><td>~80</td>
@@ -839,7 +852,7 @@ a:hover { text-decoration: underline; }
 </div>
 
 <div style="text-align:center;padding:40px 0;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:40px">
-  Analysis conducted March 2026 | All data sourced from SEC EDGAR filings for Fair Isaac Corporation (CIK 0000814547)
+  Analysis conducted March 2026; FY2024&ndash;FY2025 revised October 2026 | All data sourced from SEC EDGAR filings for Fair Isaac Corporation (CIK 0000814547)
 </div>
 
 </div><!-- end .main -->
