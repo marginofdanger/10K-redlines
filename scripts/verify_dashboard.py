@@ -169,7 +169,10 @@ def main():
         quotes = [q for q in quotes if q[1] in new or any(l in new for l in range(q[1] - 3, q[1] + 1))]
     checked = unmatched = 0
     if corpus_files:
-        corpus = norm(" ".join(open(f, encoding="utf-8").read() for f in corpus_files))
+        # drop page furniture so a paragraph split across a page break reads continuously
+        furniture = re.compile(r"(\d{1,3}|[ivxl]{1,5}|-\s*\d{1,3}\s*-|table of contents|page|index)", re.I)
+        corpus = norm(" ".join(l for f in corpus_files for l in open(f, encoding="utf-8").read().split("\n")
+                               if not furniture.fullmatch(l.strip())))
         for q, ln in quotes:
             for frag in fragments(q):
                 checked += 1
