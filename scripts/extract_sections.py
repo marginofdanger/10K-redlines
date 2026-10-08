@@ -205,14 +205,18 @@ def main(folder):
             continue
         ticker, form, period = m.group(1).lower(), {"10k": "10-K", "20f": "20-F", "10q": "10-Q"}[m.group(2).lower()], m.group(3).lower()
         lines = clean_lines(path)
-        with open(os.path.join(out_dir, f"{period}_full.txt"), "w", encoding="utf-8") as f:
-            f.write("\n".join(lines))
+        full = list(lines)
         secs = extract(lines, form)
         exhibit = path[:-4] + "_ex13.htm"
         if form == "10-K" and ticker in EXHIBIT_SECTIONS and os.path.exists(exhibit):
             ex_lines = clean_lines(exhibit)
             for name, (srx, erx) in EXHIBIT_SECTIONS[ticker].items():
                 secs[name] = (secs[name] + "\n" if secs[name] else "") + from_exhibit(ex_lines, srx, erx)
+            # the exhibit is part of the filing's text: keep it in _full.txt so quotes
+            # taken from the incorporated sections can be verified against the corpus
+            full += ex_lines
+        with open(os.path.join(out_dir, f"{period}_full.txt"), "w", encoding="utf-8") as f:
+            f.write("\n".join(full))
         if form == "10-Q" and ticker in CONTINGENCIES_NOTE:
             secs["contingencies"] = find_note(lines, CONTINGENCIES_NOTE[ticker])
         for name, text in secs.items():

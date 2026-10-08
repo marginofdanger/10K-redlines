@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGR 10-Q Quarterly Scanner | Q1 2024 - Q2 2026</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #1B365D;
+  --accent-deep: #0D1B2A;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --gold: #C8952E;
+  --gold-dark: #8f6a1e;
+  --purple: #8250df;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(27,54,93,0.08);
+  border-left-color: var(--gold);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; color: var(--accent); }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(200,149,46,0.14); color: var(--gold-dark); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(27,54,93,0.05); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; color: var(--accent); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--gold-dark); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--gold); color: #ffffff; font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+.signal-card blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(27,54,93,0.05); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text); font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>PGR 10-Q SCANNER</h1>
+    <div class="sub">Q1 2024 &ndash; Q2 2026 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#q1q2-2024">Q1 &rarr; Q2 2024</a>
+  <a class="nav-item" href="#q2q3-2024">Q2 &rarr; Q3 2024</a>
+  <a class="nav-item" href="#q3-2024-fy2024">Q3 2024 &rarr; FY2024 10-K</a>
+  <a class="nav-item" href="#fy2024-q1-2025">FY2024 10-K &rarr; Q1 2025</a>
+  <a class="nav-item" href="#q1q2-2025">Q1 &rarr; Q2 2025</a>
+  <a class="nav-item" href="#q2q3-2025">Q2 &rarr; Q3 2025</a>
+  <a class="nav-item" href="#q3-2025-fy2025">Q3 2025 &rarr; FY2025 10-K</a>
+  <a class="nav-item" href="#fy2025-q1-2026">FY2025 10-K &rarr; Q1 2026</a>
+  <a class="nav-item" href="#q1q2-2026">Q1 &rarr; Q2 2026</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-opener">Growth vs. Profit Opener</a>
+  <a class="nav-item" href="#sig-96cr">96 CR Growth Sentence</a>
+  <a class="nav-item" href="#sig-rates">Rate Actions &amp; Adequacy</a>
+  <a class="nav-item" href="#sig-tariff">Tariff Language</a>
+  <a class="nav-item" href="#sig-retention">Retention (PLE)</a>
+  <a class="nav-item" href="#sig-advertising">Advertising Spend</a>
+  <a class="nav-item" href="#sig-florida">Florida Excess-Profit Credit</a>
+  <a class="nav-item" href="#sig-property">Property Retreat &amp; Reopening</a>
+  <a class="nav-item" href="#sig-capital">Buybacks, Dividends &amp; Debt</a>
+  <a class="nav-item" href="#sig-legal">Total-Loss Class Actions</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+
+  <div class="nav-section">Links</div>
+  <a class="nav-item" href="../index.html">PGR 10-K dashboard</a>
+  <a class="nav-item" href="../../../index.html">All companies</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>PGR 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of ten SEC filings &mdash; eight 10-Qs from Q1 2024 (quarter ended March 31, 2024) through Q2 2026 (June 30, 2026), with the FY2024 and FY2025 10-Ks (MD&amp;A incorporated from the Exhibit 13 annual report) interleaved at the year boundaries. Nine transitions covering MD&amp;A, Item 1A, Item 2 repurchases and the litigation note. The arc: a growth push funded by record advertising (2024), a profit windfall that tripped Florida&rsquo;s excess-profit statute (2025), and by mid-2026 growth language demoted behind profitability as competition, retention and pricing all turn.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0000080661) | The Progressive Corporation (NYSE: PGR) | 10 filings, 9 transitions | Q1 2024 &ndash; Q2 2026 | Analysis: October 2026</div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+<!-- Q1 → Q2 2024 -->
+<div class="transition-header" id="q1q2-2024">
+  <h2>Q1 2024 &rarr; Q2 2024</h2>
+  <div class="sub">Filed Aug 5, 2024 | NPW $17.9B (+22%) | Combined ratio 91.9 (Q1: 86.1) | Policies in force 32.3M (+9%) | Advertising +147%</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Growth &amp; Pricing (MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Personal auto new applications swing from &minus;9% to +34%; the overview stops crediting retention and lists the growth levers instead</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024:</p>
+    <blockquote>"Although personal auto new business applications were down from the prior year, reflecting the rate and non-rate actions we took throughout 2023 to manage profitability, policy in force growth benefited from improved retention in both our Personal Lines and Property businesses."</blockquote>
+    <p>Q2 2024:</p>
+    <blockquote>"During the quarter we increased our advertising spend, continued to unwind non-rate restrictions we put in place throughout 2023 to manage profitability, and worked closely with our independent agents to get back into their quote flows. We also focused on delivering competitive rates to consumers and had eight personal auto states with small rate decreases during the second quarter."</blockquote>
+    <p>The first quarter in the series to name rate <em>decreases</em>. The non-rate restrictions, the agency quote flows and media spend are the three levers this scanner tracks through 2026; the focus sentence changes from "maximizing profitable growth" to "driving growth, delivering competitive rates to consumers, and providing an exceptional customer experience to our policyholders."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Advertising up 147% in the quarter; first-half spend of $1.6B already equals all of 2023</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024 had reported a 7% <em>decrease</em> in advertising. Q2 2024:</p>
+    <blockquote>"For the first six months of 2024, our total companywide advertising costs were $1.6 billion, which is equal to the amount of advertising spend for the full year of 2023."</blockquote>
+    <p>The expense ratio flips from 2.3 points better to 2.5 points worse year over year. The spend condition is still "a cost below the maximum amount we are willing to spend to acquire a new customer"; Q3 2024 rewrites it (see next transition).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retention warning hardens: trailing 3-month PLE "no longer showing improvement" becomes "down 5%"; trailing 12-month gain halves, +20% &rarr; +9%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024:</p>
+    <blockquote>"Rate increases could have an adverse impact on our retention, as potentially indicated by our total personal auto trailing 3-month policy life expectancy no longer showing improvement, compared to the same period last year."</blockquote>
+    <p>Q2 2024:</p>
+    <blockquote>"However, our total personal auto trailing 3-month policy life expectancy was down 5% at the end of the second quarter 2024, due to rate and non-rate actions put in place throughout 2023, compared to the 40% increase experienced in the same period last year"</blockquote>
+    <p>The hedge ("could", "potentially") becomes a measured decline. The Direct channel's trailing 12-month gain fell from +13% to +2%; it turns negative next quarter. See <a href="#sig-retention">Retention</a>.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property &amp; Catastrophe</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Property segment posts a 166.3 combined ratio with 75.6 catastrophe points</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Our Personal and Commercial Lines businesses both generated an 88.6 combined ratio for the quarter, while the Property business generated an underwriting loss with a combined ratio of 166.3 that included catastrophe losses of 75.6 points."</blockquote>
+    <p>Q1 2024's Property combined ratio was 93.4. Q3 2024 reverses most of this: 29.7 points of favorable development on current-year storms, "just over 75%" related to May 2024 events.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Reinsurance cost complaint deleted; replaced by "readily available and competitively priced"; aggregate program $3&ndash;40M from attaching</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024:</p>
+    <blockquote>"While the cost of our reinsurance, in the markets in which we participate, increased for the coverages placed in the beginning of 2024, compared to the prior years, and the availability of reinsurance is subject to many forces outside of our control, we did not, and do not expect to in the near term, experience a significant lack of availability of any of the types of reinsurance that we typically purchase."</blockquote>
+    <p>Q2 2024:</p>
+    <blockquote>"...the types of reinsurance that we elected to purchase during the first half of 2024 were readily available and competitively priced. On a year-over-year basis, we did not incur a material change in the aggregate costs of our reinsurance programs."</blockquote>
+    <p>New disclosure of the June 2024 per-occurrence renewal ($200M retention, $2.0B of coverage, $2.3B including the Florida Hurricane Catastrophe Fund) and of how close the aggregate cover was to attaching:</p>
+    <blockquote>"As of the end of the second quarter 2024, we estimate that, based on the particular contract, we were about $3 million to $40 million below the annual retention thresholds under the first coverage layer of our 2024 catastrophe aggregate excess of loss program."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Litigation (Note 11)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Litigation note gains "except as to any settlements and accruals"; "if any" dropped from the accrual sentence; certified total-loss classes 5 &rarr; 7 states</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024:</p>
+    <blockquote>"Based on information known at March 31, 2024, we determined that losses from these lawsuits are reasonably possible but neither probable nor reasonably estimable."</blockquote>
+    <p>Q2 2024:</p>
+    <blockquote>"Based on information known at June 30, 2024, and except as to any settlements and accruals as described below, we determined that losses from these lawsuits are reasonably possible but neither probable nor reasonably estimable."</blockquote>
+    <p>The non-policy lawsuit sentence changes from "the accruals that we have established, if any, were not material" to "the accruals that we have established were not material" &mdash; consistent with accruals now existing, though still immaterial. Alabama and South Carolina join Colorado, Georgia, Indiana, New York and Pennsylvania as certified total-loss valuation classes; the overtime-classification and Washington medical-bill classes drop off the list. See <a href="#sig-legal">Total-Loss Class Actions</a>.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2024 -->
+<div class="transition-header" id="q2q3-2024">
+  <h2>Q2 2024 &rarr; Q3 2024</h2>
+  <div class="sub">Filed Nov 4, 2024 | NPW $19.5B (+25%) | Combined ratio 89.0 | Policies in force 33.9M (+14%) | Advertising +394% | Hurricane Helene $563M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Growth &amp; Pricing (MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The 96 combined ratio goal moves ahead of "high-quality customer service" &mdash; a quarter before the FY2024 10-K made the same reordering</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024:</p>
+    <blockquote>"We will continue to manage growth and profitability in accordance with our long-standing goal of growing as fast as we can, as long as we can provide high-quality customer service, at or below a companywide 96 combined ratio on a calendar-year basis. Given the solid underwriting profitability we generated during the first half of 2024, we took measures that we believe will position us to accelerate profitable growth during the year"</blockquote>
+    <p>Q3 2024:</p>
+    <blockquote>"We will continue to manage growth and profitability in accordance with our long-standing goal of growing as fast as we can, at or below a companywide 96 combined ratio on a calendar-year basis, as long as we can provide high-quality customer service. Given the solid underwriting profitability we generated during the first nine months of 2024, we plan to continue to take measures that we believe will position us to achieve profitable growth during the remainder of the year, including increasing our media spend."</blockquote>
+    <p>The <a href="../index.html">annual dashboard</a> flags this reordering as the FY2024 10-K's key signal; the 10-Q had it first. "Accelerate" becomes "achieve", and lifting non-rate actions drops out of the list of growth measures. This is the last 10-Q in the series to carry the "as fast as we can" sentence at all (see <a href="#sig-96cr">96 CR Growth Sentence</a>).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Rate outlook firms from "lesser magnitude" to "stay stable in the fourth quarter"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024:</p>
+    <blockquote>"We currently anticipate that aggregate vehicle rate changes throughout 2024 will be of lesser magnitude than those taken in each of the prior two years"</blockquote>
+    <p>Q3 2024:</p>
+    <blockquote>"Aggregate vehicle rate changes year to date have been modest, relative to the prior two years, and we expect rates to stay stable in the fourth quarter 2024."</blockquote>
+    <p>Nine-month personal auto rate increases total 3%, against 19% in 2023. The relative comparison becomes a near-term flat-rate expectation; the FY2024 10-K extends it to all of 2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Agent compensation program named as a growth lever; advertising condition loosened as spend rises nearly 400%</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"...work closely with our independent agents to leverage our agent compensation program to reward writing profitable business as we remained focused on driving growth."</blockquote>
+    <p>Nine-month advertising of $2.8 billion "exceeded the amount of advertising spend for any previous full annual period." The spend condition changes. Q2 2024:</p>
+    <blockquote>"We will continue this focus as long as we remain on track to achieve our target profitability and generate sales at a cost below the maximum amount we are willing to spend to acquire a new customer."</blockquote>
+    <p>Q3 2024:</p>
+    <blockquote>"We will continue to advertise to maximize growth as long as the advertising spend is efficient and we remain on track to achieve our target profitability."</blockquote>
+    <p>The explicit per-customer cost ceiling gives way to "efficient". A version of the ceiling ("at or below our target acquisition cost") survives in the underwriting-expense section.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Direct-channel retention turns negative: "lengthening" becomes "decrease", now blamed on competition and shopping</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024:</p>
+    <blockquote>"Our trailing 12-month policy life expectancy in the Direct auto business experienced a lengthening of retention at the end of the second quarter 2024, on a year-over-year basis."</blockquote>
+    <p>Q3 2024:</p>
+    <blockquote>"Our trailing 12-month policy life expectancy in the Direct auto business experienced a decrease in retention at the end of the third quarter 2024, on a year-over-year basis. We believe the drivers of the change were due to the competitiveness in the marketplace and increased shopping."</blockquote>
+    <p>Total personal auto trailing 12-month PLE falls to flat (from +9%), Direct &minus;6%. None of the seven later readings (10-Qs and 10-Ks) shows trailing 12-month retention up again.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property &amp; Catastrophe</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Hurricanes Helene ($563M, nothing ceded) and Milton (~$140M property net; ~$600M combined vehicle) first appear</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In the third quarter 2024, we incurred $563 million of catastrophe losses, or 3.1 loss ratio points, on a companywide basis, as a result of Hurricane Helene"</blockquote>
+    <blockquote>"No amounts were ceded related to Hurricane Helene, as our incurred Property losses and allocated loss adjustment expenses (ALAE) did not exceed our retention threshold under either the Florida Hurricane Catastrophe Fund or our occurrence excess of loss reinsurance program."</blockquote>
+    <blockquote>"As of October 31, 2024, we estimated that our vehicle businesses will incur combined losses of approximately $600 million from Hurricanes Helene and Milton, which includes the $401 million incurred in the third quarter 2024."</blockquote>
+    <p>About half of Helene's losses were in auto; boat accounted for about 60% of special lines losses. The FY2024 10-K does not reconcile the October estimates and says only that the two storms accounted for "nearly one third" of 2024 catastrophe losses.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Florida non-renewal program (up to 115,000 policies) stalled by hurricane moratoriums; Property retention flips from lengthening to shortening</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"We believe the moratoriums put in place in response to Hurricanes Helene and Milton, which temporarily limit an insurer's ability to non-renew policies, will slow this progress; however, we intend to resume the planned non-renewals when the moratoriums expire."</blockquote>
+    <p>The program had been "expected to continue over the following 12 months"; the FY2024 10-K reports the moratoriums expired in December 2024, and Q2 2025 reports it "substantially completed." Property PLE goes from lengthened (Q2: "primarily driven by our competitiveness in the marketplace") to shortened, attributed to renters mix, rate increases, "and the non-renewals for certain Florida policies." Volatile-state homeowners policies in force fall 9%, from &minus;6%.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Litigation (Note 11)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Data-security class action certified; Ohio becomes the eighth certified total-loss valuation state</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>New entry in the certified-class list:</p>
+    <blockquote>"...we failed, based on a vendor data security incident, to properly secure and safeguard personally identifiable information; and that certain of our compensation practices are improper."</blockquote>
+    <p>Total-loss certified states: Alabama, Colorado, Georgia, Indiana, New York, Ohio, Pennsylvania, South Carolina. The data-security class is gone from the Q1 2025 list.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2024 → FY2024 10-K -->
+<div class="transition-header" id="q3-2024-fy2024">
+  <h2>Q3 2024 &rarr; FY2024 10-K</h2>
+  <div class="sub">Filed Mar 3, 2025 | FY2024 NPW $74.4B (+21%) | Underwriting margin 11.2% | Advertising $4.0B (+150%) | Dividends declared $4.90/share</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Structure, Pricing &amp; Outlook (Annual Report MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Three segments become two: Property folded into Personal Lines</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2024 still reported Personal Lines, Commercial Lines and Property margins (10.4%, 11.3%, 21.5%). FY2024 10-K:</p>
+    <blockquote>"For the year ended December 31, 2024, we are reporting two operating segments – Personal Lines and Commercial Lines."</blockquote>
+    <p>Personal property becomes "about 5%" of Personal Lines premiums. The structural change the annual dashboard records; for this scanner it means property results from Q1 2025 onward are a sub-line ("personal property") inside Personal Lines.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Stable-rate expectation extended from Q4 2024 to all of 2025; commercial auto guided to "relatively modest" increases</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2024 expected rates "to stay stable in the fourth quarter 2024." FY2024 10-K:</p>
+    <blockquote>"Aggregate personal auto rate changes during 2024 were modest, relative to the prior two years, and we expect rates to stay relatively stable in 2025. In our personal property business, we increased rates about 19% countrywide, in the aggregate during 2024, and we expect continued rate increases in 2025."</blockquote>
+    <blockquote>"...we currently believe that, in most states, we are adequately priced in our personal auto product and in our core commercial auto product we expect to have relatively modest rate increases in 2025."</blockquote>
+    <p>Eight weeks later, Q1 2025 raises the commercial auto and property guidance to "near double-digit" (next transition).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs enter the loss-cost factor list for the first time</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"...which may include new and used car prices, miles driven, driving patterns, loss severity, weather events, building materials, construction costs, inflation, tariffs, and other factors, on a state-by-state basis."</blockquote>
+    <p>Tariffs are also added to the severity-monitoring list. No 2024 10-Q mentions tariffs; Q1 2025 gives them a standalone paragraph. See <a href="#sig-tariff">Tariff Language</a>.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Full-year retention negative: trailing 12-month PLE &minus;4%, Direct &minus;7%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Our trailing 12-month total personal auto policy life expectancy was down 4% year over year, with agency personal auto up 2% and direct down 7%. On a trailing 3-month basis, our personal auto policy life expectancy was down 4% year over year, which we believe is due to increased shopping and the competitiveness in the marketplace."</blockquote>
+    <p>Against the FY2023 10-K's +24%. The cause given shifts from Progressive's own 2023 rate actions (Q3 2024) to market shopping.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property &amp; Capital</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Property retreat formalized: exit from non-owner-occupied homes begins; Florida non-renewals resume after the moratoriums</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"We prioritized insuring lower-risk properties (e.g., new construction, existing homes with newer roofs), accepting new business for homeowners/condo products only when bundled with a Progressive personal auto policy, where permitted, and began exiting the non-owner occupied home market."</blockquote>
+    <blockquote>"This effort slowed while the moratoriums were in place in response to Hurricanes Helene and Milton, which temporarily limited an insurer’s ability to non-renew policies, but resumed once the moratoriums expired in December 2024."</blockquote>
+    <p>Volatile-state homeowners policies in force fall 13% for 2024; the growth-oriented states are up 15% (Q3 2024: about 19%).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$4.50 annual-variable dividend declared ($4.90 total for 2024); 2024 buybacks just 0.7M shares</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Common Share Dividends - declared aggregate dividends of $4.90 per common share, or $2.9 billion."</blockquote>
+    <p>Capital went out through the variable dividend, not repurchases: 0.7 million shares for $134 million, mostly withholding on equity awards. The pattern holds through FY2025 ($13.90 declared, 0.7 million shares) and breaks in Q1 2026 (see <a href="#sig-capital">Buybacks, Dividends &amp; Debt</a>).</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2024 10-K → Q1 2025 -->
+<div class="transition-header" id="fy2024-q1-2025">
+  <h2>FY2024 10-K &rarr; Q1 2025</h2>
+  <div class="sub">Filed May 5, 2025 | NPW $22.2B (+17%) | Underwriting margin 14.0% | Policies in force 36.3M (+18%) | Advertising $1.3B (+86%)</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Growth &amp; Pricing (MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The "growing as fast as we can" 96 combined ratio sentence disappears from the 10-Q MD&amp;A &mdash; and does not return</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2024 (last appearance):</p>
+    <blockquote>"We will continue to manage growth and profitability in accordance with our long-standing goal of growing as fast as we can, at or below a companywide 96 combined ratio on a calendar-year basis, as long as we can provide high-quality customer service."</blockquote>
+    <p>Q1 2025 has no equivalent, and neither does any later 10-Q; "as fast as we can" returns zero hits in all five 2025&ndash;2026 quarterly filings. The 10-K Business section keeps the goal (annual dashboard, signal #1). From here the quarterly MD&amp;A states the goal only as the "4% companywide calendar-year underwriting profit goal" in the opening sentence. The one quarterly sentence that tied growth to a speed is gone; the profit threshold stays.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Standalone tariff paragraph: tariffs "will likely result in higher loss costs" and "higher than currently anticipated rate increases throughout 2025 and 2026"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Starting in the first quarter 2025, the U.S. government announced additional tariffs on goods imported into the U.S. from numerous countries, which have, in response, resulted in additional tariffs against the U.S."</blockquote>
+    <blockquote>"While our focus has been on trying to maintain stable rates for customers, tariffs and other retaliatory actions will likely result in higher loss costs, which could result in a reduction in profitability and higher than currently anticipated rate increases throughout 2025 and 2026."</blockquote>
+    <p>"Will likely" is the strongest wording the tariff paragraph reaches in the series; it softens in Q2 2025 and again in the FY2025 10-K, and is deleted in Q2 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Rate guidance escalates in one quarter: commercial auto "relatively modest" &rarr; "near double-digit"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K: "in our core commercial auto product we expect to have relatively modest rate increases in 2025". Q1 2025:</p>
+    <blockquote>"We currently believe we are adequately priced in our personal auto products in most states and will continue to monitor the impact from tariffs and potential changes in the regulatory environment. We expect both the personal property and core commercial auto products to have near double-digit rate increases through the remainder of 2025."</blockquote>
+    <p>A quantified range appears where the 10-K gave none. It survives a single quarter (removed in Q2 2025). Commercial auto ultimately took about 9% for 2025 per the FY2025 10-K, consistent with the guidance.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Federal debt-ceiling default risk added to the liquidity discussion</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"While U.S. Treasury securities are viewed as having lower risk than many other investment opportunities, the U.S. Treasury announced it had reached its authorized borrowing limit and defaults under government obligations, including payments related to U.S. Treasury securities, could occur as soon as this summer. Although not likely probable, it is possible that the federal government could fail to raise the federal debt ceiling to avoid default."</blockquote>
+    <p>With 56% of the portfolio in short-term investments and Treasuries. Removed in Q2 2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Core commercial auto retention "sequential month-over-month improvement" while still down 6%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"While still below the prior year, the policy life expectancy has experienced sequential month-over-month improvement since the end of the third quarter 2024, which we believe is due to the moderation of our rate increases, compared to competitor rate increases, improving our competitiveness in the marketplace."</blockquote>
+    <p>Personal auto went the other way: trailing 12-month PLE &minus;5%, trailing 3-month &minus;6%. By Q2 2025 commercial auto PLE is +5% and personal auto stays negative &mdash; the two segments' retention lines cross.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Homeowners/condo new applications down "just over 55%"; Robinsons (bundlers) decline because of the property pullback</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"The new application growth in our homeowners/condo products was down just over 55% on a year-over-year basis for the first quarter 2025, with decreases in both less volatile weather-related states and in the more volatile"</blockquote>
+    <p>The FY2024 10-K had homeowners/condo new applications up 3%. Declines now hit the less volatile "growth-oriented" states too, and the bundled-household strategy pays for it: Robinsons had "a significant decline in new applications during the first quarter 2025." Q1 2025 also "expanded our cost sharing through mandatory wind and hail deductibles and roof depreciation schedules."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Litigation (Note 11)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Certified total-loss classes peak at nine states; accruals now acknowledged for specific suits; "illusory" UIM class added</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Based on information available to us, we determined that losses from these lawsuits are reasonably possible but neither probable nor reasonably estimable, other than for suits for which accruals have been established and are not material, as of March 31, 2025."</blockquote>
+    <p>Arkansas is added (nine certified states: AL, AR, CO, GA, IN, NY, OH, PA, SC); the claim is now described as "by applying a negotiation adjustment". New certified class: "we sell illusory underinsured motorist coverage in New Mexico." The data-security and Texas PIP classes drop off.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2025 -->
+<div class="transition-header" id="q1q2-2025">
+  <h2>Q1 2025 &rarr; Q2 2025</h2>
+  <div class="sub">Filed Aug 4, 2025 | NPW $20.1B (+12%) | Underwriting margin 13.8% | Policies in force 37.3M (+15%) | Advertising $1.2B (+35%) | First personal auto rate cut</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Growth, Pricing &amp; Regulation (MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Florida excess-profit exposure first disclosed: "it is possible" profit will exceed the statutory limit</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In response to these trends, we have lowered Florida personal auto rates twice in the last year. Despite these actions, it is possible that our profit for personal auto in Florida for the 2023 to 2025 period will exceed the statutory profit limit that a Florida statute imposes on the profit that any insurance group can earn on personal auto insurance over any three-calendar-year period"</blockquote>
+    <blockquote>"We expect to be able to reasonably estimate any potential exposure by the end of the fourth quarter 2025, and to pay amounts owed, if any, during late 2025 or 2026."</blockquote>
+    <p>No earlier filing in the series mentions the statute. The wording moves "possible" &rarr; "probable" ($950M booked, Q3 2025) &rarr; "exceeded" ($1.2B, FY2025 10-K) &rarr; paid (Q1 2026). See <a href="#sig-florida">Florida Excess-Profit Credit</a>.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Personal auto rates cut in aggregate for the first time in the series; Florida named among the markets with decreases</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2025: "we increased personal auto rates less than 1%". Q2 2025:</p>
+    <blockquote>"During the second quarter 2025, on a countrywide basis, we decreased personal auto rates less than 1% and increased our personal property rates about 4%, in the aggregate."</blockquote>
+    <p>The agency written-premium explanation gains "rate decreases in certain markets, including Florida". Personal auto average written premium per policy turns negative (&minus;1%). Q3 2025 is back to a sub-1% increase; FY2025, Q1 2026 and Q2 2026 are all decreases.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Near double-digit" rate guidance withdrawn after one quarter; tariff sentence gains "the possible need for"</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2025: "We expect both the personal property and core commercial auto products to have near double-digit rate increases through the remainder of 2025." Q2 2025:</p>
+    <blockquote>"While we expect to continue increasing rates in our personal property and core commercial auto products through the remainder of 2025, we will continue to monitor the impact from tariffs and other potential changes in the regulatory environment as we evaluate the possible need for additional rate increases."</blockquote>
+    <p>The quantity is dropped. In the tariff sentence, "could result in a reduction in profitability and higher than currently anticipated rate increases" becomes "...and the possible need for higher than currently anticipated rate increases" &mdash; an added hedge, while "will likely result in higher loss costs" stays.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Competition" first appears in the retention explanation</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2025 blamed "increased shopping and the competitiveness in the marketplace". Q2 2025:</p>
+    <blockquote>"On a trailing 3-month basis, our personal auto policy life expectancy was down 7% for the second quarter 2025, compared to the same period last year, which we believe is due to a shift in the mix of business, increased shopping, and increased competition in the marketplace."</blockquote>
+    <p>The word "competition" appears 0 times in the five MD&amp;As from Q1 2024 to Q1 2025, then 1, 1, 2, 4 and 7 times. See <a href="#sig-retention">Retention</a>.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Debt-ceiling paragraph removed; One Big Beautiful Bill Act tax note added ("do not currently expect" a material effect)</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The Q1 2025 Treasury-default paragraph is deleted in full. New:</p>
+    <blockquote>"We are in the process of evaluating the provisions applicable to Progressive and, while this assessment is not yet complete, we do not currently expect the Act will have a material effect on our financial condition or results of operations."</blockquote>
+    <p>Q3 2025 firms this to "These provisions will not have a material adverse effect on our financial condition or results of operations."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property &amp; Reinsurance</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2025 per-occurrence program: Florida-specific $75M retention appears; Florida non-renewals "substantially completed"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"This reinsurance program has a retention threshold for losses and allocated loss adjustment expenses (ALAE) from a single catastrophic event of $200 million for a storm outside of Florida and $75 million for a storm in Florida."</blockquote>
+    <p>The 2024 program had a single $200 million retention. Florida coverage drops from an estimated $2.3 billion to $2.2 billion. Separately: "This effort was substantially completed by the end of the second quarter 2025." Q1 2025 had said "We currently expect this effort to be substantially completed". The sentence on the replacement-carrier agreement for non-renewed Florida policyholders is deleted.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Litigation (Note 11)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New York total-loss class drops off, North Carolina added; Michigan fees-and-taxes and New Mexico UIM classes removed</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"...we improperly value total loss claims by applying a negotiation adjustment in Alabama, Arkansas, Colorado, Georgia, Indiana, North Carolina, Ohio, Pennsylvania, and South Carolina"</blockquote>
+    <p>Still nine total-loss states; the certified-class list shrinks from five matters to three. New Mexico UIM reappears in Q1 2026 and is gone again in Q2 2026.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2025 -->
+<div class="transition-header" id="q2q3-2025">
+  <h2>Q2 2025 &rarr; Q3 2025</h2>
+  <div class="sub">Filed Nov 3, 2025 | NPW $21.4B (+10%) | Underwriting margin 10.5% incl. $950M Florida credit (4.6 pts) | Policies in force 38.1M (+12%) | Advertising $1.3B (+10%)</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Growth &amp; Profitability (MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Florida: "possible" becomes "probable"; $950M policyholder credit expense booked against 2.7 million policyholders</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2025: "it is possible that our profit for personal auto in Florida for the 2023 to 2025 period will exceed the statutory profit limit". Q3 2025:</p>
+    <blockquote>"Despite actions to lower rates in the last year, it is probable that our personal auto profit in Florida for the 2023 to 2025 period will exceed the statutory profit limit that a Florida statute imposes on the profit that any insurance group can earn on personal auto insurance over any three-calendar-year period."</blockquote>
+    <blockquote>"As a result, in September 2025, we recorded a $950 million policyholder credit expense, which represents our current estimate of the profit we will earn on the three-calendar-year period ending December 31, 2025, in excess"</blockquote>
+    <blockquote>"As of September 30, 2025, we had approximately 2.7 million personal auto policyholders active in Florida."</blockquote>
+    <p>The credit is booked as an underwriting expense: 4.6 points companywide, 5.5 points off the personal vehicle margin. Excluding it, Personal Lines would have earned 15.8%. Q2 2025 had promised an estimate "by the end of the fourth quarter 2025"; it came one quarter early.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Growth now credited to renewals of last year's new business; personal auto new applications fall 2%, the first decline since Q1 2024</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2025 credited growth to "increased advertising spend, competitively priced products, and our agency incentive compensation programs." Q3 2025:</p>
+    <blockquote>"This growth was primarily driven by our personal auto products and reflects renewal application growth, driven by new applications gained over the last year renewing during the quarter."</blockquote>
+    <blockquote>"New and renewal personal auto applications decreased 2% and increased 20%, respectively, for the third quarter 2025, compared to the same period in the prior year."</blockquote>
+    <p>The opening sentence's growth adjective falls from "substantial" (Q1&ndash;Q2 2025) back to "strong". Advertising rose only 10%, after +35% and +86%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Customer preservation team" disclosed: existing customers re-quoting into new policies depresses the retention metric</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Due, in part, to the efforts of our customer preservation team, during the period we saw an increase in existing customers who went through our new customer quote process to either modify existing coverage or to find a lower rate."</blockquote>
+    <p>Such customers' replacement policies "negatively impacted policy life expectancy but retained the customer." This tells the reader that part of the PLE decline is measurement, not lost customers. It also says existing customers are shopping for lower rates <em>inside</em> Progressive. Trailing 12-month PLE &minus;6% (from &minus;5%), trailing 3-month &minus;7%. The attribution order also flips: shopping and competition now come before mix.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">10-Q adds the 3.5-to-1 premiums-to-surplus approval and the variable-dividend intent, a quarter before a $13.50 variable dividend</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"...two states have permitted us to target a premiums-to-surplus ratio for our vehicle businesses to a maximum ratio of 3.5 to 1 based on our strong financial condition."</blockquote>
+    <blockquote>"We have previously announced our intention to pay a dividend on our common shares on a quarterly basis and to consider paying a variable dividend on at least an annual basis."</blockquote>
+    <p>This paragraph had appeared only in the annual report. Statutory surplus is $33.7B at September 30, 2025; the December 2025 variable dividend ($13.50, $7.9B) drops it to $28.4B at year end. The paragraph is gone again from Q1 2026.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Property reopening begins "in several markets"; growth-oriented homeowners PIF growth slows to +2%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2025 planned to continue the restrictions and "determine readiness for new business growth at the state level". Q3 2025:</p>
+    <blockquote>"During the third quarter 2025, we began to take actions in several markets"</blockquote>
+    <blockquote>"Some of these actions include expanding agency relationships, lifting certain agency restrictions put in place in 2024, and reopening new business in our direct channel."</blockquote>
+    <p>Growth-oriented-state homeowners policies in force: +14% (Q1 2025) &rarr; +7% &rarr; +2%. Volatile states &minus;15%. Homeowners new applications &minus;35%. Personal property margin 36.5%.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Litigation (Note 11)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Certified total-loss states fall 9 &rarr; 6: Georgia, Indiana and Pennsylvania removed</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"...we improperly value total loss claims by applying a negotiation adjustment in Alabama, Arkansas, Colorado, North Carolina, Ohio, and South Carolina"</blockquote>
+    <p>The filing does not say whether the three were settled, decertified or dismissed; the accrual language ("other than for suits for which accruals have been established and are not material") is unchanged. The list falls again to three in Q1 2026.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2025 → FY2025 10-K -->
+<div class="transition-header" id="q3-2025-fy2025">
+  <h2>Q3 2025 &rarr; FY2025 10-K</h2>
+  <div class="sub">Filed Mar 2, 2026 | FY2025 NPW $83.2B (+12%) | Underwriting margin 12.6% | Florida credits $1.2B | Dividends declared $13.90/share ($8.1B)</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Florida, Pricing &amp; Tariffs (Annual Report MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Annual opener leads with the profit goal; growth becomes "excellent results"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K:</p>
+    <blockquote>"Progressive reported strong year-over-year growth in both premiums written and policies in force, an underwriting profit better than our 4% companywide calendar-year underwriting profit goal in 2024, and a 50% increase in recurring investment income, compared to 2023."</blockquote>
+    <p>FY2025 10-K:</p>
+    <blockquote>"During 2025, Progressive maintained an underwriting profit better than our 4% companywide calendar-year underwriting profit goal and reported excellent results year over year in both premiums and policies in force."</blockquote>
+    <p>Every 10-Q through Q3 2025 put growth first. The annual report made the switch, and Q1 2026 and Q2 2026 follow it. Personal Lines growth is now credited to "strong renewal application growth, driven by new applications gained over 2024 renewing during 2025".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Florida credit rises $950M &rarr; $1.2B; "probable" becomes "exceeded"; the statute's period redefined from calendar years to accident years</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2025: "...over any three-calendar-year period." FY2025 10-K:</p>
+    <blockquote>"Despite actions to lower rates, beginning in the fourth quarter 2024 and through 2025, our personal auto profit in Florida for the 2023 to 2025 period exceeded the statutory profit limit that a Florida statute imposes on the profit that any insurance group can earn on personal auto insurance over any three-accident-year period. As a result, in 2025, we recorded a $1.2 billion policyholder credit expense (Florida policyholder credits)"</blockquote>
+    <p>The estimate rose 26% in one quarter. The basis changes from "three-calendar-year" to "three-accident-year", and Q1 2026 adds "contiguous". Under an accident-year measure, reserve development on 2023&ndash;2025 accidents keeps feeding the calculation; Q2 2025 had said reserve development "through the first quarter 2026" would affect it. The rate cuts are now dated: "beginning in the fourth quarter 2024".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariff risk downgraded: "will likely" &rarr; "may"; "higher than currently anticipated" and 2025 dropped</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2025:</p>
+    <blockquote>"While our focus has been on trying to maintain stable rates for customers, effective tariffs and other retaliatory actions will likely result in higher loss costs, which could result in a reduction in profitability and the possible need for higher than currently anticipated rate increases throughout 2025 and 2026."</blockquote>
+    <p>FY2025 10-K:</p>
+    <blockquote>"While our focus has been on trying to maintain stable rates for customers, effective tariffs and other retaliatory actions may result in higher loss costs, which could result in a reduction in profitability and the possible need for rate increases throughout 2026."</blockquote>
+    <p>"Currently prevents us from accurately predicting" also becomes "adds uncertainty in predicting". Personal auto rates were cut for the full year ("we decreased personal auto rates less than 1%"); property took about 10%, commercial auto about 9%, with "modest" increases expected in both during 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Trailing 3-month PLE &minus;10%, the low of the series; "changes in billing plans offered to customers" added as a cause</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"On a trailing 3-month basis, our personal auto policy life expectancy was down 10% for 2025, compared to 2024. We believe these decreases are primarily due to increased shopping and competition in the marketplace, and a shift in our mix of business, including changes in billing plans offered to customers."</blockquote>
+    <p>Billing-plan changes were never mentioned in a 2025 10-Q. Q2 2026 keeps them as a stated cause of lower retention ("to a lesser extent"). Billing plans are a non-rate underwriting lever the company used in 2023 to slow growth (FY2023 10-K: "slowing new business growth through verification activities, bill plan offerings").</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property &amp; Capital</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Growth-oriented homeowners PIF turns negative (&minus;1%) even as reopening is described; actions planned to continue in 2026</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Some of these actions include expanding agency relationships, lifting certain agency restrictions put in place in 2024, and reopening new business in our direct channel. We plan to continue these actions in 2026."</blockquote>
+    <p>Homeowners new applications &minus;45% for 2025. Policies in force in the growth-oriented markets fall 1% &mdash; the first decline in the dataset after +20% (Q1 2024), +15% (FY2024) and +14% (Q1 2025). The language moves from "states" to "markets". Personal property margin 24.9%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Repurchase policy: "and opportunistically" becomes "or opportunistically"; $13.50 variable dividend pays out $7.9B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2025 (and the FY2024 10-K):</p>
+    <blockquote>"Pursuant to our financial policies, we repurchase common shares to neutralize dilution from equity-based compensation granted during the year and opportunistically when we believe our shares are trading below our determination of long-term fair value."</blockquote>
+    <p>FY2025 10-K:</p>
+    <blockquote>"Pursuant to our financial policies, we repurchase common shares to neutralize dilution from equity-based compensation granted during the year or opportunistically when we believe our shares are trading below our determination of long-term fair value."</blockquote>
+    <p>"Or" makes opportunistic buybacks a standalone reason rather than one of two joint ones. Q1 2026 reverts to "and" but buys 2.3 million shares; Q2 2026 puts "opportunistically" first. 2025 itself: 0.7 million shares for $166 million, against "aggregate dividends of $13.90 per common share, or $8.1 billion".</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2025 10-K → Q1 2026 -->
+<div class="transition-header" id="fy2025-q1-2026">
+  <h2>FY2025 10-K &rarr; Q1 2026</h2>
+  <div class="sub">Filed May 4, 2026 | NPW $23.6B (+6%) | Underwriting margin 13.6% | Policies in force 39.6M (+9%) | $1.5B senior notes | Buybacks 2.3M shares ($478M)</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Growth &amp; Pricing (MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The 10-K's profit-first opener carries into a 10-Q for the first time; NPW growth slows to 6%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2025 (the last growth-first 10-Q):</p>
+    <blockquote>"The Progressive Corporation’s insurance subsidiaries recognized strong year-over-year growth in both premiums and policies in force during the third quarter 2025, compared to the same period last year, while maintaining an underwriting profit better than our 4% companywide calendar-year underwriting profit goal."</blockquote>
+    <p>Q1 2026:</p>
+    <blockquote>"The Progressive Corporation’s insurance subsidiaries maintained an underwriting profit better than our 4% companywide calendar-year underwriting profit goal during the first quarter 2026 and reported strong growth year over year in both premiums and policies in force."</blockquote>
+    <p>All six earlier 10-Qs led with growth. The FY2025 10-K made the switch first (previous transition). NPW growth of 6% is the slowest quarter in the series. Q2 2026 removes growth from the first sentence entirely. See <a href="#sig-opener">Growth vs. Profit Opener</a>.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commercial auto joins personal auto as "adequately priced"; tariff sentence re-adds "higher than currently anticipated"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K expected to keep "increasing rates modestly in our personal property and core commercial auto products during 2026". Q1 2026:</p>
+    <blockquote>"We continue to believe we are currently adequately priced in our personal auto and core commercial auto products in most states and expect to continue increasing rates modestly in our personal property products through the remainder of the year."</blockquote>
+    <blockquote>"...retaliatory actions may result in higher loss costs, which could result in a reduction in profitability and the possible need for higher than currently anticipated rate increases throughout 2026."</blockquote>
+    <p>Commercial auto rates were flat in the quarter after about 9% in 2025. Core commercial auto new applications fell 6%, "impacted by rate and non-rate actions taken to address profitability challenges."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Despite increased competition" enters the growth narrative; Florida drops out of the rate-decrease explanation once the credits are paid</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Our personal vehicle business continued to demonstrate sustained net premiums written and application growth despite increased competition in the marketplace during the first quarter 2026."</blockquote>
+    <p>Personal vehicle new applications +2% (Q1 2025: +32%). Agency written premium: FY2025 "attributable to rate decreases in certain markets, including Florida, and a shift in the mix of business"; Q1 2026 "attributable to rate decreases in certain markets and a shift in the mix of business". The $1.2 billion Florida credit was paid this quarter and is the stated reason operating cash flow fell to $4.4 billion from $5.1 billion.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"We are now selectively increasing the availability of our personal property products"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"We are now selectively increasing the availability of our personal property products throughout the remainder of 2026."</blockquote>
+    <p>Most of the retreat list is retained in the same paragraph (bundling requirement, non-owner-occupied restrictions, mandatory wind/hail deductibles), and the reopening actions now include "lifting underwriting restrictions on older roofs, medium- to high-value homes, and non-bundled homeowners products in certain markets". Results so far: homeowners new applications flat, growth-oriented-market PIF &minus;2%, volatile &minus;17%, personal property net premiums written &minus;5%.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Capital &amp; Litigation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$1.5B of senior notes issued alongside $478M of buybacks; one quarter's repurchases nearly triple all of 2025</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"This increase was primarily driven by the $2.2 billion of comprehensive income earned in the first three months of 2026 and the March 2026 issuances of $500 million of 4.60% Senior Notes due 2031, and $1.0 billion of 5.15% Senior Notes due 2036, partially offset by the repurchase of 2.3 million of our common shares, at a total cost of $478 million."</blockquote>
+    <p>The FY2024 10-K had pointed to "a lack of maturities of our outstanding debt until 2027"; the notes are described as for "general corporate purposes." Debt-to-total capital rises to 20.7% from 18.5% at year end. The Item 2 table shows 2,334,998 shares at an average $204.90, against 163,786 shares at $248.99 in Q3 2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Certified total-loss states cut to three (Colorado, North Carolina, Ohio)</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"...we improperly value total loss claims by applying a negotiation adjustment in Colorado, North Carolina, and Ohio"</blockquote>
+    <p>Alabama, Arkansas and South Carolina drop off; the New Mexico "illusory underinsured motorist coverage" class reappears for one quarter. The note moves from Note 11 to Note 9.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2026 -->
+<div class="transition-header" id="q1q2-2026">
+  <h2>Q1 2026 &rarr; Q2 2026</h2>
+  <div class="sub">Filed Aug 3, 2026 | NPW $21.1B (+5%) | Underwriting margin 12.7% (&minus;1.1 pts) | Policies in force 40.1M (+7%) | Buybacks 3.07M shares at $199.85 | New 25M-share authorization</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Growth &amp; Pricing (MD&amp;A)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Growth leaves the opening sentence; it returns as "steady" growth "despite increased competition"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026 opener: "...maintained an underwriting profit better than our 4% companywide calendar-year underwriting profit goal during the first quarter 2026 and reported strong growth year over year in both premiums and policies in force." Q2 2026:</p>
+    <blockquote>"The Progressive Corporation’s insurance subsidiaries continued to generate underwriting profitability above our 4% companywide calendar-year underwriting profit goal during the second quarter 2026, producing a companywide underwriting profit margin of 12.7%. Both our Personal Lines and Commercial Lines operating segments generated strong underwriting profitability during the second quarter 2026."</blockquote>
+    <blockquote>"We also reported steady year-over-year growth in both premiums and policies in force despite increased competition in the marketplace."</blockquote>
+    <p>Growth moves from "strong" to "steady" and to the second paragraph. "Competition" appears seven times in the MD&amp;A (Q1 2026: four; every 2024 filing: zero). The 40-million policies-in-force milestone gets one clause.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariff paragraph deleted; property added to "adequately priced"; the planned property rate increases are dropped</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"We continue to believe we are currently adequately priced in our personal auto and core commercial auto products in most states and expect to continue increasing rates modestly in our personal property products through the remainder of the year."</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"We believe we are currently adequately priced in our personal auto, personal property, and core commercial auto products in most states through the remainder of the year. However, we regularly monitor the factors that could impact our loss costs, which may include tariffs, inflation, new and used car prices, miles driven, driving patterns, loss severity and frequency, weather events, building materials, construction costs, and other factors, on a state-by-state basis."</blockquote>
+    <p>The tariff-specific sentences, including "the possible need for higher than currently anticipated rate increases throughout 2026", are gone; tariffs survive only as the first item in a generic list. Mentions of "tariff": 8 in each MD&amp;A from Q1 2025 through the FY2025 10-K, 5 in Q1 2026, 1 now. "Through the remainder of the year" now attaches to the adequacy claim itself. All three products are now called adequately priced, the first time in the series. This comes in a quarter when severity rose 4% and the accident-year loss ratio worsened 1.6 points.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commercial Lines pivots to "rate decreases in targeted state and BMT combinations" and "agent incentive spend"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"New business applications decreased 6%, with a decline in the business auto, contractor, and for-hire transportation BMTs, and were impacted by rate and non-rate actions taken to address profitability challenges."</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"Increases in both net premiums written and policies in force were primarily driven by volume growth due to rate decreases in targeted state and BMT combinations, and increased advertising and agent incentive spend."</blockquote>
+    <p>The same quarter's reserve note cites "higher than anticipated injury severity and litigation defense costs in our core commercial auto products," and commercial auto trailing 12-month severity rose 5%. The rate cuts arrive one quarter after commercial auto was first called "adequately priced," and two quarters after a year of about 9% increases.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retention: trailing 3-month PLE &minus;7% &rarr; &minus;9%; competition moves to first cause, billing-plan changes added</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026: "...which we believe is primarily due to a shift in our mix of business and increased shopping and competition in the marketplace." Q2 2026:</p>
+    <blockquote>"For the second quarter 2026, trailing 12-month total personal auto policy life expectancy decreased 8% year over year, while trailing 3-month policy life expectancy decreased 9%, compared to the same period last year. We believe these decreases were primarily due to increased shopping and competition in the marketplace and, to a lesser extent, changes in billing plans offered to customers and a shift in our mix of business."</blockquote>
+    <p>The same reordered attribution is applied to both channels. Mix, the cause Progressive controls, falls to last; competition leads. Direct trailing 3-month PLE is &minus;10%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Margin decline attributed to severity and advertising; severity drivers now include "more large losses"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"The decrease in our underwriting profit margin compared to the prior year, for both the second quarter and first six months of 2026, was driven by increased severity and advertising spend."</blockquote>
+    <blockquote>"The year-over-year increase in total severity was predominantly driven by bodily injury coverage, due to higher medical costs, more large losses, and a higher rate of plaintiff-attorney represented claims, compared to the same period in the prior year. The change in severity has been relatively stable during the first six months of 2026."</blockquote>
+    <p>Bodily injury severity +7%, total +4%. Q1 2026 had said underwriting margin was "relatively consistent with the prior year despite a 20%, or $248 million, increase in advertising expense"; that sentence is gone. Prior-year reserve releases grew to 2.6 points (from 1.6) and cushioned the result.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Property, Reinsurance &amp; Capital</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Per-occurrence retention raised $200M &rarr; $300M outside Florida; coverage trimmed to $1.9B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>2025 program (Q2 2025):</p>
+    <blockquote>"This reinsurance program has a retention threshold for losses and allocated loss adjustment expenses (ALAE) from a single catastrophic event of $200 million for a storm outside of Florida and $75 million for a storm in Florida. In general, our program includes coverage for $2.0 billion in losses and ALAE"</blockquote>
+    <p>2026 program (Q2 2026):</p>
+    <blockquote>"expenses (ALAE) from a single catastrophic event of $300 million for a storm outside of Florida and $75 million for a storm in Florida. In general, our program includes coverage for $1.9 billion in losses and ALAE with additional substantial coverage for a second or third hurricane."</blockquote>
+    <p>The first retention increase in the series, against a smaller personal property book (homeowners PIF &minus;17% in volatile markets). The aggregate contract "provides a higher coverage limit than the 2025 program" and now covers "wildfires, winter storms, severe thunderstorms". Consistent with the annual dashboard's reinsurance-retention signal: more risk kept net as surplus grows ($32.9B).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Buyback rationale reordered to put "opportunistically" first; H1 repurchases 5.4M shares ($1.1B); new 25M-share authorization replaces the 2025 one</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"Pursuant to our financial policies, we repurchase common shares to neutralize dilution from equity-based compensation granted during the year and opportunistically when we believe our shares are trading below our determination of long-term fair value."</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"Pursuant to our financial policies, we repurchase common shares opportunistically when we believe our shares are trading below our determination of long-term fair value and to neutralize dilution from equity-based compensation granted during the year."</blockquote>
+    <blockquote>"In May 2026, the Board of Directors approved an authorization for the company to repurchase up to 25 million of its common shares. This authorization, which does not have an expiration date, terminated the 20,918,799 shares that remained under the Board’s May 2025 authorization to repurchase 25 million shares."</blockquote>
+    <p>The May 2024 and May 2025 renewals each terminated more than 24 million unused shares; this one terminates 20.9 million, the first authorization in the series to be meaningfully drawn down. Q2 2026 Item 2: 3,071,751 shares at an average $199.85, below Q1's $204.90 and Q2 2025's $275.78.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The explanation linking Robinsons' decline to the property pullback is deleted</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"The decline in new applications and quotes for Robinsons, compared to the prior year period, was due to several initiatives implemented in our personal property business that were focused on improving profitability, as discussed in the Personal Property section below."</blockquote>
+    <p>Q2 2026 reports agency Robinsons with "a moderate increase in new application growth" but "a single-digit decrease in policies in force growth". The companion Q1 sentence on unaffiliated carriers writing direct-channel bundles is also gone. The new property paragraph adds that the 2025 actions "continued to adversely impact new business application growth in 2026" even as homeowners new applications rose 11%.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-opener">
+  <div class="section-header"><h2>#1: Growth vs. Profit in the Opening Sentence</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> Growth Led Every Filing Through Q3 2025; by Q2 2026 It Is Not in the First Sentence</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Order</th><th>Growth Wording</th><th>Profit Wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>Growth first</td><td>"strong growth"</td><td>"significantly better than our 4% ... goal"</td></tr>
+        <tr><td>Q2 2024</td><td>Growth first</td><td>"strong growth"</td><td>"4.1 points better"</td></tr>
+        <tr><td>Q3 2024</td><td>Growth first</td><td>"strong growth"</td><td>11.0 points; "goal" &rarr; "target"</td></tr>
+        <tr><td>FY2024 10-K</td><td>Growth first</td><td>"strong year-over-year growth"</td><td>"better than our 4% ... goal"</td></tr>
+        <tr><td>Q1 2025</td><td>Growth first</td><td class="val-highlight">"substantial year-over-year growth"</td><td>"while maintaining"</td></tr>
+        <tr><td>Q2 2025</td><td>Growth first</td><td class="val-highlight">"substantial"</td><td>"while maintaining"</td></tr>
+        <tr><td>Q3 2025</td><td>Growth first</td><td>"strong" (down from "substantial")</td><td>"while maintaining"</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-new">Profit first</td><td>"excellent results"</td><td>"maintained an underwriting profit"</td></tr>
+        <tr><td>Q1 2026</td><td class="val-new">Profit first</td><td>"reported strong growth"</td><td>"maintained an underwriting profit"</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">Profit only</td><td>2nd paragraph: "steady ... despite increased competition"</td><td>"continued to generate underwriting profitability"</td></tr>
+      </tbody>
+    </table>
+    <p>The order flip follows NPW growth down: +18&ndash;25% in 2024, +17% &rarr; +12% &rarr; +10% through 2025, +6% and +5% in 2026.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-96cr">
+  <div class="section-header"><h2>#2: The "Growing as Fast as We Can" Sentence (10-Q MD&amp;A)</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Reordered in Q3 2024, Gone From Q1 2025</h3>
+    <p>This complements the annual dashboard's signal #1, which tracks the 10-K Business-section wording. In the quarterly MD&amp;A:</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Sentence State</th><th>Accompanying Growth Measure</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>"as fast as we can, as long as we can provide high-quality customer service, at or below a companywide 96 combined ratio"</td><td>"accelerate profitable growth"; lift non-rate actions; media spend</td></tr>
+        <tr><td>Q2 2024</td><td>Unchanged</td><td>"accelerate profitable growth"</td></tr>
+        <tr><td>Q3 2024</td><td class="val-new">Reordered: "at or below a companywide 96 combined ratio ..., as long as we can provide high-quality customer service"</td><td>"achieve profitable growth during the remainder of the year"; media spend only</td></tr>
+        <tr><td>FY2024 10-K</td><td>Not in the annual-report MD&amp;A (in the 10-K Business section, with "takes precedence over growth")</td><td>&mdash;</td></tr>
+        <tr><td>Q1 2025 &ndash; Q2 2026</td><td class="val-neg">Absent (0 hits for "as fast as we can" in all five 10-Qs)</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-rates">
+  <div class="section-header"><h2>#3: Rate Actions &amp; the Adequacy Claim</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Personal Auto Rates Flat-to-Down Since Q2 2025; "Adequately Priced" Widened to All Three Products</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Personal Auto</th><th>Personal Property</th><th>Core Comm. Auto</th><th>Adequacy / Outlook</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>~+2% (13 states)</td><td>~+6%</td><td>~+1%</td><td>Personal auto + core CA adequate; 2024 changes "of lesser magnitude"</td></tr>
+        <tr><td>Q2 2024</td><td>H1 +2%; 8 states with small decreases</td><td>~+4%</td><td>~+2%</td><td>Unchanged</td></tr>
+        <tr><td>Q3 2024</td><td>&lt;1% increase (9M: 3%)</td><td>~+6%</td><td>~+2%</td><td class="val-new">"expect rates to stay stable in the fourth quarter 2024"</td></tr>
+        <tr><td>FY2024 10-K</td><td>+3% (year)</td><td>~+19%</td><td>+5%</td><td>Personal auto "relatively stable in 2025"; CA "relatively modest" increases</td></tr>
+        <tr><td>Q1 2025</td><td>&lt;1% increase</td><td>~+2%</td><td>~+1%</td><td class="val-highlight">Property + CA "near double-digit" for rest of 2025</td></tr>
+        <tr><td>Q2 2025</td><td class="val-neg">&lt;1% decrease (incl. Florida)</td><td>~+4%</td><td>~+3%</td><td>Quantity dropped</td></tr>
+        <tr><td>Q3 2025</td><td>&lt;1% increase</td><td>~+2%</td><td>~+2%</td><td>"continue to believe" personal auto adequate</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">&lt;1% decrease (year)</td><td>~+10%</td><td>~+9%</td><td>Property + CA "modestly" in 2026</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">&lt;1% decrease</td><td>~+1%</td><td>Flat</td><td class="val-new">Core CA joins "adequately priced"</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">&lt;1% decrease</td><td>~+1% (YTD 3%)</td><td>Flat; "rate decreases in targeted state and BMT combinations"</td><td class="val-new">All three "adequately priced ... through the remainder of the year"</td></tr>
+      </tbody>
+    </table>
+    <p>Personal auto average written premium per policy: +14% (Q1 2024) &rarr; +5% (Q3 2024) &rarr; flat (Q1 2025) &rarr; &minus;1% (Q2&ndash;Q3 2025) &rarr; &minus;2% (Q1&ndash;Q2 2026). Personal auto incurred severity ran flat to +3% in 2024 quarters; by Q2 2026 it is +4%, led by bodily injury (+7%).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-tariff">
+  <div class="section-header"><h2>#4: Tariff Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> From a List Item to "Will Likely" and Back to a List Item in Six Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>"tariff" Mentions (MD&amp;A)</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Q1&ndash;Q3 2024</td><td>0</td><td>Absent</td></tr>
+        <tr><td>FY2024 10-K</td><td>2</td><td class="val-new">Added to loss-cost and severity factor lists</td></tr>
+        <tr><td>Q1 2025</td><td>8</td><td class="val-highlight">Standalone paragraph: "will likely result in higher loss costs"; "higher than currently anticipated rate increases throughout 2025 and 2026"</td></tr>
+        <tr><td>Q2 2025</td><td>8</td><td>"effective tariffs"; "the possible need for" inserted</td></tr>
+        <tr><td>Q3 2025</td><td>8</td><td>Unchanged</td></tr>
+        <tr><td>FY2025 10-K</td><td>8</td><td class="val-changed">"will likely" &rarr; "may"; "possible need for rate increases throughout 2026"</td></tr>
+        <tr><td>Q1 2026</td><td>5</td><td>"increases in tariffs"; "higher than currently anticipated" restored for 2026</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">1</td><td class="val-neg">Tariff sentences deleted; tariffs remain only as the first item in a generic loss-cost list</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-retention">
+  <div class="section-header"><h2>#5: Personal Auto Retention (Policy Life Expectancy)</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Seven Straight Negative Readings; the Explanation Shifted From Mix to Competition</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Trailing 12-Mo PLE</th><th>Trailing 3-Mo PLE</th><th>Stated Cause</th><th>"competition" (MD&amp;A)</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td class="val-pos">+20%</td><td>0% ("no longer showing improvement")</td><td>Prior rate increases "could have an adverse impact"</td><td>0</td></tr>
+        <tr><td>Q2 2024</td><td class="val-pos">+9%</td><td class="val-neg">&minus;5%</td><td>2023 rate and non-rate actions</td><td>0</td></tr>
+        <tr><td>Q3 2024</td><td>Flat (Direct &minus;6%)</td><td class="val-neg">&minus;6%</td><td>2023 actions; Direct: "competitiveness in the marketplace and increased shopping"</td><td>0</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-neg">&minus;4%</td><td class="val-neg">&minus;4%</td><td>"increased shopping and the competitiveness in the marketplace"</td><td>0</td></tr>
+        <tr><td>Q1 2025</td><td class="val-neg">&minus;5%</td><td class="val-neg">&minus;6%</td><td>Same</td><td>0</td></tr>
+        <tr><td>Q2 2025</td><td class="val-neg">&minus;5%</td><td class="val-neg">&minus;7%</td><td class="val-new">Mix, shopping, "increased competition"</td><td>1</td></tr>
+        <tr><td>Q3 2025</td><td class="val-neg">&minus;6%</td><td class="val-neg">&minus;7%</td><td>Shopping and competition first; customer-preservation re-quotes</td><td>1</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">&minus;7%</td><td class="val-neg">&minus;10%</td><td class="val-new">+ "changes in billing plans offered to customers"</td><td>2</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">&minus;8%</td><td class="val-neg">&minus;7%</td><td>Mix, then shopping and competition</td><td>4</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">&minus;8%</td><td class="val-neg">&minus;9%</td><td>Competition first; billing plans and mix "to a lesser extent"</td><td class="val-highlight">7</td></tr>
+      </tbody>
+    </table>
+    <p>Core commercial auto moved the other way: &minus;15% (Q1 2024) &rarr; &minus;6% (Q1 2025) &rarr; +11% (Q3 2025) &rarr; +2% (Q2 2026), credited to moderating rate increases and payment reminders. Personal property trailing 12-month PLE was &minus;17% at Q1&ndash;Q2 2025 and &minus;8% in 2026, largely renters mix.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-advertising">
+  <div class="section-header"><h2>#6: Advertising Spend</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> From &minus;7% to +394% in Two Quarters; Still Growing Faster Than Premiums in 2026</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Advertising</th><th>YoY</th><th>Spend Condition Wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>~$0.7B</td><td class="val-pos">&minus;7%</td><td>"a cost below the maximum amount we are willing to spend to acquire a new customer"</td></tr>
+        <tr><td>Q2 2024</td><td>H1 $1.6B (= all of 2023)</td><td class="val-neg">+147%</td><td>Same</td></tr>
+        <tr><td>Q3 2024</td><td>9M $2.8B</td><td class="val-neg">+394%</td><td class="val-new">"as long as the advertising spend is efficient"</td></tr>
+        <tr><td>FY2024 10-K</td><td>$4.0B</td><td class="val-neg">+150%</td><td>"efficient"</td></tr>
+        <tr><td>Q1 2025</td><td>$1.3B</td><td class="val-neg">+86%</td><td>"efficient"; Q1 spend a quarterly record</td></tr>
+        <tr><td>Q2 2025</td><td>$1.2B</td><td>+35%</td><td>Same</td></tr>
+        <tr><td>Q3 2025</td><td>$1.3B</td><td>+10%</td><td>Same</td></tr>
+        <tr><td>FY2025 10-K</td><td>$5.1B</td><td>+$1.1B</td><td>"We plan to continue to advertise to maximize growth"</td></tr>
+        <tr><td>Q1 2026</td><td>$1.5B</td><td class="val-neg">+20%</td><td>"continued to invest heavily in advertising to capture consumer shopping"</td></tr>
+        <tr><td>Q2 2026</td><td>$1.4B</td><td class="val-neg">+16%</td><td>Named with severity as the cause of the 1.1-point margin decline</td></tr>
+      </tbody>
+    </table>
+    <p>In 2026 advertising grows about three times as fast as net premiums written (+20%/+16% against +6%/+5%).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-florida">
+  <div class="section-header"><h2>#7: Florida Personal Auto Excess-Profit Credit</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Possible &rarr; Probable &rarr; Exceeded &rarr; Paid in Four Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Status</th><th>Amount</th><th>Measurement Period</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024 &ndash; Q1 2025</td><td>Not mentioned</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Q2 2025</td><td class="val-new">"it is possible" profit will exceed the limit; rates lowered "twice in the last year"</td><td>Not estimable; estimate expected "by the end of the fourth quarter 2025"</td><td>"three-calendar-year period"</td></tr>
+        <tr><td>Q3 2025</td><td class="val-highlight">"it is probable"; liability recorded</td><td>$950M (4.6 pts; 2.7M policyholders)</td><td>"three-calendar-year period"</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-highlight">"exceeded"; rate cuts "beginning in the fourth quarter 2024"</td><td>$1.2B (1.7 pts of Personal Lines)</td><td class="val-new">"three-accident-year period"</td></tr>
+        <tr><td>Q1 2026</td><td>Paid; cited for lower operating cash flow</td><td>$1.2B</td><td>"contiguous three-accident-year period"</td></tr>
+        <tr><td>Q2 2026</td><td>Paid; cited for H1 cash flow ($8.0B vs $9.2B)</td><td>$1.2B</td><td>Same</td></tr>
+      </tbody>
+    </table>
+    <p>Personal agency auto rate explanations named "rate decreases in certain markets, including Florida" from Q2 2025 through the FY2025 10-K; Florida is dropped from that clause in Q1 2026, the quarter the credits were paid. No 10-Q says whether 2026 Florida profitability could trigger a new liability for the 2024&ndash;2026 window.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-property">
+  <div class="section-header"><h2>#8: Personal Property Retreat &amp; Reopening</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Growth-Oriented Homeowners PIF: +20% to &minus;2% While "Reopening"</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Growth-Oriented PIF</th><th>Volatile-State PIF</th><th>Posture</th><th>Per-Occurrence Retention</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td class="val-pos">~+20%</td><td>~&minus;5%</td><td>Up to 115,000 Florida non-renewals announced</td><td>(2023 program)</td></tr>
+        <tr><td>Q2 2024</td><td class="val-pos">~+20%</td><td>~&minus;6%</td><td>Property CR 166.3</td><td>$200M (FL coverage est. $2.3B)</td></tr>
+        <tr><td>Q3 2024</td><td class="val-pos">~+19%</td><td>~&minus;9%</td><td>Hurricane moratoriums slow non-renewals</td><td>$200M</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-pos">+15%</td><td>&minus;13%</td><td>Segment folded into PL; "began exiting the non-owner occupied home market"</td><td>$200M</td></tr>
+        <tr><td>Q1 2025</td><td>+14%</td><td>&minus;12%</td><td>Homeowners/condo new apps "down just over 55%"</td><td>$200M</td></tr>
+        <tr><td>Q2 2025</td><td>+7%</td><td>&minus;15%</td><td>Florida non-renewals "substantially completed"</td><td class="val-new">$200M ex-FL / $75M FL</td></tr>
+        <tr><td>Q3 2025</td><td>+2%</td><td>&minus;15%</td><td class="val-new">Reopening begins "in several markets"</td><td>$200M / $75M</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">&minus;1%</td><td>&minus;16%</td><td>"We plan to continue these actions in 2026"</td><td>$200M / $75M</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">&minus;2%</td><td>&minus;17%</td><td>"now selectively increasing the availability"</td><td>$200M / $75M</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">&minus;2%</td><td>&minus;17%</td><td>2025 actions "continued to adversely impact" new business</td><td class="val-highlight">$300M ex-FL / $75M FL; coverage $1.9B</td></tr>
+      </tbody>
+    </table>
+    <p>Profitability of the smaller book: personal property margin 1.7% (FY2024) &rarr; 24.9% (FY2025) &rarr; 22.0% (Q2 2026). The annual dashboard's "Property as Bundling Enabler" theme meets the cost here: Robinsons' new applications fell through 2025 because of these restrictions (Q1 2025&ndash;Q1 2026 MD&amp;A).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-capital">
+  <div class="section-header"><h2>#9: Buybacks, Variable Dividends &amp; Debt</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> Variable-Dividend Years Give Way to Buybacks and New Debt at a Lower Share Price</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>Shares Repurchased (Item 2)</th><th>Avg Price</th><th>Debt / Total Capital</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>223,643</td><td>$165.80</td><td>24.0%</td><td>Series B preferred redeemed ($507.8M)</td></tr>
+        <tr><td>Q2 2024</td><td>52,024</td><td>$209.64</td><td>22.8%</td><td>May 2024 authorization (25M) terminates 24,032,028 unused</td></tr>
+        <tr><td>Q3 2024</td><td>389,103</td><td>$220.59</td><td>20.2%</td><td></td></tr>
+        <tr><td>FY2024</td><td>0.7M ($134M)</td><td>&mdash;</td><td>21.2%</td><td>$4.90/share declared ($4.50 variable)</td></tr>
+        <tr><td>Q1 2025</td><td>221,887</td><td>$243.50</td><td>19.2%</td><td></td></tr>
+        <tr><td>Q2 2025</td><td>45,345</td><td>$275.78</td><td>17.5%</td><td>May 2025 authorization terminates 24,338,869 unused</td></tr>
+        <tr><td>Q3 2025</td><td>163,786</td><td>$248.99</td><td>16.3%</td><td>3.5:1 P/S and variable-dividend paragraph in 10-Q</td></tr>
+        <tr><td>FY2025</td><td>0.7M ($166M)</td><td>&mdash;</td><td>18.5%</td><td>$13.90/share declared ($13.50 variable, $7.9B); "and" &rarr; "or opportunistically"</td></tr>
+        <tr><td>Q1 2026</td><td class="val-highlight">2,334,998</td><td>$204.90</td><td class="val-neg">20.7%</td><td>$1.5B senior notes (4.60% 2031, 5.15% 2036)</td></tr>
+        <tr><td>Q2 2026</td><td class="val-highlight">3,071,751</td><td class="val-neg">$199.85</td><td>19.6%</td><td>"opportunistically" moved first; May 2026 authorization terminates 20,918,799</td></tr>
+      </tbody>
+    </table>
+    <p>Quarterly dividend held at $0.10 throughout. Statutory surplus: $24.6B (Q1 2024) &rarr; $33.7B (Q3 2025) &rarr; $28.4B (after the $8.0B January 2026 payout) &rarr; $32.9B (Q2 2026).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-legal">
+  <div class="section-header"><h2>#10: Certified Total-Loss Valuation Class Actions (Litigation Note)</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Five States &rarr; Nine &rarr; Three</h3>
+    <table class="data-table">
+      <thead><tr><th>Quarter</th><th>Certified States</th><th>Count</th><th>Accrual Language</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>CO, GA, IN, NY, PA</td><td>5</td><td>"reasonably possible but neither probable nor reasonably estimable"</td></tr>
+        <tr><td>Q2 2024</td><td>+ AL, SC</td><td>7</td><td class="val-new">"except as to any settlements and accruals"; "if any" dropped</td></tr>
+        <tr><td>Q3 2024</td><td>+ OH</td><td>8</td><td>Same; data-security class certified</td></tr>
+        <tr><td>Q1 2025</td><td>+ AR</td><td class="val-highlight">9</td><td class="val-new">"other than for suits for which accruals have been established and are not material"</td></tr>
+        <tr><td>Q2 2025</td><td>&minus; NY, + NC</td><td>9</td><td>Same</td></tr>
+        <tr><td>Q3 2025</td><td>&minus; GA, IN, PA</td><td>6</td><td>Same</td></tr>
+        <tr><td>Q1 2026</td><td>&minus; AL, AR, SC</td><td class="val-pos">3</td><td>Same</td></tr>
+        <tr><td>Q2 2026</td><td>CO, NC, OH</td><td>3</td><td>Same</td></tr>
+      </tbody>
+    </table>
+    <p>Item 1 (Legal Proceedings) is a one-line cross-reference in every 10-Q, and Item 1A is the same one-sentence "no material changes" stub in all eight; the litigation note is where the changes are. The filings never say why states leave the list; the accrual wording ("not material") has not changed since Q1 2025.</p>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. Growth Was Demoted One Sentence at a Time</h3>
+      <p>The quarterly MD&amp;A reordered the 96 combined ratio sentence in Q3 2024, a quarter ahead of the 10-K. It dropped the "growing as fast as we can" sentence from Q1 2025 on. The FY2025 10-K led with profit, and by Q2 2026 growth had left the opening sentence, returning as "steady ... despite increased competition." This mirrors the annual dashboard's "Profitability Over Growth" theme. The quarterly record shows each step and shows that it tracked slowing NPW growth (+25% at the Q3 2024 peak, +5% by Q2 2026), not only a stated philosophy.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. Price Cuts, Falling Retention and a Widening Adequacy Claim Arrived Together</h3>
+      <p>Personal auto rates have been flat to down since Q2 2025, and personal auto retention has been negative in every reading since the FY2024 10-K. "Competition" went from absent to seven mentions per MD&amp;A, and the stated cause moved from Progressive's own mix to the market. In Q2 2026 management called all three major products adequately priced "through the remainder of the year." In the same quarter it deleted its tariff warning, cut commercial auto rates in targeted segments, and reported severity +4% with a 1.6-point worse accident-year loss ratio. That combination is consistent with pricing for share in a softer market; the filings do not say so.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. The Florida Windfall Was Disclosed at Quarterly Speed</h3>
+      <p>The excess-profit statute moved from first mention to a $950M accrual, a $1.2B charge and a cash payment in four consecutive filings. The measurement basis was quietly redefined from calendar years to accident years. The Florida rate cuts came with the first aggregate countrywide personal auto rate decrease in the series (Q2 2025). Florida is now absent from the 2026 rate discussion, and nothing in the 10-Qs addresses whether the next three-year window is exposed.</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Property Is Smaller, More Profitable and Not Yet Growing Again</h3>
+      <p>The 2024&ndash;2025 retreat (non-renewals, bundling requirements, a non-owner-occupied exit, mandatory deductibles) turned a 166.3 Q2 2024 combined ratio into 20%-plus margins. The "reopening" announced from Q3 2025 has not reversed policy counts: growth-oriented markets went from +20% to &minus;2% and volatile markets reached &minus;17%. Meanwhile the per-occurrence retention rose to $300M. The bundling strategy the annual dashboard highlights paid for this through weaker Robinson (bundled household) applications through 2025.</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Capital Return Switched From Special Dividends to Buybacks Funded Alongside New Debt</h3>
+      <p>2024&ndash;2025 returned capital through annual-variable dividends ($4.50, then $13.50) with token buybacks. In 2026, after the $8.0B payout, Progressive issued $1.5B of notes and bought back 5.4M shares in six months, more than in the prior two years combined, at average prices near $200 against $275.78 in Q2 2025. The buyback wording moved step by step: "or opportunistically" (FY2025 10-K), then "opportunistically" first (Q2 2026). Item 1A carried the same no-material-changes stub in all eight quarters, through the Florida charge, tariffs and the competition language.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Revenues</th>
+        <th>Net Income / Diluted EPS</th>
+        <th>NPW (YoY)</th>
+        <th>Underwriting Margin</th>
+        <th>Policies in Force</th>
+        <th>Key Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q1 2024</strong></td><td>$17.24B</td><td>$2.33B / $3.94</td><td>$19.0B (+18%)</td><td>13.9%</td><td>30.8M</td><td>Preferred redeemed; personal auto new apps &minus;9%</td></tr>
+      <tr><td><strong>Q2 2024</strong></td><td>$18.13B</td><td>$1.46B / $2.48</td><td>$17.9B (+22%)</td><td>8.1%</td><td>32.3M</td><td>Property CR 166.3; advertising +147%</td></tr>
+      <tr><td><strong>Q3 2024</strong></td><td>$19.72B</td><td>$2.33B / $3.97</td><td>$19.5B (+25%)</td><td>11.0%</td><td>33.9M</td><td>Helene $563M; 96 CR sentence reordered</td></tr>
+      <tr><td><strong>FY2024 10-K</strong></td><td>$75.37B</td><td>$8.48B / $14.40</td><td>$74.4B (+21%)</td><td>11.2%</td><td>35.0M</td><td>Property folded into PL; $4.50 variable dividend</td></tr>
+      <tr><td><strong>Q1 2025</strong></td><td>$20.41B</td><td>$2.57B / $4.37</td><td>$22.2B (+17%)</td><td>14.0%</td><td>36.3M</td><td>Tariff paragraph; debt-ceiling risk</td></tr>
+      <tr><td><strong>Q2 2025</strong></td><td>$22.00B</td><td>$3.17B / $5.40</td><td>$20.1B (+12%)</td><td>13.8%</td><td>37.3M</td><td>First personal auto rate cut; Florida "possible"</td></tr>
+      <tr><td><strong>Q3 2025</strong></td><td>$22.51B</td><td>$2.62B / $4.45</td><td>$21.4B (+10%)</td><td>10.5%</td><td>38.1M</td><td class="val-neg">$950M Florida credit (4.6 pts)</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>$87.67B</td><td>$11.31B / $19.23</td><td>$83.2B (+12%)</td><td>12.6%</td><td>~38.7M (derived)</td><td>Florida credit $1.2B; $13.50 variable dividend</td></tr>
+      <tr><td><strong>Q1 2026</strong></td><td>$22.19B</td><td>$2.82B / $4.80</td><td>$23.6B (+6%)</td><td>13.6%</td><td>39.6M</td><td>$1.5B notes; 2.3M shares repurchased</td></tr>
+      <tr><td><strong>Q2 2026</strong></td><td>$23.61B</td><td>$3.31B / $5.67</td><td>$21.1B (+5%)</td><td>12.7%</td><td>40.1M</td><td class="val-highlight">Tariff paragraph deleted; retention $300M; 3.07M shares repurchased</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--text-dim); margin-top:8px;">Revenues, net income and diluted EPS are SEC XBRL reported figures (quarterly values are three-month periods). NPW, underwriting margin and policies in force are from the MD&amp;A text. FY2025 year-end policies in force are not stated in a single figure; "3.7 million, or 10%, more policies in force than at December 31, 2024" against 34.95M implies about 38.7M. Operating cash flow (XBRL, year-to-date): $12.11B (9M 2024), $14.38B (9M 2025), $17.55B (FY2025), $7.97B (H1 2026, after the $1.2B Florida credits). Pretax recurring investment book yield 3.7% (Q1 2024) &rarr; 4.2% (Q2 2026); fixed-income duration 3.2 &rarr; 3.5 years.</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      if (el.classList.contains('finding')) findings.push(el);
+      if (el.classList.contains('finding-group')) el.querySelectorAll('.finding').forEach(f => findings.push(f));
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+</script>
+</body>
+</html>

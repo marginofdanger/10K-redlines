@@ -108,8 +108,8 @@
       "annual_dashboard": "companies/pgr/",
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
-      "quarterly_dashboard": null,
-      "quarterly_covered_through": null,
+      "quarterly_dashboard": "companies/pgr/10q/",
+      "quarterly_covered_through": "2026-06-30",
       "annual_exhibit": "EX-13"
     },
     "APO": {
