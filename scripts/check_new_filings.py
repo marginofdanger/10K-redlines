@@ -13,8 +13,8 @@ from datetime import date, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(ROOT, "automation", "tracked.json")
-UA = os.environ.get("SEC_USER_AGENT",
-                    "marginofdanger-10K-redlines/1.0 (+https://github.com/marginofdanger/10K-redlines)")
+# EDGAR rejects agents containing a URL.
+UA = os.environ.get("SEC_USER_AGENT", "marginofdanger-10K-redlines/1.0")
 SCANNER_QUARTERS = 8
 
 _last_request = 0.0
