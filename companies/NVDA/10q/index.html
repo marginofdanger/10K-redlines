@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NVDA 10-Q Quarterly Scanner | FY2024Q3&ndash;FY2027Q1</title>
+<title>NVDA 10-Q Quarterly Scanner | FY2024Q3&ndash;FY2027Q2</title>
 <style>
 :root {
   --bg: #ffffff;
@@ -210,7 +210,7 @@ a:hover { text-decoration: underline; }
 <nav class="sidebar">
   <div class="sidebar-header">
     <h1>NVDA 10-Q SCANNER</h1>
-    <div class="sub">FY2024 Q3 &ndash; FY2027 Q1 | SEC EDGAR</div>
+    <div class="sub">FY2024 Q3 &ndash; FY2027 Q2 | SEC EDGAR</div>
   </div>
   <div class="nav-section">Overview</div>
   <a class="nav-item" href="#hero-section">Executive Summary</a>
@@ -227,6 +227,7 @@ a:hover { text-decoration: underline; }
   <a class="nav-item" href="#q2q3-fy26">FY26 Q2 &rarr; Q3</a>
   <a class="nav-item" href="#q3fy26-fy26k">FY26 Q3 &rarr; FY26 10-K</a>
   <a class="nav-item" href="#fy26k-q1fy27">FY26 10-K &rarr; FY27 Q1</a>
+  <a class="nav-item" href="#q1q2-fy27">FY27 Q1 &rarr; Q2</a>
 
   <div class="nav-section">Tracked Signals</div>
   <a class="nav-item" href="#sig-export">Export-Control Arc</a>
@@ -254,8 +255,8 @@ a:hover { text-decoration: underline; }
 <!-- Hero -->
 <div class="hero" id="hero-section">
   <h1>NVDA 10-Q Quarterly Scanner</h1>
-  <div class="tagline">Quarter-over-quarter textual analysis of NVIDIA's 10-Q filings, from FY2024 Q3 (October 2023, filed just after the October 2023 export rules) through FY2027 Q1 (April 2026, filed May 20, 2026), including the FY2024, FY2025, and FY2026 10-K boundary transitions. NVIDIA restates its full risk factors every quarter, so each transition is a complete redline of Risk Factors, MD&amp;A, Notes, and Legal Proceedings.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001045810) | 8 quarterly filings + 3 10-K baselines | FY2024 Q3 &ndash; FY2027 Q1 | Analysis: June 2026</div>
+  <div class="tagline">Quarter-over-quarter textual analysis of NVIDIA's 10-Q filings, from FY2024 Q3 (October 2023, filed just after the October 2023 export rules) through FY2027 Q2 (July 2026, filed August 26, 2026), including the FY2024, FY2025, and FY2026 10-K boundary transitions. NVIDIA restates its full risk factors every quarter, so each transition is a complete redline of Risk Factors, MD&amp;A, Notes, and Legal Proceedings.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001045810) | 9 quarterly filings + 3 10-K baselines | FY2024 Q3 &ndash; FY2027 Q2 | Analysis: June 2026, extended October 2026</div>
   <button class="expand-btn" id="toggle-all">Expand all</button>
 </div>
 
@@ -302,6 +303,10 @@ a:hover { text-decoration: underline; }
     <div class="signal-card">
       <h3><a href="#fy26k-q1fy27">10. FY2026 10-K &rarr; FY27 Q1 (filed May 20, 2026)</a></h3>
       <p>The heaviest quarter in the series: manufacturing/supply commitments reached $119B ($95B payable within FY2027), investment commitments $27B, $18.6B of private-company purchases in one quarter (non-marketable portfolio $42.3B), a $32.4B future lease pipeline, commercial paper capacity raised from $575M to $25B, an $80B buyback authorization with a dividend increase from $0.01 to $0.25, a platform recast to Data Center / Edge Computing, Rubin's first appearance, H200-to-China licenses carrying a 25% re-import tariff, and three customers at 21/17/16% of revenue with letter labels dropped.</p>
+    </div>
+    <div class="signal-card">
+      <h3><a href="#q1q2-fy27">11. FY27 Q1 &rarr; Q2 (filed Aug 26, 2026)</a></h3>
+      <p>NVIDIA moved from supplier to credit provider. It guaranteed up to $105B of OpenAI's 20-year leases at SB Energy's Ohio campus, committed $36B to backstop AI-cloud capacity, signed MOUs for $500B+ financing platforms, and wrote that its AI-cloud and model-maker customers "lack" investment-grade financing. Supply commitments rose from $119B to $279B, with payments now running into FY2029. NVIDIA issued $25B of notes and added a debt risk factor. Receivables grew to $63.1B on new payment terms of up to one year. H200 China licenses produced a $0.4B charge and under 1% of Data Center revenue. Competition and demand-mismatch risk factors left the update set; they are incorporated by reference, not withdrawn.</p>
     </div>
   </div>
 </div>
@@ -1646,6 +1651,299 @@ a:hover { text-decoration: underline; }
 </div>
 
 
+<!-- T11: FY27 Q1 -> FY27 Q2 -->
+<div class="transition-header" id="q1q2-fy27">
+  <h2>FY2027 Q1 &rarr; Q2 &mdash; filed Aug 26, 2026</h2>
+  <div class="sub">Q ended Jul 26, 2026 | Revenue $96.2B (+106%) | Data Center $89.0B (+117%) | GM 75.0% | Net income $59.7B | Supply commitments $279B | Guarantees $108.5B | Long-term debt $32.4B</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$105B guarantee of OpenAI's data-center leases at SB Energy's Ohio campus; OpenAI back in the filing as a guaranteed tenant</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2 (new; OpenAI is not named anywhere in the FY2027 Q1 10-Q):</p>
+    <blockquote>"In August 2026, we entered into guarantees with SB Energy Corp. to provide credit support on the land, power, and shell buildout at SB Energy's PORTS Technology Campus in Pike County, Ohio, covering leases for approximately <strong>4.25 gigawatts</strong> of IT load. The campus will exclusively host our compute under <strong>20-year leases to OpenAI</strong>, subject to limited exceptions, with our obligation <strong>capped at $105 billion</strong> in the aggregate..."</blockquote>
+    <blockquote>"The guarantees terminate upon certain events, including <strong>OpenAI achieving a satisfactory credit rating</strong> or after each respective lease term has completed. We also hold an option, exercisable in our sole discretion, to provide additional credit support in phases for approximately <strong>3.8 additional gigawatts</strong> as the site scales."</blockquote>
+    <p>The cap equals about 80% of NVIDIA's FY2026 operating income ($130.4B) and is 30x the $3.5B of AI-cloud lease guarantees, which were the only guarantees in Q1. The termination trigger states outright that the tenant does not currently have a satisfactory credit rating. OpenAI went from letter of intent (FY26 Q3) to "finalizing an investment and partnership agreement" (FY26 10-K) to unnamed (FY27 Q1) to guaranteed lessee (FY27 Q2).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">NVIDIA states its AI-cloud and model-maker customers "lack" investment-grade financing</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (the whole infrastructure caveat):</p>
+    <blockquote>"In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. These limitations could delay customer and partner deployments or reduce the scale of accelerated computing and AI adoption."</blockquote>
+    <p>FY2027 Q2 (inserted between those two sentences, plus a new clause):</p>
+    <blockquote>"We believe AI clouds and AI model makers have significant demand for training and inference compute and <strong>currently lack the ability to secure long-term infrastructure contracts and investment-grade financing capacity</strong> to secure the AI infrastructure necessary to grow. These limitations could delay customer and partner deployments or reduce the scale of accelerated computing and AI adoption <strong>and may impact the growth of our revenue</strong>."</blockquote>
+    <p>This is the rationale for the guarantees, backstops and financing platforms below, and it ties customers' credit standing to NVIDIA's own revenue growth, which the Q1 text did not. AI model makers are named direct customers in the concentration note.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New AI-cloud model: $36B of six-year capacity purchase backstops that the clouds can "unilaterally" recall</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2 (new business model):</p>
+    <blockquote>"Under these agreements, AI clouds procure our data center infrastructure products and we commit to cloud service agreements, which the AI clouds can <strong>unilaterally stop providing to us and sell to third-party customers at more advantageous rates</strong>. Our commitments, which are <strong>typically six years in duration, totaled $36 billion</strong> as of July 26, 2026, and decrease as capacity is used by third-party customers or by us for our research and development efforts."</blockquote>
+    <p>The new risk factor states the mechanics plainly: "if AI clouds do not successfully sell committed capacity to third-party customers, we have agreed to purchase that capacity." The partner buys NVIDIA systems; NVIDIA guarantees the partner's utilization; the upside it keeps is a conditional revenue share. Per Note 10, none of the $36B is payable in the remainder of FY2027 ($6B in FY2028, $9B in FY2032 and after).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">MOUs for financing platforms to raise "more than $500 billion"; optional residual-value support, with a Form of Residual Value Guaranty filed as Exhibit 10.1</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2 (new):</p>
+    <blockquote>"In August 2026, we entered into memorandums of understanding with several large capital providers to establish independent financing platforms designed to <strong>mobilize more than $500 billion of third-party capital</strong> over time to support the deployment of AI infrastructure. These and other preliminary arrangements <strong>may not lead to definitive agreements</strong>."</blockquote>
+    <blockquote>"At our option, we may provide <strong>limited residual-value support</strong> for a portion of specific projects, subject to disciplined risk management and project-by-project evaluation."</blockquote>
+    <p>The funding is described as "independently underwritten" by the providers, but the exhibit index lists a "Form of Residual Value Guaranty" filed with this 10-Q, so the support mechanism is already papered while the platforms are at MOU stage. The risk-factor version omits the $500 billion figure.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Ecosystem investments: "expect to continue making" &rarr; "may continue to make"; the $18.6B list and its circularity sentence give way to a $99B total</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"We have made, and <strong>expect to continue making</strong>, investments in our ecosystem... $18.6 billion in private companies and infrastructure funds. <strong>Some of these investments include AI model makers that may indirectly purchase or use our products in the cloud</strong>."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"We have made, and <strong>may continue to make</strong>, investments <strong>and commitments</strong> in our ecosystem to enhance our growth opportunities, cultivate our ecosystem, and strengthen our competitive position. These include <strong>equity investments of $99 billion</strong> and equity investment commitments of $25 billion as of July 26, 2026."</blockquote>
+    <p>The forward statement softens from expectation to possibility in the quarter the portfolio total is first disclosed. The sentence connecting investees to purchases of NVIDIA products, new in Q1, is gone after one quarter; the investees are now described in Note 10 as "AI model makers, infrastructure financiers, and other private companies." Investment commitments edged down from $27B to $25B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Vera Rubin shipping on schedule, now with "certain supply constraints"; demand-estimation caveat moves into MD&amp;A</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"We expect our Rubin platform to start shipping in the second half of fiscal year 2027."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"Our next-generation Data Center architecture, <strong>Vera Rubin, began production shipments in the third quarter of fiscal year 2027</strong>. We will be shipping both Blackwell and Rubin systems in the future and are <strong>currently experiencing certain supply constraints</strong>. Demand estimates for our products can be inaccurate and create volatility in our revenue or supply levels."</blockquote>
+    <p>The postponement sentence also gains two new reasons: customers may postpone "due to the lack of availability of data center infrastructure to deploy our products, constraints on capital to have sufficient funding to purchase our products." Both repeat the financing theme above.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--red)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Risk-factor update set rewritten: Q1's Competition and demand-mismatch factors drop out; Commitments/Guarantees and Indebtedness take their place (section 43K &rarr; 35K chars)</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"Other than the risk factors listed below, there have been no material changes from the risk factors previously described under Item 1A of our Annual Report on Form 10-K for the fiscal year ended January 25, 2026."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"Other than the risk factors listed below, there have been no material changes from the risk factors previously described under Item 1A of our Annual Report on Form 10-K for the fiscal year ended January 25, 2026 <strong>and Item 1A of our Quarterly Report on Form 10-Q for the fiscal quarter ended April 26, 2026</strong>."</blockquote>
+    <p>The shorter section is a real change, not an extraction artifact: both sections run from the Item 1A heading to Item 2. But the dropped factors are not withdrawn. Q2 incorporates Q1's Item 1A by reference, so the competition/ASIC language, the 17-bullet demand-mismatch list and the memory-price sentence stand as last written. What changed is which risks NVIDIA chose to restate. Q1 opened with competition; Q2 opens with "Commitments, guarantees, and other commercial arrangements expose us to financial, counterparty and execution risks and may not provide anticipated benefits." The export-control factors carry over with edits, and a new debt factor closes the section.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New lead risk factor spells out the downside: buy unsold AI-cloud capacity, assume OpenAI's leases on default</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2 (new risk factor):</p>
+    <blockquote>"Under the agreements, <strong>if AI clouds do not successfully sell committed capacity to third-party customers, we have agreed to purchase that capacity</strong>. We may not have sufficient demand for, or the operational ability to use or resell, all the capacity we are committed to purchase."</blockquote>
+    <blockquote>"<strong>If OpenAI does not perform its obligations or becomes subject to an insolvency event</strong>, and a guarantee is triggered, <strong>we may assume the applicable lease</strong>..."</blockquote>
+    <blockquote>"Customers or partners may fail to fulfill their financial commitments, secure necessary capital or infrastructure, complete projects on schedule or within budget, or experience <strong>financial distress or insolvency</strong>. Power constraints, government actions or regulations, permitting delays, or <strong>community opposition</strong> may delay, restrict or prevent the development or operation of data centers."</blockquote>
+    <p>The factor names one customer's possible insolvency as the trigger for NVIDIA's exposure. Neither "insolvency" nor "community opposition" appears anywhere in the Q1 10-Q. It also flags NVIDIA's own commitments: "Future demand may be affected by the ability of customers and partners, including those developing open models, to generate revenue and sustain investment in computing infrastructure."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">H200 licenses: "not generated any revenue" &rarr; $0.4B charge, PRC restriction, shipments &lt;1% of Data Center revenue, tariff absorbed</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"To date, we have not generated any revenue under the H200 licensing program, and do not yet know whether any imports will be allowed into China."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"...but <strong>such sales were restricted by the PRC government</strong>, and we have been unable to sell all the products for which we have licenses. During the first half of fiscal year 2027, we incurred a <strong>$0.4 billion charge associated with H200</strong> for excess inventory and purchase obligations, as the demand for H200 products diminished. After incurring that charge, we have made a fraction of the allowed shipments under the USG's H200 licensing program. Those shipments account for <strong>less than 1% of Data Center revenue</strong> in our most recent quarter."</blockquote>
+    <blockquote>"<strong>We have been unable to pass along any of the tariff to our customers, and do not anticipate doing so</strong> in the event we are able to sell licensed products into the China market."</blockquote>
+    <p>This repeats the H20 sequence on a smaller scale: license granted, China blocks purchases, inventory charge using the same wording ("as the demand for ... products diminished"). Q1's conditional "may not be able to pass along all or any of the tariff" became a statement that none was passed along. MD&amp;A's Hopper-to-China line moves from "No shipments" against $4.6B a year earlier to "less than 1% of Data Center revenue."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">H20 licenses rewritten in the past conditional ("would have allowed"); the 15% USG revenue-share sentence is deleted</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"Beginning in August 2025, the USG granted licenses that would allow us to ship certain H20 products to certain China-based customers. USG officials expressed an expectation that the USG will receive 15% or more of the revenue generated from licensed sales of our products, but the USG did not publish a regulation codifying such requirement."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"Beginning in August 2025, the USG granted licenses that <strong>would have allowed</strong> us to ship certain H20 products to certain China-based customers, but <strong>such sales were restricted by the PRC government, and we were unable to sell our H20 inventory</strong>."</blockquote>
+    <p>The 15% sentence had been in every 10-Q since FY2026 Q2 (disclosed, widened to "15% or more... of our products" in Q3, past tense in FY27 Q1). It is now gone, and the H20 program is described as having produced no sales of the inventory. The foreclosure sentence rolls forward to "the end of the second quarter", and adds that NVIDIA cannot deliver a competitive product "for wide distribution" in China.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Debt risk factor added after $25.0B seven-tranche issuance; senior notes $8.5B &rarr; $33.5B</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2 (new risk factor):</p>
+    <blockquote>"As of July 26, 2026, we had <strong>$33.5 billion aggregate principal amount of senior notes outstanding</strong>. As each series of senior notes matures, unless redeemed or repurchased, we must either repay or refinance the notes. If we decide to refinance, we may receive less favorable terms or be unable to refinance at all..."</blockquote>
+    <p>MD&amp;A: "In June 2026, we issued an aggregate of $25.0 billion of senior unsecured notes across seven tranches for general corporate purposes" (2028 to 2056 maturities, 4.25% to 5.625% coupons). Interest expense rose from $62M to $227M year over year. Note 9 also drops Q1's description of the covenants as "non-financial in nature"; Q2 says only that NVIDIA "complied with the required covenants under the outstanding notes." The filing does not say whether the new notes carry financial covenants. The debt was raised in the quarter NVIDIA paid $19.7B for buybacks and $6.0B in dividends.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Export rules now said to trigger "inquiries and investigations from foreign governments"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2 (sentence appended to the export-control disruption paragraph):</p>
+    <blockquote>"Complex U.S. export rules <strong>have already and are likely in the future to result in inquiries and investigations from foreign governments</strong> regarding sales of our products, subjecting our business, employees, and customers to increased burdens, disruption and risk."</blockquote>
+    <p>"Have already" makes this a statement of fact about past inquiries, not only a forecast. The China SAMR Mellanox finding (September 2025) is the only one the filing names.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--accent2)"></span>Notes / Financial</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Supply commitments $119B &rarr; $279B in one quarter; payment horizon extends from FY2027 into FY2029; "are cancellable" &rarr; "may be cancelable"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"...in certain instances, these agreements <strong>are cancellable, able to be rescheduled, or adjustable</strong> for our business needs prior to placing firm orders. Changes to these agreements may result in additional costs. As of April 26, 2026, these commitments were <strong>$119 billion for which $95 billion will be paid in the remainder of fiscal year 2027</strong>..."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"We have partnered with our extensive network to secure the necessary supply and critical components needed to <strong>meet demand for the next several years</strong>, increasing supply commitments from $119 billion last quarter to <strong>$279 billion</strong> as of July 26, 2026. These supply commitments are for our data center infrastructure systems, <strong>primarily memory and manufacturing facilities</strong>..."</blockquote>
+    <blockquote>"...in certain instances, these agreements <strong>may be cancelable, rescheduled, or adjustable</strong> for our business needs prior to placing firm orders."</blockquote>
+    <p>The new schedule is $92B (rest of FY2027), $87B (FY2028), $88B (FY2029). In Q1, 80% of commitments fell within the fiscal year; in Q2, 33% do. Cancellability goes from a statement of fact to a possibility in the quarter the commitments more than double. Note 10's new commitments table totals $366B (supply $279B, cloud $29B, data-center leases $25B, equity investments $25B, capex $8B). On top of that are $56B of "additional commitments" and $108.5B of maximum guarantee exposure. Inventory rose to $31.6B, with raw materials up 71% q/q to $11.3B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Accounts receivable $40.7B &rarr; $63.1B on new payment terms "up to one year"; five customers hold 70% of AR</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2 (new; no counterpart in FY2027 Q1):</p>
+    <blockquote>"Payment from customers is generally due shortly after delivery of our products. In certain cases, for investment-grade customer purchases, we have and may in the future provide <strong>longer payment terms ranging from 90 days up to one year</strong> to assist customers with large data center builds depending on size."</blockquote>
+    <blockquote>"<strong>Five direct customers accounted for 22%, 14%, 13%, 11%, and 10%</strong> of our accounts receivable balance as of July 26, 2026."</blockquote>
+    <p>MD&amp;A attributes the operating-cash-flow drag to "an increase in accounts receivable due to extended payment terms on large multi-quarter agreements with certain investment-grade customers"; the half-year AR build was $24.6B. Combined AR concentration rose from 64% (three customers) to 70% (five). The new risk factor states the extended terms "will continue to affect the timing of our operating cash flows."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Revenue concentration breaks its ratchet: one direct customer at 16% (Q1: 21/17/16%); Taiwan-HQ revenue more than doubles</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"For the first quarter of fiscal year 2027, three direct customers represented 21%, 17%, and 16% of total revenue..."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"For the second quarter of fiscal year 2027, <strong>one direct customer represented 16% of total revenue</strong>, which was primarily attributable to the Compute &amp; Networking segment."</blockquote>
+    <p>This is the first quarter since FY2024 Q3, the start of the series, in which only one direct customer reached 10%. In the same quarter, revenue from Taiwan-headquartered direct customers rose from $12,006M to $26,985M and the non-U.S. share went from 22% to 38%. That pattern is consistent with volume moving to Taiwan-based ODM/system-builder direct customers, which would spread direct-customer revenue without changing who the end customers are. This is an inference; the filing does not explain the shift. Q2 also moved one company from ACIE to Hyperscale "due to a change in their business model" and recast prior periods.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Equity-method "infrastructure funds" become "infrastructure financiers": $1.0B &rarr; $3.3B carried, $2.3B &rarr; $4.7B maximum exposure, VIEs not consolidated</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"We have $1.0 billion of investments in infrastructure funds accounted for using the equity method as of April 26, 2026."</blockquote>
+    <p>FY2027 Q2:</p>
+    <blockquote>"We had <strong>$3.3 billion of investments in infrastructure financiers</strong> accounted for using the equity method as of July 26, 2026. Those equity method investments deemed to be <strong>variable interest entities</strong>, or VIEs, had a maximum loss exposure, including carrying values and future committed amounts, of <strong>$4.7 billion</strong>..."</blockquote>
+    <p>NVIDIA is now an equity holder in the lenders that finance the infrastructure buying its systems, alongside the new financing-platform MOUs. Non-marketable equity rose to $47,898M on $13,106M of net additions, net of a $12,323M reclassification to marketable securities "following public market trading" (investees going public). NVIDIA also received public-company warrants with a $4.8B notional ($824M fair value), "with the corresponding benefit substantially deferred," and holds a $1.0B equity forward contract. Q1's description of the lease guarantees as made "in exchange for warrants" was dropped when they were renamed "land, power, and shell guarantees for AI clouds."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Future data-center leases: $32.4B for R&amp;D becomes $25B own-use plus $20B NVIDIA signed but "expect[s] to reassign" to third parties</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1:</p>
+    <blockquote>"...we expect to commence leases with future obligations of $32.4 billion, primarily for data center leases to support our research and development efforts, with lease terms of 3 to 20 years."</blockquote>
+    <p>FY2027 Q2 (new category):</p>
+    <blockquote>"We have entered into data center leases with terms of approximately fifteen years that are expected to commence between fiscal year 2028 and fiscal year 2029... <strong>We expect to reassign these data center leases to third parties</strong>."</blockquote>
+    <p>NVIDIA is now signing leases as principal for capacity it does not intend to occupy, totaling $20B. The risk factor adds: "Delays in completing these assignments could cause us to bear the related lease costs longer than anticipated."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First full quarter of the $0.25 dividend: $6.0B paid; $19.7B of buybacks; authorization $99.3B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q2:</p>
+    <blockquote>"We paid cash dividends to our shareholders of $6.0 billion and $6.3 billion during the second quarter and first half of fiscal year 2027, respectively."</blockquote>
+    <p>Up from $243M in Q1 (25x). Repurchases were $19.7B (94M shares), so the quarter's capital returns of $25.7B roughly matched the $24.9B of net proceeds from the June notes. Remaining authorization is $99.3B after the May 18 $80B approval. Other income, net was $7.8B, or 11% of Q2 pre-tax income ($71.5B), down from 23% in Q1.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group"><h3><span class="dot" style="background:var(--purple)"></span>Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Rule 23(f) petition sentence deleted from the class-action history, with no disposition given</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2027 Q1 (final sentence of the securities-action paragraph):</p>
+    <blockquote>"On April 8, 2026, NVIDIA filed a petition with the Ninth Circuit for permission to appeal the district court's order pursuant to Federal Rule of Civil Procedure 23(f)."</blockquote>
+    <p>FY2027 Q2: the paragraph now ends at the March 25, 2026 class certification. Nothing says whether the Ninth Circuit granted or denied the petition, or whether NVIDIA withdrew it. Removing a pending appeal from the history is consistent with that appeal having ended, but the filing does not say so. Still no accrued contingent liabilities, and the IRS examination of FY2023-FY2024 continues. Accrued Groq purchase consideration fell from $3,957M to $986M after a $2,944M payment.</p>
+  </div>
+</div>
+</div>
+
+
 <!-- ==================== TRACKED SIGNALS ==================== -->
 
 <div class="section" id="sig-export">
@@ -1666,6 +1964,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q3</td><td class="val-neg">"We have effectively been foreclosed"; ~$50M H20 license revenue; "15% or more... of our products"; GAIN AI Act passes Senate</td></tr>
         <tr><td>FY26 10-K</td><td>"As of the end of fiscal year 2026, we were effectively foreclosed"; cumulative H20 license revenue ~$60M</td></tr>
         <tr><td>FY27 Q1</td><td class="val-new">H200 licenses (Feb 2026): U.S. inspection + 25% re-import tariff, no revenue yet; zero Hopper-to-China vs $4.6B y/y; 15% sentence past tense ("did not publish"); RASA pending</td></tr>
+        <tr><td>FY27 Q2</td><td class="val-neg">H200 sales "restricted by the PRC government"; $0.4B H200 charge; shipments &lt;1% of Data Center revenue; tariff not passed on; H20 recast as "would have allowed... unable to sell"; 15% sentence deleted</td></tr>
       </tbody>
     </table>
   </div>
@@ -1688,6 +1987,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q3</td><td>A 22%, B 15%, C 13%, D 11%</td><td>AI research and deployment company "purchasing cloud services from our customers"</td></tr>
         <tr><td>FY26 10-K</td><td>FY: 22% and 14%</td><td>"some individually representing 10% or more of our revenue"</td></tr>
         <tr><td>FY27 Q1</td><td class="val-neg">21%, 17%, 16% &mdash; letter labels dropped (54% combined)</td><td>AI research and deployment company sentence repeats</td></tr>
+        <tr><td>FY27 Q2</td><td class="val-pos">One at 16% (H1: 16/15/13%); first single-customer quarter since FY24 Q3</td><td>AI research and deployment company sentence repeats; Taiwan-HQ revenue $12.0B &rarr; $27.0B</td></tr>
       </tbody>
     </table>
     <h3 style="margin-top:18px;">Accounts-Receivable Concentration</h3>
@@ -1704,11 +2004,12 @@ a:hover { text-decoration: underline; }
         <tr><td>Oct 26, 2025</td><td>Four: 22/17/14/12%</td></tr>
         <tr><td>Jan 25, 2026</td><td>Three: 25/18/13%</td></tr>
         <tr><td>Apr 26, 2026</td><td class="val-neg">Three: 30/18/16% (64% combined &mdash; series high)</td></tr>
+        <tr><td>Jul 26, 2026</td><td class="val-neg">Five: 22/14/13/11/10% (70% combined &mdash; series high); AR $63.1B on payment terms up to one year</td></tr>
       </tbody>
     </table>
     <ul>
       <li><strong>Taxonomy rewrites:</strong> FY25 Q1 defines indirect customers (incl. "startups," dropped from Q2); FY26 Q3 adds "Neocloud builders" and the concentration-trend sentence; FY27 Q1 replaces Neocloud/hyperscale/consumer-internet with "AI Clouds" and "AI model makers" and drops the lettered labels.</li>
-      <li>The unnamed "AI research and deployment company" appears in every concentration note from FY2026 Q1 through FY2027 Q1.</li>
+      <li>The unnamed "AI research and deployment company" appears in every concentration note from FY2026 Q1 through FY2027 Q2.</li>
     </ul>
   </div>
 </div>
@@ -1716,7 +2017,7 @@ a:hover { text-decoration: underline; }
 <div class="section" id="sig-commitments">
   <div class="section-header"><h2>#3: Purchase Commitments Trajectory</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">3</span> $17B to $119B in Ten Filings</h3>
+    <h3><span class="num">3</span> $17B to $279B in Eleven Filings</h3>
     <table class="data-table">
       <thead><tr><th>Period</th><th>Inventory / mfg-supply</th><th>Cloud &amp; other</th><th>Investment commitments</th></tr></thead>
       <tbody>
@@ -1731,10 +2032,12 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q3</td><td class="val-pos">$50.3B ("substantially all... through fiscal year 2027")</td><td>$26B cloud; $2.1B other</td><td class="val-new">$6.5B (incl. $5B Intel)</td></tr>
         <tr><td>FY26 10-K</td><td class="val-pos">$95.2B</td><td>$27B cloud; $3.4B other</td><td>$11.4B</td></tr>
         <tr><td>FY27 Q1</td><td class="val-neg">$119B ($95B payable within FY2027)</td><td>$30B cloud; $6B other vendor</td><td class="val-neg">$27B</td></tr>
+        <tr><td>FY27 Q2</td><td class="val-neg">$279B ($92B rest of FY27, $87B FY28, $88B FY29; "primarily memory and manufacturing facilities")</td><td>$29B cloud; $36B AI-cloud capacity backstop; $25B + $20B (third-party) leases; $8B capex</td><td>$25B</td></tr>
       </tbody>
     </table>
     <ul>
       <li>FY27 Q1 header rewrite: commitments reflect "data center-scale production and longer future ordering horizons" (was "long lead and cycle times"); counterparties become "our supply vendors" (was "contract manufacturers").</li>
+      <li>FY27 Q2: supply agreements "may be cancelable" (Q1: "are cancellable"); new guarantee table: $3.5B AI-cloud lease guarantees + $105B SB Energy/OpenAI = $108.5B maximum gross exposure; total Note 10 commitments $366B plus $56B "additional commitments".</li>
       <li>FY26 Q3 adds the cloud hedge: "Some cloud service capacity may be reduced, terminated or sold to others by the CSPs."</li>
       <li>Prepaid supply/capacity agreements: $3.7B (Oct 2023) &rarr; $5.5B (Apr 2024) &rarr; $3.5B (Oct 2025); the line disappears from FY27 Q1's Other Assets presentation.</li>
     </ul>
@@ -1744,7 +2047,7 @@ a:hover { text-decoration: underline; }
 <div class="section" id="sig-investments">
   <div class="section-header"><h2>#4: Investment / Ecosystem-Financing Arc</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">4</span> Non-Marketable Portfolio: $1.5B to $42.3B in Two Years</h3>
+    <h3><span class="num">4</span> Non-Marketable Portfolio: $1.5B to $47.9B; Total Equity Investments $99B</h3>
     <table class="data-table">
       <thead><tr><th>Balance date</th><th>Non-marketable equity</th><th>Quarterly net additions</th><th>Cumulative unrealized gains</th></tr></thead>
       <tbody>
@@ -1757,16 +2060,18 @@ a:hover { text-decoration: underline; }
         <tr><td>Oct 26, 2025</td><td class="val-pos">$8,187M</td><td class="val-pos">$3,704M</td><td>$1,400M</td></tr>
         <tr><td>Jan 25, 2026</td><td class="val-pos">$22,251M</td><td>~+$14B implied in Q4</td><td>&mdash;</td></tr>
         <tr><td>Apr 26, 2026</td><td class="val-neg">$42,336M</td><td class="val-neg">$17,899M</td><td>$5,300M</td></tr>
+        <tr><td>Jul 26, 2026</td><td class="val-neg">$47,898M</td><td>$13,106M (&minus;$12,323M reclass to marketable)</td><td>$9,100M</td></tr>
       </tbody>
     </table>
     <ul>
-      <li><strong>OpenAI:</strong> letter of intent (FY26 Q3) &rarr; "finalizing an investment and partnership agreement" (FY26 10-K) &rarr; no longer named (FY27 Q1).</li>
+      <li><strong>OpenAI:</strong> letter of intent (FY26 Q3) &rarr; "finalizing an investment and partnership agreement" (FY26 10-K) &rarr; no longer named (FY27 Q1) &rarr; guaranteed tenant: up to $105B of credit support on 20-year PORTS campus leases, ending if OpenAI achieves "a satisfactory credit rating" (FY27 Q2).</li>
       <li><strong>Anthropic:</strong> agreement to invest up to $10B, subject to closing conditions (November 2025, disclosed FY26 Q3 subsequent events).</li>
       <li><strong>Intel:</strong> $5B commitment subject to regulatory approval (FY26 Q3); new risk factor on execution, financing, and operational risks.</li>
-      <li><strong>Infrastructure funds:</strong> $1.0B equity-method investments, $2.3B maximum exposure (FY27 Q1, new category).</li>
-      <li><strong>Lease guarantees:</strong> $860M maximum exposure / $470M escrow (FY26 Q3) &rarr; $3.5B / $712M across all agreements (FY27 Q1).</li>
-      <li><strong>Circularity sentences in the filings:</strong> "AI model makers that may indirectly purchase or use our products in the cloud" (FY27 Q1); the revenue-side "AI research and deployment company" disclosure runs from FY26 Q1.</li>
+      <li><strong>Infrastructure funds &rarr; financiers:</strong> $1.0B equity-method, $2.3B maximum exposure (FY27 Q1) &rarr; $3.3B, $4.7B, unconsolidated VIEs (FY27 Q2). August 2026 MOUs for financing platforms to raise "more than $500 billion"; optional residual-value support (Form of Residual Value Guaranty, Exhibit 10.1).</li>
+      <li><strong>Lease guarantees:</strong> $860M maximum exposure / $470M escrow (FY26 Q3) &rarr; $3.5B / $712M across all agreements (FY27 Q1); renamed "land, power, and shell guarantees for AI clouds," "in exchange for warrants" dropped (FY27 Q2). Public-company warrants received: $4.8B notional, $824M fair value.</li>
+      <li><strong>Circularity sentences in the filings:</strong> "AI model makers that may indirectly purchase or use our products in the cloud" (FY27 Q1, deleted in FY27 Q2 when MD&amp;A switched to the $99B total); the revenue-side "AI research and deployment company" disclosure runs from FY26 Q1.</li>
       <li>FY27 Q1 other income $15,929M, "primarily driven by unrealized gains on investments in publicly-held equity securities of $13.4 billion and non-marketable equity securities of $2.6 billion" &mdash; 23% of $69.9B pre-tax income.</li>
+      <li>FY27 Q2 other income, net $7,773M (gains from equity securities $7,771M) &mdash; 11% of $71.5B pre-tax income. H1 purchases of equity securities $42.4B.</li>
     </ul>
   </div>
 </div>
@@ -1774,7 +2079,7 @@ a:hover { text-decoration: underline; }
 <div class="section" id="sig-inventory">
   <div class="section-header"><h2>#5: Inventory + H20 Charge Mechanics</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">5</span> Inventory Up 5.4x in 2.5 Years; the $4.5B H20 Charge Decomposed</h3>
+    <h3><span class="num">5</span> Inventory Up 6.6x in Under Three Years; the $4.5B H20 Charge Decomposed</h3>
     <table class="data-table">
       <thead><tr><th>Balance date</th><th>Raw materials</th><th>WIP</th><th>Finished</th><th>Total</th><th>Provisions</th></tr></thead>
       <tbody>
@@ -1788,12 +2093,13 @@ a:hover { text-decoration: underline; }
         <tr><td>Oct 26, 2025</td><td>$4,209M</td><td>$8,735M</td><td>$6,840M</td><td>$19,784M</td><td>Q3 $378M</td></tr>
         <tr><td>Jan 25, 2026</td><td>$3,807M</td><td>$8,822M</td><td>$8,774M</td><td>$21,403M</td><td>FY26 $7.2B</td></tr>
         <tr><td>Apr 26, 2026</td><td class="val-neg">$6,647M (+75% q/q)</td><td>$9,949M</td><td>$9,201M</td><td>$25,797M</td><td>$0.8B + $0.3B excess-obligation</td></tr>
+        <tr><td>Jul 26, 2026</td><td class="val-neg">$11,341M (+71% q/q)</td><td>$13,377M</td><td>$6,857M</td><td>$31,575M</td><td>Q2 $784M + $201M excess-obligation; H1 H200 charge $0.4B</td></tr>
       </tbody>
     </table>
     <ul>
       <li><strong>H20 charge split (FY26 Q1):</strong> $2.3B inventory provision in cost of revenue (incl. $1.9B H20 product inventory) + remainder in excess inventory purchase obligation liabilities = $4.5B total; the charge was "less than what we initially anticipated as we were able to re-use certain materials."</li>
-      <li><strong>Net GM impact of provisions/releases:</strong> FY26 Q1 $5.3B / $436M (&minus;11.0 pts) &rarr; Q2 $1.0B / $501M incl. $180M H20 release (&minus;1.1) &rarr; Q3 $410M / $366M (&minus;0.1) &rarr; FY27 Q1 $1.1B / $103M (&minus;1.2).</li>
-      <li>Excess-inventory purchase obligation liability: $2,739M (Jan 2026) &rarr; $3,121M (Apr 2026).</li>
+      <li><strong>Net GM impact of provisions/releases:</strong> FY26 Q1 $5.3B / $436M (&minus;11.0 pts) &rarr; Q2 $1.0B / $501M incl. $180M H20 release (&minus;1.1) &rarr; Q3 $410M / $366M (&minus;0.1) &rarr; FY27 Q1 $1.1B / $103M (&minus;1.2) &rarr; FY27 Q2 $985M / $177M (&minus;0.8).</li>
+      <li>Excess-inventory purchase obligation liability: $2,739M (Jan 2026) &rarr; $3,121M (Apr 2026) &rarr; $2,138M (Jul 2026).</li>
       <li>Finished goods spiked 2.7x sequentially in FY26 Q2 (Blackwell racks); raw materials +75% sequentially in FY27 Q1, the quarter the memory-cost sentence appears.</li>
     </ul>
   </div>
@@ -1802,7 +2108,7 @@ a:hover { text-decoration: underline; }
 <div class="section" id="sig-gm">
   <div class="section-header"><h2>#6: Gross Margin Arc</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">6</span> 74.0% &rarr; 78.4% Peak &rarr; 60.5% Trough &rarr; 74.9%</h3>
+    <h3><span class="num">6</span> 74.0% &rarr; 78.4% Peak &rarr; 60.5% Trough &rarr; 75.0%</h3>
     <table class="data-table">
       <thead><tr><th>Period</th><th>Revenue</th><th>Data Center</th><th>GM</th><th>Stated driver</th></tr></thead>
       <tbody>
@@ -1816,6 +2122,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q3</td><td>$57.0B (+62%)</td><td>$51.2B (+66%)</td><td>73.4%</td><td>"Blackwell ramped with an improved mix and cost structure"; cost-of-revenue definition adds "tariffs" and "memory and component costs"</td></tr>
         <tr><td>FY26 10-K</td><td>$215.9B</td><td>&mdash;</td><td>71.1%</td><td>HGX &rarr; full-systems transition + H20 charge</td></tr>
         <tr><td>FY27 Q1</td><td>$81.6B (+85%)</td><td>$75.2B (+92%)</td><td>74.9%</td><td>Prior-year charge non-recurrence; provisions $1.1B (&minus;1.2 pts)</td></tr>
+        <tr><td>FY27 Q2</td><td>$96.2B (+106%)</td><td>$89.0B (+117%)</td><td>75.0%</td><td>"improved mix from Blackwell Ultra"; net provisions &minus;0.8 pts</td></tr>
       </tbody>
     </table>
   </div>
@@ -1836,6 +2143,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q2</td><td>$23,470M</td><td class="val-highlight">$10,156M (22%)</td><td>$8,529M</td><td>$2,769M</td><td>$46,743M</td><td>50%</td></tr>
         <tr><td>FY26 Q3 (HQ basis, recast)</td><td>$39,177M</td><td class="val-neg">&mdash;</td><td>$13,751M</td><td>$2,973M</td><td>$57,006M</td><td>31%</td></tr>
         <tr><td>FY27 Q1 (HQ basis)</td><td class="val-pos">$63,769M (78%)</td><td>&mdash;</td><td>$12,006M</td><td>$4,550M</td><td>$81,615M</td><td class="val-neg">22%</td></tr>
+        <tr><td>FY27 Q2 (HQ basis)</td><td>$60,074M (62%)</td><td>&mdash;</td><td class="val-pos">$26,985M</td><td>$7,880M</td><td>$96,221M</td><td>38%</td></tr>
       </tbody>
     </table>
     <ul>
@@ -1862,6 +2170,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q3</td><td>$12.6B (70M)</td><td>$62.2B remaining</td><td>$243M</td></tr>
         <tr><td>FY26 10-K</td><td>FY2026: $40.4B</td><td>&mdash;</td><td>&mdash;</td></tr>
         <tr><td>FY27 Q1</td><td class="val-neg">$20.2B (108M)</td><td class="val-neg">$38.5B remaining; May 18, 2026: +$80.0B; dividend $0.01 &rarr; $0.25</td><td>$243M</td></tr>
+        <tr><td>FY27 Q2</td><td>$19.7B (94M)</td><td>$99.3B remaining; $25.0B notes issued June 2026</td><td class="val-neg">$6.0B</td></tr>
       </tbody>
     </table>
   </div>
@@ -1879,6 +2188,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY25 Q3</td><td class="val-new">"the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026"</td></tr>
         <tr><td>FY26 Q1</td><td>Surge sentence dropped for cadence language; non-binding-announcement caveat added (kept thereafter)</td></tr>
         <tr><td>FY27 Q1</td><td class="val-new">"Supply availability affecting memory, and other components, as well as rising prices, may drive the prices for data center buildouts higher" &mdash; first memory-inflation sentence</td></tr>
+        <tr><td>FY27 Q2</td><td class="val-new">"currently experiencing certain supply constraints"; commitments "to meet demand for the next several years"; demand-mismatch risk factor not restated (incorporated by reference)</td></tr>
       </tbody>
     </table>
     <h3 style="margin-top:18px;">(b) Liquidity Sufficiency &mdash; Progressive Deletion</h3>
@@ -1892,6 +2202,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q2</td><td>"our future supply obligations"</td></tr>
         <tr><td>FY26 Q3</td><td class="val-neg">"our future obligations" &mdash; unenumerated, in the Intel/OpenAI/Anthropic quarter</td></tr>
         <tr><td>FY27 Q1</td><td class="val-new">Re-anchored: "$50.3 billion in cash, cash equivalents, and marketable debt securities as well as $30.2 billion of marketable equity securities... finance future capital requirements and commitments"</td></tr>
+        <tr><td>FY27 Q2</td><td>Unchanged wording; $56.6B cash and debt securities + $42.8B marketable equity; $33.5B senior notes now outstanding</td></tr>
       </tbody>
     </table>
     <h3 style="margin-top:18px;">(c) Gross-Margin Driver</h3>
@@ -1906,6 +2217,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q2 (72.4%)</td><td>"full-scale datacenter systems compared to Hopper HGX"</td></tr>
         <tr><td>FY26 Q3 (73.4%)</td><td>"improved mix and cost structure"; cost-of-revenue definition quietly adds "memory and component costs, tariffs"</td></tr>
         <tr><td>FY27 Q1 (74.9%)</td><td>Prior-year charge non-recurrence</td></tr>
+        <tr><td>FY27 Q2 (75.0%)</td><td>"improved mix from Blackwell Ultra"</td></tr>
       </tbody>
     </table>
     <h3 style="margin-top:18px;">(d) Forward Platform: Blackwell &rarr; Rubin</h3>
@@ -1919,6 +2231,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY26 Q2</td><td>Began shipping production units including GB300</td></tr>
         <tr><td>FY26 Q3</td><td>+ "and continue to sell prior generation architecture"</td></tr>
         <tr><td>FY27 Q1</td><td class="val-new">"We expect our Rubin platform to start shipping in the second half of fiscal year 2027"</td></tr>
+        <tr><td>FY27 Q2</td><td class="val-new">"Vera Rubin, began production shipments in the third quarter of fiscal year 2027"</td></tr>
       </tbody>
     </table>
   </div>
@@ -1931,8 +2244,8 @@ a:hover { text-decoration: underline; }
     <ul>
       <li><strong>Groq structure (FY2026 10-K, Note 2):</strong> December 2025 non-exclusive license for Groq's language processing unit technology plus hiring of certain Groq employees. "No customer contracts, existing products, or equity interests were purchased."</li>
       <li><strong>Accounting:</strong> $14.4B goodwill (85% of consideration, attributed to workforce and future development, recorded in Compute &amp; Networking) + $2.5B developed-technology intangible, cost-to-recreate methodology, five-year useful life. "The goodwill is tax deductible."</li>
-      <li><strong>Consideration:</strong> $13.0B paid at closing + $4B (incl. imputed interest) payable within one year; FY2027 Q1 still carries $3,957M of accrued purchase consideration. Pro forma results not presented because the effect was not material.</li>
-      <li><strong>Securities class action (2018 stock-drop case) procedural arc across the filings:</strong> cert petition (Mar 2024) &rarr; SCOTUS granted (Jun 17, 2024) &rarr; writ dismissed as improvidently granted (Dec 11, 2024) &rarr; remanded (Feb 20, 2025) &rarr; district court granted class certification (Mar 25, 2026), covering purchasers from August 10, 2017 to November 15, 2018 &rarr; Rule 23(f) petition to the Ninth Circuit (Apr 8, 2026).</li>
+      <li><strong>Consideration:</strong> $13.0B paid at closing + $4B (incl. imputed interest) payable within one year; FY2027 Q1 still carries $3,957M of accrued purchase consideration; FY2027 Q2 shows a $2,944M Groq payment in financing cash flows, leaving $986M accrued. Pro forma results not presented because the effect was not material.</li>
+      <li><strong>Securities class action (2018 stock-drop case) procedural arc across the filings:</strong> cert petition (Mar 2024) &rarr; SCOTUS granted (Jun 17, 2024) &rarr; writ dismissed as improvidently granted (Dec 11, 2024) &rarr; remanded (Feb 20, 2025) &rarr; district court granted class certification (Mar 25, 2026), covering purchasers from August 10, 2017 to November 15, 2018 &rarr; Rule 23(f) petition to the Ninth Circuit (Apr 8, 2026) &rarr; petition sentence deleted in FY27 Q2 with no disposition stated.</li>
       <li>Every quarter in the series states no accrued contingent liabilities; "DOJ" and "subpoena" appear in no 10-Q.</li>
     </ul>
   </div>
@@ -1945,24 +2258,24 @@ a:hover { text-decoration: underline; }
   <div class="section-header"><h2>Themes</h2></div>
   <div class="signal-grid">
     <div class="signal-card">
-      <h3>1. Export Controls: Quantified Exposure to Foreclosure in Ten Filings</h3>
-      <p>The arc runs from "approximately 20-25% of Data Center revenue" (FY24 Q3) through annual quantification (19% &rarr; 14%), the AI Diffusion IFR and its rescission, the April 9, 2025 H20 license requirement with its $4.5B charge, conditional foreclosure (FY26 Q1), actual foreclosure with "will be further harmed" (FY26 Q3), and the February 2026 H200 licenses carrying a U.S. inspection requirement and 25% re-import tariff. FY27 Q1 reports zero Data Center Hopper shipments to China against $4.6B a year earlier. The 15% revenue-share expectation was disclosed (FY26 Q2), widened to "15% or more... of our products" (FY26 Q3), and moved to past tense without ever being codified (FY27 Q1).</p>
+      <h3>1. Export Controls: From Quantified Exposure to Licenses That Do Not Sell</h3>
+      <p>The arc runs from "approximately 20-25% of Data Center revenue" (FY24 Q3) through annual quantification (19% &rarr; 14%), the AI Diffusion IFR and its rescission, the April 9, 2025 H20 license requirement with its $4.5B charge, conditional foreclosure (FY26 Q1), and actual foreclosure (FY26 Q3). FY27 Q2 shows the licensing route failing twice. The H20 licenses "would have allowed" sales, but the PRC blocked them and the inventory went unsold. The H200 licenses repeat the pattern: PRC restriction, a $0.4B charge, shipments under 1% of Data Center revenue, and a 25% re-import tariff NVIDIA has not passed on to any customer. The 15% revenue-share sentence, carried since FY26 Q2, was deleted without ever being codified.</p>
     </div>
     <div class="signal-card">
-      <h3>2. Balance-Sheet Commitment Inflection</h3>
-      <p>Manufacturing/supply commitments went $17.1B &rarr; $30.8B over six filings, then $50.3B &rarr; $95.2B &rarr; $119B over three, with $95B payable within FY2027. The same FY27 Q1 filing added a $32.4B future lease pipeline, raised commercial paper capacity from $575M to $25B, scaled lease guarantees from $860M to $3.5B maximum exposure, and rewrote the commitments header to "data center-scale production and longer future ordering horizons." The liquidity-sufficiency sentence shed its enumerated items quarter by quarter, reaching the unenumerated "our future obligations" in the same quarter the Intel/OpenAI/Anthropic commitments appeared.</p>
+      <h3>2. Balance-Sheet Commitment Inflection, Now Debt-Funded</h3>
+      <p>Manufacturing/supply commitments went from $17.1B to $30.8B over six filings, then $50.3B &rarr; $95.2B &rarr; $119B &rarr; $279B over four. The horizon lengthened as they grew: 80% was payable within the fiscal year in FY27 Q1, 33% in FY27 Q2, with $88B due in FY2029. Over the same span cancellability went from "are" to "may be". FY27 Q2 also shows $366B in Note 10 commitments plus $56B of additional commitments and $108.5B of guarantees. For the first time in the series, the spending runs alongside new borrowing: $25B of notes in June 2026, senior notes of $33.5B, and a new debt risk factor. The liquidity-sufficiency sentence has stayed unenumerated since FY26 Q3.</p>
     </div>
     <div class="signal-card">
-      <h3>3. Ecosystem Financing on Both Sides of the Income Statement</h3>
-      <p>The non-marketable portfolio grew from $1.5B to $42.3B in two years, with $18.6B of purchases in FY27 Q1 alone and investment commitments laddering $6.5B &rarr; $11.4B &rarr; $27B in six months. The filings themselves connect the two sides: investments "include AI model makers that may indirectly purchase or use our products in the cloud" (FY27 Q1), while an unnamed "AI research and deployment company" has contributed "a meaningful amount" of revenue through cloud intermediaries every quarter since FY26 Q1. Unrealized investment gains were 23% of FY27 Q1 pre-tax income.</p>
+      <h3>3. Ecosystem Financing Becomes Credit Support</h3>
+      <p>Through FY27 Q1 the arc was equity. The non-marketable portfolio grew from $1.5B to $42.3B, and NVIDIA disclosed that some investees "may indirectly purchase or use our products in the cloud." In FY27 Q2 NVIDIA takes on its customers' credit risk directly: a $105B cap on guarantees of OpenAI's leases, $36B of AI-cloud capacity backstops, $20B of leases signed for reassignment, payment terms of up to one year, equity stakes in "infrastructure financiers," and $500B+ financing-platform MOUs with optional residual-value support. The stated reason is that these customers "currently lack the ability to secure long-term infrastructure contracts and investment-grade financing capacity." In the same quarter the circularity sentence was deleted and "expect to continue" investing softened to "may continue."</p>
     </div>
     <div class="signal-card">
-      <h3>4. Concentration Ratchet With Shrinking Labels</h3>
-      <p>The top direct customer went from 12% (FY24 Q3) to 23% (FY26 Q2); FY27 Q1 reports three customers at 21/17/16% of revenue (54%) and 30/18/16% of receivables (64%, series high) &mdash; with the Customer A/B/C letter labels dropped in the same quarter. The customer taxonomy was rewritten twice in three quarters: "Neocloud builders" added (FY26 Q3), then replaced by "AI Clouds" and "AI model makers" (FY27 Q1).</p>
+      <h3>4. Concentration: Revenue Ratchet Breaks, Receivables Ratchet Doesn't</h3>
+      <p>The top direct customer went from 12% (FY24 Q3) to 23% (FY26 Q2), and FY27 Q1 reported three customers at 21/17/16% with the letter labels dropped. FY27 Q2 breaks that pattern: only one direct customer reached 10% (16%), the first such quarter since the series began. Taiwan-headquartered revenue more than doubled in the same quarter, which is consistent with volume shifting to ODM-type direct customers rather than end demand diversifying (an inference). Receivables did not ease: five customers held 70% of a $63.1B AR balance, a series high, on newly extended payment terms. The "AI research and deployment company" sentence has appeared in every filing since FY26 Q1.</p>
     </div>
     <div class="signal-card">
       <h3>5. Reporting Recasts at Peak Visibility</h3>
-      <p>Two re-presentations occurred at the point of maximum attention to each line: the geography table switched from billing location to headquarters location in FY26 Q3, eliminating the Singapore line one quarter after it peaked at 22% of billings (with "over 99%" of its controlled-compute billings attributed to U.S. customers); and the market-platform structure was recast to Data Center (Hyperscale / ACIE) plus Edge Computing in FY27 Q1, retiring "Gaming" as a reported platform. Capital returns inflected the same quarter: an $80B authorization and a 25x dividend increase announced May 18, 2026.</p>
+      <p>Two re-presentations came at the point of maximum attention to each line. The geography table switched from billing location to headquarters location in FY26 Q3, eliminating the Singapore line one quarter after it peaked at 22% of billings. The market platforms were recast to Data Center (Hyperscale / ACIE) plus Edge Computing in FY27 Q1. FY27 Q2 adds a third kind of change: the restated risk factors. Competition, which led Q1, and the demand-mismatch factor are no longer restated, and commitments/guarantees now lead. That is incorporation by reference, not withdrawal, but it changes what a reader of the quarter sees first. A Hyperscale/ACIE customer reclassification with a prior-period recast also arrived in Q2.</p>
     </div>
   </div>
 </div>
@@ -2107,6 +2420,17 @@ a:hover { text-decoration: underline; }
         <td class="val-neg">$42.3B</td>
         <td class="val-neg">$20.2B (+$80B auth)</td>
         <td>16.6%</td>
+      </tr>
+      <tr>
+        <td><strong>FY27 Q2</strong></td>
+        <td>$96.2B (+106%)</td>
+        <td>$89.0B (+117%)</td>
+        <td>75.0%</td>
+        <td class="val-neg">$31,575M</td>
+        <td class="val-neg">$279B</td>
+        <td class="val-neg">$47.9B</td>
+        <td>$19.7B</td>
+        <td>16.5%</td>
       </tr>
     </tbody>
   </table>
