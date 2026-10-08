@@ -9,7 +9,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/meta/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-01-29",
+      "quarterly_filed": "2026-07-30"
     },
     "GOOG": {
       "cik": "0001652044",
@@ -19,7 +21,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/goog/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-02-05",
+      "quarterly_filed": "2026-07-23"
     },
     "AMZN": {
       "cik": "0001018724",
@@ -29,7 +33,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/amzn/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-02-06",
+      "quarterly_filed": "2026-07-31"
     },
     "APP": {
       "cik": "0001751008",
@@ -39,7 +45,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/app/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-02-19",
+      "quarterly_filed": "2026-08-05"
     },
     "VEEV": {
       "cik": "0001393052",
@@ -49,7 +57,9 @@
       "annual_covered_through": "2026-01-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/veev/10q/",
-      "quarterly_covered_through": "2026-07-31"
+      "quarterly_covered_through": "2026-07-31",
+      "annual_filed": "2026-03-20",
+      "quarterly_filed": "2026-08-27"
     },
     "AVGO": {
       "cik": "0001730168",
@@ -59,7 +69,9 @@
       "annual_covered_through": "2025-11-09",
       "quarterly": true,
       "quarterly_dashboard": "companies/avgo/10q/",
-      "quarterly_covered_through": "2026-08-02"
+      "quarterly_covered_through": "2026-08-02",
+      "annual_filed": "2025-12-18",
+      "quarterly_filed": "2026-09-10"
     },
     "TSM": {
       "cik": "0001046179",
@@ -69,7 +81,8 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": false,
       "quarterly_dashboard": null,
-      "quarterly_covered_through": null
+      "quarterly_covered_through": null,
+      "annual_filed": "2026-04-16"
     },
     "NVDA": {
       "cik": "0001045810",
@@ -79,7 +92,9 @@
       "annual_covered_through": "2026-02-01",
       "quarterly": true,
       "quarterly_dashboard": "companies/NVDA/10q/",
-      "quarterly_covered_through": "2026-07-26"
+      "quarterly_covered_through": "2026-07-26",
+      "annual_filed": "2026-02-25",
+      "quarterly_filed": "2026-08-26"
     },
     "UNH": {
       "cik": "0000731766",
@@ -89,7 +104,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/unh/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-03-02",
+      "quarterly_filed": "2026-08-10"
     },
     "HCA": {
       "cik": "0000860730",
@@ -99,7 +116,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/hca/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-02-10",
+      "quarterly_filed": "2026-07-28"
     },
     "PGR": {
       "cik": "0000080661",
@@ -110,7 +129,9 @@
       "quarterly": true,
       "quarterly_dashboard": "companies/pgr/10q/",
       "quarterly_covered_through": "2026-06-30",
-      "annual_exhibit": "EX-13"
+      "annual_exhibit": "EX-13",
+      "annual_filed": "2026-03-02",
+      "quarterly_filed": "2026-08-03"
     },
     "APO": {
       "cik": "0001858681",
@@ -120,7 +141,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/apo/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-02-25",
+      "quarterly_filed": "2026-08-10"
     },
     "FICO": {
       "cik": "0000814547",
@@ -130,7 +153,9 @@
       "annual_covered_through": "2025-09-30",
       "quarterly": true,
       "quarterly_dashboard": "companies/fico/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2025-11-07",
+      "quarterly_filed": "2026-07-29"
     },
     "CVNA": {
       "cik": "0001690820",
@@ -140,7 +165,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/cvna/10q/",
-      "quarterly_covered_through": "2026-06-30"
+      "quarterly_covered_through": "2026-06-30",
+      "annual_filed": "2026-02-18",
+      "quarterly_filed": "2026-07-29"
     }
   }
 }

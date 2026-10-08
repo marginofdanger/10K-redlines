@@ -1,23 +1,19 @@
-"""Fill index.html's UPDATED map with each company's last dashboard change, from git history.
+"""Fill index.html's UPDATED map with each company's latest covered 10-Q filing date.
 
-Run at deploy (needs full history: actions/checkout with fetch-depth: 0):
+Reads automation/tracked.json (quarterly_filed, recorded by check_new_filings.py mark). Run at deploy:
   python scripts/stamp_updated.py
 """
-import json, re, subprocess
+import json, re
+
+with open("automation/tracked.json", encoding="utf-8") as f:
+    ledger = json.load(f)["companies"]
+dates = {t: c["quarterly_filed"] for t, c in ledger.items() if c.get("quarterly_filed")}
 
 with open("index.html", encoding="utf-8") as f:
     page = f.read()
-
-updated = {}
-for ticker, url in re.findall(r"\{ticker:'(\w+)'.*?url:'([^']+)'", page):
-    date = subprocess.run(["git", "log", "-1", "--format=%cs", "--", url + "index.html", url + "10q/index.html"],
-                          capture_output=True, text=True, check=True).stdout.strip()
-    if date:
-        updated[ticker] = date
-
-page, n = re.subn(r"const UPDATED = \{.*?\};", "const UPDATED = " + json.dumps(updated) + ";", page)
+page, n = re.subn(r"const UPDATED = \{.*?\};", "const UPDATED = " + json.dumps(dates) + ";", page)
 if n != 1:
     raise SystemExit("index.html has no `const UPDATED = {...};` line to fill")
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(page)
-print(json.dumps(updated, indent=1))
+print(json.dumps(dates, indent=1))

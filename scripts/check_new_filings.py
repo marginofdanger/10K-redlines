@@ -6,7 +6,7 @@
   python scripts/check_new_filings.py download TICKER [--annual N] [--quarterly N]
         # the latest N annual / quarterly filings into companies/<t>/raw and companies/<t>/10q/raw,
         # named with the dashboards' fiscal labels (<t>_10k_fy2025.htm, <t>_10q_fy2027q1.htm)
-  python scripts/check_new_filings.py mark TICKER annual|quarterly REPORT_DATE [--dashboard PATH]
+  python scripts/check_new_filings.py mark TICKER annual|quarterly REPORT_DATE [--dashboard PATH] [--filed DATE]
 
 State lives in automation/tracked.json. SEC_USER_AGENT must be set to "<name> <contact email>"
 (SEC fair-access policy; www.sec.gov refuses requests without it).
@@ -177,7 +177,7 @@ def main():
     p = sp.add_parser("download"); p.add_argument("ticker")
     p.add_argument("--annual", type=int, default=2); p.add_argument("--quarterly", type=int, default=0)
     p = sp.add_parser("mark"); p.add_argument("ticker"); p.add_argument("which", choices=["annual", "quarterly"])
-    p.add_argument("report_date"); p.add_argument("--dashboard")
+    p.add_argument("report_date"); p.add_argument("--dashboard"); p.add_argument("--filed")
     a = ap.parse_args()
 
     if a.cmd == "pending":
@@ -211,8 +211,15 @@ def main():
         co[f"{a.which}_covered_through"] = a.report_date
         if a.dashboard:
             co[f"{a.which}_dashboard"] = a.dashboard
+        form = co["annual_form"] if a.which == "annual" else "10-Q"
+        filed = a.filed or next((f["filingDate"] for f in filings(co["cik"], {form})
+                                 if f["reportDate"] == a.report_date), None)
+        if filed:
+            co[f"{a.which}_filed"] = filed  # shown on the front page ("Last 10-Q")
+        else:
+            print(f"WARN no {form} with period {a.report_date} on EDGAR; filing date not recorded", file=sys.stderr)
         save_ledger(data)
-        print(f"{a.ticker} {a.which} covered through {a.report_date}")
+        print(f"{a.ticker} {a.which} covered through {a.report_date}, filed {filed}")
 
 if __name__ == "__main__":
     main()

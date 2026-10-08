@@ -188,7 +188,7 @@
       <th data-key="endKey">End FY<span class="arrow"></span></th>
       <th data-key="signals" class="num">Signals<span class="arrow"></span></th>
       <th data-key="qKey">10-Q<span class="arrow"></span></th>
-      <th data-key="updated">Last updated<span class="arrow"></span></th>
+      <th data-key="updated">Last 10-Q<span class="arrow"></span></th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -199,7 +199,7 @@
 </div>
 
 <script>
-// Filled in at deploy by scripts/stamp_updated.py: ticker -> date of the last change to its dashboards.
+// Filled in at deploy by scripts/stamp_updated.py: ticker -> filing date of the latest 10-Q covered.
 const UPDATED = {};
 
 const companies = [
@@ -284,7 +284,7 @@ function render() {
       <td class="click-cell col-fy">${c.endFY}</td>
       <td class="click-cell col-count num">${c.signals}</td>
       <td>${c.tenQ ? `<a class="q-badge" href="${c.tenQ}" title="Quarterly 10-Q scanner ${c.qLabel || ''}">10-Q</a>` : ''}</td>
-      <td class="click-cell col-fy">${fmtDate(c.updated)}</td>
+      <td class="click-cell col-fy"${c.updated ? '' : ' title="Files 20-F annual reports, no 10-Qs"'}>${fmtDate(c.updated)}</td>
     </tr>
   `).join('');
 
