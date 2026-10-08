@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEEV 10-Q Quarterly Scanner | FY2025Q1&ndash;FY2027Q2</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.sidebar-header .backlinks { font-size: 11px; margin-top: 8px; }
+.sidebar-header .backlinks a { display: block; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 760px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+.toggle-btn {
+  margin-top: 14px;
+  font-size: 12px; font-weight: 600;
+  padding: 6px 14px;
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.toggle-btn:hover { background: var(--surface2); }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body .qlabel { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); margin-top: 8px; }
+.finding-body strong { color: var(--text); }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700; flex-shrink: 0;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Era cards */
+.era-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+.era-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 16px;
+}
+.era-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--accent); }
+.era-card p { font-size: 12px; color: var(--text-dim); line-height: 1.55; }
+
+/* Responsive */
+@media (max-width: 1000px) { .era-grid { grid-template-columns: 1fr; } .signal-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>VEEV 10-Q SCANNER</h1>
+    <div class="sub">FY2025 Q1 &ndash; FY2027 Q2 | SEC EDGAR</div>
+    <div class="backlinks">
+      <a href="../index.html">&larr; VEEV 10-K dashboard</a>
+      <a href="../../../index.html">&larr; All companies</a>
+    </div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+  <a class="nav-item" href="#eras">Transition Overview</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#t-25q1q2">FY25 Q1 &rarr; Q2</a>
+  <a class="nav-item" href="#t-25q2q3">FY25 Q2 &rarr; Q3</a>
+  <a class="nav-item" href="#t-25q3-fy25">FY25 Q3 &rarr; FY2025 10-K</a>
+  <a class="nav-item" href="#t-fy25-26q1">FY2025 10-K &rarr; FY26 Q1</a>
+  <a class="nav-item" href="#t-26q1q2">FY26 Q1 &rarr; Q2</a>
+  <a class="nav-item" href="#t-26q2q3">FY26 Q2 &rarr; Q3</a>
+  <a class="nav-item" href="#t-26q3-fy26">FY26 Q3 &rarr; FY2026 10-K</a>
+  <a class="nav-item" href="#t-fy26-27q1">FY2026 10-K &rarr; FY27 Q1</a>
+  <a class="nav-item" href="#t-27q1q2">FY27 Q1 &rarr; Q2</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-crm">CRM Migration &amp; Salesforce</a>
+  <a class="nav-item" href="#sig-iqvia">IQVIA Arc</a>
+  <a class="nav-item" href="#sig-mix">Revenue Mix &amp; Growth Drivers</a>
+  <a class="nav-item" href="#sig-outlook">Expense Outlook Sentences</a>
+  <a class="nav-item" href="#sig-services">Professional Services</a>
+  <a class="nav-item" href="#sig-ai">AI Language</a>
+  <a class="nav-item" href="#sig-policy">Life Sciences Policy Risk</a>
+  <a class="nav-item" href="#sig-exit">Customer Exit Rights &amp; Pricing</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>VEEV 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of Veeva Systems' 10-Q filings, FY2025 Q1 (quarter ended April 30, 2024) through FY2027 Q2 (quarter ended July 31, 2026, filed August 27, 2026), with the FY2025 and FY2026 10-K boundary transitions included. Veeva's fiscal year ends January 31. The quarterly chain covers the Salesforce agreement's expiry, the end of eight years of IQVIA litigation, the Vault CRM migration turning into named customer losses, and the arrival of Veeva AI. Several of these moves show up in the quarterly risk factors one to three quarters before the annual 10-K comparison picks them up.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001393052) | 8 quarterly 10-Qs + 2 annual 10-Ks | FY2025 Q1 &ndash; FY2027 Q2 | Analysis: October 2026</div>
+  <button class="toggle-btn" id="toggle-all">Expand all</button>
+</div>
+
+<!-- Era cards -->
+<div class="section" id="eras" style="border-top:none; padding-top:0; margin-bottom:24px;">
+  <div class="section-header"><h2>Transition Overview</h2></div>
+  <div class="era-grid">
+    <div class="era-card">
+      <h3>FY25 Q1 &rarr; Q2</h3>
+      <p>China CRM losses move from hypothetical to "some customers have chosen." The Washington health-data law moves from "may curtail" to modifications already made to Crossix audience segments. The G&amp;A outlook flips from "relatively consistent" to an increase tied to the CEO equity grant, and professional services revenue starts declining.</p>
+    </div>
+    <div class="era-card">
+      <h3>FY25 Q2 &rarr; Q3</h3>
+      <p>Two risks become facts: customers "have exercised" termination-for-convenience rights, and competitors "have offered" price concessions. A new risk names the elimination of direct-to-consumer drug advertising as a threat to Crossix. Veeva Data Cloud and data costs drop out of the MD&amp;A, and the expense outlook horizon shortens to "near term."</p>
+    </div>
+    <div class="era-card">
+      <h3>FY25 Q3 &rarr; FY2025 10-K</h3>
+      <p>The quarterly Commercial-share risk factor (core CRM penetration, 46% of revenue) is deleted. Salesforce becomes the "primary CRM competitor" and a large customer defects. The CRM migration moves from "intend" to "have begun." Federal agency funding cuts (FDA, NIH, Medicaid) enter the risk factors, and normalized billings now adjusts for "delayed renewals."</p>
+    </div>
+    <div class="era-card">
+      <h3>FY2025 10-K &rarr; FY26 Q1</h3>
+      <p>"New customers" disappears from both growth-attribution sentences, and price increases are added to the R&amp;D driver. Veeva AI is announced as an initiative across all major areas. The May 12, 2025 drug-pricing Executive Order and tariffs on life sciences products are added. The IQVIA non-compete case settles on May 30, 2025.</p>
+    </div>
+    <div class="era-card">
+      <h3>FY26 Q1 &rarr; Q2</h3>
+      <p>All IQVIA litigation settles on August 13, 2025 with no damages either way, but Veeva accrues $31M of law-firm success fees for "non-monetary outcomes." The IQVIA data-access risk factor is deleted outright, and IQVIA exits CRM after 2029. "A large" customer that left for Salesforce becomes "certain large" customers.</p>
+    </div>
+    <div class="era-card">
+      <h3>FY26 Q2 &rarr; Q3</h3>
+      <p>Salesforce "has developed" (not "is developing") its life sciences CRM, and the Salesforce agreement "expired." The EU Data Act lets EU customers cancel without cause, and customers "reduce usage." Professional services gross margin falls 22%&rarr;18% and gets its own disclosure sentence for the first time.</p>
+    </div>
+    <div class="era-card">
+      <h3>FY26 Q3 &rarr; FY2026 10-K</h3>
+      <p>Veeva CRM end of support moves earlier, from September 1, 2030 to December 31, 2029. "A number of our customers have informed us of their intent to move to Salesforce." Customer loss moves out of the migration risk and into a rewritten competition headline. A $2B buyback starts, and LLM costs become a named profitability risk.</p>
+    </div>
+    <div class="era-card">
+      <h3>FY2026 10-K &rarr; FY27 Q1</h3>
+      <p>Price increases rise from "to a lesser extent" to a co-equal growth driver in the same filing that deletes the "lower of 4% or CPI" inflation-clause disclosure. Commercial subscription growth slows to +$32M. Professional services grow 23%, and the "increased scrutiny" of services projects is deleted. Ostro is acquired.</p>
+    </div>
+    <div class="era-card">
+      <h3>FY27 Q1 &rarr; Q2</h3>
+      <p>Every forward expense-outlook sentence is deleted. Anthropic is named as an LLM supplier, with a new risk of "sudden suspension" of frontier models. Aspen CRM, a CRM for non-life-science companies, is disclosed, and the CRM-specific clause leaves the competition headline. Offerings become "applications, agents, data, and consulting."</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+<!-- T1: FY25 Q1 -> Q2 -->
+<div class="transition-header" id="t-25q1q2">
+  <h2>FY2025 Q1 &rarr; Q2</h2>
+  <div class="sub">Qtrs ended Apr 30, 2024 &rarr; Jul 31, 2024 | Q2 filed Sep 4, 2024 | Revenue $650.3M &rarr; $676.2M | Subscription $534.0M (+29% YoY) &rarr; $561.3M (+19%) | Operating income $155.2M &rarr; $166.5M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">China CRM: customers "may choose" a competitor becomes "some customers have chosen"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Losses in China were hypothetical in Q1 and are a fact in Q2. The product is also renamed from "China SFA" to "the China CRM Suite." China is quantified at about 2% of revenue, so the change is small in dollars. It is the first quarter in this set where a CRM loss to a competitor is admitted as having already happened, two quarters before the FY2025 10-K admits a Salesforce defection.</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"While we offer a CRM solution, called China SFA, that does not require data to be transferred outside of China, certain of these customers may choose to implement a competitor&rsquo;s CRM solution and our CRM business in China may be negatively impacted."</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"While we offer the China CRM Suite, a CRM solution that does not require data to be transferred outside of China, <strong>some customers have chosen</strong> and other customers may choose other CRM providers, which may negatively impact our CRM business in China."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Washington health-data law: "may curtail" becomes "we made modifications" to Crossix audience segments</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The My Health My Data Act took effect on March 21, 2024. One quarter later, Veeva says it has already changed the Crossix product in response, and the "accuracy" concern is dropped. The same factor adds "have and" to "may continue to require us to modify our solutions."</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"The law may curtail our ability to use data of Washington consumers, which may limit the accuracy of and reduce demand for our Crossix products"</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"In response to the Washington law, we made modifications to our audience segments that may reduce demand for our Crossix products"</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Quarterly Commercial Solutions share: 50% / 49% to 48% / 47% of subscription / total revenue</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The core-CRM risk factor carried a single-quarter Commercial share, which the MD&amp;A (year-to-date only) does not provide. Q1's sentence is dated to the "fiscal quarter ended January 31, 2024," a stale period label. The series falls again to 46% of total revenue in Q3, and then the entire risk factor is deleted at the FY2025 10-K (see that transition).</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"In our fiscal quarter ended January 31, 2024, we derived approximately 50% of our subscription services revenues and approximately 49% of our total revenues from our Commercial Solutions."</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"In our fiscal quarter ended July 31, 2024, we derived approximately 48% of our subscription services revenues and approximately 47% of our total revenues from our Commercial Solutions."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">G&amp;A outlook flips from "relatively consistent" to "an increase," tied to the CEO equity grant</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The June 2024 CEO grant is the only named reason. G&amp;A actually fell $2M in the quarter because of lower litigation fees, so the outlook change reflects a forward stock-compensation charge, not run-rate spending. The guidance stays in place until the FY2026 Q1 10-Q quietly drops it.</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"We expect general and administrative expenses to be relatively consistent in the fiscal year ending January 31, 2025 when compared to the fiscal year ended January 31, 2024."</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"We expect an increase in general and administrative expenses in the fiscal year ending January 31, 2025, primarily related to the stock-based compensation associated with the equity grant to our Chief Executive Officer."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Professional services turn from +$5M to &minus;$5M as implementation work declines</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 attributed services growth only to business consulting. Q2 names a decline in implementation and deployment work as the cause of the first services decline in the set ($114.9M vs $119.6M). Cost of professional services fell "as headcount decreased." The same pattern holds in Q3, and it reverses completely by FY2027, when services grow 23&ndash;24% (see Professional Services signal).</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"Professional services and other revenues for the three months ended April 30, 2024 increased $5 million. The increase was primarily driven by increased demand for our business consulting services."</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"The decrease in professional services revenue was primarily due to a decline in implementation and deployment-related services, partially offset by an increase in business consulting services."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Q1's 29% subscription growth was flattered by a contract change; Q2 restates the drivers at 19%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1's only explanation for its 29% subscription growth was an easy comparison: termination-for-convenience rights added in February 2023 had depressed the prior-year quarter. Q2 drops that explanation and replaces it with organic driver language. Subscription growth reads 29% &rarr; 19% &rarr; 17% across FY2025 Q1&ndash;Q3, and the 29% should not be read as a run rate. Q2 is also the baseline for the driver wording tracked through FY2027: "new and existing customers," with pricing "to a lesser extent."</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"The addition of termination for convenience rights starting on February 1, 2023, reduced subscription services revenue attributable to R&amp;D Solutions for the three months ended April 30, 2023."</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"The increase in subscription services revenue attributable to Commercial Solutions was primarily due to expanding use of our Veeva Commercial Cloud and Veeva Data Cloud products by both new and existing customers and to a lesser extent due to higher prices in connection with our annual inflation adjustment."</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- T2: FY25 Q2 -> Q3 -->
+<div class="transition-header" id="t-25q2q3">
+  <h2>FY2025 Q2 &rarr; Q3</h2>
+  <div class="sub">Qtrs ended Jul 31, 2024 &rarr; Oct 31, 2024 | Q3 filed Dec 9, 2024 | Revenue $676.2M &rarr; $699.2M | Subscription $561.3M (+19%) &rarr; $580.9M (+17%) | Operating income $166.5M &rarr; $181.4M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Termination for convenience: customers "may exercise" becomes "have exercised"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Multi-year customers have used their right to exit early. Veeva gives no count or dollar figure. The FY2025 10-K then adds termination for convenience to the sentence on how non-renewals hit future quarters. In FY2026 Q3 the risk widens again to "reduce usage" and to the EU Data Act (see Customer Exit Rights signal).</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"our master subscription agreements that govern multi-year orders generally include a right to terminate the master subscription agreement for convenience and certain customers may exercise that right prior to the contracted end date."</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"Certain customers <strong>have exercised</strong> that right prior to the contracted end date, and other customers may also choose to do so in the future."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Competitors "may offer" price concessions becomes "have offered"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Competitive pricing pressure moves from hypothetical to experienced in the same filing that admits early terminations. Read together, these two changes suggest a harder renewal environment in late calendar 2024, and that is an inference. The sentence still blames "the recent macroeconomic environment." "Recent" is only dropped in FY2027 Q2.</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"In addition, our competitors may offer price concessions, delayed payment terms, or other more favorable terms and conditions in light of the recent macroeconomic environment."</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"In addition, our competitors have offered price concessions, delayed payment terms, or other more favorable terms and conditions in light of the recent macroeconomic environment."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New: elimination of direct-to-consumer drug advertising named as a risk to Crossix</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The 10-Q was filed December 9, 2024, after the U.S. election. A specific policy outcome, a ban on pharma DTC advertising, is added as the lead example of regulatory change. The same edit deletes the sentence noting drugmakers' litigation against the Inflation Reduction Act. Crossix sells measurement for DTC campaigns. By the FY2026 10-K, "regulation of pharmaceutical advertising" has been promoted into the summary risk bullet.</p>
+    <p class="qlabel">Q3 FY2025 (new)</p>
+    <blockquote>"For example, regulatory changes with respect to life sciences advertising, such as limitations on or the elimination of the ability of pharmaceutical companies to engage in direct-to-consumer advertising, could negatively impact certain of our product offerings, including our Crossix business."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New-markets language added, seven quarters before Aspen CRM</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Two insertions anticipate Veeva selling outside its core: a competition sentence and a new acquisition-risk bullet ("difficulty entering into new markets in which we have little or no experience or where competitors have stronger market positions"). The annual dashboard tracks non-life-sciences ambitions narrowing to nothing by FY2025. In FY2027 Q2 the 10-Q names Aspen CRM, "our recently announced CRM offering for non-life science companies."</p>
+    <p class="qlabel">Q3 FY2025 (new)</p>
+    <blockquote>"Moreover, if we enter new markets, we will likely face competition and will need to adapt to competitive factors that may be different from those we face today."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Veeva Data Cloud and data costs disappear from the MD&amp;A</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Three data references were removed in one quarter. "Veeva Data Cloud" is dropped from the Commercial growth driver. "Increased data costs related to our data solutions" is dropped from the cost-of-subscription outlook. "Data acquisition costs" is dropped from the list of operating cash uses. Data Cloud returns to the attribution sentence in FY2026 Q1, and data costs return in FY2026 Q2 as "continued investment in our data solutions." The removal coincides with the IQVIA data dispute still being live.</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"We expect cost of subscription services to increase in absolute dollars in the near term due to increased usage of our subscription services and increased data costs related to our data solutions."</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"The increase in subscription services revenue attributable to Commercial Solutions was primarily due to expanding use of our Veeva Commercial Cloud products by both existing and new customers"</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Expense outlook horizon shortens from "the fiscal year ending January 31, 2025" to "the near term"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>All four "We expect" expense sentences lose their fiscal-year anchor. This is the first step in a three-stage loosening: "near term" becomes "the future" in FY2026 Q2, and every expense outlook is deleted in FY2027 Q2 (see Expense Outlook signal).</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"We expect operating expenses to increase in the fiscal year ending January 31, 2025, primarily due to employee compensation-related costs."</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"We expect operating expenses to increase in the near term, primarily due to employee compensation-related costs."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Housekeeping: Commercial share 46%, U.S. tax-proposal sentence deleted, AI-enabled attacks added</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The quarterly Commercial share of total revenue falls again, 47% &rarr; 46%, with subscription share at 48%. The sentence "the current U.S. administration has released various tax legislation proposals" is removed after the election. A generative-AI cyber-threat sentence is added. The IQVIA non-compete trial date moves June 13 &rarr; June 16, 2025. Several "have in the past and may in the future" hedges are boilerplate and not signals.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T3: FY25 Q3 -> FY2025 10-K -->
+<div class="transition-header" id="t-25q3-fy25">
+  <h2>FY2025 Q3 &rarr; FY2025 10-K</h2>
+  <div class="sub">Annual boundary | FY ended Jan 31, 2025, filed Mar 24, 2025 | Revenue $2,747M (+16%) | Subscription $2,285M (+20%) | Operating income $691.4M | Net income $714.1M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Core-CRM risk factor deleted, taking the quarterly Commercial-share disclosure with it</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>This factor carried the only single-quarter Commercial share figure (50% &rarr; 48% &rarr; 46% of total revenue over FY2025 Q1&ndash;Q3), along with the admission that core CRM has "substantial market penetration." It is deleted in the same filing that first names Salesforce as the primary CRM competitor and admits a large-customer defection. The sales-rep-reduction example survives elsewhere. The quarterly share number does not come back in any later filing.</p>
+    <p class="qlabel">Q3 FY2025 (prior, now removed)</p>
+    <blockquote>"Our core CRM application has achieved substantial market penetration of pharmaceutical and biotechnology companies. If our efforts to sustain or further increase the use and adoption of our core CRM application do not succeed, the growth of our Commercial Solutions revenues may be negatively impacted."</blockquote>
+    <blockquote>"In our fiscal quarter ended October 31, 2024, we derived approximately 48% of our subscription services revenues and approximately 46% of our total revenues from our Commercial Solutions."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Salesforce becomes "primary CRM competitor"; first defection of a large customer</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>This is covered on the annual dashboard. The quarterly view adds the sequence: Q3 still named IQVIA as "the principal such competitor" for Commercial Cloud. The defection count then grows from "a large Veeva CRM customer" (here) to "certain large Veeva CRM customers" (FY2026 Q2) to "a number of our customers have informed us of their intent to move to Salesforce" (FY2026 10-K).</p>
+    <p class="qlabel">FY2025 10-K (new)</p>
+    <blockquote>"As we transition from our legacy Veeva CRM application to our Vault CRM application, as discussed in more detail below, certain customers have chosen, and other customers may in the future choose, to purchase CRM solutions from a competitor. For example, Salesforce, our primary CRM competitor, recently announced that a large Veeva CRM customer has committed to purchasing its CRM solutions."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Customers not migrating to Vault CRM: "may decide" becomes "have decided," with Salesforce named</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The migration itself moves from "we intend to migrate" to "we have begun to migrate," and the line "the Veeva Vault platform will be ready for migration on our intended timeline" is deleted. This sentence survives until the FY2026 10-K, which deletes it as customer loss is moved into the competition risk factor.</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"Further, certain customers may decide not to migrate to Vault CRM and use a different CRM solution."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"Further, certain customers have decided, and other customers may in the future decide, not to migrate to Vault CRM and use a different CRM solution, including a CRM solution provided by Salesforce."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New: FDA, NIH and Medicaid funding cuts named; biotech funding squeeze recast from current to past</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Filed in March 2025, the 10-K adds federal agency funding as a customer-industry risk. At the same time, the early-stage funding sentence loses "Since 2022" and "may continue for the foreseeable future" and becomes a generic past-and-future statement. The two edits move the source of customer-industry risk from private biotech funding to government policy. FY2026 Q1 adds "staffing" of agencies and promotes the language to the summary bullets.</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"Since 2022, there has been a reduction in funding for early-stage life sciences companies, which has resulted in reduced sales and adversely affected our financial results and may continue for the foreseeable future."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"In addition, reductions in funding of government agencies and programs relevant to the life sciences industry—such as the Food and Drug Administration, the National Institutes of Health, and Medicaid—or changes in funding priorities relevant to the life sciences industry could adversely affect the life sciences industry."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Normalized billings now adjusts for "delayed renewals that have closed and billed after the period end"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Veeva calls normalized billings guidance one of "the best indicators of the momentum of our business." A second adjustment is added to its definition, so renewals that slip past quarter-end no longer depress the metric. Adding it suggests late renewals were frequent enough to distort reported billings, which is an inference. The same factor changes "accurate" indicators to "precise" indicators.</p>
+    <p class="qlabel">FY2025 10-K (new)</p>
+    <blockquote>"We define the term normalized billings for any period to mean calculated billings adjusted for the impact of (i) term changes in our customer renewals, such as changes to renewal date (for example, changing the renewal date of multiple products to be coterminous) or changes to billing frequency (for example, changing from annual to quarterly billings), and (ii) delayed renewals that have closed and billed after the period end."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">IQVIA litigation dropped from the competition factor; patent claim by a non-practicing entity disclosed</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The 10-K removes "We also continue to be subject to litigation from our competitors. For example, as disclosed elsewhere in this report, we are in active litigation with IQVIA." The case was still pending and settled five months later. It also adds a new IP exposure, which moves to "aware of a non-practicing entity alleging that we infringed its patents" in FY2026 Q3. The standalone AI risk factor that debuts here is covered on the annual dashboard and in the AI Language signal.</p>
+    <p class="qlabel">FY2025 10-K (new)</p>
+    <blockquote>"We are also in discussions with a non-practicing entity relating to alleged infringement of its patents."</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- T4: FY2025 10-K -> FY26 Q1 -->
+<div class="transition-header" id="t-fy25-26q1">
+  <h2>FY2025 10-K &rarr; FY2026 Q1</h2>
+  <div class="sub">Annual boundary | Qtr ended Apr 30, 2025, filed Jun 2, 2025 | Revenue $759.0M (+17%) | Subscription $634.8M (+19%) | Operating income $233.7M | Net income $228.2M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"New customers" dropped from both growth drivers; price increases added to the R&amp;D driver</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Every attribution sentence from FY2025 Q2 through the FY2025 10-K credited "both new and existing customers." From FY2026 Q1, both R&amp;D and Commercial growth come from "existing customers" only. Price increases, previously cited only for Commercial, now also lift R&amp;D. The customer count still grew (1,432 &rarr; 1,477 in FY2025), so new logos exist, but management no longer calls them a driver. The same quarter restores "Veeva Data Cloud" to the Commercial driver, two quarters after it was dropped.</p>
+    <p class="qlabel">FY2025 10-K (prior)</p>
+    <blockquote>"The increase in subscription services revenue attributable to R&amp;D solutions was primarily due to expanding use of Veeva Development Cloud products by both existing and new customers."</blockquote>
+    <p class="qlabel">Q1 FY2026 (current)</p>
+    <blockquote>"The increase in subscription services revenue attributable to R&amp;D solutions was driven by Veeva Development Cloud products primarily due to the expanding use by existing customers and, to a lesser extent, due to higher prices in connection with our annual inflation adjustment."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">CEO-grant G&amp;A outlook dropped; Commercial share of total revenue down to 46%</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>The G&amp;A "increase" outlook, present since FY2025 Q2, is removed, leaving four expense outlooks. Year-to-date Commercial share falls to 48% of subscription and 46% of total revenue (FY2025: 48% / 47%). Commercial subscription growth was $44M in the quarter, the strongest of the set, against R&amp;D's $57M.</p>
+    <p class="qlabel">FY2025 10-K (prior, now removed)</p>
+    <blockquote>"We expect an increase in general and administrative expenses in the near term, primarily related to the stock-based compensation associated with the equity grant to our Chief Executive Officer discussed above."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Veeva AI announced: "began incorporating AI capabilities into certain of our solutions" becomes AI "across all major areas"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The AI risk factor is one quarter old. Its opening is rewritten from a limited rollout to a company-wide initiative, and "solutions, including AI technologies," is added to the new-products risk. The MD&amp;A still contains zero AI mentions. The tension between AI risk language and AI-free financial discussion lasts until FY2027 Q1.</p>
+    <p class="qlabel">FY2025 10-K (prior)</p>
+    <blockquote>"We recently began incorporating AI capabilities into certain of our solutions, which presents new risks and challenges that could affect the adoption of our solutions and our business."</blockquote>
+    <p class="qlabel">Q1 FY2026 (current)</p>
+    <blockquote>"We recently announced Veeva AI, an initiative that will add AI to our applications across all major areas, including clinical, regulatory, safety, quality, medical, and commercial."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">May 12, 2025 drug-pricing Executive Order and tariffs on life sciences products added</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The customer-industry risk now names the most-favored-nation pricing order and a new tariff mechanism: tariffs on drugs and inputs cutting customers' IT spend. The summary bullet is rewritten to list "government funding and staffing of relevant agencies and research, drug pricing regulation, healthcare funding and eligibility reforms." The same list is added to the stock-price factors.</p>
+    <p class="qlabel">Q1 FY2026 (new)</p>
+    <blockquote>"drug pricing reforms proposed by the recent Executive Order signed on May 12, 2025, which would impose certain limits on drug prices in the U.S. relative the the prices paid in other countries."</blockquote>
+    <blockquote>"Tariffs imposed on the end products of the life sciences industry or on inputs relevant to the life sciences industry could increase costs for our customers or reduce demand for their products, which could delay or reduce their IT spending."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--pink)"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">California non-compete case with IQVIA settled May 30, 2025, two weeks before trial</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The 2017 suit against Medidata, IQVIA and Sparta was down to IQVIA alone, with trial set for June 16, 2025. It settles confidentially. The federal trade-secret and antitrust cases were still awaiting summary-judgment rulings after January 2025 hearings. They settle one quarter later.</p>
+    <p class="qlabel">FY2025 10-K (prior)</p>
+    <blockquote>"On March 25, 2024, the trial court judge set a trial date of June 16, 2025 on the consolidated claims."</blockquote>
+    <p class="qlabel">Q1 FY2026 (current)</p>
+    <blockquote>"On May 30, 2025, we entered into a confidential settlement agreement with IQVIA and the parties agreed to dismiss their claims against each other."</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- T5: FY26 Q1 -> Q2 -->
+<div class="transition-header" id="t-26q1q2">
+  <h2>FY2026 Q1 &rarr; Q2</h2>
+  <div class="sub">Qtrs ended Apr 30, 2025 &rarr; Jul 31, 2025 | Q2 filed Aug 29, 2025 | Revenue $759.0M &rarr; $789.1M | Subscription $634.8M (+19%) &rarr; $659.2M (+17%) | Operating income $233.7M &rarr; $195.9M (incl. $31M settlement-related charges)</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange)"></span>Notes / Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">All IQVIA litigation settled August 13, 2025: no damages, but a $31M "success fee" accrued</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 described the law-firm arrangements as paying out of "any damages we recover from IQVIA" or as "a success fee if certain non-monetary outcomes are achieved." Q2 reports no damages either way, yet accrues $31M. That means the non-monetary condition was triggered, and the fee description drops the damages-sharing clause. The settlement terms are not disclosed. The deletion of the IQVIA data-access risk factor in the same filing (next finding) is consistent with the non-monetary outcome involving data access, but that is an inference. The charge cut quarterly operating income from $233.7M to $195.9M.</p>
+    <p class="qlabel">Q1 FY2026 (prior)</p>
+    <blockquote>"Pursuant to those arrangements, such law firms are entitled to an agreed portion of any damages we recover from IQVIA or may be entitled to payment from us of a success fee if certain non-monetary outcomes are achieved."</blockquote>
+    <p class="qlabel">Q2 FY2026 (current)</p>
+    <blockquote>"Under the terms of the settlement agreement, neither party will pay damages to the other party and both parties agreed to dismiss with prejudice all claims and counterclaims currently pending."</blockquote>
+    <blockquote>"Consequent to the settlement of the IQVIA litigations, as of July 31, 2025, we accrued approximately $31 million due to such law firms in accordance with the terms of such arrangements."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">IQVIA data-access risk factor deleted outright, including the summary bullet</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Since well before this set, the risk factors described IQVIA blocking its data from Veeva Network, Nitro, OpenData transitions and "new IQVIA data types." The full factor and its summary bullet ("such as IQVIA for instance") are gone in Q2, and no softened version replaces it. The annual dashboard's Competition signal ends on the FY2025 "blanket denial." This is the reversal. The "currently being sued" bullet also becomes "have been and may in the future be sued."</p>
+    <p class="qlabel">Q1 FY2026 (prior, now removed)</p>
+    <blockquote>"In addition, IQVIA has stated publicly that it will deny all customer requests for use of new IQVIA data types in Veeva applications, including, as examples, real world data, real world evidence, and genomics."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">IQVIA exits CRM after 2029; Salesforce becomes the sole named CRM rival</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The competition paragraph is rewritten around IQVIA's withdrawal: it will support its CRM "only through 2029" and has licensed it to Salesforce. One quarter later Salesforce "has developed" its product, and the 10-K drops the joint-marketing clause.</p>
+    <p class="qlabel">Q2 FY2026 (new)</p>
+    <blockquote>"However, IQVIA has announced that it will market and support its CRM solution only through 2029, that it has licensed its CRM software to Salesforce, Inc., and that it will collaborate with Salesforce to accelerate the development of a CRM solution for life sciences that it will jointly market with Salesforce."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"A large Veeva CRM customer" defected becomes "certain large Veeva CRM customers"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The defection count goes from singular to plural, and "recently" is dropped. Veeva still sources the disclosure to Salesforce's own announcements rather than its own count.</p>
+    <p class="qlabel">Q1 FY2026 (prior)</p>
+    <blockquote>"For example, Salesforce, our primary CRM competitor, recently announced that a large Veeva CRM customer has committed to purchasing its CRM solutions."</blockquote>
+    <p class="qlabel">Q2 FY2026 (current)</p>
+    <blockquote>"For example, Salesforce, our primary CRM competitor, has announced that certain large Veeva CRM customers have committed to purchasing its CRM solutions."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New patent-enforcement paragraph: PTAB, IPR, and the risk of losing injunctive relief</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>With IQVIA settled, the IP section turns from defense to offense: Veeva's ability to "defend, protect, and enforce" its patents. U.S. patents issued rise 91 &rarr; 98 in the quarter and reach 137 by FY2027 Q2, up from 74 in FY2025 Q1. The new text is consistent with preparing to assert patents, which is an inference. No enforcement action is disclosed in the set.</p>
+    <p class="qlabel">Q2 FY2026 (new)</p>
+    <blockquote>"A successful challenge to our patents or a failure to adequately protect or mark our intellectual property could prevent or limit our ability to seek injunctive relief or recover damages for infringement."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Outlook horizon loosens again: "near term" becomes "the future"; data investment returns to the cost outlook</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Data costs, removed in FY2025 Q3, return as "continued investment in our data solutions." That is a deliberate spending choice, not a cost increase. Cost of subscription rose $15M, with $14M from "data and computing infrastructure costs." Professional services grew $15M (+13%), now attributed to "implementation and business consulting services," the reverse of FY2025's implementation decline. The One Big Beautiful Bill Act's R&amp;D expensing raises the FY2026 operating cash flow outlook.</p>
+    <p class="qlabel">Q1 FY2026 (prior)</p>
+    <blockquote>"We expect cost of subscription services to increase in absolute dollars in the near term due to increased usage of our subscription services."</blockquote>
+    <p class="qlabel">Q2 FY2026 (current)</p>
+    <blockquote>"We expect cost of subscription services to increase in absolute dollars in the future due to increased usage of our subscription services and continued investment in our data solutions."</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- T6: FY26 Q2 -> Q3 -->
+<div class="transition-header" id="t-26q2q3">
+  <h2>FY2026 Q2 &rarr; Q3</h2>
+  <div class="sub">Qtrs ended Jul 31, 2025 &rarr; Oct 31, 2025 | Q3 filed Nov 21, 2025 | Revenue $789.1M &rarr; $811.2M | Subscription $659.2M (+17%) &rarr; $682.5M (+17%) | Operating income $195.9M &rarr; $240.9M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Salesforce "is developing" its life sciences CRM becomes "has developed"; Salesforce agreement "expired"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The competitor's product is described as shipped. The Salesforce contract moves from "we do not intend to renew" to past tense, and the wind-down that began September 1, 2025 now governs Veeva CRM. IQVIA is described as having "historically offered" a CRM.</p>
+    <p class="qlabel">Q2 FY2026 (prior)</p>
+    <blockquote>"Accordingly, our CRM solutions now primarily compete with Salesforce, which has announced it is developing a life sciences industry-specific CRM application."</blockquote>
+    <p class="qlabel">Q3 FY2026 (current)</p>
+    <blockquote>"Our CRM solutions primarily compete with Salesforce, which has developed a life sciences industry-specific CRM application."</blockquote>
+    <blockquote>"Our agreement with Salesforce expired on September 1, 2025, and pursuant to the terms of our agreement, during the wind-down period"</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New exit rights: EU Data Act allows cancellation "without cause"; customers have "reduce[d] usage"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>On top of the termination-for-convenience admission from FY2025 Q3, the revenue-reduction factor adds usage reductions as something customers have already done. It also cites a regulation that gives every EU customer a no-cause exit, and Europe is about 28% of subscription revenue. For a vendor in the middle of a CRM migration, these widen the paths by which a customer can leave mid-contract.</p>
+    <p class="qlabel">Q3 FY2026 (new)</p>
+    <blockquote>"In addition, certain customers have in the past exercised their right to reduce usage or exercise termination rights, and other customers may also choose to do so in the future."</blockquote>
+    <blockquote>"Furthermore, the newly effective EU Data Act, which came into effect September 12, 2025, allows our EU customers to cancel their subscriptions without cause and switch to another provider upon providing the notice and after the transition period specified by the Act."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Data-access restrictions now reach the support organization ("our global support business")</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Three insertions point the same way. Customers impose "data access restrictions" on support staff. Privacy law has required changes to "our global support business." France's health-data residency rule is added. With the DOJ rule on access to U.S. personal data from China already in the text, these are consistent with Veeva restructuring where support personnel can see customer data, which is an inference.</p>
+    <p class="qlabel">Q3 FY2026 (new)</p>
+    <blockquote>"Customers may have requirements, including certain data access restrictions, that our support organizations need to meet."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Patent claim escalates: "in discussions with" becomes "aware of a non-practicing entity alleging that we infringed"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="qlabel">Q2 FY2026 (prior)</p>
+    <blockquote>"We are also in discussions with a non-practicing entity relating to alleged infringement of its patents."</blockquote>
+    <p class="qlabel">Q3 FY2026 (current)</p>
+    <blockquote>"We are also aware of a non-practicing entity alleging that we infringed its patents."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First narrative disclosure of services gross margin: 18% vs 22%, with a new cost outlook</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Veeva is hiring ahead of services demand and says so: a new sentence explains the margin drop, and a fifth "We expect" sentence covers services cost. The sentence returns in FY2027 Q1 (20% vs 23%) and disappears in FY2027 Q2, when the margin was flat at 22%. It appears only when the comparison is unfavorable.</p>
+    <p class="qlabel">Q3 FY2026 (new)</p>
+    <blockquote>"Gross margin for professional services and other was 18% and 22% for the three months ended October 31, 2025 and 2024, respectively. The decrease compared to the prior period is primarily due to expansion of headcount to support our existing and future demand for implementation and business consulting services."</blockquote>
+    <blockquote>"We expect cost of professional services and other to increase in absolute dollars in the future as we continue to invest in our services organization."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Crossix customer-count rule narrowed</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>The rule that counted some non-MSA Crossix entities as distinct customers is deleted. The only remaining Crossix rule excludes agencies. Total customers still rose to 1,552 at FY2026 year-end. The definition change may reduce Crossix's contribution to the reported count, and the effect is not quantified.</p>
+    <p class="qlabel">Q2 FY2026 (prior, now removed)</p>
+    <blockquote>"For purposes of determining customers of Veeva Crossix that do not contract under a master subscription agreement, we count each entity that has a statement of work or services agreement and a recurring known payment obligation as a distinct customer if such entity is not otherwise a customer of ours."</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- T7: FY26 Q3 -> FY2026 10-K -->
+<div class="transition-header" id="t-26q3-fy26">
+  <h2>FY2026 Q3 &rarr; FY2026 10-K</h2>
+  <div class="sub">Annual boundary | FY ended Jan 31, 2026, filed Mar 20, 2026 | Revenue $3,195M (+16%) | Subscription $2,684M (+17%) | Operating income $916.4M | Net income $908.9M | Buybacks $169.9M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Veeva CRM end of support moves earlier: September 1, 2030 to December 31, 2029</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The 2030 date had been in every filing since the FY2024 10-K (the annual dashboard's "hard deadline"). Support now ends eight months earlier. Salesforce's own wind-down right, the ability to sell Salesforce-platform applications, still runs to September 1, 2030. Ending support ahead of the contractual limit pressures remaining Veeva CRM customers to decide sooner. No reason is given.</p>
+    <p class="qlabel">Q3 FY2026 (prior)</p>
+    <blockquote>"Veeva CRM will be supported until September 1, 2030."</blockquote>
+    <p class="qlabel">FY2026 10-K (current)</p>
+    <blockquote>"Veeva CRM will be supported until December 31, 2029."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"A number of our customers have informed us of their intent to move to Salesforce"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>This is the first defection disclosure sourced from Veeva's own customer conversations rather than Salesforce press releases. It is still not quantified.</p>
+    <p class="qlabel">FY2026 10-K (new)</p>
+    <blockquote>"For example, Salesforce, our primary CRM competitor, has announced that certain large Veeva CRM customers have committed to purchasing its CRM solutions and a number of our customers have informed us of their intent to move to Salesforce as their CRM provider."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Customer loss moved out of the migration risk and into a rewritten competition headline</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The migration risk loses "lead to the loss of our customers to competitors." It also loses its "certain customers have decided&hellip; not to migrate" sentence and the clause "or our customers do not migrate to the Vault CRM in a timely manner, or at all." The competition headline gains "we may lose customers," tied to the CRM transition. The framing shifts from "migration could fail" to "we are in a competitive fight." One year later (FY2027 Q2) the CRM clause is also removed from the headline.</p>
+    <p class="qlabel">Q3 FY2026 (prior)</p>
+    <blockquote>"could cause business disruptions for customers, lead to the loss of our customers to competitors, and adversely affect our operating results."</blockquote>
+    <p class="qlabel">FY2026 10-K (current)</p>
+    <blockquote>"We face intense competition in markets in which we operate—particularly in the CRM market as we transition customers from our legacy CRM application to our Vault CRM application—and if we do not compete effectively, we may lose customers and our business and operating results could be adversely affected."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">LLM costs named as a profitability risk; valuation peers expand to "AI companies"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Veeva AI's cost line enters the profitability factor next to Compass data costs. The factor heading drops "As our costs increase." The stock-price list adds AI companies as comparables and "market perception of the software industry generally." These are signs that AI-driven software multiples are now treated as a risk to Veeva's stock price. The 10-K's business section names Anthropic and Amazon as LLM providers. The 10-Q risk factors do so in FY2027 Q2.</p>
+    <p class="qlabel">FY2026 10-K (new)</p>
+    <blockquote>"data acquisition costs associated with our Veeva Compass offering and costs incurred with our use of large language models associated with our Veeva AI offering;"</blockquote>
+    <blockquote>"fluctuations in the valuation of companies perceived by investors to be comparable to us, such as high-growth, cloud, or AI companies, or in valuation metrics, such as our price to revenues ratio;"</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First buyback: $2B authorization (January 2026); $180M repurchased in FY2026</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>A company that had never repurchased stock in this set starts with $6.6B of cash and short-term investments. Three new risk paragraphs follow ("Our share repurchase program may not enhance long-term shareholder value"). Share repurchases are added to primary uses of cash, and FY2027 Q1 alone repurchases $221M. G&amp;A is guided to "decrease in the next fiscal year" as the IQVIA charges roll off.</p>
+    <p class="qlabel">FY2026 10-K (new)</p>
+    <blockquote>"In January 2026, our board of directors authorized a share repurchase program of up to $2 billion of our outstanding shares of common stock."</blockquote>
+    <blockquote>"During the fiscal year ended January 31, 2026, we repurchased and subsequently retired 801,735 shares of our common stock for an aggregate amount of approximately $180 million."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Housekeeping: "R&amp;D Solutions" renamed "R&amp;D and Quality Solutions"; top-10 customers flat at 28% for three years</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The reporting segment name now includes Quality Cloud. Commercial is 45% of FY2026 total revenue (FY2025: 47%), and management reiterates that R&amp;D and Quality "are expected to increase as a percentage." The top-10 customer sentence becomes "In each of our fiscal years ended January 31, 2026, 2025, and 2024, our top 10 customers accounted for 28%." "Subscription services" becomes "subscription" throughout. Pillar Two moves to the OECD "side-by-side" package, which may exempt U.S.-parented groups from January 2026.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- T8: FY2026 10-K -> FY27 Q1 -->
+<div class="transition-header" id="t-fy26-27q1">
+  <h2>FY2026 10-K &rarr; FY2027 Q1</h2>
+  <div class="sub">Annual boundary | Qtr ended Apr 30, 2026, filed Jun 5, 2026 | Revenue $882.9M (+16%) | Subscription $730.2M (+15%) | Prof. services $152.8M (+23%) | Operating income $273.1M | Buybacks $226.9M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Price increases promoted from "to a lesser extent" to a co-equal growth driver</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Two separate driver sentences are merged into one. "Primarily" and "to a lesser extent" are both removed, so usage and inflation pricing are now joint drivers for both segments. Subscription growth was 15%, the lowest in the set. The Commercial increment fell to $32M (R&amp;D and Quality: $63M), and Commercial was 46% of subscription revenue. The next finding shows what the risk factors deleted in the same filing.</p>
+    <p class="qlabel">FY2026 10-K (prior)</p>
+    <blockquote>"The increase in subscription revenue attributable to R&amp;D and Quality Solutions was primarily driven by the expanding use by existing customers of our Veeva Development Cloud and Veeva Quality Cloud products and, to a lesser extent, due to higher prices in connection with our annual inflation adjustment for Veeva Development Cloud products."</blockquote>
+    <p class="qlabel">Q1 FY2027 (current)</p>
+    <blockquote>"The increase in subscription revenue attributable to R&amp;D and Quality Solutions and Commercial Solutions was driven by the expanding use by existing customers and higher prices in connection with our annual inflation adjustment for our products."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Services +23% while gross margin slips to 75% from 77%; services margin 20% vs 23%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Professional services grew $28M, almost a third of the $95M subscription increase, and pulled the subscription mix down to 83% from 84%. The services margin sentence returns because the comparison is unfavorable again. Cash flow cites the Ostro acquisition ("Rise Healthcare Tech, Inc."; $90M per the notes). The offerings sentence adds AI: "cloud software, AI, data, and business consulting." Effective tax rate rose on "discrete tax deficiencies related to equity compensation," the first excess-tax deficiency in the set.</p>
+    <p class="qlabel">Q1 FY2027 (new)</p>
+    <blockquote>"Gross margin for professional services and other was 20% and 23% for the three months ended April 30, 2026 and 2025, respectively. The decrease compared to the prior period is primarily due to expansion of headcount to support our existing and future demand for implementation and business consulting services."</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Lower of 4% or CPI" inflation-clause disclosure deleted in the same filing that elevates pricing</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Every prior filing in the set (and the FY2024&ndash;FY2026 10-Ks) described the annual price escalator and its cap, plus the risk that it could reduce renewals. The MD&amp;A now gives pricing equal billing as a growth driver, and the risk factors stop disclosing how large the escalator can be or that it could hurt renewals. The filing does not say whether the contract term itself changed. The deletion removes the reader's ability to size the pricing contribution.</p>
+    <p class="qlabel">FY2026 10-K (prior, now removed)</p>
+    <blockquote>"For example, certain of our contracting terms include an annual inflation adjustment that raises the price to each customer upon renewal by the lower of 4% or the Consumer Price Index (All Urban Consumer, U.S. City Average, All Items Index) published by the U.S. Bureau of Labor Statistics for the month of August of the prior calendar year. If this increase results in reduced renewal rates, our business and results of operations will be adversely affected."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Increased scrutiny" of professional services projects deleted after five quarters of services growth</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>This example was in every filing from FY2025 Q1. The FY2026 10-K dropped "recently," and Q1 removes the sentence entirely. That fits services revenue growing 23%, so the risk-factor text now matches the numbers.</p>
+    <p class="qlabel">FY2026 10-K (prior, now removed)</p>
+    <blockquote>"For example, we have experienced increased scrutiny for certain potential projects, particularly for our professional services offerings, which may continue for the foreseeable future."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI regulation may now force changes to "our AI strategy," not just "our use of AI"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>"Require" becomes "force" and "use of AI" becomes "AI strategy," which treats AI as a strategic pillar rather than a feature. The LLM-cost bullet is extended to "internal use AI tools," and "Veeva Compass" data costs are generalized to "Data Cloud offerings." AI-enabled attacks are described as "faster to execute, large in scope." Russia is removed from the risk factors entirely: the Ukraine conflict and the paragraph on Russian sanctions and revenue.</p>
+    <p class="qlabel">FY2026 10-K (prior)</p>
+    <blockquote>"These and other developments may require us to make significant changes to our use of AI, including by limiting or restricting our use of AI or AI-enabled processes"</blockquote>
+    <p class="qlabel">Q1 FY2027 (current)</p>
+    <blockquote>"These and other developments may force us to make significant changes to our AI strategy, including by limiting or restricting our use of AI or AI-enabled processes"</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- T9: FY27 Q1 -> Q2 -->
+<div class="transition-header" id="t-27q1q2">
+  <h2>FY2027 Q1 &rarr; Q2</h2>
+  <div class="sub">Qtrs ended Apr 30, 2026 &rarr; Jul 31, 2026 | Q2 filed Aug 27, 2026 | Revenue $882.9M &rarr; $928.0M | Subscription $730.2M (+15%) &rarr; $766.8M (+16%) | Prof. services $152.8M (+23%) &rarr; $161.2M (+24%) | Operating income $273.1M &rarr; $275.0M</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Every forward expense outlook deleted: five "We expect" sentences down to zero</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Cost of subscription, cost of services, operating expenses, R&amp;D and S&amp;M outlooks, present in some form in every filing since FY2025 Q1, are all gone. Only the seasonal cash-flow expectation remains. The MD&amp;A also drops its quarterly total-revenue increase sentence. Taken with the horizon loosening (fiscal year &rarr; near term &rarr; future), the company now gives investors no forward cost direction in its filings. Whether that reflects AI-driven cost changes is not stated.</p>
+    <p class="qlabel">Q1 FY2027 (prior, now removed)</p>
+    <blockquote>"We expect operating expenses to increase in the future, primarily due to employee compensation-related costs."</blockquote>
+    <blockquote>"We expect cost of professional services and other to increase in absolute dollars in the future as we continue to invest in our services organization."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Offerings redefined: "cloud software, AI, data, and business consulting" becomes "applications, agents, data, and consulting"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>One quarter after AI entered the MD&amp;A's opening sentence, "agents" replaces it, and "cloud software" becomes "applications." Read with the deleted expense outlook and the new Anthropic dependency, it is consistent with agentic products becoming a distinct line Veeva wants investors to see, which is an inference. G&amp;A fell because of the $31M IQVIA charge in the prior-year quarter, and the tax rate fell on the new FDDEI deduction.</p>
+    <p class="qlabel">Q1 FY2027 (prior)</p>
+    <blockquote>"Our offerings span cloud software, AI, data, and business consulting and are designed to meet the unique needs of our customers"</blockquote>
+    <p class="qlabel">Q2 FY2027 (current)</p>
+    <blockquote>"Our offerings span applications, agents, data, and consulting and are designed to meet the unique needs of our customers"</blockquote>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent)"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Anthropic named as LLM supplier; new risk of "sudden suspension" of frontier models</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The infrastructure-dependency factor, written for years around Salesforce and AWS, now adds large language models. "AI models" join the facilities Veeva does not control. "AI errors" join human and software errors as causes of service problems. A single named model provider plus a government-suspension scenario is a new concentration risk.</p>
+    <p class="qlabel">Q2 FY2027 (new)</p>
+    <blockquote>"And, our Veeva AI products leverage large language models provided by third parties, including Anthropic."</blockquote>
+    <blockquote>"Access to certain frontier AI models may also be subject to sudden suspension or restriction by providers or by governments due to regulatory mandates."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Aspen CRM disclosed: a CRM for non-life-science companies</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>This reverses the annual dashboard's "Life Sciences Focus Narrowed" theme, in which the non-LS overview paragraph was removed in FY2025. Veeva is taking its CRM outside life sciences while its core CRM base is being contested by Salesforce. The FY2025 Q3 new-markets language ("we will likely face competition") anticipated it. The same sentence drops "we have begun to migrate our Veeva CRM customers to Vault CRM" as an example.</p>
+    <p class="qlabel">Q2 FY2027 (new)</p>
+    <blockquote>"We cannot be certain that we will be successful with respect to newer solutions and markets, including our Veeva AI products and Aspen CRM, our recently announced CRM offering for non-life science companies."</blockquote>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">CRM clause removed from the competition headline after one filing cycle</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The FY2026 10-K headline named the CRM transition as the competitive exposure. Q2 drops it, and "have begun to migrate" becomes "are migrating" throughout. The underlying defection sentence ("a number of our customers have informed us of their intent to move to Salesforce") is unchanged. The headline is less specific, and the facts below it are the same.</p>
+    <p class="qlabel">Q1 FY2027 (prior)</p>
+    <blockquote>"We face intense competition in markets in which we operate—particularly in the CRM market as we transition customers from our legacy CRM application to our Vault CRM application—and if we do not compete effectively"</blockquote>
+    <p class="qlabel">Q2 FY2027 (current)</p>
+    <blockquote>"We face intense competition in markets in which we operate and if we do not compete effectively, we may lose customers and our business and operating results could be adversely affected."</blockquote>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-crm">
+  <div class="section-header"><h2>#1: CRM Migration &amp; Salesforce</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> "Intend to Migrate" to "Intent to Move to Salesforce" in Ten Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Migration Verb</th><th>Veeva CRM Support End</th><th>Customer-Loss Language</th><th>Competitor Framing</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1</td><td>"we intend to migrate"</td><td>Sep 1, 2030</td><td>"could lead to customers choosing competitors"; China: "may choose"</td><td>IQVIA "the principal such competitor" for Commercial Cloud</td></tr>
+        <tr><td>FY25Q2</td><td>"we intend to migrate"</td><td>Sep 1, 2030</td><td class="val-new">China: "some customers have chosen"</td><td>Same</td></tr>
+        <tr><td>FY25Q3</td><td>"we intend to migrate"</td><td>Sep 1, 2030</td><td>"Certain customers may choose competitors"</td><td>Same</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-new">"we have begun to migrate"</td><td>Sep 1, 2030</td><td class="val-neg">"certain customers have chosen"; "a large Veeva CRM customer has committed"</td><td class="val-new">Salesforce "primary CRM competitor," "is developing"</td></tr>
+        <tr><td>FY26Q1</td><td>"have begun"</td><td>Sep 1, 2030</td><td>Same</td><td>Same</td></tr>
+        <tr><td>FY26Q2</td><td>"have begun"</td><td>Sep 1, 2030</td><td class="val-neg">"certain large Veeva CRM customers have committed"</td><td class="val-new">IQVIA CRM "only through 2029," licensed to Salesforce</td></tr>
+        <tr><td>FY26Q3</td><td>Agreement "expired on September 1, 2025"</td><td>Sep 1, 2030</td><td>Same</td><td>Salesforce "has developed"</td></tr>
+        <tr><td>FY2026 10-K</td><td>"have begun"</td><td class="val-neg">Dec 31, 2029</td><td class="val-neg">"a number of our customers have informed us of their intent to move to Salesforce"; loss moved to competition headline</td><td>Headline: "particularly in the CRM market"</td></tr>
+        <tr><td>FY27Q1</td><td>"are migrating" (one instance)</td><td>Dec 31, 2029</td><td>Same</td><td>Same</td></tr>
+        <tr><td>FY27Q2</td><td>"are migrating"</td><td>Dec 31, 2029</td><td>Same</td><td class="val-new">CRM clause dropped from headline; Aspen CRM (non-LS) disclosed</td></tr>
+      </tbody>
+    </table>
+    <p>Defections are never quantified. The disclosure source moves from Salesforce's announcements ("Salesforce&hellip; has announced") to Veeva's own customer conversations ("have informed us") only at the FY2026 10-K, the same filing that moves end of support eight months earlier.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-iqvia">
+  <div class="section-header"><h2>#2: IQVIA Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Eight Years of Litigation and Data Blocking Unwound in Two Quarters</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Litigation</th><th>Data-Access Risk Factor</th><th>Competitive Position</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1&ndash;Q2</td><td>Federal trade-secret / antitrust suits since 2017; Calif. non-compete trial June 13, 2025</td><td>Present: IQVIA "will deny all customer requests for use of new IQVIA data types"</td><td>"The principal such competitor" for Commercial Cloud</td></tr>
+        <tr><td>FY25Q3</td><td>Trial date moved to June 16, 2025</td><td>Present</td><td>Same</td></tr>
+        <tr><td>FY2025 10-K</td><td>"we are in active litigation with IQVIA" dropped from competition factor</td><td>Present</td><td>Partner of Salesforce; data and Dev Cloud competitor</td></tr>
+        <tr><td>FY26Q1</td><td class="val-pos">Non-compete case settled May 30, 2025; federal summary judgment pending</td><td>Present</td><td>Same</td></tr>
+        <tr><td>FY26Q2</td><td class="val-pos">All litigation settled Aug 13, 2025; no damages; $31M success fees accrued</td><td class="val-pos">Deleted, with summary bullet</td><td class="val-new">IQVIA CRM "only through 2029"</td></tr>
+        <tr><td>FY26Q3</td><td>"certain current legal proceedings" &rarr; "certain legal proceedings"</td><td>Absent</td><td>IQVIA "historically offered" a CRM</td></tr>
+        <tr><td>FY2026 10-K</td><td>Note cross-reference only</td><td>Absent</td><td>Joint-marketing clause dropped</td></tr>
+        <tr><td>FY27Q1&ndash;Q2</td><td>Legal Proceedings no longer cross-references any note</td><td>Absent</td><td>Named as data competitor (Data Cloud, Crossix)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-mix">
+  <div class="section-header"><h2>#3: Revenue Mix &amp; Growth Drivers</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Commercial Share Down Every Year; "New Customers" Out, Pricing Up</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Commercial Share, Sub / Total (YTD)</th><th>Sub. Increase YoY: R&amp;D(&amp;Q) / Commercial (Qtr)</th><th>Driver Wording</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1</td><td>49% / 48% (qtr RF: 50% / 49%)</td><td>$97M / $22M</td><td>Easy comp: termination-for-convenience change reduced prior-year R&amp;D revenue</td></tr>
+        <tr><td>FY25Q2</td><td>49% / 47% (qtr RF: 48% / 47%)</td><td>$62M / $28M</td><td>"both new and existing customers"; pricing "to a lesser extent" (Commercial only)</td></tr>
+        <tr><td>FY25Q3</td><td>48% / 47% (qtr RF: 48% / 46%)</td><td>$59M / $27M</td><td class="val-neg">Veeva Data Cloud dropped from Commercial driver</td></tr>
+        <tr><td>FY2025 10-K</td><td>48% / 47%</td><td>$274M / $109M (FY)</td><td class="val-neg">Quarterly-share risk factor deleted</td></tr>
+        <tr><td>FY26Q1</td><td>48% / 46%</td><td>$57M / $44M</td><td class="val-neg">"new customers" dropped from both; pricing added to R&amp;D; Data Cloud restored</td></tr>
+        <tr><td>FY26Q2</td><td>47% / 45%</td><td>$62M / $36M</td><td>Quality Cloud named in R&amp;D driver</td></tr>
+        <tr><td>FY26Q3</td><td>47% / 45%</td><td>$63M / $39M</td><td>Same</td></tr>
+        <tr><td>FY2026 10-K</td><td>47% / 45%</td><td>$247M / $153M (FY)</td><td>Segment renamed "R&amp;D and Quality Solutions"</td></tr>
+        <tr><td>FY27Q1</td><td>46% / 45%</td><td class="val-neg">$63M / $32M</td><td class="val-new">One merged sentence: usage "and higher prices"; "to a lesser extent" removed</td></tr>
+        <tr><td>FY27Q2</td><td>46% / 44%</td><td>$68M / $40M</td><td>Same</td></tr>
+      </tbody>
+    </table>
+    <p>"RF" = the single-quarter figure from the core-CRM risk factor, which existed only through FY25Q3. Subscription growth by quarter: 29%, 19%, 17% (FY25); 19%, 17%, 17% (FY26); 15%, 16% (FY27).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-outlook">
+  <div class="section-header"><h2>#4: Expense Outlook Sentences</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> Fiscal Year &rarr; Near Term &rarr; Future &rarr; Deleted</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Horizon</th><th>Expense "We expect" Sentences</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1</td><td>"fiscal year ending January 31, 2025"</td><td>5</td><td>G&amp;A "relatively consistent"; data costs in cost-of-subscription outlook</td></tr>
+        <tr><td>FY25Q2</td><td>Fiscal year</td><td>5</td><td class="val-neg">G&amp;A flips to "an increase" (CEO grant)</td></tr>
+        <tr><td>FY25Q3</td><td class="val-new">"near term"</td><td>5</td><td>Data costs dropped</td></tr>
+        <tr><td>FY2025 10-K</td><td>Near term</td><td>5</td><td>&mdash;</td></tr>
+        <tr><td>FY26Q1</td><td>Near term</td><td>4</td><td>G&amp;A outlook dropped</td></tr>
+        <tr><td>FY26Q2</td><td class="val-new">"the future"</td><td>4</td><td>"continued investment in our data solutions" added</td></tr>
+        <tr><td>FY26Q3</td><td>Future</td><td>5</td><td>Cost of professional services outlook added</td></tr>
+        <tr><td>FY2026 10-K</td><td>Future / next fiscal year</td><td>6</td><td class="val-pos">G&amp;A to "decrease in the next fiscal year"</td></tr>
+        <tr><td>FY27Q1</td><td>Future</td><td>5</td><td>G&amp;A decrease outlook dropped</td></tr>
+        <tr><td>FY27Q2</td><td>&mdash;</td><td class="val-neg">0</td><td class="val-neg">All deleted; only the seasonal operating-cash-flow expectation remains</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-services">
+  <div class="section-header"><h2>#5: Professional Services</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> From Implementation Decline to Margin-Diluting Growth</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Revenue (Qtr)</th><th>YoY</th><th>Gross Margin (vs PY)</th><th>Stated Driver / Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1</td><td>$116.4M</td><td>+4%</td><td>18% (11%)</td><td>"increased demand for our business consulting services"</td></tr>
+        <tr><td>FY25Q2</td><td>$114.9M</td><td class="val-neg">&minus;4%</td><td>20% (18%)</td><td class="val-neg">"decline in implementation and deployment-related services"; headcount decreased</td></tr>
+        <tr><td>FY25Q3</td><td>$118.4M</td><td class="val-neg">&minus;3%</td><td>22% (23%)</td><td>"decline in implementation services"</td></tr>
+        <tr><td>FY2025 10-K</td><td>&mdash;</td><td>Flat (FY)</td><td>&mdash;</td><td>"remained flat"</td></tr>
+        <tr><td>FY26Q1</td><td>$124.3M</td><td>+7%</td><td>23% (18%)</td><td>Business consulting</td></tr>
+        <tr><td>FY26Q2</td><td>$129.9M</td><td>+13%</td><td>22% (20%)</td><td class="val-new">"implementation and business consulting"; "speakers bureau logistics" added</td></tr>
+        <tr><td>FY26Q3</td><td>$128.7M</td><td>+9%</td><td class="val-neg">18% (22%)</td><td class="val-new">Margin sentence + cost outlook added</td></tr>
+        <tr><td>FY2026 10-K</td><td>&mdash;</td><td>+$49M (FY)</td><td>&mdash;</td><td>"business consulting and implementation"</td></tr>
+        <tr><td>FY27Q1</td><td>$152.8M</td><td class="val-pos">+23%</td><td class="val-neg">20% (23%)</td><td>Margin sentence repeated; "increased scrutiny" risk example deleted</td></tr>
+        <tr><td>FY27Q2</td><td>$161.2M</td><td class="val-pos">+24%</td><td>22% (22%)</td><td>Margin sentence and cost outlook deleted</td></tr>
+      </tbody>
+    </table>
+    <p>Subscription share of revenue: 82&ndash;83% (FY25) &rarr; 84% (FY26) &rarr; 83% (FY27 H1). Services growth faster than subscription in FY27 is the first such mix reversal in the set.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-ai">
+  <div class="section-header"><h2>#6: AI Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> From a Cyber-Threat Aside to Agents and a Named Model Supplier</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>"AI" Mentions in Risk Factors</th><th>Key Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1&ndash;Q2</td><td>5</td><td>AI in product complexity and EU AI Act compliance only</td></tr>
+        <tr><td>FY25Q3</td><td>7</td><td>Generative AI used by "threat actors" (new)</td></tr>
+        <tr><td>FY2025 10-K</td><td>17</td><td class="val-new">Standalone factor: "We recently began incorporating AI capabilities into certain of our solutions"</td></tr>
+        <tr><td>FY26Q1</td><td>19</td><td class="val-new">"Veeva AI, an initiative that will add AI to our applications across all major areas"</td></tr>
+        <tr><td>FY26Q2</td><td>21</td><td>Heading adds "or other uses of AI"; internal R&amp;D use</td></tr>
+        <tr><td>FY26Q3</td><td>21</td><td>&mdash;</td></tr>
+        <tr><td>FY2026 10-K</td><td>25</td><td class="val-new">LLM costs in profitability risk; "AI companies" as valuation comps; "adds" (not "will add")</td></tr>
+        <tr><td>FY27Q1</td><td>24</td><td>"AI strategy"; "internal use AI tools"; AI enters MD&amp;A offerings sentence</td></tr>
+        <tr><td>FY27Q2</td><td>28</td><td class="val-new">Anthropic named; "sudden suspension" of frontier models; "AI errors"; MD&amp;A: "applications, agents"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-policy">
+  <div class="section-header"><h2>#7: Life Sciences Policy Risk</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> From Private Biotech Funding to Federal Policy</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Key Language</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1&ndash;Q2</td><td>IRA drug pricing; IRA litigation by drugmakers noted; "Since 2022" early-stage funding reduction; Washington MHMDA modifications made (Q2)</td></tr>
+        <tr><td>FY25Q3</td><td class="val-new">Direct-to-consumer advertising elimination named (Crossix); IRA litigation sentence and U.S. tax-proposal sentence deleted; "changes in trade policy" in macro bullet</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-new">FDA, NIH, Medicaid funding cuts; tariffs in macro bullet; DOJ China data rule; biotech funding recast as past</td></tr>
+        <tr><td>FY26Q1</td><td class="val-new">May 12, 2025 drug-pricing Executive Order; agency "staffing"; tariffs on life sciences products; summary bullet rewritten</td></tr>
+        <tr><td>FY26Q2</td><td>One Big Beautiful Bill Act (tax, R&amp;D expensing)</td></tr>
+        <tr><td>FY26Q3</td><td>"drug price negotiations with the current administration and certain drug manufacturers"; EU Data Act; French health-data residency</td></tr>
+        <tr><td>FY2026 10-K</td><td>"regulation of pharmaceutical advertising" promoted to summary bullet; retaliatory "digital services taxes"; Pillar Two side-by-side</td></tr>
+        <tr><td>FY27Q1</td><td>Russia / Ukraine removed throughout</td></tr>
+        <tr><td>FY27Q2</td><td>"almost half of the states" have comprehensive privacy laws</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-exit">
+  <div class="section-header"><h2>#8: Customer Exit Rights &amp; Pricing Terms</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Exit Paths Widen While the Price-Cap Disclosure Disappears</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Termination for Convenience</th><th>Other Exit / Reduction Rights</th><th>Inflation Escalator Disclosure</th></tr></thead>
+      <tbody>
+        <tr><td>FY25Q1&ndash;Q2</td><td>"certain customers may exercise that right"</td><td>&mdash;</td><td>"lower of 4% or the Consumer Price Index"</td></tr>
+        <tr><td>FY25Q3</td><td class="val-neg">"Certain customers have exercised that right"</td><td>Competitors "have offered" price concessions</td><td>Present</td></tr>
+        <tr><td>FY2025 10-K</td><td>Added to ratable-revenue risk; non-cancellable multi-year paragraph deleted</td><td>Normalized billings adjusts for "delayed renewals"</td><td>Present</td></tr>
+        <tr><td>FY26Q1&ndash;Q2</td><td>Same</td><td>&mdash;</td><td>Present</td></tr>
+        <tr><td>FY26Q3</td><td>Same</td><td class="val-neg">"reduce usage or exercise termination rights"; EU Data Act cancellation "without cause"</td><td>Present</td></tr>
+        <tr><td>FY2026 10-K</td><td>Same</td><td>Same</td><td>Present</td></tr>
+        <tr><td>FY27Q1</td><td>Same</td><td>Same</td><td class="val-neg">Deleted (same filing elevates pricing in MD&amp;A)</td></tr>
+        <tr><td>FY27Q2</td><td>Same</td><td>Same</td><td>Absent</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. CRM Losses Were Admitted One Rung at a Time</h3>
+      <p>The ladder of admissions: China "some customers have chosen" (FY25Q2), "a large Veeva CRM customer" (FY2025 10-K), "certain large" customers (FY26Q2), "a number of our customers have informed us" (FY2026 10-K). Each step was sourced more directly. The end-of-support date then moved earlier to December 31, 2029. In the latest filing the CRM clause leaves the competition headline while the defection sentence below it stays. None of the steps carries a count.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. The IQVIA Settlement Removed a Constraint, Not Just a Lawsuit</h3>
+      <p>The August 2025 settlement involved no damages, yet it triggered $31M of success fees payable only for "non-monetary outcomes." The IQVIA data-access risk factor was deleted in the same filing, and IQVIA announced its CRM exit. The combination is consistent with Veeva gaining data access or similar terms, which is an inference, since the terms are confidential. Data costs and Data Cloud attribution returned to the MD&amp;A within the same two quarters.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. Growth Is Increasingly Existing Customers and Price</h3>
+      <p>"New customers" left the driver sentences in FY26Q1. Pricing went from "to a lesser extent" (Commercial only) to a co-equal driver for both segments by FY27Q1. In that same filing the "lower of 4% or CPI" cap disclosure was deleted. Commercial's share of subscription revenue fell from 49% to 46% over the set, and subscription growth slowed from 19% to 15&ndash;16%.</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Forward Cost Guidance Was Loosened, Then Withdrawn</h3>
+      <p>Expense outlooks were anchored to a fiscal year (FY25Q1&ndash;Q2), then the "near term" (FY25Q3), then "the future" (FY26Q2). All were deleted in FY27Q2, the same quarter "agents" entered the offerings sentence and Anthropic entered the risk factors. Services margin commentary shows the same selectivity: it appears only in quarters when the comparison is unfavorable.</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Services Swung From Shrinking to the Fastest-Growing Line</h3>
+      <p>FY2025 cited declining implementation work, lower services headcount, and "increased scrutiny" of services projects. By FY27Q1&ndash;Q2 services grew 23&ndash;24%, outpacing subscription, and the scrutiny language was deleted. Headcount added ahead of demand pushed services gross margin down to 18&ndash;20% in two quarters. Implementation demand rising alongside forced CRM migration away from Salesforce is a plausible link but not one the filings state.</p>
+    </div>
+    <div class="signal-card">
+      <h3>6. Veeva Moved From AI-Restrained to AI-Dependent in Six Filings</h3>
+      <p>The annual dashboard's "AI Restrained" theme no longer holds. AI risk-factor mentions grew from 5 to 28. The language went from "began incorporating" to "Veeva AI" across all areas, then "AI strategy," LLM costs as a profitability risk, a named model supplier, and a frontier-model suspension risk. Alongside this came a $2B buyback and a non-life-sciences CRM (Aspen), which reverses the annual dashboard's narrowing-focus theme.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <p style="font-size:12px; color:var(--text-dim); margin-bottom:8px;">$M except EPS and percentages. Quarterly rows are three-month figures. 10-K rows are full fiscal year. Revenue, operating income, EPS, cash and buybacks from SEC XBRL. Subscription, services and margins from each filing's MD&amp;A.</p>
+  <table class="data-table" style="font-size:12px;">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Revenue</th>
+        <th>Subscription</th>
+        <th>Sub YoY</th>
+        <th>Prof. Svcs</th>
+        <th>GM %</th>
+        <th>Op. Income</th>
+        <th>Dil. EPS</th>
+        <th>Cash + ST Inv. ($B)</th>
+        <th>Buybacks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>FY25Q1</strong></td><td>650.3</td><td>534.0</td><td>29%</td><td>116.4</td><td>73%</td><td>155.2</td><td>0.98</td><td>4.8</td><td>&mdash;</td></tr>
+      <tr><td><strong>FY25Q2</strong></td><td>676.2</td><td>561.3</td><td>19%</td><td>114.9</td><td>75%</td><td>166.5</td><td>1.04</td><td>4.9</td><td>&mdash;</td></tr>
+      <tr><td><strong>FY25Q3</strong></td><td>699.2</td><td>580.9</td><td>17%</td><td>118.4</td><td>75%</td><td>181.4</td><td>1.13</td><td>5.1</td><td>&mdash;</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>2,747</td><td>2,285</td><td>20%</td><td>&mdash;</td><td>&mdash;</td><td>691.4</td><td>4.32</td><td>5.2</td><td>0</td></tr>
+      <tr><td><strong>FY26Q1</strong></td><td>759.0</td><td>634.8</td><td>19%</td><td>124.3</td><td>77%</td><td>233.7</td><td>1.37</td><td>6.1</td><td>0</td></tr>
+      <tr><td><strong>FY26Q2</strong></td><td>789.1</td><td>659.2</td><td>17%</td><td>129.9</td><td>75%</td><td class="val-neg">195.9</td><td>1.19</td><td>6.4</td><td>0</td></tr>
+      <tr><td><strong>FY26Q3</strong></td><td>811.2</td><td>682.5</td><td>17%</td><td>128.7</td><td>75%</td><td>240.9</td><td>1.40</td><td>6.6</td><td>&mdash;</td></tr>
+      <tr><td><strong>FY2026 10-K</strong></td><td>3,195</td><td>2,684</td><td>17%</td><td>&mdash;</td><td>&mdash;</td><td>916.4</td><td>5.44</td><td>6.6</td><td class="val-new">169.9</td></tr>
+      <tr><td><strong>FY27Q1</strong></td><td>882.9</td><td>730.2</td><td>15%</td><td>152.8</td><td>75%</td><td>273.1</td><td>1.57</td><td>7.3</td><td class="val-new">226.9</td></tr>
+      <tr><td><strong>FY27Q2</strong></td><td>928.0</td><td>766.8</td><td>16%</td><td>161.2</td><td>75%</td><td>275.0</td><td>1.66</td><td>7.2</td><td>245.8</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--text-dim);">FY26Q2 operating income includes ~$31M of IQVIA litigation settlement-related charges. Buybacks are cash paid per XBRL (FY27Q2 = $472.7M six-month YTD less $226.9M Q1). The filings' MD&amp;A cites repurchases of ~$180M (FY2026), ~$221M (FY27Q1) and ~$467M (FY27 H1) by aggregate trade amount. Cash + ST investments as stated in each MD&amp;A liquidity paragraph.</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      el.querySelectorAll ? el.querySelectorAll('.finding').forEach(f => findings.push(f)) : null;
+      if (el.classList.contains('finding')) findings.push(el);
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+
+// Global expand/collapse toggle
+const toggleBtn = document.getElementById('toggle-all');
+toggleBtn.addEventListener('click', () => {
+  const findings = document.querySelectorAll('.finding');
+  const expand = toggleBtn.textContent === 'Expand all';
+  findings.forEach(f => f.classList.toggle('open', expand));
+  toggleBtn.textContent = expand ? 'Collapse all' : 'Expand all';
+});
+</script>
+</body>
+</html>

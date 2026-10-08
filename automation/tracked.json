@@ -48,8 +48,8 @@
       "annual_dashboard": "companies/veev/",
       "annual_covered_through": "2026-01-31",
       "quarterly": true,
-      "quarterly_dashboard": null,
-      "quarterly_covered_through": null
+      "quarterly_dashboard": "companies/veev/10q/",
+      "quarterly_covered_through": "2026-07-31"
     },
     "AVGO": {
       "cik": "0001730168",
