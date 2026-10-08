@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVNA 10-Q Quarterly Scanner | Q1 2024 - Q2 2026</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #1B365D;
+  --accent-deep: #0D1B2A;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --gold: #C8952E;
+  --gold-dark: #8f6a1e;
+  --purple: #8250df;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(27,54,93,0.08);
+  border-left-color: var(--gold);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; color: var(--accent); }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(200,149,46,0.14); color: var(--gold-dark); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(27,54,93,0.05); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; color: var(--accent); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--gold-dark); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--gold); color: #ffffff; font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+.signal-card blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(27,54,93,0.05); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text); font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>CVNA 10-Q SCANNER</h1>
+    <div class="sub">Q1 2024 &ndash; Q2 2026 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#q1q2-2024">Q1 &rarr; Q2 2024</a>
+  <a class="nav-item" href="#q2q3-2024">Q2 &rarr; Q3 2024</a>
+  <a class="nav-item" href="#q3-2024-fy2024">Q3 2024 &rarr; FY2024 10-K</a>
+  <a class="nav-item" href="#fy2024-q1-2025">FY2024 10-K &rarr; Q1 2025</a>
+  <a class="nav-item" href="#q1q2-2025">Q1 &rarr; Q2 2025</a>
+  <a class="nav-item" href="#q2q3-2025">Q2 &rarr; Q3 2025</a>
+  <a class="nav-item" href="#q3-2025-fy2025">Q3 2025 &rarr; FY2025 10-K</a>
+  <a class="nav-item" href="#fy2025-q1-2026">FY2025 10-K &rarr; Q1 2026</a>
+  <a class="nav-item" href="#q1q2-2026">Q1 &rarr; Q2 2026</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-priority">Priority &amp; Growth Language</a>
+  <a class="nav-item" href="#sig-funding">Funding Sentence vs ATM Use</a>
+  <a class="nav-item" href="#sig-capacity">Reconditioning Capacity</a>
+  <a class="nav-item" href="#sig-gpu">GPU Disclosure</a>
+  <a class="nav-item" href="#sig-marketplace">Retail Marketplace</a>
+  <a class="nav-item" href="#sig-loans">Loan Monetization</a>
+  <a class="nav-item" href="#sig-debt">Secured Notes &amp; Liquidity</a>
+  <a class="nav-item" href="#sig-macro">Macro / Tariff / Iran Hedges</a>
+  <a class="nav-item" href="#sig-tax">TRA &amp; Valuation Allowance</a>
+  <a class="nav-item" href="#sig-legal">Legal &amp; Item 1A</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+
+  <div class="nav-section">Links</div>
+  <a class="nav-item" href="../index.html">CVNA 10-K dashboard</a>
+  <a class="nav-item" href="../../../index.html">All companies</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>CVNA 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of ten SEC filings &mdash; eight 10-Qs from Q1 2024 (quarter ended March 31, 2024) through Q2 2026 (June 30, 2026), with the FY2024 and FY2025 10-Ks interleaved at the year boundaries. Nine transitions covering MD&amp;A (including the forward-looking factor list), Item 1A, and legal proceedings and the Legal Matters note. The annual dashboard tracks the arc from near-death to record units; this scanner tracks the quarter-by-quarter wording behind it: growth displacing profitability in the priority language, a self-funding pledge followed by an equity raise, and unit-economics explanations thinning as gross profit per unit started falling.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001690820) | Carvana Co. (NYSE: CVNA) | 10 filings, 9 transitions | Q1 2024 &ndash; Q2 2026 | Analysis: October 2026</div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+<!-- Q1 → Q2 2024 -->
+<div class="transition-header" id="q1q2-2024">
+  <h2>Q1 2024 &rarr; Q2 2024</h2>
+  <div class="sub">Retail units 101,440 (+32.5% YoY) | Revenue $3.41B | Operating income $259M | Total GPU $7,049 | Filed Jul 31, 2024</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Investment-in-growth paragraph drops "Due to the current macroeconomic environment" and adds a plan to invest in "profitable expansion"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024:</p>
+    <blockquote>"We have historically aggressively invested in the growth of our business. Due to the current macroeconomic environment, we are focused on driving fundamental gains in gross profit per unit and operational efficiency, flexibility, and scalability through process and technology improvements to increase profitability and provide a strong foundation for profitable growth."</blockquote>
+    <p>Q2 2024:</p>
+    <blockquote>"While we have historically aggressively invested in the growth of our business, for the past several quarters we have been and continue to be focused on driving fundamental gains in gross profit per unit ... As we continue targeting initiatives aimed at improving efficiencies, we simultaneously plan to invest in the profitable expansion of our business."</blockquote>
+    <p>The efficiency focus is no longer tied to the macro environment; it is described as a past-tense phase ("for the past several quarters"). The plan to invest is new. Q3 2024 changes "plan to invest" to "are simultaneously investing" (see next transition).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Priority sentence loses "During the current macroeconomic uncertainty"; strategies stop being "Secondarily" and are recast as "efficient growth initiatives"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024:</p>
+    <blockquote>"During the current macroeconomic uncertainty, our highest priority will continue to be providing exceptional customer experiences while improving efficiency and utilizing our infrastructure to support efficient growth in retail units sold to help us move along the path to achieve sustained profitability. Secondarily, we plan to pursue several strategies designed to increase our brand awareness and total gross profit per unit. These strategies may include the following:"</blockquote>
+    <p>Q2 2024:</p>
+    <blockquote>"Our highest priority continues to be providing exceptional customer experiences while improving efficiency and utilizing our infrastructure to support efficient growth in retail units sold to help us move along the path to achieve sustained profitability. Efficient growth initiatives, which we may undertake from time to time, include the following:"</blockquote>
+    <p>The macro qualifier is gone. The bullet list is no longer framed around brand awareness and gross profit per unit; it is framed as growth. "To help us move along the path to achieve sustained profitability" survives until Q2 2025, when it is deleted (tracked in Signal #1).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Reduce average days to sale" becomes "Optimize": the goal of growing sales faster than inventory is dropped; website units 30,694 &rarr; 37,299</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024:</p>
+    <blockquote>"Reduce average days to sale. Our goal is generally to increase our sales at a faster rate than we increase our inventory size, which we believe would decrease average days to sale due to a relative increase in demand versus supply."</blockquote>
+    <p>Q2 2024:</p>
+    <blockquote>"Optimize average days to sale. Our goal is generally to optimize our inventory size relative to sales to achieve our desired average days to sale."</blockquote>
+    <p>The deleted goal was a commitment to keep inventory growing slower than sales. The new wording leaves room for inventory to grow faster than sales. Inventory did: total website units rose from 30,694 (March 31, 2024) to 75,683 at the end of 2025, and 77,971 by June 30, 2026. The same quarter raised the stated reconditioning capacity from "approximately 1.3 million" to "approximately 1.35 million vehicles per year" (Signal #3).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unique-visitor metric redefined to include app users; prior periods recast upward by 4.2% to 9.6%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"During the three months ended June 30, 2024, the methodology used by Google Analytics to count unique visitors changed to include individuals visiting our iOS/Android application, in addition to those visiting our website."</blockquote>
+    <p>The recast added 9.6% to Q2 2023 and 4.2% to Q1 2024, so the reported growth rate of a key operating metric changed retroactively. Q2 2024 average monthly unique visitors were 18.6M against a recast 16.0M a year earlier.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First note buyback: $250M of 2028 Senior Secured Notes retired, funded in the same quarter as a $347M ATM raise at $114.85</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>The repurchase sentence moves from possibility to fact, "may" &rarr; "have and may again":</p>
+    <blockquote>"During the three months ended June 30, 2024, we repurchased and cancelled $250 million principal amount of 2028 Senior Secured Notes."</blockquote>
+    <blockquote>"net proceeds of $347 million from the sale of approximately 3 million shares of Class A common stock at an average price of $114.85 per share pursuant to our"</blockquote>
+    <p>Equity raised through the at-the-market program in the same quarter that the secured notes issued in the September 2023 exchange started being bought back. Secured-debt baskets also grew: super senior debt capacity $1,262M &rarr; $1,500M, pari passu $250M &rarr; $375M; total liquidity resources $3.26B &rarr; $4.11B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tax Receivable Agreement expense first appears: $19M</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"For the three and six months ended June 30, 2024, Other expense (income), net also includes expense related to our Tax Receivable Agreement ... liability."</blockquote>
+    <blockquote>"The TRA liability was generated from the expected cash tax savings to be realized by Carvana Co. as a result of LLC unit exchanges."</blockquote>
+    <p>A $19M line in Q2 2024. By the FY2025 10-K it is a $2.3B liability, $1.7B of it owed to related parties (Signal #9).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Forward-Looking Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Section 382 Tax Asset Preservation Plan dropped from the risk list; "historical rapid growth" loses "historical"</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024 factor, deleted in Q2 2024:</p>
+    <blockquote>"risks relating to our Section 382 Tax Asset Preservation Plan;"</blockquote>
+    <p>The annual dashboard records the plan's 2022 adoption as a distress signal. Its removal from the quarterly factor list is the first unwind of crisis-era language in this series. In the same list, "our ability to effectively manage our historical rapid growth" becomes "our ability to effectively manage our rapid growth". "Our history of losses and ability to maintain profitability in the future" stays in the list through Q3 2024.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2024 -->
+<div class="transition-header" id="q2q3-2024">
+  <h2>Q2 2024 &rarr; Q3 2024</h2>
+  <div class="sub">Retail units 108,651 (+34.2% YoY) | Revenue $3.65B | Operating income $337M | Total GPU $7,427 | Filed Oct 30, 2024</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Reconditioning capacity changed from "approximately 1.35 million" to "more than 1 million" vehicles per year</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024:</p>
+    <blockquote>"As we scale, we intend to more fully utilize the capacity at our existing IRCs and auction locations, which collectively have capacity to inspect and recondition approximately 1.35 million vehicles per year at full utilization."</blockquote>
+    <p>Q3 2024:</p>
+    <blockquote>"As we scale, we intend to more fully utilize the capacity at our existing IRCs and auction locations, which collectively have capacity to inspect and recondition more than 1 million vehicles per year at full utilization."</blockquote>
+    <p>The figure went from precise to a floor, and the floor is 350,000 units lower than the prior quarter's figure. No reason is given. The "more than 1 million" wording then holds for five filings before the FY2025 10-K states "approximately 1.5 million". That annualized retail sales (about 435,000 at the Q3 2024 run rate) were far below either number suggests the change is a restatement of how capacity is counted, not a loss of capacity. That is an inference; the filing does not say.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retail marketplace (consignment, net revenue) first disclosed; "average selling price" renamed "revenue per retail unit"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Retail vehicle sales also include shipping and delivery fees and service revenue from retail marketplace transactions, which are retail vehicles sold to customers on consignment from our partners. As we are the agent in retail marketplace transactions, we recognize revenue on the sale of the vehicle on a net basis, rather than recognizing the full amount of the vehicle sales price as revenue."</blockquote>
+    <p>In the same filing, every "average selling price" in the retail driver paragraph becomes "revenue per retail unit". The metric now mixes full-price sales with fee-only consignment units, so a falling figure no longer means lower prices. Q3 2024 still put the decline down to depreciation ("due primarily to higher overall depreciation in the used vehicle market"). Starting with the 10-K, it is put down to marketplace mix (Signal #5).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Plan to invest" becomes "are simultaneously investing"; "near-term objectives ... significant positive unit economics" deleted</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024:</p>
+    <blockquote>"While our near-term objectives are geared towards significant positive unit economics through efficiency gains and other initiatives, we continue to invest in technology and infrastructure to support efficient growth in retail units sold."</blockquote>
+    <p>Q3 2024:</p>
+    <blockquote>"We are simultaneously maintaining our focus on efficiency gains and other profitability initiatives, while continuing to invest in technology and infrastructure to support efficient growth in retail units sold."</blockquote>
+    <p>The investment-in-growth paragraph changes the same way: "we simultaneously plan to invest in the profitable expansion of our business" becomes "we are simultaneously investing in the profitable expansion of our business." The intention is now stated as something happening, and unit economics is no longer named as the near-term objective.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Operating cash flow falls $184M (nine months) on "a lower ratio of finance receivables sold relative to originations"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024 credited the operating-cash increase to "more finance receivables sold". Q3 2024 reverses the explanation:</p>
+    <blockquote>"primarily due to increased vehicle inventory acquisitions and a lower ratio of finance receivables sold relative to originations of finance receivables, partially offset by a reduction in interest paid due to PIK interest on the Senior Secured Notes during the nine months ended September 30, 2024."</blockquote>
+    <p>Nine-month operating cash flow was $858M against $1.0B a year earlier. Carvana was holding more of the loans it made, and paying interest in kind instead of cash propped up the comparison. Both drivers reverse later: cash interest resumes in Q1 2025, and the FY2025 10-K cites "lower interest income on finance receivables held for sale".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Another $100M of 2028 Senior Secured Notes repurchased: $350M year to date</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Loss on debt extinguishment was $6 million during the nine months ended September 30, 2024 due to the repurchase of $350 million of 2028 Senior Secured Notes in the open market for $363 million"</blockquote>
+    <p>Total liquidity resources $4.11B &rarr; $4.42B; the pari passu senior debt basket rose again, $375M &rarr; $425M.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Carvana v. IBM (patent) added to named disputes; 2023 Delaware stockholder suit dismissed</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In re Carvana Co. Stockholders Litigation, Delaware Chancery Court (Case No. 2023-0600-KSJM) was dismissed in September 2024."</blockquote>
+    <p>The dispute categories gain "intellectual property disputes" and "patent infringement"; the reassurance now covers "the claims or counterclaims against the Company". Carvana, LLC v. IBM Corp. (S.D.N.Y.) stays on the named list until it is settled "for immaterial amounts" in H1 2026. The Legal Matters note still says the Company "has not established reserves for any of these proceedings". The next filing replaces that with a $10M accrual.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2024 → FY2024 10-K -->
+<div class="transition-header" id="q3-2024-fy2024">
+  <h2>Q3 2024 &rarr; FY2024 10-K</h2>
+  <div class="sub">Annual filing (Feb 19, 2025) | FY2024 revenue $13.67B | Operating income $990M | Retail units 416,348 (+33.1%) | Total GPU $6,908</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Has not established reserves" becomes a $10M legal accrual ($3M a year earlier); AG inquiries "could result" becomes "have resulted" in claims</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2024:</p>
+    <blockquote>"It is not possible to determine the probability of loss or estimate damages, if any, for any of the above matters, and therefore, the Company has not established reserves for any of these proceedings."</blockquote>
+    <p>FY2024 10-K:</p>
+    <blockquote>"As of December 31, 2024 and 2023, the Company has an accrual for unresolved legal matters, including, if applicable, those discussed above, of $10 million and $3 million, respectively."</blockquote>
+    <p>On state Attorney General inquiries, "which if not amicably resolved, could result in state Attorney General offices filing claims against the Company" becomes "have resulted and may again result". This is the first admission that AG claims have been filed. The two reserve statements have different scope (named proceedings vs all unresolved matters), so they do not strictly contradict each other. Still, the accrual existed at December 31, 2023, while all three 2024 10-Qs said no reserves had been established for the matters they named.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Securities class action gets its own subsection: the December 16, 2024 dismissal ruling left the core 10(b) and Section 11 claims partly alive</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"On December 16, 2024, the Company's motion to dismiss the consolidated complaint, as amended, was granted with respect to alleged violations of Section 20A of the Exchange Act and Section 12(a)(2) of the Securities Act, granted in part and denied in part with respect to alleged violations of Section 10(b) and Rule 10b-5 of the Exchange Act and Section 11 of the Securities Act, and denied with respect to alleged violations of Section 20(a) of the Exchange Act and Section 15 of the Securities Act."</blockquote>
+    <p>The 2024 10-Qs listed In re Carvana Co. Securities Litigation only as a case name. The 10-K drops it from the list and gives it a full history. Q1 2025 adds "is engaged in discovery". Q2 2026 adds the plaintiff's April 6, 2026 motion for class certification.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2024 equity raise quantified: 6.8M shares at $186.56, $1.3B gross; ATM refreshed in July 2024 to 35M shares</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In the year ended December 31, 2024, we issued 6.8 million shares of Class A common stock at a weighted-average issuance price per share of $186.56, for gross proceeds of $1.3 billion, which we are using for general corporate purposes."</blockquote>
+    <p>The 2024 10-Q MD&amp;As quantified only the Q2 sale (about 3 million shares, $347M net at $114.85). Q3 2024 MD&amp;A gave no amount and mentioned only "lower net proceeds" year over year. A full-year weighted average of $186.56 means the rest of the 6.8M shares were sold at well above the Q2 price. The same paragraph discloses the July 31, 2024 refresh, letting Carvana sell "the greater of" $1.0B or 35 million shares. Over 2024, $470M of 2028 Senior Secured Notes were retired ($370M repurchased, $100M redeemed).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">TRA liability recognized at $82M; a further $2.0B left unrecorded because tax assets were not expected to be realized</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"As such, we recognized a TRA liability of $82 million and $14 million as of December 31, 2024 and 2023, respectively, which represents the portion of the liability that is probable and reasonably estimable. For the remaining $2.0 billion TRA liability as of December 31, 2024, we determined that it was more likely than not that our deferred tax assets subject to the TRA would not be realized."</blockquote>
+    <p>This is the first time the size of the off-balance-sheet TRA exposure is stated. Profitability was what would move it onto the balance sheet. That happened one year later (FY2025 10-K, Signal #9).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Falling revenue per unit re-attributed from market depreciation to marketplace mix; "on consignment ... as we are the agent" wording replaced</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2024 (nine months):</p>
+    <blockquote>"partially offset by a decrease in retail revenue per retail unit sold to $23,608 in the nine months ended September 30, 2024 from $24,232 in the prior year, due primarily to higher overall depreciation in the used vehicle market"</blockquote>
+    <p>FY2024 10-K:</p>
+    <blockquote>"partially offset by a decrease in retail revenue per retail unit sold to $23,252 in the year ended December 31, 2024 from $24,018 in the prior year, due primarily to higher retail marketplace units sold as a share of total retail units sold"</blockquote>
+    <p>The definition paragraph also changes: "retail vehicles sold to customers on consignment from our partners. As we are the agent in retail marketplace transactions" becomes "retail marketplace partner vehicles sold to customers through Carvana, where we recognize revenue on the sale of the vehicle on a net basis". The words "consignment" and "agent" are gone. Retail units sold is redefined as "including retail marketplace partner vehicles". The marketplace share itself is never given.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liquidity paragraph dates the pivot: the company shifted "throughout 2024 to the long-term phase of driving profitable growth"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2024:</p>
+    <blockquote>"In response to the macroeconomic environment, our focus during previous quarters has been on driving profitability through initiatives to better conform our expense structure to unit volume levels. We expect to continue our focus on these profitability initiatives as we return to growth."</blockquote>
+    <p>FY2024 10-K:</p>
+    <blockquote>"In response to the macroeconomic environment, our focus in past years has been on driving profitability through initiatives to better conform our expense structure to unit volume levels and create a strong operational foundation, allowing us to shift focus throughout 2024 to the long-term phase of driving profitable growth. We expect to continue our focus on profitability initiatives as we continue to grow."</blockquote>
+    <p>"Return to growth" becomes "continue to grow", which treats the recovery as done. The 10-K's operating-cash discussion also credits "a $274 million reduction in interest paid due to higher PIK interest on the Senior Secured Notes" for part of the year's $115M increase.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2024 10-K → Q1 2025 -->
+<div class="transition-header" id="fy2024-q1-2025">
+  <h2>FY2024 10-K &rarr; Q1 2025</h2>
+  <div class="sub">Retail units 133,898 (+45.7% YoY) | Revenue $4.23B | Operating income $394M | Total GPU $6,938 | Filed May 7, 2025</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Funding model flipped: financing "has funded growth ... and we expect this to continue" becomes growth funded "primarily through cash generated from operating activities"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K (and every 2024 10-Q):</p>
+    <blockquote>"Historically, cash generated from financing activities has funded growth and expansion into new markets and strategic initiatives and we expect this to continue in the future."</blockquote>
+    <p>Q1 2025:</p>
+    <blockquote>"Going forward, we expect to fund growth and expansion primarily through cash generated from operating activities, while retaining the option to utilize financing activities as a supplemental source if necessary."</blockquote>
+    <p>A commitment in the other direction, made the quarter after a $1.3B equity year. In the same filing, the ATM share cap was cut from 35 million to 21 million shares, and the program reported no activity:</p>
+    <blockquote>"There was no activity pursuant to the ATM Program during the three months ended March 31, 2025."</blockquote>
+    <p>Two quarters later, Carvana sold $539M of stock while this sentence was unchanged (Q3 2025). The FY2025 10-K then changed "if necessary" to "if desired" (Signal #2).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">PIK interest ends: Carvana elects to pay cash interest on the 2028 and 2030 Senior Secured Notes</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"partially offset by an increase in interest paid due to our election to pay cash interest on the 2028 and 2030 Senior Secured Notes during the three months ended March 31, 2025."</blockquote>
+    <p>Through 2024, PIK interest was cited as a source of operating cash (a $274M reduction in interest paid in FY2024). Paying cash instead cuts interest expense (Q1 interest expense, net $173M &rarr; $139M), but it costs operating cash. The FY2025 10-K shows the 2031 notes still paying in kind ($139M on February 15, 2025 and $148M on August 15, 2025). Another $52M of 2028 notes was bought back in the quarter.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Capital needs now name ADESA build-outs instead of "IRCs and vending machines"; first franchise-dealership acquisition ($24M)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>In the list of factors driving future capital requirements, "our construction of IRCs and vending machines" becomes "our build-outs of ADESA auction sites to provide IRC capabilities". Investing cash flow:</p>
+    <blockquote>"primarily due to the $24 million acquisition of a franchise dealership along with increased purchases of property and equipment during the three months ended March 31, 2025."</blockquote>
+    <p>Buying a franchised dealer is new for an online-only retailer. Q3 2025 reports a second one ($51M for two), and Q2 2026 another two. The annual dashboard tracks the ADESA conversions (6 to 16 sites); this is the first time that conversion is written into the capital-requirements sentence.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs paragraph first appears; macro hedges added in three places ("absent any material changes", "assuming stability")</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"The global trade environment is uncertain and rapidly evolving. We will continue to monitor changes in tariff policy and the impact of these changes on our industry and the economy and seek to adjust to these changes as efficiently as possible."</blockquote>
+    <blockquote>"In the three months ended March 31, 2025, inflation and high interest rates did not have a material impact on our business."</blockquote>
+    <p>Growth and efficiency statements gained conditions. "Support efficient growth in retail units sold" gains "absent any material changes in macroeconomic conditions". "Increasingly efficient over time" gains the same clause. The liquidity outlook gains:</p>
+    <blockquote>"We expect to continue our focus on profitability initiatives as we continue to grow, assuming stability in the macroeconomic environment."</blockquote>
+    <p>Each hedge was added the same quarter tariffs were first named. The trade-environment paragraph later absorbs the Iran conflict and gasoline prices (Q1 2026).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">MD&amp;A overview rewritten as a market-size pitch: 37M used transactions, $68.0B lifetime revenue, 75% of population within 100 miles</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"These dynamics create an exceptional opportunity for disruption that our custom-built business model can capitalize on to remain well-positioned for long term growth."</blockquote>
+    <blockquote>"As of March 31, 2025, we estimate that 75% of the U.S. population is within 100 miles of an IRC or auction site, which shortens the distance from our inventory pools to our customers to reduce delivery times."</blockquote>
+    <p>Until Q3 2024, the quarterly MD&amp;A opened with a product description ("Using our website or mobile application, customers can complete all phases of a retail vehicle purchase"). From Q1 2025 it opens with the market-opportunity framing that the FY2024 10-K Business section uses ("exceptional opportunity for disruption"), plus lifetime totals and delivery-proximity figures. The 316-market, 81.1%-coverage paragraph that ran through Q3 2024 is gone.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Risk Factors &amp; Forward-Looking Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Item 1A drops the "no material changes" assertion: the stub now just points to the 10-K</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1&ndash;Q3 2024:</p>
+    <blockquote>"There have been no material changes to the risk factors disclosed under the heading ... in our most recent Annual Report on Form 10-K, filed on February 22, 2024."</blockquote>
+    <p>Q1 2025 onward:</p>
+    <blockquote>"Information regarding our risk factors is disclosed under the heading ... in our most recent Annual Report on Form 10-K, filed on February 19, 2025."</blockquote>
+    <p>Carvana dropped the assertion in the first 10-Q after a January 2025 short-seller report, which the filing does not mention (see Q2 2025). The new form makes no claim either way and was used in every later quarter. Whether the change was deliberate cannot be told from the text.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"History of losses" leaves the forward-looking factor list; Garcia Parties' control enters it</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Present in every 2024 10-Q, absent from Q1 2025:</p>
+    <blockquote>"our history of losses and ability to maintain profitability in the future;"</blockquote>
+    <p>Added:</p>
+    <blockquote>"the Garcia Parties' control us and their interests may conflict with our or our stockholders' interests;"</blockquote>
+    <p>The annual dashboard records the "history of losses" risk factor leaving the FY2024 10-K. The quarterly factor list followed one filing later. The rewrite also cut "our substantial indebtedness" down from a clause about raising capital to a standalone factor, added Tax Receivable Agreement payments, and dropped "efficiency gains and opportunities to ... reduce our expenses" from the topics covered by forward-looking statements.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Not material or ... without merit ... defend the matters vigorously" deleted from the Legal Matters note</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2024 10-K:</p>
+    <blockquote>"The Company believes the claims or counterclaims against the Company in the legal matters above are not material or are without merit, as may be applicable, and intends to defend the matters vigorously."</blockquote>
+    <p>Q1 2025 goes directly to the accrual:</p>
+    <blockquote>"As of both March 31, 2025 and December 31, 2024, the Company had an accrual for unresolved legal matters, including, if applicable, those discussed above, of $10 million."</blockquote>
+    <p>The blanket reassurance has run in every filing since at least Q1 2024 and does not return through Q2 2026. Only the securities class action keeps a "vigorously defending" statement. Following the 10-K, the 10-Q's Item 1 Legal Proceedings and the note's opening sentence both drop "that arise in the ordinary course of business".</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2025 -->
+<div class="transition-header" id="q1q2-2025">
+  <h2>Q1 2025 &rarr; Q2 2025</h2>
+  <div class="sub">Retail units 143,280 (+41.2% YoY) | Revenue $4.84B | Operating income $511M | Total GPU $7,426 | Filed Jul 30, 2025</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">January 2025 short-seller report and June 2025 SEC subpoena first disclosed, two filings after the report appeared</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>New paragraph in Item 1, Legal Proceedings:</p>
+    <blockquote>"In January 2025, a now-defunct short-selling firm published a report including inaccurate, incomplete, and otherwise misleading information about us. We engaged outside legal counsel to independently evaluate the allegations, and voluntarily contacted the U.S. Securities and Exchange Commission ... Based upon that evaluation and our own review, we reaffirmed our conclusion that the allegations raised in the short-seller's report were inaccurate, incomplete, and misleading. In June 2025, we received a subpoena from the SEC requesting information that we believe primarily relates to the allegations raised by the report. We are fully cooperating with the SEC Staff."</blockquote>
+    <p>The FY2024 10-K (filed February 19, 2025) and the Q1 2025 10-Q (filed May 7, 2025) were both filed after the report and say nothing about it. Their only short-seller reference is the generic stock-price factor about "manipulations of the market for our securities by short sellers". The paragraph appears only once a regulator had acted. The company's own outreach to the SEC is described as having come first, but its date is not given. The paragraph is unchanged through Q2 2026. The FY2025 10-K adds it to the risk factors (see that transition).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Legal accrual rises for the first time in 2025: $10M &rarr; $12M</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"As of June 30, 2025 and December 31, 2024, the Company had an accrual for unresolved legal matters, including, if applicable, those discussed above, of $12 million and $10 million, respectively."</blockquote>
+    <p>The accrual moves $3M (Dec 2023) &rarr; $10M &rarr; $12M &rarr; $14M (Dec 2025), then back to $10M by June 2026 after two settlements (Signal #10).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Growth moves ahead of efficiency: "path to achieve sustained profitability" deleted; new lead sentence "We continue to prioritize efficient growth"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2025:</p>
+    <blockquote>"We are simultaneously maintaining our focus on efficiency gains and other profitability initiatives, while continuing to invest in technology and infrastructure to support efficient growth in retail units sold absent any material changes in macroeconomic conditions."</blockquote>
+    <p>Q2 2025:</p>
+    <blockquote>"We continue to prioritize efficient growth in retail units sold, absent any material changes in macroeconomic conditions. To prioritize growth, we are pursuing investments in technology and infrastructure, while simultaneously maintaining our focus"</blockquote>
+    <p>The priority sentence loses its profitability endpoint ("to help us move along the path to achieve sustained profitability") and "improving efficiency and utilizing" becomes "making effective use of". The investment paragraph is rewritten too:</p>
+    <blockquote>"We maintain a primary focus on expanding the scale and reach of our business, while simultaneously driving operational efficiency, flexibility, and scalability through process and technology improvements that underpin sustainable, profitable growth."</blockquote>
+    <p>It replaces "focused on driving fundamental gains in gross profit per unit", so gross profit per unit is no longer named as the focus of the investment paragraph. The liquidity paragraph drops "In response to the macroeconomic environment" in the same filing. All of this is fixed one quarter before total GPU first declined year over year (Q3 2025).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retail GPU rises to $3,636 with "benefits from tariff-related effects" credited</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"The per unit increase was primarily driven by lower reconditioning and inbound transport costs and benefits from tariff-related effects during the three months ended June 30, 2025."</blockquote>
+    <p>Q1 2025 had cited "lower depreciation rates, partially offset by lower spreads between retail market and wholesale market prices". The tariff credit appears once. Q3 2025 says "tariffs did not materially impact our financial or operating results" for the nine months that include this quarter, and retail GPU fell year over year that quarter. The inflation sentence also gains a qualifier: "While inflationary pressures persist in 2025, in the three and six months ended June 30, 2025, inflation and high interest rates did not have a material impact on our business."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Tax</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OBBBA paragraph: no material impact expected "as we maintain a full valuation allowance"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"As we maintain a full valuation allowance against our deferred tax assets, the impact of the OBBBA is not expected to have a material impact on our financial statements."</blockquote>
+    <p>The reason given for no impact is the full valuation allowance. Two filings later, the FY2025 10-K releases $2.2B of that allowance and records $2.2B of TRA expense. Q3 2025 restates the OBBBA conclusion without the valuation-allowance reason.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2025 -->
+<div class="transition-header" id="q2q3-2025">
+  <h2>Q2 2025 &rarr; Q3 2025</h2>
+  <div class="sub">Retail units 155,941 (+43.5% YoY) | Revenue $5.65B | Operating income $552M | Total GPU $7,362 (first YoY decline: $7,427) | Filed Oct 29, 2025</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">ATM restarts: 1.5M shares at $364.93 for $539M, while the "fund growth ... primarily through cash generated from operating activities" sentence stands unchanged</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2025:</p>
+    <blockquote>"There was no activity pursuant to the ATM Program during the three and six months ended June 30, 2025."</blockquote>
+    <p>Q3 2025:</p>
+    <blockquote>"During the three months ended September 30, 2025, we issued 1.5 million shares of Class A common stock at a weighted-average issuance price per share of $364.93, for gross proceeds of $539 million."</blockquote>
+    <p>Unchanged a few paragraphs earlier in the same Q3 2025 filing:</p>
+    <blockquote>"Going forward, we expect to fund growth and expansion primarily through cash generated from operating activities, while retaining the option to utilize financing activities as a supplemental source if necessary."</blockquote>
+    <p>The MD&amp;A gives no purpose for the raise and does not say why it was "necessary". In the same quarter, Carvana redeemed $559M of 2028 Senior Secured Notes (below), so the equity largely matched the debt retired. That is consistent with refinancing secured debt with equity, but it is an inference. The FY2025 10-K changes "if necessary" to "if desired", which makes the sentence fit what had already happened. $461M of ATM capacity remains, unchanged through Q2 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$559M voluntary redemption of 2028 Senior Secured Notes for $578M, including $13M of premium</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"During the three months ended September 30, 2025, as permitted by the indenture, the Company voluntarily redeemed $559 million of principal amount of the 2028 Senior Secured Notes for $578 million which included $13 million of premium and $6 million of accrued interest."</blockquote>
+    <p>Total debt fell from $5.57B to $5.06B. Prior retirements were open-market buybacks ($370M in 2024, $52M in Q1 2025) and a $100M redemption in 2024. This is the largest single retirement in the series. Interest expense, net fell to $125M from $157M a year earlier.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Ally named as the forward-flow buyer; commitment raised $4.0B &rarr; $6.0B; sixth lender adds $600M receivables facility</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"On October 28, 2025, the Ally MPSA was further amended to, among other things, increase the commitment by Ally to purchase up to $6.0 billion of principal balance of finance receivables"</blockquote>
+    <blockquote>"In September 2025, we entered into agreement pursuant to which a sixth lender agreed to provide a $600 million revolving credit facility to fund certain finance receivables originated by the Company until March 29, 2027."</blockquote>
+    <p>Earlier filings called the counterparty only "the purchaser". Short-term revolving commitments rose from $4.2B to $5.0B. Loan funding capacity was expanded in the same quarter that loan sale spreads dropped out of the other-revenue explanation (next group).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retail GPU declines year over year for the first time in the series: $3,456 vs $3,497, on "higher retail depreciation rates"; wholesale GPU also down</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2025:</p>
+    <blockquote>"Additionally, retail vehicle gross profit per unit increased to $3,636 for the three months ended June 30, 2025, compared to $3,421 for the three months ended June 30, 2024."</blockquote>
+    <p>Q3 2025:</p>
+    <blockquote>"This increase in gross profit was primarily due to an increase in the number of retail vehicles sold to 155,941 from 108,651 during the three months ended September 30, 2025 and 2024, respectively, partially offset by retail vehicle gross profit per unit decreasing to $3,456 compared to $3,497 in the prior year. The per unit decrease was primarily driven by higher retail depreciation rates, partially offset by lower reconditioning and inbound transport costs during the three months ended September 30, 2025."</blockquote>
+    <p>Every quarterly retail GPU comparison from Q1 2024 to Q2 2025 was an increase. Wholesale vehicle GPU also fell ("to $1,033 from $1,080"), which was attributed to "higher vehicle acquisition costs relative to sales prices". Total GPU was $7,362 vs $7,427, and Adjusted EBITDA margin was 11.3% vs 11.7%. This is the last quarter in which the MD&amp;A gives both the retail GPU level and its cause (Signal #4).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs "did not materially impact" nine-month results, one quarter after tariff effects were credited for higher GPU</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"We are continuing to monitor changes in tariff policy and the impact of these changes on our industry and the economy and seek to adjust to these changes as efficiently as possible. For the nine months ended September 30, 2025, tariffs did not materially impact our financial or operating results."</blockquote>
+    <p>"Benefits from tariff-related effects" was a named driver of Q2 2025 retail GPU. The two statements can both be true (a benefit to one line need not be material to the whole). But the tariff-related benefit is not mentioned again. The forward-looking factors add "the U.S. government shutdown", and the scaling factor gains a condition: "our ability to utilize our available infrastructure capacity while maintaining our unit economics".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retail marketplace net-revenue treatment hedged: "depending on the structure of the partnership, we may"; "would" &rarr; "could"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2025:</p>
+    <blockquote>"which are retail marketplace partner vehicles sold to customers through Carvana, where we recognize revenue on the sale of the vehicle on a net basis, rather than recognizing the full amount of the vehicle sales price as revenue."</blockquote>
+    <p>Q3 2025:</p>
+    <blockquote>"which are retail marketplace partner vehicles sold to customers through Carvana, where, depending on the structure of the partnership, we may recognize revenue on the sale of the vehicle on a net basis, rather than recognizing the full amount of the vehicle sales price as revenue."</blockquote>
+    <p>The hedge suggests some partner arrangements were changed so that they no longer get net treatment. The text says only that treatment depends on structure. Revenue per unit moved the way that reading would predict: Q3 2025 retail revenue per unit rose to $25,625 from $23,405. Starting with the FY2025 10-K, increases are attributed to "lower retail marketplace units sold as a share of total retail units sold", reversing the 2024&ndash;H1 2025 explanation.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Higher loan sale spreads" drops out of the other-revenue explanation; "higher VSC conversion rates" takes its place</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2025:</p>
+    <blockquote>"The increase was primarily due to an increase in gain on loan sales as a result of increased retail units sold, more loan sales, and higher loan sale spreads during the three months ended June 30, 2025."</blockquote>
+    <p>Q3 2025:</p>
+    <blockquote>"The increase in revenue was primarily due to an increase in gain on loan sales, as a result of increased retail units sold and loan sale volume, and to higher VSC conversion rates during the three months ended September 30, 2025."</blockquote>
+    <p>Higher spreads were cited in every quarter from Q3 2024 to Q2 2025. They go unmentioned in Q3 2025. Q1 2026 then names them as a headwind ("partially offset by lower loan sale spreads"), and Q2 2026 repeats it (Signal #6).</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2025 → FY2025 10-K -->
+<div class="transition-header" id="q3-2025-fy2025">
+  <h2>Q3 2025 &rarr; FY2025 10-K</h2>
+  <div class="sub">Annual filing (Feb 18, 2026) | FY2025 revenue $20.32B | Operating income $1.88B | Retail units 596,641 (+43.3%) | Total GPU $7,026</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Tax &amp; Capital</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$2.2B valuation allowance released; $2.2B TRA expense booked; TRA liability $82M &rarr; $2.3B, of which $1.7B is due to related parties</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"We released $2.2 billion of our valuation allowance during the year ended December 31, 2025 and recorded $547 million of income tax benefit as a result of current year activity."</blockquote>
+    <blockquote>"During the year ended December 31, 2025, we recorded TRA expense of $2.2 billion which was recorded to other expense (income), net in the accompanying consolidated statements of operations. As of December 31, 2025 and 2024, we recorded a TRA liability of $2.3 billion and $82 million, respectively, of which $1.7 billion and $61 million, respectively, is due to related parties."</blockquote>
+    <p>The FY2024 10-K had left a "remaining $2.0 billion" of TRA liability unrecorded because the tax assets were not expected to be realized. Once profitability made them realizable, the liability came onto the balance sheet. Much of the $2.8B income tax benefit was offset by TRA expense: other expense (income), net was a $2.3B expense. About three quarters of the payable is owed to related parties. The Garcia Parties' control over the company has been a forward-looking factor since Q1 2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Funding hedge loosened: "supplemental source if necessary" &rarr; "if desired"; ATM gains "if used"; the profitability-initiatives paragraph is deleted</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q3 2025: "...as a supplemental source if necessary." FY2025 10-K:</p>
+    <blockquote>"Going forward, we expect to fund growth and expansion primarily through cash generated from operating activities, while retaining the option to utilize financing activities as a supplemental source if desired."</blockquote>
+    <p>"Including the issuance of equity pursuant to our ATM Program" gains ", if used,". The Q3 2025 paragraph beginning "In past years, we maintained a focus on driving profitability" is deleted, together with its hedge "assuming stability in the macroeconomic environment". This is the last remnant of the 2022&ndash;2024 profitability framing in the liquidity section.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New Citizens Bank $250M fleet loan; 2025 unsecured notes repaid at maturity; $611M of 2028 secured notes retired in 2025</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"On October 20, 2025, the Company entered into a loan and security agreement ... which provides for up to $250 million in aggregate principal amount of loans to finance certain equipment for its transportation fleet."</blockquote>
+    <p>Also new: "the Company repaid $98 million of principal amount of the 2025 Senior Unsecured Notes upon maturity". Total debt at year-end was $4.98B, against $5.47B a year earlier. The Root-specific warrant language is generalized to "warrants to acquire common stock of other entities", and the forward-looking factor about Root becomes "our minority equity investments" (plural).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Reconditioning capacity: "more than 1 million" &rarr; "approximately 1.5 million" vehicles per year</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"As we scale, we intend to more fully utilize the capacity at our existing IRCs and auction locations, which collectively have capacity to inspect and recondition approximately 1.5 million vehicles per year at full utilization."</blockquote>
+    <p>This is the first precise figure since Q2 2024's 1.35 million. FY2025 retail units were 596,641, so the stated capacity is about 2.5 times the year's retail sales. This is the last filing to give a number: Q1 2026 deletes the bullet (next transition).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Full-year retail GPU "approximately flat at $3,315" with no driver given</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Additionally, retail vehicle gross profit per unit was approximately flat at $3,315 for the year ended December 31, 2025, compared to $3,312 for the year ended December 31, 2024."</blockquote>
+    <p>The FY2024 10-K followed its GPU figure with "The per unit increase was primarily driven by lower average days to sale, lower vehicle acquisition costs relative to sales prices, and lower reconditioning and inbound transport costs". The FY2025 10-K has no explanatory sentence. Working back from the annual and nine-month figures, Q4 2025 retail GPU was about $2,990, against about $3,230 in Q4 2024 (derived, not disclosed). The Q3 and Q4 declines offset the first-half gains.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Risk Factors &amp; Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">SEC subpoena enters the risk factors; short-seller report named in the stock-price factor</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In June 2025, we received a subpoena from the SEC requesting information that we believe primarily relates to allegations raised by a report published by a now-defunct short-selling firm. We currently cannot predict the outcome of this matter."</blockquote>
+    <p>The forward-looking factor on short sellers gains "(including the impact of the report published in the first quarter of 2025 by a now-defunct short-selling firm)". This is the first annual filing to mention the report, a year after it was published.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">State AG inquiries now cover "lending practices"; accrual $14M; Erakat case (a 2026 docket) added to the named list</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Additionally, the Attorney General offices of various states, from time to time, conduct inquiries regarding the Company's inspection, reconditioning, advertising, sale, delivery, titling, registration, lending practices, and post-sale service of retail vehicles."</blockquote>
+    <p>Lending is the first new subject added to the AG list in the series; the list was unchanged from Q1 2024 through Q3 2025. The named disputes add Saleem Erakat v. Carvana Operations HC LLC (N.D. Cal. 3:26-cv-00263), which was settled the next quarter. The accrual rises to $14M from $10M.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2025 10-K → Q1 2026 -->
+<div class="transition-header" id="fy2025-q1-2026">
+  <h2>FY2025 10-K &rarr; Q1 2026</h2>
+  <div class="sub">Retail units 187,393 (+40.0% YoY) | Revenue $6.43B | Operating income $581M | Total GPU $6,783 (vs $6,938) | Adj. EBITDA margin 10.4% (vs 11.5%) | Filed Apr 29, 2026</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retail GPU disclosed only as "a $39 decrease": no level, no cause</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2025 (same quarter, one year earlier):</p>
+    <blockquote>"Additionally, retail vehicle gross profit per unit increased to $3,204 for the three months ended March 31, 2025, compared to $3,080 for the three months ended March 31, 2024. The per unit increase was primarily driven by lower reconditioning and inbound transport costs and lower depreciation rates"</blockquote>
+    <p>Q1 2026:</p>
+    <blockquote>"This increase was driven primarily by an increase in the number of retail vehicles sold to 187,393 from 133,898 during the three months ended March 31, 2026 and 2025, respectively, partially offset by a $39 decrease in retail vehicle gross profit per unit."</blockquote>
+    <p>Every quarter from Q1 2024 to Q3 2025 stated the per-unit dollar level and a "primarily driven by" explanation. The level can be worked out (about $3,165), but the cause is no longer given. This is the second 10-Q in a row to report a year-over-year retail GPU decline. Total GPU also fell ($6,783 vs $6,938), as it did in Q3 2025. Wholesale GPU per unit, which rose, still gets both a level ("to $1,328 from $1,009") and a cause.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Eight-bullet strategy list replaced by "three fundamental drivers" and a "compounding cycle"; AI tools and greenfield production sites appear</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K:</p>
+    <blockquote>"Strategies to support efficient growth initiatives, which we may undertake from time to time, include the following:"</blockquote>
+    <p>Q1 2026:</p>
+    <blockquote>"We believe there are three fundamental drivers supporting our growth, each of which strengthens the other, which we believe creates a compounding cycle with scale:"</blockquote>
+    <blockquote>"Our AI-powered tools are designed to enable more customers to complete the entire buying or selling process without speaking to an advocate until vehicle delivery or pickup, which has reduced average calls per sale and driven higher conversion rates and Net Promoter Scores."</blockquote>
+    <blockquote>"We plan to continue expanding production capacity through integrating retail production lines at additional ADESA facilities ... building new lines at ADESA facilities, and eventually building new greenfield production locations."</blockquote>
+    <p>The hedged list ("which we may undertake from time to time") becomes a thesis stated as belief. "Greenfield" is the first plan in the series for new-build production sites beyond ADESA. The deleted bullets include "Increase the purchase of vehicles from customers", "Optimize average days to sale", "Expand our logistics network", "Increase conversion on existing products", "Add new products and services" and "Optimize purchasing and pricing". Two others are covered in the next finding.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Capacity figure and loan-monetization goal both deleted with the old strategy list</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>FY2025 10-K bullets with no Q1 2026 equivalent:</p>
+    <blockquote>"As we scale, we intend to more fully utilize the capacity at our existing IRCs and auction locations, which collectively have capacity to inspect and recondition approximately 1.5 million vehicles per year at full utilization."</blockquote>
+    <blockquote>"Increase monetization of our finance receivables. We plan to continue selling finance receivables in securitization transactions and otherwise expand our base of financial partners who purchase the finance receivables originated on our platform to reduce our effective cost of funds."</blockquote>
+    <p>The capacity number has been in every filing since at least Q1 2024 and is replaced by "increasing production capacity within our infrastructure". The loan-monetization goal is deleted in the same filing that first says loan sale spreads fell:</p>
+    <blockquote>"The increase in revenue was primarily due to an increase in gain on loan sales as a result of increased retail units sold and loan sale volume, partially offset by lower loan sale spreads, and to higher VSC conversion rates during the three months ended March 31, 2026."</blockquote>
+    <p>Unused capacity under the Ally forward-flow agreement fell from $4.9B to $3.3B in the quarter.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Iran conflict and gasoline prices enter the trade-environment paragraph</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"In particular, sustained increases in gasoline prices, including as a result of the conflict in Iran, could further pressure consumer disposable income and reduce their ability to purchase vehicles, while also increasing our transportation and logistics costs. For the three months ended March 31, 2026, these events did not materially impact our financial or operating results."</blockquote>
+    <p>This is the first time the filing names a demand-side risk (consumer disposable income) together with a cost-side risk (logistics). The section heading changes from "Effects of Tariffs" to "Effects of Geopolitical Events and Tariffs". The FY2025 10-K had already replaced the 2023&ndash;2025 inflation history in the retail-demand paragraph with "inflationary pressures and benchmark interest rates". The "could further pressure" wording becomes past tense in Q2 2026.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Tax &amp; Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Effective tax rate 0.5% &rarr; 8.1% as the valuation-allowance release flows through</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Income tax provision was $36 million and $2 million during the three months ended March 31, 2026 and 2025, respectively. Effective tax rates were 8.1% and 0.5% during the three months ended March 31, 2026 and 2025, respectively."</blockquote>
+    <blockquote>"The increase in our effective tax rate was primarily due to the impact of releasing the valuation allowance on our deferred tax assets in the fourth quarter of 2025."</blockquote>
+    <p>Reported earnings now carry a tax charge that the 2024&ndash;2025 quarters did not, which weakens year-over-year net income comparisons. Q2 2026 reports 11.4%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Erakat case settled "for an immaterial amount" within the quarter it was first listed</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Saleem Erakat v. Carvana Operations HC LLC, N.D. Cal. Case No. 3:26-cv-00263-AGT was settled for an immaterial amount during the three months ended March 31, 2026."</blockquote>
+    <p>The accrual held at $14M.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2026 -->
+<div class="transition-header" id="q1q2-2026">
+  <h2>Q1 2026 &rarr; Q2 2026</h2>
+  <div class="sub">Retail units 197,325 (+37.7% YoY) | Revenue $7.38B | Operating income $680M | Total GPU $7,014 (vs $7,426) | Adj. EBITDA margin 10.4% (vs 12.4%) | Filed Jul 29, 2026</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Strategy</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Gasoline prices "could further pressure" &rarr; "have pressured" consumer disposable income</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"sustained increases in gasoline prices, including as a result of the conflict in Iran, could further pressure consumer disposable income and reduce their ability to purchase vehicles"</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"sustained increases in gasoline prices, including as a result of the conflict in Iran, have pressured consumer disposable income and could reduce their ability to purchase vehicles"</blockquote>
+    <p>A risk is restated as something that has happened. The trade sentence becomes "The global geopolitical and trade environment", and the forward-looking factors replace "the U.S. government shutdown" with "fuel and energy costs". The materiality sentence holds: "For the three months ended June 30, 2026, these events did not materially impact our financial or operating results."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Retail GPU "a $89 decrease", wholesale "a $67 decrease": both levels and causes omitted</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"This increase was driven primarily by an increase in the number of retail vehicles sold to 197,325 from 143,280 during the three months ended June 30, 2026 and 2025, respectively, partially offset by a $89 decrease in retail vehicle gross profit per unit."</blockquote>
+    <blockquote>"This increase was primarily driven by an increase in wholesale units sold to 105,052 from 72,770 during the three months ended June 30, 2026 and 2025, respectively, partially offset by a $67 decrease in wholesale vehicle gross profit per wholesale unit and a decrease in wholesale marketplace gross profit."</blockquote>
+    <p>Q1 2026 had explained the wholesale per-unit increase ("lower vehicle acquisition costs relative to sales prices"). Once it turns into a decrease, the explanation is deleted too. That makes three straight quarters of year-over-year retail GPU decline (derived about $3,547 vs $3,636) and total GPU of $7,014 vs $7,426. Adjusted EBITDA margin fell to 10.4% from 12.4%. In the same filing, retail revenue per unit rose to $27,908 from $23,765, attributed to "lower retail marketplace units sold as a share of total retail units sold and overall appreciation in the retail market". This is the first time used-car price appreciation is cited as a driver in the series.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Equity</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Ally forward-flow headroom falls to $1.2B after $2.1B of Q2 sales; commitment raised to $8.0B two days before filing, disclosed only in Note 19 and Item 5</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>MD&amp;A liquidity, Q1 2026:</p>
+    <blockquote>"As of March 31, 2026 and December 31, 2025, we had $3.3 billion and $4.9 billion, respectively, of unused capacity under the Ally MPSA and $9.9 billion and $11.3 billion, respectively, of unused capacity under fixed pool loan purchase agreements with independent third parties."</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"As of June 30, 2026 and December 31, 2025, we had $1.2 billion and $4.9 billion, respectively, of unused capacity under the Ally MPSA and $8.7 billion and $11.3 billion, respectively, of unused capacity under fixed pool loan purchase agreements with independent third parties."</blockquote>
+    <p>Subsequent event (Note 19, repeated in Item 5):</p>
+    <blockquote>"On July 27, 2026, the Company and Ally amended the Ally MPSA to, among other things, increase the commitment by Ally to purchase up to $8.0 billion of principal balances of finance receivables between July 27, 2026 and July 26, 2027 on substantially similar terms as the preceding Ally MPSA."</blockquote>
+    <p>Sales to Ally were $2.1B in Q2 2026, against $1.2B a year earlier. At that pace the $6.0B commitment would have run out before its October 2026 end date, and it was replaced early with a larger one ($4.0B &rarr; $6.0B &rarr; $8.0B in about 15 months). The MD&amp;A liquidity discussion reports the $1.2B headroom but not the renewal. Other revenue was flat sequentially at $526M, and loan sale spreads were described as lower for a second quarter. Selling more loans to one forward-flow buyer at lower spreads is consistent with loan sales absorbing the growth in originations, but that is an inference.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Five-for-one stock split effected May 8, 2026; authorized Class A shares 500M &rarr; 2.5B; 2026 Omnibus Incentive Plan named as a dilution source</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"On May 5, 2026, our stockholders approved a five-for-one forward stock split of our Class A common stock and Class B common stock"</blockquote>
+    <blockquote>"In connection with the Stock Split, the number of authorized shares of Class A common stock increased from 500 million to 2.5 billion, and the number of authorized shares of Class B common stock increased from 125 million to 625 million."</blockquote>
+    <p>Share and per-share figures in the filing are restated retroactively. Earlier quotes on this page (e.g., the $364.93 ATM price) are pre-split. The dilution factor now reads "including as a result of the use of the at-the-market program and equity issuances associated with the Carvana Co. 2026 Omnibus Incentive Plan". A new factor covers "the anticipated benefits of our Stock Split, including the expected effects on trading liquidity and the breadth of our investor base". The ATM's remaining capacity is unchanged at $461M.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal Proceedings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">IBM patent dispute settled; securities class action moves to class certification; accrual $14M &rarr; $10M</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>"Carvana, LLC v. IBM Corp., United States District Court for the Southern District of New York (Case No. 7:23-cv-08616-KMK-VR) and Saleem Erakat v. Carvana Operations HC LLC, N.D. Cal. (Case No. 3:26-cv-00263-AGT) were settled for immaterial amounts during the six months ended June 30, 2026."</blockquote>
+    <blockquote>"On April 6, 2026, the plaintiff filed a motion for class certification, which Carvana opposed and the Court has not yet ruled on."</blockquote>
+    <p>"Intellectual property disputes" and "patent infringement" leave the list of dispute categories. The 2022 securities suit is now the only matter with procedural detail. The company still says it is "not in a position to assess the likelihood of any potential loss". The SEC-subpoena paragraph in Item 1 is unchanged in every 10-Q since Q2 2025.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-priority">
+  <div class="section-header"><h2>#1: Priority &amp; Growth Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> From "Path to Achieve Sustained Profitability" to a "Compounding Cycle with Scale"</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Priority sentence</th><th>Strategy framing</th><th>Investment paragraph</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>"During the current macroeconomic uncertainty, our highest priority will continue to be ... to help us move along the path to achieve sustained profitability"</td><td>"Secondarily, we plan to pursue several strategies"</td><td>"Due to the current macroeconomic environment, we are focused on driving fundamental gains in gross profit per unit"</td></tr>
+        <tr><td>Q2 2024</td><td class="val-new">Macro qualifier deleted; "Our highest priority continues to be"</td><td class="val-new">"Efficient growth initiatives, which we may undertake from time to time"</td><td class="val-new">"we simultaneously plan to invest in the profitable expansion of our business"</td></tr>
+        <tr><td>Q3 2024</td><td>unchanged</td><td>unchanged</td><td class="val-new">"plan to invest" &rarr; "are simultaneously investing"; "near-term objectives ... positive unit economics" deleted</td></tr>
+        <tr><td>FY2024 10-K</td><td>unchanged</td><td>"Strategies to support efficient growth initiatives"</td><td>"For the past several years"; liquidity: shift "throughout 2024 to the long-term phase of driving profitable growth"</td></tr>
+        <tr><td>Q1 2025</td><td>unchanged</td><td>unchanged</td><td class="val-neg">"absent any material changes in macroeconomic conditions" added; "assuming stability in the macroeconomic environment"</td></tr>
+        <tr><td>Q2 2025</td><td class="val-highlight">"to help us move along the path to achieve sustained profitability" deleted</td><td class="val-highlight">New lead: "We continue to prioritize efficient growth in retail units sold"</td><td class="val-highlight">"We maintain a primary focus on expanding the scale and reach of our business"</td></tr>
+        <tr><td>Q3 2025</td><td>unchanged</td><td>unchanged</td><td>unchanged; factor adds "while maintaining our unit economics"</td></tr>
+        <tr><td>FY2025 10-K</td><td>unchanged</td><td>unchanged</td><td>Liquidity's profitability-initiatives paragraph deleted</td></tr>
+        <tr><td>Q1 2026</td><td>unchanged</td><td class="val-highlight">"three fundamental drivers ... a compounding cycle with scale"; AI tools; greenfield sites</td><td>unchanged</td></tr>
+        <tr><td>Q2 2026</td><td>unchanged</td><td>unchanged</td><td>unchanged</td></tr>
+      </tbody>
+    </table>
+    <p>Profitability went from the stated goal (Q1 2024) to a completed phase (FY2024 10-K) to absent (Q2 2025). Every change went in the same direction, and none was reversed when GPU started falling in Q3 2025. This mirrors the annual dashboard's arc ("profitability" &rarr; "profitable growth") at quarterly resolution. The final step, the "compounding cycle" thesis, came in the quarter with the second year-over-year retail GPU decline.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-funding">
+  <div class="section-header"><h2>#2: Funding Sentence vs ATM Use</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> "Primarily Through Cash Generated from Operating Activities", Then $539M of Stock</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Funding sentence</th><th>ATM issuance disclosed</th><th>ATM capacity</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>"Historically, cash generated from financing activities has funded growth ... and we expect this to continue in the future."</td><td>none in MD&amp;A</td><td>2023 program</td></tr>
+        <tr><td>Q2 2024</td><td>unchanged</td><td class="val-new">~3M shares, $347M net at $114.85</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2024</td><td>unchanged</td><td>not quantified ("lower net proceeds" YoY)</td><td>refreshed Jul 31, 2024</td></tr>
+        <tr><td>FY2024 10-K</td><td>unchanged</td><td class="val-highlight">FY: 6.8M shares at $186.56, $1.3B gross</td><td>$1.0B or 35M shares</td></tr>
+        <tr><td>Q1 2025</td><td class="val-new">"Going forward, we expect to fund growth and expansion primarily through cash generated from operating activities ... if necessary."</td><td>"no activity"</td><td class="val-neg">$1.0B or 21M shares</td></tr>
+        <tr><td>Q2 2025</td><td>unchanged</td><td>"no activity"</td><td>$1.0B or 21M shares</td></tr>
+        <tr><td>Q3 2025</td><td>unchanged ("if necessary")</td><td class="val-highlight">1.5M shares at $364.93, $539M gross</td><td>$461M remaining</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-new">"if necessary" &rarr; "if desired"; ATM "if used"</td><td>FY: 1.5M shares, $539M</td><td>$461M</td></tr>
+        <tr><td>Q1 2026</td><td>"Going forward" dropped</td><td>none</td><td>$461M</td></tr>
+        <tr><td>Q2 2026</td><td>unchanged</td><td>none; 5-for-1 split May 8, 2026</td><td>$461M</td></tr>
+      </tbody>
+    </table>
+    <p>The self-funding pledge held for two quarters before the program was used again. The $539M raise lined up with the $559M voluntary redemption of 2028 Senior Secured Notes in the same quarter. The wording was then adjusted after the fact ("if desired", "if used"). No equity was sold under the ATM from Q4 2025 through Q2 2026.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-capacity">
+  <div class="section-header"><h2>#3: Reconditioning Capacity</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> 1.3M &rarr; 1.35M &rarr; "More Than 1 Million" &rarr; 1.5M &rarr; No Number</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Stated capacity (vehicles per year at full utilization)</th><th>Retail units in period</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>"approximately 1.3 million"</td><td>91,878</td></tr>
+        <tr><td>Q2 2024</td><td class="val-new">"approximately 1.35 million"</td><td>101,440</td></tr>
+        <tr><td>Q3 2024</td><td class="val-neg">"more than 1 million"</td><td>108,651</td></tr>
+        <tr><td>FY2024 10-K</td><td>"more than 1 million"</td><td>416,348</td></tr>
+        <tr><td>Q1 2025</td><td>"more than 1 million"</td><td>133,898</td></tr>
+        <tr><td>Q2 2025</td><td>"more than 1 million"</td><td>143,280</td></tr>
+        <tr><td>Q3 2025</td><td>"more than 1 million"</td><td>155,941</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-new">"approximately 1.5 million"</td><td>596,641</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">bullet deleted; "increasing production capacity within our infrastructure"; ADESA lines and "eventually ... new greenfield production locations"</td><td>187,393</td></tr>
+        <tr><td>Q2 2026</td><td>no figure</td><td>197,325</td></tr>
+      </tbody>
+    </table>
+    <p>The capacity claim was cut to a vague floor in Q3 2024, restored with a larger number in the FY2025 10-K, and dropped altogether one quarter later. The dropping came with the first plan for new-build sites. Q2 2026 retail units annualize to about 790,000, roughly half the last stated figure.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-gpu">
+  <div class="section-header"><h2>#4: Gross Profit per Unit Disclosure</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> As GPU Turned Down, the Level and the Cause Stopped Being Stated</h3>
+    <table class="data-table">
+      <thead><tr><th>Period</th><th>Retail GPU (vs prior year)</th><th>Stated cause</th><th>Total GPU (vs prior year)</th><th>Adj. EBITDA margin</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>$3,080 vs $1,388</td><td>"lower average days to sale, lower vehicle acquisition costs, and lower reconditioning and inbound transport costs"</td><td>$6,432 vs $4,303</td><td>7.7%</td></tr>
+        <tr><td>Q2 2024</td><td>$3,421 vs $2,666</td><td>same, "acquisition costs relative to sales prices"</td><td>$7,049 vs $6,520</td><td>10.4%</td></tr>
+        <tr><td>Q3 2024</td><td>$3,497 vs $2,692</td><td>same</td><td>$7,427 vs $5,952</td><td>11.7%</td></tr>
+        <tr><td>FY2024</td><td>$3,312 vs $2,385</td><td>same</td><td>$6,908 vs $5,511</td><td>10.1%</td></tr>
+        <tr><td>Q1 2025</td><td>$3,204 vs $3,080</td><td>"lower reconditioning and inbound transport costs and lower depreciation rates, partially offset by lower spreads"</td><td>$6,938 vs $6,432</td><td>11.5%</td></tr>
+        <tr><td>Q2 2025</td><td>$3,636 vs $3,421</td><td class="val-new">"benefits from tariff-related effects"</td><td>$7,426 vs $7,049</td><td>12.4%</td></tr>
+        <tr><td>Q3 2025</td><td class="val-neg">$3,456 vs $3,497</td><td>"higher retail depreciation rates"</td><td class="val-neg">$7,362 vs $7,427</td><td class="val-neg">11.3% (11.7%)</td></tr>
+        <tr><td>FY2025</td><td>"approximately flat at $3,315"</td><td class="val-neg">none</td><td>$7,026 vs $6,908</td><td>11.0%</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">"a $39 decrease" (~$3,165 derived)</td><td class="val-neg">none</td><td class="val-neg">$6,783 vs $6,938</td><td class="val-neg">10.4% (11.5%)</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">"a $89 decrease" (~$3,547 derived)</td><td class="val-neg">none</td><td class="val-neg">$7,014 vs $7,426</td><td class="val-neg">10.4% (12.4%)</td></tr>
+      </tbody>
+    </table>
+    <p>Through Q3 2025, every retail GPU comparison gave the dollar level and a "primarily driven by" sentence, including the first decline. From the FY2025 10-K on, there is no cause, and the 2026 10-Qs give the change without the level. Wholesale per-unit GPU follows the same pattern: Q1 2026, an increase, gets a cause; Q2 2026's "$67 decrease" gets none. Over the same period, Adjusted EBITDA margin compressed in three consecutive reported quarters while units grew about 40% a year.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-marketplace">
+  <div class="section-header"><h2>#5: Retail Marketplace &amp; Revenue per Unit</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> A Net-Revenue Channel That Explained Falling Prices, Then Rising Ones</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Definition wording</th><th>Stated driver of retail revenue per unit</th></tr></thead>
+      <tbody>
+        <tr><td>Q1&ndash;Q2 2024</td><td>not disclosed; metric called "average selling price"</td><td>Q2: $23,768 vs $25,624, "higher overall depreciation"</td></tr>
+        <tr><td>Q3 2024</td><td class="val-new">"on consignment from our partners ... As we are the agent"; renamed "revenue per retail unit"</td><td>$23,405 vs $24,066, "higher overall depreciation"</td></tr>
+        <tr><td>FY2024 10-K</td><td>"partner vehicles sold to customers through Carvana, where we recognize..."; units sold "including retail marketplace partner vehicles"</td><td class="val-new">$23,252 vs $24,018, "higher retail marketplace units sold as a share"</td></tr>
+        <tr><td>Q1 2025</td><td>unchanged</td><td>$22,256 vs $23,673, "higher retail marketplace units sold as a share"</td></tr>
+        <tr><td>Q2 2025</td><td>unchanged</td><td>6M: $23,036 vs $23,723, marketplace share and "a decrease in turn times"</td></tr>
+        <tr><td>Q3 2025</td><td class="val-new">"depending on the structure of the partnership, we may"; "would" &rarr; "could"</td><td>$25,625 vs $23,405 (increase)</td></tr>
+        <tr><td>FY2025 10-K</td><td>unchanged</td><td class="val-highlight">$24,365 vs $23,252, "lower retail marketplace units sold as a share"</td></tr>
+        <tr><td>Q1 2026</td><td>unchanged</td><td>$25,764 vs $22,256, "lower retail marketplace units sold as a share"</td></tr>
+        <tr><td>Q2 2026</td><td>unchanged</td><td class="val-new">$27,908 vs $23,765, marketplace share "and overall appreciation in the retail market"</td></tr>
+      </tbody>
+    </table>
+    <p>The marketplace share is never quantified. Its direction is given only through the driver sentences: up through H1 2025, down from late 2025. The hedge on revenue treatment was added in between. Revenue per unit rose about 17% year over year in Q2 2026, partly from mix, so reported revenue growth now runs ahead of unit growth for reasons other than price.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-loans">
+  <div class="section-header"><h2>#6: Loan Monetization</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Loan Sale Spreads: "Higher" &rarr; Unmentioned &rarr; "Lower"</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Other-revenue driver wording</th><th>Forward-flow / receivable funding</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>"a more normalized level of loan sales, higher loan sale pricing"</td><td>MPSA up to $4.0B, Jan 11, 2024 &ndash; Jan 10, 2025</td></tr>
+        <tr><td>Q2 2024</td><td>"more loans sold, higher loan sale pricing"</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2024</td><td class="val-new">"higher loan sale spreads"; OCF: "a lower ratio of finance receivables sold relative to originations"</td><td>&mdash;</td></tr>
+        <tr><td>FY2024 10-K</td><td>"more loan sales, and higher loan sale spreads"</td><td>MPSA $4.0B renewed to Jan 2, 2026</td></tr>
+        <tr><td>Q1 2025</td><td>same</td><td>Apr 2025 amendment: $4.0B to Apr 29, 2026</td></tr>
+        <tr><td>Q2 2025</td><td>same</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2025</td><td class="val-neg">spreads not mentioned; "higher VSC conversion rates"</td><td class="val-new">Ally named; $6.0B (Oct 28, 2025); sixth lender $600M; revolving commitments $4.2B &rarr; $5.0B</td></tr>
+        <tr><td>FY2025 10-K</td><td>"loan sale volume, and loan sale spreads"; "lower interest income on finance receivables held for sale"</td><td>&mdash;</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">"partially offset by lower loan sale spreads"; monetization bullet deleted</td><td>Ally unused $3.3B (from $4.9B)</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">"partially offset by lower loan sale spreads"; "VSC and GAP conversion rates"</td><td class="val-highlight">Ally unused $1.2B; Q2 sales to Ally $2.1B; $8.0B commitment (Jul 27, 2026, subsequent event)</td></tr>
+      </tbody>
+    </table>
+    <p>Gain on loan sales is the largest part of other revenue, which the filings describe as "100% gross margin products". The spread language went from a tailwind to a headwind across Q3 2025 to Q1 2026. Over the same period, the forward-flow commitment doubled ($4.0B to $8.0B) and Q2 2026 sales to Ally rose 75% year over year ($2.1B vs $1.2B).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-debt">
+  <div class="section-header"><h2>#7: Secured Notes &amp; Liquidity</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Total Debt $5.79B &rarr; ~$5.1B; Liquidity Resources $3.26B &rarr; $7.02B</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Total debt (principal)</th><th>Total liquidity resources</th><th>Super senior / pari passu baskets</th><th>Note actions in period</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>$5,791M</td><td>$3,259M</td><td>$1,262M / $250M</td><td>PIK accruing ($75M accrued)</td></tr>
+        <tr><td>Q2 2024</td><td>$5,501M</td><td>$4,106M</td><td class="val-new">$1,500M / $375M</td><td class="val-new">$250M 2028 notes repurchased</td></tr>
+        <tr><td>Q3 2024</td><td>$5,534M</td><td>$4,422M</td><td>$1,500M / $425M</td><td>$100M repurchased</td></tr>
+        <tr><td>FY2024 10-K</td><td>$5,469M</td><td>$5,690M</td><td>$1,500M / $485M</td><td>2024: $370M repurchased, $100M redeemed</td></tr>
+        <tr><td>Q1 2025</td><td>$5,496M</td><td>$5,861M</td><td>$1,500M / $511M</td><td class="val-new">$52M repurchased; cash interest elected on 2028/2030 notes</td></tr>
+        <tr><td>Q2 2025</td><td>$5,571M</td><td>$5,981M</td><td>$1,500M / $511M</td><td>none</td></tr>
+        <tr><td>Q3 2025</td><td>$5,060M</td><td>$6,438M</td><td>$1,500M / $750M</td><td class="val-highlight">$559M voluntarily redeemed ($578M)</td></tr>
+        <tr><td>FY2025 10-K</td><td>$4,976M</td><td>$6,739M</td><td>$1,500M / $750M</td><td>$98M 2025 unsecured repaid; Citizens $250M fleet loan</td></tr>
+        <tr><td>Q1 2026</td><td>$5.0B</td><td>$6,910M</td><td>$1,500M / $750M</td><td>"no debt extinguishments"</td></tr>
+        <tr><td>Q2 2026</td><td>$5.1B</td><td>$7,024M</td><td>$1,500M / $750M</td><td>none</td></tr>
+      </tbody>
+    </table>
+    <p>The September 2023 exchange notes (the annual dashboard's "debt exchange: unsecured &rarr; secured") were paid down in stages through 2025, the largest step funded in the quarter of the $539M equity raise. The capacity to add secured debt ranking ahead of or alongside them grew from $1.51B to $2.25B over the same period, and "our substantial indebtedness" is still a forward-looking factor in Q2 2026. Interest expense, net fell from $173M (Q1 2024) to $101M (Q2 2026).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-macro">
+  <div class="section-header"><h2>#8: Macro, Tariff &amp; Iran Hedges</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Each New Risk Arrives with "Did Not Materially Impact"</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Inflation / rates sentence</th><th>Trade / geopolitical language</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>"persisted during the first three months of 2024 but were outweighed by seasonal demand"</td><td>none</td></tr>
+        <tr><td>Q2 2024</td><td>"to a lesser extent, during the second three months"; outweighed also by growth initiatives</td><td>none</td></tr>
+        <tr><td>Q3 2024</td><td>"second and third quarters of 2024"</td><td>none</td></tr>
+        <tr><td>FY2024 10-K</td><td>"first several months ... remainder of 2024"</td><td>none</td></tr>
+        <tr><td>Q1 2025</td><td class="val-new">"did not have a material impact on our business"</td><td class="val-new">"The global trade environment is uncertain and rapidly evolving"; three macro hedges added</td></tr>
+        <tr><td>Q2 2025</td><td>"While inflationary pressures persist in 2025"</td><td>GPU: "benefits from tariff-related effects"</td></tr>
+        <tr><td>Q3 2025</td><td>unchanged</td><td>"tariffs did not materially impact" (9M); government shutdown factor</td></tr>
+        <tr><td>FY2025 10-K</td><td>history deleted; "inflationary pressures and benchmark interest rates"</td><td>"tariffs did not materially impact" (FY)</td></tr>
+        <tr><td>Q1 2026</td><td>unchanged</td><td class="val-new">Iran; gasoline prices "could further pressure consumer disposable income"; "these events did not materially impact"</td></tr>
+        <tr><td>Q2 2026</td><td>unchanged</td><td class="val-neg">"have pressured consumer disposable income"; "fuel and energy costs" factor</td></tr>
+      </tbody>
+    </table>
+    <p>Every new external risk is introduced together with a statement that it has not yet hurt results. Q2 2026 is the first time one is said to have taken effect (on consumers, not yet on Carvana's results).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-tax">
+  <div class="section-header"><h2>#9: Tax Receivable Agreement &amp; Valuation Allowance</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> A $19M Line Item Becomes a $2.3B Liability, $1.7B to Related Parties</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>TRA</th><th>Valuation allowance / tax</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>no TRA line in MD&amp;A</td><td>full allowance; tax benefit $1M</td></tr>
+        <tr><td>Q2 2024</td><td class="val-new">first TRA expense: $19M</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2024</td><td>$4M (Q3); $23M (9M)</td><td>&mdash;</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-new">liability $82M ($14M in 2023); $2.0B not recorded; FY expense $67M</td><td>full allowance</td></tr>
+        <tr><td>Q1 2025</td><td>$40M expense</td><td>&mdash;</td></tr>
+        <tr><td>Q2 2025</td><td>$25M ($65M 6M)</td><td>OBBBA immaterial "as we maintain a full valuation allowance"</td></tr>
+        <tr><td>Q3 2025</td><td>$40M ($105M 9M)</td><td>&mdash;</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-highlight">expense $2.2B; liability $2.3B, $1.7B due to related parties</td><td class="val-highlight">$2.2B allowance released; tax benefit $2.8B</td></tr>
+        <tr><td>Q1 2026</td><td>no TRA expense cited</td><td>ETR 8.1% (vs 0.5%)</td></tr>
+        <tr><td>Q2 2026</td><td>no TRA expense cited</td><td>ETR 11.4% (vs 0.0%)</td></tr>
+      </tbody>
+    </table>
+    <p>This signal does not appear on the annual dashboard, which ends at "GAAP net income". The cost of becoming profitable on taxes is shown here. Most of the tax savings from LLC unit exchanges go back to the unit holders under the TRA, and about 74% of the recognized liability is owed to related parties. Quarterly effective tax rates now run 8&ndash;11%, against roughly 0% before the release.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-legal">
+  <div class="section-header"><h2>#10: Legal Matters &amp; Item 1A</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Reserves, Reassurances, and a Short-Seller Report Disclosed Six Months Late</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Item 1A stub</th><th>Legal accrual</th><th>Blanket reassurance</th><th>Notable change</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>"There have been no material changes"</td><td>"has not established reserves"</td><td>"not material or are without merit"</td><td>2020 Delaware stockholder case dismissed with prejudice</td></tr>
+        <tr><td>Q2 2024</td><td>same</td><td>same</td><td>same</td><td>Tajae Bradley case dropped from list</td></tr>
+        <tr><td>Q3 2024</td><td>same</td><td>same</td><td>"claims or counterclaims"</td><td>Carvana v. IBM added; 2023 Delaware case dismissed</td></tr>
+        <tr><td>FY2024 10-K</td><td>(full risk factors)</td><td class="val-new">$10M ($3M at Dec 2023)</td><td>retained</td><td class="val-new">AG claims "have resulted"; securities class action subsection</td></tr>
+        <tr><td>Q1 2025</td><td class="val-new">"Information regarding our risk factors is disclosed"</td><td>$10M</td><td class="val-neg">deleted</td><td>securities case "engaged in discovery"</td></tr>
+        <tr><td>Q2 2025</td><td>same</td><td>$12M</td><td>&mdash;</td><td class="val-highlight">Jan 2025 short-seller report; Jun 2025 SEC subpoena</td></tr>
+        <tr><td>Q3 2025</td><td>same</td><td>$12M</td><td>&mdash;</td><td>none</td></tr>
+        <tr><td>FY2025 10-K</td><td>subpoena added to risk factors</td><td>$14M</td><td>&mdash;</td><td class="val-new">AG inquiries add "lending practices"; Erakat case</td></tr>
+        <tr><td>Q1 2026</td><td>same</td><td>$14M</td><td>&mdash;</td><td>Erakat settled (immaterial)</td></tr>
+        <tr><td>Q2 2026</td><td>same</td><td class="val-pos">$10M</td><td>&mdash;</td><td>IBM settled; class-certification motion filed Apr 6, 2026</td></tr>
+      </tbody>
+    </table>
+    <p>Each legal disclosure became more adverse over 2024&ndash;2025: reserves went from none to an accrual, AG claims from possible to actual, the reassurance was deleted, and the short-seller matter was disclosed only after the SEC subpoena. In 2026 the direction reverses: two settlements, and the accrual falls back to $10M. The 2022 securities class action is the only open matter described in detail.</p>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. Growth Displaced Profitability One Clause at a Time</h3>
+      <p>The macro qualifier went in Q2 2024, "plan to invest" became "are investing" in Q3 2024, profitability became a completed phase in the FY2024 10-K, and "path to achieve sustained profitability" was deleted in Q2 2025. The Q1 2026 "compounding cycle with scale" thesis followed. None of these steps was reversed when total GPU and Adjusted EBITDA margin started falling year over year in Q3 2025. As of Q2 2026, the language says scale is self-reinforcing, while the reported unit margins have declined for three 10-Qs in a row.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. Unit-Economics Explanations Thinned as GPU Declined</h3>
+      <p>In six 10-Qs and the FY2024 10-K, every retail GPU change came with a dollar level and a "primarily driven by" cause. That included the first decline in Q3 2025 ("higher retail depreciation rates"). The FY2025 10-K gave no cause. The 2026 10-Qs give neither the level nor the cause, and Q2 2026 extends the same treatment to wholesale GPU. Over the same quarters, loan sale spreads turned from a tailwind into a headwind, and the stated reconditioning capacity disappeared. The disclosure got less specific in the areas where results got worse.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. The Self-Funding Pledge Was Rewritten After the Raise</h3>
+      <p>Q1 2025 replaced "financing ... has funded growth" with funding "primarily through cash generated from operating activities". The ATM cap was cut from 35M to 21M shares, and two quarters showed no activity. Q3 2025 then sold $539M of stock alongside a $559M secured-note redemption, with the sentence still reading "if necessary". The FY2025 10-K changed it to "if desired". The secured-debt paydown coincided with about $1.8B of gross equity sales in 2024&ndash;2025, which the funding sentence does not reflect.</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Adverse Legal Facts Arrived Late, Then Eased</h3>
+      <p>The January 2025 short-seller report is absent from two filings made after it (FY2024 10-K, Q1 2025 10-Q). It appears in Q2 2025 only together with the SEC subpoena, the same period in which Item 1A stopped asserting "no material changes" and the blanket "without merit" reassurance was deleted. Reserves went from none to $14M, and AG claims from "could" to "have resulted", with "lending practices" added. By Q2 2026, two cases had settled for immaterial amounts and the accrual was back to $10M. The SEC matter and the class action remain open without estimates.</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Profitability Brought a $2.3B Bill to Insiders</h3>
+      <p>The TRA appeared as a $19M expense in Q2 2024, a recognized $82M (with $2.0B unrecorded) in the FY2024 10-K, and a $2.3B liability in the FY2025 10-K, $1.7B of it owed to related parties. The valuation-allowance release behind it added $2.2B to the tax line and raised the effective tax rate from about 0% to 8&ndash;11% in 2026. The annual dashboard ends its story at "GAAP net income"; the quarterly filings show how much of the resulting tax value flows to the controlling holders.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Revenue</th>
+        <th>Operating Income</th>
+        <th>Net Income (XBRL)</th>
+        <th>Retail Units</th>
+        <th>Total GPU</th>
+        <th>Adj. EBITDA Margin</th>
+        <th>Key Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q1 2024</strong></td><td>$3.06B</td><td>$134M</td><td>$28M</td><td>91,878</td><td>$6,432</td><td>7.7%</td><td>Capacity "approximately 1.3 million"; Tax Asset Preservation Plan still a listed risk</td></tr>
+      <tr><td><strong>Q2 2024</strong></td><td>$3.41B</td><td>$259M</td><td>$18M</td><td>101,440</td><td>$7,049</td><td>10.4%</td><td>$250M 2028 notes repurchased; $347M ATM at $114.85; first TRA expense</td></tr>
+      <tr><td><strong>Q3 2024</strong></td><td>$3.65B</td><td>$337M</td><td>$85M</td><td>108,651</td><td>$7,427</td><td>11.7%</td><td class="val-new">Retail marketplace disclosed; capacity "more than 1 million"</td></tr>
+      <tr><td><strong>FY2024 10-K</strong></td><td>$13.67B</td><td>$990M</td><td>$210M</td><td>416,348</td><td>$6,908</td><td>10.1%</td><td>$1.3B ATM at $186.56; legal accrual $10M; TRA $82M (+$2.0B unrecorded)</td></tr>
+      <tr><td><strong>Q1 2025</strong></td><td>$4.23B</td><td>$394M</td><td>$216M</td><td>133,898</td><td>$6,938</td><td>11.5%</td><td class="val-new">"fund growth ... primarily through cash generated from operating activities"; cash interest elected; tariffs enter</td></tr>
+      <tr><td><strong>Q2 2025</strong></td><td>$4.84B</td><td>$511M</td><td>$183M</td><td>143,280</td><td>$7,426</td><td>12.4%</td><td>Short-seller report + SEC subpoena disclosed; "sustained profitability" deleted</td></tr>
+      <tr><td><strong>Q3 2025</strong></td><td>$5.65B</td><td>$552M</td><td>$151M</td><td>155,941</td><td class="val-neg">$7,362</td><td class="val-neg">11.3%</td><td>$539M ATM at $364.93; $559M notes redeemed; first YoY GPU decline</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>$20.32B</td><td>$1.88B</td><td>$1.41B</td><td>596,641</td><td>$7,026</td><td>11.0%</td><td class="val-highlight">$2.2B valuation allowance released; TRA liability $2.3B; capacity "approximately 1.5 million"</td></tr>
+      <tr><td><strong>Q1 2026</strong></td><td>$6.43B</td><td>$581M</td><td>$250M</td><td>187,393</td><td class="val-neg">$6,783</td><td class="val-neg">10.4%</td><td>"Three fundamental drivers"; retail GPU "a $39 decrease"; Iran; ETR 8.1%</td></tr>
+      <tr><td><strong>Q2 2026</strong></td><td>$7.38B</td><td>$680M</td><td>$310M</td><td>197,325</td><td class="val-neg">$7,014</td><td class="val-neg">10.4%</td><td>5-for-1 split; retail GPU "a $89 decrease"; Ally headroom $1.2B, then $8.0B commitment</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--text-dim); margin-top:8px;">Revenue, operating income and net income are as reported in SEC XBRL (RevenueFromContractWithCustomerExcludingAssessedTax, OperatingIncomeLoss, NetIncomeLoss). XBRL net income is below the consolidated figure in the MD&amp;A non-GAAP reconciliation, which includes noncontrolling interests (for example, FY2025 consolidated net income $1,895M, 9.3% margin; Q1 2024 $49M). Retail units, total GPU and Adjusted EBITDA margin are from each filing's MD&amp;A. Operating cash flow (XBRL): FY2024 $918M, FY2025 $1.04B, H1 2026 $345M (H1 2025 $261M). Cash and equivalents: $252M (Mar 2024) &rarr; $1.72B (Dec 2024) &rarr; $2.33B (Dec 2025) &rarr; $2.63B (Jun 2026). Share data in the Q2 2026 10-Q reflect the May 8, 2026 five-for-one split; earlier figures quoted on this page are pre-split.</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      if (el.classList.contains('finding')) findings.push(el);
+      if (el.classList.contains('finding-group')) el.querySelectorAll('.finding').forEach(f => findings.push(f));
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+</script>
+</body>
+</html>
