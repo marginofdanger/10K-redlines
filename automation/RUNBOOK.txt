@@ -1,121 +1,189 @@
-10-K REDLINES: AUTOMATED FILING UPDATE RUNBOOK
-==============================================
+10-K REDLINES: FILING UPDATE RUNBOOK
+====================================
 
-A scheduled Claude Code session follows this file each weekday evening. Nobody
-reviews the output before it goes live: every push to main is deployed to
+A scheduled Claude Code session follows this file each weekday evening, and
+interactive sessions follow it when asked to update a dashboard. Nobody reviews
+the output before it goes live: every push to main is deployed to
 https://marginofdanger.github.io/10K-redlines/ by .github/workflows/deploy.yml.
-Hold each change to the standard of the hand-made updates in git history
-(e.g. `git show 1a7df5f`, `git show 29fa5ed`, `git show de137cf`): read those
-commits first to see what a finished update looks like.
+The repository is public. Never write the SEC contact email (SEC_USER_AGENT)
+into any file, commit message or page.
+
+What the reader wants from a dashboard: the handful of wording changes in a
+filing that reveal something management did not say outright, each one
+quoted exactly, before and after, with a sentence on why it matters. A finding
+the reader could have got from the press release is not a finding.
+
+Setup, every session:
+    export SEC_USER_AGENT="<given in your prompt>"
+    pip install -q beautifulsoup4 lxml
 
 
 1. FIND THE WORK
 ----------------
-    pip install -q beautifulsoup4 lxml
     python scripts/check_new_filings.py pending --json
 
 Each item is one of:
   annual         a new 10-K / 20-F for an existing annual dashboard
   quarterly      a new 10-Q for an existing 10-Q scanner
-  build_scanner  a company with no 10-Q scanner yet; build one from the
-                 listed 8 most recent 10-Qs plus annual_baselines
+  build_scanner  a company with no 10-Q scanner yet (8 most recent 10-Qs listed)
 
-Process items in the order given (updates first, oldest filing first, so
-transitions chain correctly). Do at most ONE build_scanner per run; leave the
-rest for later runs. If the list is empty, stop and report "No new filings".
-If EDGAR returns 403 for every company, stop and report that EDGAR is
-rejecting requests (sec.gov may need allowlisting in the environment's network
-settings, or SEC_USER_AGENT may need a contact email).
+Process items in the order given: updates first, oldest filing first, so
+transitions chain correctly. Do at most ONE build_scanner per run. If the list
+is empty, stop and report "No new filings". If every company errors with 403,
+stop and report that EDGAR is rejecting requests.
 
 
-2. UPDATE A DASHBOARD (annual / quarterly)
-------------------------------------------
-Work inside the company folder (annual: companies/<t>/, quarterly:
-companies/<t>/10q/). raw/, sections/ and diffs/ are gitignored and absent on a
-fresh clone, so re-download what you need:
+2. GET THE TEXT
+---------------
+    python scripts/check_new_filings.py download <TICKER> --annual 2            # 10-K / 20-F
+    python scripts/check_new_filings.py download <TICKER> --annual 1 --quarterly 2   # 10-Q
+    python scripts/extract_sections.py companies/<t>          # or companies/<t>/10q
+    python scripts/make_diffs.py companies/<t> --last 1       # or companies/<t>/10q --last 1
 
-  a. Download the new filing AND the filing it is compared against (the
-     previous period; for the first 10-Q after a fiscal year end, the scanner
-     compares against that year's 10-K, as make_qoq_diffs.py interleaves it).
-     Grab older periods too if a tracked-signal table needs re-verification.
-       python scripts/check_new_filings.py fetch <url> companies/<t>/raw/<name>.htm
-     Use the filename pattern that folder's extract_sections.py expects
-     (10-K: <ticker>_10k_fy<YEAR>.htm, case as in the script; 10-Q:
-     <ticker>_10q_fy<YEAR>q<N>.htm using the company's own fiscal labels,
-     matching the period ids already used in the dashboard). Get filing URLs
-     for older periods from `pending --json` output or
-     https://data.sec.gov/submissions/CIK<cik>.json.
-  b. Add the new year to YEARS in the 10-K extract_sections.py if needed, run
-     it from the folder (`cd companies/<t> && python extract_sections.py`),
-     and check every section came out with a sane length relative to prior
-     years. A section that is NOT FOUND, tiny, or several times larger than
-     the prior year means a boundary bug: fix the extractor (it is tracked
-     for that reason) rather than analyzing an artifact.
-  c. For 10-Qs also run `python scripts/make_qoq_diffs.py <folder-name>`.
-     For 10-Ks diff the new year's section files against the prior year's.
-  d. Read the diffs AND the full new sections. Write the transition the way
-     existing ones are written: a transition header with filing date and
-     headline metrics, finding groups by section, each finding with a short
-     title, a New/Removed/Changed/Signal tag, and verbatim before/after
-     blockquotes plus a sentence on why it matters. Favor changes in
-     wording, ordering, quantification and hedging that signal a shift; skip
-     boilerplate and pure number roll-forwards unless the number is the story.
-  e. Update everything else the new period touches, matching what past
-     commits did: <title>, sidebar header and nav link, hero tagline/source
-     line (filing count, period range, "Analysis: ... extended <Month YYYY>"),
-     era card (annual), every tracked-signal / deep-signal table that has a
-     per-period column (add the new column or row), financial reference
-     tables, and the themes so none go stale.
-  f. Update the root index.html `companies` entry: endFY / signals for annual
-     updates, qLabel for quarterly ones.
+download names files with the dashboards' fiscal labels (fy2025, fy2027q1)
+and also fetches exhibits a filer incorporates by reference (PGR's EX-13).
+For a 10-Q, also download the latest 10-K: the first 10-Q after a fiscal year
+end is compared against that 10-K, and make_diffs interleaves it after Q3.
 
-VERIFY before committing (all must pass; fix and re-check if not):
-  - <div> open/close counts balanced; no dangling href="#..." anchors
-  - every table row has as many cells as its header
-  - every new blockquote's quoted text appears in the corresponding
-    sections/*.txt file (normalize whitespace and quotes when matching)
-  - previously existing sections/ and diffs/ files unchanged by re-extraction
-    (if an extractor fix changed them, re-check findings that quote them)
-  - the page renders in headless Chromium (Playwright is preinstalled; do not
-    run `playwright install`) with no console errors, and the expand/collapse
-    toggles work
+extract_sections prints each section's length and WARN lines. A WARN means a
+section is missing or changed size more than 3x against the previous period.
+Open the section file and look at its first and last lines. If the boundary
+is wrong, fix scripts/extract_sections.py (one generic extractor for all
+companies, with a small override table for genuine quirks), re-run, and
+mention the fix in the commit. If the text really did change that much (a
+new lawsuit, a rewritten risk-factor section), that is a finding.
 
-Then record it and commit just that filing:
-    python scripts/check_new_filings.py mark <TICKER> annual|quarterly <report_date>
-    git add companies/<t> index.html automation/tracked.json
-    git commit   # message style: "feat: add Q3 2026 to META 10-Q quarterly scanner",
-                 # body = filing date, accession, period, key signals, verification line
+    python scripts/financials.py <TICKER> --years 3 --quarters 6
+
+gives the reported figures from SEC XBRL (revenue, operating income, net
+income, EPS, operating cash flow, capex, buybacks, cash, long-term debt) by
+period end. Use these for every number in transition headers and financial
+reference tables. If a figure isn't tagged (some 20-Fs lag), take it from the
+filing text and quote it.
+
+
+3. ANALYZE
+----------
+Read, in this order:
+  a. the dashboard as it stands: its tracked signals, the prior transition's
+     findings and its themes. You are continuing an argument, not starting one.
+  b. diffs/*.redline.txt for the new transition. Each paragraph-level change is
+     shown word by word: [-deleted-] {+inserted+}. The header counts paragraphs
+     added/removed/changed/moved and modal/hedging word shifts per section.
+  c. the full new section files, not just the diffs: a sentence that did not
+     change can matter because of what changed around it, and deletions read
+     differently in context.
+
+What counts as a signal (strongest first):
+  - commitments changing strength: "may" -> "will", "expect" -> "plan",
+    "we intend" -> "we have"; or weakening the other way
+  - quantification appearing or disappearing: a number, range or date added
+    to, or dropped from, a sentence that previously had or lacked one
+  - guidance ranges moving, narrowing or widening; a floor or ceiling moving
+    alone
+  - deletions: a risk, claim, customer, product or reassurance that quietly
+    stops being said; removal is often more telling than addition
+  - new named things: laws, regulators, lawsuits, counterparties, customers,
+    defined terms ("the Notes"), facilities, segments
+  - risk-factor order: a risk moving up or down, or out of the summary bullets
+  - hedges added or dropped around an existing statement ("currently",
+    "at this time", "in the near term", "if at all")
+  - one section contradicting or getting ahead of another (MD&A optimism
+    beside a sharpened risk factor; a subsequent event the MD&A ignores)
+  - a tracked signal on the dashboard moving, or breaking a multi-period
+    pattern ("first decline in the dataset", "unchanged for six periods")
+
+Not signals, unless they are the story: numbers rolled forward in an
+unchanged sentence, renumbered cross-references, date updates, reformatting,
+boilerplate refreshed across all filers (new SEC rule language), and
+paragraph moves that change no meaning. A redline full of these is noise;
+say so in one line rather than padding findings.
+
+For each finding:
+  - title: the change as a fact, with the numbers ("Capex floor raised $125B
+    to $130B; ceiling held at $145B"), not a characterization ("Capex
+    surges")
+  - tag: New / Removed / Changed / Signal
+  - verbatim before and after quotes in <blockquote>, labeled with the period
+    (FY2025: "..." / Q2 2026: "..."); use ... to elide, never paraphrase
+    inside quotes
+  - one to three sentences on why it matters, stating only what the text
+    supports; if it is an inference, say so ("suggests", "consistent with")
+Aim for the 6-15 findings that matter most in a transition, ranked within
+each section group by importance. Fewer, sharper findings beat many.
+
+Then do a skeptical second pass before writing the page: for each finding,
+ask whether a reader who knows the company would learn something. Cut
+roll-forwards and anything the quote doesn't support. Check every "first
+time" and "unchanged since" claim against the earlier periods' text or the
+dashboard's tracked-signal tables.
+
+
+4. UPDATE THE PAGE
+------------------
+Match the existing page exactly: copy the structure, classes and markup of
+the most recent transition in the same file (read `git show 1a7df5f` and
+`git show 29fa5ed` for finished examples). Add:
+  - the transition header (id like the existing ones) with filing date and
+    headline metrics from financials.py, then finding groups by section
+  - sidebar nav link; <title>; sidebar sub-header; hero tagline and source line
+    (filing count, period range, "Analysis: ... extended <Month YYYY>")
+  - era card (annual dashboards)
+  - a new column or row in every tracked-signal / deep-signal table that has
+    one per period, and in the financial reference table
+  - themes: revise each so none is stale; a theme that the new period
+    contradicts must say so
+Root index.html `companies` entry: endFY and signals for annual updates,
+qLabel for quarterly ones, tenQ + qLabel for a new scanner.
+
+
+5. VERIFY
+---------
+    python scripts/verify_dashboard.py companies/<t>/index.html --since origin/main
+
+checks tag nesting, anchors, duplicate ids, table widths, that every quote
+added since origin/main appears in the downloaded filing text, and that the
+page renders in headless Chromium with working toggles. Fix every FAIL and
+re-run until it prints OK. Run it on index.html too if you changed it
+(--no-render is fine there). An unmatched quote means you misquoted: fix the
+quote from the section file, never loosen the check.
+
+
+6. PUBLISH
+----------
+    python scripts/check_new_filings.py mark <TICKER> annual|quarterly <report_date> [--dashboard companies/<t>/10q/]
+    git add companies/<t>/index.html companies/<t>/10q/index.html index.html automation/tracked.json scripts/
+    git commit
     git pull --rebase origin main && git push origin HEAD:main
 
-Push after every filing so finished work goes live even if a later one fails.
-If a filing cannot be processed to this standard, do not push a broken or
-half-done page: `git checkout -- .` for that filing, leave the ledger
-untouched so the next run retries it, and report the reason.
+Commit message style: "feat: add Q3 2026 to META 10-Q quarterly scanner",
+body = filing date, accession, period, the key signals as bullets, and a
+verification line. Push after every filing so finished work goes live even
+if a later one fails. If a filing can't be done to this standard, discard
+its changes (git checkout -- companies/<t> index.html), leave the ledger so
+the next run retries, and report why.
 
 
-3. BUILD A NEW 10-Q SCANNER (build_scanner)
+7. BUILD A NEW 10-Q SCANNER (build_scanner)
 -------------------------------------------
-Create companies/<t>/10q/ modeled on an existing scanner of similar style,
-e.g. companies/hca/10q/ or companies/meta/10q/ (copy its index.html structure,
-CSS and script exactly; replace all content):
-  - copy companies/meta/10q/extract_sections.py (it is generic) and check its
-    section boundaries against this company's 10-Q layout
-  - download the 8 listed 10-Qs and the annual_baselines into 10q/raw/ and
-    companies/<t>/raw/, extract both, run make_qoq_diffs.py
-  - write all transitions, 6-12 tracked signals with per-quarter tables
-    chosen for what moves in this company's quarterly language, a financial
-    reference table, and themes
-  - add tenQ: 'companies/<t>/10q/' and qLabel to the company's entry in the
-    root index.html
-  - verify as in section 2, then:
-    python scripts/check_new_filings.py mark <TICKER> quarterly <latest report_date> --dashboard companies/<t>/10q/
-    commit ("feat: add 10-Q quarterly scanner for <TICKER>") and push to main
+Create companies/<t>/10q/index.html modeled on an existing scanner
+(companies/hca/10q/ or companies/meta/10q/): same CSS, script and structure,
+all content new. Download the 8 listed 10-Qs (--quarterly 8) and the 10-Ks
+they interleave with (--annual 3), extract, make_diffs for all transitions.
+Write every transition, 6-12 tracked signals chosen for what moves in this
+company's quarterly language (each a per-quarter table), a financial
+reference table from financials.py, and themes. Add tenQ and qLabel to the
+root index.html entry. Verify (all quotes are new, so drop --since), mark
+with --dashboard companies/<t>/10q/, commit "feat: add 10-Q quarterly scanner
+for <TICKER>", push.
 
 
-4. REPORT
+8. REPORT
 ---------
-End the session with a short summary; it becomes the notification:
-  "Published: META Q3 2026 10-Q (4 signals), new GOOG 10-Q scanner.
-   Skipped: none." plus one line per published filing with its headline
-signal, and the reason for anything skipped. If nothing was pending, say
-"No new filings" in one line.
+End with a short summary; for scheduled runs it becomes the phone/email
+notification:
+    Published: META Q3 2026 10-Q, new GOOG 10-Q scanner. Skipped: none.
+    - META Q3 2026: <the single most important finding, one line>
+    - GOOG scanner: <the most important pattern across 8 quarters>
+plus the reason for anything skipped. If nothing was pending, say only
+"No new filings".

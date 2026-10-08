@@ -1,10 +1,8 @@
 **/raw/
 **/sections/
 *_full.txt
-# extract_sections.py is tracked: the section-boundary logic is the thing that
-# determines whether a redline is real or an extraction artifact, so the fix
-# has to survive a fresh clone. Its inputs (raw/) and outputs (sections/) stay
-# ignored.
+# Filings and their derived text are re-downloaded each session by
+# scripts/check_new_filings.py download; only the scripts are tracked.
 **/analysis.json
 test.json
 *.pyc

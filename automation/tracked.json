@@ -109,7 +109,8 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": null,
-      "quarterly_covered_through": null
+      "quarterly_covered_through": null,
+      "annual_exhibit": "EX-13"
     },
     "APO": {
       "cik": "0001858681",

@@ -3,12 +3,15 @@
   python scripts/check_new_filings.py pending              # human-readable work list
   python scripts/check_new_filings.py pending --json       # same, machine-readable
   python scripts/check_new_filings.py fetch URL DEST       # download a filing document
+  python scripts/check_new_filings.py download TICKER [--annual N] [--quarterly N]
+        # the latest N annual / quarterly filings into companies/<t>/raw and companies/<t>/10q/raw,
+        # named with the dashboards' fiscal labels (<t>_10k_fy2025.htm, <t>_10q_fy2027q1.htm)
   python scripts/check_new_filings.py mark TICKER annual|quarterly REPORT_DATE [--dashboard PATH]
 
 State lives in automation/tracked.json. SEC_USER_AGENT must be set to "<name> <contact email>"
 (SEC fair-access policy; www.sec.gov refuses requests without it).
 """
-import argparse, json, os, sys, time, urllib.error, urllib.request
+import argparse, json, os, re, sys, time, urllib.error, urllib.request
 from datetime import date, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -16,14 +19,14 @@ LEDGER = os.path.join(ROOT, "automation", "tracked.json")
 # www.sec.gov rejects agents without a contact email; both hosts reject agents containing a URL.
 # The email comes from the environment so it stays out of this public repo.
 UA = os.environ.get("SEC_USER_AGENT", "")
-if "@" not in UA:
-    sys.exit('Set SEC_USER_AGENT to "<name> <contact email>"; SEC refuses downloads without one.')
 SCANNER_QUARTERS = 8
 
 _last_request = 0.0
 
 def http_get(url):
     global _last_request
+    if "@" not in UA:
+        sys.exit('Set SEC_USER_AGENT to "<name> <contact email>"; SEC refuses requests without one.')
     wait = 0.2 - (time.time() - _last_request)  # stay far under SEC's 10 req/s limit
     if wait > 0:
         time.sleep(wait)
@@ -103,11 +106,76 @@ def pending():
     work.sort(key=lambda w: (w["kind"] == "build_scanner", w["filing_date"], w["ticker"]))
     return work, errors
 
+def month_end(d):
+    """52/53-week periods end a few days into a month; attribute them to the prior month."""
+    d = date.fromisoformat(d)
+    return (d.year, d.month - 1) if d.day <= 7 and d.month > 1 else (d.year - 1, 12) if d.day <= 7 else (d.year, d.month)
+
+
+def fiscal_label(report_date, fye_report_date, annual):
+    """fy<YYYY> for annual reports; fy<YYYY>q<N> for 10-Qs, the year being the fiscal year
+    that ends on or after the quarter (NVDA's quarter ending Apr 2026 -> fy2027q1)."""
+    y, m = month_end(report_date)
+    if annual:
+        return f"fy{y}"
+    _, fm = month_end(fye_report_date)
+    fye_year = y if m > fm else y - 1
+    return f"fy{fye_year + 1}q{((m - fm) % 12) // 3}"
+
+
+def exhibit_doc(cik, accession, exhibit_type):
+    """The filing document of the given type (e.g. EX-13), from the filing's index page."""
+    base = f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/{accession.replace('-', '')}/"
+    page = http_get(base + f"{accession}-index.htm").decode("utf-8", "replace")
+    for row in re.findall(r"<tr[^>]*>(.*?)</tr>", page, re.S):
+        cells = [re.sub(r"<[^>]+>", "", c).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)]
+        href = re.search(r'href="([^"]+)"', row)
+        if href and len(cells) >= 4 and re.fullmatch(re.escape(exhibit_type) + r"(\.\d+)?", cells[3], re.I):
+            path = href.group(1).replace("/ix?doc=", "")
+            return {"url": "https://www.sec.gov" + path, "form": exhibit_type, "reportDate": "",
+                    "filingDate": "", "accessionNumber": accession}
+    print(f"WARN {accession}: no {exhibit_type} document in filing index", file=sys.stderr)
+    return None
+
+
+def download(ticker, n_annual, n_quarterly):
+    co = load_ledger()["companies"][ticker]
+    folder = os.path.join(ROOT, co["annual_dashboard"])
+    forms = {co["annual_form"]} | ({"10-Q"} if co["quarterly"] else set())
+    fs = filings(co["cik"], forms, need_older=n_annual + n_quarterly + 4)
+    annual = [f for f in fs if f["form"] == co["annual_form"]]
+    if not annual:
+        sys.exit(f"{ticker}: no {co['annual_form']} on EDGAR")
+    tag = co["annual_form"].replace("-", "").lower()
+    jobs = [(f, os.path.join(folder, "raw", f"{ticker.lower()}_{tag}_{fiscal_label(f['reportDate'], None, True)}.htm"))
+            for f in annual[:n_annual]]
+    for f in [f for f in fs if f["form"] == "10-Q"][:n_quarterly]:
+        fye = next((a["reportDate"] for a in annual if a["reportDate"] < f["reportDate"]), annual[-1]["reportDate"])
+        jobs.append((f, os.path.join(folder, "10q", "raw",
+                                     f"{ticker.lower()}_10q_{fiscal_label(f['reportDate'], fye, False)}.htm")))
+    for f, _ in list(jobs):
+        if f["form"] == "10-K" and co.get("annual_exhibit"):
+            ex = exhibit_doc(co["cik"], f["accessionNumber"], co["annual_exhibit"])
+            if ex:
+                jobs.append((ex, jobs[[j[0] for j in jobs].index(f)][1][:-4] + "_ex13.htm"))
+    for f, dest in jobs:
+        if os.path.exists(dest):
+            print(f"{dest}: cached")
+            continue
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        data = http_get(f["url"])
+        with open(dest, "wb") as out:
+            out.write(data)
+        print(f"{dest}: {len(data):,} bytes  ({f['form']} period {f['reportDate']}, filed {f['filingDate']}, {f['accessionNumber']})")
+
+
 def main():
     ap = argparse.ArgumentParser()
     sp = ap.add_subparsers(dest="cmd", required=True)
     p = sp.add_parser("pending"); p.add_argument("--json", action="store_true")
     p = sp.add_parser("fetch"); p.add_argument("url"); p.add_argument("dest")
+    p = sp.add_parser("download"); p.add_argument("ticker")
+    p.add_argument("--annual", type=int, default=2); p.add_argument("--quarterly", type=int, default=0)
     p = sp.add_parser("mark"); p.add_argument("ticker"); p.add_argument("which", choices=["annual", "quarterly"])
     p.add_argument("report_date"); p.add_argument("--dashboard")
     a = ap.parse_args()
@@ -133,6 +201,9 @@ def main():
         with open(a.dest, "wb") as f:
             f.write(data)
         print(f"{a.dest}: {len(data):,} bytes")
+
+    if a.cmd == "download":
+        download(a.ticker, a.annual, a.quarterly)
 
     if a.cmd == "mark":
         data = load_ledger()
