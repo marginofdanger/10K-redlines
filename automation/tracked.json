@@ -18,8 +18,8 @@
       "annual_dashboard": "companies/goog/",
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
-      "quarterly_dashboard": null,
-      "quarterly_covered_through": null
+      "quarterly_dashboard": "companies/goog/10q/",
+      "quarterly_covered_through": "2026-06-30"
     },
     "AMZN": {
       "cik": "0001018724",

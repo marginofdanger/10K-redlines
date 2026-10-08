@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOOG 10-Q Quarterly Scanner | Q1 2024 - Q2 2026</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>GOOG 10-Q SCANNER</h1>
+    <div class="sub">Q1 2024 &ndash; Q2 2026 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#q1q2-2024">Q1 &rarr; Q2 2024</a>
+  <a class="nav-item" href="#q2q3-2024">Q2 &rarr; Q3 2024</a>
+  <a class="nav-item" href="#q3-2024-fy2024">Q3 2024 &rarr; FY2024 10-K</a>
+  <a class="nav-item" href="#fy2024-q1-2025">FY2024 10-K &rarr; Q1 2025</a>
+  <a class="nav-item" href="#q1q2-2025">Q1 &rarr; Q2 2025</a>
+  <a class="nav-item" href="#q2q3-2025">Q2 &rarr; Q3 2025</a>
+  <a class="nav-item" href="#q3-2025-fy2025">Q3 2025 &rarr; FY2025 10-K</a>
+  <a class="nav-item" href="#fy2025-q1-2026">FY2025 10-K &rarr; Q1 2026</a>
+  <a class="nav-item" href="#q1q2-2026">Q1 &rarr; Q2 2026</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-backlog">Revenue Backlog</a>
+  <a class="nav-item" href="#sig-capex">Capex Language</a>
+  <a class="nav-item" href="#sig-commitments">Commitments &amp; Unstarted Leases</a>
+  <a class="nav-item" href="#sig-backstops">Backstops &amp; Credit Support</a>
+  <a class="nav-item" href="#sig-capital">Buybacks &rarr; Debt &rarr; Equity</a>
+  <a class="nav-item" href="#sig-legal">Fines Paid &amp; Accrued</a>
+  <a class="nav-item" href="#sig-rf">Risk-Factor Update Cadence</a>
+  <a class="nav-item" href="#sig-sustain">Sustainability &amp; Tax Hedges</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+
+  <div class="nav-section">Links</div>
+  <a class="nav-item" href="../index.html">GOOG 10-K dashboard</a>
+  <a class="nav-item" href="../../../index.html">All companies</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>GOOG 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of 10 SEC filings (eight 10-Qs plus the FY2024 and FY2025 10-Ks). The annual dashboard follows Alphabet's product story; this scanner follows the money behind it: the revenue backlog, off-balance-sheet commitments, data-center backstops, and the move from buybacks to debt to new equity, which the notes changed every quarter and the risk factors mostly did not.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001652044) | 10 Filings | Q1 2024 &ndash; Q2 2026 | Analysis: October 2026</div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+<!-- Q1 → Q2 2024 -->
+<div class="transition-header" id="q1q2-2024">
+  <h2>Q1 2024 &rarr; Q2 2024</h2>
+  <div class="sub">Signed Jul 23, 2024 | Revenue: $84.74B (+14%) | Operating income: $27.43B | Google Cloud: $10.35B (+29%) | Capex: $13.19B | Backlog: $72.5B &rarr; $78.8B | Employees: 180,895 &rarr; 179,582</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI model teams moved out of Google Services into Google DeepMind, reported in Alphabet-level activities</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2024 segment note, with no Q1 2024 predecessor:</p>
+    <blockquote>Q2 2024: "As announced on April 18, 2024, we further consolidated teams that focus on building AI models across Google Research and Google DeepMind to further accelerate our progress in AI. <strong>AI model development teams previously under Google Research in our Google Services segment are included as part of Google DeepMind, reported within Alphabet-level activities</strong>, prospectively beginning in the second quarter of 2024."</blockquote>
+    <p>Model-building costs leave the segment that earns the ad revenue and sit in the unallocated line. The annual dashboard dates the "Alphabet-level activities" reporting structure to the FY2024 10-K; the quarterly filing shows when the costs actually moved. By the FY2025 10-K, Alphabet-level activities are described as "developing the frontier models that serve our businesses."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cost of revenues adds a retroactive Canadian digital services tax and a new "technical infrastructure operations" line</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2024 MD&amp;A cost bullet listed TAC, content acquisition costs and depreciation, offset by lower severance and office-space charges. Q2 2024:</p>
+    <blockquote>Q2 2024: "Cost of revenues was $35.5 billion, an increase of 11% year over year, primarily driven by increases in content acquisition costs, TAC, depreciation expense, <strong>digital services tax related to the recently enacted law in Canada, which is applied retroactively</strong>, and other technical infrastructure operations costs."</blockquote>
+    <p>The cost-of-revenues definition also gains a fourth component and relabels the compensation line from "data centers" to "technical infrastructure":</p>
+    <blockquote>Q2 2024: "other technical infrastructure operations costs, including bandwidth, energy, and equipment costs."</blockquote>
+    <p>Energy enters the cost definition here for the first time in the window. The Canadian tax closes as a loop in Q1 2026, when the MD&amp;A credits "an accrual reversal for digital services tax related to the recently repealed law in Canada."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">YouTube growth driver reordered: brand ahead of direct response</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2024: "The growth was driven by our direct response and brand advertising products, both of which benefited from increased spending by our advertisers."</blockquote>
+    <blockquote>Q2 2024: "The growth was driven by our <strong>brand advertising products followed by our direct response</strong> advertising products, both of which benefited from increased spending by our advertisers."</blockquote>
+    <p>The order held through the FY2024 10-K and flipped back in Q1 2025 ("direct response advertising products followed by our brand advertising products"), where it stayed through Q2 2026. The ordering is the only qualitative read on YouTube's ad mix the filing gives.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Third-party cookie phase-out becomes a "proposed user choice model"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2024: "Changes to our advertising policies and data privacy practices, such as our initiatives to <strong>phase out third-party cookies (which remain subject to review, affecting the timing)</strong>, as well as changes to other companies' advertising and/or data privacy practices..."</blockquote>
+    <blockquote>Q2 2024: "Changes to our advertising policies and data privacy practices, such as our initiatives related to third-party cookies, including our recent announcement to <strong>move from phasing out all third-party cookies to a proposed user choice model</strong> (which remains subject to continuing discussions with regulators)..."</blockquote>
+    <p>The commitment to remove cookies is withdrawn inside a quarter, and the open variable moves from "timing" to "regulators." The 10-Q caught the reversal one filing after it happened; the annual dashboard records the same language in the FY2024 10-K and its removal in the FY2025 10-K.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Other Bets</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Alphabet commits up to $5.0B to Waymo</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2024: "In July 2024, Alphabet committed to fund up to $5.0 billion for the ongoing operations of Waymo, a fully autonomous driving technology company and a consolidated VIE."</blockquote>
+    <p>The first of three escalating Waymo funding disclosures in the window: $5.6B raised in Q3 2024 ("the majority" from Alphabet), then a $16.0B round in February 2026 ("the significant majority of which was funded by Alphabet").</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2024 -->
+<div class="transition-header" id="q2q3-2024">
+  <h2>Q2 2024 &rarr; Q3 2024</h2>
+  <div class="sub">Signed Oct 29, 2024 | Revenue: $88.27B (+15%) | Operating income: $28.52B | Google Cloud: $11.35B (+35%), operating income $1.95B | Capex: $13.06B | Backlog: $78.8B &rarr; $86.8B | First commercial paper: $1.0B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">DOJ Search ruling lands; remedy framework "including structural remedies" named</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2024: "The trial ended on November 16, 2023, and we expect a decision in 2024."</blockquote>
+    <blockquote>Q3 2024: "...on August 5, 2024, the U.S. District Court for the District of Columbia ruled that Google violated such antitrust laws. A separate proceeding is being held to determine remedies, the range of which vary widely. The DOJ has proposed a high level remedy framework, which includes alterations to our products and services and our business models and operations, <strong>including structural remedies</strong>, and/or our distribution arrangements, among other changes, some of which could have a material adverse effect on our financial statements."</blockquote>
+    <p>The same quarter's new legal risk factor carries the remedy list into Item 1A and adds "including divestiture" to the list of possible outcomes. By the FY2024 10-K the closing phrase softens from "material adverse effect on our financial statements" to "on our business."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Epic remedies ordered: "We plan to appeal" becomes "We are appealing"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2024: "The presiding judge will determine non-monetary remedies in 2024, and the range of potential remedies vary widely. We plan to appeal."</blockquote>
+    <blockquote>Q3 2024: "The presiding judge issued a remedies decision on October 7, 2024, ordering a variety of alterations to our business models and operations and contractual agreements for Android and Google Play. We are appealing and have filed a motion to pause the implementation of some of the remedies pending the appeal."</blockquote>
+    <p>The appeal was denied in July 2025, remedies were implemented in October 2025, a settlement to modify them was reached in March 2026, and in Q2 2026 the joint motion was withdrawn and "Google is complying with the October 2024 remedies decision."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2017 EC Shopping fine upheld and paid ($3.0B); 2019 AdSense fine annulled</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q3 2024: "On September 10, 2024, the European Court of Justice rejected our appeal and upheld the €2.4 billion fine imposed in 2017. In the third quarter of 2024, we made a cash payment of $3.0 billion for the 2017 shopping fine."</blockquote>
+    <blockquote>Q3 2024: "On September 18, 2024, the European Union's (EU) General Court overturned the EC decision and annulled the €1.5 billion fine. The EC has until November 28, 2024 to appeal the decision."</blockquote>
+    <p>The first EC fine to convert from bank guarantee to cash in the window. Operating cash flow for the quarter is reported "including a cash payment of $3.0 billion." The 2018 Android fine follows the same path in Q2 2026 ($5.2B paid in July 2026).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Investments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Character.ai licence: $2.7B cash, booked as $2.7B of goodwill</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q3 2024: "...we recorded $2.7 billion of goodwill and $413 million of intangible assets resulting from a transaction with character.ai... In August 2024, we entered into a license agreement with Character pursuant to which we obtained a non-exclusive license to its current large language model technology. We paid Character $2.7 billion in cash and canceled our convertible instruments. We also hired certain employees of Character."</blockquote>
+    <p>A "non-exclusive license" plus hires is accounted for as a business combination under ASC 805. The same note introduces the convertible-note book ($921M &rarr; $2.8B) and VIE language for private-company stakes that later carries the SpaceX and "private company" gains.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First commercial paper in the window: $1.0B outstanding; April 2023 buyback authorization exhausted</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2024: "As of June 30, 2024, we had no commercial paper outstanding."</blockquote>
+    <blockquote>Q3 2024: "As of September 30, 2024, we had $1.0 billion of short-term commercial paper outstanding."</blockquote>
+    <blockquote>Q3 2024: "Repurchases made pursuant to the April 2023 authorization were completed during the third quarter of 2024."</blockquote>
+    <p>Small in dollars, but it is the first borrowing in a window that ends with $98.2B of long-term debt. The CP programme is raised from $10.0B to $25.0B in Q2 2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Search TAC rate turns up on mobile; office-space charges of $607M</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2024: "The TAC rate on Google Search &amp; other revenues was substantially consistent from the three and six months ended June 30, 2023 to the three and six months ended June 30, 2024."</blockquote>
+    <blockquote>Q3 2024: "The TAC rate on Google Search &amp; other revenues <strong>increased</strong> from the three and nine months ended September 30, 2023 to the three and nine months ended September 30, 2024 primarily due to increases related to mobile searches, which carries higher TAC because more mobile searches are channeled through paid access points."</blockquote>
+    <p>Distribution payments are the economic core of the DOJ Search case, ruled on the same quarter. The Search TAC rate kept "increased" through Q2 2025 and returned to "substantially consistent" in Q3 2025, the quarter the remedies decision restricted distribution. Separately: "During the quarter ended September 30, 2024, we incurred office space charges totaling $607 million."</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2024 → FY2024 10-K -->
+<div class="transition-header" id="q3-2024-fy2024">
+  <h2>Q3 2024 &rarr; FY2024 10-K</h2>
+  <div class="sub">Signed Feb 4, 2025 | FY Revenue: $350.02B (+14%) | Operating income: $112.39B | Capex: $52.53B | Backlog: $86.8B &rarr; $93.2B | Employees: 183,323 | Buybacks: $62.22B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Pillar Two warning deleted from MD&amp;A: "could increase in future years" sentence removed</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q3 2024: "...we do not expect a material change to our income tax provision for the 2024 fiscal year. As additional jurisdictions enact such legislation, transitional rules lapse, and other provisions of the minimum tax legislation become effective, <strong>we expect our effective tax rate and cash tax payments could increase in future years</strong>."</blockquote>
+    <blockquote>FY2024: "Some countries have already implemented the legislation effective January 1, 2024, and we expect others to follow, however this did not have a material effect on our income tax provision for the 2024 fiscal year."</blockquote>
+    <p>The forward warning survives in the risk factors and the forward-looking-statements list for now. The list bullet goes in Q2 2025; the sentence returns in the FY2025 10-K and is softened to "could be affected" in Q1 2026 (tracked below).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$8.0B January 2025 gain on a private-company stake disclosed as a subsequent event</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2024: "In January 2025, we recognized an $8.0 billion unrealized gain on our non-marketable equity securities related to our investment in a private company. The unrealized gain reflects an increase in the fair value measurement of our investment following an observable transaction in January 2025."</blockquote>
+    <p>The first of the mark-ups that come to dominate net income: $8.0B (Q1 2025), $10.7B of equity-security gains (Q3 2025), $36.9B (Q1 2026) and $99.0B (Q2 2026). Q2 2026 net income of $112.19B is almost three times operating income of $40.77B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Network decline now blamed on Google Ad Manager and AdMob</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q3 2024: "Google Network revenues decreased $121 million from the three months ended September 30, 2023 to the three months ended September 30, 2024, primarily driven by the unfavorable effect of foreign currency exchange rates, partially offset by an increase in AdSense revenues."</blockquote>
+    <blockquote>FY2024: "Google Network revenues decreased $953 million from 2023 to 2024, primarily driven by a decrease in Google Ad Manager and AdMob revenues."</blockquote>
+    <p>Currency was the lead explanation in Q3; the annual names the ad-tech products. In April 2025 the court found that Google's "publisher tools" violated antitrust law, the side of the ad-tech stack where Google Ad Manager sits. Network revenue declines in every quarter of the window.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Risk Factors (FY2023 10-K &rarr; FY2024 10-K)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI accelerator supply named as a constraint; asset useful-lives risk added</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2024: "For example, industry supply capacity for AI accelerators, including Graphics Processing Units, or GPUs, as well as our custom-built TPUs, is highly competitive and rapidly evolving. If we are unable to negotiate favorable contractual terms or our competitors claim the supply or capacity first, we may face supply constraints."</blockquote>
+    <blockquote>FY2024: "We have invested significantly and expect to continue to invest significantly in our property and equipment, including our technical infrastructure, and we expect these assets to benefit our business over their estimated useful lives. Changes in facts and circumstances... could indicate a change in the period over which we expect to benefit from the asset..."</blockquote>
+    <p>Neither sentence appears in the FY2023 10-K or any 2024 10-Q. "Power loss" in the supply-chain risk also becomes "power and transmission availability." In FY2025 "significantly" becomes "significantly expand," and Google Cloud's fluctuation factors add "supply availability."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Standalone ESG risk factor deleted; "diversity" drops out of the replacement</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2023: "Expectations relating to ESG considerations could expose us to potential liabilities, increased costs, and reputational harm."</blockquote>
+    <blockquote>FY2024: "Further, we are subject to evolving laws, regulations, policies, and international accords relating to matters beyond our core products and services, including environmental sustainability, climate change, human capital, and employment matters."</blockquote>
+    <p>FY2023's list was "sustainability, climate change, human capital, and diversity." The heading is gone and the sentence is folded into the general regulation risk. "Environmental, social and governance (ESG) requirements" is also removed from the list of regulated areas. This complements the annual dashboard's DEI and sustainability signals.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2024 10-K → Q1 2025 -->
+<div class="transition-header" id="fy2024-q1-2025">
+  <h2>FY2024 10-K &rarr; Q1 2025</h2>
+  <div class="sub">Signed Apr 24, 2025 | Revenue: $90.23B (+12%) | Operating income: $30.61B | Net income: $34.54B (incl. $8.0B gain) | Google Cloud: $12.26B (+28%) | Capex: $17.20B | Backlog: $93.2B &rarr; $92.4B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Backlog dips for the only time in the window ($93.2B &rarr; $92.4B) but the 24-month share rises from "half" to 55%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2024: "We expect to recognize approximately <strong>half</strong> of the revenue backlog as revenues over the next 24 months with the remainder to be recognized thereafter."</blockquote>
+    <blockquote>Q1 2025: "We expect to recognize approximately <strong>55%</strong> of the revenue backlog as revenues over the next 24 months with the remainder to be recognized thereafter."</blockquote>
+    <p>Near-term backlog rose even as the total fell, which suggests shorter contracts or faster consumption. The total then climbs every quarter to $519.5B (Q2 2026). The 24-month share goes to "just over 55%" (Q3 2025) and back to "just over 50%" (FY2025) once multi-year capacity deals arrive.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs and "international trade" enter MD&amp;A and the commitments paragraph</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2025: "We are monitoring ongoing developments surrounding international trade and the macroeconomic environment. As a result of volatility in international trade and financial markets, we may experience direct and indirect effects on our business, operations, and financial results."</blockquote>
+    <blockquote>Q1 2025: "We may experience increases in the costs associated with our purchase commitments and other contractual obligations as a result of ongoing developments surrounding international trade."</blockquote>
+    <p>Neither appears in the FY2024 10-K MD&amp;A. A new forward-looking-statements bullet on "the related impact on the macroeconomic environment and our business" accompanies them. Q1 2026 adds "geopolitical tension" to the front of the same paragraph.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unstarted leases jump $7.3B &rarr; $17.3B, now "primarily related to data centers" and running to 2031</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2024: "...we have entered into leases that have not yet commenced with short-term and long-term future lease payments of $773 million and $6.5 billion, respectively, that are not yet recorded on our Consolidated Balance Sheets. These leases will commence between 2025 and 2028..."</blockquote>
+    <blockquote>Q1 2025: "...we have entered into leases <strong>primarily related to data centers</strong> that have not yet commenced with future lease payments of $17.3 billion, that are not yet recorded on our Consolidated Balance Sheets. These leases will commence between 2025 and <strong>2031</strong>..."</blockquote>
+    <p>The figure more than doubled in one quarter, and the data-center attribution appears for the first time. It reaches $85.2B by Q2 2026 (tracked below).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Wiz: $32.0B all-cash acquisition agreed</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2025: "In March 2025, we entered into a definitive agreement to acquire Wiz, a leading cloud security platform, for $32.0 billion, subject to closing adjustments, in an all-cash transaction. The acquisition of Wiz is expected to close in 2026, subject to customary closing conditions, including the receipt of regulatory approvals."</blockquote>
+    <p>The largest cash commitment in the filing at signing, roughly two quarters of capex at the time. It closed on March 11, 2026 for $29.5B "after purchase price adjustments and excluding post combination compensation arrangements."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Credit facilities renewed, and the sustainability-goal pricing link is dropped</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2024: "The interest rates for all credit facilities are determined based on a formula using certain market rates, as well as our progress toward the achievement of certain sustainability goals."</blockquote>
+    <blockquote>Q1 2025: "In April 2025, we entered into a new $4.0 billion revolving credit facility expiring in April 2026. Additionally, we terminated the $6.0 billion revolving credit facility expiring in April 2028 and entered into a new $6.0 billion revolving credit facility expiring in April 2030. The interest rates for all credit facilities are determined based on a formula using certain market rates."</blockquote>
+    <p>The 2028 facility was terminated three years early and replaced on terms without a sustainability ratchet. This sits beside the annual dashboard's "Sustainability Disappeared" theme and is visible only in the debt footnote.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal &amp; Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Ad-tech "mixed decision"; DMA preliminary non-compliance findings; JFTC cease-and-desist</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2025: "In April 2025, the U.S. District Court for the Eastern District of Virginia issued a mixed decision in the DOJ case against Google, ruling that the DOJ failed to show that Google's advertiser tools or acquisitions of DoubleClick and AdMeld were anticompetitive, but that Google's publisher tools violated antitrust laws by excluding rivals."</blockquote>
+    <blockquote>Q1 2025: "In March 2025, the EC issued preliminary findings of non-compliance in both investigations, to which we plan to respond in the coming weeks. Given the preliminary stages of this matter, we cannot estimate a possible loss."</blockquote>
+    <p>Japan's Fair Trade Commission also issued a cease-and-desist order on Android agreements, with no monetary penalty. Three new adverse findings in one quarter.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Risk-factor update is empty: first of three consecutive 10-Qs with no material changes</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Every 2024 10-Q listed material changes (cookies, dividends, the antitrust risk factor). Q1, Q2 and Q3 2025 each carry only the incorporation paragraph:</p>
+    <blockquote>Q1 2025: "...which could harm our business, reputation, financial condition, and operating results, and affect the trading price of our Class A and Class C stock."</blockquote>
+    <p>Over those three quarters the filings disclosed a $32.0B acquisition, the first bond issue ($12.5B), a $1.4B privacy settlement, a $3.5B EC fine, a 2026 capex step-up and the first data-center lease backstops. None reached Item 1A until the FY2025 10-K (see Risk-Factor Update Cadence).</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2025 -->
+<div class="transition-header" id="q1q2-2025">
+  <h2>Q1 2025 &rarr; Q2 2025</h2>
+  <div class="sub">Signed Jul 23, 2025 | Revenue: $96.43B (+14%) | Operating income: $31.27B | Google Cloud: $13.62B (+32%) | Capex: $22.44B | Backlog: $92.4B &rarr; $108.2B | Notes issued: $12.5B net</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First bond issue in the window: $5.0B plus &euro;6.75B, maturities to 2065; CP programme $10B &rarr; $25B</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2025: "In May 2025, we issued $5.0 billion of U.S. dollar-denominated fixed-rate senior unsecured notes in four tranches... Additionally in May 2025, we issued €6.75 billion of euro-denominated fixed-rate senior unsecured notes in five tranches..."</blockquote>
+    <blockquote>Q2 2025: "We have a short-term debt financing program of up to <strong>$25.0 billion</strong> through the issuance of commercial paper."</blockquote>
+    <p>Q1 2025 read "up to $10.0 billion." Notes carrying value goes from $11.9B, unchanged for five filings, to $24.6B. The euro debt is designated as a net investment hedge ($7.8B), a new hedge category. Buybacks fall to $13.6B, the lowest quarter to that point.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$1.4B privacy settlement in principle, non-deductible; G&amp;A up $2.1B</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2025: "In April 2025, we reached a $1.4 billion agreement in principle to settle certain privacy matters."</blockquote>
+    <blockquote>Q2 2025: "This increase was primarily due to a decrease in SBC-related tax benefits, and a non-deductible legal settlement in the U.S., partially offset by changes in prior period tax positions."</blockquote>
+    <p>The legal-and-other line in G&amp;A grew $2.3B year over year. The settlement was finalized in October 2025 and the sentence disappears from Q1 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Ad-tech remedies trial set for September 2025 with a DOJ structural proposal; "AI training" added to claims list</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2025: "A separate proceeding to determine remedies, the range of which vary widely, is scheduled to take place in September 2025. The DOJ's remedy proposal includes structural remedies, which could have a material adverse effect on our business."</blockquote>
+    <blockquote>Q2 2025: "...goods and services offered by advertisers or publishers using our platforms, personal injury, consumer protection, <strong>AI training</strong>, and other matters."</blockquote>
+    <p>Search remedies concluded in May 2025, with a decision expected "in August 2025." In the ad-tech case the company is still "awaiting a final judgment" in Q2 2026, three filings after November 2025 closing arguments.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance, Tax &amp; Segments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Other Bets revenue adds "autonomous transportation services," two filings before the 10-K</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2025: "Revenues from Other Bets are generated primarily from the sale of healthcare-related services and internet services."</blockquote>
+    <blockquote>Q2 2025: "Revenues from Other Bets are generated primarily from the sale of <strong>autonomous transportation services</strong>, healthcare-related services, and internet services."</blockquote>
+    <p>The annual dashboard dates Waymo overtaking Verily to the FY2025 10-K, where "healthcare-related services" is also removed. The quarterly filing shows Waymo listed first two quarters earlier.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OBBBA enacted; "effective tax rate and cash tax payments could increase" dropped from forward-looking list</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2025: "our expectation that our effective tax rate and cash tax payments could increase in future years;"</blockquote>
+    <blockquote>Q2 2025: "On July 4, 2025, the One Big Beautiful Bill Act (OBBBA) was signed into law... We are assessing the legislation and its effect on our consolidated financial statements, which we expect to begin reflecting in the three month period ended September 30, 2025."</blockquote>
+    <p>The tax-increase bullet had been in the forward-looking list in every filing since Q1 2024. In Q3 2025 OBBBA's "immediate expensing of domestic research and experimentation costs and accelerated depreciation on eligible capital expenditures" is reported as included in that quarter's $48.4B operating cash flow.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2025 -->
+<div class="transition-header" id="q2q3-2025">
+  <h2>Q2 2025 &rarr; Q3 2025</h2>
+  <div class="sub">Signed Oct 29, 2025 | Revenue: $102.35B (+16%) | Operating income: $31.23B (incl. $3.5B EC fine) | Google Cloud: $15.16B (+34%) | Capex: $23.96B | Backlog: $108.2B &rarr; $157.7B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First 2026 capex signal: "significantly increase"; the 2025 sentence weakens to "exceed full year 2024"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2025: "We expect to increase, relative to 2024, our investment in our technical infrastructure, including servers, network equipment, and data centers..."</blockquote>
+    <blockquote>Q3 2025: "We expect full year 2025 capital expenditures to exceed full year 2024. In 2026, we expect to <strong>significantly increase</strong>, relative to 2025, our investment in our technical infrastructure..."</blockquote>
+    <p>"Significantly" is the first intensifier on the capex sentence in the window, and Alphabet gives no dollar range in any filing. The 2025 half of the sentence says little: nine-month capex of $63.6B had already passed FY2024's $52.5B when it was written.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Backlog +$49.5B in one quarter to $157.7B; "for future services" dropped from the definition</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2025: "Revenue backlog represents commitments in customer contracts for future services that have not yet been recognized as revenue. We expect to recognize approximately 55% of the revenue backlog..."</blockquote>
+    <blockquote>Q3 2025: "Revenue backlog represents commitments in customer contracts that have not yet been recognized as revenue. We expect to recognize just over 55% of the revenue backlog..."</blockquote>
+    <p>Backlog rose 46% in the quarter, against 17% the quarter before. Dropping "for future services" leaves room for non-service contracts. Q1 2026 discloses that backlog includes agreements to supply "multiple gigawatts of TPU hardware" and Q2 2026 books the first TPU system product revenue.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Commitments &amp; Credit Support</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Credit derivatives backstopping third-party data-center leases: $6.5B maximum exposure</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q3 2025: "Additionally, we have credit derivative instruments resulting from agreements with third parties to backstop certain obligations relating to data center leases."</blockquote>
+    <blockquote>Q3 2025: "We account for our variable interests in certain data center leasing entities, which are in the form of credit backstop agreements as credit derivatives... As of September 30, 2025, the maximum exposure to loss is $6.5 billion."</blockquote>
+    <p>"Certain data center leasing entities" is added to the VIE list, and these are the first guarantees of third parties' data-center obligations in the window. The same quarter's 10-Q risk-factor section reports no material changes. Exposure reaches $51.4B by Q2 2026 (tracked below).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Purchase commitments redefined with "energy contracts" first: $72.5B &rarr; $93.7B; unstarted leases $23.9B &rarr; $42.6B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2025: "As of June 30, 2025, we had material purchase commitments and other contractual obligations of $72.5 billion, of which $51.0 billion was short-term. These amounts primarily consist of purchase orders for certain technical infrastructure..."</blockquote>
+    <blockquote>Q3 2025: "We have material purchase commitments and other contractual obligations primarily related to <strong>energy contracts</strong>, licenses (including content licenses), and technical infrastructure and inventory orders."</blockquote>
+    <p>Energy moves from a footnote ("not readily determinable") to the head of the commitments list. It becomes "energy take-or-pay contracts" in the FY2025 10-K and energy service agreements "through 2054" in Q2 2026. Unstarted leases now include "a purchase option considered reasonably certain to be exercised."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">EC ad-tech fine &euro;3.0B ($3.5B) accrued; Search remedies impose data sharing and syndication</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q3 2025: "The EC decision imposed a €3.0 billion (approximately $3.5 billion as of September 5, 2025) fine and directed Google to cease and desist the alleged "self-preferencing" practices. We plan to appeal the ruling. We accrued the fine in the third quarter of 2025, resulting in a charge of $3.5 billion."</blockquote>
+    <blockquote>Q3 2025: "In September 2025, a decision on remedies was issued, which, among other things, imposes restrictions on how Google distributes its services, and requires Google to share certain search data with and offer syndication services to certain competitors."</blockquote>
+    <p>Q2 2025 had warned of "structural remedies." The decision imposed behavioral and data remedies instead, and the "structural" language now applies only to the pending ad-tech case. The non-deductible fine lifted the quarterly tax rate to 20.5%, the highest in the window.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2025 → FY2025 10-K -->
+<div class="transition-header" id="q3-2025-fy2025">
+  <h2>Q3 2025 &rarr; FY2025 10-K</h2>
+  <div class="sub">Signed Feb 4, 2026 | FY Revenue: $402.84B (+15%) | Operating income: $129.04B | Capex: $91.45B | Backlog: $157.7B &rarr; $242.8B | Notes issued in 2025: $37.3B | Buybacks: $45.71B | Employees: 190,820</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A Trends</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New MD&amp;A trend: external financing and "credit support" to infrastructure counterparties</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "We have raised capital through external financing in the form of debt and we may continue to seek debt or other forms of financing in the future to support our capital and operating needs."</blockquote>
+    <blockquote>FY2025: "In 2025, we raised capital through the issuance of debt and we expect to continue to assess the use of debt and other forms of financing in the future. We expect to continue to enter into finance leases, primarily for data centers. Additionally, in 2025, we provided credit support, such as through backstops and guarantees, to certain infrastructure related counterparties and may continue to provide additional credit support in the future."</blockquote>
+    <p>The FY2024 10-K trend list had no financing bullet. "Debt or other forms of financing" foreshadows the June 2026 equity raise. Backstops reach the trend section a full quarter after they first appeared in the notes.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Infrastructure operating costs "expected to significantly increase"; efficiency hedge added</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "The costs associated with operating our technical infrastructure - depreciation, energy, equipment, and network capacity - are expected to significantly increase as developing and serving AI offerings require more compute power than our historical consumer and enterprise offerings."</blockquote>
+    <blockquote>FY2025: "Certain of our costs and expenses are relatively fixed and may not correlate to changes in revenue, and we may also not be able to continue to drive efficiencies at the rate we have in the past."</blockquote>
+    <p>FY2024's risk factor read "We may also not be able to continue to execute our efficiency efforts successfully." The new wording concedes that the past efficiency rate is the benchmark at risk. Google Cloud's revenue fluctuation factors add "supply availability."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Waymo $2.1B compensation charge; Other Bets loss $7.5B; $16.0B round mostly Alphabet-funded</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "Other Bets operating loss of $7.5 billion for the year ended December 31, 2025 included a $2.1 billion employee compensation charge recognized in the fourth quarter for Waymo, primarily reflected in research and development expenses, based on estimated stock valuation. In February 2026, Waymo announced an investment round of $16.0 billion, the significant majority of which was funded by Alphabet."</blockquote>
+    <p>The Other Bets loss went from $4.4B (FY2024) to $7.5B. Q3 2025's year-to-date loss was $3.9B, so most of the step-up landed in Q4 through the valuation-based charge.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Balance Sheet &amp; Commitments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Backstops $6.5B &rarr; $22.6B in a quarter; short-term legal accruals of $15.6B disclosed</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "As of December 31, 2025, we provided backstops in the form of financial guarantees and credit derivatives with maximum potential amount of future payments of $5.7 billion and $16.9 billion, respectively."</blockquote>
+    <blockquote>FY2025: "As of December 31, 2025, we had short-term accrued legal and regulatory fines and settlements of $15.6 billion. This amount primarily included EC fines, in addition to accruals related to other legal matters and regulatory fines and settlements."</blockquote>
+    <p>Financial guarantees on energy-equipment procurement are a second, new backstop type. The legal figure is the first aggregate accrual disclosed in the window; earlier filings said only that EC fines sat in accrued liabilities. Purchase commitments are $149.1B, against $93.7B in Q3.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Intersect ($4.8B, data-center and energy) agreed; $9.9B power purchase agreement to be booked as a lease</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "In December 2025, we entered into a definitive agreement to acquire Intersect, which provides data center and energy infrastructure solutions, for $4.8 billion in cash, plus the assumption of debt."</blockquote>
+    <blockquote>FY2025: "In January 2026, we executed a power purchase agreement which we expect to be accounted for as a lease resulting in future payments depending on certain agreement terms of $9.9 billion between 2027 and 2047."</blockquote>
+    <p>Power procurement moves onto the balance sheet. In Q1 2026 Intersect closes for $5.9B and is described as "a developer of renewable energy," consolidated as a VIE.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Risk Factors (FY2024 10-K &rarr; FY2025 10-K)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Excess capacity that we cannot easily redeploy": overbuild risk enters Item 1A</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "To meet the compute capacity demands of AI training and inference, as well as traditional cloud computing services, we are entering into significant leasing arrangements with third party operators, which may increase costs and operational complexity. We also have a number of large, long-duration commercial agreements, which could increase our liabilities and obligations in the event of nonperformance by us, our counterparties, or vendors. In such nonperformance or an industry downturn, we may incur additional liabilities, <strong>have excess capacity that we cannot easily redeploy</strong>, and not receive payments from our counterparties or customers."</blockquote>
+    <p>This is the first risk-factor acknowledgment of the commitments built up in the 2025 notes. Google Cloud's paragraph changes "incurring costs" to "incurring significant and increasing costs and new liabilities, including contingent liabilities." Q1 2026 rewrites the sentence around TPU supply and names the backstops.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2025 10-K → Q1 2026 -->
+<div class="transition-header" id="fy2025-q1-2026">
+  <h2>FY2025 10-K &rarr; Q1 2026</h2>
+  <div class="sub">Signed Apr 29, 2026 | Revenue: $109.90B (+22%) | Operating income: $39.70B | Google Cloud: $20.03B (+63%) | Capex: $35.67B | Backlog: $242.8B &rarr; $467.6B | Notes issued: $31.1B net | Buybacks: $0</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Backlog nearly doubles to $467.6B, $462.3B of it Cloud, with a definition change ($7.3B)</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2026: "As of March 31, 2026, we had $467.6 billion of remaining performance obligations... of which $462.3 billion related to Google Cloud."</blockquote>
+    <blockquote>Q1 2026: "In the first quarter of 2026, we elected to change our reporting of revenue backlog to now also include contracts with an original expected term of one year or less. As of March 31, 2026, the portion of our revenue backlog related to contracts with an original expected term of one year or less was approximately $7.3 billion."</blockquote>
+    <p>Excluding the reclassified $7.3B, backlog still rose about $217B in a quarter. The definition footnote previously excluded short contracts, and the FY2025 text read "primarily related to Google Cloud." Q2 2026 keeps the policy sentence but drops the $7.3B quantification.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Google Cloud to sell "multiple gigawatts of TPU hardware" for on-premises use, tied to credit backstops</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2026: "Google Cloud has entered into a limited number of agreements to supply multiple gigawatts of TPU hardware to customers who require or provide on-premises infrastructure for specialized, high-scale workloads. Revenues for these transactions are included in our backlog as of March 31, 2026. We expect to begin recognizing revenues from these agreements later in 2026, with the significant majority to be recognized in 2027. <strong>In connection with certain of these agreements, we have agreed to provide credit backstops to support third-party data centers and power infrastructure.</strong>"</blockquote>
+    <p>This is the first disclosure that Google sells its custom chips rather than renting them. The last sentence links the backlog jump to the backstop book: part of the revenue depends on third-party data centers that Alphabet guarantees.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Commitments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Zero buybacks, the first quarter without repurchases in the window; "are executed" becomes "may be executed"</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "Repurchases are executed from time to time, subject to general business and market conditions..."</blockquote>
+    <blockquote>Q1 2026: "In the three months ended March 31, 2026, there were no repurchases of the company's Class A or Class C shares."</blockquote>
+    <p>Repurchases ran $15.7B in Q1 2024 and $45.7B in FY2025, with a $69.5B authorization still unused. The dividend was still raised 5% to $0.22. Cash for the quarter came from $31.1B of notes issued, including a £5.5B 31-year Sterling tranche and CHF3.1B, and the first drawn credit-facility balance in the window ($1.2B at SOFR plus 1.5% to 2.25%).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$40.0B private-company commitment, $30.0B of it milestone-contingent and booked as an equity derivative</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2026: "In March 2026, we committed to a $40.0 billion investment in a private company consisting of a $10.0 billion capital commitment and $30.0 billion of future capital funding contingent upon the achievement of specified operational and financial milestones."</blockquote>
+    <p>The counterparty is unnamed. Future funding commitments to unconsolidated VIEs go from $1.1B to $40.7B. In Q2 2026, $20.0B of contingent funding remains, and the Q2 equity gains are attributed to "SpaceX and a private company."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commitments $149.1B &rarr; $332.4B; backstops $37.4B, plus up to $33.3B more agreed</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2026: "As of March 31, 2026, we had material purchase commitments and other contractual obligations totaling $332.4 billion, of which $138.0 billion was short-term. These purchase commitments primarily relate to costs for technical infrastructure and inventory through long-term supply agreements and open purchase orders."</blockquote>
+    <blockquote>Q1 2026: "We have also entered into an agreement to provide up to $33.3 billion of future backstops to support the build-out of data center and energy supply infrastructure, subject to finalization of terms with data center providers."</blockquote>
+    <p>"Long-term supply agreements to secure future production capacity" ($232.7B) is a new category. Backstops stand at $9.0B of guarantees and $28.4B of credit derivatives, and terms now run "up to 15 years," against "up to 10 years" in Q3 2025.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--orange);"></span>Risk Factors &amp; Legal</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Overbuild risk rewritten around custom-hardware supply and backstops</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "To meet the compute capacity demands of AI training and inference, as well as traditional cloud computing services, we are entering into significant leasing arrangements with third party operators, which may increase costs and operational complexity."</blockquote>
+    <blockquote>Q1 2026: "To meet the AI compute capacity demands of our customers, we are engaging in the supply of our custom hardware which may increase our costs and operational complexity... These include certain financial guarantees, such as backstops to support the build-out of third-party data centers and power infrastructure."</blockquote>
+    <p>The risk shifts from Alphabet's own leasing to supplying customers, and the backstops are named in Item 1A for the first time. The 10-Q section header also adds "and price volatility" to the stock-price clause.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Pillar Two hedge softened: "could increase" becomes "could be affected"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "As more countries enact these global minimum tax rules, our effective tax rate and cash tax payments <strong>could increase</strong>."</blockquote>
+    <blockquote>Q1 2026: "As more countries enact these global minimum tax rules, our effective tax rate and cash tax payments <strong>could be affected</strong>."</blockquote>
+    <p>A directional warning becomes a neutral one after the OECD "Side-by-Side Safe Harbor" exempted US operations. The Q1 2026 tax rate (19.2%) was driven by "acquisition-related tax integration costs" from Wiz and Intersect.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2026 -->
+<div class="transition-header" id="q1q2-2026">
+  <h2>Q1 2026 &rarr; Q2 2026</h2>
+  <div class="sub">Signed Jul 22, 2026 | Revenue: $119.80B (+24%) | Operating income: $40.77B | Net income: $112.19B | Google Cloud: $24.77B (+82%) | Capex: $44.93B | Backlog: $467.6B &rarr; $519.5B | Equity raised: $49.6B net | Buybacks: $0</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$49.6B equity raise: $20.5B common offering, $10.0B Berkshire placement, $19.0B 6.25% mandatory convertible preferred; $40B ATM</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2026: "In June 2026, we issued a combination of Class A stock and Class C stock and mandatory convertible preferred stock for aggregate net proceeds of $49.6 billion, to be used for general corporate purposes, including <strong>capital expenditures to scale AI infrastructure and global compute</strong>. Additionally, we entered into an equity distribution agreement with certain sales agents to sell up to $40.0 billion of our Class A stock and Class C stock from time to time through an ATM Program."</blockquote>
+    <blockquote>Q2 2026: "Concurrently on June 4, 2026, the company completed a $10.0 billion private placement of 14 million Class A and 14 million Class C shares to an affiliate of Berkshire Hathaway Inc."</blockquote>
+    <p>Two years earlier the company was retiring about $15.7B of stock a quarter. The ATM is "primarily intended to be used to meet tax obligations associated with employee equity grants," which suggests new stock will fund the withholding that buybacks used to offset. A $1.0B capped call (cap $532.67 for Class A, a 50% premium) limits conversion dilution. The cover page lists two new Nasdaq securities, GOOGM and GOOGN.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Buyback risk factor rewritten: "no assurances that we will make repurchases in the near term or at all"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2024: "We cannot guarantee that any share repurchase program or dividend program will be continuously active or fully consummated or will enhance long-term stockholder value..."</blockquote>
+    <blockquote>Q2 2026: "We cannot guarantee that we will make repurchases under any share repurchase program... Although we have an authorized share repurchase program, <strong>there can be no assurances that we will make repurchases in the near term or at all</strong>. Furthermore, if we are utilizing the repurchase program at the time of any future offerings of our equity securities, including offerings of our Class A stock or Class C stock under our ATM Program, we may be required to suspend share repurchases..."</blockquote>
+    <p>"We engage in share repurchases" becomes "We have historically engaged in share repurchases." A new financing risk factor adds that indebtedness, "including obligations arising under leases, backstops, guarantees, and potential liabilities from large commercial agreements, combined with the dilutive impact of current or future equity issuances, could harm our financial condition."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Long-term commitments $232.7B &rarr; $707.0B; total commitments $811.0B now exceed the $519.5B backlog</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2026: "As of March 31, 2026, expected future fixed or minimum guaranteed commitments under these agreements were $232.7 billion."</blockquote>
+    <blockquote>Q2 2026: "As of June 30, 2026, expected future fixed or guaranteed commitments under these agreements were $707.0 billion, the significant majority of which related to long-term supply agreements."</blockquote>
+    <p>"Minimum" is dropped and "paid through 2030" becomes "fulfilled through 2030." Energy terms stretch from 20 to 26 years, with obligations "through 2054." Total purchase commitments ($811.0B) exceed revenue backlog ($519.5B) for the first time in the window; at FY2025 the figures were $149.1B against $242.8B. Credit-derivative backstops rise to $43.8B.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">TPU system sales begin; Cloud +82% with product revenue unquantified; inventory $2.4B &rarr; $10.0B</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q1 2026: "We expect to begin recognizing revenues from these agreements later in 2026, with the significant majority to be recognized in 2027."</blockquote>
+    <blockquote>Q2 2026: "In the second quarter of 2026, we began recognizing revenues from these agreements, with the significant majority to be recognized in 2027."</blockquote>
+    <blockquote>Q2 2026: "Inventory consists primarily of hardware related to TPU systems for sale to enterprise customers and devices, which primarily include the Pixel family of products."</blockquote>
+    <p>Revenue began in the quarter right after the "later in 2026" guidance. Cloud revenue grew $11.1B (+82%) and the MD&amp;A says only "In addition... we began recognizing revenue from the sale of TPU systems," with no split between products and services. Balance-sheet inventory went from $2.4B to $10.0B since December. Devices are now listed after TPU hardware in the inventory definition.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">SpaceX named: $94.1B of restricted shares; $99.0B of equity gains; tax rate attributed to deferred tax on gains</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2026: "OI&amp;E of $98.0 billion for the three months ended June 30, 2026 included net gains on equity securities of $99.0 billion, primarily related to unrealized gains in our equity securities portfolio from SpaceX and a private company."</blockquote>
+    <blockquote>Q2 2026: "Includes $80.0 billion of Space Exploration Technologies Corp. (SpaceX) shares subject to short-term restrictions on the ability to sell."</blockquote>
+    <p>Every earlier mark-up was attributed to "a private company." Another $14.1B of SpaceX shares is locked up "through the third quarter of 2027." The tax-rate explanation is new: "higher pre-tax earnings from unrealized gains on equity securities that are deferred tax liabilities at the statutory tax rate."</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">PriceRunner damages $2.1B accrued; Android EC fine final and $5.2B paid</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>Q2 2026: "For example, in July 2026, the Stockholm Patent and Market Court issued a decision against Google in a private action brought by PriceRunner (a subsidiary of Klarna) relating to Google's display and ranking of shopping search results. The Court awarded the plaintiff approximately $2.1 billion... which we recognized in the second quarter of 2026."</blockquote>
+    <blockquote>Q2 2026: "We subsequently appealed the General Court's affirmation of the EC decision, which was denied by the European Court of Justice in July 2026. The EC decision is now final."</blockquote>
+    <p>The private follow-on paragraph adds a category of "private claims stemming from regulatory proceedings in which Google's liability has been fully determined." The blanket "we cannot estimate a possible loss" now covers only "other such matters." This is the first quantified follow-on damages award in the window and a template for the Shopping-related claims across Europe.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">DMA risk now covers Android access "by third-party AI companies"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <blockquote>FY2025: "The EU's Digital Markets Act, which requires in-scope companies to obtain user consent for combining data across certain products and require search engines to share anonymized data with rival companies, among other changes..."</blockquote>
+    <blockquote>Q2 2026: "The EU's Digital Markets Act, which requires in-scope companies to obtain user consent for combining data across certain products, <strong>mandate the sharing of search data with third-party search engines, and require interoperable access to the Android operating system by third-party AI companies</strong>, among other changes..."</blockquote>
+    <p>"Anonymized" is dropped, and the AI-interoperability obligation is new. The whole privacy risk factor is reprinted in the 10-Q as a material change. The rest of it, including the biometric-law list, matches the FY2025 10-K.</p>
+  </div>
+</div>
+</div>
+
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-backlog">
+  <div class="section-header"><h2>#1: Revenue Backlog</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> $72.5B to $519.5B in Nine Filings, Doubling in One Quarter</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Backlog</th><th>Change</th><th>Recognized in 24 Months</th><th>Wording Change</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>$72.5B</td><td>&mdash;</td><td>"approximately half"</td><td>"primarily related to Google Cloud"</td></tr>
+        <tr><td>Q2 2024</td><td>$78.8B</td><td class="val-pos">+$6.3B</td><td>"approximately half"</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2024</td><td>$86.8B</td><td class="val-pos">+$8.0B</td><td>"approximately half"</td><td>&mdash;</td></tr>
+        <tr><td>FY2024 10-K</td><td>$93.2B</td><td class="val-pos">+$6.4B</td><td>"approximately half"</td><td>&mdash;</td></tr>
+        <tr><td>Q1 2025</td><td>$92.4B</td><td class="val-neg">&minus;$0.8B (only decline)</td><td class="val-new">"approximately 55%"</td><td>Near-term share up as total dips</td></tr>
+        <tr><td>Q2 2025</td><td>$108.2B</td><td class="val-pos">+$15.8B</td><td>"approximately 55%"</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2025</td><td>$157.7B</td><td class="val-pos">+$49.5B</td><td>"just over 55%"</td><td class="val-new">"for future services" dropped from the definition</td></tr>
+        <tr><td>FY2025 10-K</td><td>$242.8B</td><td class="val-pos">+$85.1B</td><td>"just over 50%"</td><td>Longer-dated contracts dilute the near-term share</td></tr>
+        <tr><td>Q1 2026</td><td>$467.6B ($462.3B Cloud)</td><td class="val-pos">+$224.8B</td><td>"just over 50%"</td><td class="val-new">Now includes contracts of one year or less ($7.3B); includes "multiple gigawatts of TPU hardware"</td></tr>
+        <tr><td>Q2 2026</td><td>$519.5B ($513.9B Cloud)</td><td class="val-pos">+$51.9B</td><td>"just over 50%"</td><td>$7.3B quantification dropped; first TPU system revenue recognized</td></tr>
+      </tbody>
+    </table>
+    <p>Quarterly Google Cloud revenue rose from $9.57B to $24.77B over the same period. Backlog is now about 21 times quarterly Cloud revenue, against about 7.6 times in Q1 2024.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-capex">
+  <div class="section-header"><h2>#2: Capex Language</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> No Dollar Guidance in Any Filing; "Significantly" Arrives in Q3 2025</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Capex (Period)</th><th>Forward Capex Sentence</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>$12.01B</td><td>"We expect to increase, relative to 2023, our investment in our technical infrastructure... in particular in support of AI products and services"</td></tr>
+        <tr><td>Q2 2024</td><td>$13.19B</td><td>Unchanged</td></tr>
+        <tr><td>Q3 2024</td><td>$13.06B</td><td>Unchanged</td></tr>
+        <tr><td>FY2024 10-K</td><td>$52.53B (FY)</td><td>Rolled to "relative to 2024"; trend bullet "we will invest heavily in operating and capital expenditures"</td></tr>
+        <tr><td>Q1 2025</td><td>$17.20B</td><td>"relative to 2024" unchanged</td></tr>
+        <tr><td>Q2 2025</td><td>$22.44B</td><td>Unchanged</td></tr>
+        <tr><td>Q3 2025</td><td>$23.96B</td><td class="val-new">"We expect full year 2025 capital expenditures to exceed full year 2024. In 2026, we expect to significantly increase, relative to 2025..."</td></tr>
+        <tr><td>FY2025 10-K</td><td>$91.45B (FY)</td><td class="val-new">"significantly increase" kept; purpose clause ("to support the growth of our business... AI products and services") dropped; operating costs of infrastructure "expected to significantly increase"</td></tr>
+        <tr><td>Q1 2026</td><td>$35.67B</td><td>Unchanged</td></tr>
+        <tr><td>Q2 2026</td><td>$44.93B</td><td>Unchanged; six-month capex $80.6B already 88% of FY2025. Equity proceeds earmarked for "capital expenditures to scale AI infrastructure and global compute"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-commitments">
+  <div class="section-header"><h2>#3: Commitments &amp; Unstarted Leases</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Purchase Commitments 18x; Unstarted Leases 24x</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Purchase Commitments (Short-term)</th><th>Unstarted Leases</th><th>Wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>$44.0B ($29.4B)</td><td>$3.6B</td><td>"primarily consist of purchase orders for certain technical infrastructure"</td></tr>
+        <tr><td>Q2 2024</td><td>$54.9B ($41.0B)</td><td>$5.2B</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2024</td><td>$50.8B ($31.1B)</td><td>$6.1B</td><td>&mdash;</td></tr>
+        <tr><td>FY2024 10-K</td><td>$55.4B ($32.5B)</td><td>$7.3B</td><td>Leases commence 2025&ndash;2028</td></tr>
+        <tr><td>Q1 2025</td><td>$62.1B ($41.5B)</td><td class="val-neg">$17.3B</td><td class="val-new">Leases "primarily related to data centers," to 2031; tariff cost warning</td></tr>
+        <tr><td>Q2 2025</td><td>$72.5B ($51.0B)</td><td>$23.9B</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2025</td><td>$93.7B ($72.5B)</td><td class="val-neg">$42.6B</td><td class="val-new">"energy contracts" listed first; lease purchase option included</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">$149.1B ($113.0B)</td><td>$58.5B</td><td>"energy take-or-pay contracts"; $9.9B power purchase agreement to be accounted for as a lease</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">$332.4B ($138.0B)</td><td>$75.6B</td><td class="val-new">"long-term supply agreements" $232.7B; energy terms to 2047</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">$811.0B ($200.7B)</td><td>$85.2B + $5.8B short-term lease</td><td class="val-new">Long-term $707.0B; "minimum" dropped; energy obligations through 2054; lease terms to 26 years</td></tr>
+      </tbody>
+    </table>
+    <p>At Q2 2026, commitments ($811.0B) exceed revenue backlog ($519.5B) for the first time in the window. The two are not the same measure, but the ratio flipped in one quarter: 0.71x in Q1 2026 and 1.56x in Q2 2026.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-backstops">
+  <div class="section-header"><h2>#4: Backstops &amp; Credit Support</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> From Zero to $51.4B in Four Filings</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Financial Guarantees</th><th>Credit Derivatives</th><th>Agreed, Not Yet Signed</th><th>Wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024 &ndash; Q2 2025</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>None disclosed</td></tr>
+        <tr><td>Q3 2025</td><td>&mdash;</td><td class="val-new">$6.5B max exposure</td><td>&mdash;</td><td>"backstop certain obligations relating to data center leases"; terms "up to 10 years"; 10-Q risk factors: no change</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-new">$5.7B</td><td>$16.9B</td><td>&mdash;</td><td>MD&amp;A trend: "may continue to provide additional credit support"; risk factor: "excess capacity that we cannot easily redeploy"</td></tr>
+        <tr><td>Q1 2026</td><td>$9.0B</td><td>$28.4B</td><td class="val-neg">Up to $33.3B (of which $15.3B signed in April)</td><td>Terms "up to 15 years"; tied to TPU supply agreements; named in Item 1A</td></tr>
+        <tr><td>Q2 2026</td><td>$7.6B</td><td class="val-neg">$43.8B</td><td>Estimated $24.1B</td><td>Financing risk factor lists "backstops, guarantees" alongside indebtedness</td></tr>
+      </tbody>
+    </table>
+    <p>The backstops support third-party data centers that, according to the Q1 2026 MD&amp;A, serve customers buying TPU capacity. If a counterparty defaults, Alphabet may "assume the underlying leases for internal use or to sublease to third parties."</p>
+  </div>
+</div>
+
+<div class="section" id="sig-capital">
+  <div class="section-header"><h2>#5: Buybacks &rarr; Debt &rarr; Equity</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Capital Return Stopped, Then Reversed</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Buybacks (Cash)</th><th>Dividend / Share</th><th>Notes / Debt Carrying Value</th><th>New Funding</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>$15.70B</td><td class="val-new">$0.20 (first dividend, declared Apr 2024)</td><td>$11.9B</td><td>&mdash;</td></tr>
+        <tr><td>Q2 2024</td><td>$15.68B</td><td>$0.20</td><td>$11.9B</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2024</td><td>$15.29B</td><td>$0.20</td><td>$11.9B</td><td class="val-new">$1.0B commercial paper (first)</td></tr>
+        <tr><td>FY2024 10-K</td><td>$62.22B (FY)</td><td>$0.20</td><td>$11.9B</td><td>$2.3B commercial paper</td></tr>
+        <tr><td>Q1 2025</td><td>$15.07B</td><td>$0.21 (+5%)</td><td>$11.9B</td><td>&mdash;</td></tr>
+        <tr><td>Q2 2025</td><td>$13.64B</td><td>$0.21</td><td>$24.6B</td><td class="val-new">$12.5B notes (USD + EUR); CP programme $25B</td></tr>
+        <tr><td>Q3 2025</td><td class="val-neg">$11.50B</td><td>$0.21</td><td>$23.6B</td><td>&mdash;</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">$45.71B (FY; Q4 &asymp; $5.50B)</td><td>$0.21</td><td>$48.5B</td><td>$37.3B notes in 2025</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">$0</td><td>$0.22 (+5%)</td><td>$79.1B</td><td>$31.1B notes (USD, GBP 31-year, CHF); $1.2B drawn on credit facilities</td></tr>
+        <tr><td>Q2 2026</td><td class="val-neg">$0</td><td>$0.22 + 6.25% preferred</td><td>$98.2B (long-term debt)</td><td class="val-new">$49.6B equity (incl. $10.0B Berkshire, $19.0B mandatory convertible); $40B ATM; EUR/CAD/JPY notes</td></tr>
+      </tbody>
+    </table>
+    <p>Long-term debt per XBRL: $10.88B (Dec 2024) &rarr; $46.55B (Dec 2025) &rarr; $98.17B (Jun 2026). Cash and equivalents rose from $23.47B to $55.91B over the same span. The $69.5B buyback authorization has been unused since the end of 2025.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-legal">
+  <div class="section-header"><h2>#6: Fines Paid &amp; Accrued</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Contingencies Turning Into Cash</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Key Legal Development</th><th>Cash / Accrual Disclosed</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>DOJ Search decision "expect[ed]... in 2024"; Epic remedies pending</td><td>EC fines held under bank guarantees</td></tr>
+        <tr><td>Q2 2024</td><td>Play state AG settlement funded to escrow (May 2024)</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2024</td><td>DOJ Search ruling (Aug 2024); Epic remedies (Oct 2024); ECJ upholds Shopping; AdSense fine annulled</td><td class="val-neg">$3.0B Shopping fine paid</td></tr>
+        <tr><td>FY2024 10-K</td><td>Remedies proceeding; ad-tech trial ended</td><td>&mdash;</td></tr>
+        <tr><td>Q1 2025</td><td>Ad-tech "mixed decision"; DMA preliminary findings; JFTC order</td><td>&mdash;</td></tr>
+        <tr><td>Q2 2025</td><td>Privacy settlement in principle; ad-tech remedies trial scheduled</td><td class="val-neg">$1.4B accrued (non-deductible)</td></tr>
+        <tr><td>Q3 2025</td><td>EC ad-tech decision; Search remedies (data sharing, syndication); Epic appeal denied; ACCC settlement</td><td class="val-neg">$3.5B EC fine accrued</td></tr>
+        <tr><td>FY2025 10-K</td><td>Search final judgment appealed (see annual dashboard); bank guarantees placed for ad-tech fine</td><td class="val-new">$15.6B short-term legal accruals (first aggregate)</td></tr>
+        <tr><td>Q1 2026</td><td>Epic settlement; DOJ and states cross-appeal</td><td>$15.6B</td></tr>
+        <tr><td>Q2 2026</td><td>PriceRunner damages; Android EC fine final; Epic settlement motion withdrawn</td><td class="val-neg">$17.4B; $2.1B PriceRunner accrued; $5.2B Android paid July 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="sig-rf">
+  <div class="section-header"><h2>#7: Risk-Factor Update Cadence</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Silent Through 2025, Then Rewritten</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Item 1A Length (chars)</th><th>Material Changes Disclosed</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 2024</td><td>4,702</td><td>Cookie phase-out timing; new dividend/buyback risk; stock volatility</td></tr>
+        <tr><td>Q2 2024</td><td>2,613</td><td>Cookies: "proposed user choice model"</td></tr>
+        <tr><td>Q3 2024</td><td>5,966</td><td>New antitrust risk factor: DOJ ruling, Epic remedies, "including divestiture"</td></tr>
+        <tr><td>FY2024 10-K</td><td>83,063 (full)</td><td>AI accelerator supply constraints; useful lives; ESG heading removed</td></tr>
+        <tr><td>Q1 2025</td><td class="val-neg">584</td><td class="val-neg">None</td></tr>
+        <tr><td>Q2 2025</td><td class="val-neg">584</td><td class="val-neg">None (first bond issue, $1.4B settlement in the same filing)</td></tr>
+        <tr><td>Q3 2025</td><td class="val-neg">584</td><td class="val-neg">None (first data-center backstops, 2026 capex step-up in the same filing)</td></tr>
+        <tr><td>FY2025 10-K</td><td>84,929 (full)</td><td class="val-new">Leasing/overbuild ("excess capacity"); "AI is quickly reshaping the advertising industry"; cookie language removed</td></tr>
+        <tr><td>Q1 2026</td><td>6,159</td><td>Investment risk rewritten around custom hardware supply and backstops</td></tr>
+        <tr><td>Q2 2026</td><td class="val-new">16,565</td><td class="val-new">Financing and indebtedness; ATM and preferred dilution; buybacks "in the near term or at all"; privacy/DMA reprinted</td></tr>
+      </tbody>
+    </table>
+    <p>Each 10-Q's Item 1A lists only changes since the prior report, so a short section means no updates, not a short risk list. 2025 is the gap: the notes added debt, backstops and capacity leases every quarter while Item 1A stayed unchanged.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-sustain">
+  <div class="section-header"><h2>#8: Sustainability &amp; Tax Hedges</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> Sustainability Links Removed, Energy Obligations Added</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Sustainability Language</th><th>Pillar Two / Tax Hedge</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 &ndash; Q3 2024</td><td>Credit-facility rates tied to "progress toward the achievement of certain sustainability goals"; forward-looking bullet "our long-term sustainability goals"</td><td>"we expect our effective tax rate and cash tax payments could increase in future years" (MD&amp;A and forward-looking list)</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-neg">ESG risk factor heading deleted; "diversity" dropped</td><td class="val-neg">MD&amp;A sentence deleted; forward-looking bullet kept</td></tr>
+        <tr><td>Q1 2025</td><td class="val-neg">Credit facilities replaced; sustainability pricing link dropped</td><td>Forward-looking bullet kept</td></tr>
+        <tr><td>Q2 2025</td><td>&mdash;</td><td class="val-neg">Forward-looking bullet deleted; OBBBA enacted</td></tr>
+        <tr><td>Q3 2025</td><td>"energy contracts" lead the commitments list</td><td>OBBBA expensing lifts operating cash flow</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">"long-term sustainability goals" bullet deleted; "energy take-or-pay contracts"</td><td class="val-new">"could increase" returns, with the OECD Side-by-Side Safe Harbor</td></tr>
+        <tr><td>Q1 2026</td><td>Intersect ("developer of renewable energy") consolidated; energy agreements to 2047</td><td class="val-pos">Softened to "could be affected"</td></tr>
+        <tr><td>Q2 2026</td><td>Energy obligations through 2054</td><td>"could be affected" unchanged; tax rate up on deferred tax for unrealized gains</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. From Buyback Machine to Capital Raiser in Nine Quarters</h3>
+      <p>Q1 2024 opened with $15.7B of quarterly repurchases, $11.9B of notes and a newly launched dividend. Commercial paper followed in Q3 2024, the first bond issue in May 2025, $37.3B of notes in 2025 and $31.1B more in Q1 2026, with buybacks falling to zero. Q2 2026 added a $49.6B equity raise, a mandatory convertible preferred and a $40B ATM. The buyback risk factor now says repurchases may not happen "in the near term or at all." Most steps appeared first in the debt and equity notes, not in Item 1A.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. The Backlog and the Commitments Raced; Commitments Pulled Ahead</h3>
+      <p>Revenue backlog went from $72.5B to $519.5B, almost all of it Google Cloud and including TPU hardware sales from Q1 2026. Purchase commitments went from $44.0B to $811.0B, unstarted data-center leases from $3.6B to $85.2B, and third-party backstops from zero to $51.4B. In Q2 2026 commitments exceeded backlog for the first time. The risk factors added "excess capacity that we cannot easily redeploy" only in the FY2025 10-K.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. Notes Moved, Risk Factors Lagged</h3>
+      <p>All three 2025 10-Qs reported no material risk-factor changes. Over the same quarters the notes added a $32.0B acquisition, the first bond issue, a $1.4B privacy settlement, a $3.5B EC fine, a 2026 capex step-up and the first data-center backstops. The backlog definition and the commitments definition were each rewritten mid-year. Quarterly reading of the notes, not Item 1A, is where the balance-sheet shift showed up first.</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Legal Exposure Became Cash</h3>
+      <p>The annual dashboard tracks the DOJ arc from ruling to appeal. The quarterly filings show the payments: $3.0B for Shopping (Q3 2024), a $1.4B privacy accrual (Q2 2025), $3.5B for ad tech (Q3 2025), a first aggregate accrual of $15.6B (FY2025), and $2.1B PriceRunner plus $5.2B Android in Q2 2026, when accruals reached $17.4B. Private follow-on claims after regulatory findings are now a named category.</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Sustainability Out, Energy In</h3>
+      <p>The sustainability-linked credit facility was terminated three years early (Q1 2025), the ESG risk heading (FY2024) and "long-term sustainability goals" bullet (FY2025) were deleted, and Pillar Two warnings were softened. Energy meanwhile moved from an indeterminable footnote to the first item in the commitments list, then to take-or-pay contracts through 2054, a renewable developer acquisition (Intersect) and power-equipment guarantees. This extends the annual dashboard's "Sustainability Disappeared" theme with dates.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <p style="font-size:13px; color:var(--text-dim);">Revenue, operating income, net income, EPS, capex, operating cash flow and buybacks from SEC XBRL (quarterly values derived from year-to-date where only YTD is tagged). Google Cloud, backlog, employees and tax rate from the filing text.</p>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Revenue (YoY)</th>
+        <th>Op. Income</th>
+        <th>Net Income</th>
+        <th>Diluted EPS</th>
+        <th>Cloud Rev. (YoY)</th>
+        <th>Cloud Op. Inc.</th>
+        <th>ETR</th>
+        <th>Employees</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q1 2024</strong></td><td>$80.54B (+15%)</td><td>$25.47B</td><td>$23.66B</td><td>$1.89</td><td>$9.57B (+28%)</td><td>$0.90B</td><td>16.4%</td><td>180,895</td></tr>
+      <tr><td><strong>Q2 2024</strong></td><td>$84.74B (+14%)</td><td>$27.43B</td><td>$23.62B</td><td>$1.89</td><td>$10.35B (+29%)</td><td>$1.17B</td><td>14.3%</td><td>179,582</td></tr>
+      <tr><td><strong>Q3 2024</strong></td><td>$88.27B (+15%)</td><td>$28.52B</td><td>$26.30B</td><td>$2.12</td><td>$11.35B (+35%)</td><td>$1.95B</td><td>17.0%</td><td>181,269</td></tr>
+      <tr><td><strong>FY2024 10-K</strong></td><td>$350.02B (+14%)</td><td>$112.39B</td><td>$100.12B</td><td>$8.04</td><td>$43.23B (+31%)</td><td>$6.11B</td><td>16.4%</td><td>183,323</td></tr>
+      <tr><td><strong>Q1 2025</strong></td><td>$90.23B (+12%)</td><td>$30.61B</td><td>$34.54B</td><td>$2.81</td><td>$12.26B (+28%)</td><td>$2.18B</td><td>17.3%</td><td>185,719</td></tr>
+      <tr><td><strong>Q2 2025</strong></td><td>$96.43B (+14%)</td><td>$31.27B</td><td>$28.20B</td><td>$2.31</td><td>$13.62B (+32%)</td><td>$2.83B</td><td>16.9%</td><td>187,103</td></tr>
+      <tr><td><strong>Q3 2025</strong></td><td>$102.35B (+16%)</td><td>$31.23B</td><td>$34.98B</td><td>$2.87</td><td>$15.16B (+34%)</td><td>$3.59B</td><td class="val-neg">20.5%</td><td>190,167</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>$402.84B (+15%)</td><td>$129.04B</td><td>$132.17B</td><td>$10.81</td><td>$58.71B (+36%)</td><td>$13.91B</td><td>16.8%</td><td>190,820</td></tr>
+      <tr><td><strong>Q1 2026</strong></td><td>$109.90B (+22%)</td><td>$39.70B</td><td>$62.58B</td><td>$5.11</td><td class="val-pos">$20.03B (+63%)</td><td>$6.60B</td><td>19.2%</td><td>194,668</td></tr>
+      <tr><td><strong>Q2 2026</strong></td><td>$119.80B (+24%)</td><td>$40.77B</td><td class="val-new">$112.19B</td><td>$9.11</td><td class="val-pos">$24.77B (+82%)</td><td>$8.81B</td><td>19.1%</td><td>198,933</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px; font-weight:700; margin:28px 0 4px;">Cash Flow, Balance Sheet &amp; Forward Obligations (Q1 2024 &ndash; Q2 2026)</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Op. Cash Flow</th>
+        <th>Capex</th>
+        <th>Buybacks</th>
+        <th>Cash &amp; Equiv.</th>
+        <th>Notes / LT Debt</th>
+        <th>Backlog</th>
+        <th>Purchase Commitments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q1 2024</strong></td><td>$28.85B</td><td>$12.01B</td><td>$15.70B</td><td>$24.49B</td><td>$11.9B</td><td>$72.5B</td><td>$44.0B</td></tr>
+      <tr><td><strong>Q2 2024</strong></td><td>$26.64B</td><td>$13.19B</td><td>$15.68B</td><td>$27.23B</td><td>$11.9B</td><td>$78.8B</td><td>$54.9B</td></tr>
+      <tr><td><strong>Q3 2024</strong></td><td>$30.70B</td><td>$13.06B</td><td>$15.29B</td><td>$19.96B</td><td>$11.9B</td><td>$86.8B</td><td>$50.8B</td></tr>
+      <tr><td><strong>FY2024 10-K</strong></td><td>$125.30B</td><td>$52.53B</td><td>$62.22B</td><td>$23.47B</td><td>$11.9B</td><td>$93.2B</td><td>$55.4B</td></tr>
+      <tr><td><strong>Q1 2025</strong></td><td>$36.15B</td><td>$17.20B</td><td>$15.07B</td><td>$23.26B</td><td>$11.9B</td><td>$92.4B</td><td>$62.1B</td></tr>
+      <tr><td><strong>Q2 2025</strong></td><td>$27.75B</td><td>$22.44B</td><td>$13.64B</td><td>$21.04B</td><td>$24.6B</td><td>$108.2B</td><td>$72.5B</td></tr>
+      <tr><td><strong>Q3 2025</strong></td><td>$48.41B</td><td>$23.96B</td><td>$11.50B</td><td>$23.09B</td><td>$23.6B</td><td>$157.7B</td><td>$93.7B</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>$164.71B</td><td>$91.45B</td><td>$45.71B</td><td>$30.71B</td><td>$48.5B</td><td>$242.8B</td><td>$149.1B</td></tr>
+      <tr><td><strong>Q1 2026</strong></td><td>$45.79B</td><td>$35.67B</td><td class="val-neg">$0</td><td>$38.06B</td><td>$79.1B</td><td>$467.6B</td><td>$332.4B</td></tr>
+      <tr><td><strong>Q2 2026</strong></td><td>$39.07B</td><td class="val-neg">$44.93B</td><td class="val-neg">$0</td><td>$55.91B</td><td>$98.2B</td><td>$519.5B</td><td class="val-neg">$811.0B</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      if (el.classList.contains('finding')) findings.push(el);
+      if (el.classList.contains('finding-group')) el.querySelectorAll('.finding').forEach(f => findings.push(f));
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+</script>
+</body>
+</html>
