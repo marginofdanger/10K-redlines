@@ -44,7 +44,7 @@ SECTIONS = {
              ("risk_factors", "1A", r"risk\s+factors", 1)],
 }
 # Notes some 10-Q filers use instead of a substantive Part II Item 1.
-CONTINGENCIES_NOTE = {"amzn": "COMMITMENTS AND CONTINGENCIES"}
+CONTINGENCIES_NOTE = {"amzn": "COMMITMENTS AND CONTINGENCIES", "unh": "Commitments and Contingencies"}
 # Sections a filer incorporates by reference from an exhibit (the main document holds a
 # pointer). raw/<t>_10k_fy<YYYY>_ex13.htm is fetched by check_new_filings.py download.
 EXHIBIT_SECTIONS = {
@@ -163,11 +163,19 @@ def extract(lines, form):
 
 
 NOTE_HEADING = re.compile(r"(Note \d+\s*[\u2014\u2013\-:.]\s*)?[A-Z][A-Z0-9 &',\-()]{3,}")
+# Title-case numbered notes on one line ("7. Commitments and Contingencies", UNH).
+NUMBERED_NOTE = re.compile(r"\d{1,2}\.\s+[A-Z][A-Za-z0-9 &',\-()\u2019]{3,80}")
 
 
 def find_note(lines, heading):
-    """A financial-statement note, from its heading ("Note 4 \u2014 COMMITMENTS AND CONTINGENCIES")
-    to the next note heading."""
+    """A financial-statement note, from its heading ("Note 4 \u2014 COMMITMENTS AND CONTINGENCIES"
+    or "7. Commitments and Contingencies") to the next note heading."""
+    for i, l in enumerate(lines):
+        if l.endswith(heading) and not heading.isupper() and NUMBERED_NOTE.fullmatch(l):
+            for j in range(i + 1, len(lines)):
+                if NUMBERED_NOTE.fullmatch(lines[j]):
+                    return "\n".join(lines[i:j])
+            return "\n".join(lines[i:])
     for i, l in enumerate(lines):
         if l.endswith(heading) and NOTE_HEADING.fullmatch(l):
             for j in range(i + 1, len(lines)):
