@@ -5,8 +5,8 @@
   python scripts/check_new_filings.py fetch URL DEST       # download a filing document
   python scripts/check_new_filings.py mark TICKER annual|quarterly REPORT_DATE [--dashboard PATH]
 
-State lives in automation/tracked.json. Set SEC_USER_AGENT to a "Name email" contact
-string if EDGAR starts rejecting requests (SEC fair-access policy asks for one).
+State lives in automation/tracked.json. SEC_USER_AGENT must be set to "<name> <contact email>"
+(SEC fair-access policy; www.sec.gov refuses requests without it).
 """
 import argparse, json, os, sys, time, urllib.error, urllib.request
 from datetime import date, timedelta
@@ -14,7 +14,10 @@ from datetime import date, timedelta
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(ROOT, "automation", "tracked.json")
 # www.sec.gov rejects agents without a contact email; both hosts reject agents containing a URL.
-UA = os.environ.get("SEC_USER_AGENT", "marginofdanger 10K-redlines adrianow@gmail.com")
+# The email comes from the environment so it stays out of this public repo.
+UA = os.environ.get("SEC_USER_AGENT", "")
+if "@" not in UA:
+    sys.exit('Set SEC_USER_AGENT to "<name> <contact email>"; SEC refuses downloads without one.')
 SCANNER_QUARTERS = 8
 
 _last_request = 0.0

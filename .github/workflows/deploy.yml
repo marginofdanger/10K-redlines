@@ -49,11 +49,20 @@ jobs:
               --template-button "Unlock"
           done
 
+      # Publish only the encrypted pages; scripts, ledger and runbook are not for the public site.
+      - name: Collect site files
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*' \
+            -not -path './scripts/*' -not -path './.claude/*' -not -name 'password_template.html' \
+            -exec cp --parents {} "$RUNNER_TEMP/site/" \;
+          find "$RUNNER_TEMP/site" -type f | sort
+
       - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: '.'
+          path: ${{ runner.temp }}/site
 
       # actions/deploy-pages intermittently returns "Deployment failed, try again
       # later" (a transient GitHub Pages API failure). Retry up to 3x within the run
