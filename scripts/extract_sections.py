@@ -84,11 +84,16 @@ def clean_lines(path):
         tag.decompose()
     for t in soup.find_all(style=re.compile(r"display\s*:\s*none", re.I)):
         t.decompose()  # inline-XBRL hidden header
+    for tr in soup.find_all("tr"):
+        # one line per table row, cells separated by " | ", so figures stay with their labels
+        # (a bare number on its own line would be dropped as a page number)
+        cells = [re.sub(r"\s+", " ", c.get_text(" ")).strip() for c in tr.find_all(["td", "th"])]
+        cells = [c for c in cells if c and c not in ("$", "%", ")")]
+        tr.clear()
+        tr.append(" | ".join(cells))
     for t in soup.find_all(BLOCK):
         t.insert_before("\n")
         t.insert_after("\n")
-    for t in soup.find_all(["td", "th"]):
-        t.insert_after(" ")
     lines = [re.sub(r"\s+", " ", l.replace("\xa0", " ")).strip() for l in soup.get_text("").split("\n")]
     return reflow([l for l in lines if l])
 
@@ -340,7 +345,7 @@ def main(folder):
                 warns.append(f"WARN {name}: {p} NOT FOUND")
     for w in warns:
         print(w)
-    return 1 if warns else 0
+    return 0  # warnings are for the reader; a non-zero exit would stop "extract && make_diffs" chains
 
 
 if __name__ == "__main__":
