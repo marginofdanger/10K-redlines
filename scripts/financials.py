@@ -22,9 +22,62 @@ METRICS = [  # label, candidate concepts (first one with data wins), instant?
     ("Capex", ["PaymentsToAcquirePropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets",
                "PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"], False),
     ("Buybacks", ["PaymentsForRepurchaseOfCommonStock"], False),
+    ("Dividends paid", ["PaymentsOfDividends", "PaymentsOfDividendsCommonStock"], False),
+    ("Stock-based comp", ["ShareBasedCompensation", "AllocatedShareBasedCompensationExpense"], False),
+    ("Pre-tax income", ["IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+                        "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+                        "ProfitLossBeforeTax"], False),
+    ("Income tax", ["IncomeTaxExpenseBenefit", "IncomeTaxExpenseContinuingOperations"], False),
+    ("Interest expense", ["InterestExpense", "InterestExpenseNonoperating", "InterestExpenseDebt"], False),
+    ("Goodwill impairment", ["GoodwillImpairmentLoss"], False),
+    ("Diluted shares", ["WeightedAverageNumberOfDilutedSharesOutstanding"], False),
     ("Cash & equivalents", ["CashAndCashEquivalentsAtCarryingValue", "CashAndCashEquivalents"], True),
+    ("Receivables", ["AccountsReceivableNetCurrent", "ReceivablesNetCurrent", "TradeAndOtherCurrentReceivables"], True),
+    ("Inventory", ["InventoryNet", "Inventories"], True),
+    ("Deferred revenue", ["ContractWithCustomerLiabilityCurrent", "DeferredRevenueCurrent"], True),
     ("Long-term debt", ["LongTermDebtNoncurrent", "LongTermDebt", "NoncurrentPortionOfNoncurrentBondsIssued"], True),
+    ("Tax valuation allowance", ["DeferredTaxAssetsValuationAllowance"], True),
+    ("Purchase obligations", ["UnrecordedUnconditionalPurchaseObligationBalanceSheetAmount", "PurchaseObligation"], True),
+    ("Guarantees (max exposure)", ["GuaranteeObligationsMaximumExposure"], True),
 ]
+
+
+def derived(rows, ends, quarterly):
+    """Ratios an analyst checks first. Each is computed only when its inputs share a basis
+    (a year-to-date 10-Q cash flow is never divided by a three-month figure)."""
+    def v(label, e):
+        x = rows[label][1].get(e)
+        return (x[0], x[2]) if x else (None, None)
+
+    out = {}
+    def put(name, e, val):
+        if val is not None:
+            out.setdefault(name, {})[e] = val
+    for e in ends:
+        ocf, n1 = v("Operating cash flow", e); capex, n2 = v("Capex", e)
+        ni, n3 = v("Net income", e); sbc, n4 = v("Stock-based comp", e)
+        rev, n5 = v("Revenue", e); ar, _ = v("Receivables", e)
+        pre, n6 = v("Pre-tax income", e); tax, n7 = v("Income tax", e)
+        if ocf is not None and capex is not None and n1 == n2:
+            fcf = ocf - capex
+            put("Free cash flow" + (" (ytd)" if n1 else ""), e, ("money", fcf))
+            if ni and n1 == n3:
+                put("FCF / net income", e, ("ratio", fcf / ni))
+        if sbc is not None and ocf and n4 == n1:
+            put("SBC / operating cash flow", e, ("ratio", sbc / ocf))
+        if ar is not None and rev and not n5:
+            put("Days sales outstanding", e, ("days", ar / rev * (91 if quarterly else 365)))
+        if tax is not None and pre and n6 == n7:
+            put("Effective tax rate", e, ("ratio", tax / pre))
+    sh = rows["Diluted shares"][1]
+    for p, e in zip(ends, ends[1:]):
+        if p in sh and e in sh and sh[p][0]:
+            put("Diluted shares change", e, ("ratio", sh[e][0] / sh[p][0] - 1))
+    return out
+
+
+def fmt_derived(kind, x):
+    return {"money": lambda: fmt(x, "USD"), "ratio": lambda: f"{x * 100:.1f}%", "days": lambda: f"{x:.0f}d"}[kind]()
 
 
 def days(r):
@@ -93,7 +146,7 @@ def main():
         rows = {label: series(facts, concepts, instant, view == "quarterly") for label, concepts, instant in METRICS}
         flow_ends = sorted({e for label, (_, s_) in rows.items() for e, v in s_.items()
                             if label in ("Revenue", "Net income") and not v[2]})[-n:]
-        result[view] = {"period_ends": flow_ends,
+        result[view] = {"period_ends": flow_ends, "derived": derived(rows, flow_ends, view == "quarterly"),
                         "rows": {label: {"concept": c, "values": {e: s_[e] for e in flow_ends if e in s_}}
                                  for label, (c, s_) in rows.items()}}
     if a.json:
@@ -104,10 +157,22 @@ def main():
           f"the only basis the 10-Q reports)")
     for view, v in result.items():
         print(f"\n{view} (period end)")
-        print(f"{'':<22}" + "".join(f"{e:>15}" for e in v["period_ends"]))
+        print(f"{'':<26}" + "".join(f"{e:>15}" for e in v["period_ends"]))
         for label, r in v["rows"].items():
             cells = [fmt(*r["values"][e]) if e in r["values"] else "-" for e in v["period_ends"]]
-            print(f"{label:<22}" + "".join(f"{c:>15}" for c in cells) + f"   [{r['concept'] or 'not tagged'}]")
+            print(f"{label:<26}" + "".join(f"{c:>15}" for c in cells) + f"   [{r['concept'] or 'not tagged'}]")
+        print(f"\n{view} derived (! = moved more than 20% vs the prior column: find the sentence that explains it)")
+        for name, vals in v["derived"].items():
+            cells, prev = [], None
+            for e in v["period_ends"]:
+                if e not in vals:
+                    cells.append("-"); continue
+                kind, x = vals[e]
+                flag = "" if "(ytd)" in name else "!" if prev is not None and prev != 0 and abs(x / prev - 1) > 0.2 and kind != "ratio" or \
+                    (kind == "ratio" and prev is not None and abs(x - prev) > 0.05 and name != "Diluted shares change") else ""
+                cells.append(fmt_derived(kind, x) + flag)
+                prev = x
+            print(f"{name:<26}" + "".join(f"{c:>15}" for c in cells))
 
 
 if __name__ == "__main__":

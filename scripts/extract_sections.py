@@ -43,8 +43,21 @@ SECTIONS = {
     "10-Q": [("mda", "2", r"management", 500), ("legal_proceedings", "1", r"legal\s+proceedings", 1),
              ("risk_factors", "1A", r"risk\s+factors", 1)],
 }
-# Notes some 10-Q filers use instead of a substantive Part II Item 1.
-CONTINGENCIES_NOTE = {"amzn": "COMMITMENTS AND CONTINGENCIES", "unh": "Commitments and Contingencies"}
+# The contingencies note, extracted for every filer (legal and guarantee disclosures often live
+# only here). Headings tried in order; a ticker entry overrides the defaults.
+CONTINGENCIES_NOTE = {"amzn": ["COMMITMENTS AND CONTINGENCIES"], "unh": ["Commitments and Contingencies"]}
+CONTINGENCY_HEADINGS = ["COMMITMENTS AND CONTINGENCIES", "Commitments and Contingencies",
+                        "COMMITMENTS, CONTINGENCIES AND GUARANTEES", "Commitments, Contingencies and Guarantees",
+                        "CONTINGENCIES", "Contingencies", "Commitments and Contingent Liabilities",
+                        "LEGAL PROCEEDINGS AND CONTINGENCIES", "Legal Proceedings"]
+# MD&A sub-sections redlined on their own: they hold the commitments, funding and judgment
+# calls that a long results discussion buries. Each runs to the next top-level MD&A heading.
+MDA_SUBSECTIONS = {"mda_liquidity": r"liquidity and capital resources",
+                   "mda_critical_estimates": r"critical accounting (policies and )?(estimates|policies)"}
+MDA_TOP = re.compile(r"(overview|executive (overview|summary)|results of operations|liquidity and capital resources|"
+                     r"critical accounting|recent(ly)? (issued |adopted )?accounting|non-gaap|contractual obligations|"
+                     r"off-balance sheet|segment (results|information|operating)|business outlook|forward-looking|"
+                     r"market risk|quantitative and qualitative)", re.I)
 # Sections a filer incorporates by reference from an exhibit (the main document holds a
 # pointer). raw/<t>_10k_fy<YYYY>_ex13.htm is fetched by check_new_filings.py download.
 EXHIBIT_SECTIONS = {
@@ -53,6 +66,7 @@ EXHIBIT_SECTIONS = {
             "market_risk": (r"Quantitative Market Risk Disclosures", r"Online Annual Report")},
 }
 MAX_SPAN = 400_000
+OPTIONAL = {"subsequent_events", "mda_critical_estimates", "mda_liquidity", "contingencies"}
 
 ITEM_LINE = re.compile(r"^items?\s*(\d{1,2}[A-D]?)\b\s*[\.:\-—–,]?\s*(.*)$", re.I)
 
@@ -128,7 +142,7 @@ def headings(lines, titles):
     return found
 
 
-FURNITURE = re.compile(r"(\d{1,3}|[ivxl]{1,5}|-\s*\d{1,3}\s*-|table of contents|page|app\.-[a-z]-\d+|index)$", re.I)
+FURNITURE = re.compile(r"(\d{1,3}|f-\d{1,3}|[ivxl]{1,5}|-\s*\d{1,3}\s*-|table of contents|page|app\.-[a-z]-\d+|index)$", re.I)
 
 
 def tidy(text, heading_line):
@@ -207,6 +221,64 @@ def find_note(lines, heading):
     return ""
 
 
+NOTES_START = re.compile(r"notes to (the )?(unaudited )?(condensed )?(consolidated )?(financial statements|statements)", re.I)
+NOTE_HEAD = re.compile(r"(?:note\s+)?(\d{1,2})\s*[\.:\u2014\u2013\-]\s*([A-Za-z].{2,140})", re.I)
+
+
+def notes(lines):
+    """The notes to the financial statements, wherever they sit (Item 8, Part I Item 1, or F-pages
+    at the back), split on sequentially numbered note headings. Returns (all notes, {n: (title, text)})."""
+    best = (0, None)
+    for i, l in enumerate(lines):
+        if len(l) < 120 and NOTES_START.match(l):
+            m = next((NOTE_HEAD.fullmatch(x) for x in lines[i + 1:i + 6] if NOTE_HEAD.fullmatch(x or "")), None)
+            if m and m.group(1) == "1":
+                # count how many sequential notes follow; the real block has the longest run
+                n, k = 1, i + 1
+                for j in range(i + 1, len(lines)):
+                    h = NOTE_HEAD.fullmatch(lines[j])
+                    if h and int(h.group(1)) == n + 1 and "continued" not in lines[j].lower():
+                        n += 1
+                    if ITEM_LINE.match(lines[j]) and j > i + 50:
+                        break
+                    k = j
+                if n > best[0]:
+                    best = (n, (i, k))
+    if not best[1]:
+        return "", {}
+    i, k = best[1]
+    body, parts, cur = [], {}, None
+    for l in lines[i:k + 1]:
+        h = NOTE_HEAD.fullmatch(l)
+        low = l.lower()
+        if "(continued)" in low or (NOTES_START.match(l) and len(l) < 120 and body):
+            continue  # running page headers
+        if h and int(h.group(1)) == (cur or 0) + 1:
+            cur = int(h.group(1))
+            parts[cur] = [h.group(2).strip(), []]
+        if FURNITURE.fullmatch(l):
+            continue
+        body.append(l)
+        if cur:
+            parts[cur][1].append(l)
+    return "\n".join(body), {n: (t, "\n".join(x)) for n, (t, x) in parts.items()}
+
+
+def mda_subsections(mda):
+    lines = mda.split("\n")
+    out = {}
+    for name, rx in MDA_SUBSECTIONS.items():
+        starts = [i for i, l in enumerate(lines) if len(l) < 90 and re.match(rx, l, re.I)]
+        best = ""
+        for i in starts:  # the body heading has the longest run; earlier hits are in-text overviews
+            j = next((k for k in range(i + 1, len(lines)) if len(lines[k]) < 90 and MDA_TOP.match(lines[k])
+                      and not re.match(rx, lines[k], re.I)), len(lines))
+            if j - i > best.count("\n") + 1:
+                best = "\n".join(lines[i:j])
+        out[name] = best
+    return out
+
+
 def from_exhibit(lines, start_rx, end_rx):
     for i, l in enumerate(lines):
         if re.fullmatch(start_rx, l, re.I):
@@ -239,8 +311,19 @@ def main(folder):
             full += ex_lines
         with open(os.path.join(out_dir, f"{period}_full.txt"), "w", encoding="utf-8") as f:
             f.write("\n".join(full))
-        if form == "10-Q" and ticker in CONTINGENCIES_NOTE:
-            secs["contingencies"] = find_note(lines, CONTINGENCIES_NOTE[ticker])
+        if form in ("10-K", "10-Q"):
+            all_notes, by_num = notes(lines)
+            secs["notes"] = all_notes
+            pick = lambda rx: next((t for n, (title, t) in sorted(by_num.items()) if re.search(rx, title, re.I)), "")
+            secs["contingencies"] = pick(r"contingenc") or pick(r"commitments") or pick(r"legal")
+            secs["subsequent_events"] = pick(r"subsequent event")
+            if not secs["contingencies"]:
+                for h in CONTINGENCIES_NOTE.get(ticker, CONTINGENCY_HEADINGS):
+                    secs["contingencies"] = find_note(lines, h)
+                    if secs["contingencies"]:
+                        break
+        if secs.get("mda"):
+            secs.update(mda_subsections(secs["mda"]))
         for name, text in secs.items():
             with open(os.path.join(out_dir, f"{period}_{name}.txt"), "w", encoding="utf-8") as f:
                 f.write(text)
@@ -253,7 +336,7 @@ def main(folder):
             if n1 > 3 * n0 or n0 > 3 * n1:
                 warns.append(f"WARN {name}: {p0} {n0:,} -> {p1} {n1:,} chars (>3x change; check boundaries)")
         for p, n in series:
-            if n == 0:
+            if n == 0 and name not in OPTIONAL:
                 warns.append(f"WARN {name}: {p} NOT FOUND")
     for w in warns:
         print(w)

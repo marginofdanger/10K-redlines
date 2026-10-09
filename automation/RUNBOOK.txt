@@ -8,9 +8,11 @@ https://marginofdanger.github.io/10K-redlines/ by .github/workflows/deploy.yml.
 The repository is public. Never write the SEC contact email (SEC_USER_AGENT)
 into any file, commit message or page.
 
-What the reader wants from a dashboard: the handful of wording changes in a
-filing that reveal something management did not say outright, each one
-quoted exactly, before and after, with a sentence on why it matters. A finding
+What the reader wants from a dashboard: the disclosures in a filing that
+should change an investor's view of the business, up or down, on fundamentals.
+Wording changes are the evidence, not the point. Each finding is quoted
+exactly, before and after, says which part of the investment case it touches
+and how much it matters, and says what the next filing must show. A finding
 the reader could have got from the press release is not a finding.
 
 Setup, every session:
@@ -45,94 +47,161 @@ and also fetches exhibits a filer incorporates by reference (PGR's EX-13).
 For a 10-Q, also download the latest 10-K: the first 10-Q after a fiscal year
 end is compared against that 10-K, and make_diffs interleaves it after Q3.
 
-extract_sections prints each section's length and WARN lines. A WARN means a
-section is missing or changed size more than 3x against the previous period.
-Open the section file and look at its first and last lines. If the boundary
-is wrong, fix scripts/extract_sections.py (one generic extractor for all
-companies, with a small override table for genuine quirks), re-run, and
-mention the fix in the commit. If the text really did change that much (a
-new lawsuit, a rewritten risk-factor section), that is a finding.
+extract_sections writes, per period: business, risk_factors, properties,
+legal_proceedings, mda, market_risk (10-K) or mda, risk_factors,
+legal_proceedings (10-Q), and for both forms:
+  notes                   all notes to the financial statements
+  contingencies           the commitments / contingencies note
+  subsequent_events       the subsequent-events note, when there is one
+  mda_liquidity           MD&A "Liquidity and Capital Resources"
+  mda_critical_estimates  MD&A "Critical Accounting Estimates", when present
+It prints each section's length and WARN lines. A WARN means a section is
+missing or changed size more than 3x against the previous period. Open the
+file and look at its first and last lines. If the boundary is wrong, fix
+scripts/extract_sections.py (one generic extractor, with a small override
+table for genuine quirks), re-run, and mention the fix in the commit. If the
+text really did change that much (a new lawsuit, a rewritten section), that
+is a finding.
+
+Redlines list numbers-only changes (same words, new figures) separately at
+the end of each file. Most are roll-forwards; scan them for a figure that
+moved enough to matter.
 
     python scripts/financials.py <TICKER> --years 3 --quarters 6
 
-gives the reported figures from SEC XBRL (revenue, operating income, net
-income, EPS, operating cash flow, capex, buybacks, cash, long-term debt) by
-period end. Use these for every number in transition headers and financial
-reference tables. If a figure isn't tagged (some 20-Fs lag), take it from the
-filing text and quote it.
+gives reported XBRL figures by period end (income statement, cash flow,
+buybacks, dividends, stock comp, tax, interest, diluted shares, cash,
+receivables, inventory, deferred revenue, debt, valuation allowance, purchase
+obligations, guarantees) and derived ratios: free cash flow, FCF / net
+income, SBC / operating cash flow, days sales outstanding, effective tax rate
+and diluted share change. A "!" marks a ratio that moved sharply: find the
+sentence in the filing that explains it, or note that none does. Use these
+figures for every number in transition headers and reference tables. If a
+figure isn't tagged, take it from the filing text and quote it.
 
 
 3. ANALYZE
 ----------
 Read, in this order:
-  a. the dashboard as it stands: its tracked signals, the prior transition's
-     findings and its themes. You are continuing an argument, not starting one.
-  b. diffs/*.redline.txt for the new transition. Each paragraph-level change is
-     shown word by word: [-deleted-] {+inserted+}. The header counts paragraphs
-     added/removed/changed/moved and modal/hedging word shifts per section.
-  c. the full new section files, not just the diffs: a sentence that did not
-     change can matter because of what changed around it, and deletions read
-     differently in context.
+  a. companies/<t>/thesis.txt: the investment case as 5-8 pillars, each with
+     its current stance and what tests it. If it does not exist, write it
+     first from the dashboard's themes and tracked signals, and commit it.
+  b. the dashboard as it stands: tracked signals, the stated-targets table,
+     the prior transition's findings and themes. You are continuing an
+     argument, not starting one.
+  c. the redlines, in this order: notes, contingencies, subsequent_events,
+     mda_liquidity, mda_critical_estimates, mda, risk_factors,
+     legal_proceedings, then business. Most thesis-changing disclosures
+     (guarantees, commitments, tax items, related parties, covenant changes)
+     are in the notes and MD&A liquidity, not the Business section.
+  d. the full new section files where a change needs context.
 
-What counts as a signal (strongest first):
+Then answer these questions from the new filing, one line each, citing the
+note or MD&A sub-heading. Write the answers to
+companies/<t>/<10q/>fundamentals/<period>.txt and commit them with the page.
+A material change in any answer from the prior period is a finding, whatever
+the redline looks like.
+  1. Earnings quality: how much of net income is non-operating or one-off
+     (tax valuation allowance releases, gains on sales, fair-value marks,
+     PIK interest, legal accruals, catch-up payments)?
+  2. Cash conversion: operating cash flow vs net income, and what drove the
+     gap (working capital, receivables/DSO, deferred revenue, payment terms).
+  3. Capital allocation: capex, buybacks, dividends, M&A, equity issuance;
+     did the stated funding source or priority change?
+  4. Off-balance-sheet and contingent exposure: guarantees, purchase and
+     supply commitments, leases not yet commenced, VIEs, tax receivable
+     agreements, earn-outs; amounts vs the prior period.
+  5. Concentration: customers, suppliers, distributors, geographies, payers,
+     with percentages.
+  6. Accounting judgments: new or changed critical estimates, useful lives,
+     reserve development, metric or segment redefinitions, restatements,
+     revenue-recognition basis.
+  7. Related parties and insiders: related-party payments, insider trading
+     plans adopted or terminated, governance changes.
+  8. Legal and regulatory: new investigations, subpoenas, lawsuits,
+     accruals, rule changes that hit revenue or cost.
+  9. Guidance and commitments: every number, range or target management
+     stated in the prior filing (the stated-targets table). Was it met,
+     moved, dropped, or not mentioned? Silence is a finding.
+ 10. Debt and liquidity: maturities, covenants (added, loosened, dropped),
+     ratings language, new facilities, commercial paper.
+
+How wording signals these (strongest first):
   - commitments changing strength: "may" -> "will", "expect" -> "plan",
-    "we intend" -> "we have"; or weakening the other way
+    "are cancellable" -> "may be cancelable"; or weakening the other way
   - quantification appearing or disappearing: a number, range or date added
-    to, or dropped from, a sentence that previously had or lacked one
-  - guidance ranges moving, narrowing or widening; a floor or ceiling moving
-    alone
-  - deletions: a risk, claim, customer, product or reassurance that quietly
+    to, or dropped from, a sentence; a metric no longer disclosed
+  - deletions: a risk, claim, target, customer or reassurance that quietly
     stops being said; removal is often more telling than addition
-  - new named things: laws, regulators, lawsuits, counterparties, customers,
-    defined terms ("the Notes"), facilities, segments
-  - risk-factor order: a risk moving up or down, or out of the summary bullets
-  - hedges added or dropped around an existing statement ("currently",
-    "at this time", "in the near term", "if at all")
-  - one section contradicting or getting ahead of another (MD&A optimism
-    beside a sharpened risk factor; a subsequent event the MD&A ignores)
-  - a tracked signal on the dashboard moving, or breaking a multi-period
-    pattern ("first decline in the dataset", "unchanged for six periods")
+  - new named things: counterparties, lawsuits, regulators, defined terms,
+    facilities, entities
+  - one section contradicting another (MD&A optimism beside a sharpened risk
+    factor; a note obligation the MD&A never mentions), or a figure that
+    differs between two sections
+  - a tracked signal breaking a multi-period pattern
 
-Not signals, unless they are the story: numbers rolled forward in an
-unchanged sentence, renumbered cross-references, date updates, reformatting,
-boilerplate refreshed across all filers (new SEC rule language), and
-paragraph moves that change no meaning. A redline full of these is noise;
-say so in one line rather than padding findings.
+Not findings, unless they change unit economics, concentration or a pillar:
+product launches, renamed segments, mission statements, DEI/ESG/sustainability
+wording, headcount, properties, word-count and hedge-word statistics (one
+context line per transition at most), numbers rolled forward in an unchanged
+sentence, renumbered cross-references, reformatting, boilerplate refreshed
+across all filers.
 
 For each finding:
-  - title: the change as a fact, with the numbers ("Capex floor raised $125B
-    to $130B; ceiling held at $145B"), not a characterization ("Capex
-    surges")
-  - tag: New / Removed / Changed / Signal
-  - verbatim before and after quotes in <blockquote>, labeled with the period
-    (FY2025: "..." / Q2 2026: "..."); use ... to elide, never paraphrase
-    inside quotes
-  - one to three sentences on why it matters, stating only what the text
-    supports; if it is an inference, say so ("suggests", "consistent with")
-Aim for the 6-15 findings that matter most in a transition, ranked within
-each section group by importance. Fewer, sharper findings beat many.
+  - title: the change as a fact, with the numbers ("Lease guarantees $860M
+    -> $3.5B; risk-factor title softened"), not a characterization
+  - tag: New / Removed / Changed / Signal (Signal only for tracked signals
+    and stated targets)
+  - pillar: the thesis.txt pillar it touches
+  - direction: Bearish / Bullish / Mixed / Watch. Direction says what the
+    disclosure means for that pillar, not a price call. Use Bearish or
+    Bullish only when the quoted text alone justifies it (a guarantee added,
+    a target dropped, a loss ratio worsening, a covenant loosened); otherwise
+    Watch. Watch is the default.
+  - magnitude: the amount as a share of something the reader cares about,
+    from financials.py ("$105B guarantee = 80% of FY2026 operating income"),
+    or "not quantified in the filing"
+  - basis: Stated (the filing says it) or Inferred (your reading); say which
+  - verbatim before and after quotes in <blockquote>, labeled with the
+    period; use ... to elide, never paraphrase inside quotes
+  - why it matters: one to three sentences, only what the text supports
+  - next: one sentence on what the next filing must show to confirm or
+    refute it
+Aim for 4-10 findings per transition, at least half from the notes, MD&A
+liquidity or risk factors, ranked by impact on the investment case. Fewer,
+sharper findings beat many.
 
-Then do a skeptical second pass before writing the page: for each finding,
-ask whether a reader who knows the company would learn something. Cut
-roll-forwards and anything the quote doesn't support. Check every "first
-time" and "unchanged since" claim against the earlier periods' text or the
-dashboard's tracked-signal tables.
+Skeptical second pass before writing the page: for each finding, ask whether
+an investor who knows the company would change their view. Cut anything that
+fails, and anything the quote doesn't support. Check every "first time" and
+"unchanged since" claim against the earlier filings or the tracked-signal
+tables. Check every direction against the "quoted text alone" rule.
+
+Update thesis.txt: a pillar's stance moves only when findings point the same
+way across two or more filings; note the finding ids that moved it.
 
 
 4. UPDATE THE PAGE
 ------------------
-Match the existing page exactly: copy the structure, classes and markup of
-the most recent transition in the same file (read `git show 1a7df5f` and
-`git show 29fa5ed` for finished examples). Add:
-  - the transition header (id like the existing ones) with filing date and
-    headline metrics from financials.py, then finding groups by section
+Match the existing page: copy the structure, classes and markup of the most
+recent transition in the same file. Each finding is
+    <div class="finding" data-pillar="<pillar>" data-direction="bearish|bullish|mixed|watch"
+         data-basis="stated|inferred">
+with the direction and pillar shown as chips in the finding header, and
+inside the body a <p class="magnitude"> line and a <p class="next"> line.
+If the page has no chip styles yet, add them once to its <style> (small
+outlined labels; Bearish and Bullish colored, Watch and Mixed neutral; colors
+from the page's existing tokens). Add:
+  - the transition header with filing date, headline metrics from
+    financials.py, and a one-line count of findings by direction per pillar
   - sidebar nav link; <title>; sidebar sub-header; hero tagline and source line
-    (filing count, period range, "Analysis: ... extended <Month YYYY>")
   - era card (annual dashboards)
-  - a new column or row in every tracked-signal / deep-signal table that has
-    one per period, and in the financial reference table
-  - themes: revise each so none is stale; a theme that the new period
-    contradicts must say so
+  - a new column or row in every tracked-signal table and the financial
+    reference table
+  - the "Stated targets" table: one row per quantitative commitment
+    (sentence, filing it was stated in, number, outcome in each later
+    filing: met / moved / dropped / not mentioned). Create it if missing.
+  - themes: revise each so none is stale; reflect any thesis.txt stance change
 Root index.html `companies` entry: endFY and signals for annual updates,
 qLabel for quarterly ones, tenQ + qLabel for a new scanner.
 
@@ -142,8 +211,9 @@ qLabel for quarterly ones, tenQ + qLabel for a new scanner.
     python scripts/verify_dashboard.py companies/<t>/index.html --since origin/main
 
 checks tag nesting, anchors, duplicate ids, table widths, that every quote
-added since origin/main appears in the downloaded filing text, and that the
-page renders in headless Chromium with working toggles. Fix every FAIL and
+added since origin/main appears in the downloaded filing text, that every new
+finding has its pillar, direction, basis, magnitude and next fields, and that
+the page renders in headless Chromium with working toggles. Fix every FAIL and
 re-run until it prints OK. Run it on index.html too if you changed it
 (--no-render is fine there). An unmatched quote means you misquoted: fix the
 quote from the section file, never loosen the check.
@@ -152,7 +222,8 @@ quote from the section file, never loosen the check.
 6. PUBLISH
 ----------
     python scripts/check_new_filings.py mark <TICKER> annual|quarterly <report_date> [--dashboard companies/<t>/10q/]
-    git add companies/<t>/index.html companies/<t>/10q/index.html index.html automation/tracked.json scripts/
+    git add companies/<t>/index.html companies/<t>/10q/index.html companies/<t>/thesis.txt \
+            companies/<t>/fundamentals companies/<t>/10q/fundamentals index.html automation/tracked.json scripts/
     git commit
     git pull --rebase origin main && git push origin HEAD:main
 
@@ -183,7 +254,7 @@ for <TICKER>", push.
 End with a short summary; for scheduled runs it becomes the phone/email
 notification:
     Published: META Q3 2026 10-Q, new GOOG 10-Q scanner. Skipped: none.
-    - META Q3 2026: <the single most important finding, one line>
+    - META Q3 2026: <the most important finding, with its direction and pillar>
     - GOOG scanner: <the most important pattern across 8 quarters>
 plus the reason for anything skipped. If nothing was pending, say only
 "No new filings".

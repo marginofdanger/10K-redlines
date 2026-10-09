@@ -23,6 +23,7 @@ MODALS = ["may", "might", "could", "would", "will", "should", "must", "expect", 
           "likely", "unlikely", "possible", "potential", "significant", "material", "materially",
           "substantial", "substantially", "uncertain", "uncertainty", "risk", "risks"]
 WORD = re.compile(r"\S+")
+NUM = re.compile(r"[\d][\d,.]*")
 
 
 def load(path):
@@ -52,8 +53,12 @@ def word_redline(a, b):
 
 def counts(lines):
     c = {}
-    for w in WORD.findall(" ".join(lines).lower()):
-        w = w.strip(".,;:()\"'")
+    words = WORD.findall(" ".join(lines))
+    for k, raw in enumerate(words):
+        w = raw.strip(".,;:()\"'").lower()
+        nxt = words[k + 1] if k + 1 < len(words) else ""
+        if raw[:1] == "M" and w == "may" and re.match(r"\d", nxt):
+            continue  # the month
         if w in MODALS:
             c[w] = c.get(w, 0) + 1
     return c
@@ -94,24 +99,31 @@ def redline(a, b, label_a, label_b, section):
             entries.append((best, "MOVED", f"paragraph {i + 1} -> {best + 1}: {a[i][:160]}"))
         elif best is not None and best_r >= 0.45:
             used.add(best)
-            entries.append((best, "CHANGED", word_redline(a[i], b[best])))
+            kind = "ROLLED" if NUM.sub("#", a[i]) == NUM.sub("#", b[best]) else "CHANGED"
+            entries.append((best, kind, word_redline(a[i], b[best])))
         else:
             entries.append((i, "REMOVED", a[i]))
     for j in added:
         if j not in used:
             entries.append((j, "ADDED", b[j]))
 
-    tally = {k: sum(1 for e in entries if e[1] == k) for k in ("ADDED", "REMOVED", "CHANGED", "MOVED")}
+    tally = {k: sum(1 for e in entries if e[1] == k) for k in ("ADDED", "REMOVED", "CHANGED", "MOVED", "ROLLED")}
     ca, cb = counts(a), counts(b)
     shifts = {w: cb.get(w, 0) - ca.get(w, 0) for w in set(ca) | set(cb) if cb.get(w, 0) != ca.get(w, 0)}
     head = [f"REDLINE {section}: {label_a} -> {label_b}",
             f"paragraphs {len(a)} -> {len(b)}; words {len(WORD.findall(' '.join(a))):,} -> "
             f"{len(WORD.findall(' '.join(b))):,}",
-            "added {ADDED}, removed {REMOVED}, changed {CHANGED}, moved {MOVED}".format(**tally),
+            "added {ADDED}, removed {REMOVED}, changed {CHANGED}, moved {MOVED}, "
+            "numbers-only {ROLLED} (listed last)".format(**tally),
             "modal/hedge word shifts: " + (", ".join(f"{w} {d:+d}" for w, d in
                                                    sorted(shifts.items(), key=lambda x: -abs(x[1]))) or "none"),
             ""]
-    body = [f"## {kind}\n{text}\n" for _, kind, text in sorted(entries, key=lambda e: e[0])]
+    ordered = sorted(entries, key=lambda e: e[0])
+    body = [f"## {kind}\n{text}\n" for _, kind, text in ordered if kind != "ROLLED"]
+    rolled = [text for _, kind, text in ordered if kind == "ROLLED"]
+    if rolled:
+        # same words, new figures: usually a roll-forward, but a figure that moved a lot is still a finding
+        body.append("## NUMBERS ONLY (wording unchanged)\n" + "\n".join(f"- {t}" for t in rolled) + "\n")
     return "\n".join(head + body), tally
 
 
@@ -155,7 +167,8 @@ def main():
             text, t = redline(x, y, l1, l2, sn)
             with open(stem + ".redline.txt", "w", encoding="utf-8") as f:
                 f.write(text)
-            print(f"{l1} -> {l2} {sn:<18} +{t['ADDED']} -{t['REMOVED']} ~{t['CHANGED']} moved {t['MOVED']}")
+            print(f"{l1} -> {l2} {sn:<22} +{t['ADDED']} -{t['REMOVED']} ~{t['CHANGED']} moved {t['MOVED']} "
+                  f"numbers-only {t['ROLLED']}")
 
 
 if __name__ == "__main__":

@@ -136,6 +136,35 @@ def render(path):
     return __import__("json").loads(r.stdout.strip().splitlines()[-1])
 
 
+DIRECTIONS = {"bearish", "bullish", "mixed", "watch"}
+
+
+def finding_fields(src, new_lines):
+    """New findings must carry the investment fields the runbook defines: data-pillar,
+    data-direction and data-basis on the finding, plus a .magnitude and a .next line inside it."""
+    fails = []
+    lines = src.split("\n")
+    for ln in sorted(new_lines):
+        line = lines[ln - 1] if ln - 1 < len(lines) else ""
+        m = re.search(r'<div class="finding"([^>]*)>', line)
+        if not m:
+            continue
+        attrs = dict(re.findall(r'data-(\w+)="([^"]*)"', m.group(1)))
+        if not attrs.get("pillar"):
+            fails.append(f"line {ln}: new finding has no data-pillar")
+        if attrs.get("direction") not in DIRECTIONS:
+            fails.append(f"line {ln}: new finding data-direction must be one of {sorted(DIRECTIONS)}")
+        if attrs.get("basis") not in ("stated", "inferred"):
+            fails.append(f"line {ln}: new finding data-basis must be stated or inferred")
+        block = "\n".join(lines[ln - 1:ln + 80])
+        end = block.find('<div class="finding"', 10)
+        block = block if end < 0 else block[:end]
+        for cls in ("magnitude", "next"):
+            if f'class="{cls}"' not in block:
+                fails.append(f"line {ln}: new finding has no element with class=\"{cls}\"")
+    return fails
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("page")
@@ -167,6 +196,7 @@ def main():
     if a.since:
         new = added_lines(a.page, a.since)
         quotes = [q for q in quotes if q[1] in new or any(l in new for l in range(q[1] - 3, q[1] + 1))]
+        fails += finding_fields(src, new)
     checked = unmatched = 0
     if corpus_files:
         # drop page furniture so a paragraph split across a page break reads continuously
