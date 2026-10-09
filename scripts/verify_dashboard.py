@@ -146,7 +146,10 @@ def finding_fields(src, new_lines):
     lines = src.split("\n")
     for ln in sorted(new_lines):
         line = lines[ln - 1] if ln - 1 < len(lines) else ""
-        m = re.search(r'<div class="finding"([^>]*)>', line)
+        if '<div class="finding"' not in line:
+            continue
+        tail = "\n".join(lines[ln - 1:ln + 5])  # the opening tag may wrap
+        m = re.search(r'<div class="finding"([^>]*)>', tail)
         if not m:
             continue
         attrs = dict(re.findall(r'data-(\w+)="([^"]*)"', m.group(1)))

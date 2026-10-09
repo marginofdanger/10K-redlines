@@ -37,7 +37,8 @@ METRICS = [  # label, candidate concepts (first one with data wins), instant?
     ("Deferred revenue", ["ContractWithCustomerLiabilityCurrent", "DeferredRevenueCurrent"], True),
     ("Long-term debt", ["LongTermDebtNoncurrent", "LongTermDebt", "NoncurrentPortionOfNoncurrentBondsIssued"], True),
     ("Tax valuation allowance", ["DeferredTaxAssetsValuationAllowance"], True),
-    ("Purchase obligations", ["UnrecordedUnconditionalPurchaseObligationBalanceSheetAmount", "PurchaseObligation"], True),
+    # filers tag different things here (META: leases not yet commenced); confirm against the commitments note
+    ("Purchase obligations (as tagged)", ["PurchaseObligation", "UnrecordedUnconditionalPurchaseObligationBalanceSheetAmount"], True),
     ("Guarantees (max exposure)", ["GuaranteeObligationsMaximumExposure"], True),
 ]
 
@@ -86,14 +87,16 @@ def days(r):
 
 def series(facts, concepts, instant, quarterly):
     """{period end: (value, unit, note)} merged across concept variants in priority order.
-    Quarterly cash-flow items are only reported year-to-date in 10-Qs; those carry note 'YTD'."""
+    10-Qs report cash-flow items year-to-date only; a three-month figure is derived as this
+    year-to-date minus the prior quarter's year-to-date (same fiscal-year start). A figure that
+    can't be derived keeps the year-to-date value with note 'YTD'."""
     out, used = {}, []
     for taxonomy in ("us-gaap", "ifrs-full"):
         for c in concepts:
             node = facts.get(taxonomy, {}).get(c)
             if not node:
                 continue
-            got = {}
+            got, spans = {}, {}
             for unit, rows in node["units"].items():
                 for r in rows:
                     if not r.get("form", "").startswith(("10-K", "10-Q", "20-F")):
@@ -108,12 +111,20 @@ def series(facts, concepts, instant, quarterly):
                             got.setdefault(r["end"], (r["val"], unit, ""))
                     else:
                         d = days(r)
+                        if 80 <= d < 300 and not annual_form:
+                            spans[(r["start"], r["end"])] = r["val"]
                         if 80 <= d <= 100:
                             got[r["end"]] = (r["val"], unit, "")
                         elif not annual_form and 100 < d < 300:
                             prev = got.get(r["end"])
                             if not prev or (prev[2] == "YTD" and d > prev[3]):
-                                got[r["end"]] = (r["val"], unit, "YTD", d)
+                                got[r["end"]] = (r["val"], unit, "YTD", d, r["start"])
+            for end, v in list(got.items()):
+                if v[2] == "YTD":
+                    start = v[4]
+                    earlier = [e for (st, e) in spans if st == start and e < end]
+                    if earlier:
+                        got[end] = (v[0] - spans[(start, max(earlier))], v[1], "")
             for k, v in got.items():
                 out.setdefault(k, v[:3])
             if got:
