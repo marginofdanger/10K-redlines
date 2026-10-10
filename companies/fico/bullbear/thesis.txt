@@ -1,0 +1,75 @@
+FAIR ISAAC (FICO): INVESTMENT THESIS PILLARS
+Written October 2026 from the 10-K dashboard themes and the 10-Q scanner's tracked signals, then tested
+against the eight filings from the FY2024 10-K (filed November 2024) through the Q3 FY2026 10-Q (filed
+July 2026). Fiscal year ends September 30. Stances move only when two or more filings point the same way;
+every pillar started the window at Intact.
+
+P1 Scores pricing power
+  Bull assumes: the FICO Score stays the standard in U.S. lending, so B2B unit price increases (above all
+    on mortgage origination scores) keep lifting Scores revenue 20%+ a year at a ~90% segment margin.
+  Bear fears: growth rests on one lever (mortgage score price); volume is cyclical, and a sequential
+    decline or a price rollback would show the lever is exhausted.
+  Stance: Strengthening (moved at the Q2 FY2026 10-Q: Q1 FY2026 margin 88% from 86% on "increased unit
+    pricing", then Q2 FY2026 Scores +60% and margin 91%; Q3 FY2026 Scores +41%, but revenue fell
+    sequentially and the driver narrowed to "a higher mortgage origination scores unit price").
+  Tests: B2B Scores revenue sequentially and year over year, the attribution sentence, Scores margin.
+
+P2 Mortgage regulation, competition and litigation
+  Bull assumes: FHFA, the GSEs and the CFPB leave FICO's mortgage position and pricing alone; VantageScore
+    stays marginal; the antitrust suit is contained.
+  Bear fears: score choice at the GSEs, bi-merge, bureau-controlled pricing and the surviving Sherman Act
+    Section 2 claim erode price or share.
+  Stance: Weakening (moved at the Q1 FY2025 10-Q: the FY2024 10-K added a CFPB closing-cost risk factor
+    and a bi-merge risk; Q1 FY2025 disclosed the antitrust class action, with the Section 2 claim allowed
+    into discovery; the FY2025 10-K added FHFA score choice and bureau pricing as a constraint, while the
+    CFPB inquiry dropped out of the risk factor).
+  Tests: FHFA/GSE implementation of score choice, any price concession, the antitrust docket, the
+    FY2026 10-K risk factors (10-Qs carry only a "no material changes" stub).
+
+P3 Bureau channel concentration
+  Bull assumes: the three bureaus are distributors, not counterparties with leverage; concentration is a
+    by-product of score pricing.
+  Bear fears: the bureaus (which own VantageScore) collect a rising share of FICO revenue and receivables
+    and can constrain FICO's mortgage pricing.
+  Stance: Weakening (moved at the Q1 FY2025 10-Q: 45% of FY2024 revenue (41%), then 44% of Q1 FY2025
+    (39%); since then 52%, 54%, 51% for FY2025, 64% in Q2 FY2026 and 63% in Q3 FY2026; three customers
+    each 10%+ of receivables).
+  Tests: bureau share of revenue and receivables, bureau-pricing language in the 10-K.
+
+P4 Software platform transition
+  Bull assumes: FICO Platform replaces the legacy (non-platform) book and lifts ARR growth back to
+    double digits with net retention above 110%.
+  Bear fears: non-platform attrition and hosting costs keep compressing the segment margin while ARR
+    growth stalls.
+  Stance: Intact (moved twice: to Weakening at the Q3 FY2025 10-Q after DBNRR fell to 102% and margin
+    slipped in Q2 and Q3 FY2025; back to Intact at the Q3 FY2026 10-Q after ARR growth of 10% and DBNRR
+    109% in two filings. Software margin is still falling: 32% FY2024, 26% in Q3 FY2026).
+  Tests: platform vs non-platform ARR, DBNRR, Software segment margin, RPO.
+
+P5 Margins and earnings quality
+  Bull assumes: operating margin keeps rising with the Scores mix, and reported EPS is recurring.
+  Bear fears: tax benefits from equity awards, one-off licence renewals and rising interest flatter or
+    hide the trend.
+  Stance: Strengthening (moved at the Q3 FY2025 10-Q: operating margin 49.2% in Q2 FY2025 and 48.9% in
+    Q3 FY2025, up 4-6 points; 58.2% in Q2 FY2026 and 53.8% in Q3 FY2026. Tax help shrank: nine-month
+    ETR 23.5% vs 17.2%, so FY2026 growth is less tax-assisted than FY2025's).
+  Tests: operating margin, ETR vs ~24%, one-off items in the Scores attribution, interest expense.
+
+P6 Cash conversion and capital return
+  Bull assumes: free cash flow tracks or beats net income and buybacks shrink the share count steadily.
+  Bear fears: buybacks outrun free cash flow and are paid for with debt.
+  Stance: Weakening (moved at the Q3 FY2025 10-Q: FY2024 buybacks were 132% of FCF; Q3 FY2025 buybacks
+    $511.3M vs $284.4M FCF as notes were issued; then 183% of FY2025 FCF and $3.1B in nine months of
+    FY2026 against $777.9M of operating cash flow. Conversion itself is healthy: FCF/net income 118%).
+  Tests: buybacks vs FCF, stockholders' deficit, diluted share count.
+
+P7 Balance sheet and leverage
+  Bull assumes: debt grows in step with EBITDA, maturities are termed out at fixed rates, covenants have
+    room.
+  Bear fears: debt-funded buybacks push leverage up, covenants are loosened to make room, and interest
+    eats operating income growth.
+  Stance: Weakening (moved at the Q3 FY2025 10-Q: debt $2.2B -> $2.5B over the first two FY2025 quarters,
+    then the amended credit agreement dropped the 3.0x interest coverage covenant; since then debt $5.6B,
+    a $1.5B term loan for an ASR, and the leverage ceiling lifted from 3.5x to 4.5x through December 2026).
+  Tests: total debt, covenant ceiling vs actual leverage, interest expense vs operating income,
+    term-loan amortization ($300M due in the next 12 months).

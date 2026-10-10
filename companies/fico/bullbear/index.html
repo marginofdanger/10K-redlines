@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FICO Bull / Bear | latest: Q3 FY2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Fair Isaac (FICO): Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026 (Q3 FY2026), filed July 29, 2026 | Also covered: FY2024 and FY2025 10-Ks and the five 10-Qs between them, filed November 2024 to April 2026 | Fiscal year ends September 30 | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Every pillar started the window (FY2024 10-K) at Intact. Full pillar definitions are in thesis.txt.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Scores pricing power</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Scores revenue +60% in Q2 FY2026 and +41% in Q3; segment margin 91% (88% a year earlier), driven by the mortgage score unit price</td><td class="ev-bear">Q3 FY2026 B2B Scores $400.0M vs $417.6M in Q2, the first March-to-June decline; the quarter's driver is now the mortgage price alone</td><td>Q2 FY2026 10-Q</td></tr>
+<tr><td>P2 Mortgage regulation, competition and litigation</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">FICO Score 10 T "was approved for conforming mortgages" (FY2025 10-K); the CFPB closing-cost inquiry left the risk factor</td><td class="ev-bear">FHFA's July 2025 score-choice change and bureau pricing written into the FY2025 risk factor; Sherman Act Section 2 claim in discovery since November 2024</td><td>Q1 FY2025 10-Q</td></tr>
+<tr><td>P3 Bureau channel concentration</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Share eased to 63% in Q3 FY2026 from the 64% Q2 record</td><td class="ev-bear">Bureaus 45% of FY2024 revenue, 51% of FY2025, 60% of nine-month FY2026; three customers each 10%+ of receivables</td><td>Q1 FY2025 10-Q</td></tr>
+<tr><td>P4 Software platform transition</td><td class="stance s-intact">Intact</td><td class="ev-bull">Platform ARR $412.8M, +62%, now 51% of ARR; total ARR +10% and DBNRR 109% in Q2 and Q3 FY2026</td><td class="ev-bear">Software margin 32% (FY2024) &rarr; 26% (Q3 FY2026); non-platform ARR &minus;17% with retention of 82%; RPO fell to $680.4M</td><td>Q3 FY2026 10-Q</td></tr>
+<tr><td>P5 Margins and earnings quality</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Operating margin 42.7% (FY2024) &rarr; 46.5% (FY2025) &rarr; 53.8% (Q3 FY2026), with the nine-month tax rate back to 23.5%</td><td class="ev-bear">Q1 FY2025 tax rate of (1.6)% and a one-time insurance-score licence renewal flattered FY2025; interest now takes 17% of operating income</td><td>Q3 FY2025 10-Q</td></tr>
+<tr><td>P6 Cash conversion and capital return</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">FCF $769.9M = 118% of FY2025 net income; nine-month FY2026 operating cash flow +40%; diluted shares &minus;7.7%</td><td class="ev-bear">Buybacks $3.1B in nine months of FY2026 vs $777.9M of operating cash flow; stockholders' deficit $0.96B &rarr; $4.10B</td><td>Q3 FY2025 10-Q</td></tr>
+<tr><td>P7 Balance sheet and leverage</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">2018 notes repaid early and term loans replaced by fixed notes to 2033/2034; revolver extended to 2030</td><td class="ev-bear">Debt $2.2B &rarr; $5.6B; $1.5B term loan borrowed for a buyback; interest coverage covenant dropped, leverage ceiling raised to 4.5x</td><td>Q3 FY2025 10-Q</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q3 FY2026</h2>
+<p class="note">What the June 2026 quarter adds, for and against. Operating results stayed strong, but Scores revenue fell from the March quarter and the company borrowed $1.5B to buy back stock, loosening its leverage covenant to make room.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">Scores revenue +41% to $458.9M; segment margin 91% vs 88%</div>
+      <blockquote>Q3 FY2026: "Scores segment operating income as a percentage of segment revenue increased to 91% from 88%, primarily due to higher business-to-business scores revenue driven by a higher mortgage origination scores unit price."</blockquote>
+      <p class="magnitude"><b>Size:</b> B2B Scores +$131.6M = 96% of the $137.8M revenue increase; Scores operating income +$132.2M exceeds the $100.1M rise in total operating income.</p>
+      <p>Price on mortgage scores is still adding about $130M a quarter year over year at almost no incremental cost.</p>
+      <p class="next"><b>Next filing:</b> FY2026 10-K Scores growth for the year near the nine-month +45%, with margin at or above 90%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">Platform ARR +62% to $412.8M, overtaking non-platform; total ARR +10% and DBNRR 109% for a second quarter</div>
+      <blockquote>Q3 FY2026: "Platform | 227.0 | 227.7 | 234.7 | 254.2 | 263.6 | 302.6 | 348.8 | 412.8"</blockquote>
+      <blockquote>Q3 FY2026: "Dollar-Based Net Retention Rate for our Software segment was 109% as of June 30, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> total ARR $815.8M (+10%, vs +4% a year earlier); platform DBNRR 148%; nine-month ACV Bookings $95.2M vs $69.7M (+37%).</p>
+      <p>The transition that stalled through FY2025 (DBNRR 102&ndash;103%) has two quarters of double-digit ARR growth, enough to move the pillar back to Intact.</p>
+      <p class="next"><b>Next filing:</b> ARR growth of 10% or more and DBNRR at or above 105% in the FY2026 10-K.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month operating cash flow +40% to $777.9M; Q3 free cash flow $379.6M = 160% of net income</div>
+      <blockquote>Q3 FY2026: "Net cash provided by operating activities increased to $777.9 million during the nine months ended June 30, 2026 from $555.1 million during the nine months ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month operating cash flow = 118% of net income ($660.0M); capex plus capitalized software only $27.8M.</p>
+      <p>Earnings convert to cash, and the growth is not a working-capital build: timing items were &minus;$1.3M.</p>
+      <p class="next"><b>Next filing:</b> full-year operating cash flow growth at least in line with net income (+33% for nine months).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Margins and earnings quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Margins and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Operating margin 53.8% vs 48.9%, with no tax help: nine-month tax rate 23.5% vs 17.2%</div>
+      <blockquote>Q3 FY2026: "Cost of revenues as a percentage of revenues decreased to 13% during the quarter ended June 30, 2026 from 16% during the quarter ended June 30, 2025, primarily due to increased sales of our higher-margin Scores products."</blockquote>
+      <blockquote>Q3 FY2026: "The effective income tax rate was 24.6% and 23.3% during the quarters ended June 30, 2026 and 2025, respectively, and 23.5% and 17.2% during the nine months ended June 30, 2026 and 2025, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income +38% on revenue +26% (operating expenses +14%); nine-month pre-tax income +44%, net income +33%.</p>
+      <p>FY2025's earnings growth leaned on excess tax benefits from equity awards; this year's comes from operations, and no one-off item is named in the attribution.</p>
+      <p class="next"><b>Next filing:</b> operating margin above 50% in the FY2026 10-K with no one-time licence in the Scores sentence.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Diluted shares &minus;7.7% lift EPS +41% on net income +30%</div>
+      <blockquote>Q3 FY2026: "Diluted EPS was $10.45 during the quarter ended June 30, 2026, a 41% increase from the quarter ended June 30, 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> 22.7M diluted shares vs 24.6M; shares outstanding 23.3M &rarr; 21.6M during the quarter; the ASR's remaining ~20% of shares arrive at settlement in Q4.</p>
+      <p>Per-share compounding accelerated. Whether that is a bull point depends on funding, which this quarter was borrowing (see the bear side).</p>
+      <p class="next"><b>Next filing:</b> ASR settlement share count and the average price paid.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P7 Balance sheet and leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Balance sheet and leverage</span><span class="chip">Stated</span></div>
+      <div class="title">$1.5B term loan borrowed to fund a $1.5B ASR; debt $3.6B &rarr; $5.6B; leverage ceiling raised from 3.5x to 4.5x</div>
+      <blockquote>Q3 FY2026: "In June 2026, we amended our credit agreement to provide for a $1.5 billion term loan, the proceeds of which were used to fund an accelerated share repurchase agreement"</blockquote>
+      <blockquote>Q3 FY2026: "The credit agreement contains certain restrictive covenants including a maximum consolidated leverage ratio of 4.5 to 1.0 through December 30, 2026, 4.0 to 1.0 during December 31, 2026 through December 30, 2027, and 3.5 to 1.0 during December 31, 2027 and thereafter"</blockquote>
+      <p class="magnitude"><b>Size:</b> debt about 4.5x trailing-twelve-month operating income of $1.24B (inference; covenant EBITDA is not disclosed). Interest expense $59.9M, +82%, = 17% of operating income (12.5% a year earlier). Floating-rate debt $2.21B; $300M of term-loan principal due within 12 months.</p>
+      <p>The company needed a looser covenant to do this buyback, and the ceiling steps back down to 4.0x on December 31, 2026, so debt must fall or earnings rise within two quarters. The 10-Q's risk factors still say "no material changes."</p>
+      <p class="next"><b>Next filing:</b> the $75M September amortization paid, revolver below $710M, and leverage headroom under the 4.0x step-down.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks $2.3B in the quarter and $3.1B in nine months, against $777.9M of operating cash flow; stockholders' deficit $4.10B</div>
+      <blockquote>Q3 FY2026: "Total share repurchases during the quarter ended June 30, 2026 were $2.3 billion, compared with $511.3 million during the quarter ended June 30, 2025"</blockquote>
+      <blockquote>Q3 FY2026: "Total stockholders’ deficit | ( 4,097,135 ) | ( 1,745,784 )"</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month buybacks = 4.0x operating cash flow; Q3 buybacks = 6x the quarter's FCF; average price $1,148.84 a share. The deficit grew $2.35B since September.</p>
+      <p>Capital return is now set by borrowing capacity, not by free cash flow, after a quarter in which Scores revenue fell sequentially.</p>
+      <p class="next"><b>Next filing:</b> buybacks back within free cash flow once the ASR settles, or another debt-funded program.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">B2B Scores fell from $417.6M in Q2 to $400.0M; the quarter's driver narrows to the mortgage score price alone</div>
+      <blockquote>Q3 FY2026: "The increase in business-to-business scores revenue was primarily attributable to a higher mortgage origination scores unit price."</blockquote>
+      <blockquote>Q3 FY2026: "Business-to-business Scores | 400,043 | 268,479 | 87 | 83 | 1,066,285 | 693,364 | 86 | 81"</blockquote>
+      <blockquote>Q2 FY2026: "Business-to-business Scores | 417,629 | 242,494 | 88 | 82 | 666,242 | 424,885 | 85 | 80"</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$17.6M (&minus;4%) sequentially; year-over-year growth slowed from +72% to +49%. In FY2025 the same quarter added $26.0M sequentially.</p>
+      <p>Mortgage volume dropped out of the quarterly driver, so all of the growth now hangs on one price; a single regulator or bureau decision on that price would hit the segment directly.</p>
+      <p class="next"><b>Next filing:</b> B2B Scores in the September quarter versus $400.0M, and whether volume returns to the attribution.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">Software margin 26% vs 32%, segment operating income &minus;19%; RPO falls for the first time between 10-Qs</div>
+      <blockquote>Q3 FY2026: "Software segment operating income as a percentage of segment revenue decreased to 26% from 32%, primarily attributable to a decrease in sales of higher-margin software recognized at a point in time and an increase in third-party data center hosting costs."</blockquote>
+      <blockquote>Q3 FY2026: "Revenue allocated to remaining performance obligations was $680.4 million as of June 30, 2026"</blockquote>
+      <p class="magnitude"><b>Size:</b> Software operating income $55.0M vs $67.9M; non-platform ARR $403.0M (&minus;17%, DBNRR 82%); RPO &minus;$37.3M from March; professional services &minus;24%.</p>
+      <p>Platform growth is costing margin: the shrinking licence book carried the segment's profit, and hosting costs rise as SaaS replaces it.</p>
+      <p class="next"><b>Next filing:</b> Software margin back to 28% or better and RPO growth.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Bureau channel concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Bureau channel concentration</span><span class="chip">Stated</span></div>
+      <div class="title">The three bureaus are 63% of quarterly revenue (54%) and 60% of nine-month revenue</div>
+      <blockquote>Q3 FY2026: "Revenues collectively generated by agreements with these customers accounted for 63% and 54% of our total revenues in the quarters ended June 30, 2026 and 2025, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $425M of the quarter's $674.2M; three customers each 10%+ of receivables (two at September 30).</p>
+      <p>The bureaus own VantageScore and, per the FY2025 10-K, can constrain FICO's mortgage pricing; their share of FICO's revenue rose 9 points in a year.</p>
+      <p class="next"><b>Next filing:</b> FY2026 10-K annual share (FY2025: 51%) and any change to the bureau-pricing risk factor.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (the FY2024 10-K versus the FY2023 10-K). Growth and margin rates are year over year.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q3 FY2026 10-Q</th><th>Q2 FY2026 10-Q</th><th>Q1 FY2026 10-Q</th><th>FY2025 10-K</th><th>Q3 FY2025 10-Q</th><th>Q2 FY2025 10-Q</th><th>Q1 FY2025 10-Q</th><th>FY2024 10-K</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td>
+<td><span class="mark worse">&#9660;</span> Revenue +26% (Q2 +39%); Scores +41% but down sequentially; driver "a higher mortgage origination scores unit price". ARR +10%; RPO $680.4M (Q2 $717.7M).</td>
+<td><span class="mark better">&#9650;</span> Revenue +39%; Scores +60%, B2B +72% on unit price and mortgage volume. ARR +10%, DBNRR 109%; RPO $717.7M.</td>
+<td><span class="mark held">&#9679;</span> Revenue +16%; Scores +29% on price and mortgage volume. ARR +5%: platform +33%, non-platform &minus;8%. RPO $682.2M.</td>
+<td><span class="mark held">&#9679;</span> Revenue +16%; Scores +27% (B2B +33%) on price, mortgage volume and an insurance licence renewal. ARR +4%, DBNRR 102%. RPO $655.7M.</td>
+<td><span class="mark better">&#9650;</span> Revenue +20%; Scores +34% incl. a multi-year insurance licence renewal. ARR +4%; RPO $593.3M (+$80.8M).</td>
+<td><span class="mark held">&#9679;</span> Revenue +15%; Scores +25% on "a higher unit price"; B2C up on bureau royalties. ARR +3%, DBNRR 102%.</td>
+<td><span class="mark better">&#9650;</span> Revenue +15%; Scores +23%; mortgage volume turns from offset to driver. Software helped by a large licence renewal.</td>
+<td><span class="mark held">&#9679;</span> Revenue +13%; Scores +19% on price, offset by lower mortgage volume; B2C &minus;$5.0M. ARR +8%; RPO $507.3M.</td></tr>
+<tr><td>2. Margins and unit economics</td>
+<td><span class="mark worse">&#9660;</span> Operating margin 53.8% (48.9%; Q2 58.2%). Scores 91% (88%); Software 26% (32%), segment income &minus;19%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 58.2% (49.2%). Scores 91% (89%); Software 29% (31%).</td>
+<td><span class="mark better">&#9650;</span> Operating margin 45.7% (40.8%). Scores 88% (86%) on "increased unit pricing"; Software 28% (30%).</td>
+<td><span class="mark held">&#9679;</span> Operating margin 46.5% (42.7%). Scores 88%; Software 30% (32%), segment income &minus;4%.</td>
+<td><span class="mark held">&#9679;</span> Operating margin 48.9% (42.5%). Scores 88%; Software 32% (34%) on hosting costs.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 49.2% (44.9%). Scores 89%; Software 31% (33%) on hosting costs.</td>
+<td><span class="mark held">&#9679;</span> Operating margin 40.8% (39.6%). Scores 86% (88%) on marketing; Software 30%.</td>
+<td><span class="mark held">&#9679;</span> Operating margin 42.7% (42.5%). Scores 88%; Software 32% (33%).</td></tr>
+<tr><td>3. Earnings quality</td>
+<td><span class="mark held">&#9679;</span> Tax rate 24.6%; nine months 23.5% (17.2%). Interest $59.9M = 17% of operating income.</td>
+<td><span class="mark held">&#9679;</span> Tax rate 25.7%; six months 22.8% (13.2%). No one-off revenue named.</td>
+<td><span class="mark better">&#9650;</span> Net income +4% vs operating income +30%: tax rate 17.5% vs (1.6)% as the stock fell. EPS understated, not flattered.</td>
+<td><span class="mark held">&#9679;</span> Tax rate 18.8% (20.1%) on equity-award benefits; restructuring $10.9M; insurance renewal in Scores.</td>
+<td><span class="mark worse">&#9660;</span> Up-front multi-year insurance licence in Scores growth (not quantified); nine-month tax rate 17.2%.</td>
+<td><span class="mark held">&#9679;</span> Quarter tax rate 23.7%, clean; six months 13.2% (17.3%).</td>
+<td><span class="mark worse">&#9660;</span> Tax rate (1.6)%: pre-tax +15%, net income +26%; about a quarter of net income is tax benefit (inference).</td>
+<td><span class="mark held">&#9679;</span> Tax rate 20.1% (22.4%) on equity-award benefits; no impairments or restructuring.</td></tr>
+<tr><td>4. Cash conversion</td>
+<td><span class="mark better">&#9650;</span> Q3 FCF $379.6M = 160% of net income; nine-month operating cash flow $777.9M (+40%).</td>
+<td><span class="mark held">&#9679;</span> Q2 FCF $223.1M = 84% of net income; six months $397.4M (+48%).</td>
+<td><span class="mark worse">&#9660;</span> Operating cash flow $174.1M vs $194.0M on timing; FCF = 110% of net income.</td>
+<td><span class="mark held">&#9679;</span> Operating cash flow $778.8M (+23%); FCF $769.9M = 118% of net income; DSO 97 days (91).</td>
+<td><span class="mark better">&#9650;</span> Q3 FCF $284.4M = 156% of net income; nine months $555.1M (+37%).</td>
+<td><span class="mark worse">&#9660;</span> Q2 FCF $72.8M = 45% of net income (seasonal); six months $268.9M (+39%).</td>
+<td><span class="mark better">&#9650;</span> Operating cash flow $194.0M vs $122.1M; FCF = 127% of net income.</td>
+<td><span class="mark better">&#9650;</span> Operating cash flow $633.0M (+35%); FCF $624.1M = 122% of net income.</td></tr>
+<tr><td>5. Capital allocation</td>
+<td><span class="mark worse">&#9660;</span> Buybacks $2.3B incl. $1.5B debt-funded ASR; nine months $3.1B. New $2.0B program, $800.0M left.</td>
+<td><span class="mark worse">&#9660;</span> Record buybacks $611.3M = 2.7x FCF; new $1.5B program.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $162.7M, within FCF; $180.9M left on the June 2025 program.</td>
+<td><span class="mark worse">&#9660;</span> Buybacks about $1.4B = 183% of FCF; no dividends; capex $8.9M.</td>
+<td><span class="mark worse">&#9660;</span> Record buybacks $511.3M = 1.8x FCF; new $1.0B June 2025 program.</td>
+<td><span class="mark worse">&#9660;</span> Buybacks $207.0M vs FCF $72.8M.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $159.7M, within FCF.</td>
+<td><span class="mark worse">&#9660;</span> Buybacks $833.3M = 132% of FCF; new $1.0B July 2024 program.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td>
+<td><span class="mark worse">&#9660;</span> Debt $5.6B: $1.5B term loan, revolver $710.0M. Leverage ceiling 4.5x to Dec 2026. Deficit $4.10B.</td>
+<td><span class="mark held">&#9679;</span> Debt $3.6B; $1.0B 6.25% notes to 2034 repaid 2018 notes early; no current maturities. Deficit $2.10B.</td>
+<td><span class="mark worse">&#9660;</span> Debt $3.2B; revolver $415.0M. Deficit $1.81B.</td>
+<td><span class="mark worse">&#9660;</span> Debt $3.1B (from $2.2B); 2018 notes current. Deficit $1.75B (from $0.96B).</td>
+<td><span class="mark worse">&#9660;</span> $1.5B 6.00% notes to 2033 repay term loans; revolver $1.0B to 2030; interest coverage covenant gone. Debt $2.8B.</td>
+<td><span class="mark worse">&#9660;</span> Debt $2.5B; revolver $535.0M.</td>
+<td><span class="mark worse">&#9660;</span> Debt $2.4B; revolver $425.0M.</td>
+<td><span class="mark worse">&#9660;</span> Debt $2.2B (from $1.9B); $450M term loan added; covenants 3.5x / 3.0x. Deficit $0.96B.</td></tr>
+<tr><td>7. Concentration</td>
+<td><span class="mark held">&#9679;</span> Bureaus 63% of revenue (54%; Q2 64%); three customers 10%+ of receivables.</td>
+<td><span class="mark worse">&#9660;</span> Bureaus 64% (52%), a record; three customers 10%+ of receivables.</td>
+<td><span class="mark held">&#9679;</span> Bureaus 51% (44%).</td>
+<td><span class="mark worse">&#9660;</span> Bureaus 51% of revenue (45%); two customers 10%+ of receivables.</td>
+<td><span class="mark worse">&#9660;</span> Bureaus 54% (47%).</td>
+<td><span class="mark worse">&#9660;</span> Bureaus 52% (47%); three customers 10%+ of receivables (one).</td>
+<td><span class="mark worse">&#9660;</span> Bureaus 44% (39%).</td>
+<td><span class="mark worse">&#9660;</span> Bureaus 45% of revenue (41%).</td></tr>
+<tr><td>8. Accounting judgments</td>
+<td><span class="mark held">&#9679;</span> No changes to critical estimates.</td>
+<td><span class="mark held">&#9679;</span> No changes.</td>
+<td><span class="mark held">&#9679;</span> No changes.</td>
+<td><span class="mark held">&#9679;</span> Professional-services estimate dropped from critical estimates.</td>
+<td><span class="mark held">&#9679;</span> No changes.</td>
+<td><span class="mark held">&#9679;</span> No changes.</td>
+<td><span class="mark held">&#9679;</span> No changes.</td>
+<td><span class="mark held">&#9679;</span> No substantive changes.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td>
+<td><span class="mark held">&#9679;</span> Antitrust item unchanged for a fifth filing; no trading-plan changes; risk factors "no material changes".</td>
+<td><span class="mark better">&#9650;</span> CEO terminated his 10b5-1 sale plan on March 26, 2026.</td>
+<td><span class="mark worse">&#9660;</span> CEO adopted a 10b5-1 plan to sell up to 47,904 shares.</td>
+<td><span class="mark worse">&#9660;</span> FHFA score choice and bureau pricing in risk factors; CFPB inquiry removed; Score 10 T approved.</td>
+<td><span class="mark held">&#9679;</span> Antitrust item adds "vigorously defend".</td>
+<td><span class="mark held">&#9679;</span> Antitrust item unchanged.</td>
+<td><span class="mark worse">&#9660;</span> Antitrust class action disclosed; Section 2 claim survives into discovery.</td>
+<td><span class="mark worse">&#9660;</span> New CFPB closing-cost risk factor; first FHFA and bi-merge references.</td></tr>
+<tr><td>10. Guidance and commitments</td>
+<td><span class="mark held">&#9679;</span> No guidance. ASR to settle in Q4 FY2026; leverage ceiling to 4.0x from Dec 31, 2026.</td>
+<td><span class="mark held">&#9679;</span> 2018 notes due May 2026 repaid in March.</td>
+<td><span class="mark held">&#9679;</span> No guidance; restructuring payments not mentioned.</td>
+<td><span class="mark held">&#9679;</span> No guidance; restructuring cash by end of FY2026; Score 10 T approved.</td>
+<td><span class="mark held">&#9679;</span> No guidance; July 2024 program replaced.</td>
+<td><span class="mark held">&#9679;</span> No guidance.</td>
+<td><span class="mark held">&#9679;</span> No guidance.</td>
+<td><span class="mark held">&#9679;</span> No financial guidance; Score 10 T on the FHFA timeline.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">FICO gives no revenue or earnings guidance in its filings. These are the commitments, programs and covenants it did state, and what later filings said about them.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"The July 2024 program is open-ended and authorizes repurchases of shares of our common stock from time to time up to an aggregate cost of $1.0 billion in the open market or in negotiated transactions."</td><td>FY2024 10-K</td><td>Q1 FY2025: $600.7M left. Q2 FY2025: $394.1M left. Q3 FY2025: replaced by the $1.0B June 2025 program before it was used up.</td></tr>
+<tr><td>"a maximum consolidated leverage ratio of 3.5 to 1.0, subject to a step up to 4.0 to 1.0 following certain permitted acquisitions and subject to certain conditions, and a minimum interest coverage ratio of 3.0 to 1.0."</td><td>FY2024 10-K</td><td>Q1&ndash;Q2 FY2025: held. Q3 FY2025: interest coverage covenant dropped. FY2025 10-K to Q2 FY2026: 3.5x held. Q3 FY2026: moved, leverage ceiling raised to 4.5x through December 30, 2026.</td></tr>
+<tr><td>FICO Score 10 and 10 T "will be implemented for conforming mortgages based on the timeline set forth by the Federal Housing Finance Agency"</td><td>FY2024 10-K</td><td>FY2025 10-K: met, "was approved for conforming mortgages". 10-Qs: not mentioned.</td></tr>
+<tr><td>Revolver and $300M term loan "mature on August 19, 2026"</td><td>FY2024 10-K</td><td>Q3 FY2025: moved, term loans repaid with 6.00% notes due 2033; revolver raised to $1.0B and extended to May 13, 2030.</td></tr>
+<tr><td>"The June 2025 program is open-ended and authorizes repurchases of shares of our common stock from time to time up to an aggregate cost of $1.0 billion in the open market or in negotiated transactions."</td><td>Q3 FY2025 10-Q</td><td>FY2025 10-K: $343.6M left. Q1 FY2026: $180.9M left. Q2 FY2026: replaced by a $1.5B program. Q3 FY2026: replaced by a $2.0B program that adds ASRs.</td></tr>
+<tr><td>2018 Senior Notes ($400M, 5.25%) "were to mature on May 15, 2026"; shown as current maturities of $399.5M</td><td>FY2025 10-K</td><td>Q2 FY2026: met early, repaid March 26, 2026 with 6.25% notes due 2034.</td></tr>
+<tr><td>"Cash payments for all the employee separation costs will be paid by the end of fiscal 2026."</td><td>FY2025 10-K</td><td>Q1&ndash;Q3 FY2026: not mentioned.</td></tr>
+<tr><td>ASR settlement "is expected to occur during the fourth quarter of fiscal 2026"; about 20% of shares still to be delivered</td><td>Q3 FY2026 10-Q</td><td>Pending (FY2026 10-K).</td></tr>
+<tr><td>Term-loan principal "$75.0 million from September 30, 2026 through and including June 30, 2027"; leverage ceiling 4.0x from December 31, 2026</td><td>Q3 FY2026 10-Q</td><td>Pending (FY2026 10-K and Q1 FY2027 10-Q).</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q2 FY2026 (quarter ended March 31, 2026; filed April 28, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">Scores revenue +60% to $475.0M; B2B +72%; segment margin 91% vs 89%</div>
+      <blockquote>Q2 FY2026: "Revenues for our Scores segment were $475.0 million during the quarter ended March 31, 2026, a 60% increase from the quarter ended March 31, 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> B2B +$175.1M = 91% of the $193.0M revenue increase; operating income +64%.</p>
+      <p>The second filing in a row with a rising Scores margin on price; the pillar moves to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> Scores growth holding (Q3 FY2026: +41%, but down sequentially).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">ARR +10% to $788.8M and DBNRR 109%, from 103% in Q1</div>
+      <blockquote>Q2 FY2026: "Dollar-Based Net Retention Rate for our Software segment was 109% as of March 31, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> platform ARR $348.8M (+49%); total ARR growth doubled from +5% in Q1.</p>
+      <p>First double-digit ARR growth since Q3 FY2024.</p>
+      <p class="next"><b>Next filing:</b> a second quarter at this level (Q3 FY2026 confirmed it).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Balance sheet and leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Balance sheet and leverage</span><span class="chip">Stated</span></div>
+      <div class="title">2026 maturity cleared early with $1.0B of notes due 2034</div>
+      <blockquote>Q2 FY2026: "On March 26, 2026, prior to the maturity date, we repaid in full the 2018 Senior Notes, utilizing proceeds from the issuance of the 2026 Senior Notes"</blockquote>
+      <p class="magnitude"><b>Size:</b> $400M due May 2026 retired; no debt due within 12 months at March 31.</p>
+      <p>Market access is open and the maturity ladder has nothing before 2028.</p>
+      <p class="next"><b>Next filing:</b> fixed-rate share of debt held (Q3 FY2026 added a $1.5B floating term loan).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Bureau channel concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Bureau channel concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bureaus a record 64% of quarterly revenue (52%); three customers 10%+ of receivables</div>
+      <blockquote>Q2 FY2026: "Revenues collectively generated by agreements with these customers accounted for 64% and 52% of our total revenues in the quarters ended March 31, 2026 and 2025, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $443M of $691.7M; six months 58% (49%).</p>
+      <p>Each point of Scores growth raises dependence on the three companies that own the competing score.</p>
+      <p class="next"><b>Next filing:</b> share stabilising (Q3 FY2026: 63%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Record buybacks $611.3M against $223.1M of free cash flow</div>
+      <blockquote>Q2 FY2026: "Total share repurchases during the quarter ended March 31, 2026 were $611.3 million, compared with $207.0 million during the quarter ended March 31, 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> 2.7x the quarter's FCF; stockholders' deficit $2.10B (December: $1.81B).</p>
+      <p>The CEO cancelled his 10b5-1 sale plan the same month, which supports management's conviction but does not change the funding gap.</p>
+      <p class="next"><b>Next filing:</b> buyback pace vs FCF (Q3 FY2026: $2.3B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Balance sheet and leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Balance sheet and leverage</span><span class="chip">Stated</span></div>
+      <div class="title">$1.0B at 6.25% replaces $400M at 5.25%; debt $3.6B</div>
+      <blockquote>Q2 FY2026: "We issued $1.0 billion of senior notes during March 2026, and used the net proceeds to make a payment against the revolving line of credit and repay the $400 million of senior notes due in May 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> debt +$0.5B since September; the new coupon is a point higher than the notes retired.</p>
+      <p>The company issued $1.0B to retire $400M of notes and part of the revolver, at a higher coupon.</p>
+      <p class="next"><b>Next filing:</b> debt level (Q3 FY2026: $5.6B).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 FY2026 (quarter ended December 31, 2025; filed January 28, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">Scores +29%; margin 88% from 86%, attributed to unit pricing for the first time</div>
+      <blockquote>Q1 FY2026: "Scores segment operating income as a percentage of segment revenue increased to 88% from 86%, primarily due to higher business-to-business scores revenue driven by increased unit pricing and greater mortgage origination volumes."</blockquote>
+      <p class="magnitude"><b>Size:</b> B2B +$66.2M (+36%); Scores operating income +$64.1M.</p>
+      <p>The filing ties margin gains directly to price.</p>
+      <p class="next"><b>Next filing:</b> a second quarter of margin gains (Q2 FY2026: 91%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">Platform ARR +33% to $302.6M, the fastest since Q1 FY2024</div>
+      <blockquote>Q1 FY2026: "Platform | 201.4 | 215.1 | 227.0 | 227.7 | 234.7 | 254.2 | 263.6 | 302.6"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$39.0M in one quarter; platform now 40% of ARR (35% in September).</p>
+      <p>Platform migration accelerated, though total ARR grew only 5%.</p>
+      <p class="next"><b>Next filing:</b> total ARR growth following platform (Q2 FY2026: +10%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Margins and earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Margins and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Net income +4% against operating income +30% as the equity-award tax benefit shrank</div>
+      <blockquote>Q1 FY2026: "The decrease in stock price for awards that vested in December 2025 resulted in a decreased net excess tax benefit for the quarter ended December 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> tax $33.6M vs a $2.4M benefit a year earlier; EPS +8%.</p>
+      <p>Shows how much FY2025 EPS growth depended on the share price through tax benefits.</p>
+      <p class="next"><b>Next filing:</b> tax rate near 24% (Q2 FY2026: 25.7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">Software margin 28% vs 30%; non-platform ARR &minus;8%</div>
+      <blockquote>Q1 FY2026: "Software segment operating income as a percentage of segment revenue decreased to 28% from 30%, primarily attributable to an increase in third-party data center hosting costs and a decrease in sales of higher-margin software recognized at a point in time."</blockquote>
+      <p class="magnitude"><b>Size:</b> Software operating income &minus;$2.1M; non-platform ARR $463.4M, DBNRR 91%.</p>
+      <p>The legacy book is now shrinking at a faster rate.</p>
+      <p class="next"><b>Next filing:</b> Software margin (Q2 FY2026: 29%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow fell $19.9M on timing of receipts and payments</div>
+      <blockquote>Q1 FY2026: "Net cash provided by operating activities decreased to $174.1 million during the quarter ended December 31, 2025 from $194.0 million during the quarter ended December 31, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;10% on net income +4%; still 110% of net income as FCF.</p>
+      <p>Small, and attributed to timing.</p>
+      <p class="next"><b>Next filing:</b> six-month cash flow growth (Q2 FY2026: +48%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (fiscal year ended September 30, 2025; filed November 7, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">Scores revenue +27% to $1.17B; B2B +33% to $948.6M</div>
+      <blockquote>FY2025: "Revenues for our Scores segment were $1.2 billion during fiscal 2025, a 27% increase from fiscal 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> Scores 59% of revenue (54%); Scores operating income +$212.9M at an 88% margin.</p>
+      <p>Pricing kept compounding through a year of regulatory pressure.</p>
+      <p class="next"><b>Next filing:</b> Scores growth without the insurance renewal.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Mortgage regulation, competition and litigation" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Mortgage regulation, competition and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">FICO Score 10 T approved for conforming mortgages; CFPB inquiry no longer named</div>
+      <blockquote>FY2025: "The adoption of our most predictive scores, FICO® Score 10 and FICO® Score 10 T, gained increased traction for non-conforming mortgages and was approved for conforming mortgages by the Federal Housing Finance Agency for enterprise credit scoring requirements."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing.</p>
+      <p>The FY2024 10-K's "will be implemented" became an approval, and the CFPB closing-cost inquiry dropped out of the pricing risk factor.</p>
+      <p class="next"><b>Next filing:</b> Score 10 T adoption or revenue disclosure.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +23% to $778.8M; FCF = 118% of net income</div>
+      <blockquote>FY2025: "Cash flow from operating activities was $778.8 million during fiscal 2025, compared with $633.0 million during fiscal 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF $769.9M vs $624.1M.</p>
+      <p>Cash still exceeds earnings.</p>
+      <p class="next"><b>Next filing:</b> conversion above 100% in FY2026.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Mortgage regulation, competition and litigation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Mortgage regulation, competition and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">FHFA lets lenders choose the score; bureau pricing named as a constraint</div>
+      <blockquote>FY2025: "including, for example, the change announced by the FHFA Director in July 2025 permitting mortgage originators to choose the credit score they submit with mortgages delivered to Fannie Mae and Freddie Mac"</blockquote>
+      <blockquote>FY2025: "The ability of our FICO Score to compete effectively in the U.S. mortgage market may be constrained by the pricing and other business practices of the consumer reporting agencies"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; mortgage origination pricing drives most of the $236.7M B2B increase.</p>
+      <p>The bear case moved from a hypothetical bi-merge to an announced policy.</p>
+      <p class="next"><b>Next filing:</b> any GSE implementation date or price response (10-Qs carry no risk-factor updates).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks $1.4B = 183% of FCF; debt $2.2B &rarr; $3.1B</div>
+      <blockquote>FY2025: "Total share repurchases during fiscal 2025 were $1.4 billion, compared with $0.8 billion during fiscal 2024."</blockquote>
+      <blockquote>FY2025: "Total debt balance was $3.1 billion as of September 30, 2025, compared with $2.2 billion as of September 30, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks exceed FCF by about $640M; stockholders' deficit $1.75B vs $0.96B.</p>
+      <p>Debt rose by roughly the buyback shortfall.</p>
+      <p class="next"><b>Next filing:</b> buybacks vs FCF in FY2026.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">Software operating income &minus;4%, margin 30%; first restructuring, 226 positions</div>
+      <blockquote>FY2025: "Segment operating income as a percentage of segment revenue for Software decreased to 30% from 32%, primarily attributable to the increases in third-party data center hosting costs and in personnel and labor costs."</blockquote>
+      <blockquote>FY2025: "During fiscal 2025, we incurred restructuring charges of $10.9 million in employee separation costs due to the elimination of 226 positions throughout the Company."</blockquote>
+      <p class="magnitude"><b>Size:</b> segment income $247.7M vs $257.5M; ARR +4%, DBNRR 102%.</p>
+      <p>Software shrank in profit while the platform shift was still slow.</p>
+      <p class="next"><b>Next filing:</b> margin recovery after the headcount cut.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Bureau channel concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Bureau channel concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bureaus 51% of annual revenue, from 45%</div>
+      <blockquote>FY2025: "Revenues collectively generated by agreements with these customers accounted for 51%, 45% and 41% of our total revenues in fiscal 2025, 2024 and 2023, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $1.02B of $1.99B; two customers 10%+ of receivables.</p>
+      <p>More than half of FICO's revenue now passes through its competitors' owners.</p>
+      <p class="next"><b>Next filing:</b> quarterly share (Q1 FY2026: 51%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 FY2025 (quarter ended June 30, 2025; filed July 30, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P7 Balance sheet and leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Balance sheet and leverage</span><span class="chip">Stated</span></div>
+      <div class="title">$1.5B of 6.00% notes due 2033 replace both term loans and the revolver balance; revolver $1.0B to 2030</div>
+      <blockquote>Q3 FY2025: "We issued $1.5 billion of senior notes and used the net proceeds to repay all the outstanding balances on our term loans and revolving line of credit."</blockquote>
+      <p class="magnitude"><b>Size:</b> floating debt cut to zero at June 30; maturity moved from August 2026 to 2033.</p>
+      <p>Refinancing risk on the 2026 bank maturities is gone.</p>
+      <p class="next"><b>Next filing:</b> revolver use (FY2025 10-K: $275.0M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Margins and earnings quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Margins and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income +38%; margin 48.9% vs 42.5%</div>
+      <blockquote>Q3 FY2025: "Operating income was $262.5 million during the quarter ended June 30, 2025, a 38% increase from the quarter ended June 30, 2024"</blockquote>
+      <p class="magnitude"><b>Size:</b> +6.4 points of margin, after +4.3 points in Q2 FY2025.</p>
+      <p>Second quarter of a step-up in margin; the pillar moves to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> full-year margin (FY2025: 46.5%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month operating cash flow +37%; Q3 FCF $284.4M = 156% of net income</div>
+      <blockquote>Q3 FY2025: "Net cash provided by operating activities increased to $555.1 million during the nine months ended June 30, 2025 from $406.5 million during the nine months ended June 30, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$148.7M, mostly net income.</p>
+      <p>Conversion strong.</p>
+      <p class="next"><b>Next filing:</b> full-year FCF/net income above 100%.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P7 Balance sheet and leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Balance sheet and leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Amended credit agreement drops the 3.0x minimum interest coverage covenant</div>
+      <blockquote>Q3 FY2025: "The credit agreement contains certain restrictive covenants including a maximum consolidated leverage ratio of 3.5 to 1.0, subject to a step up to 4.0 to 1.0 following certain permitted acquisitions and subject to certain conditions, and contains other covenants typical of an unsecured credit facility."</blockquote>
+      <blockquote>Q2 FY2025: "and a minimum interest coverage ratio of 3.0 to 1.0."</blockquote>
+      <p class="magnitude"><b>Size:</b> debt $2.8B (from $2.2B in September); interest expense $32.9M vs $26.9M.</p>
+      <p>Debt rose for a third straight quarter and a lender protection disappeared; the pillar moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> debt growth vs operating income.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Record buybacks $511.3M = 1.8x quarterly FCF</div>
+      <blockquote>Q3 FY2025: "Total share repurchases during the quarter ended June 30, 2025 were $511.3 million, compared with $255.5 million during the quarter ended June 30, 2024"</blockquote>
+      <p class="magnitude"><b>Size:</b> nine months $878.1M vs FCF of about $550M; new $1.0B program.</p>
+      <p>Second quarter in a row above FCF, with fresh notes in hand; the pillar moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> full-year buybacks vs FCF (FY2025: 183%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Margins and earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Margins and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Part of Scores growth is a multi-year insurance licence recognized up front</div>
+      <blockquote>Q3 FY2025: "The increase in business-to-business scores revenue was primarily attributable to a higher unit price, an increase in volume of mortgage originations and a multi-year license renewal in the U.S. recognized on our insurance score product during the quarter ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; B2B rose $79.7M.</p>
+      <p>A one-time item inflates the quarter and the year-ago base for Q3 FY2026.</p>
+      <p class="next"><b>Next filing:</b> growth without it (Q3 FY2026 B2B still +49%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">Software margin 32% vs 34%; ARR +4%, DBNRR 103%</div>
+      <blockquote>Q3 FY2025: "Software segment operating income as a percentage of segment revenue decreased to 32% from 34%, primarily attributable to the increase in third-party data center hosting costs."</blockquote>
+      <p class="magnitude"><b>Size:</b> Software operating income &minus;$2.4M; non-platform ARR &minus;2%.</p>
+      <p>Second quarter of falling margin and low retention; the pillar moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> retention back above 105%.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 FY2025 (quarter ended March 31, 2025; filed April 29, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P5 Margins and earnings quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Margins and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income +26%; margin 49.2% vs 44.9%</div>
+      <blockquote>Q2 FY2025: "Operating income was $245.6 million during the quarter ended March 31, 2025, a 26% increase from the quarter ended March 31, 2024"</blockquote>
+      <p class="magnitude"><b>Size:</b> +4.3 points; quarter tax rate a normal 23.7%.</p>
+      <p>Clean operating leverage from the Scores mix.</p>
+      <p class="next"><b>Next filing:</b> a second quarter of margin gains (Q3 FY2025: +6.4 points).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">Scores +25%; B2C turns to growth through bureau royalties</div>
+      <blockquote>Q2 FY2025: "The increase in business-to-consumer revenue was primarily attributable to an increase in royalties derived from scores sold indirectly to consumers through credit reporting agencies."</blockquote>
+      <p class="magnitude"><b>Size:</b> B2B +$57.0M; B2C +$3.2M after declines through FY2024.</p>
+      <p>Price works in both channels.</p>
+      <p class="next"><b>Next filing:</b> B2C growth sustained.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">DBNRR falls to 102% and ARR growth to 3%; Software margin 31% vs 33%</div>
+      <blockquote>Q2 FY2025: "Dollar-Based Net Retention Rate for our Software segment was 102% as of March 31, 2025."</blockquote>
+      <blockquote>Q2 FY2025: "Software segment operating income as a percentage of segment revenue decreased to 31% from 33%, primarily attributable to the increase in third-party data center hosting costs."</blockquote>
+      <p class="magnitude"><b>Size:</b> ARR $714.6M, down $14.7M from December; non-platform ARR &minus;3%.</p>
+      <p>The low point of the window for the software business.</p>
+      <p class="next"><b>Next filing:</b> ARR back to growth.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Bureau channel concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Bureau channel concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bureaus 52% of quarterly revenue; three customers 10%+ of receivables (one in September)</div>
+      <blockquote>Q2 FY2025: "At March 31, 2025 and September 30, 2024, three individual customers and one individual customer accounted for 10% or more of total consolidated receivables, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> 52% vs 47%; six months 49%.</p>
+      <p>Receivables now concentrated in three counterparties.</p>
+      <p class="next"><b>Next filing:</b> receivables concentration.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks $207.0M against $72.8M of quarterly FCF</div>
+      <blockquote>Q2 FY2025: "Total share repurchases during the quarter ended March 31, 2025 were $207.0 million, compared with $179.5 million during the quarter ended March 31, 2024"</blockquote>
+      <p class="magnitude"><b>Size:</b> 2.8x the quarter's FCF; revolver $535.0M (from $210.0M in September).</p>
+      <p>March quarters are seasonally weak for cash, but the gap was borrowed.</p>
+      <p class="next"><b>Next filing:</b> buybacks vs FCF.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 FY2025 (quarter ended December 31, 2024; filed February 4, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">Scores +23%; mortgage volume turns from offset to driver</div>
+      <blockquote>Q1 FY2025: "The increase in business-to-business scores revenue was primarily attributable to a higher unit price and an increase in volume of mortgage originations."</blockquote>
+      <p class="magnitude"><b>Size:</b> B2B +$42.0M (+30%).</p>
+      <p>Price no longer has to overcome falling mortgage volume, as it did in FY2024.</p>
+      <p class="next"><b>Next filing:</b> volume staying in the driver sentence.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +59% to $194.0M</div>
+      <blockquote>Q1 FY2025: "Net cash provided by operating activities increased to $194.0 million during the quarter ended December 31, 2024 from $122.1 million during the quarter ended December 31, 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF $193.2M = 127% of net income; buybacks $159.7M within it.</p>
+      <p>Buybacks funded from cash this quarter.</p>
+      <p class="next"><b>Next filing:</b> buybacks within FCF.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Mortgage regulation, competition and litigation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Mortgage regulation, competition and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">Antitrust class action disclosed; Sherman Act Section 2 claim against FICO survives into discovery</div>
+      <blockquote>Q1 FY2025: "The court dismissed with prejudice all claims in the lawsuit other than a Sherman Act Section 2 claim and accompanying state law claims against FICO, which were allowed to proceed through the discovery stage of the litigation."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; no accrual; the claim goes to how FICO Scores are distributed and priced.</p>
+      <p>Follows the FY2024 10-K's CFPB risk factor: a second filing pointing at FICO's pricing, so the pillar moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> any status update or loss estimate (none through Q3 FY2026).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Margins and earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Margins and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Tax rate (1.6)%: net income +26% on pre-tax income +15%</div>
+      <blockquote>Q1 FY2025: "The effective income tax rate was (1.6)% and 7.3% during the quarters ended December 31, 2024 and 2023, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.4M tax benefit on $150.1M pre-tax; at 24% tax would have been about $36M, roughly a quarter of net income (inference).</p>
+      <p>Equity-award tax benefits depend on the share price and reverse when it falls (as in Q1 FY2026).</p>
+      <p class="next"><b>Next filing:</b> quarterly tax rate.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Bureau channel concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Bureau channel concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bureaus 44% of quarterly revenue, from 39%</div>
+      <blockquote>Q1 FY2025: "Revenues collectively generated by agreements with these customers accounted for 44% and 39% of our total revenues in the quarters ended December 31, 2024 and 2023, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $194M of $440.0M.</p>
+      <p>Second filing in a row with a 4-5 point rise; the pillar moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> share (Q2 FY2025: 52%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (fiscal year ended September 30, 2024; filed November 6, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Scores pricing power" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Scores pricing power</span><span class="chip">Stated</span></div>
+      <div class="title">Scores +19% to $919.7M on price, despite lower mortgage volume</div>
+      <blockquote>FY2024: "The increase in business-to-business scores revenue was primarily attributable to a higher unit price, partially offset by a decrease in volume of mortgage originations."</blockquote>
+      <p class="magnitude"><b>Size:</b> B2B +$150.8M (+27%) = 74% of the $204.0M revenue increase.</p>
+      <p>Price alone carried the segment through a weak mortgage year.</p>
+      <p class="next"><b>Next filing:</b> growth as mortgage volume recovers.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +35% to $633.0M; FCF = 122% of net income</div>
+      <blockquote>FY2024: "Cash flow from operating activities was $633.0 million during fiscal 2024, compared with $468.9 million during fiscal 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF $624.1M vs $464.7M.</p>
+      <p>Cash ahead of earnings.</p>
+      <p class="next"><b>Next filing:</b> conversion above 100%.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Mortgage regulation, competition and litigation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Mortgage regulation, competition and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">New risk factor: the CFPB's mortgage closing-cost inquiry covers credit score fees; bi-merge risk added</div>
+      <blockquote>FY2024: "For example, in May 2024, the CFPB launched a public inquiry to obtain information on fees charged by providers of mortgages and related settlement services in the U.S. residential mortgage market, including fees for credit reports and credit scores."</blockquote>
+      <blockquote>FY2024: "a change permitting mortgage originators to underwrite loans using credit scores from only two of the three national consumer reporting agencies"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; the risk factor ties it to FICO's ability "to implement price changes for FICO® Scores used in mortgage originations".</p>
+      <p>The first time the filings connect a regulator to the mortgage price lever.</p>
+      <p class="next"><b>Next filing:</b> any regulatory or legal action on pricing (Q1 FY2025: antitrust suit).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks double to $833.3M = 132% of FCF; debt $1.9B &rarr; $2.2B</div>
+      <blockquote>FY2024: "Total share repurchases during fiscal 2024 were $833.3 million, compared with $407.3 million during fiscal 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $200M above FCF; stockholders' deficit $962.7M (from $688.0M).</p>
+      <p>Buybacks started to outrun cash generation.</p>
+      <p class="next"><b>Next filing:</b> buybacks vs FCF.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Software platform transition" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Software platform transition</span><span class="chip">Stated</span></div>
+      <div class="title">ARR growth slows to 8% (from 22%); DBNRR 106% (from 120%)</div>
+      <blockquote>FY2024: "Annual Recurring Revenue for our Software segment as of September 30, 2024 was $721.2 million, an 8% increase from September 30, 2023."</blockquote>
+      <blockquote>FY2024: "Total | 110 | 114 | 117 | 120 | 114 | 112 | 108 | 106"</blockquote>
+      <p class="magnitude"><b>Size:</b> non-platform ARR flat at $494.2M with DBNRR 99%.</p>
+      <p>Four straight quarters of decelerating retention.</p>
+      <p class="next"><b>Next filing:</b> DBNRR (Q1 FY2025: 105%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Bureau channel concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Bureau channel concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bureaus 45% of revenue (41%)</div>
+      <blockquote>FY2024: "Revenues collectively generated by agreements with these customers accounted for 45%, 41% and 39% of our total revenues in fiscal 2024, 2023 and 2022, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $773M of $1.72B.</p>
+      <p>Concentration rises with every year of score pricing.</p>
+      <p class="next"><b>Next filing:</b> quarterly share.</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
