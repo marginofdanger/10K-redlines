@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVNA Bull / Bear | latest: 10-Q Q2 2026</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Carvana: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed July 29, 2026 | Covers eight filings since October 2024: 10-Qs for Q3 2024, Q1&ndash;Q3 2025 and Q1&ndash;Q2 2026; 10-Ks for FY2024 and FY2025 | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Stances judged across all eight filings since October 2024. "Last moved" is the filing that completed a run of two or more filings pointing the same way; &mdash; means the pillar has not moved in the window. Net income below is consolidated (including non-controlling interests) unless marked XBRL.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Unit growth and demand</td><td class="stance s-intact">Intact</td><td class="ev-bull">Retail units +33% (FY2024) and +43% (FY2025) to 596,641; Q2 2026 +37.7% to 197,325; market share about 1% &rarr; 1.6%</td><td class="ev-bear">Unit growth slowed from +43.5% (Q3 2025) to +40.0% and +37.7%; Q2 2026 revenue per unit +17.4% partly on &ldquo;overall appreciation in the retail market&rdquo;</td><td>&mdash;</td></tr>
+<tr><td>P2 Unit economics</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">SG&amp;A per retail unit $4,317 (Q3 2024) &rarr; $3,568 (Q2 2026); operating income $990M (2024) &rarr; $1.88B (2025)</td><td class="ev-bear">Total GPU down year over year in Q3 2025, Q1 2026 and Q2 2026 ($7,014 vs $7,426); Adjusted EBITDA margin 10.4% vs 12.4%; GPU causes no longer given</td><td>Q1 2026 10-Q</td></tr>
+<tr><td>P3 Loan sales and finance profit</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Committed loan buyers grew from one $4.0B Ally line to Ally $8.0B plus $12B of fixed-pool agreements; gain on loan sales $755M (2024) &rarr; $1.2B (2025)</td><td class="ev-bear">&ldquo;Lower loan sale spreads&rdquo; in Q1 and Q2 2026; other gross profit per unit $2,666 vs $2,869; Ally took about 45% of Q2 2026 loan sales</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P4 Earnings quality</td><td class="stance s-intact">Intact</td><td class="ev-bull">2026 quarters carry no PIK, no TRA expense and a normal tax charge; Q2 2026 other expense zero and pre-tax income +88%</td><td class="ev-bear">FY2025 net income $1,895M rested on a $2.8B tax benefit less $2.2B TRA expense; Q1 2025 net income included a $158M Root warrant gain</td><td>Q2 2026 10-Q (back from Weakening, reached at Q1 2025)</td></tr>
+<tr><td>P5 Cash conversion and inventory</td><td class="stance s-intact">Intact</td><td class="ev-bull">Operating cash flow positive every year ($918M, $1.04B) and up in H1 2026 ($345M vs $261M) with no PIK interest</td><td class="ev-bear">FY2024 operating cash flow included $458M of PIK interest; inventory $1.61B &rarr; $3.26B in 18 months; H1 2026 operating cash flow 24% of Adjusted EBITDA</td><td>&mdash;</td></tr>
+<tr><td>P6 Balance sheet and funding</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Debt $6.03B (Dec 2023) &rarr; $5.13B; $1.08B of 2028 secured notes retired; liquidity resources $4.42B &rarr; $7.02B; cash $2.63B</td><td class="ev-bear">Paydown leaned on equity ($1.3B ATM in 2024, $539M in Q3 2025 after a self-funding pledge); $3.93B of 9% secured notes remain; TRA liability $2.2B</td><td>FY2024 10-K</td></tr>
+<tr><td>P7 Governance, legal and related parties</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">IBM and Erakat cases settled for immaterial amounts; legal accrual $14M &rarr; $10M (Q2 2026)</td><td class="ev-bear">SEC subpoena (June 2025) disclosed only after two filings skipped the short report; TRA $1.7B owed to related parties; AG inquiries now cover lending practices</td><td>Q2 2025 10-Q</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. Volume, SG&amp;A leverage and a clean income statement on one side; a third straight decline in gross profit per unit, thinner loan-sale spreads and a large inventory build on the other.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Retail units +37.7% to 197,325; revenue +52.4% to $7.38B; website inventory 77,971 units (+38%)</div>
+      <blockquote>Q2 2026: "During the three months ended June 30, 2026, the number of vehicles we sold to retail customers increased by 37.7% to 197,325, compared to 143,280 in the three months ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> 54,045 more units than a year earlier; annualized run rate about 790,000 units, against 596,641 sold in 2025. Average monthly unique visitors 21.8M (+20%).</p>
+      <p>Growth is still close to 40% at roughly double the 2024 base, which is the core of the bull case. Selection kept pace with sales, so volume was not bought by thinning inventory.</p>
+      <p class="next"><b>Next filing:</b> Q3 2026 unit growth above 30% against the strong Q3 2025 comparison (155,941 units).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">SG&amp;A per retail unit $3,846 &rarr; $3,568 (&minus;7%); operating income $511M &rarr; $680M (+33%)</div>
+      <blockquote>Q2 2026: "Total SG&amp;A expenses per retail unit | 3,568 | 3,846 | 3,623 | 3,918"</blockquote>
+      <p class="magnitude"><b>Size:</b> $278 per unit on 197,325 units = about $55M of quarterly operating cost avoided at last year&rsquo;s rate; operating income $680M = 9.2% of revenue.</p>
+      <p>Fixed-cost leverage is still working: SG&amp;A rose 28% while units rose 38%. This is the offset to the gross-profit decline on the bear side, and it is why operating income still grew by a third.</p>
+      <p class="next"><b>Next filing:</b> SG&amp;A per unit below $3,816 (Q3 2025) while advertising ($121M, +44%) keeps growing.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">A clean quarter: interest expense &minus;$42M, other expense zero (was $60M), no PIK; pre-tax income $308M &rarr; $579M</div>
+      <blockquote>Q2 2026: "Interest expense, net decreased by $42 million to $101 million during the three months ended June 30, 2026 compared to $143 million during the three months ended June 30, 2025"</blockquote>
+      <blockquote>Q2 2026: "Other expense (income), net was zero during the three months ended June 30, 2026 compared to an expense of $60 million during the three months ended June 30, 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> pre-tax income +88%; net income $513M after a $66M tax charge (11.4% rate) that the 2025 quarters did not carry. Root warrant and TRA items, which swung 2025 results by up to $158M a quarter, were near zero.</p>
+      <p>For the first time in the window, reported earnings are close to operating earnings: interest is paid in cash, the TRA is on the balance sheet, and taxes are booked. Net income growth (+67%) understates pre-tax growth because of the tax line.</p>
+      <p class="next"><b>Next filing:</b> other expense near zero again and an effective tax rate near 10&ndash;12%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">H1 operating cash flow $345M vs $261M, without the $146M of PIK interest that propped up H1 2025</div>
+      <blockquote>Q2 2026: "Cash provided by operating activities was $345 million and $261 million during the six months ended June 30, 2026 and 2025, respectively, an increase in cash provided by operating activities of $84 million"</blockquote>
+      <blockquote>Q2 2026: "Payment-in-kind interest expense | — | 146"</blockquote>
+      <p class="magnitude"><b>Size:</b> on a like-for-like cash-interest basis H1 2025 would have been about $115M, so H1 2026 is about 3x; capex $102M leaves free cash flow of about $243M.</p>
+      <p>Cash generation improved even while inventory absorbed $833M, which supports the FY2025 claim that growth can be funded from operations. Part of the gain is non-cash deferred tax ($98M) and payables (+$362M).</p>
+      <p class="next"><b>Next filing:</b> nine-month operating cash flow above the $606M of 2025 with no equity issued.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Loan sales and finance profit" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Loan sales and finance profit</span><span class="chip">Stated</span></div>
+      <div class="title">Ally forward-flow commitment raised to $8.0B through July 2027; a seventh $500M receivables lender added</div>
+      <blockquote>Q2 2026: "On July 27, 2026, the Company and Ally amended the Ally MPSA to, among other things, increase the commitment by Ally to purchase up to $8.0 billion of principal balances of finance receivables between July 27, 2026 and July 26, 2027"</blockquote>
+      <p class="magnitude"><b>Size:</b> $8.0B = about 44% of annualized H1 2026 originations ($9.0B in six months); short-term revolving commitments $5.6B (December: $5.0B); fixed-pool capacity $8.7B unused.</p>
+      <p>Funding for originations is committed for a year at a larger size, on &ldquo;substantially similar terms&rdquo;, so the loan-sale engine that produces most of other gross profit is not capacity-constrained.</p>
+      <p class="next"><b>Next filing:</b> loan-sale volume and gain per unit holding with Ally headroom above $4B.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Total gross profit per unit $7,426 &rarr; $7,014 (&minus;5.5%); retail &minus;$89, wholesale &minus;$67, with no cause given; Adjusted EBITDA margin 12.4% &rarr; 10.4%</div>
+      <blockquote>Q2 2026: "This increase was driven primarily by an increase in the number of retail vehicles sold to 197,325 from 143,280 during the three months ended June 30, 2026 and 2025, respectively, partially offset by a $89 decrease in retail vehicle gross profit per unit."</blockquote>
+      <blockquote>Q2 2026: "Adjusted EBITDA margin | 10.4 | 12.4 | 10.4 | 12.0"</blockquote>
+      <p class="magnitude"><b>Size:</b> $412 per unit on 197,325 units = about $81M of quarterly gross profit; 2 points of margin on $7.38B of revenue = about $148M of Adjusted EBITDA. Operating margin 9.2% vs 10.6%.</p>
+      <p>This is the third 10-Q in a row with lower total GPU (Q3 2025, Q1 2026, Q2 2026), and the MD&amp;A no longer explains either the retail or the wholesale decline. Growth is now arriving at lower margin per car.</p>
+      <p class="next"><b>Next filing:</b> total GPU at or above $7,362 (Q3 2025) would refute; a fourth decline confirms the trend.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Loan sales and finance profit" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Loan sales and finance profit</span><span class="chip">Stated</span></div>
+      <div class="title">Loan sale spreads lower for a second quarter; other gross profit per unit $2,869 &rarr; $2,666 (&minus;7.1%)</div>
+      <blockquote>Q2 2026: "The increase in revenue was primarily due to an increase in gain on loan sales as a result of increased retail units sold and loan sale volume, partially offset by lower loan sale spreads, and to higher VSC and GAP conversion rates during the three months ended June 30, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> gain on loan sales $349M on about $4.7B of principal sold (about 7.4%) vs $274M on about $3.1B (about 8.8%) a year earlier; $203 per unit less other gross profit = about $40M a quarter.</p>
+      <p>Other gross profit is 100% margin and makes up 38% of gross profit, so a lower premium on loans flows straight to earnings. Spreads were cited as a growth driver as late as the FY2025 10-K (full year).</p>
+      <p class="next"><b>Next filing:</b> spreads described as stable or higher, or gain per principal dollar back above 8%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">Inventory $2.41B &rarr; $3.26B in six months (+36%); it absorbed $833M of H1 cash</div>
+      <blockquote>Q2 2026: "partially offset by an investment in vehicle inventory as we grow retail unit sales and acquire more vehicles from customers."</blockquote>
+      <blockquote>Q2 2026: "Vehicle inventory | 3,263 | 2,408"</blockquote>
+      <p class="magnitude"><b>Size:</b> inventory +61% year over year ($2.02B at June 2025) vs units +38%; H1 operating cash flow $345M = 24% of H1 Adjusted EBITDA ($1.441B).</p>
+      <p>Inventory value is rising faster than both sales and website units (77,971, +38%), so dollars per car on hand are up about 17% (inference: higher prices, new-car dealerships, and more customer-sourced cars). If prices turn, this is the exposure.</p>
+      <p class="next"><b>Next filing:</b> inventory growth back in line with unit growth, and Q3 operating cash flow above the $345M of Q3 2025.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Loan sales and finance profit" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Loan sales and finance profit</span><span class="chip">Stated</span></div>
+      <div class="title">Ally bought $2.1B of loans in the quarter (vs $1.2B), about 45% of all loans sold; headroom fell to $1.2B before the renewal</div>
+      <blockquote>Q2 2026: "During the three months ended June 30, 2026 and 2025, the Company sold $2.1 billion and $1.2 billion, respectively, in principal balances of finance receivables under the Ally MPSA."</blockquote>
+      <blockquote>Q2 2026: "As of June 30, 2026 and December 31, 2025, we had $1.2 billion and $4.9 billion, respectively, of unused capacity under the Ally MPSA"</blockquote>
+      <p class="magnitude"><b>Size:</b> Ally $2.1B of about $4.7B sold (securitizations $1.10B, fixed pool $1.5B); H1 Ally share about 42% vs 36% in H1 2025. Ally is also the floor-plan lender.</p>
+      <p>One buyer is taking a rising share at falling spreads, and the $6.0B commitment would have run out before its October 2026 end. The renewal was disclosed only in the subsequent-events note.</p>
+      <p class="next"><b>Next filing:</b> Ally share of loan sales back below 40% and securitization volume growing.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Inferred</span></div>
+      <div class="title">Revenue per unit +17.4% to $27,908 on mix and used-car price appreciation; gasoline prices &ldquo;have pressured&rdquo; consumers</div>
+      <blockquote>Q2 2026: "an increase in retail revenue per retail unit sold to $27,908 from $23,765 in the prior year, primarily due to lower retail marketplace units sold as a share of total retail units sold and overall appreciation in the retail market."</blockquote>
+      <blockquote>Q2 2026: "sustained increases in gasoline prices, including as a result of the conflict in Iran, have pressured consumer disposable income and could reduce their ability to purchase vehicles"</blockquote>
+      <p class="magnitude"><b>Size:</b> retail revenue +61.7% vs units +37.7%; unit growth has slowed from +43.5% (Q3 2025) to +40.0% and +37.7%.</p>
+      <p>Revenue growth now overstates volume growth, and price appreciation can reverse. Higher car prices and fuel costs act on the same customer, which is the first stated demand-side pressure in the window.</p>
+      <p class="next"><b>Next filing:</b> unit growth holding above 35% if prices flatten.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">TRA payments due within a year rise to $99M (December: $37M) on a $2.2B liability, $1.7B owed to related parties</div>
+      <blockquote>Q2 2026: "As of June 30, 2026 and December 31, 2025, $99 million and $37 million, respectively, are included in other current liabilities"</blockquote>
+      <p class="magnitude"><b>Size:</b> TRA liability $2.229B = 43% of total debt ($5.13B); the current portion equals about one quarter&rsquo;s interest expense ($101M).</p>
+      <p>As the company uses its tax assets, 85% of the savings go to LLC unitholders, mostly the Garcia Parties. The cash cost begins to scale in 2026 and rises with profits.</p>
+      <p class="next"><b>Next filing:</b> TRA payments in Q3 and Q4 against the $99M current portion.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing (newest first). <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before it; 10-Ks versus the previous 10-K. GPU = gross profit per retail unit. The answers files (fy2024q3.txt to fy2026q2.txt) give the sources.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>Q1 2026 10-Q</th><th>FY2025 10-K</th><th>Q3 2025 10-Q</th><th>Q2 2025 10-Q</th><th>Q1 2025 10-Q</th><th>FY2024 10-K</th><th>Q3 2024 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark held">&#9679;</span> Units +37.7% to 197,325; revenue +52.4% to $7.38B; revenue per unit +17.4% on mix and price appreciation.</td><td><span class="mark held">&#9679;</span> Units +40.0% to 187,393; revenue +52.0%; revenue per unit +15.8% (lower marketplace share).</td><td><span class="mark better">&#9650;</span> Units +43.3% to 596,641; revenue +48.6% to $20.32B; market share about 1.6% (about 1%).</td><td><span class="mark better">&#9650;</span> Units +43.5% to 155,941; revenue +54.5%; revenue per unit +9.5% to $25,625.</td><td><span class="mark held">&#9679;</span> Units +41.2% to 143,280; revenue +41.9%; revenue per unit flat at $23,765.</td><td><span class="mark better">&#9650;</span> Units +45.7% to 133,898; revenue +38.3%; revenue per unit &minus;6.0% (marketplace mix).</td><td><span class="mark better">&#9650;</span> Units +33.1% to 416,348 after &minus;24% in 2023; revenue +26.9% to $13.67B.</td><td><span class="mark better">&#9650;</span> Units +34.2% to 108,651 (Q2 +32.5%); revenue +31.8%; revenue per unit &minus;2.7% on depreciation.</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark worse">&#9660;</span> Total GPU $7,014 vs $7,426; Adj. EBITDA margin 10.4% vs 12.4%; SG&amp;A per unit $3,568 vs $3,846.</td><td><span class="mark worse">&#9660;</span> Total GPU $6,783 vs $6,938; retail GPU &ldquo;a $39 decrease&rdquo;; Adj. EBITDA margin 10.4% vs 11.5%.</td><td><span class="mark better">&#9650;</span> Adj. EBITDA $2,237M, 11.0% vs 10.1%; SG&amp;A per unit $3,868 vs $4,501; retail GPU flat at $3,315; implied Q4 GPU down.</td><td><span class="mark worse">&#9660;</span> Total GPU $7,362 vs $7,427, first decline in the window; retail GPU $3,456 vs $3,497; margin 11.3% vs 11.7%.</td><td><span class="mark better">&#9650;</span> Total GPU $7,426 vs $7,049; retail GPU $3,636 (incl. tariff effects); margin 12.4% vs 10.4%.</td><td><span class="mark better">&#9650;</span> Total GPU $6,938 vs $6,432; retail GPU $3,204 vs $3,080; margin 11.5% vs 7.7%.</td><td><span class="mark better">&#9650;</span> Total GPU $6,908 vs $5,511; retail GPU $3,312 vs $2,385; Adj. EBITDA $1,378M, 10.1% vs 3.1%.</td><td><span class="mark better">&#9650;</span> Total GPU $7,427 vs $5,952; retail GPU $3,497 vs $2,692; margin 11.7% vs 5.3%.</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark better">&#9650;</span> Pre-tax income $579M vs $308M; other expense zero (was $60M); no PIK; tax rate 11.4% vs 0.0%.</td><td><span class="mark better">&#9650;</span> Net income $405M vs $373M despite a $42M warrant loss (was a $158M gain) and $36M of tax; no TRA expense.</td><td><span class="mark worse">&#9660;</span> Net income $1,895M on a $2.8B tax benefit less $2.2B TRA expense; $64M warrant loss; $182M PIK.</td><td><span class="mark held">&#9679;</span> Net income $263M after a $120M Root warrant loss and $40M TRA expense; nine-month PIK $182M.</td><td><span class="mark held">&#9679;</span> Net income $308M; warrant loss $35M, TRA $25M; H1 PIK interest $146M.</td><td><span class="mark worse">&#9660;</span> Net income $373M includes a $158M Root warrant gain (42%) and $40M TRA expense.</td><td><span class="mark better">&#9650;</span> Net income $404M (2023: $150M on an $878M debt gain); includes $115M warrant gain; $458M PIK interest.</td><td><span class="mark held">&#9679;</span> Net income $148M; warrant loss $26M; nine-month PIK interest $388M (non-cash).</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark better">&#9650;</span> H1 operating cash flow $345M vs $261M (which had $146M PIK); inventory &minus;$833M; 24% of Adj. EBITDA.</td><td><span class="mark worse">&#9660;</span> Operating cash flow $107M vs $232M (&minus;$125M) on inventory investment.</td><td><span class="mark held">&#9679;</span> Operating cash flow $1.036B (+$118M) with cash interest; FCF $889M; 46% of Adj. EBITDA.</td><td><span class="mark worse">&#9660;</span> Nine-month operating cash flow $606M vs $858M (&minus;$252M) on inventory.</td><td><span class="mark worse">&#9660;</span> H1 operating cash flow $261M vs $455M (&minus;$194M); inventory +$404M.</td><td><span class="mark better">&#9650;</span> Operating cash flow $232M vs $101M despite cash interest; inventory released $114M.</td><td><span class="mark held">&#9679;</span> Operating cash flow $918M (+$115M), of which $274M came from paying interest in kind.</td><td><span class="mark worse">&#9660;</span> Nine-month operating cash flow $858M vs $1.042B; fewer loans sold relative to originations.</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark held">&#9679;</span> No equity sold; capex H1 $102M; two dealerships ($40M); TRA payments $37M; 5-for-1 split.</td><td><span class="mark held">&#9679;</span> No equity sold; capex $51M; one acquisition ($11M); TRA payments $37M.</td><td><span class="mark held">&#9679;</span> ATM $539M; $611M of 2028 notes retired; five dealerships $160M; capex $147M.</td><td><span class="mark held">&#9679;</span> ATM $539M at $364.93 (pre-split); $559M of 2028 notes redeemed for $578M.</td><td><span class="mark held">&#9679;</span> No ATM activity; no note buybacks in Q2; H1 capex $58M.</td><td><span class="mark held">&#9679;</span> No ATM activity, share cap cut 35M &rarr; 21M; $52M notes bought back; first dealership ($24M).</td><td><span class="mark held">&#9679;</span> ATM $1.3B gross at $186.56; $470M of 2028 notes retired; capex $91M.</td><td><span class="mark held">&#9679;</span> $100M of 2028 notes bought back in Q3 ($350M year to date); nine-month ATM $347M net.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark held">&#9679;</span> Debt $5.13B; liquidity $7.02B; cash $2.63B; TRA $2.23B (current $99M); covenants in compliance.</td><td><span class="mark held">&#9679;</span> Debt $5.03B; liquidity $6.91B; cash $2.41B; no debt extinguished.</td><td><span class="mark better">&#9650;</span> Debt $4.98B vs $5.47B; liquidity $6.74B; PIK ended; TRA liability $2.3B now recorded.</td><td><span class="mark better">&#9650;</span> Debt $5.06B (Q2 $5.57B); liquidity $6.44B; revolving commitments $5.0B.</td><td><span class="mark held">&#9679;</span> Debt $5.57B; liquidity $5.98B; cash $1.86B.</td><td><span class="mark held">&#9679;</span> Debt $5.50B; liquidity $5.86B; cash interest elected on 2028 and 2030 notes; floor plan renewed at $1.5B to April 2027.</td><td><span class="mark better">&#9650;</span> Debt $5.47B vs $6.03B; liquidity $5.69B vs $3.13B; cash $1.72B.</td><td><span class="mark better">&#9650;</span> Debt $5.53B (Dec $6.03B); liquidity $4.42B (Q2 $4.11B); cash $871M.</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark worse">&#9660;</span> Ally about 45% of Q2 loan sales ($2.1B); headroom $1.2B before the $8.0B renewal.</td><td><span class="mark worse">&#9660;</span> Ally $1.6B of about $4.0B sold; Ally headroom $4.9B &rarr; $3.3B.</td><td><span class="mark held">&#9679;</span> Three $4.0B fixed-pool buyers added (unnamed); Ally $4.7B of $12.4B sold.</td><td><span class="mark held">&#9679;</span> Ally named, commitment $6.0B; Ally $1.2B of about $3.3B sold.</td><td><span class="mark held">&#9679;</span> Ally $1.2B of about $3.1B sold (39%); fixed pool $1.2B.</td><td><span class="mark held">&#9679;</span> Ally line reset at $4.0B; $0.8B fixed-pool sales to unrelated buyers.</td><td><span class="mark held">&#9679;</span> Ally $3.0B of $8.3B sold; first $1.5B of fixed-pool sales; DriveTime administers VSCs.</td><td><span class="mark held">&#9679;</span> Ally $0.7B of about $2.3B sold; securitizations $1.2B.</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark held">&#9679;</span> Wholesale GPU cause also dropped; no critical-estimate changes.</td><td><span class="mark worse">&#9660;</span> Capacity figure and loan-monetization goal deleted; retail GPU level not given.</td><td><span class="mark worse">&#9660;</span> $2.2B valuation allowance released on &ldquo;sustained profitability&rdquo;; marketplace net treatment &ldquo;may&rdquo; apply.</td><td><span class="mark worse">&#9660;</span> Marketplace revenue treatment hedged (&ldquo;depending on the structure of the partnership&rdquo;).</td><td><span class="mark held">&#9679;</span> OBBBA immaterial &ldquo;as we maintain a full valuation allowance&rdquo;; no estimate changes.</td><td><span class="mark held">&#9679;</span> Item 1A &ldquo;no material changes&rdquo; assertion dropped; no estimate changes.</td><td><span class="mark worse">&#9660;</span> $2.0B TRA left unrecorded; retail units redefined to include marketplace cars; visitors recast +8.5%.</td><td><span class="mark worse">&#9660;</span> Marketplace (net revenue) first disclosed; capacity cut to &ldquo;more than 1 million&rdquo;.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark better">&#9650;</span> IBM case settled; accrual $14M &rarr; $10M; class-certification motion pending; SEC matter open.</td><td><span class="mark held">&#9679;</span> Erakat settled (immaterial); accrual $14M; Iran and fuel risk added.</td><td><span class="mark worse">&#9660;</span> SEC subpoena in risk factors; AG inquiries add &ldquo;lending practices&rdquo;; accrual $14M; TRA $1.7B to related parties.</td><td><span class="mark held">&#9679;</span> SEC paragraph unchanged; accrual $12M.</td><td><span class="mark worse">&#9660;</span> January 2025 short report and June 2025 SEC subpoena disclosed; accrual $10M &rarr; $12M.</td><td><span class="mark worse">&#9660;</span> Short report not mentioned; &ldquo;without merit&rdquo; reassurance deleted; class action in discovery.</td><td><span class="mark worse">&#9660;</span> Accrual $10M ($3M); AG claims &ldquo;have resulted&rdquo;; 10(b) claims partly survive.</td><td><span class="mark held">&#9679;</span> 2023 Delaware stockholder suit dismissed; &ldquo;has not established reserves&rdquo;.</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark held">&#9679;</span> Self-funding held (no ATM); Ally $8.0B; retail sales not proportional to units (+62% vs +38%).</td><td><span class="mark worse">&#9660;</span> Capacity number dropped; &ldquo;three fundamental drivers&rdquo; and greenfield sites replace the strategy list.</td><td><span class="mark held">&#9679;</span> Funding hedge &ldquo;if necessary&rdquo; &rarr; &ldquo;if desired&rdquo;; capacity &ldquo;approximately 1.5 million&rdquo;.</td><td><span class="mark worse">&#9660;</span> Self-funding pledge unchanged while $539M of stock sold.</td><td><span class="mark held">&#9679;</span> &ldquo;Path to achieve sustained profitability&rdquo; deleted; &ldquo;prioritize efficient growth&rdquo;.</td><td><span class="mark better">&#9650;</span> New pledge: growth funded &ldquo;primarily through cash generated from operating activities&rdquo;.</td><td><span class="mark held">&#9679;</span> Financing expected to keep funding growth; capacity &ldquo;more than 1 million&rdquo;.</td><td><span class="mark held">&#9679;</span> No numeric guidance; &ldquo;are simultaneously investing&rdquo; in expansion.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Carvana gives no earnings or unit guidance in its filings. These are the numbers, capacities and commitments it did state in the window, and what each later filing said about them.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>Reconditioning sites &ldquo;collectively have capacity to inspect and recondition more than 1 million vehicles per year at full utilization&rdquo; (cut from &ldquo;approximately 1.35 million&rdquo;)</td><td>Q3 2024 10-Q</td><td>FY2024 to Q3 2025: held. FY2025 10-K: moved to &ldquo;approximately 1.5 million&rdquo;. Q1 2026: dropped. Q2 2026: not mentioned; annualized retail units about 790,000</td></tr>
+<tr><td>&ldquo;We generally expect retail vehicle sales to trend proportionately with retail units sold, absent any material changes in macroeconomic conditions.&rdquo;</td><td>Q3 2024 10-Q</td><td>Repeated in every filing. Q3 2025: sales +57% vs units +44%. Q2 2026: missed, sales +61.7% vs units +37.7% (marketplace mix and price appreciation)</td></tr>
+<tr><td>&ldquo;Increase monetization of our finance receivables. We plan to continue selling finance receivables in securitization transactions and otherwise expand our base of financial partners&rdquo;</td><td>Q3 2024 10-Q</td><td>FY2024 to Q3 2025: held; FY2025 10-K: met, three $4.0B buyers added. Q1 2026: dropped, the same filing reports &ldquo;lower loan sale spreads&rdquo;. Q2 2026: not mentioned</td></tr>
+<tr><td>&ldquo;Optimize average days to sale. Our goal is generally to optimize our inventory size relative to sales&rdquo;</td><td>Q3 2024 10-Q</td><td>FY2024 to FY2025: held. Q1 2026: dropped. Q2 2026: inventory value +61% year over year vs units +38%</td></tr>
+<tr><td>&ldquo;We expect to continue our focus on these profitability initiatives as we return to growth.&rdquo;</td><td>Q3 2024 10-Q</td><td>FY2024: &ldquo;as we continue to grow&rdquo;. Q1 2025: &ldquo;assuming stability in the macroeconomic environment&rdquo; added. FY2025 10-K: dropped. Adj. EBITDA margin peaked at 12.4% (Q2 2025), 10.4% in Q2 2026</td></tr>
+<tr><td>ATM program: up to the greater of $1.0B or 35 million shares; $1.3B sold in 2024 at $186.56</td><td>FY2024 10-K</td><td>Q1 2025: moved, share cap cut to 21 million, no activity. Q2 2025: no activity. Q3 2025: $539M sold, $461M left. FY2025 to Q2 2026: $461M left, no further sales</td></tr>
+<tr><td>Ally forward flow: &ldquo;up to $4.0 billion of principal balances of finance receivables between January 3, 2025 and January 2, 2026&rdquo;</td><td>FY2024 10-K</td><td>Q1 2025: reset to $4.0B through April 29, 2026. Q3 2025: raised to $6.0B through October 27, 2026. FY2025: $4.9B unused. Q1 2026: $3.3B unused. Q2 2026: $1.2B unused; replaced by $8.0B through July 26, 2027</td></tr>
+<tr><td>&ldquo;Going forward, we expect to fund growth and expansion primarily through cash generated from operating activities, while retaining the option to utilize financing activities as a supplemental source if necessary.&rdquo;</td><td>Q1 2025 10-Q</td><td>Q2 2025: held, no equity sold. Q3 2025: missed, $539M of stock sold with the sentence unchanged. FY2025 10-K: moved to &ldquo;if desired&rdquo;. Q1 2026 and Q2 2026: held without &ldquo;Going forward&rdquo;; no equity sold, H1 2026 operating cash flow $345M covered capex and acquisitions ($142M)</td></tr>
+<tr><td>Floor Plan Facility renewed &ldquo;at $1.5 billion until April 30, 2027&rdquo;</td><td>Q1 2025 10-Q</td><td>Q2 and Q3 2025: held. FY2025: $58M drawn. Q2 2026: $126M drawn, $1.4B unused</td></tr>
+<tr><td>Three loan purchase agreements &ldquo;for the sale of up to a total of $12 billion of principal balance of finance receivables through the fourth quarter of 2027&rdquo;</td><td>FY2025 10-K</td><td>FY2025: $11.3B unused. Q1 2026: $9.9B unused. Q2 2026: $8.7B unused, $2.6B used in six months (on pace)</td></tr>
+<tr><td>Citizens Bank fleet loan: &ldquo;up to $250 million in aggregate principal amount of loans to finance certain equipment for its transportation fleet&rdquo;</td><td>FY2025 10-K</td><td>FY2025: $23M drawn. Q2 2026: $90M drawn</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 2026 (filed April 29, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Retail units +40.0% to 187,393; revenue +52% to $6.43B; website units 70,600 vs 53,707</div>
+      <blockquote>Q1 2026: "During the three months ended March 31, 2026, the number of vehicles we sold to retail customers increased by 40.0% to 187,393, compared to 133,898 in the three months ended March 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> 53,495 more units; average monthly unique visitors 21.4M (+23%).</p>
+      <p>Growth held near 40% through the seasonally strongest quarter, against a base that had itself grown 46%.</p>
+      <p class="next"><b>Next filing:</b> growth near 40% in Q2 (Q2 2026: +37.7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Interest expense &minus;$40M to $99M; net income $405M vs $373M even though the year-ago quarter had a $158M warrant gain</div>
+      <blockquote>Q1 2026: "Interest expense, net decreased by $40 million to $99 million during the three months ended March 31, 2026 compared to $139 million during the three months ended March 31, 2025"</blockquote>
+      <blockquote>Q1 2026: "Other expense (income), net was expense of $41 million during the three months ended March 31, 2026 and was primarily due to a $42 million decrease in the fair value of Warrants"</blockquote>
+      <p class="magnitude"><b>Size:</b> a $200M swing in warrant marks against the comparison, plus a $36M tax charge (8.1% rate vs 0.5%), and net income still rose $32M.</p>
+      <p>Reported earnings now understate rather than flatter operating progress: the 2025 comparison carried a non-cash gain and no tax.</p>
+      <p class="next"><b>Next filing:</b> no TRA expense and small warrant marks (Q2 2026: other expense zero).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Wholesale GPU per wholesale unit $1,009 &rarr; $1,328; SG&amp;A per retail unit $3,996 &rarr; $3,682</div>
+      <blockquote>Q1 2026: "along with an increase in wholesale vehicle gross profit per wholesale unit to $1,328 from $1,009, respectively, partially offset by a decrease in wholesale marketplace gross profit."</blockquote>
+      <p class="magnitude"><b>Size:</b> wholesale gross profit $152M vs $111M (+37%); SG&amp;A per unit &minus;$314 = about $59M of quarterly cost leverage.</p>
+      <p>Wholesale and overhead leverage offset part of the retail and finance per-unit declines.</p>
+      <p class="next"><b>Next filing:</b> wholesale GPU still up (Q2 2026: &ldquo;a $67 decrease&rdquo;).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Total GPU $6,938 &rarr; $6,783; retail GPU disclosed only as &ldquo;a $39 decrease&rdquo;; Adj. EBITDA margin 11.5% &rarr; 10.4%</div>
+      <blockquote>Q1 2026: "This increase was driven primarily by an increase in the number of retail vehicles sold to 187,393 from 133,898 during the three months ended March 31, 2026 and 2025, respectively, partially offset by a $39 decrease in retail vehicle gross profit per unit."</blockquote>
+      <p class="magnitude"><b>Size:</b> $155 per unit on 187,393 units = about $29M; 1.1 points of margin on $6.43B = about $71M of Adjusted EBITDA.</p>
+      <p>Second 10-Q in a row with lower total GPU (Q3 2025 the first), with the implied Q4 2025 decline in between; with this filing the run is two disclosed quarters and the stance moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> GPU back above the prior year (Q2 2026: $7,014 vs $7,426, down again).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Loan sales and finance profit" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Loan sales and finance profit</span><span class="chip">Stated</span></div>
+      <div class="title">&ldquo;Lower loan sale spreads&rdquo; named as a headwind; Ally headroom $4.9B &rarr; $3.3B in one quarter</div>
+      <blockquote>Q1 2026: "partially offset by lower loan sale spreads, and to higher VSC conversion rates during the three months ended March 31, 2026."</blockquote>
+      <blockquote>Q1 2026: "As of March 31, 2026 and December 31, 2025, we had $3.3 billion and $4.9 billion, respectively, of unused capacity under the Ally MPSA"</blockquote>
+      <p class="magnitude"><b>Size:</b> gain on loan sales $354M on about $4.0B sold (about 8.9%) vs $273M on about $2.5B (about 10.9%); other GPU $2,807 vs $2,905.</p>
+      <p>Spreads were a cited tailwind through the FY2025 10-K (full year), though the Q3 2025 quarter-only explanation had already dropped them. The same filing deletes the plan to increase loan monetization.</p>
+      <p class="next"><b>Next filing:</b> spreads stable (Q2 2026: lower again).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $232M &rarr; $107M on inventory investment</div>
+      <blockquote>Q1 2026: "Cash provided by operating activities was $107 million and $232 million during the three months ended March 31, 2026 and 2025, respectively, a decrease in cash provided by operating activities of $125 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> operating cash flow 16% of Adjusted EBITDA ($672M); inventory +$247M to $2.66B; free cash flow $56M (XBRL).</p>
+      <p>Seasonal inventory build explains part of it, but cash lagged earnings in the first quarter after the self-funding claim was restated.</p>
+      <p class="next"><b>Next filing:</b> H1 operating cash flow above 2025 (Q2 2026: $345M vs $261M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed February 18, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Record 596,641 retail units (+43.3%), revenue $20.32B (+48.6%); market share about 1.6%</div>
+      <blockquote>FY2025: "During the year ended December 31, 2025, the number of vehicles we sold to retail customers increased by 43.3% to 596,641, compared to 416,348 in the year ended December 31, 2024."</blockquote>
+      <blockquote>FY2025: "of which Carvana currently has an estimated market share of only approximately 1.6%"</blockquote>
+      <p class="magnitude"><b>Size:</b> 180,293 more units; units now 40% above the 2021 peak (about 425,000).</p>
+      <p>Growth accelerated from 2024 (+33%), and the share figure leaves a long runway in a 37 million-unit market.</p>
+      <p class="next"><b>Next filing:</b> growth near 40% in Q1 2026 (Q1 2026: +40.0%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">SG&amp;A per unit $4,501 &rarr; $3,868; Adjusted EBITDA $1,378M &rarr; $2,237M, margin 10.1% &rarr; 11.0%</div>
+      <blockquote>FY2025: "Total SG&amp;A expenses per retail unit | 3,868 | 4,501 | 5,741"</blockquote>
+      <p class="magnitude"><b>Size:</b> $633 per unit on 596,641 units = about $378M of annual cost leverage; operating income $990M &rarr; $1.88B (XBRL).</p>
+      <p>The year&rsquo;s profit growth came from scale in overhead, not from margin per car, which is both the strength and the limit of this card.</p>
+      <p class="next"><b>Next filing:</b> SG&amp;A per unit below $3,996 (Q1 2026: $3,682).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Debt $5.47B &rarr; $4.98B; $611M of 2028 secured notes retired; interest expense &minus;$146M</div>
+      <blockquote>FY2025: "During the year ended December 31, 2025, $611 million of principal amount of 2028 Senior Secured Notes were voluntarily repurchased and redeemed for $633 million"</blockquote>
+      <blockquote>FY2025: "Interest expense, net decreased by $146 million to $505 million during the year ended December 31, 2025 compared to $651 million during the year ended December 31, 2024"</blockquote>
+      <p class="magnitude"><b>Size:</b> interest expense 27% of operating income (66% in 2024); liquidity resources $6.74B; cash $2.33B.</p>
+      <p>The 2028 notes from the 2023 exchange are gone and all interest is paid in cash, yet interest still fell.</p>
+      <p class="next"><b>Next filing:</b> debt flat or lower while units grow (Q1 2026: $5.03B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Net income $1,895M rests on a $2.8B tax benefit from releasing the valuation allowance, less $2.2B of TRA expense</div>
+      <blockquote>FY2025: "Income tax (benefit) provision was a benefit of $2.8 billion during the year ended December 31, 2025 and was primarily due to the release of our valuation allowance against our deferred tax assets."</blockquote>
+      <blockquote>FY2025: "Other expense (income), net was an expense of $2.3 billion during the year ended December 31, 2025 and was primarily due to $2.2 billion of TRA expense"</blockquote>
+      <p class="magnitude"><b>Size:</b> net non-operating swing about +$0.5B; operating income $1.88B is the cleaner figure. XBRL net income to Carvana Co. $1.41B, diluted EPS $8.45 (pre-split).</p>
+      <p>Headline net income and EPS for 2025 are not a base to grow from; 2026 carries a tax charge (8&ndash;11%) instead.</p>
+      <p class="next"><b>Next filing:</b> quarterly results with no TRA expense and a normal tax rate (Q1 2026: 8.1%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Inferred</span></div>
+      <div class="title">Retail GPU &ldquo;approximately flat at $3,315&rdquo; with no explanation; implied Q4 retail GPU about $2,990 vs $3,226</div>
+      <blockquote>FY2025: "Additionally, retail vehicle gross profit per unit was approximately flat at $3,315 for the year ended December 31, 2025, compared to $3,312 for the year ended December 31, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> implied Q4 2025 (annual less nine months): total GPU about $6,427 vs $6,671; Adjusted EBITDA margin about 9.1% vs 10.1%. Non-GAAP GPU $7,182 vs $7,196.</p>
+      <p>The 2024 filing explained every GPU gain; this one gives no cause, and the second half of 2025 gave back the first half&rsquo;s gains. Second filing pointing down after Q3 2025.</p>
+      <p class="next"><b>Next filing:</b> Q1 2026 GPU vs $6,938 (Q1 2026: $6,783, down).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Governance, legal and related parties" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Governance, legal and related parties</span><span class="chip">Stated</span></div>
+      <div class="title">TRA liability $82M &rarr; $2.3B, of which $1.7B is owed to related parties</div>
+      <blockquote>FY2025: "During the year ended December 31, 2025, we recorded TRA expense of $2.2 billion which was recorded to other expense (income), net in the accompanying consolidated statements of operations."</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.27B = 97% of year-end cash ($2.33B) and 46% of debt; $1.7B (about three quarters) due to related parties, mainly the Garcia Parties.</p>
+      <p>Profitability converts 85% of the tax savings into payments to the controlling holders, and a change of control accelerates the whole amount.</p>
+      <p class="next"><b>Next filing:</b> size of 2026 TRA payments (Q1 2026: $37M; Q2 2026 current portion $99M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $1.036B = 46% of Adjusted EBITDA; inventory +$800M to $2.41B</div>
+      <blockquote>FY2025: "primarily due to an improvement in operating results, partially offset by increased vehicle inventory acquisitions during the year ended December 31, 2025, together with an increase in interest paid due to our election to pay cash interest on the 2028 and 2030 Senior Secured Notes."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating cash flow including $182M of PIK interest; free cash flow after capex and dealership purchases about $729M, against $539M of equity raised.</p>
+      <p>Cash grew less than earnings for a second year; the &ldquo;fund growth from operations&rdquo; claim still depends on inventory turning.</p>
+      <p class="next"><b>Next filing:</b> Q1 2026 operating cash flow vs $232M (Q1 2026: $107M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2025 (filed October 29, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Retail units +43.5% to 155,941; revenue +54.5% to $5.65B</div>
+      <blockquote>Q3 2025: "During the three months ended September 30, 2025, the number of vehicles we sold to retail customers increased by 43.5% to 155,941, compared to 108,651 in the three months ended September 30, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> 47,290 more units; website units 67,236 (+46%).</p>
+      <p>The fastest quarterly growth rate in the window, reached in the seasonally softer half.</p>
+      <p class="next"><b>Next filing:</b> full-year growth above 40% (FY2025: +43.3%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">$559M of 2028 secured notes redeemed; debt $5.57B &rarr; $5.06B in one quarter</div>
+      <blockquote>Q3 2025: "During the three months ended September 30, 2025, as permitted by the indenture, the Company voluntarily redeemed $559 million of principal amount of the 2028 Senior Secured Notes for $578 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> the largest single retirement in the window; interest expense $125M vs $157M.</p>
+      <p>Removes most of the remaining exchange notes and cuts cash interest now that PIK has ended.</p>
+      <p class="next"><b>Next filing:</b> debt below $5.1B at year end (FY2025: $4.98B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Loan sales and finance profit" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Loan sales and finance profit</span><span class="chip">Stated</span></div>
+      <div class="title">Ally commitment raised $4.0B &rarr; $6.0B; a sixth $600M receivables facility</div>
+      <blockquote>Q3 2025: "In September 2025, the Company entered into an agreement pursuant to which a sixth lender agreed to provide a $600 million revolving credit facility to fund certain finance receivables originated by the Company until March 29, 2027."</blockquote>
+      <p class="magnitude"><b>Size:</b> revolving commitments $4.2B &rarr; $5.0B; gain on loan sales $331M vs $224M.</p>
+      <p>More committed capacity for a growing origination book (nine-month originations $9.2B vs $6.1B).</p>
+      <p class="next"><b>Next filing:</b> further buyer capacity (FY2025: three $4.0B fixed-pool agreements).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">First year-over-year GPU decline in the window: retail $3,497 &rarr; $3,456, total $7,427 &rarr; $7,362; margin 11.7% &rarr; 11.3%</div>
+      <blockquote>Q3 2025: "partially offset by retail vehicle gross profit per unit decreasing to $3,456 compared to $3,497 in the prior year. The per unit decrease was primarily driven by higher retail depreciation rates"</blockquote>
+      <p class="magnitude"><b>Size:</b> $65 of total GPU on 155,941 units = about $10M; wholesale GPU $1,080 &rarr; $1,033.</p>
+      <p>Small in dollars, but it ends the run of year-over-year per-unit gains reported in every 2024 and H1 2025 filing, and starts the run that moved P2.</p>
+      <p class="next"><b>Next filing:</b> Q4 GPU vs about $6,671 (implied Q4 2025: about $6,427, down).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">$539M of stock sold two quarters after promising to fund growth primarily from operations</div>
+      <blockquote>Q3 2025: "we issued 1.5 million shares of Class A common stock at a weighted-average issuance price per share of $364.93, for gross proceeds of $539 million"</blockquote>
+      <blockquote>Q3 2025: "Going forward, we expect to fund growth and expansion primarily through cash generated from operating activities, while retaining the option to utilize financing activities as a supplemental source if necessary."</blockquote>
+      <p class="magnitude"><b>Size:</b> $539M = 89% of nine-month operating cash flow ($606M); about 1.1% of Class A shares outstanding (inference from share count).</p>
+      <p>The raise roughly matched the $559M note redemption, so equity, not operating cash, retired the secured debt (inference). No purpose was stated.</p>
+      <p class="next"><b>Next filing:</b> no further ATM use (none through Q2 2026).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month operating cash flow $858M &rarr; $606M on inventory and cash interest</div>
+      <blockquote>Q3 2025: "Cash provided by operating activities was $606 million and $858 million during the nine months ended September 30, 2025 and 2024, respectively, a decrease in cash provided by operating activities of $252 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> inventory +$676M in nine months; operating cash flow 35% of nine-month Adjusted EBITDA ($1.726B).</p>
+      <p>Earnings rose 69% (Adj. EBITDA) while operating cash fell 29%.</p>
+      <p class="next"><b>Next filing:</b> full-year operating cash flow above $918M (FY2025: $1.036B).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 2025 (filed July 30, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Retail GPU $3,421 &rarr; $3,636; total GPU $7,426; Adjusted EBITDA margin 12.4%, the high of the window</div>
+      <blockquote>Q2 2025: "Additionally, retail vehicle gross profit per unit increased to $3,636 for the three months ended June 30, 2025, compared to $3,421 for the three months ended June 30, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> Adjusted EBITDA $601M vs $355M (+69%); SG&amp;A per unit $3,846 vs $4,485.</p>
+      <p>Per-unit profit and overhead leverage improved together, the best quarter for unit economics in the window.</p>
+      <p class="next"><b>Next filing:</b> GPU growth sustained (Q3 2025: first decline).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Loan sales and finance profit" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Loan sales and finance profit</span><span class="chip">Stated</span></div>
+      <div class="title">Other revenue +47% to $411M on more loan sales and &ldquo;higher loan sale spreads&rdquo;</div>
+      <blockquote>Q2 2025: "The increase was primarily due to an increase in gain on loan sales as a result of increased retail units sold, more loan sales, and higher loan sale spreads during the three months ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> gain on loan sales $274M vs $173M; fixed-pool sales $1.2B vs $0.4B.</p>
+      <p>A broader buyer base and better pricing supported the 100%-margin revenue line.</p>
+      <p class="next"><b>Next filing:</b> spreads still higher (Q3 2025: not mentioned for the quarter).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P7 Governance, legal and related parties" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Governance, legal and related parties</span><span class="chip">Stated</span></div>
+      <div class="title">SEC subpoena (June 2025) over a January 2025 short report, first disclosed now; two earlier filings were silent</div>
+      <blockquote>Q2 2025: "In June 2025, we received a subpoena from the SEC requesting information that we believe primarily relates to the allegations raised by the report."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; legal accrual $10M &rarr; $12M.</p>
+      <p>The FY2024 10-K and Q1 2025 10-Q were filed after the report and did not mention it. With AG claims that &ldquo;have resulted&rdquo; (FY2024) and the deleted &ldquo;without merit&rdquo; reassurance (Q1 2025), this completes the run that moves P7.</p>
+      <p class="next"><b>Next filing:</b> any SEC outcome or estimate (none through Q2 2026).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">H1 operating cash flow $455M &rarr; $261M; inventory +$404M</div>
+      <blockquote>Q2 2025: "Cash provided by operating activities was $261 million and $455 million during the six months ended June 30, 2025 and 2024, respectively, a decrease in cash provided by operating activities of $194 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> H1 operating cash flow still included $146M of PIK interest; ex-PIK about $115M = 11% of H1 Adjusted EBITDA.</p>
+      <p>One quarter after the self-funding pledge, inventory growth consumed most of the cash earnings.</p>
+      <p class="next"><b>Next filing:</b> nine-month operating cash flow vs $858M (Q3 2025: $606M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Inferred</span></div>
+      <div class="title">Part of the record retail GPU is credited to &ldquo;tariff-related effects&rdquo;</div>
+      <blockquote>Q2 2025: "The per unit increase was primarily driven by lower reconditioning and inbound transport costs and benefits from tariff-related effects during the three months ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing.</p>
+      <p>A price effect from tariffs is unlikely to recur; Q3 2025 then said tariffs &ldquo;did not materially impact&rdquo; nine-month results and GPU fell.</p>
+      <p class="next"><b>Next filing:</b> GPU growth without the tariff tailwind (Q3 2025: down).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 2025 (filed May 7, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Retail units +45.7% to 133,898, the fastest growth in the window; Adjusted EBITDA margin 7.7% &rarr; 11.5%</div>
+      <blockquote>Q1 2025: "During the three months ended March 31, 2025, the number of vehicles we sold to retail customers increased by 45.7% to 133,898, compared to 91,878 in the three months ended March 31, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> 42,020 more units; Adjusted EBITDA $488M vs $235M.</p>
+      <p>Growth accelerated from +33% (FY2024) while margins expanded.</p>
+      <p class="next"><b>Next filing:</b> growth above 40% (Q2 2025: +41.2%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Growth to be funded from operations; cash interest elected on the 2028 and 2030 secured notes</div>
+      <blockquote>Q1 2025: "Going forward, we expect to fund growth and expansion primarily through cash generated from operating activities, while retaining the option to utilize financing activities as a supplemental source if necessary."</blockquote>
+      <blockquote>Q1 2025: "an increase in cash provided by operating activities of $131 million, primarily due to an improvement in operating results"</blockquote>
+      <p class="magnitude"><b>Size:</b> operating cash flow $232M vs $101M even after paying cash interest; ATM share cap cut 35M &rarr; 21M with no activity.</p>
+      <p>Reverses the FY2024 statement that financing would keep funding growth, and stops adding PIK to the secured notes.</p>
+      <p class="next"><b>Next filing:</b> no equity sold (Q3 2025: $539M sold).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">A $158M Root warrant gain is 42% of net income ($373M)</div>
+      <blockquote>Q1 2025: "Other income, net was $122 million during the three months ended March 31, 2025 and was primarily due to a $158 million increase in the fair value of Root Warrants"</blockquote>
+      <p class="magnitude"><b>Size:</b> $158M = 42% of consolidated net income; XBRL net income to Carvana Co. $216M.</p>
+      <p>After FY2024&rsquo;s $115M warrant gain and PIK-supported cash flow, a second filing where reported earnings lean on a mark-to-market gain; P4 moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> warrant marks reversing (Q2 and Q3 2025: losses of $35M and $120M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Inferred</span></div>
+      <div class="title">Revenue per unit &minus;6.0% on more partner &ldquo;marketplace&rdquo; cars, which count as units but are booked net; their number is not given</div>
+      <blockquote>Q1 2025: "We generally expect retail vehicle sales to trend proportionately with retail units sold, absent any material changes in macroeconomic conditions."</blockquote>
+      <p class="magnitude"><b>Size:</b> revenue per unit $22,256 vs $23,673; retail sales +37% vs units +45.7%.</p>
+      <p>Part of the headline unit growth is consignment volume with fee-only revenue, so units and revenue growth diverge in a direction the filing does not size.</p>
+      <p class="next"><b>Next filing:</b> disclosure of marketplace units (not given through Q2 2026).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Governance, legal and related parties" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P7 Governance, legal and related parties</span><span class="chip">Inferred</span></div>
+      <div class="title">Item 1A stops asserting &ldquo;no material changes&rdquo;; the January 2025 short report goes unmentioned</div>
+      <blockquote>Q1 2025: "Information regarding our risk factors is disclosed under the heading"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing.</p>
+      <p>The blanket &ldquo;not material or without merit&rdquo; reassurance in the legal note was also deleted. The SEC subpoena followed in June.</p>
+      <p class="next"><b>Next filing:</b> disclosure of the report (Q2 2025: disclosed with the subpoena).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (filed February 19, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Retail GPU $2,385 &rarr; $3,312; Adjusted EBITDA $339M &rarr; $1,378M (10.1% margin)</div>
+      <blockquote>FY2024: "Additionally, retail vehicle gross profit per unit increased to $3,312 for the year ended December 31, 2024, compared to $2,385 for the year ended December 31, 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> total GPU $6,908 vs $5,511; operating income $990M vs an $80M loss (XBRL).</p>
+      <p>Second filing in the window with large per-unit gains on lower days to sale and reconditioning cost; P2 moves to Strengthening (it later reverses).</p>
+      <p class="next"><b>Next filing:</b> GPU up again in Q1 2025 ($6,938 vs $6,432).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Debt $6.03B &rarr; $5.47B; $470M of 2028 secured notes retired; liquidity resources $3.13B &rarr; $5.69B</div>
+      <blockquote>FY2024: "During the year ended December 31, 2024, the Company repurchased $370 million of principal amount of the 2028 Senior Secured Notes in the open market for $384 million which included $8 million of accrued interest."</blockquote>
+      <p class="magnitude"><b>Size:</b> cash $530M &rarr; $1.72B; short-term revolver balance $668M &rarr; $67M.</p>
+      <p>With Q3 2024, a second filing of debt reduction and rising liquidity; P6 moves to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> PIK ended (Q1 2025: cash interest elected).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Retail units +33.1% to 416,348 after a 24% drop in 2023</div>
+      <blockquote>FY2024: "During the year ended December 31, 2024, the number of vehicles we sold to retail customers increased by 33.1% to 416,348, compared to 312,847 in the year ended December 31, 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> 103,501 more units; market share about 1%.</p>
+      <p>Volume is back near the 2021 peak while per-unit profit is far higher.</p>
+      <p class="next"><b>Next filing:</b> growth sustained into 2025 (Q1 2025: +45.7%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +$115M to $918M, but $274M of the help came from paying interest in kind</div>
+      <blockquote>FY2024: "primarily due to an improvement in operating results and a $274 million reduction in interest paid due to higher PIK interest on the Senior Secured Notes in the year ended December 31, 2024"</blockquote>
+      <p class="magnitude"><b>Size:</b> PIK interest expense $458M in the year; operating cash flow excluding it about $460M = 33% of Adjusted EBITDA.</p>
+      <p>Adjusted EBITDA quadrupled while operating cash flow rose 14%. The deferred interest became debt.</p>
+      <p class="next"><b>Next filing:</b> operating cash flow with cash interest (Q1 2025: $232M vs $101M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">The cash build was funded by $1.3B of stock sold through the ATM</div>
+      <blockquote>FY2024: "In the year ended December 31, 2024, we issued 6.8 million shares of Class A common stock at a weighted-average issuance price per share of $186.56, for gross proceeds of $1.3 billion"</blockquote>
+      <p class="magnitude"><b>Size:</b> net proceeds $1.264B = 138% of operating cash flow and more than the $1.19B rise in cash.</p>
+      <p>Deleveraging so far is equity-funded; the filing says financing is expected to keep funding growth.</p>
+      <p class="next"><b>Next filing:</b> funding from operations (Q1 2025: pledge made; Q3 2025: $539M more equity).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$2.0B of TRA liability left off the balance sheet because the tax assets carry a full valuation allowance</div>
+      <blockquote>FY2024: "For the remaining $2.0 billion TRA liability as of December 31, 2024, we determined that it was more likely than not that our deferred tax assets subject to the TRA would not be realized."</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.0B = 2x 2024 operating income; net income also included a $115M Root warrant gain.</p>
+      <p>A single judgment holds back both a large tax benefit and a matching liability; releasing it will distort reported earnings (it did in FY2025).</p>
+      <p class="next"><b>Next filing:</b> any change in the valuation allowance (FY2025: released).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Governance, legal and related parties" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Governance, legal and related parties</span><span class="chip">Stated</span></div>
+      <div class="title">Legal accrual $3M &rarr; $10M; AG inquiries &ldquo;have resulted&rdquo; in claims</div>
+      <blockquote>FY2024: "As of December 31, 2024 and 2023, the Company has an accrual for unresolved legal matters, including, if applicable, those discussed above, of $10 million and $3 million, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> $10M = 1% of operating income; securities class action partly survived the December 2024 ruling.</p>
+      <p>All three 2024 10-Qs said no reserves had been established for the named matters. Small in dollars; the direction is adverse.</p>
+      <p class="next"><b>Next filing:</b> accrual and reassurance language (Q1 2025: reassurance deleted).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2024 (filed October 30, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Unit economics" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Retail GPU $2,692 &rarr; $3,497; total GPU $5,952 &rarr; $7,427; Adjusted EBITDA margin 5.3% &rarr; 11.7%</div>
+      <blockquote>Q3 2024: "The per unit increase was primarily driven by lower average days to sale, lower vehicle acquisition costs relative to sales prices, and lower reconditioning and inbound transport costs on retail vehicles sold during the three months ended September 30, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> Adjusted EBITDA $429M vs $148M; operating income $337M vs $48M (XBRL).</p>
+      <p>Operating causes are named for each gain, which makes them more likely to persist than a price effect.</p>
+      <p class="next"><b>Next filing:</b> full-year GPU gains (FY2024: $6,908 vs $5,511).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Retail units +34.2% to 108,651, faster than Q2 (+32.5%)</div>
+      <blockquote>Q3 2024: "During the three months ended September 30, 2024, the number of vehicles we sold to retail customers increased by 34.2% to 108,651, compared to 80,987 in the three months ended September 30, 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> 27,664 more units; website units 45,974 vs 34,090.</p>
+      <p>Growth resumed while margins expanded, without new markets.</p>
+      <p class="next"><b>Next filing:</b> full-year growth above 30% (FY2024: +33.1%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">$350M of 2028 secured notes bought back year to date; debt $6.03B &rarr; $5.53B</div>
+      <blockquote>Q3 2024: "During the three and nine months ended September 30, 2024, the Company repurchased $100 million and $350 million of principal amount of the 2028 Senior Secured Notes in the open market for $104 million and $363 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> liquidity resources $3.13B (Dec 2023) &rarr; $4.42B; cash $871M.</p>
+      <p>The 2023 exchange notes are being retired early rather than refinanced.</p>
+      <p class="next"><b>Next filing:</b> further retirements (FY2024: $470M in the year).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Cash conversion and inventory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and inventory</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month operating cash flow $1.042B &rarr; $858M; fewer loans sold relative to originations; $388M of interest paid in kind</div>
+      <blockquote>Q3 2024: "primarily due to increased vehicle inventory acquisitions and a lower ratio of finance receivables sold relative to originations of finance receivables, partially offset by a reduction in interest paid due to PIK interest on the Senior Secured Notes"</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month PIK interest $388M (2023: $46M); excluding it operating cash flow was about $470M.</p>
+      <p>Earnings improved sharply but cash fell, and the cash figure was propped up by deferred interest.</p>
+      <p class="next"><b>Next filing:</b> full-year cash flow and PIK (FY2024: $918M with $458M PIK).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Inferred</span></div>
+      <div class="title">Stated reconditioning capacity cut from about 1.35 million to &ldquo;more than 1 million&rdquo; without explanation</div>
+      <blockquote>Q3 2024: "As we scale, we intend to more fully utilize the capacity at our existing IRCs and auction locations, which collectively have capacity to inspect and recondition more than 1 million vehicles per year at full utilization."</blockquote>
+      <p class="magnitude"><b>Size:</b> up to 350,000 units a year less stated headroom; annualized retail sales about 435,000.</p>
+      <p>The growth runway without new capital spending looks smaller than the prior quarter claimed (later restored to 1.5 million in FY2025).</p>
+      <p class="next"><b>Next filing:</b> a precise capacity figure (FY2025: approximately 1.5 million).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Unit growth and demand" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Unit growth and demand</span><span class="chip">Stated</span></div>
+      <div class="title">Retail marketplace disclosed: consigned partner cars count as units but are booked net</div>
+      <blockquote>Q3 2024: "As we are the agent in retail marketplace transactions, we recognize revenue on the sale of the vehicle on a net basis, rather than recognizing the full amount of the vehicle sales price as revenue."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; revenue per unit $23,405 vs $24,066.</p>
+      <p>Unit growth, the company&rsquo;s chosen headline measure, now includes cars Carvana does not own.</p>
+      <p class="next"><b>Next filing:</b> a marketplace unit count (none given through Q2 2026).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
