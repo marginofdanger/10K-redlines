@@ -1,0 +1,55 @@
+AVGO FY2025 10-K (fiscal year ended November 2, 2025, filed December 2025): FUNDAMENTALS ANSWERS
+Compared with the FY2024 10-K. Figures from the filing text and financials.py.
+
+1. Growth and pricing: BETTER. Revenue $51,574M -> $63,887M (+24%).
+   Semiconductor $36,858M (+22%) on "custom AI accelerators and AI networking
+   products." Software $27,029M (+26%) on VCF, "including license revenue
+   recognized on contracts where customers do not have the right to
+   terminate"; $7,800M upfront license revenue. RPO $20.5B -> $33.3B (35%
+   within 12 months, down from 43%) (Note 2, MD&A).
+
+2. Margins and unit economics: BETTER. Gross margin 63% -> 68% (less VMware
+   amortization; lower software labor costs). Operating income $13.5B ->
+   $25.5B. Segment margins: semiconductor 58% (56%), software 77% (65%). SG&A
+   down $748M on lower headcount.
+
+3. Earnings quality: WORSE on tax, otherwise held. Net income $23.1B exceeds
+   pre-tax income $22.7B because of a $397M tax benefit "primarily due to the
+   recognition of uncertain tax benefits from expiration of statutes of
+   limitations and audit settlements." A $1,321M CAMT valuation allowance
+   offsets part of it. Other income includes an unnamed gain on the sale of a
+   business. The upfront license timing pulls software revenue forward.
+
+4. Cash conversion: HELD. OCF $27,537M, FCF $26.91B (116% of NI vs 329% in
+   FY2024, which was distorted by tax). DSO 31 -> 41 days; receivables $4,416M
+   -> $7,145M "primarily due to higher billings"; factoring $5,900M ->
+   $7,401M. Contract assets $4,402M -> $8,922M.
+
+5. Capital allocation: HELD. Dividends $11,142M; buybacks $2,450M (FY2024
+   $7,176M); $2,812M net debt repaid; capex $623M. Funded from FCF. The
+   buyback risk factor ("may fluctuate") is restored.
+
+6. Balance sheet and contingent exposure: BETTER. Debt $69,847M -> $67,120M,
+   all fixed-rate (the floating-rate term loans are gone from market risk).
+   Cash $16,178M. $3,152M due within 12 months. No guarantees disclosed, but
+   risk factors say Broadcom "may offer and have offered alternative
+   financings" for rack leases.
+
+7. Concentration: WORSE. Distributor 28% -> 32% of revenue; top five ~40%
+   (flat). The sentence "The majority of our sales have historically come
+   from a small number of customers" is deleted. China (incl. HK) 20% -> 17%.
+
+8. Accounting judgments: HELD. Upfront license revenue is reclassified to
+   products ($4,601M of FY2024 restated). The critical estimates section is
+   essentially unchanged.
+
+9. Legal, regulatory and governance: WORSE. Antitrust inquiries widen from
+   the Korean FTC to Korea, Japan and the EU. The 2020 securities class
+   action settlement was approved in March 2025. The "Two-Year Equity Awards"
+   (a front-loaded grant) raise SBC to $7.57B (27.5% of OCF).
+
+10. Guidance and commitments: Capex "higher in fiscal year 2025 than 2024"
+   (stated in FY2024): met ($623M vs $548M). New statements: capex higher in
+   FY2026; the global minimum tax will materially raise the FY2026 rate; 35%
+   of RPO within 12 months; $10B buyback extended to Dec 2026; $0.65
+   quarterly dividend declared Dec 9, 2025.

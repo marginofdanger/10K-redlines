@@ -1,0 +1,59 @@
+AVGO Q3 FY2026 10-Q (quarter ended August 2, 2026): FUNDAMENTALS ANSWERS
+Compared with the Q2 FY2026 10-Q. Figures from the filing text and financials.py.
+
+1. Growth and pricing: BETTER. Revenue $29,591M (+86% YoY; Q2 $22,187M).
+   Semiconductor $20,839M (+127%) "primarily custom AI accelerators and AI
+   networking products" (MD&A Net Revenue). Software $8,752M (+29%, Q2 +9%),
+   of which upfront license $3,465M. RPO $164.6B -> $179.2B, with 25% due in 12
+   months (30% in Q2) (Note 2). Pricing vs volume is not broken out.
+
+2. Margins and unit economics: BETTER. Gross margin held at 69% even though
+   the semiconductor mix rose to 70% of revenue. Operating margin 54% (Q2 49%).
+   Segment operating margins: semiconductor 61%, software 84%. R&D fell 5% YoY
+   on "a decrease in headcount" (MD&A). No rack revenue is broken out yet.
+
+3. Earnings quality: HELD. Other income includes a $315M reversal of the
+   VMware excise tax for the year to date (MD&A Non-Operating). Upfront license
+   revenue ($3,465M) is recognized at signing on non-cancellable contracts. Tax
+   provision $2,187M (14.3%), so less of the profit comes from tax benefits.
+
+4. Cash conversion: HELD. OCF $14,197M vs net income $13.09B. FCF $13.66B
+   (104% of NI; 110% in Q2). Receivables $10,830M -> $13,707M, DSO 44 -> 42
+   days. Factoring $600M -> $1,600M, and MD&A no longer cites factoring.
+   Withholding taxes are settled by selling vested shares (sell-to-cover,
+   since Q3 FY2025), which removes a cash outflow ($3,860M in the prior year
+   to date).
+
+5. Capital allocation: MIXED. No buybacks in the quarter (Q2 $600M; $8,450M
+   YTD; $10.1B authorized and remaining). $5,641M of senior notes retired.
+   Dividends $3,103M (quarterly $0.65/share). Capex $532M (Q2 $231M). Capital
+   is being directed to deleveraging and the AI XPV platform rather than
+   buybacks.
+
+6. Balance sheet and contingent exposure: WORSE on contingent, BETTER on debt.
+   Debt principal $66,720M -> $61,079M; cash $23,975M. A $29B Backstop
+   (undiscounted, at full deployment), now in Note 10 with an 85% loss
+   formula. Up to $42B of customer convertible notes ("if needed"; none
+   issued). Purchase commitments $126,821M, mostly FY2027-28 (Note 10). Item
+   (viii) "potential financing arrangements" is added to liquidity needs, and
+   the credit-rating factor now cites backstops.
+
+7. Concentration: WORSE. One distributor is 50% of quarterly revenue (42% in
+   Q2). Top five end customers ~55% (~45%). "We expect to continue to
+   experience significant customer concentration in future periods." (MD&A)
+
+8. Accounting judgments: HELD. "No significant changes in our critical
+   accounting estimates." The Backstop's fair value is "not material."
+   Amortization is now based on the "net book value of intangible assets."
+
+9. Legal, regulatory and governance: HELD. No accrued loss contingencies
+   (Note 10). Antitrust inquiries in Korea, Japan and the EU carried forward.
+   An AI "bubble" is named in the risk factors. Apollo (named in Q2) is now
+   "a financial partner."
+
+10. Guidance and commitments: FY2025 10-K items. Capex higher in FY2026: met
+   ($1,013M YTD vs $623M for FY2025). Global minimum tax to "materially
+   increase" the FY2026 rate: happened (14.3% Q3; $2,186M payable). $0.65
+   quarterly dividend: met. $10B buyback through Dec 2026: enlarged (to $11B,
+   plus a new $10B in March 2026). OBBBA "material impact" on FY2026: CAMT
+   sentences deleted, not mentioned.

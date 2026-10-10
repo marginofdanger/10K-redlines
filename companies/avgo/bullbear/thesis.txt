@@ -1,0 +1,77 @@
+AVGO (Broadcom) INVESTMENT THESIS: PILLARS
+==========================================
+Written October 2026 from the 10-K dashboard themes and tracked signals (AI
+language, VMware arc, customer concentration, AI-rack purchase and lease arc,
+debt and capital returns, tax arc) and from the FY2025 10-K and Q3 FY2026 10-Q.
+Stances follow BULLBEAR.txt: a stance moves only when findings point the same
+way across two or more filings.
+
+P1 AI semiconductor growth
+  Bull assumes: custom AI accelerators (XPUs) and AI networking keep growing
+    for years on multi-year contracts with hyperscalers and frontier AI labs;
+    backlog (RPO) converts to revenue.
+  Bear fears: AI spending is a cycle or a "bubble"; customers design their own
+    silicon ("customer-owned tooling"); growth depends on financing Broadcom
+    itself arranges.
+  Stance: Strengthening (FY2025 10-K and Q3 FY2026 10-Q both show accelerating
+    semiconductor revenue and rising RPO).
+  Tested by: semiconductor segment revenue and operating income, RPO and its
+    next-12-month share, customer-count language, the "bubble" risk factor.
+
+P2 Customer concentration and counterparty credit
+  Bull assumes: the few large customers are creditworthy hyperscalers, and
+    concentration is the price of winning the biggest AI programs.
+  Bear fears: one distributor and five end customers are most of revenue; some
+    AI customers "may be unable to pay"; Broadcom takes their credit risk.
+  Stance: Weakening (distributor 28% -> 32% in FY2025, 50% of Q3 FY2026;
+    ability-to-pay risk added in FY2025 and sharpened in Q3 FY2026).
+  Tested by: distributor and top-five percentages, credit-risk wording,
+    backstop payments, receivable allowances, DSO.
+
+P3 Infrastructure software (VMware) franchise
+  Bull assumes: VCF subscriptions give durable, high-margin, growing revenue
+    with integration costs behind it.
+  Bear fears: growth is pulled forward by upfront license recognition on
+    non-terminable contracts; customer pushback and regulators (Korea, Japan,
+    EU) constrain pricing.
+  Stance: Intact (strong reported growth, but recognition-driven).
+  Tested by: software segment revenue and margin, upfront license revenue,
+    contract assets, termination-for-convenience share, regulatory language.
+
+P4 Margins and operating leverage
+  Bull assumes: revenue grows far faster than opex; gross margin holds near
+    two-thirds.
+  Bear fears: rack and system sales "will likely ... compress or lower future
+    gross margin"; semiconductor mix lowers gross margin.
+  Stance: Strengthening (gross margin 63% -> 68% in FY2025, 69% in Q3 FY2026;
+    operating margin 54% in Q3 FY2026).
+  Tested by: gross and operating margin, segment margins, R&D and SG&A trend.
+
+P5 Cash conversion and capital returns
+  Bull assumes: free cash flow at or above net income funds a rising dividend
+    and buybacks without new debt.
+  Bear fears: receivables and contract assets grow faster than revenue;
+    factoring and sell-to-cover flatter cash flow; buybacks stop.
+  Stance: Intact.
+  Tested by: OCF / net income, FCF, DSO, factoring volumes, buybacks,
+    dividends, SBC / OCF.
+
+P6 Balance sheet and contingent exposure
+  Bull assumes: VMware debt is paid down from cash flow; liquidity is ample.
+  Bear fears: off-balance-sheet obligations (lease backstops, customer
+    convertible notes, $100B+ purchase commitments) replace on-balance-sheet
+    debt as the risk.
+  Stance: Weakening (financing offered to customers stated in FY2025; $29B
+    backstop and $42B convertible-note facility in Q3 FY2026, even as debt
+    fell).
+  Tested by: total debt, backstop exposure and payments, notes issued,
+    purchase commitments, rating language.
+
+P7 Tax rate
+  Bull assumes: Singapore incentives and U.S. planning keep the effective
+    rate low.
+  Bear fears: Pillar Two and CAMT push the rate up materially from FY2026.
+  Stance: Weakening (FY2025 "expect to materially increase"; Q3 FY2026 14.3%
+    quarterly rate and $2,186M global minimum tax payable).
+  Tested by: effective tax rate, global minimum tax payable, CAMT valuation
+    allowance, incentive value.

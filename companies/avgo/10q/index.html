@@ -160,6 +160,8 @@ a:hover { text-decoration: underline; }
   font-style: italic; color: var(--text);
 }
 .finding-body .qlabel { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); margin-top: 8px; }
+.finding-body .shift { font-size: 12px; font-weight: 600; color: var(--purple); margin: 2px 0 6px; }
+.finding-body .history { font-size: 12px; color: var(--text-dim); margin: 6px 0 8px; padding-top: 6px; border-top: 1px dashed var(--border); }
 .finding-body strong { color: var(--text); }
 
 /* Section headings */
@@ -270,7 +272,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>AVGO 10-Q Quarterly Scanner</h1>
   <div class="tagline">Quarter-over-quarter textual analysis of Broadcom's 10-Q filings, FY2024 Q1 (quarter ended February 4, 2024 &mdash; the first full VMware quarter) through FY2026 Q3 (quarter ended August 2, 2026, filed September 10, 2026), with the FY2024 and FY2025 10-K boundary transitions included. Broadcom restates its full risk factors every quarter, so the quarterly redline chain is unusually rich: language changes surface here 3&ndash;9 months before annual comparisons would catch them.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001730168) | 9 quarterly 10-Qs + 2 annual 10-Ks | FY2024 Q1 &ndash; FY2026 Q3 | Analysis: June 2026, extended October 2026</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001730168) | 9 quarterly 10-Qs + 2 annual 10-Ks | FY2024 Q1 &ndash; FY2026 Q3 | Analysis: June 2026, extended October 2026; Q2&rarr;Q3 FY2026 re-done with sentence signals October 2026</div>
   <button class="toggle-btn" id="toggle-all">Expand all</button>
 </div>
 
@@ -1680,7 +1682,7 @@ a:hover { text-decoration: underline; }
 <!-- T10: FY26 Q2 -> Q3 -->
 <div class="transition-header" id="t-26q2q3">
   <h2>FY2026 Q2 &rarr; Q3</h2>
-  <div class="sub">Qtrs ended May 3, 2026 &rarr; Aug 2, 2026 (filed Sept 10, 2026) | Net revenue $22,187M &rarr; $29,591M | Semiconductor $15,009M &rarr; $20,839M | Infrastructure software $7,178M &rarr; $8,752M | Operating income $10,788M &rarr; $15,955M | Diluted EPS $1.91 &rarr; $2.68</div>
+  <div class="sub">Qtrs ended May 3, 2026 &rarr; Aug 2, 2026 (filed Sept 10, 2026) | Net revenue $22,187M &rarr; $29,591M | Semiconductor $15,009M &rarr; $20,839M | Infrastructure software $7,178M &rarr; $8,752M | Operating income $10,788M &rarr; $15,955M | Diluted EPS $1.91 &rarr; $2.68 | Free cash flow $10.26B &rarr; $13.66B</div>
 </div>
 
 <div class="finding-group">
@@ -1689,104 +1691,124 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Lease customer may issue Broadcom up to $42B of convertible notes, usable only for its lease payments</span>
+    <span class="title">Lease customer may issue Broadcom up to $42B of convertible notes, usable "solely for the customer's obligations under the lease agreements"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>A new "Convertible Notes" paragraph in Note 10 sits directly under the $29B Backstop. Neither "convertible promissory" nor anything like it appears in Q2 or in any of the three 10-Ks. Taken together, the two paragraphs mean Broadcom may both guarantee the customer's lease payments to the financial partner and lend the customer money to make them. That is an inference: the filing does not add the two figures together, the notes are "if needed", and none had been issued at quarter-end.</p>
+    <p class="shift">Quant: added ($42 billion) (+ disclosure); new named instrument</p>
     <p class="qlabel">Q3 FY2026, Note 10 (new)</p>
     <blockquote>"In connection with lease agreements that enable access to compute capacity, our customer may, under certain circumstances and if needed, issue to us <strong>convertible promissory notes up to an aggregate principal amount of $42 billion</strong>. The notes are subject to various conditions, including the requirement to use the notes or proceeds from the notes, if any, <strong>solely for the customer&rsquo;s obligations under the lease agreements</strong>."</blockquote>
+    <p class="history">History: "convertible promissory notes" appears in no earlier filing in the set (FY2023 to FY2025 10-Ks, Q2 FY2025 to Q2 FY2026 10-Qs). Q3 FY2026 only.</p>
+    <p>This paragraph sits directly under the $29B Backstop. Read together, Broadcom may both guarantee the customer's lease payments to the financial partner and lend the customer money to make them. That is an inference: the filing does not combine the two figures, the notes are "if needed," and none had been issued at quarter-end.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"AI XPV platform" introduced: more than 20 GW through 2028, $35B initial tranche, residual value guarantees called "low probability"</span>
+    <span class="title">"AI XPV platform" introduced: more than 20 GW through 2028, a $35B initial tranche, residual value guarantees called "low probability"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>MD&amp;A gains a "Recent Developments" section. The single Q2 arrangement is now described as the first tranche of a named, multi-partner program, and "AI XPV platform" also appears in four risk factors. The program's stated capacity of more than 20 GW is roughly 20 times the more than 1 GW in the first tranche. "Leading frontier AI labs" is new this quarter; the FY2025 10-K used "AI frontier models". The low-probability claim relies on the customers' profitability, which the risk factors now question (see the "bubble" finding below).</p>
+    <p class="shift">Named: new program; quant: added (20 GW, $35B) (+); hedge: "low probability" (reassurance)</p>
     <p class="qlabel">Q3 FY2026, MD&amp;A Recent Developments (new)</p>
-    <blockquote>"We established the AI XPV platform with certain sophisticated financial partners to enable <strong>more than 20 gigawatts in compute capacity</strong> using our custom AI accelerators or XPUs and networking solutions customized for <strong>the leading frontier AI labs through 2028</strong>&hellip; The AI XPV platform bridges the gap between the current cash flows of the leading frontier AI labs and significant upfront investments required for their businesses&hellip; Where necessary, we may provide <strong>residual value guarantees, which are contingent liabilities we believe would have a low probability of occurring</strong>, supported by the strong profitability trajectory of the leading frontier AI labs and the sustaining value of the underlying assets."</blockquote>
+    <blockquote>"We established the AI XPV platform with certain sophisticated financial partners to enable <strong>more than 20 gigawatts in compute capacity</strong> using our custom AI accelerators or XPUs and networking solutions customized for <strong>the leading frontier AI labs through 2028</strong>&hellip; Where necessary, we may provide <strong>residual value guarantees, which are contingent liabilities we believe would have a low probability of occurring</strong>, supported by the strong profitability trajectory of the leading frontier AI labs and the sustaining value of the underlying assets."</blockquote>
     <blockquote>"In June 2026, we launched the AI XPV platform with an <strong>initial tranche of $35 billion</strong> led by a financial partner to facilitate the deployment of <strong>more than 1 gigawatt</strong> of compute infrastructure for our customer."</blockquote>
+    <p class="history">History: "AI XPV platform" and the "Recent Developments" heading appear in no earlier filing in the set. Both are Q3 FY2026 only; the platform name is used six times across MD&amp;A and the risk factors.</p>
+    <p>The single Q2 arrangement becomes the first tranche of a named, multi-partner program. The stated capacity is roughly 20 times the first tranche. MD&amp;A adds that "deploying AI infrastructure to meet this demand requires our customers to access significant capital." The low-probability claim rests on the customers' profitability, which the risk factors in the same filing now question (see "bubble" below).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Backstop terms spelled out: liability = 85% of amount owed less rack resale value; option to sell racks back to the seller; Apollo no longer named</span>
+    <span class="title">Backstop loss formula disclosed: 85% of the lease balance less the racks' resale value; the $29B is now "upon the deployment of all AI racks, on an undiscounted basis"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The arrangement moved from Subsequent Events (Q2) to a "Financial Guarantee" heading in Note 10. It is still $29B, but now "on an undiscounted basis" and "upon the deployment of all AI racks", with fair value "not material" and nothing paid. Q2 named Apollo in Part II, Item 5; Q3 says "a financial partner" throughout and does not mention Apollo. The new loss formula puts Broadcom's exposure on the resale value of the racks, which matches the new risk-factor phrase "a decrease in value of the underlying assets".</p>
-    <p class="qlabel">Q2 FY2026, Note 11 (prior)</p>
+    <p class="shift">Quant: added (85%) (+); condition added to the $29B cap ("upon the deployment of all AI racks") (+)</p>
+    <p class="qlabel">Q2 FY2026, Subsequent Events (prior)</p>
+    <blockquote>"The backstop will increase over time as the AI racks are deployed and decrease as the customer makes payments on its lease obligations, with a maximum exposure of $29 billion."</blockquote>
     <blockquote>"In the event of default by the customer, we have various remedies, including the assumption of the lease or effecting a sale of the AI racks, which would reduce our maximum exposure."</blockquote>
-    <p class="qlabel">Q3 FY2026, Note 10 (current)</p>
-    <blockquote>"In the event of a lease default by the customer, our Backstop liability will be equal to any difference between <strong>85% of the outstanding amounts owed</strong> on the lease Backstop and <strong>the value of the AI racks received upon sale of the assets</strong> at that time. Remedies to limit our total liability exposure in a lease default include the assumption of the applicable lease, <strong>reselling the AI racks back to the seller at a fixed price under certain conditions</strong> or arranging a sale of the applicable AI racks."</blockquote>
+    <p class="qlabel">Q3 FY2026, Note 10 Financial Guarantee (current)</p>
+    <blockquote>"Our maximum potential liability under the Backstop upon the deployment of all AI racks, on an undiscounted basis, was approximately $29 billion."</blockquote>
+    <blockquote>"In the event of a lease default by the customer, our Backstop liability will be equal to any difference between <strong>85% of the outstanding amounts owed</strong> on the lease Backstop and <strong>the value of the AI racks received upon sale of the assets</strong> at that time."</blockquote>
+    <p class="history">History: "maximum exposure of $29 billion" appears in Q2 FY2026 only. "85% of the outstanding amounts owed" first appears in Q3 FY2026. Q2's Part II, Item 5 named Apollo as the "investor partner." Q3 says "a financial partner" throughout (checked in the full filing text, which phrase_history does not search).</p>
+    <p>The guarantee moves from a subsequent event to a recognized "Financial Guarantee," with fair value "not material" and nothing paid. The formula ties Broadcom's loss to what the racks would fetch on resale. That matches the new risk-factor phrase "a decrease in value of the underlying assets." A new remedy, "reselling the AI racks back to the seller at a fixed price under certain conditions," caps some of that exposure.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">RPO $164.6B &rarr; $179.2B, but the next-12-month share falls 30% &rarr; 25%</span>
+    <span class="title">RPO $164.6B &rarr; $179.2B, but the next-12-month share falls from 30% to 25%, the lowest in the set</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Using the filing's approximate percentages, the next-12-month amount falls from about $49B to about $45B while total RPO rises by $14.6B. All of the growth, and more, falls beyond 12 months. The share was 44% at FY24Q1. The custom-AI-accelerator contract sentence is carried forward unchanged. Purchase commitments are roughly flat ($128,110M &rarr; $126,821M) and now include an $85M 2029 bucket.</p>
+    <p class="shift">Figures: next-12-month share 30% &rarr; 25% (later-dated backlog)</p>
     <p class="qlabel">Q2 FY2026 (prior)</p>
-    <blockquote>"&hellip;the remaining performance obligations under these contracts as of May 3, 2026 were approximately $164.6 billion."</blockquote>
+    <blockquote>"&hellip;the remaining performance obligations under these contracts as of May 3, 2026 were approximately $164.6 billion&hellip; We expect approximately 30% of this amount to be recognized as revenue over the next 12 months."</blockquote>
     <p class="qlabel">Q3 FY2026 (current)</p>
     <blockquote>"&hellip;the remaining performance obligations under these contracts as of August 2, 2026 were approximately <strong>$179.2 billion</strong>&hellip; We expect approximately <strong>25%</strong> of this amount to be recognized as revenue over the next 12 months."</blockquote>
+    <p class="history">History (phrase_history, sentence): next-12-month share FY2023 30%, FY2024 43%, Q2 FY2025 36%, Q3 FY2025 34%, FY2025 35%, Q1 FY2026 33%, Q2 FY2026 30%, Q3 FY2026 25%.</p>
+    <p>Using the filing's approximate percentages, the next-12-month amount falls from about $49B to about $45B while total RPO rises by $14.6B. All of the increase, and more, falls beyond 12 months. The share has declined in every filing since FY2025.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Stock buybacks go to zero; $5,641M of senior notes retired instead</span>
-    <span class="tag tag-signal">Signal</span>
+    <span class="title">First figure for the global minimum tax: $2,186M payable; CAMT expectation sentences deleted</span>
+    <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The quarterly highlight bullet changed from repurchasing common stock to repurchasing debt. Year-to-date stock repurchases are unchanged at $8,450M, Part II Item 2 reads "None", and $10.1B of authorization remains with an expiry of December 31, 2026. Aggregate indebtedness fell from $66,720M to $61,079M, the lowest in the series, and cash rose from $19,628M to $23,975M. Buybacks have now gone $7,850M &rarr; $600M &rarr; $0 over three quarters, while contingent AI-financing obligations grew.</p>
-    <p class="qlabel">Q2 FY2026 (prior)</p>
-    <blockquote>"We repurchased $600 million of common stock."</blockquote>
-    <p class="qlabel">Q3 FY2026 (current)</p>
-    <blockquote>"During the fiscal quarter ended August 2, 2026, we repurchased a total of <strong>$5,641 million of our senior notes</strong> through cash tender offers and redemptions."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Tax: implied rate 8.1% &rarr; 14.3%; CAMT expectation and valuation-allowance sentence deleted</span>
-    <span class="tag tag-removed">Removed</span>
-  </div>
-  <div class="finding-body">
-    <p>The Q3 provision was $2,187M on $15,275M of pre-tax income. Note 8 keeps only the "higher income before income taxes" explanation. The CAMT sentences added in Q2 are gone, and "CAMT" appears nowhere in the Q3 filing. The filing does not say whether the CAMT position changed.</p>
+    <p class="shift">Quant: added ($2,186 million) (+); CAMT sentences removed (-)</p>
     <p class="qlabel">Q2 FY2026, Note 8 (now removed)</p>
-    <blockquote>"We expect to remain subject to the Corporate Alternative Minimum Tax (&ldquo;CAMT&rdquo;) for fiscal year 2026 and subsequent years. Accordingly, we continue to maintain a full valuation allowance against our CAMT credit carryforwards and CAMT credits generated in the current fiscal year."</blockquote>
+    <blockquote>"We expect to remain subject to the Corporate Alternative Minimum Tax (&ldquo;CAMT&rdquo;) for fiscal year 2026 and subsequent years."</blockquote>
+    <p class="qlabel">Q3 FY2026, other long-term liabilities footnote (new)</p>
+    <blockquote>"(a) Included $2,186 million global minimum tax payable as of August 2, 2026."</blockquote>
+    <p class="history">History: "global minimum tax payable" appears only in Q3 FY2026. The FY2025 10-K said the minimum tax would "materially increase" the FY2026 rate; Q1 FY2026 changed that to "have materially increased."</p>
+    <p>This is the first amount attached to the Pillar Two warning the 10-K dated to FY2026. The quarterly tax rate implied by financials.py rose from 8.1% to 14.3% ($2,187M on $15,275M of pre-tax income). The CAMT sentences added in Q2 are gone, and the filing does not say whether the CAMT position changed.</p>
   </div>
 </div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A &amp; Liquidity</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Termination for convenience dropped from most new software contracts; upfront license revenue $1,964M &rarr; $3,465M</span>
+    <span class="title">"We no longer have termination for convenience provisions for the majority of new software contracts"; the cancellable share of contract liabilities falls from 64% to 58%</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Software revenue rose $1,574M quarter over quarter, and $1,501M of that was upfront license revenue. Year-over-year software growth jumped from 9% to 29%. Contracts without a termination right let Broadcom recognize the license portion at signing rather than over time, so part of the acceleration reflects contract terms and timing rather than only demand (an inference). The share of contract liabilities tied to contracts with termination rights fell from 64% to 58%. The risk factors reverse in the same filing (see the Risk Factors group), and the bullet about "terminations of software contracts that require us to refund to customers any pre-paid amounts" is deleted.</p>
+    <p class="shift">Realized: contract terms changed (firmer +); attribution added to software growth</p>
     <p class="qlabel">Q2 FY2026 (prior)</p>
     <blockquote>"Net revenue from our infrastructure software segment increased in the fiscal quarter and two fiscal quarters ended May 3, 2026 compared to the prior year fiscal periods primarily due to strong demand for our VMware Cloud Foundation (&ldquo;VCF&rdquo;) product."</blockquote>
     <p class="qlabel">Q3 FY2026 (current)</p>
     <blockquote>"&hellip;primarily due to strong demand for our VMware Cloud Foundation (&ldquo;VCF&rdquo;) product, <strong>including additional license revenue recognized on contracts where customers do not have the right to terminate. As of the fiscal quarter ended August 2, 2026, we no longer have termination for convenience provisions for the majority of new software contracts.</strong>"</blockquote>
+    <blockquote>"As of August 2, 2026, approximately 58% of contract liabilities related to contracts subject to termination for convenience provisions."</blockquote>
+    <p class="history">History: "we no longer have termination for convenience provisions" appears only in Q3 FY2026. The contract-liability share "subject to termination for convenience provisions" has been disclosed since FY2024: 55% (FY2024), 67% (FY2025), 64% (Q2 FY2026), 58% (Q3 FY2026).</p>
+    <p>Software revenue rose $1,574M quarter over quarter, and upfront license revenue went from $1,964M to $3,465M. Contracts without a termination right let Broadcom book the license portion at signing, so part of the jump reflects contract terms and timing rather than only demand (an inference). The risk factors reverse in the same filing, from "may have the right to terminate" to "generally do not permit termination for convenience."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liquidity: "may agree to financial obligations, including backstops" becomes "we have provided a backstop and may continue"; "potential financing arrangements" added as a use of cash</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Realized: may agree &rarr; have provided (firmer +); scope: new item (viii) in liquidity requirements</p>
+    <p class="qlabel">Q2 FY2026 (prior)</p>
+    <blockquote>"In addition, we may agree to financial obligations, including backstops, or increase our exposure to credit or customer default risks to support our strategic initiatives or other corporate purposes. In such circumstances, we may seek to obtain new debt or equity financing."</blockquote>
+    <p class="qlabel">Q3 FY2026 (current)</p>
+    <blockquote>"In addition, we have provided a backstop and may continue to enter into similar financing arrangements, which increases our exposure to counterparty credit risk."</blockquote>
+    <blockquote>"&hellip;(vi) discretionary stock repurchases, (vii) business acquisitions and investments we may make from time to time, and (viii) potential financing arrangements."</blockquote>
+    <p class="history">History: "may agree to financial obligations, including backstops" appears in Q2 FY2026 only. "Have provided a backstop" and "potential financing arrangements" first appear in Q3 FY2026.</p>
+    <p>Customer financing becomes a standing claim on Broadcom's cash, listed with dividends and buybacks. More backstops are signalled ("may continue"). The sentence linking backstops to raising "new debt or equity financing" is removed. The ability to issue debt or equity is now tied only to acquisitions, so the filing no longer connects backstops with new financing.</p>
   </div>
 </div>
 
@@ -1797,39 +1819,31 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Both figures are the highest in the series, and the second-quarter dip in the top-five figure (~50% in Q1 to ~45% in Q2) has reversed. The quarterly figures (50%, ~55%) are above the year-to-date figures (46%, ~50%), so concentration rose within the quarter.</p>
+    <p class="shift">Figures: 42% &rarr; 50%; ~45% &rarr; ~55% (concentration up)</p>
     <p class="qlabel">Q2 FY2026 (prior)</p>
     <blockquote>"Direct sales to one semiconductor solutions customer, which is a distributor, accounted for 42% of our net revenue for each of the fiscal quarter and two fiscal quarters ended May 3, 2026&hellip;"</blockquote>
     <p class="qlabel">Q3 FY2026 (current)</p>
     <blockquote>"Direct sales to one semiconductor solutions customer, which is a distributor, accounted for <strong>50% and 46%</strong> of our net revenue for the fiscal quarter and three fiscal quarters ended August 2, 2026, respectively&hellip;"</blockquote>
     <blockquote>"We believe aggregate sales to our top five end customers, through all channels, accounted for <strong>approximately 55% and 50%</strong> of our net revenue for the fiscal quarter and three fiscal quarters ended August 2, 2026, respectively&hellip;"</blockquote>
+    <p class="history">History (phrase_history, sentence): the distributor was named WT Microelectronics at 21% in FY2023, then 28% (FY2024), 29% (Q2 FY2025), 32% (Q3 FY2025 and FY2025), 42% (Q1 and Q2 FY2026) and 50% (Q3 FY2026).</p>
+    <p>Both figures are the highest in the set. The quarterly figures are above the year-to-date figures, so concentration rose within the quarter. The FY2025 10-K had already deleted its statement that "the majority of our sales have historically come from a small number of customers."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Headcount decrease cited as R&amp;D falls 5% and SG&amp;A 7% year over year</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Q2's opex discussion has no reference to headcount and attributes increases to higher stock-based compensation. Quarterly stock-based compensation fell to $2,019M from $2,322M a year earlier, attributed to "certain fully vested equity awards and headcount reduction". The cut is not quantified.</p>
-    <p class="qlabel">Q3 FY2026 (new)</p>
-    <blockquote>"Research and development expense decreased $155 million, or 5%, for the fiscal quarter ended August 2, 2026 compared to the prior year fiscal period due to lower compensation, including stock-based compensation, <strong>resulting from a decrease in headcount</strong>, offset by higher engineering project costs."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Inventory attribution broadened from "custom AI accelerators" to "AI-related semiconductor solutions"; payables $1,560M &rarr; $4,000M</span>
+    <span class="title">Receivables explanation drops factoring: "lower receivables sold through factoring" becomes "the timing of collections" as factoring rises from $600M to $1,600M</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Inventory grew only $195M this quarter ($4,328M &rarr; $4,523M), after nearly doubling in the first half. A new accounts-payable bullet shows suppliers financing part of the build. Factored receivables rose from $600M in Q2 to $1,600M in Q3, and the Q2 reference to "lower receivables sold through factoring arrangements" is gone.</p>
+    <p class="shift">Attribution changed; factoring no longer cited (-)</p>
+    <p class="qlabel">Q2 FY2026 (prior)</p>
+    <blockquote>"Trade accounts receivable, net increased to $10,830 million at May 3, 2026 from $7,145 million at November 2, 2025 primarily due to higher semiconductor revenue, the timing of billings and lower receivables sold through factoring arrangements."</blockquote>
     <p class="qlabel">Q3 FY2026 (current)</p>
-    <blockquote>"Inventory increased to $4,523 million at August 2, 2026 from $2,270 million at November 2, 2025 primarily to support higher expected shipments for <strong>AI-related semiconductor solutions</strong>."</blockquote>
-    <blockquote>"Accounts payable increased to $4,000 million at August 2, 2026 from $1,560 million at November 2, 2025 primarily due to the timing of inventory purchases and payments."</blockquote>
+    <blockquote>"Trade accounts receivable, net increased to $13,707 million at August 2, 2026 from $7,145 million at November 2, 2025 primarily due to higher semiconductor revenue and the timing of collections."</blockquote>
+    <p class="history">History: "receivables sold through factoring arrangements" appears in MD&amp;A in the FY2023 and FY2024 10-Ks and the Q2 FY2026 10-Q, and is absent in Q3 FY2026. "The timing of collections" was used in Q3 FY2025 and Q1 FY2026.</p>
+    <p>Notes show factored receivables of $1,600M in Q3, up from $600M in Q2. Receivables still rose $2,877M in the quarter, to about 42 days of sales (financials.py). The MD&amp;A attributes the build to collections timing and no longer mentions factoring. The FY2025 10-K had made factoring a stated driver of results.</p>
   </div>
 </div>
 </div>
@@ -1844,11 +1858,30 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>"Bubble" appears neither in Q2 nor in the FY2023&ndash;FY2025 10-Ks. The customer-pullback sentence moves from the end of the paragraph to directly after the industry statement. The same filing's MD&amp;A supports its "low probability" guarantee claim with "the strong profitability trajectory of the leading frontier AI labs". The two sections now reach opposite conclusions about the same customers' profitability.</p>
+    <p class="shift">Condition added: "due to a market correction, the perceived existence of an AI spending 'bubble'" (-); order: customer pullback moved up</p>
     <p class="qlabel">Q2 FY2026 (prior)</p>
     <blockquote>"The semiconductor industry is undergoing profound change due to the adoption and proliferation of AI and has experienced a significant upturn, which may not be sustainable."</blockquote>
     <p class="qlabel">Q3 FY2026 (current)</p>
     <blockquote>"&hellip;has experienced a significant upturn, which may not be sustainable <strong>due to a market correction, the perceived existence of an AI spending &ldquo;bubble&rdquo; or other factors</strong>&hellip; If our AI customers substantially reduce their business or AI infrastructure plans, substantially cancel, reduce or delay their orders, or are <strong>unable to generate a profit required to support their expenditures</strong>, it could have a material adverse effect on our business, financial condition, results of operations, cash flow or stock price."</blockquote>
+    <p class="history">History: "bubble" appears in no earlier filing in the set; Q3 FY2026 only. "Undergoing profound change due to AI" has stood since the FY2025 10-K.</p>
+    <p>The same filing's MD&amp;A supports its "low probability" guarantee claim with "the strong profitability trajectory of the leading frontier AI labs." The two sections now reach opposite conclusions about the same customers' profitability.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Purchasing and leasing arrangements: "we may enter into" becomes "we have entered and may continue to enter into"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Certainty: may &rarr; have entered (realized, firmer +); exposure named: counterparty credit, asset value</p>
+    <p class="qlabel">Q2 FY2026 (prior)</p>
+    <blockquote>"To support our new business strategies or models, we may enter into purchasing, leasing or other arrangements with customers or other third-parties that could increase our costs and operational complexity."</blockquote>
+    <p class="qlabel">Q3 FY2026 (current)</p>
+    <blockquote>"To support our new business strategies or models, we have entered and may continue to enter into purchasing, leasing or other arrangements with customers or other third-parties. These arrangements could increase our costs and operational complexity and our exposure to counterparty credit risk and a decrease in value of the underlying assets."</blockquote>
+    <p class="history">History: the "we have entered and may continue to enter" wording first appears in Q3 FY2026. The "may enter into" version stood in Q2 FY2026.</p>
+    <p>This is the second-ranked "realized" change in the quarter. Broadcom confirms it has itself bought and leased under these models, which is consistent with the Q2 rack-purchase arrangement taken over by the financial partner. The added exposure ("a decrease in value of the underlying assets") is the same risk the new Backstop formula creates.</p>
   </div>
 </div>
 
@@ -1859,12 +1892,14 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>"Counterparty credit risk" appears six times in the Q3 risk factors and not at all in Q2. "A decrease in value of the underlying assets" matches the new Backstop formula, under which Broadcom's loss depends on the racks' resale value. The order also flips from "have and may impose" to "may impose and have imposed". For the first time, the credit-rating factor names backstops as a possible cause of a downgrade.</p>
+    <p class="shift">Named: counterparty credit risk; asset-value risk added (-); order: "have and may" &rarr; "may impose and have imposed"</p>
     <p class="qlabel">Q2 FY2026 (prior)</p>
     <blockquote>"In addition, such arrangements have and may impose financial obligations, including backstops or guarantees, upon us or increase our exposure to credit or customer default risks&hellip;"</blockquote>
     <p class="qlabel">Q3 FY2026 (current)</p>
     <blockquote>"In addition, such arrangements may impose and have imposed financial obligations, including backstops or guarantees, upon us or increase our exposure to <strong>counterparty credit risk and a decrease in value of the underlying assets</strong>&hellip;"</blockquote>
     <blockquote>"&hellip;any downgrade in our credit rating or the ratings of our indebtedness, <strong>including due to backstops or guarantees and other financing arrangements</strong>, or adverse conditions in the debt capital markets, could materially adversely affect our business, financial condition and results of operations <strong>and restrict our ability to obtain financing at favorable rates</strong>."</blockquote>
+    <p class="history">History: "counterparty credit risk" first appears in Q3 FY2026, six times in the risk factors and once each in MD&amp;A and liquidity. "Credit or customer default risks" was the wording from the FY2025 10-K through Q2 FY2026.</p>
+    <p>For the first time, the credit-rating factor names backstops as a possible cause of a downgrade. Risk now sits with a third party (the financial partner and the rack collateral), not only with the customer.</p>
   </div>
 </div>
 
@@ -1875,41 +1910,46 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Two additions tie Broadcom's demand to its customers' financing: a new reason for order cancellations in the concentration factor, and a new sentence in the macroeconomic factor.</p>
+    <p class="shift">Condition added: customer financing (-)</p>
     <p class="qlabel">Q3 FY2026 (new)</p>
     <blockquote>"&hellip;due to reduced capital expenditure spending, changes in their business strategy, lack of access to sufficient capital, <strong>delayed or cancelled AI infrastructure buildouts</strong>, downturn in their business&hellip;"</blockquote>
     <blockquote>"In addition, unfavorable or volatile economic conditions or credit markets could adversely affect the ability of our customers and <strong>other AI infrastructure participants to obtain financings</strong> necessary for their anticipated capital expenditures which could adversely affect our business, financial condition, cash flows and liquidity."</blockquote>
+    <p class="history">History: "delayed or cancelled AI infrastructure buildouts" and "other AI infrastructure participants to obtain financings" first appear in Q3 FY2026.</p>
+    <p>Two additions tie Broadcom's demand to its customers' financing: a new reason for order cancellations in the concentration factor, and a new sentence in the macroeconomic factor. Read with the XPV platform, Broadcom is both relying on and supplying that financing.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Software contracts: "may have the right to terminate" becomes "generally do not permit termination for convenience"</span>
+    <span class="title">CM capacity: "We do not generally have long-term capacity commitments" becomes "We may enter into long-term capacity commitments"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>This is the risk-factor side of the MD&amp;A contract-terms change. The stated cause of revenue volatility flips from contracts that allow termination to the accounting for contracts that do not.</p>
-    <p class="qlabel">Q2 FY2026 (prior)</p>
-    <blockquote>"These customers often do not have a contractual obligation to purchase additional solutions and <strong>may have the right to terminate</strong>&hellip; In addition, the relative volume of our customer agreements signed with the right to terminate can cause material variations in revenue recognized in each period&hellip;"</blockquote>
-    <p class="qlabel">Q3 FY2026 (current)</p>
-    <blockquote>"In addition, our customer agreements <strong>generally do not permit termination for convenience</strong> and accounting for such contracts can cause material variations in revenue recognized in each period&hellip;"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Supply: long-term CM capacity commitments move from "do not generally have" to "may enter into"; memory shortages "have previously disrupted supply"</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Memory chips, first named in FY26Q1, now also appear in the fab-dependency sentence and in CM constraints ("capacity and memory constraints"). The gross-margin factor adds "spending priorities, supply constraints" and drops "price erosion, level of capacity utilization and commodity prices".</p>
+    <p class="shift">Commitment: "do not generally have" &rarr; "may enter into" (possible new obligations)</p>
     <p class="qlabel">Q2 FY2026 (prior)</p>
     <blockquote>"We do not generally have long-term capacity commitments with our CMs and substantially all of our manufacturing services are on a purchase order basis with no minimum quantities."</blockquote>
     <p class="qlabel">Q3 FY2026 (current)</p>
     <blockquote>"We <strong>may enter into long-term capacity commitments</strong> with our CMs, but generally our manufacturing services are on a purchase order basis with no minimum quantities."</blockquote>
-    <blockquote>"&hellip;including with respect to memory chips, <strong>which have previously disrupted supply</strong> or increased demand in the industry. If we are unable to timely obtain sufficient quantities of materials, or we are unable to pass on increases in the cost of materials, we may be unable to fully meet our customers&rsquo; demand and our results of operations, <strong>including gross margin</strong>, may be negatively impacted."</blockquote>
+    <p class="history">History (phrase_history, sentence): the "do not generally have" sentence is identical in every filing from FY2023 through Q2 FY2026, all seven downloaded filings. It changes for the first time in Q3 FY2026.</p>
+    <p>A sentence that had not changed in seven downloaded filings breaks. Combined with $126,821M of purchase commitments (financials.py) and the "capacity and memory constraints" now cited for CMs, Broadcom is signalling that it may lock in foundry or packaging capacity for the XPV build-out.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Memory chips "have previously disrupted supply"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Realized: "could disrupt supply" &rarr; "have previously disrupted supply" (firmer +)</p>
+    <p class="qlabel">Q2 FY2026 (prior)</p>
+    <blockquote>"Suppliers have previously, and may in the future, extend lead times, limit supplies, place products on allocation, increase prices, or prioritize supplies for other customers, including with respect to memory chips, any of which could disrupt supply or increase demand in the industry and negatively impact our results of operations and our ability to fully meet our customers&rsquo; demand."</blockquote>
+    <p class="qlabel">Q3 FY2026 (current)</p>
+    <blockquote>"Suppliers have previously, and may in the future, extend lead times, limit supplies, place materials on allocation, increase prices, or prioritize supplies for other customers, including with respect to memory chips, <strong>which have previously disrupted supply</strong> or increased demand in the industry."</blockquote>
+    <p class="history">History: "which have previously disrupted supply" first appears in Q3 FY2026. Memory chips were first named in Q1 FY2026.</p>
+    <p>This is the top-ranked change in the quarter by sentence_signals. The follow-on sentence adds that if Broadcom cannot pass on cost increases, "results of operations, including gross margin, may be negatively impacted." Gross margin held at 69% this quarter.</p>
   </div>
 </div>
 </div>
