@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Apollo Global Management: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed August 10, 2026 | Also covered: seven earlier filings back to the Q3 2024 10-Q (filed November 6, 2024) | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Asset management growth</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">FRE growth 12.5% (Q3 2024) &rarr; 22.5% (FY2025) &rarr; 30.2% and 25.2% (Q1, Q2 2026); AUM $733B &rarr; $1.05T</td><td class="ev-bear">Part of the growth is bought (Bridge $34.2B, Athora/PIC $65.3B); Q2 2026 AUM +2.0% with $(9.9)B of inflow adjustments and $(6.9)B of redemptions</td><td>Q1 2025 10-Q</td></tr>
+<tr><td>P2 Retirement services spread</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Athene gross inflows $83.4B in 2025 (2024: $71.0B); Q2 2026 SRE +6.8%</td><td class="ev-bear">Net investment spread lower year over year in all eight filings; 1.34% in Q1 2026 vs 1.65%; inflows &minus;23% in Q1 2026</td><td>FY2024 10-K</td></tr>
+<tr><td>P3 Earnings quality</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">ANI up in every filing: $4.565B &rarr; $5.195B in 2025 (+14%); H1 2026 +10%</td><td class="ev-bear">2025 GAAP net income to AGM &minus;24%; alternative earned rate 10.08% &rarr; 5.79% on an Atlas impairment; $1.7B tax charge in Q1 2026</td><td>Q1 2026 10-Q</td></tr>
+<tr><td>P4 Athene portfolio credit quality</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">AFS portfolio 97.8% NAIC 1-2 (97.1% at end-2024)</td><td class="ev-bear">Delinquent CML principal $195M &rarr; $1,027M since end-2024; delinquent RML $826M &rarr; $1,912M in H1 2026</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P5 Balance sheet and liquidity</td><td class="stance s-intact">Intact</td><td class="ev-bull">Unrestricted cash $16.3B &rarr; $25.4B; Athene RBC 441% vs 430%; 85% of deferred annuities surrender-protected</td><td class="ev-bear">Total debt $9.81B (Sept 2024) &rarr; $13.73B (June 2026), +40%</td><td>&mdash;</td></tr>
+<tr><td>P6 Capital return and dilution</td><td class="stance s-intact">Intact</td><td class="ev-bull">Dividend intention $2.04 &rarr; $2.25; buyback authorization $4.0B; H1 2026 buybacks $729M vs $193M</td><td class="ev-bear">9.4M shares for Bridge, $200M of stock to charity, 14.6M shares from the mandatory convertible; ANI shares 613.1M &rarr; 623.5M in 2025</td><td>&mdash;</td></tr>
+<tr><td>P7 Legal, regulatory and tax</td><td class="stance s-intact">Intact</td><td class="ev-bull">Harbinger's $1.9B claim ended April 21, 2026; Anguilla derivative suit moved to mediation</td><td class="ev-bear">Epstein-related securities class actions (March, April 2026); possible material German tax assessment</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. Fee earnings kept compounding and the spread recovered from Q1's low, but the spread is still below a year ago and mortgage-loan delinquencies rose sharply.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +25.2% to $785M; management fees +22.7%, capital solutions fees +28.2%</div>
+      <blockquote>Q2 2026: "FRE was $785 million in 2026, an increase of $158 million compared to $627 million in 2025."</blockquote>
+      <blockquote>Q2 2026: "Capital solutions fees and other, net | 277 | 216 | 61 | 28.2"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$158M year over year; FRE margin 58.5% of fee revenue ($1,343M) vs 57.3%. H1 FRE $1,513M (+27.6%) already 60% of 2025's $2,528M.</p>
+      <p>Sixth straight filing of FRE growth above 20%, with margin widening even as compensation grows 22.9%. Part of the fee increase is acquired (Bridge, Athora's PIC deal), but credit fees alone rose 19.3%.</p>
+      <p class="next"><b>Next filing:</b> FRE growth holding above 20% once Bridge laps its September 2025 close.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">SRE +6.8% to $877M; spread recovers to 1.47% from Q1's 1.34%; alternative earned rate back to 9.04%</div>
+      <blockquote>Q2 2026: "SRE was $877 million in 2026, an increase of $56 million, or 7%, compared to $821 million in 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$56M; the spread gained 13bps sequentially, worth roughly $100M a quarter on Q2's net investment spread of $1,129M (arithmetic on disclosed rates).</p>
+      <p>Q1's collapse in alternative returns (5.79%) did not repeat, so part of Q1's SRE decline was a mark, not a trend. Fixed income earned 5.05% vs 4.97%.</p>
+      <p class="next"><b>Next filing:</b> SRE growth in Q3 2026 without a rebound in alternative marks doing the work.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and liquidity" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Unrestricted cash $25.4B; $500M 2026 notes repaid; total debt $14.220B &rarr; $13.727B</div>
+      <blockquote>Q2 2026: "As of June 30, 2026, the Company had $25.4 billion of unrestricted cash and cash equivalents, as well as $5.6 billion of available funds from the AGM credit facility, Athene credit facility and Athene liquidity facility."</blockquote>
+      <blockquote>Q2 2026: "On May 27, 2026, AMH repaid in full the principal and accrued interest of the $500 million aggregate principal amount of its 4.40% 2026 Senior Notes."</blockquote>
+      <p class="magnitude"><b>Size:</b> cash +$7.1B in six months (YE $18.3B); debt &minus;$0.49B in the quarter; H1 operating cash flow $4,501M vs $2,274M.</p>
+      <p>The only 2026 holding-company maturity was paid from cash, and liquidity is the highest of the eight filings covered.</p>
+      <p class="next"><b>Next filing:</b> cash held above $20B and Athene RBC disclosed for 2026 at or above 441%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital return and dilution" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Dividend $0.5625 a quarter, on the $2.25 annual intention; H1 buybacks $729M vs $193M</div>
+      <blockquote>Q2 2026: "On August 4, 2026, the Company declared a cash dividend of $0.5625 per share of common stock"</blockquote>
+      <blockquote>Q2 2026: "The Company paid $729 million and $193 million for these open market share repurchases during the six months ended June 30, 2026 and 2025, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> 5.9M shares repurchased in H1 = about 1.0% of the 579M shares outstanding at end-2025; dividend +10% on 2025's $0.51.</p>
+      <p>The dividend promise made in the 10-K is being kept, and buybacks are running at nearly the 2025 full-year total ($773M) after six months.</p>
+      <p class="next"><b>Next filing:</b> buybacks large enough to absorb the 14.6M shares issued at the July conversion.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Athene portfolio credit quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Athene portfolio credit quality</span><span class="chip">Stated</span></div>
+      <div class="title">AFS portfolio 97.8% investment grade (NAIC 1 or 2), the highest share in the window</div>
+      <blockquote>Q2 2026: "A significant majority of Athene's AFS portfolio, 97.8% and 97.3% as of June 30, 2026 and December 31, 2025, respectively, was invested in assets considered investment grade with an NAIC designation of 1 or 2."</blockquote>
+      <p class="magnitude"><b>Size:</b> +0.5 points in six months; 97.1% at the end of 2024.</p>
+      <p>The rated securities book is not drifting down the credit curve. The stress sits in mortgage loans, which this ratio does not cover (see the bear side).</p>
+      <p class="next"><b>Next filing:</b> NAIC 1-2 share at or above 97.5%.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Athene portfolio credit quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Athene portfolio credit quality</span><span class="chip">Stated</span></div>
+      <div class="title">Delinquent residential mortgage loans more than double in six months: $826M &rarr; $1,912M; fair-value mark on mortgage loans $(725)M &rarr; $(1,623)M</div>
+      <blockquote>Q2 2026: "Unpaid principal balance of residential mortgage loans 90 days or more past due and/or in non-accrual status | 1,912 | 826"</blockquote>
+      <blockquote>Q2 2026: "Unpaid principal balance of commercial mortgage loans 90 days or more past due and/or in non-accrual status | 1,027 | 992"</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.94B of delinquent or non-accrual mortgage principal = 2.8% of the $105.2B fair-value-option mortgage book (1.9% at end-2025); the mark widened by $898M.</p>
+      <p>Commercial delinquencies were $195M at the end of 2024; residential non-accruals ($1,655M fair value) jumped in Q2 alone (Q1: $965M principal). The filing does not explain the residential increase.</p>
+      <p class="next"><b>Next filing:</b> residential delinquencies back below $1B would refute; a further rise, or credit-related losses in investment related gains, would confirm.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Spread still down year over year: 1.47% vs 1.58%; cost of funds 3.83%; H1 SRE &minus;1.8%</div>
+      <blockquote>Q2 2026: "Net investment spread was 1.47% in 2026, a decrease of 11 basis points compared to 1.58% in 2025, driven by higher cost of funds, partially offset by a higher net investment earned rate."</blockquote>
+      <blockquote>Q2 2026: "Spread Related Earnings | 877 | 821 | 56 | 6.8% | 1,596 | 1,625 | (29) | (1.8)%"</blockquote>
+      <p class="magnitude"><b>Size:</b> 11bps on about $300B of net invested assets is roughly $330M a year, about 10% of 2025 SRE of $3,361M (inference from stated rates).</p>
+      <p>This is the eighth filing in a row with the spread lower than a year earlier. Asset growth (+$38.5B average net invested assets) is the only reason SRE dollars are not falling.</p>
+      <p class="next"><b>Next filing:</b> Q3 2026 spread at or above Q3 2025's 1.60% would refute the trend.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Athene gross organic inflows $41.8B in H1 2026 vs $46.8B in H1 2025 (&minus;11%)</div>
+      <blockquote>Q2 2026: "gross organic inflows of $41.8 billion in excess of gross liability outflows of $20.9 billion"</blockquote>
+      <blockquote>Q2 2025: "gross organic inflows of $46.8 billion in excess of gross liability outflows of $15.6 billion"</blockquote>
+      <p class="magnitude"><b>Size:</b> $5.0B less inflow; liability outflows +$5.3B; net organic growth $20.9B vs $31.2B (&minus;33%).</p>
+      <p>Q1 2026 inflows had already fallen 23%. Slower inflows plus faster outflows mean less asset growth to offset spread compression, and fewer Athene fee-generating assets for P1.</p>
+      <p class="next"><b>Next filing:</b> nine-month inflows against $69.4B in 2025.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Athene portfolio credit quality" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P4 Athene portfolio credit quality</span><span class="chip">Inferred</span></div>
+      <div class="title">Athene bought an $8.7B commercial mortgage portfolio from ARI, an Apollo-managed REIT</div>
+      <blockquote>Q2 2026: "On April 24, 2026, Athene completed the purchase of a commercial mortgage loan portfolio, including accrued interest, for $8.7 billion from ARI."</blockquote>
+      <p class="magnitude"><b>Size:</b> $8.7B = 3.0% of Athene's net invested assets at end-2025 ($292.4B); it also removed $(7.8)B of ARI AUM.</p>
+      <p>A related-party purchase moves commercial real estate credit from a listed vehicle onto the insurance balance sheet. The filing gives no price relative to par or credit metrics for the portfolio.</p>
+      <p class="next"><b>Next filing:</b> CML delinquencies and marks on the acquired loans.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">H1 2026 GAAP net loss to AGM of $(594)M against ANI of $2,522M</div>
+      <blockquote>Q2 2026: "GAAP Net Income (Loss) Attributable to Apollo Global Management, Inc. | 1,336 | 605 | (594) | 1,023"</blockquote>
+      <p class="magnitude"><b>Size:</b> a $3.1B gap between H1 GAAP and ANI; H1 income tax provision $2,090M vs $246M, mostly the $1.7B Bermuda allowance.</p>
+      <p>The allowance is non-cash and was pre-announced, but it writes off an asset booked only in 2024, and GAAP has now trailed ANI in six of the eight filings.</p>
+      <p class="next"><b>Next filing:</b> Q3 GAAP income close to ANI, without new tax or non-operating charges.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">AUM grows only 2.0% in the quarter: $(9.9)B of inflow adjustments, $(6.9)B of redemptions</div>
+      <blockquote>Q2 2026: "Total AUM was $1.05 trillion at June 30, 2026, an increase of $20.9 billion, or 2.0%, compared to $1.03 trillion at March 31, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> credit net flows $14.7B after $(9.9)B AMAPS adjustments, $(7.8)B ARI and $(6.9)B redemptions (including $(5.0)B AP Grange prepayment); fee-related performance fees +3.2%.</p>
+      <p>Gross subscriptions were strong ($26.2B credit), but headline AUM growth slowed sharply after two acquisition-boosted quarters.</p>
+      <p class="next"><b>Next filing:</b> net flows without acquisitions and redemptions below $5B.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (Q3 2024 versus the same quarter a year earlier). Full answers are in the period files next to this page.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>Q1 2026 10-Q</th><th>FY2025 10-K</th><th>Q3 2025 10-Q</th><th>Q2 2025 10-Q</th><th>Q1 2025 10-Q</th><th>FY2024 10-K</th><th>Q3 2024 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark held">&#9679;</span> FRE +25.2%; fees +22.7%; AUM $1.05T (+2.0% q/q); FGAUM $858.0B</td><td><span class="mark better">&#9650;</span> FRE +30.2%; AUM $1.03T incl. $65.3B PIC; Athene inflows &minus;23%</td><td><span class="mark better">&#9650;</span> FRE +22.5%; AUM $938.4B (+25%); Athene gross inflows $83.4B</td><td><span class="mark better">&#9650;</span> FRE +22.8%; AUM $908.4B with Bridge; 9M inflows $69.4B</td><td><span class="mark held">&#9679;</span> FRE +21.5%; AUM $839.6B; H1 inflows $46.8B</td><td><span class="mark better">&#9650;</span> FRE +21.0%; AUM $785.2B; inflows $25.6B</td><td><span class="mark better">&#9650;</span> FRE +16.7%; AUM $751.0B (+15.4%); inflows $71.0B</td><td><span class="mark better">&#9650;</span> FRE +12.5%; Credit fees +20.2%, Equity &minus;11.5%; AUM $733.2B</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark better">&#9650;</span> Spread 1.47% (Q1 1.34%; Q2 2025 1.58%); SRE +6.8%; FRE margin 58.5%</td><td><span class="mark worse">&#9660;</span> Spread 1.34% vs 1.65%; SRE &minus;11%; cost of funds 3.79%</td><td><span class="mark worse">&#9660;</span> Spread 1.61% vs 1.78%; SRE +4.2%; FRE margin 56.6%</td><td><span class="mark worse">&#9660;</span> Spread 1.60% vs 1.83%; SRE +2%</td><td><span class="mark better">&#9650;</span> Spread 1.58% vs 1.64%; SRE +16% on a weak base</td><td><span class="mark worse">&#9660;</span> Spread 1.65% vs 1.83%; SRE &minus;2%</td><td><span class="mark worse">&#9660;</span> Spread 1.78% vs 1.93%; SRE +3.7%</td><td><span class="mark worse">&#9660;</span> Spread 1.83% vs 2.13%; SRE &minus;1.9%</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark better">&#9650;</span> GAAP $1,336M vs ANI $1,314M; H1 GAAP $(594)M</td><td><span class="mark worse">&#9660;</span> GAAP loss $(1,930)M on $1.7B tax allowance; alternative rate 5.79% (Atlas impairment)</td><td><span class="mark worse">&#9660;</span> GAAP &minus;24% vs ANI +14%; Atlas initial mark; $487M non-operating costs</td><td><span class="mark better">&#9650;</span> GAAP $1,712M; ANI +20%; 9M non-operating costs $432M</td><td><span class="mark worse">&#9660;</span> GAAP $605M vs $828M; ANI +17%</td><td><span class="mark worse">&#9660;</span> GAAP &minus;70% vs ANI +5%; non-operating costs $276M</td><td><span class="mark held">&#9679;</span> GAAP $4,480M vs ANI $4,565M; $152M guaranty expense</td><td><span class="mark worse">&#9660;</span> $172M guaranty expense; ANI +8%</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark better">&#9650;</span> H1 operating cash flow $4,501M vs $2,274M</td><td><span class="mark better">&#9650;</span> Operating cash flow $1,620M vs $1,012M</td><td><span class="mark better">&#9650;</span> $7,246M vs $3,253M; above GAAP net income $5,401M</td><td><span class="mark worse">&#9660;</span> 9M $2,577M vs $3,257M</td><td><span class="mark better">&#9650;</span> H1 $2,274M vs $1,403M</td><td><span class="mark better">&#9650;</span> $1,012M vs $70M</td><td><span class="mark worse">&#9660;</span> $3,253M vs $6,322M; half of GAAP net income</td><td><span class="mark worse">&#9660;</span> 9M $3,257M vs $4,258M</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark held">&#9679;</span> Q2 buybacks about $97M (H1 $729M); 14.6M shares issued at July conversion</td><td><span class="mark better">&#9650;</span> Buybacks $632M vs $193M; dividend $0.5625</td><td><span class="mark held">&#9679;</span> Buybacks $773M; dividends $1.20B; $4.0B authorization; Bridge paid in stock</td><td><span class="mark held">&#9679;</span> Q3 buybacks $340M; Bridge: 9.4M shares, $1.355B</td><td><span class="mark worse">&#9660;</span> No Q2 buybacks; H1 $193M vs $335M</td><td><span class="mark worse">&#9660;</span> Buybacks $193M vs $260M; $200M stock to charity</td><td><span class="mark held">&#9679;</span> Buybacks $890M; dividend intention $2.04; Bridge agreed</td><td><span class="mark held">&#9679;</span> 9M buybacks $788M; dividend $0.4625</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark better">&#9650;</span> Debt $13.727B; cash $25.4B; $500M notes repaid</td><td><span class="mark worse">&#9660;</span> Debt $14.220B (+$856M); cash $21.4B</td><td><span class="mark held">&#9679;</span> Debt $13.364B (+$2.8B y/y); RBC 441%; cash $18.3B</td><td><span class="mark held">&#9679;</span> Debt $12.631B; cash $17.0B; Bridge notes repaid</td><td><span class="mark worse">&#9660;</span> Debt $12.144B (+$1.6B AHL notes); cash $12.7B</td><td><span class="mark held">&#9679;</span> Debt $10.581B; cash $12.9B</td><td><span class="mark held">&#9679;</span> Debt $10.588B; cash $15.4B; 82% surrender-protected</td><td><span class="mark held">&#9679;</span> Debt $9.807B; cash $16.3B</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark held">&#9679;</span> Bridge, Athene, Athora = $140M of fee growth; $8.7B ARI loans to Athene</td><td><span class="mark held">&#9679;</span> Bridge, Athene, Redding Ridge lead fee growth</td><td><span class="mark held">&#9679;</span> Athene first of $493M named fee sources</td><td><span class="mark held">&#9679;</span> Athene and Bridge lead fee growth</td><td><span class="mark held">&#9679;</span> Athene-led fee growth</td><td><span class="mark held">&#9679;</span> Athene-led fee growth</td><td><span class="mark held">&#9679;</span> Athene = $237M of $296M fee increase</td><td><span class="mark held">&#9679;</span> Athene = $64M of $62M fee increase</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark worse">&#9660;</span> Delinquent RML $1,912M, CML $1,027M; mortgage mark $(1,623)M</td><td><span class="mark held">&#9679;</span> CML $860M, RML $965M; mark $(1,179)M</td><td><span class="mark worse">&#9660;</span> CML $992M (from $195M); $1.7B DTA to be reserved</td><td><span class="mark held">&#9679;</span> CML $642M; Bridge goodwill $1.6B</td><td><span class="mark worse">&#9660;</span> CML $614M</td><td><span class="mark worse">&#9660;</span> CML $427M; RML $1,024M</td><td><span class="mark better">&#9650;</span> CML $195M (Q3 $507M)</td><td><span class="mark worse">&#9660;</span> CML $507M vs $221M</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark better">&#9650;</span> Harbinger gone; Anguilla in mediation; Epstein suits consolidated</td><td><span class="mark held">&#9679;</span> Harbinger ended; two Epstein securities class actions filed</td><td><span class="mark worse">&#9660;</span> Possible material German tax assessment (new)</td><td><span class="mark held">&#9679;</span> Frank Funds and AT&amp;T matters dropped</td><td><span class="mark held">&#9679;</span> Unchanged</td><td><span class="mark held">&#9679;</span> Harbinger dismissal affirmed</td><td><span class="mark held">&#9679;</span> Unchanged; SLC formed for Anguilla</td><td><span class="mark held">&#9679;</span> Harbinger, Anguilla, Frank Funds pending</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark held">&#9679;</span> Dividend on pace for $2.25</td><td><span class="mark held">&#9679;</span> $1.7B allowance booked as guided</td><td><span class="mark better">&#9650;</span> $2.04 met, raised to $2.25; Bridge closed on time</td><td><span class="mark held">&#9679;</span> Bridge closed Q3 as guided</td><td><span class="mark held">&#9679;</span> Dividend on pace</td><td><span class="mark held">&#9679;</span> Dividend on pace</td><td><span class="mark held">&#9679;</span> $2.04 dividend; $3.0B buyback; Bridge Q3 2025</td><td><span class="mark held">&#9679;</span> Guaranty assessments to continue</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated, and what later filings said about it. Apollo's filings give few forward numbers; the long-term targets from its October 2024 investor day do not appear in them.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"Shortly thereafter, guaranty associations began levying assessments and we expect those assessments to continue for the foreseeable future." ($177M liability)</td><td>Q3 2024 10-Q</td><td>FY2024 10-K: $152M net expense for the year, $18M liability left. FY2025 10-K: dropped, assessments "no longer considered material"</td></tr>
+<tr><td>"Athene expects to recover $5 million of assessments paid through future premium tax credits."</td><td>Q3 2024 10-Q</td><td>FY2024 10-K: moved, $11M expected recovery. FY2025 10-K: not mentioned</td></tr>
+<tr><td>"Our current intention is to pay an annual cash dividend of $2.04 per share of common stock."</td><td>FY2024 10-K</td><td>Q1, Q2, Q3 2025: on pace, $0.51 declared each quarter. FY2025 10-K: met, then raised to $2.25</td></tr>
+<tr><td>Share repurchase program "up to $3.0 billion" (February 2024)</td><td>FY2024 10-K</td><td>FY2025 10-K: moved, replaced by a $4.0B program (February 2026) after $890M (2024) and $773M (2025) of open-market buybacks</td></tr>
+<tr><td>"The transaction is expected to close in the third quarter of 2025" (Bridge, all stock)</td><td>FY2024 10-K</td><td>Q1, Q2 2025: not changed. Q3 2025: met, closed September 2, 2025 for 9.4M AGM shares ($1.355B consideration)</td></tr>
+<tr><td>"Our current intention is to pay an annual cash dividend of $2.25 per share of common stock."</td><td>FY2025 10-K</td><td>Q1 2026: on pace, $0.5625 declared. Q2 2026: on pace, $0.5625 declared August 4, 2026</td></tr>
+<tr><td>Share repurchase program "up to $4.0 billion" (February 2026)</td><td>FY2025 10-K</td><td>Q1 2026: $632M used. Q2 2026: $729M used in H1</td></tr>
+<tr><td>"in the first quarter of 2026, the Company will record a full valuation allowance against its Bermuda deferred tax assets" ($1.7B)</td><td>FY2025 10-K</td><td>Q1 2026: met, $1.7B charged to the income tax provision. Q2 2026: not mentioned beyond the H1 tax line</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 2026 (filed May 7, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +30.2% to $728M; AUM crosses $1 trillion</div>
+      <blockquote>Q1 2026: "FRE was $728 million in 2026, an increase of $169 million compared to $559 million in 2025."</blockquote>
+      <blockquote>Q1 2026: "Total AUM was $1.03 trillion at March 31, 2026, an increase of $88.0 billion, or 9.4%, compared to $938.4 billion at December 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$169M; capital solutions fees +59.7%; $65.3B of the AUM increase was Athora's PIC acquisition.</p>
+      <p>The fastest FRE growth in the window, with the margin at 57.7%. A fee basis change at Redding Ridge also helped.</p>
+      <p class="next"><b>Next filing:</b> FRE growth above 20% (Q2 2026: +25.2%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and tax" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and tax</span><span class="chip">Stated</span></div>
+      <div class="title">Harbinger's $1.9B SkyTerra suit ends: leave to appeal denied</div>
+      <blockquote>Q1 2026: "On August 25, 2025, Harbinger filed a motion for leave to appeal to the Court of Appeals, which the Court of Appeals denied on April 21, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> the complaint sought $1.9B plus punitive damages = 37% of 2025 ANI.</p>
+      <p>The largest quantified claim against Apollo, open since 2017, is over. Q2 2026 no longer lists it.</p>
+      <p class="next"><b>Next filing:</b> confirmed removal (Q2 2026: removed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital return and dilution" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks $632M in the quarter vs $193M; dividend raised 10% to $0.5625</div>
+      <blockquote>Q1 2026: "The Company paid $632 million and $193 million for these open market share repurchases during the three months ended March 31, 2026 and 2025, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> 5.2M shares = 0.9% of shares outstanding in one quarter; 82% of 2025's full-year buyback.</p>
+      <p>Repurchases accelerated under the new $4.0B authorization while ANI per share grew.</p>
+      <p class="next"><b>Next filing:</b> pace sustained (Q2 2026: only about $97M more).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">SRE &minus;11%; net investment spread 1.34% vs 1.65%, the lowest in the window</div>
+      <blockquote>Q1 2026: "SRE was $719 million in 2026, a decrease of $85 million, or 11%, compared to $804 million in 2025."</blockquote>
+      <blockquote>Q1 2026: "Net investment spread was 1.34% in 2026, a decrease of 31 basis points compared to 1.65% in 2025, driven by higher cost of funds, partially offset by a higher net investment earned rate."</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$85M; cost of funds 3.79% vs 3.46%, including more DAC, DSI and VOBA amortization.</p>
+      <p>After six filings of spread compression offset by asset growth, SRE fell in absolute terms.</p>
+      <p class="next"><b>Next filing:</b> spread back toward 1.5% (Q2 2026: 1.47%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Alternative earned rate 10.08% &rarr; 5.79%: affiliated platforms marked down, Atlas impaired; GAAP loss $(1,930)M after the $1.7B tax allowance</div>
+      <blockquote>Q1 2026: "a valuation increase related to strong performance from Wheels in 2025 and a valuation decrease on Atlas resulting from an underlying asset impairment in 2026"</blockquote>
+      <blockquote>Q1 2026: "This resulted in a reduction to other assets and a corresponding increase to the income tax provision equal to the net amount of the Bermuda deferred tax assets of $1.7 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> alternative income $210M vs $315M (&minus;33%); the tax charge = 33% of 2025 ANI.</p>
+      <p>The FY2025 10-K credited Atlas's "initial mark from cost to fair value" for alternative gains; one quarter later Atlas is a drag. Marks on affiliated platforms swing SRE.</p>
+      <p class="next"><b>Next filing:</b> alternative earned rate near 9-10% without new impairments (Q2 2026: 9.04%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and tax" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and tax</span><span class="chip">Stated</span></div>
+      <div class="title">Two securities class actions over statements that Apollo never did business with Jeffrey Epstein</div>
+      <blockquote>Q1 2026: "Both complaints challenge, among other things, certain of the defendants' public statements in 2021 and 2022 that AGM never did any business with Jeffrey Epstein."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; the class period runs May 10, 2021 to February 21, 2026.</p>
+      <p>The Leon Black matter returns as litigation against the company and its CEO, Marc Rowan.</p>
+      <p class="next"><b>Next filing:</b> lead plaintiff appointed, motion to dismiss filed.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Athene gross organic inflows $19.7B vs $25.6B a year earlier (&minus;23%)</div>
+      <blockquote>Q1 2026: "significant growth from gross organic inflows of $19.7 billion in excess of gross liability outflows of $10.8 billion"</blockquote>
+      <p class="magnitude"><b>Size:</b> $5.9B less inflow; net organic $8.9B vs $17.2B.</p>
+      <p>Asset growth is what offsets spread compression; a slower inflow quarter removes that offset.</p>
+      <p class="next"><b>Next filing:</b> H1 inflows vs $46.8B (Q2 2026: $41.8B).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed February 25, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +22.5% to $2.528B; AUM +25% to $938.4B</div>
+      <blockquote>FY2025: "FRE was $2.5 billion in 2025, an increase of $465 million compared to $2.1 billion in 2024."</blockquote>
+      <blockquote>FY2025: "Total AUM was $938.4 billion at December 31, 2025, an increase of $187.4 billion, or 25.0%, compared to $751.0 billion at December 31, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$465M; net flows $168.0B of which $34.2B was Bridge; fee-generating AUM $709.1B (+24.7%).</p>
+      <p>Organic subscriptions ($41.0B credit, $17.0B equity) and Athene growth ($42.0B) drove most of the gain; equity fees grew again (+20.4%) after falling in 2024.</p>
+      <p class="next"><b>Next filing:</b> FRE growth above 20% in Q1 2026 (it was 30.2%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital return and dilution" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Dividend intention raised to $2.25 (from $2.04); buyback authorization raised to $4.0B</div>
+      <blockquote>FY2025: "Our current intention is to pay an annual cash dividend of $2.25 per share of common stock."</blockquote>
+      <blockquote>FY2025: "the Company is authorized to repurchase up to $4.0 billion of shares of its common stock"</blockquote>
+      <p class="magnitude"><b>Size:</b> +10% dividend; $2.25 &times; 579M shares = about $1.3B a year = 25% of 2025 ANI.</p>
+      <p>Both promises are covered by fee earnings alone (FRE $2.5B).</p>
+      <p class="next"><b>Next filing:</b> $0.5625 quarterly declared (Q1 and Q2 2026: yes).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and liquidity" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Athene RBC 441% vs 430%; 85% of deferred annuities now carry surrender penalties</div>
+      <blockquote>FY2025: "As of December 31, 2025, Athene's estimated U.S., Bermuda and consolidated RBC ratios were 436%, 454% and 441%, respectively."</blockquote>
+      <blockquote>FY2025: "As of December 31, 2025 and December 31, 2024, approximately 85% and 82%, respectively, of Athene's deferred annuity liabilities were subject to penalty upon surrender."</blockquote>
+      <p class="magnitude"><b>Size:</b> +11 points of RBC while net invested assets grew $43.8B (+18%).</p>
+      <p>Capital kept pace with fast growth, and liabilities became stickier.</p>
+      <p class="next"><b>Next filing:</b> 2026 RBC disclosed in the FY2026 10-K.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Net investment spread 1.61% vs 1.78%; SRE +4.2% on 18% more assets</div>
+      <blockquote>FY2025: "Net investment spread was 1.61% in 2025, a decrease of 17 basis points compared to 1.78% in 2024, primarily driven by higher cost of funds, partially offset by a higher net investment earned rate."</blockquote>
+      <p class="magnitude"><b>Size:</b> cost of funds $10.1B (+$2.4B); 17bps on $292.4B of net invested assets is about $500M a year (inference).</p>
+      <p>Second annual decline in a row (1.93% &rarr; 1.78% &rarr; 1.61%), even with alternatives earning 10.01%.</p>
+      <p class="next"><b>Next filing:</b> Q1 2026 spread (it fell to 1.34%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">GAAP net income to AGM &minus;24% while ANI +14%; alternative income lifted by an initial mark on Atlas</div>
+      <blockquote>FY2025: "GAAP Net Income (Loss) Attributable to Apollo Global Management, Inc. | 3,395 | 4,480 | 5,001"</blockquote>
+      <blockquote>FY2025: "The increase in income from origination platforms was mainly attributable to an initial mark from cost to fair value and origination outperformance on Atlas in 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> GAAP $3,395M vs ANI $5,195M, a $1.8B gap; non-operating costs $487M incl. $200M of stock issued to the Apollo DAF.</p>
+      <p>Alternative income rose $360M (+38%) partly on marking an affiliate up from cost; that mark reversed direction in Q1 2026.</p>
+      <p class="next"><b>Next filing:</b> Atlas marks (Q1 2026: impairment).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Athene portfolio credit quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Athene portfolio credit quality</span><span class="chip">Stated</span></div>
+      <div class="title">Delinquent or non-accrual commercial mortgage principal five times higher: $195M &rarr; $992M</div>
+      <blockquote>FY2025: "Unpaid principal balance of commercial mortgage loans 90 days or more past due and/or in non-accrual status | 992 | 195"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$797M = 0.8% of the $96.3B fair-value-option mortgage book.</p>
+      <p>Small against the book, but the trend ran up through every 2025 quarter ($427M, $614M, $642M).</p>
+      <p class="next"><b>Next filing:</b> CML delinquencies (Q1 2026 $860M; Q2 2026 $1,027M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and tax" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and tax</span><span class="chip">Stated</span></div>
+      <div class="title">New: German tax authorities may assess historical fund reorganizations; the company says it could be material</div>
+      <blockquote>FY2025: "While no tax assessment has been received to date with respect to such reorganizations, the Company believes the German tax authorities may seek assessments and any potential assessment could be material."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing.</p>
+      <p>First disclosure in the window (absent from the FY2024 10-K); repeated unchanged in both 2026 10-Qs.</p>
+      <p class="next"><b>Next filing:</b> any assessment received or an estimate of loss.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2025 (filed November 10, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +22.8% to $652M; AUM $908.4B after Bridge closes</div>
+      <blockquote>Q3 2025: "FRE was $652 million in 2025, an increase of $121 million compared to $531 million in 2024."</blockquote>
+      <blockquote>Q3 2025: "On September 2, 2025, Apollo completed the previously announced acquisition of Bridge in an all-stock transaction."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$121M; equity management fees +20.3%; AUM +8.2% in the quarter.</p>
+      <p>Bridge closed on the schedule set in the FY2024 10-K and adds real estate equity and wealth distribution.</p>
+      <p class="next"><b>Next filing:</b> full-year FRE growth above 20% (FY2025: 22.5%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">ANI +20% to $1,357M; GAAP net income to AGM $1,712M vs $787M</div>
+      <blockquote>Q3 2025: "Adjusted Net Income | 1,357 | 1,132 | 3,655 | 3,205"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$225M ANI; nine-month ANI +14%.</p>
+      <p>GAAP exceeded ANI this quarter, the one filing in 2025 where it did.</p>
+      <p class="next"><b>Next filing:</b> full-year GAAP vs ANI (FY2025: GAAP &minus;24%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Spread 1.60% vs 1.83% (&minus;23bps); SRE +2% only</div>
+      <blockquote>Q3 2025: "Net investment spread was 1.60% in 2025, a decrease of 23 basis points compared to 1.83% in 2024, driven by higher cost of funds, partially offset by a higher net investment earned rate."</blockquote>
+      <p class="magnitude"><b>Size:</b> SRE $871M vs $856M; cost of funds 3.79% vs 3.34%, including an unfavourable change in unlocking.</p>
+      <p>Even with a 9.88% alternative return, cost of funds rose faster than yields.</p>
+      <p class="next"><b>Next filing:</b> full-year spread (FY2025: 1.61%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital return and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Bridge paid with 9.4M new AGM shares; nine-month buybacks $533M vs $788M</div>
+      <blockquote>Q3 2025: "Shares of AGM common stock issued in exchange | 9.4"</blockquote>
+      <p class="magnitude"><b>Size:</b> 9.4M shares (about 1.7% of shares outstanding) vs 3.85M repurchased in nine months.</p>
+      <p>Share issuance for the deal was more than double the year's buybacks to date.</p>
+      <p class="next"><b>Next filing:</b> year-end share count (ANI shares 623.5M vs 613.1M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 2025 (filed August 7, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +21.5% to $627M; AUM +6.9% in the quarter to $839.6B</div>
+      <blockquote>Q2 2025: "Fee Related Earnings (FRE) | 627 | 516 | 111 | 21.5% | 1,186 | 978 | 208 | 21.3%"</blockquote>
+      <blockquote>Q2 2025: "Total AUM was $839.6 billion at June 30, 2025, an increase of $54.4 billion, or 6.9%, compared to $785.2 billion at March 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$111M; credit management fees +25.0%.</p>
+      <p>Second 20%+ quarter, before any contribution from Bridge.</p>
+      <p class="next"><b>Next filing:</b> growth sustained (Q3 2025: +22.8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">SRE +16% to $821M</div>
+      <blockquote>Q2 2025: "SRE was $821 million in 2025, an increase of $111 million, or 16%, compared to $710 million in 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$111M; flattered by a weak Q2 2024 (alternative earned rate 5.73% then, 9.86% now).</p>
+      <p>A real increase in dollars, but most of it is the alternative-return comparison rather than spread.</p>
+      <p class="next"><b>Next filing:</b> SRE growth on a normal comparison (Q3 2025: +2%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Cost of funds 3.68% vs 3.27%; spread 1.58% vs 1.64%</div>
+      <blockquote>Q2 2025: "Cost of funds was 3.68% in 2025, an increase of 41 basis points compared to 3.27% in 2024"</blockquote>
+      <p class="magnitude"><b>Size:</b> cost of funds $2.5B (+$590M); spread &minus;6bps.</p>
+      <p>Higher rates on new business and runoff of cheaper old blocks keep lifting funding cost.</p>
+      <p class="next"><b>Next filing:</b> Q3 cost of funds (3.79%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital return and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">No buybacks in the quarter; H1 repurchases $193M vs $335M</div>
+      <blockquote>Q2 2025: "The Company paid $193 million and $335 million for these open market share repurchases during the six months ended June 30, 2025 and 2024, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> 1.4M shares in H1 vs 3.0M; the $200M stock grant to the Apollo DAF in February exceeded H1 buybacks.</p>
+      <p>Share count reduction paused while the Bridge stock deal was pending (the filing gives no reason).</p>
+      <p class="next"><b>Next filing:</b> buybacks resume (Q3 2025: $340M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Athene portfolio credit quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Athene portfolio credit quality</span><span class="chip">Stated</span></div>
+      <div class="title">Delinquent commercial mortgage principal $614M vs $195M at year-end</div>
+      <blockquote>Q2 2025: "Unpaid principal balance of commercial mortgage loans 90 days or more past due and/or in non-accrual status | 614 | 195"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$419M = 0.5% of the $82.7B fair-value-option mortgage book.</p>
+      <p>Second quarter of increase after Q1's $427M.</p>
+      <p class="next"><b>Next filing:</b> CML delinquencies (Q3 2025: $642M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 2025 (filed May 7, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +21.0% to $559M; credit management fees +22.9%</div>
+      <blockquote>Q1 2025: "FRE was $559 million in 2025, an increase of $97 million compared to $462 million in 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$97M; FRE margin 57.2% of fee revenue.</p>
+      <p>Growth stepped up from 16.7% in 2024; with the FY2024 10-K this is the second filing in a row of accelerating FRE, which moves P1 to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> FRE growth above 20% (Q2 2025: 21.5%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Athene gross organic inflows $25.6B in one quarter</div>
+      <blockquote>Q1 2025: "significant growth from gross organic inflows of $25.6 billion in excess of gross liability outflows of $8.4 billion"</blockquote>
+      <p class="magnitude"><b>Size:</b> net organic $17.2B in a quarter = 7% of end-2024 net invested assets ($248.6B).</p>
+      <p>Volume growth is strong enough to grow SRE dollars even if spreads keep slipping.</p>
+      <p class="next"><b>Next filing:</b> H1 inflows (Q2 2025: $46.8B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">GAAP net income to AGM &minus;70% to $418M while ANI rose 5%; non-operating costs $276M</div>
+      <blockquote>Q1 2025: "GAAP Net Income (Loss) Attributable to Apollo Global Management, Inc. | 418 | 1,403"</blockquote>
+      <blockquote>Q1 2025: "Transaction-related costs, restructuring and other non-operating expenses 3 | 276 | 51"</blockquote>
+      <p class="magnitude"><b>Size:</b> a $701M gap between ANI ($1,119M) and GAAP; non-operating insurance liability change $367M vs $(673)M.</p>
+      <p>The excluded items include the $200M of stock given to the Apollo DAF (FY2025 10-K), a real cost to shareholders.</p>
+      <p class="next"><b>Next filing:</b> GAAP vs ANI gap narrowing (Q2 2025: $605M vs $1,179M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">SRE &minus;2%; spread 1.65% vs 1.83%</div>
+      <blockquote>Q1 2025: "SRE was $804 million in 2025, a decrease of $13 million, or 2%, compared to $817 million in 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$13M despite $33.1B more average net invested assets.</p>
+      <p>Third filing in a row with the spread down year over year.</p>
+      <p class="next"><b>Next filing:</b> Q2 spread (1.58%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (filed February 24, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +16.7% to $2.063B; AUM +15.4% to $751.0B</div>
+      <blockquote>FY2024: "FRE was $2,063 million in 2024, an increase of $295 million compared to $1,768 million in 2023."</blockquote>
+      <blockquote>FY2024: "Total AUM was $751.0 billion at December 31, 2024, an increase of $100.3 billion, or 15.4%, compared to $650.8 billion at December 31, 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$295M; credit management fees +19.4%; capital solutions +24.2%.</p>
+      <p>Faster than Q3's 12.5% and achieved despite the Atlas SP-Credit Suisse run-off.</p>
+      <p class="next"><b>Next filing:</b> FRE growth above 16% (Q1 2025: 21.0%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Athene gross organic inflows $71.0B; total investments +$55.4B</div>
+      <blockquote>FY2024: "significant growth from gross organic inflows of $71.0 billion in excess of gross liability outflows of $33.5 billion"</blockquote>
+      <p class="magnitude"><b>Size:</b> net invested assets $217.4B &rarr; $248.6B (+14%).</p>
+      <p>Asset growth kept SRE rising (+3.7%) despite the lower spread.</p>
+      <p class="next"><b>Next filing:</b> 2025 inflows (FY2025: $83.4B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital return and dilution" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Annual dividend intention set at $2.04 (quarterly $0.51, up from $0.4625)</div>
+      <blockquote>FY2024: "Our current intention is to pay an annual cash dividend of $2.04 per share of common stock."</blockquote>
+      <p class="magnitude"><b>Size:</b> +10%; about $1.2B a year = 25% of 2024 ANI.</p>
+      <p>Dividend growth tracks fee earnings growth.</p>
+      <p class="next"><b>Next filing:</b> $0.51 declared each quarter (met through 2025).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Net investment spread 1.78% vs 1.93%; second filing in a row with the spread down</div>
+      <blockquote>FY2024: "Net investment spread was 1.78% in 2024, a decrease of 15 basis points compared to 1.93% in 2023, primarily driven by higher cost of funds"</blockquote>
+      <p class="magnitude"><b>Size:</b> cost of funds 3.29% vs 2.71% (+58bps); SRE +3.7% on 14% more assets.</p>
+      <p>With Q3 2024, two filings point the same way: P2 moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> Q1 2025 spread (1.65% vs 1.83%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$152M of guaranty-association expense for other insurers' failures</div>
+      <blockquote>FY2024: "During the year ended December 31, 2024, Athene recorded guaranty association expenses related to the BLIC and CBLIC insolvencies of $152 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> $152M net = 4.7% of 2024 SRE ($3,224M).</p>
+      <p>A GAAP cost for other insurers' failures. Retirement Services other operating expenses fell, so the charge appears to sit among the adjusted items that SRE excludes (inference).</p>
+      <p class="next"><b>Next filing:</b> further assessments (FY2025: no longer material).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">Equity management fees fall 3.9%</div>
+      <blockquote>FY2024: "Management fees - Equity | 761 | 792 | (31) | (3.9)"</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$31M on $761M; equity was 27% of management fees.</p>
+      <p>Private equity fee periods are rolling off (Fund X catch-up in 2023, Fund VIII/IX later) faster than new equity funds replace them.</p>
+      <p class="next"><b>Next filing:</b> equity fees back to growth (2025: +20.4% with Bridge).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2024 (filed November 6, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Asset management growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Asset management growth</span><span class="chip">Stated</span></div>
+      <div class="title">FRE +12.5% to $531M; credit management fees +20.2%</div>
+      <blockquote>Q3 2024: "FRE was $531 million in 2024, an increase of $59 million compared to $472 million in 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$59M; nine-month FRE +15.1%.</p>
+      <p>Credit fees grew with Athene and third-party capital formation.</p>
+      <p class="next"><b>Next filing:</b> full-year FRE growth (FY2024: 16.7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month Athene gross organic inflows $56.8B</div>
+      <blockquote>Q3 2024: "significant growth from gross organic inflows of $56.8 billion in excess of gross liability outflows of $26.3 billion"</blockquote>
+      <p class="magnitude"><b>Size:</b> total investments +$48.4B in nine months.</p>
+      <p>Volume growth remains the engine of Athene's earnings.</p>
+      <p class="next"><b>Next filing:</b> full-year inflows ($71.0B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Retirement services spread" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retirement services spread</span><span class="chip">Stated</span></div>
+      <div class="title">Spread 1.83% vs 2.13% (&minus;30bps); SRE &minus;1.9%</div>
+      <blockquote>Q3 2024: "Net investment spread was 1.83% in 2024, a decrease of 30 basis points compared to 2.13% in 2023, primarily driven by higher cost of funds, partially offset by a higher net investment earned rate."</blockquote>
+      <p class="magnitude"><b>Size:</b> SRE $856M vs $873M; cost of funds 3.34% vs 2.67%.</p>
+      <p>SRE fell even as average net invested assets grew $30.5B.</p>
+      <p class="next"><b>Next filing:</b> full-year spread (1.78%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$172M guaranty-association charge for the BLIC/CBLIC insolvencies</div>
+      <blockquote>Q3 2024: "primarily driven by the recognition of $172 million of expense related to estimated guaranty association assessments Athene expects to be levied against it"</blockquote>
+      <p class="magnitude"><b>Size:</b> $172M = 20% of Q3 SRE ($856M).</p>
+      <p>Policy and other operating expenses rose $203M, mostly this charge.</p>
+      <p class="next"><b>Next filing:</b> final estimate (FY2024: $152M net).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Athene portfolio credit quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Athene portfolio credit quality</span><span class="chip">Stated</span></div>
+      <div class="title">Delinquent commercial mortgage principal $507M vs $221M at end-2023</div>
+      <blockquote>Q3 2024: "Unpaid principal balance of commercial mortgage loans 90 days or more past due and/or in non-accrual status | 507 | 221"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$286M = 0.4% of the $64.4B fair-value-option mortgage book.</p>
+      <p>Commercial real estate stress showing in Athene's loans.</p>
+      <p class="next"><b>Next filing:</b> year-end figure (FY2024: back to $195M).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
