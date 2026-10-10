@@ -242,8 +242,12 @@ def find_note(lines, heading):
 
 
 NOTES_START = re.compile(r"notes to (the )?(unaudited )?(condensed )?(consolidated )?(financial statements|statements)", re.I)
-NOTE_HEAD = re.compile(r"(?:note\s+)?(\d{1,2})\s*[\.:\u2014\u2013\-]\s*([A-Za-z].{2,140})", re.I)
-TOC_ROW = re.compile(r".*\|\s*\d{1,3}$")  # "12. Commitments and Contingencies | 63": an index row, not a note
+NOTE_HEAD = re.compile(r"(?:note\s+)?(\d{1,2})\s*[\.:\u2014\u2013\-]\s*((?:[A-Za-z]|401\(k\)).{2,140})", re.I)
+# A table-of-contents row: a title with its page number in the last cell
+# ("12. Commitments and Contingencies | 63", "Note 14. ... | F-73"): an index row, not a note.
+TOC_ROW = re.compile(r".*\|\s*(page\s*)?(f-)?\d{1,3}$", re.I)
+# a table's last cell glued onto the next note heading ("+42.8+Note 5 - Cash ...")
+GLUED_NOTE = re.compile(r"([\d\s.,+\-()$%]*\d[\d\s.,+\-()$%]*?)(Note\s+\d{1,2}\s*[\.:\u2014\u2013\-]\s*[A-Za-z].{2,140})")
 
 
 def note_head(l):
@@ -253,9 +257,16 @@ def note_head(l):
 def notes(lines):
     """The notes to the financial statements, wherever they sit (Item 8, Part I Item 1, or F-pages
     at the back), split on sequentially numbered note headings. Returns (all notes, {n: (title, text)})."""
+    # a table's last cell can be glued onto the next note heading ("+42.8+Note 5 - Cash ...",
+    # "4Note 6 - Non-marketable ..."): split the numeric fragment off so the heading is found
+    split = []
+    for l in lines:
+        g = GLUED_NOTE.fullmatch(l)
+        split += [g.group(1), g.group(2)] if g else [l]
+    lines = split
     best = (0, None)
     for i, l in enumerate(lines):
-        if len(l) < 120 and NOTES_START.match(l):
+        if len(l) < 120 and NOTES_START.match(l) and not TOC_ROW.fullmatch(l):
             m = next((note_head(x) for x in lines[i + 1:i + 6] if note_head(x)), None)
             if m and m.group(1) == "1":
                 # count how many sequential notes follow; the real block has the longest run
