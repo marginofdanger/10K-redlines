@@ -307,8 +307,8 @@ OUTLINE = re.compile(r"(?:[IVX]{1,4}|[A-H])\.\s+")
 
 
 def mda_subsections(mda):
-    lines = [OUTLINE.sub("", l, count=1) if OUTLINE.match(l) else l for l in mda.split("\n")]
-    raw = mda.split("\n")
+    raw = [l for l in mda.split("\n") if "(continued)" not in l.lower()]  # running page headers
+    lines = [OUTLINE.sub("", l, count=1) if OUTLINE.match(l) else l for l in raw]
     out = {}
     for name, rx in MDA_SUBSECTIONS.items():
         starts = [i for i, l in enumerate(lines) if len(l) < 90 and re.match(rx, l, re.I)]
