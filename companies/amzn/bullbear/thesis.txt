@@ -1,0 +1,79 @@
+AMAZON.COM (AMZN): INVESTMENT THESIS PILLARS
+Written October 2026 from the 10-K dashboard and 10-Q scanner themes and the eight filings from the
+Q3 2024 10-Q (filed November 1, 2024) to the Q2 2026 10-Q (filed July 31, 2026). Stances move only
+when findings point the same way across two or more filings; "last moved" names the second filing.
+
+P1 AWS growth and backlog
+  Bull assumes: AI and cloud demand keep AWS growing faster than 20% a year at operating margins in the
+    mid-to-high 30s, and the remaining performance obligation (backlog) turns into revenue over 4-6 years.
+  Bear fears: growth stalls while capacity is being built, pricing on long-term contracts dilutes
+    margins, and a backlog concentrated in a few AI labs proves less firm than it looks.
+  Stance: Strengthening (moved at the FY2025 10-K). AWS growth ran 19% (Q3 2024), 17% (Q1 and Q2 2025),
+    then reaccelerated to 20% (Q3 2025), about 24% (Q4 2025, derived), 28% (Q1 2026) and 37% (Q2 2026).
+    Backlog went $164B -> $177B -> $189B -> $195B -> $200B -> $244B -> $364B -> $496B.
+  Tests: AWS growth and segment margin each quarter; backlog and its weighted-average life; how much of
+    the backlog comes from OpenAI and Anthropic.
+
+P2 Retail margins (North America and International)
+  Bull assumes: advertising, third-party seller services and fulfillment efficiency keep lifting North
+    America margins toward 8% and International margins toward 5%.
+  Bear fears: Amazon Leo (satellite), quick commerce, sharper international pricing, tariffs and
+    shipping costs absorb the gains; one-off items flatter reported margins.
+  Stance: Strengthening (moved at the Q2 2025 10-Q). North America margin 5.9% (Q3 2024) -> 6.4% (FY2024)
+    -> 7.5% (Q2 2025) -> 6.9% (FY2025, after the $2.5B FTC charge) -> 7.9% (Q1 and Q2 2026). International
+    went from losses in 2023 to 4.1% (Q2 2025 and Q2 2026). The Q2 2026 North America figure includes
+    about $640M of IEEPA tariff refunds; without them the margin is about 7.3% vs 7.5%.
+  Tests: segment operating margins excluding named one-offs; Leo costs; shipping cost growth vs sales.
+
+P3 Capital spending returns and free cash flow
+  Bull assumes: the capex surge earns AWS-like returns; operating cash flow grows fast enough to fund it
+    and free cash flow recovers once capacity comes online.
+  Bear fears: capex keeps growing faster than operating cash flow, free cash flow stays negative, and
+    shorter server lives raise depreciation before the revenue arrives.
+  Stance: Weakening (moved at the Q2 2025 10-Q). Trailing-twelve-month free cash flow went $47.7B (Q3 2024)
+    -> $38.2B -> $25.9B -> $18.2B -> $14.8B -> $11.2B -> $1.2B -> -$7.6B (Q2 2026), while trailing operating
+    cash flow rose from $112.7B to $161.4B. Cash capex: $77.7B (2024), $128.3B (2025), $96.3B (H1 2026).
+  Tests: trailing free cash flow, capex vs operating cash flow, AWS margin as new capacity is depreciated.
+
+P4 Balance sheet and funding
+  Bull assumes: net cash, unused credit lines and investment-grade access let Amazon fund the build-out
+    without strain.
+  Bear fears: borrowing replaces free cash flow as the funding source; fixed commitments (leases not yet
+    commenced, purchase obligations, investee funding) pile up off balance sheet.
+  Stance: Weakening (moved at the Q1 2026 10-Q). Notes outstanding fell to $58.0B (FY2024) and $54.3B
+    (Q3 2025), then rose to $68.0B (FY2025, $15B issued November 2025), $121.8B (Q1 2026) and $132.1B
+    (Q2 2026), plus $25.0B issued in July 2026 and a $17.5B term loan. Total contractual commitments
+    $333.0B (FY2024) -> $439.7B (FY2025) -> $650.0B (Q2 2026).
+  Tests: notes outstanding, interest expense vs operating income, cash and marketable securities,
+    commitments table, any rating language.
+
+P5 Earnings quality
+  Bull assumes: reported earnings track operating income; accounting estimates are conservative.
+  Bear fears: Level 3 mark-ups on private AI investments, tax items, useful-life changes and one-time
+    refunds inflate net income and EPS.
+  Stance: Weakening (moved at the Q3 2025 10-Q). Non-operating gains, mostly Anthropic: $2.7B (Q1 2025),
+    $10.2B (Q3 2025), $15.2B (FY2025), $15.6B (Q1 2026), $53.4B (Q2 2026). Q2 2026 net income $62.6B vs
+    operating income $27.5B. The FY2024 server-life shortening (6 to 5 years) was a conservative move.
+  Tests: other income vs pre-tax income; discrete tax items; one-offs inside operating income.
+
+P6 AI-lab investments and customer concentration
+  Bull assumes: stakes in Anthropic and OpenAI gain in value and anchor multi-year AWS contracts.
+  Bear fears: Amazon funds its own customers (vendor financing in effect); a large share of the backlog
+    and of the balance sheet depends on two cash-burning private companies.
+  Stance: Weakening (moved at the Q2 2026 10-Q). Q1 2026: $15.0B into OpenAI plus a $35.0B commitment,
+    alongside a $100.0B expansion of OpenAI's AWS commitment. Q2 2026: $10.0B into Anthropic, a $20.0B
+    financing facility, and a more-than-$100.0B Anthropic AWS commitment. Private equity holdings carried
+    at $122.3B and Anthropic notes at $97.9B (June 30, 2026).
+  Tests: further funding commitments, facility draws, any impairment or down-round, share of backlog
+    from investees (not disclosed).
+
+P7 Legal and regulatory
+  Bull assumes: antitrust and privacy cases resolve with fines that are small relative to cash flow and
+    no structural remedy.
+  Bear fears: the FTC and state antitrust cases force changes to Prime, Featured Offer or seller
+    practices; patent cases (Kove, Xockets) hit AWS hardware.
+  Stance: Intact. The FTC Prime case settled for $2.5B (Q3 2025); Italy's fine was cut to EUR 752M; the RPI
+    Alexa patent ruling was affirmed for Amazon. Against that, antitrust cases seek structural relief, the
+    Kove $525M verdict plus $148M interest is on appeal, and the ITC opened an investigation into GB200
+    servers in June 2026.
+  Tests: antitrust trial dates and rulings, ITC outcome on Xockets, Kove appeal.

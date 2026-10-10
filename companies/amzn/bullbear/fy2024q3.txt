@@ -1,0 +1,41 @@
+AMAZON Q3 2024 10-Q (filed November 1, 2024; quarter ended September 30, 2024)
+Fundamentals answers. Marker = versus the Q2 2024 10-Q. Figures from the filing text and SEC XBRL.
+
+1. Growth and pricing [HELD]
+   Sales $158.9B, +11% (Q2 +10%). North America +9%, International +12% (ex-FX +12%), AWS +19% (Q2 +19%).
+   Volume-led: "increased unit sales"; AWS growth from "increased customer usage, partially offset by
+   pricing changes primarily driven by long-term customer contracts" (MD&A, Net Sales). Backlog $164B (Q2 $156B).
+
+2. Margins and unit economics [BETTER]
+   Operating income $17.4B vs $11.2B; margin 11.0% vs 7.8%. North America 5.9% (4.9%), International
+   3.6% (loss of $95M), AWS 38.1% (30.3%). AWS helped by lower payroll and the server life change (MD&A).
+
+3. Earnings quality [WORSE]
+   Server life extension (5 to 6 years) cut Q3 depreciation by $760M (4.4% of operating income) and nine-month
+   by $2.4B. Nine-month tax provision includes $2.4B of discrete benefits (stock compensation). Rivian
+   mark: -$348M in Q3 (Note 1, Income Taxes, Other Income).
+
+4. Cash conversion [WORSE]
+   Trailing operating cash flow $112.7B; trailing free cash flow $47.7B (Q2 $53.0B; a year earlier $21.4B).
+   Q3 free cash flow about $3.4B on $21.3B capex (XBRL). DSO about 30 days, flat.
+
+5. Capital allocation [WORSE]
+   Cash capex $21.3B vs $11.3B (+88%); "meaningfully increase in 2024" guide repeated. No buybacks, no
+   dividend. Anthropic convertible notes held at fair value (Level 3).
+
+6. Balance sheet and contingent exposure [BETTER]
+   Debt face value $60.5B vs $62.7B at Q2; long-term debt $54.9B. Cash and marketable securities $88.1B.
+   Commitments $326.3B including leases not yet commenced $50.3B.
+
+7. Concentration [HELD]
+   AWS 17% of sales and 60% of operating income. No customer or vendor concentration disclosed.
+
+8. Accounting judgments [HELD]
+   Server useful life change (effective January 2024) still flowing through. No new estimate changes.
+
+9. Legal, regulatory and governance [WORSE]
+   Kove: $525M jury verdict plus $148M pre-judgment interest (August 2024); appeal filed September 2024.
+   FTC and state antitrust suits ongoing; Nokia video patent injunctions in some jurisdictions.
+
+10. Guidance and commitments [HELD]
+   Q4 2024 guide: sales $181.5-188.5B, operating income $16.0-20.0B. Capex to "meaningfully increase in 2024".

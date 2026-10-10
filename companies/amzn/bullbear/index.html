@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMZN Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Amazon: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed July 31, 2026 | Covers eight filings from the Q3 2024 10-Q (filed November 1, 2024) | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 AWS growth and backlog</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">AWS growth 17% (Q2 2025) &rarr; 20% &rarr; about 24% &rarr; 28% &rarr; 37% (Q2 2026); backlog $177B &rarr; $496B in six quarters</td><td class="ev-bear">Roughly half of the backlog appears to come from OpenAI and Anthropic, both Amazon investees (inferred; the split is not disclosed)</td><td>FY2025 10-K</td></tr>
+<tr><td>P2 Retail margins</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">North America margin 5.9% (Q3 2024) &rarr; 7.9% (Q1 and Q2 2026); International from losses to 4.1%</td><td class="ev-bear">Q2 2026 North America includes about $640M of one-time tariff refunds (about 7.3% margin without them, vs 7.5%); about $1B more Leo cost in 2026</td><td>Q2 2025 10-Q</td></tr>
+<tr><td>P3 Capex returns and free cash flow</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Trailing operating cash flow $112.7B &rarr; $161.4B over the window</td><td class="ev-bear">Trailing free cash flow $47.7B (Q3 2024) &rarr; &minus;$7.6B (Q2 2026); capex $96.3B in H1 2026 alone</td><td>Q2 2025 10-Q</td></tr>
+<tr><td>P4 Balance sheet and funding</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">No commercial paper or revolver drawn; cash and marketable securities $123.0B, unchanged since December 2025</td><td class="ev-bear">Notes $54.3B (Q3 2025) &rarr; $132.1B (Q2 2026), plus $25.0B in July; commitments $333.0B (FY2024) &rarr; $650.0B</td><td>Q1 2026 10-Q</td></tr>
+<tr><td>P5 Earnings quality</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Server lives shortened to five years for a subset (FY2024 10-K), a conservative estimate change</td><td class="ev-bear">Anthropic-driven other income $2.7B &rarr; $10.2B &rarr; $15.6B &rarr; $53.4B; Q2 2026 net income $62.6B vs operating income $27.5B</td><td>Q3 2025 10-Q</td></tr>
+<tr><td>P6 AI-lab investments and concentration</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Anthropic preferred stock carried at $92.5B and notes at $97.9B, against about $18B invested</td><td class="ev-bear">$50.0B into OpenAI, $10.0B into Anthropic plus a $15.0B facility still available, while both lab commitments fill the AWS backlog</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P7 Legal and regulatory</td><td class="stance s-intact">Intact</td><td class="ev-bull">FTC lawsuit settled for $2.5B (Q3 2025), paid from cash; Italian fine cut to &euro;752M</td><td class="ev-bear">Antitrust suits seek structural relief; ITC investigation of GB200 servers (June 2026); Kove $525M verdict on appeal</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. Operating results were the strongest in the window, led by AWS; but free cash flow turned negative, borrowing doubled in six months, and two-thirds of pre-tax income came from marking up the Anthropic stake.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">AWS sales +37% (Q1 +28%); AWS operating income $10.160B &rarr; $16.621B, margin 32.9% &rarr; 39.4%</div>
+      <blockquote>Q2 2026: "AWS sales increased 37% in Q2 2026, and 33% for the six months ended June 30, 2026 compared to the comparable prior year periods."</blockquote>
+      <blockquote>Q2 2026: "AWS | 10,160 | 16,621 | 21,707 | 30,782"</blockquote>
+      <p class="magnitude"><b>Size:</b> AWS sales $42.2B (+$11.4B year over year); AWS produced 61% of operating income. Up to $551M of the quarter's AWS income is unrealized energy-contract gains; without all of it the margin is still about 38%.</p>
+      <p>The fourth straight quarter of acceleration since growth bottomed at 17% in Q1 and Q2 2025. Margin expanded while capex nearly doubled, so the new capacity is being filled.</p>
+      <p class="next"><b>Next filing:</b> AWS growth above 30% and margin above 35% in Q3 2026; a fall back toward 20% would refute.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">Backlog $364B &rarr; $496B in one quarter (a year earlier $195B); Anthropic expands its AWS commitment by more than $100.0B</div>
+      <blockquote>Q2 2026: "For contracts with original terms that exceed one year, those commitments not yet recognized were approximately $496 billion as of June 30, 2026."</blockquote>
+      <blockquote>Q2 2026: "In Q2 2026, AWS and Anthropic announced an expansion of the strategic collaboration and existing multi-year commitment by more than $100.0 billion over 10.0 years, which includes contractual obligations related to the performance of AWS chips."</blockquote>
+      <p class="magnitude"><b>Size:</b> $496B = 3.3x trailing AWS sales of about $148B; weighted-average life 6.4 years (5.5 in Q1), about $78B a year if spread evenly.</p>
+      <p>Contracted demand now covers several years of the capacity being built, which is the main answer to the free-cash-flow bear case. Its quality depends on two counterparties (see bear side).</p>
+      <p class="next"><b>Next filing:</b> backlog holding near $500B as revenue is recognized against it; any cancellation or reduction language.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income $27.5B beats the $20.0&ndash;24.0B guide; North America $7.517B &rarr; $9.123B, International $1.494B &rarr; $1.717B</div>
+      <blockquote>Q2 2026: "Operating income increased from $19.2 billion in Q2 2025 to $27.5 billion in Q2 2026, and increased from $37.6 billion for the six months ended June 30, 2025 to $51.3 billion for the six months ended June 30, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> $3.5B above the top of guidance; about $2.3B above it even without the $640M of tariff refunds and $551M of energy gains. Consolidated margin 13.7% vs 11.4%.</p>
+      <p>Retail segments grew operating income 21% (North America) and 15% (International) on unit sales and advertising, while Leo spending ran through technology and infrastructure costs.</p>
+      <p class="next"><b>Next filing:</b> Q3 2026 operating income inside or above $22.5&ndash;26.5B with no refunds.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 AI-lab investments and concentration" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 AI-lab investments and concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Anthropic holdings marked to about $190B: preferred stock $14.8B &rarr; $92.5B, notes $45.8B &rarr; $97.9B since December</div>
+      <blockquote>Q2 2026: "As of December 31, 2025 and June 30, 2026, the amounts recorded on our consolidated balance sheets for nonvoting preferred stock were approximately $14.8 billion and $92.5 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $190B of carrying value against $8.0B of notes and $10.0B of 2026 preferred purchases; larger than 2025 operating income ($80.0B) by 2.4x. Level 3, unrealized.</p>
+      <p>The marks follow Anthropic's own priced fundings, so the stake has real economic value and could be monetized after an IPO lock-up. It is the strongest offset to the cash being spent on capex.</p>
+      <p class="next"><b>Next filing:</b> further priced rounds or an IPO filing; any impairment would refute.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Liquidity held: cash and marketable securities $123.0B, no commercial paper or revolver borrowings, a new $17.5B term loan undrawn</div>
+      <blockquote>Q2 2026: "We had no borrowings outstanding under the two unsecured revolving credit facilities or the commercial paper programs as of June 30, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> $20.0B of revolvers, $30.0B of commercial paper capacity and $17.5B of term loan all unused; quarterly operating income covers interest about 21 times.</p>
+      <p>Amazon raised notes in four currencies between March and July (stated rates 0.84&ndash;6.05%) and kept its backup lines untouched. Funding is a cost question, not an access question.</p>
+      <p class="next"><b>Next filing:</b> whether the term loan was drawn before its September 30, 2026 deadline, and cash after the $21.3B OpenAI payment.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Trailing free cash flow turns negative: $18.2B &rarr; &minus;$7.6B; Q2 cash capex $53.1B vs $31.4B</div>
+      <blockquote>Q2 2026: "Free cash flow | 18,184 | (7,604)"</blockquote>
+      <blockquote>Q2 2026: "Cash capital expenditures were $31.4 billion and $53.1 billion during Q2 2025 and Q2 2026, and $55.6 billion and $96.3 billion for the six months ended June 30, 2025 and 2026"</blockquote>
+      <p class="magnitude"><b>Size:</b> trailing capex $169.0B vs operating cash flow $161.4B; H1 2026 capex is 75% of all of 2025's. Quarterly free cash flow &minus;$18.2B (Q1) and &minus;$8.8B (Q2) per XBRL.</p>
+      <p>The filing says capex will rise further in 2026. Free cash flow has fallen in every filing in the window, and the company's own stated focus is "long-term, sustainable growth in free cash flow".</p>
+      <p class="next"><b>Next filing:</b> trailing free cash flow below &minus;$7.6B confirms; Q4 seasonal cash inflow returning it to positive would ease it.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Notes outstanding $68.0B &rarr; $132.1B in six months, plus $25.0B issued in July; interest expense $516M &rarr; $1.3B</div>
+      <blockquote>Q2 2026: "As of June 30, 2026, we had $132.1 billion of unsecured senior notes outstanding"</blockquote>
+      <blockquote>Q2 2026: "Subsequent to June 30, 2026, we issued $25.0 billion of U.S. Dollar-denominated Notes for general corporate purposes with maturities between 2029 and 2066"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $157B of notes after July = 2.0x 2025 operating income; $82.4B of H1 debt proceeds vs $96.3B of H1 capex. Interest expense annualizing above $5B.</p>
+      <p>Debt, not free cash flow, is now funding both capex and the AI-lab investments. Cash and securities stayed flat only because of the borrowing.</p>
+      <p class="next"><b>Next filing:</b> term loan drawn or not, further issuance, and interest expense against operating income.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Other income $53.4B, mostly Anthropic mark-ups: net income $62.6B vs operating income $27.5B</div>
+      <blockquote>Q2 2026: "Other income (expense), net was $1.1 billion and $53.4 billion during Q2 2025 and Q2 2026, and $3.9 billion and $69.1 billion for the six months ended June 30, 2025 and 2026."</blockquote>
+      <blockquote>Q2 2026: "Our income tax provision for the six months ended June 30, 2026 was $27.8 billion, which included $15.9 billion of net discrete tax expense primarily attributable to the upward adjustments to our investments in Anthropic."</blockquote>
+      <p class="magnitude"><b>Size:</b> $53.4B = 66% of Q2 pre-tax income ($80.9B); diluted EPS $5.75 vs $1.68, of which roughly $3.80 is the after-tax mark (inference from the stated discrete tax).</p>
+      <p>The gains are non-cash Level 3 marks and can reverse. Reported EPS no longer tracks the operating business; per-share comparisons need the gains removed.</p>
+      <p class="next"><b>Next filing:</b> other income as a share of pre-tax income; any downward adjustment.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 AI-lab investments and concentration" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P6 AI-lab investments and concentration</span><span class="chip">Inferred</span></div>
+      <div class="title">Amazon is funding its two largest AWS commitments: $50.0B into OpenAI, $10.0B into Anthropic plus a facility that reopens as AWS delivers compute</div>
+      <blockquote>Q2 2026: "Additionally, we entered into a financing arrangement to make available to Anthropic an aggregate facility not to exceed $20.0 billion that will expire 30 months after an Anthropic liquidity event, including an initial public offering"</blockquote>
+      <blockquote>Q2 2026: "Our maximum exposure to loss is generally limited to the current carrying values of these investments and any future funding commitments."</blockquote>
+      <p class="magnitude"><b>Size:</b> OpenAI ($138B) and Anthropic (more than $100B added) commitments are at least $238B, about 48% of the $496B backlog if fully counted; private holdings $122.3B plus notes $97.9B = about 2.7x 2025 operating income.</p>
+      <p>The facility becomes available "as we reach certain delivery milestones of compute capacity", so part of the AWS revenue from Anthropic may be financed by Amazon itself. The backlog split by customer is not disclosed.</p>
+      <p class="next"><b>Next filing:</b> draws on the $15.0B remaining facility, new commitments, and any customer-concentration disclosure.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Contractual commitments $569.3B &rarr; $650.0B in a quarter; leases not yet commenced $106.3B &rarr; $137.2B; Globalstar for about $10.9B</div>
+      <blockquote>Q2 2026: "Total commitments | 42,752 | 78,084 | 53,406 | 46,767 | 42,219 | 386,806 | 650,034"</blockquote>
+      <blockquote>Q2 2026: "As of the date of the merger agreement, the acquisition implied a value for Globalstar of approximately $10.9 billion, including its debt."</blockquote>
+      <p class="magnitude"><b>Size:</b> commitments up $210B since December ($439.7B); leases not yet commenced alone are 1.7x 2025 operating income.</p>
+      <p>Most of the increase is data-center leases and purchase obligations that are off balance sheet until they commence, and they lock in spending regardless of demand.</p>
+      <p class="next"><b>Next filing:</b> commitments growth slowing relative to backlog growth.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Inferred</span></div>
+      <div class="title">About $640M of IEEPA tariff refunds sit in North America cost of sales; without them the segment margin slips to about 7.3% from 7.5%</div>
+      <blockquote>Q2 2026: "These tariff refunds were primarily recorded as a reduction to"</blockquote>
+      <blockquote>Q2 2026: "This represents the significant majority of refunds we expect to receive."</blockquote>
+      <p class="magnitude"><b>Size:</b> $640M = 7.0% of North America operating income ($9.123B); about 0.6 points of segment margin (inference: assumes the refunds are all North America).</p>
+      <p>The headline margin gain from 7.5% to 7.9% reverses once the refund is removed, and the filing says most refunds have now been received, so this support will not repeat.</p>
+      <p class="next"><b>Next filing:</b> North America margin in Q3 2026 against Q3 2025's 6.9% before the FTC charge.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (each 10-Q vs the prior 10-Q or 10-K; each 10-K's annual items vs the prior year). Full answers are in the per-filing text files in this folder.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>Q1 2026 10-Q</th><th>FY2025 10-K</th><th>Q3 2025 10-Q</th><th>Q2 2025 10-Q</th><th>Q1 2025 10-Q</th><th>FY2024 10-K</th><th>Q3 2024 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark better">&#9650;</span> Sales +20%; AWS +37%; backlog $496B (Q1 $364B).</td><td><span class="mark better">&#9650;</span> Sales +17%; AWS +28%; backlog $364B after OpenAI's $100.0B expansion.</td><td><span class="mark better">&#9650;</span> Sales +12%; AWS +20% (Q4 about +24%); backlog $244B vs $177B.</td><td><span class="mark better">&#9650;</span> Sales +13%; AWS reaccelerates to +20%; backlog $200B.</td><td><span class="mark better">&#9650;</span> Sales +13% (Q1 +9%); AWS +17%; backlog $195B.</td><td><span class="mark worse">&#9660;</span> Sales +9%; AWS +17% (from about 19%); International +5%.</td><td><span class="mark held">&#9679;</span> Sales +11%; AWS +19%; backlog $177B.</td><td><span class="mark held">&#9679;</span> Sales +11%; AWS +19%; backlog $164B (Q2 $156B); volume-led.</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark better">&#9650;</span> Margin 13.7% (11.4%); AWS 39.4%; NA 7.9% incl. ~$640M refunds.</td><td><span class="mark better">&#9650;</span> Margin 13.1% (11.8%); NA 7.9% (6.3%); AWS 37.7%.</td><td><span class="mark better">&#9650;</span> Margin 11.2% after $5.2B of FTC and severance; NA 6.9%; AWS 35.4%.</td><td><span class="mark worse">&#9660;</span> Operating income flat at $17.4B after $4.3B of charges; AWS 34.6%.</td><td><span class="mark held">&#9679;</span> NA 7.5% (5.6%), Intl 4.1%; but AWS 32.9% (35.5%).</td><td><span class="mark better">&#9650;</span> Margin 11.8% (10.7%); AWS 39.5%; NA 6.3%.</td><td><span class="mark better">&#9650;</span> Margin 10.8% (6.4%); NA 6.4%; AWS 37.0%.</td><td><span class="mark better">&#9650;</span> Margin 11.0% (7.8%); International profitable; AWS 38.1%.</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark worse">&#9660;</span> Other income $53.4B = 66% of pre-tax; $15.9B discrete tax (H1).</td><td><span class="mark worse">&#9660;</span> Other income $15.6B = 39% of pre-tax; $4.1B discrete tax.</td><td><span class="mark worse">&#9660;</span> Other income $15.2B; ~$15B more pre-announced for Q1 2026.</td><td><span class="mark worse">&#9660;</span> Other income $10.2B = 36% of pre-tax; net income above operating income.</td><td><span class="mark better">&#9650;</span> Other income $1.1B (warrants); $753M discrete tax benefit (H1).</td><td><span class="mark worse">&#9660;</span> $2.7B Anthropic reclassified gain = 12% of pre-tax.</td><td><span class="mark worse">&#9660;</span> Server life extension cut 2024 depreciation $3.2B; $920M accelerated charge in Q4.</td><td><span class="mark worse">&#9660;</span> Server life change cut Q3 depreciation $760M; $2.4B discrete tax benefit (9M).</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark worse">&#9660;</span> Trailing FCF &minus;$7.6B (first negative); DSO 40 days.</td><td><span class="mark worse">&#9660;</span> Trailing FCF $1.2B; Q1 FCF about &minus;$18.2B; DSO 38 days.</td><td><span class="mark worse">&#9660;</span> FCF $11.2B vs $38.2B despite operating cash flow +20%.</td><td><span class="mark worse">&#9660;</span> Trailing FCF $14.8B (Q2 $18.2B).</td><td><span class="mark worse">&#9660;</span> Q2 operating cash flow +29%, but trailing FCF $18.2B vs $53.0B.</td><td><span class="mark worse">&#9660;</span> Q1 operating cash flow $17.0B vs $19.0B; trailing FCF $25.9B.</td><td><span class="mark held">&#9679;</span> FCF $38.2B vs $36.8B; operating cash flow +36%.</td><td><span class="mark worse">&#9660;</span> Trailing FCF $47.7B (Q2 $53.0B), up from $21.4B a year earlier.</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark worse">&#9660;</span> Capex $53.1B; OpenAI $13.7B (+$21.3B in July); Anthropic $10.0B; Globalstar.</td><td><span class="mark worse">&#9660;</span> Capex $43.2B; OpenAI $15.0B plus $35.0B commitment.</td><td><span class="mark worse">&#9660;</span> Capex $128.3B (+65%), to rise in 2026; no buybacks or dividends.</td><td><span class="mark worse">&#9660;</span> Capex $34.2B; first guide to higher capex in 2026.</td><td><span class="mark worse">&#9660;</span> Capex $31.4B (+91%); $1.3B Anthropic note.</td><td><span class="mark worse">&#9660;</span> Capex $24.3B (+75%).</td><td><span class="mark worse">&#9660;</span> Capex $77.7B (+61%); "increase in 2025".</td><td><span class="mark worse">&#9660;</span> Capex $21.3B (+88%).</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark worse">&#9660;</span> Notes $132.1B, +$25.0B July, $17.5B term loan; commitments $650.0B.</td><td><span class="mark worse">&#9660;</span> Notes $121.8B (from $68.0B); commitments $569.3B.</td><td><span class="mark worse">&#9660;</span> Notes $68.0B ($15.0B issued Nov.); commitments $439.7B vs $333.0B.</td><td><span class="mark held">&#9679;</span> Notes $54.3B; commitments $376.0B.</td><td><span class="mark better">&#9650;</span> Notes $55.3B, maturities repaid; commitments $366.5B.</td><td><span class="mark held">&#9679;</span> Debt face $58.75B; cash and securities $94.6B (from $101.2B).</td><td><span class="mark worse">&#9660;</span> Debt face $67.2B &rarr; $58.0B, but leases not yet commenced $38.2B &rarr; $61.6B.</td><td><span class="mark better">&#9650;</span> Debt face $60.5B (Q2 $62.7B); commitments $326.3B.</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark worse">&#9660;</span> OpenAI and Anthropic commitments about half of backlog (inferred); AWS 61% of operating income.</td><td><span class="mark worse">&#9660;</span> OpenAI becomes investee and $138B AWS customer.</td><td><span class="mark held">&#9679;</span> AWS 57% of operating income; no vendor 10% of purchases.</td><td><span class="mark held">&#9679;</span> AWS 66% of operating income (charges hit retail).</td><td><span class="mark held">&#9679;</span> AWS 53% of operating income as retail margins rose.</td><td><span class="mark held">&#9679;</span> AWS 63% of operating income.</td><td><span class="mark held">&#9679;</span> AWS 58% of operating income; no vendor 10% of purchases.</td><td><span class="mark held">&#9679;</span> AWS 60% of operating income.</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark worse">&#9660;</span> Energy contracts now marked through operating income ($551M gain); Level 3 holdings $122.3B.</td><td><span class="mark held">&#9679;</span> No estimate changes; OpenAI stake at Level 3.</td><td><span class="mark held">&#9679;</span> Server life cut to 5 years restated, attributed to AI; effect not quantified.</td><td><span class="mark held">&#9679;</span> Severance booked as estimates ($2.0B nine months).</td><td><span class="mark held">&#9679;</span> No changes.</td><td><span class="mark held">&#9679;</span> 2025 life changes take effect (servers 6&rarr;5, heavy equipment 10&rarr;13 years).</td><td><span class="mark worse">&#9660;</span> Subset of servers 6&rarr;5 years (&minus;$0.7B), early retirements (&minus;$0.6B), heavy equipment 10&rarr;13 years (+$0.9B).</td><td><span class="mark held">&#9679;</span> 2024 server extension (5&rarr;6 years) still flowing.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark worse">&#9660;</span> ITC investigation of GB200 servers (Xockets); antitrust classes certified in U.S. and U.K.</td><td><span class="mark better">&#9650;</span> RPI patent dismissal affirmed on appeal.</td><td><span class="mark held">&#9679;</span> Primos patent suit; Italy tax disputes resolved; Kove appeal pending.</td><td><span class="mark better">&#9650;</span> FTC suit settled for $2.5B; Italy fine cut to &euro;752M.</td><td><span class="mark worse">&#9660;</span> Xockets sues over the AWS Nitro System.</td><td><span class="mark worse">&#9660;</span> &euro;746M GDPR fine appeal dismissed; further appeal filed.</td><td><span class="mark held">&#9679;</span> DC antitrust suit revived; no new quantified losses.</td><td><span class="mark worse">&#9660;</span> Kove: $525M verdict plus $148M interest, on appeal.</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark better">&#9650;</span> Q2 guide beaten ($27.5B vs $20.0&ndash;24.0B); Q3 guide $22.5&ndash;26.5B.</td><td><span class="mark better">&#9650;</span> Q1 guide beaten ($23.9B vs $16.5&ndash;21.5B, absorbing Leo).</td><td><span class="mark held">&#9679;</span> Q4 sales beaten, operating income within guide; Q1 guide includes ~$1B Leo cost.</td><td><span class="mark held">&#9679;</span> Q3 sales beaten; operating income within $15.5&ndash;20.5B after charges.</td><td><span class="mark better">&#9650;</span> Q2 guide beaten on sales and operating income.</td><td><span class="mark better">&#9650;</span> Q1 guide beaten on sales and operating income.</td><td><span class="mark better">&#9650;</span> Q4 2024 operating income $21.2B vs $16.0&ndash;20.0B.</td><td><span class="mark held">&#9679;</span> Q4 2024 guide: sales $181.5&ndash;188.5B, operating income $16.0&ndash;20.0B.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated in the window, and what later filings said about it. Quarterly guidance is from the earnings release, repeated in each 10-Q and 10-K; Q4 actuals are derived as the annual figure less nine months.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>Q4 2024: "Net sales are expected to be between $181.5 billion and $188.5 billion"; operating income $16.0&ndash;20.0B</td><td>Q3 2024 10-Q</td><td>FY2024 10-K: met on sales ($187.8B, top of range); beaten on operating income ($21.2B)</td></tr>
+<tr><td>"We expect cash capital expenditures to meaningfully increase in 2024, primarily driven by investments in technology infrastructure."</td><td>Q3 2024 10-Q</td><td>FY2024 10-K: met, $77.7B vs $48.1B</td></tr>
+<tr><td>Q1 2025: sales $151.0&ndash;155.5B; operating income $14.0&ndash;18.0B</td><td>FY2024 10-K</td><td>Q1 2025: beaten ($155.7B; $18.4B)</td></tr>
+<tr><td>"We expect cash capital expenditures to increase in 2025, primarily driven by investments in technology infrastructure."</td><td>FY2024 10-K</td><td>Q2 and Q3 2025: repeated; FY2025 10-K: met, $128.3B (+65%)</td></tr>
+<tr><td>2025 operating income effects of useful-life changes: about +$0.9B (heavy equipment), &minus;$0.7B (servers), &minus;$0.6B (accelerated depreciation)</td><td>FY2024 10-K</td><td>Q1 2025 to FY2025 10-K: not mentioned; the FY2025 10-K restates the server change without a 2025 figure</td></tr>
+<tr><td>Anthropic: "will invest an additional $2.7 billion by Q4 2025"</td><td>FY2024 10-K</td><td>FY2025 10-K: met ("including $2.7 billion we invested in 2025")</td></tr>
+<tr><td>Q2 2025: sales $159.0&ndash;164.0B; operating income $13.0&ndash;17.5B</td><td>Q1 2025 10-Q</td><td>Q2 2025: beaten ($167.7B; $19.2B)</td></tr>
+<tr><td>Q3 2025: sales $174.0&ndash;179.5B; operating income $15.5&ndash;20.5B</td><td>Q2 2025 10-Q</td><td>Q3 2025: sales beaten ($180.2B); operating income met ($17.4B, after $4.3B of FTC and severance charges)</td></tr>
+<tr><td>Q4 2025: sales $206.0&ndash;213.0B; operating income $21.0&ndash;26.0B</td><td>Q3 2025 10-Q</td><td>FY2025 10-K: sales beaten ($213.4B); operating income met ($25.0B)</td></tr>
+<tr><td>"We expect to use cash on hand to satisfy the settlement of the FTC lawsuit."</td><td>Q3 2025 10-Q</td><td>FY2025 10-K: not mentioned</td></tr>
+<tr><td>Q1 2026: sales $173.5&ndash;178.5B; operating income $16.5&ndash;21.5B, "approximately $1 billion of higher year-over-year Amazon Leo costs"</td><td>FY2025 10-K</td><td>Q1 2026: beaten ($181.5B; $23.9B)</td></tr>
+<tr><td>"We expect the 2025 Tax Act to have a similar effect on our cash taxes in 2026."</td><td>FY2025 10-K</td><td>Q1 2026: cash taxes $1.3B vs $877M; Q2 2026: H1 $4.0B vs $5.6B (on track for lower)</td></tr>
+<tr><td>Capex: "both of which we expect to increase in 2026"</td><td>FY2025 10-K</td><td>Q1 2026: $43.2B; Q2 2026: H1 $96.3B vs $55.6B (on track)</td></tr>
+<tr><td>OpenAI: additional $35.0B of Series C Preferred Stock; "We expect to fund this investment with cash on hand."</td><td>Q1 2026 10-Q</td><td>Q2 2026: $13.7B invested, remaining $21.3B paid after quarter end (met); H1 debt proceeds of $82.4B make the funding source moot</td></tr>
+<tr><td>"We expect to undertake additional financing activities in 2026."</td><td>Q1 2026 10-Q</td><td>Q2 2026: met (CHF 2.8B and C$14.0B notes, $17.5B term loan, $25.0B in July)</td></tr>
+<tr><td>Q2 2026: sales $194.0&ndash;199.0B; operating income $20.0&ndash;24.0B</td><td>Q1 2026 10-Q</td><td>Q2 2026: beaten ($200.6B; $27.5B)</td></tr>
+<tr><td>Q3 2026: "Net sales are expected to be between $197.0 billion and $202.0 billion"; operating income $22.5&ndash;26.5B, assuming no energy remeasurement</td><td>Q2 2026 10-Q</td><td>Pending (Q3 2026 10-Q)</td></tr>
+<tr><td>IEEPA refunds of about $640M: "the significant majority of refunds we expect to receive"</td><td>Q2 2026 10-Q</td><td>Pending</td></tr>
+<tr><td>Globalstar acquisition "expected to close in 2027"</td><td>Q2 2026 10-Q</td><td>Pending</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 2026 (filed April 30, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">AWS +28% (Q4 2025 about +24%); backlog $244B &rarr; $364B after OpenAI expands its commitment by $100.0B</div>
+      <blockquote>Q1 2026: "AWS sales increased 28% in Q1 2026 compared to the comparable prior year period."</blockquote>
+      <blockquote>Q1 2026: "In Q1 2026, AWS and OpenAI Group PBC"</blockquote>
+      <blockquote>Q1 2026: "announced an expansion of the existing $38.0 billion multi-year commitment and commercial arrangement with OpenAI by $100.0 billion over 8.0 years"</blockquote>
+      <p class="magnitude"><b>Size:</b> backlog +$120B in a quarter (+49%); AWS sales $37.6B, operating income $14.2B.</p>
+      <p>The third straight quarter of acceleration (20%, about 24%, 28%); the backlog jump gives multi-year visibility.</p>
+      <p class="next"><b>Next filing:</b> growth above 28% (Q2 2026: 37%, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income $23.9B vs a $16.5&ndash;21.5B guide; North America margin 6.3% &rarr; 7.9%</div>
+      <blockquote>Q1 2026: "Operating income increased from $18.4 billion in Q1 2025 to $23.9 billion in Q1 2026"</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.4B above the top of the range despite about $1B of higher Leo costs flagged in the guide; North America operating income $8.267B vs $5.841B (+42%).</p>
+      <p>Retail profitability rose with no one-off support in the quarter.</p>
+      <p class="next"><b>Next filing:</b> North America margin near 8% (Q2 2026: 7.9%, but helped by tariff refunds).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Notes $68.0B &rarr; $121.8B in one quarter ($37.0B and &euro;14.5B issued in March); more financing expected in 2026</div>
+      <blockquote>Q1 2026: "As of March 31, 2026, we had $121.8 billion of unsecured senior notes outstanding"</blockquote>
+      <blockquote>Q1 2026: "We expect to undertake additional financing activities in 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$53.8B of notes = 67% of 2025 operating income; interest expense $800M vs $541M.</p>
+      <p>The second filing in a row with large debt issuance (after $15.0B in November 2025), moving the pillar to Weakening.</p>
+      <p class="next"><b>Next filing:</b> further issuance (Q2 2026: notes $132.1B plus $25.0B in July, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 AI-lab investments and concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 AI-lab investments and concentration</span><span class="chip">Stated</span></div>
+      <div class="title">$15.0B into OpenAI plus a $35.0B commitment, in the same quarter OpenAI commits $100.0B more to AWS</div>
+      <blockquote>Q1 2026: "In Q1 2026, we invested $15.0 billion in OpenAI's Series C Preferred Stock and entered into an equity commitment letter agreement to purchase an additional $35.0 billion of OpenAI's Series C Preferred Stock, subject to certain conditions."</blockquote>
+      <blockquote>Q1 2026: "We expect to fund this investment with cash on hand."</blockquote>
+      <p class="magnitude"><b>Size:</b> $50.0B = 63% of 2025 operating income, against a $138B OpenAI commitment to AWS.</p>
+      <p>"Cash on hand" was replenished the same quarter by $53.8B of new notes, so the investment is debt-funded in substance (inference).</p>
+      <p class="next"><b>Next filing:</b> funding of the remaining $35.0B (Q2 2026: fully funded by July).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Trailing free cash flow $1.2B (FY2025 $11.2B); Q1 cash capex $43.2B vs $24.3B</div>
+      <blockquote>Q1 2026: "Free cash flow | 25,925 | 1,232"</blockquote>
+      <p class="magnitude"><b>Size:</b> trailing capex $147.3B vs operating cash flow $148.5B.</p>
+      <p>Free cash flow is effectively zero on a trailing basis.</p>
+      <p class="next"><b>Next filing:</b> trailing free cash flow positive (Q2 2026: &minus;$7.6B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Other income $15.6B and $4.1B of discrete tax on Anthropic gains; net income $30.3B vs operating income $23.9B</div>
+      <blockquote>Q1 2026: "Our income tax provision for the three months ended March 31, 2026 was $9.6 billion, which included $4.1 billion of net discrete tax expense primarily attributable to the net gains from our investments in Anthropic."</blockquote>
+      <p class="magnitude"><b>Size:</b> $15.6B = 39% of pre-tax income ($39.8B).</p>
+      <p>The pre-announced mark-ups from the 10-K arrived as stated.</p>
+      <p class="next"><b>Next filing:</b> other income share of pre-tax (Q2 2026: 66%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed February 6, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">Backlog $177B &rarr; $244B (+38%); AWS +20% for the year and about +24% in Q4</div>
+      <blockquote>FY2025: "those commitments not yet recognized were approximately $244 billion as of December 31, 2025"</blockquote>
+      <blockquote>FY2025: "AWS sales increased 20% in 2025, compared to the prior year."</blockquote>
+      <p class="magnitude"><b>Size:</b> AWS sales $128.7B (+$21.2B); Q4 AWS sales about $35.6B vs $28.8B (derived).</p>
+      <p>Second filing in a row with accelerating AWS growth, moving the pillar to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> Q1 2026 growth above 20% (it was 28%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income $80.0B (+17%) after $5.2B of FTC and severance charges; North America margin 6.4% &rarr; 6.9%</div>
+      <blockquote>FY2025: "Operating income for 2025 includes charges of $2.5 billion we recorded in Q3 2025 related to the settlement of a lawsuit with the FTC and $2.7 billion, of which $1.8 billion was recorded in Q3 2025, of estimated severance costs primarily related to planned role eliminations."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $85.2B before the charges = 11.9% margin vs 10.8%.</p>
+      <p>Retail margins rose for the third year, even with the FTC charge booked against North America.</p>
+      <p class="next"><b>Next filing:</b> margin gains without charges (Q1 2026: North America 7.9%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $115.9B &rarr; $139.5B (+20%); cash taxes $12.3B &rarr; $8.3B under the 2025 Tax Act</div>
+      <blockquote>FY2025: "Operating activities | 115,877 | 139,514"</blockquote>
+      <blockquote>FY2025: "We expect the 2025 Tax Act to have a similar effect on our cash taxes in 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$23.6B of operating cash flow, of which about $4.0B is lower cash taxes.</p>
+      <p>The cash engine is growing; the free-cash-flow problem is the capex line, not the operations.</p>
+      <p class="next"><b>Next filing:</b> operating cash flow growth of 20% or more.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Free cash flow $38.2B &rarr; $11.2B (&minus;71%); cash capex $128.3B and rising in 2026</div>
+      <blockquote>FY2025: "Free cash flow | 38,219 | 11,194"</blockquote>
+      <blockquote>FY2025: "Cash capital expenditures were $77.7 billion, and $128.3 billion in 2024 and 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> free cash flow = 14% of net income ($77.7B); capex = 92% of operating cash flow.</p>
+      <p>Capex grew three times faster than operating cash flow, and the filing guides it higher.</p>
+      <p class="next"><b>Next filing:</b> trailing free cash flow (Q1 2026: $1.2B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Commitments $333.0B &rarr; $439.7B; leases not yet commenced $61.6B &rarr; $96.4B; $15.0B of notes issued in November</div>
+      <blockquote>FY2025: "Total commitments | 51,666 | 46,259 | 36,084 | 32,019 | 32,153 | 241,480 | 439,661"</blockquote>
+      <blockquote>FY2025: "including $15.0 billion issued in November 2025 for general corporate purposes"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$106.7B of commitments = 1.3x 2025 operating income.</p>
+      <p>The first new bond issue in the window, while off-balance-sheet commitments grew 32%.</p>
+      <p class="next"><b>Next filing:</b> more issuance (Q1 2026: $53.8B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Other income $15.2B from Anthropic, and about $15B more pre-announced for Q1 2026</div>
+      <blockquote>FY2025: "we will also record an upward adjustment of approximately $12 billion to our nonvoting preferred stock as of December 31, 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> $15.2B = 16% of pre-tax income ($97.3B); the pre-announced $12B mark-up and $3B gain equal another 15% of 2025 pre-tax.</p>
+      <p>Non-operating marks are becoming a regular, large part of earnings.</p>
+      <p class="next"><b>Next filing:</b> Q1 2026 other income (it was $15.6B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">Q1 2026 guide absorbs about $1B of higher Leo costs, quick commerce and lower international prices</div>
+      <blockquote>FY2025: "This guidance includes approximately $1 billion of higher year-over-year Amazon Leo costs as we scale in 2026, as well as investment in quick commerce and even sharper prices in our international stores business."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1B = 5% of Q1 2025 operating income ($18.4B).</p>
+      <p>New investment programs press on retail margins in 2026.</p>
+      <p class="next"><b>Next filing:</b> International margin (Q1 2026: 3.6% vs 3.0%, refuted for the quarter).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2025 (filed October 31, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">AWS reaccelerates to +20% from +17%; backlog $200B</div>
+      <blockquote>Q3 2025: "AWS sales increased 20% in Q3 2025, and 18% for the nine months ended September 30, 2025 compared to the comparable prior year periods."</blockquote>
+      <p class="magnitude"><b>Size:</b> AWS sales $33.0B (+$5.6B); operating income $11.4B.</p>
+      <p>The first acceleration after three quarters at 17&ndash;19%.</p>
+      <p class="next"><b>Next filing:</b> Q4 growth at or above 20% (about 24%, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">FTC lawsuit settled for $2.5B, paid from cash on hand</div>
+      <blockquote>Q3 2025: "During Q3 2025, we recorded $2.5 billion of expense related to the settlement of a lawsuit with the Federal Trade Commission (FTC)."</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.5B = 3.3% of trailing operating income ($76.2B).</p>
+      <p>A known federal case is closed for a sum the company can pay from cash.</p>
+      <p class="next"><b>Next filing:</b> no further FTC accruals; status of the separate antitrust suits.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Other income $10.2B (Anthropic $7.2B mark-up plus $2.3B gain): net income $21.2B exceeds operating income $17.4B</div>
+      <blockquote>Q3 2025: "We also recorded an upward adjustment of $7.2 billion to our nonvoting preferred stock"</blockquote>
+      <p class="magnitude"><b>Size:</b> $10.2B = 36% of pre-tax income ($28.2B).</p>
+      <p>The second filing with a large Anthropic gain (after Q1 2025), moving the pillar to Weakening.</p>
+      <p class="next"><b>Next filing:</b> size of marks in the 10-K (FY2025: $15.2B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income flat at $17.4B after $2.5B FTC and $1.8B severance; North America margin 5.9% &rarr; 4.5%</div>
+      <blockquote>Q3 2025: "Operating income in Q3 2025 includes charges of $2.5 billion related to the settlement of a lawsuit with the FTC and $1.8 billion of estimated severance costs primarily related to planned role eliminations."</blockquote>
+      <p class="magnitude"><b>Size:</b> $4.3B = 25% of Q3 operating income; North America about 6.9% before the FTC charge.</p>
+      <p>One-time in nature, but they show the cost of legal exposure and of the workforce reset.</p>
+      <p class="next"><b>Next filing:</b> no further severance (FY2025: another $730M in Q4).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Trailing free cash flow $14.8B; capex guided up in 2025 and 2026</div>
+      <blockquote>Q3 2025: "Cash capital expenditures were $21.3 billion and $34.2 billion during Q3 2024 and Q3 2025, and $51.6 billion and $89.9 billion for the nine months ended September 30, 2024 and 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month capex $89.9B (+74%); trailing free cash flow down 69% year over year.</p>
+      <p>The first filing to extend the capex increase into 2026.</p>
+      <p class="next"><b>Next filing:</b> full-year free cash flow (FY2025: $11.2B).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 2025 (filed August 1, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">North America margin 5.6% &rarr; 7.5%, International 0.9% &rarr; 4.1%; operating income $19.2B vs a $13.0&ndash;17.5B guide</div>
+      <blockquote>Q2 2025: "Operating income increased from $14.7 billion in Q2 2024 to $19.2 billion in Q2 2025, and increased from $30.0 billion for the six months ended June 30, 2024 to $37.6 billion for the six months ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> retail segments added $3.7B of operating income year over year (North America +$2.5B, International +$1.2B).</p>
+      <p>The second filing in a row with higher retail margins, moving the pillar to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> margins held through charges (Q3 2025: 4.5% after FTC).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Q2 operating cash flow $25.3B &rarr; $32.5B (+29%)</div>
+      <blockquote>Q2 2025: "Operating activities | 25,281 | 32,515 | 44,270 | 49,530 | 107,952 | 121,137"</blockquote>
+      <p class="magnitude"><b>Size:</b> trailing operating cash flow $121.1B (+12%).</p>
+      <p>The operating cash engine kept growing after a weak Q1.</p>
+      <p class="next"><b>Next filing:</b> trailing operating cash flow above $125B (Q3 2025: $130.7B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Trailing free cash flow $53.0B &rarr; $18.2B; Q2 cash capex $31.4B vs $16.4B</div>
+      <blockquote>Q2 2025: "Free cash flow | 52,973 | 18,184"</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$34.8B year over year (&minus;66%); trailing capex $103.0B.</p>
+      <p>The second sharp decline in a row (after Q1 2025), moving the pillar to Weakening.</p>
+      <p class="next"><b>Next filing:</b> trailing free cash flow (Q3 2025: $14.8B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">AWS growth stuck at 17%; AWS margin 35.5% &rarr; 32.9% (Q1 2025: 39.5%)</div>
+      <blockquote>Q2 2025: "AWS sales increased 17% in Q2 2025, and 17% for the six months ended June 30, 2025 compared to the comparable prior year periods."</blockquote>
+      <p class="magnitude"><b>Size:</b> AWS operating income $10.2B vs $9.3B (+9%) on sales +17%.</p>
+      <p>Depreciation from the capex surge was arriving before the growth.</p>
+      <p class="next"><b>Next filing:</b> growth above 17% (Q3 2025: 20%, refuted).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">Xockets sues over the AWS Nitro System (seven patents)</div>
+      <blockquote>Q2 2025: "The complaints allege, among other things, that certain versions of the AWS Nitro System infringe"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing.</p>
+      <p>Nitro underpins EC2; the case later reached the ITC with an injunction request (Q2 2026).</p>
+      <p class="next"><b>Next filing:</b> any injunction request or damages claim.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 2025 (filed May 2, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income $18.4B, above the $14.0&ndash;18.0B guide; North America margin 5.8% &rarr; 6.3%</div>
+      <blockquote>Q1 2025: "Operating income increased from $15.3 billion in Q1 2024 to $18.4 billion in Q1 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$3.1B (+20%) on sales +9%.</p>
+      <p>Operating leverage held despite a $1.4B FX hit to sales.</p>
+      <p class="next"><b>Next filing:</b> retail margin gains continuing (Q2 2025: 7.5%, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">Backlog $177B &rarr; $189B; AWS margin 37.6% &rarr; 39.5%</div>
+      <blockquote>Q1 2025: "those commitments not yet recognized were approximately $189 billion as of March 31, 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$12B in a quarter; AWS operating income $11.5B.</p>
+      <p>Contracted demand kept rising while growth paused.</p>
+      <p class="next"><b>Next filing:</b> backlog above $190B (Q2 2025: $195B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Q1 operating cash flow $19.0B &rarr; $17.0B while cash capex rises $13.9B &rarr; $24.3B; trailing free cash flow $25.9B</div>
+      <blockquote>Q1 2025: "Cash capital expenditures were $13.9 billion and $24.3 billion during Q1 2024 and Q1 2025, which primarily reflect investments in technology infrastructure (the majority of which is to support AWS business growth) and in additional capacity to support our fulfillment network."</blockquote>
+      <p class="magnitude"><b>Size:</b> trailing free cash flow $25.9B vs $50.1B a year earlier (&minus;48%); Q1 free cash flow about &minus;$8.0B (XBRL).</p>
+      <p>Operating cash flow fell while capex rose 75%.</p>
+      <p class="next"><b>Next filing:</b> trailing free cash flow (Q2 2025: $18.2B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">AWS growth slows to 17% from 19% in 2024</div>
+      <blockquote>Q1 2025: "AWS sales increased 17% in Q1 2025 compared to the comparable prior year period."</blockquote>
+      <p class="magnitude"><b>Size:</b> AWS sales $29.3B; two points slower than FY2024.</p>
+      <p>Growth slowed while capex rose 75%, so new capacity was not yet producing revenue (inference).</p>
+      <p class="next"><b>Next filing:</b> reacceleration (Q2 2025: 17%; Q3 2025: 20%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$2.7B of other income from converting Anthropic notes</div>
+      <blockquote>Q1 2025: "The net gain of $2.7 billion in Q1 2025 is primarily from the reclassification adjustment for the gain on available-for-sale debt securities from the portion of our convertible notes investments in Anthropic, PBC that were converted to nonvoting preferred stock during the three months ended March 31, 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.7B = 12% of pre-tax income ($21.7B).</p>
+      <p>The first of the Anthropic gains that grow through the window.</p>
+      <p class="next"><b>Next filing:</b> further gains (Q3 2025: $10.2B).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (filed February 7, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income $36.9B &rarr; $68.6B; North America margin 4.2% &rarr; 6.4%, International loss to 2.7% profit</div>
+      <blockquote>FY2024: "Operating income was $36.9 billion and $68.6 billion for 2023 and 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$31.7B (+86%) on sales +11%; consolidated margin 10.8% vs 6.4%.</p>
+      <p>Regionalized fulfillment and advertising turned retail into a profit contributor.</p>
+      <p class="next"><b>Next filing:</b> margin gains in 2025 against the useful-life headwinds.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">AWS +19% to $107.6B; backlog $177B</div>
+      <blockquote>FY2024: "AWS sales increased 19% in 2024, compared to the prior year."</blockquote>
+      <p class="magnitude"><b>Size:</b> AWS operating income $39.8B (37.0% margin, from 27.1%).</p>
+      <p>Growth reaccelerated from 13% in 2023.</p>
+      <p class="next"><b>Next filing:</b> growth near 19% (Q1 2025: 17%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Debt face value $67.2B &rarr; $58.0B</div>
+      <blockquote>FY2024: "Total face value of long-term debt | 67,182 | 58,000"</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$9.2B of debt repaid from cash; cash and marketable securities $101.2B.</p>
+      <p>Net cash rose while capex grew 61%.</p>
+      <p class="next"><b>Next filing:</b> debt flat or falling (fell to $54.3B by Q3 2025).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">2024 margins carried a $3.2B server-life benefit; a year later part of it is reversed with a $920M accelerated charge</div>
+      <blockquote>FY2024: "was a reduction in depreciation and amortization expense of $3.2 billion and a benefit to net income of $2.5 billion"</blockquote>
+      <blockquote>FY2024: "We recorded approximately $920 million of accelerated depreciation and related charges for the quarter ended December 31, 2024 related to these decisions."</blockquote>
+      <p class="magnitude"><b>Size:</b> $3.2B = 4.7% of 2024 operating income; net 2025 effect of the new changes about &minus;$0.4B.</p>
+      <p>Server lives were extended in 2024 and partly shortened a year later "due to an increased pace of technology development". The new direction is conservative, but it shows 2024 margins were helped by the estimate.</p>
+      <p class="next"><b>Next filing:</b> AWS margin through 2025 (fell to 32.9% by Q2 2025).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Cash capex $48.1B &rarr; $77.7B (+61%); free cash flow flat at $38.2B; more capex in 2025</div>
+      <blockquote>FY2024: "We expect cash capital expenditures to increase in 2025, primarily driven by investments in technology infrastructure."</blockquote>
+      <p class="magnitude"><b>Size:</b> free cash flow $38.2B vs $36.8B though operating cash flow rose $30.9B.</p>
+      <p>All the operating cash gain went into capex, and the 10-K guides higher.</p>
+      <p class="next"><b>Next filing:</b> trailing free cash flow (Q1 2025: $25.9B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Leases not yet commenced $38.2B &rarr; $61.6B; purchase obligations $35.5B &rarr; $50.4B</div>
+      <blockquote>FY2024: "Leases not yet commenced | 2,695 | 3,691 | 5,011 | 4,253 | 4,286 | 41,691 | 61,627"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$23.4B of future lease payments = 34% of 2024 operating income.</p>
+      <p>Off-balance-sheet data center leases began to grow faster than debt fell.</p>
+      <p class="next"><b>Next filing:</b> commitments table (FY2025: $96.4B).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2024 (filed November 1, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Retail margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Retail margins</span><span class="chip">Stated</span></div>
+      <div class="title">International swings to $1.301B operating income from a $95M loss; North America margin 4.9% &rarr; 5.9%</div>
+      <blockquote>Q3 2024: "International | (95) | 1,301 | (2,237) | 2,477"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$1.4B year over year; consolidated operating income $17.4B vs $11.2B (+56%).</p>
+      <p>International turned consistently profitable on unit sales and advertising.</p>
+      <p class="next"><b>Next filing:</b> International profitable for the full year (FY2024: $3.8B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 AWS growth and backlog" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AWS growth and backlog</span><span class="chip">Stated</span></div>
+      <div class="title">AWS +19% (12% a year earlier); backlog $156B &rarr; $164B</div>
+      <blockquote>Q3 2024: "AWS sales increased 19% in Q3 2024, and 18% for the nine months ended September 30, 2024 compared to the comparable prior year periods."</blockquote>
+      <p class="magnitude"><b>Size:</b> AWS operating income $10.4B vs $7.0B; margin 38.1%.</p>
+      <p>Growth recovered from the 2023 optimization cycle.</p>
+      <p class="next"><b>Next filing:</b> growth near 19% (FY2024: 19%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Trailing free cash flow $21.4B &rarr; $47.7B</div>
+      <blockquote>Q3 2024: "Free cash flow | 21,434 | 47,747"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$26.3B year over year; trailing operating cash flow $112.7B.</p>
+      <p>The high point for free cash flow in the window.</p>
+      <p class="next"><b>Next filing:</b> full-year free cash flow (FY2024: $38.2B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Server life extension lowers Q3 depreciation by $760M; $2.4B of discrete tax benefits year to date</div>
+      <blockquote>Q3 2024: "was a reduction in depreciation and amortization expense of $760 million and a benefit to net income of $598 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> $760M = 4.4% of Q3 operating income; nine-month benefit $2.4B.</p>
+      <p>Part of the AWS margin gain is an accounting estimate, not economics.</p>
+      <p class="next"><b>Next filing:</b> any reversal (FY2024: partly reversed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capex returns and free cash flow" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capex returns and free cash flow</span><span class="chip">Stated</span></div>
+      <div class="title">Q3 cash capex nearly doubles, $11.3B &rarr; $21.3B; trailing free cash flow down from $53.0B in Q2</div>
+      <blockquote>Q3 2024: "We expect cash capital expenditures to meaningfully increase in 2024, primarily driven by investments in technology infrastructure."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$10.0B (+88%) in one quarter; Q3 free cash flow about $3.4B (XBRL).</p>
+      <p>The start of the capex ramp that dominates the window.</p>
+      <p class="next"><b>Next filing:</b> 2025 capex guide (FY2024: "increase in 2025").</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">Kove patent verdict: $525M plus $148M pre-judgment interest against AWS</div>
+      <blockquote>Q3 2024: "In April 2024, a jury found that Amazon infringed the asserted patents and awarded Kove $525 million in damages."</blockquote>
+      <blockquote>Q3 2024: "In August 2024, the court awarded Kove $148 million in pre-judgment interest."</blockquote>
+      <p class="magnitude"><b>Size:</b> $673M = 3.9% of Q3 operating income.</p>
+      <p>S3 and DynamoDB, core AWS services, were found to infringe; appeal pending.</p>
+      <p class="next"><b>Next filing:</b> appeal outcome (still pending in the FY2025 10-K).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
