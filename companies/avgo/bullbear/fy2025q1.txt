@@ -1,0 +1,51 @@
+AVGO Q1 FY2025 10-Q (quarter ended February 2, 2025, filed March 2025): FUNDAMENTALS ANSWERS
+Compared with the FY2024 10-K (and the year-ago quarter where the filing
+gives it). Figures from the filing text and SEC XBRL (financials.py). The
+year-ago quarter had 14 weeks and only a partial quarter of VMware.
+
+1. Growth and pricing: BETTER. Revenue $14,916M (+25% YoY). Semiconductor
+   $8,212M (+11%) on "AI networking solutions, partially offset by lower demand
+   for our non-AI solutions, primarily broadband products." Software $6,704M
+   (+47%) on VCF, upfront license on non-terminable contracts and the
+   subscription transition. RPO $20.5B -> $22.4B, 40% within 12 months (43%).
+
+2. Margins and unit economics: BETTER. Gross margin 62% -> 68% YoY; operating
+   margin 18% -> 42%. SG&A -40% and R&D -2% on "a decrease in headcount."
+   Segment margins: semiconductor 57%, software 76%.
+
+3. Earnings quality: HELD. Tax was a $13M benefit (rate -0.2%) on excess
+   stock-award benefits. Upfront license revenue (later disclosed as $1,972M,
+   29% of software revenue) is recognized at signing. $65M loss on debt
+   extinguishment.
+
+4. Cash conversion: HELD. OCF $6,113M; FCF $6.01B (109% of NI). DSO 30 days;
+   receivables $4,416M -> $4,955M on "higher software billings." Factoring
+   $2,201M in the quarter (FY2024: $5,900M for the year). Withholding taxes on
+   vesting $2,036M, a third of FCF.
+
+5. Capital allocation: HELD. Dividends $2,774M ($0.59/share). No buybacks.
+   Capex $100M. Term loans of $7,595M repaid with $4.0B commercial paper,
+   $3.0B senior notes and cash.
+
+6. Balance sheet and contingent exposure: MIXED. Debt $69,847M -> $68,757M,
+   but short-term debt $1,271M -> $5,653M and working capital $2,898M -> $80M.
+   Commercial paper program raised from $2B to $4B. Interest expense $873M
+   (-6% YoY). Cash $9,307M. No guarantees.
+
+7. Concentration: WORSE, slightly. Distributor 27% -> 29% of quarterly
+   revenue; top five ~40% (flat); distributors 47% of revenue. TSMC made
+   ~95% of outsourced wafers.
+
+8. Accounting judgments: HELD. Critical estimates unchanged. 59% of
+   contract liabilities sit on contracts customers can terminate for
+   convenience.
+
+9. Legal, regulatory and governance: BETTER. The 2020 VMware securities class
+   action reached settlement terms pending court approval. Korean FTC
+   investigation carried forward. Tariff and trade-restriction language
+   widened beyond China.
+
+10. Guidance and commitments: FY2024 capex "higher" in FY2025: Q1 capex $100M
+   vs $122M a year earlier (not mentioned). Restructuring completion by end
+   FY2025: restated. 43% RPO conversion: moved to 40% on a larger base.
+   $0.59 dividend: paid, and declared again March 5, 2025.

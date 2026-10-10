@@ -1,0 +1,49 @@
+AVGO Q2 FY2026 10-Q (quarter ended May 3, 2026, filed June 2026): FUNDAMENTALS ANSWERS
+Compared with the Q1 FY2026 10-Q. Figures from the filing text and SEC XBRL
+(financials.py).
+
+1. Growth and pricing: BETTER. Revenue $22,187M (+48% YoY). Semiconductor
+   $15,009M (+79%, Q1 +52%) on custom AI accelerators and AI networking.
+   Software $7,178M (+9%) on VCF; upfront license $1,964M. RPO $45.0B ->
+   $164.6B, including "a long-term contract for custom AI accelerators" signed
+   in the quarter; 30% within 12 months (33%).
+
+2. Margins and unit economics: BETTER. Gross margin 69% (68% a year earlier)
+   despite semiconductors at 68% of revenue. Operating margin 49% (39%).
+   Segment margins: semiconductor 62%, software 79%. The risk factor on
+   gross-margin compression now covers the sale of XPUs and other AI products
+   generally, not just racks.
+
+3. Earnings quality: HELD. Tax $820M (8.1%); CAMT credits stay under a full
+   valuation allowance. Interest expense includes a loss on debt
+   extinguishment. No large one-offs in the quarter.
+
+4. Cash conversion: HELD. OCF $10,493M; FCF $10.26B (110% of NI). DSO 40 ->
+   44 days; receivables $10,830M partly because of "lower receivables sold
+   through factoring arrangements" ($600M vs $1,750M). Inventory $4,328M "to
+   support higher expected shipments for custom AI accelerators."
+
+5. Capital allocation: BETTER funded. Buybacks $600M; dividends $3,092M;
+   capex $231M; cash $14,174M -> $19,628M. $10.1B of buyback authority left.
+
+6. Balance sheet and contingent exposure: WORSE. Debt $67,970M -> $66,720M,
+   but unconditional purchase commitments $54M -> $128,110M ($128.1B due in
+   FY2027-28), and a subsequent-event backstop of up to $29 billion of one
+   customer's AI-rack lease payments to Apollo, over 5-year terms. Liquidity
+   needs now point to "contractual commitments and backstops."
+
+7. Concentration: HELD at a high level. Distributor 42% (29% a year
+   earlier); top five ~45% (Q1 ~50%). Customers are "requiring us to purchase
+   and then lease to them full AI racks" (new).
+
+8. Accounting judgments: HELD. "No significant changes" in critical
+   estimates; backstop not yet recorded (entered after quarter end).
+
+9. Legal, regulatory and governance: HELD. No accrued loss contingencies.
+   Apollo named as the investor partner in Part II, Item 5.
+
+10. Guidance and commitments: Capex higher in FY2026: on track ($481M YTD vs
+   $244M). Global minimum tax: rate 8.1%. New: "We expect to remain subject to
+   the Corporate Alternative Minimum Tax ... for fiscal year 2026 and
+   subsequent years." New $10B buyback (March 2026). 30% of RPO within 12
+   months. $0.65 dividend declared June 2, 2026.

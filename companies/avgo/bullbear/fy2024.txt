@@ -1,0 +1,59 @@
+AVGO FY2024 10-K (fiscal year ended November 3, 2024, filed December 2024): FUNDAMENTALS ANSWERS
+Compared with the FY2023 10-K. Figures from the filing text and SEC XBRL (financials.py).
+FY2024 has 53 weeks and includes VMware from November 22, 2023, so most
+year-over-year changes are acquisition-driven.
+
+1. Growth and pricing: BETTER (acquired). Revenue $35,819M -> $51,574M (+44%).
+   Semiconductor $30,096M (+7%) on "networking products, primarily AI
+   networking products, partially offset by lower demand for our broadband and
+   server storage products." Software $21,478M (+181%) "primarily due to
+   contributions from VMware." RPO $20.5B, 43% due within 12 months (Note 2).
+   Price vs volume is not broken out.
+
+2. Margins and unit economics: WORSE on reported margins. Gross margin 69% ->
+   63% (VMware amortization; "less favorable margin within the semiconductor
+   solutions segment driven by product mix"). Operating margin 45% -> 26%.
+   Segment margins: semiconductor 55.7% (58.5%), software 65% (74%).
+   Amortization $9,267M and restructuring $1,787M in total (MD&A).
+
+3. Earnings quality: WORSE (depressed, not flattered). Tax provision $3,748M
+   (37.8%) includes 39.6 rate points from a "non-recurring intra-group
+   transfer of certain IP rights to the United States" (about $3.9B, our
+   arithmetic). Net income $5.89B is therefore below the underlying run rate.
+   Restructuring and VMware deal costs are also one-off.
+
+4. Cash conversion: HELD. OCF $19,962M; FCF $19.41B (329% of NI, distorted
+   by tax). DSO 32 -> 31 days, helped by factoring $3,975M -> $5,900M
+   ("strong collections and additional receivables sold through factoring").
+   Contract assets rose with software recognition timing.
+
+5. Capital allocation: MIXED. VMware bought for $30.8B cash plus 544M shares.
+   Dividends $9,814M ($2.105/share), buybacks $7,176M, employee withholding
+   taxes $5,216M: together $22.2B, 114% of FCF (our arithmetic), the gap met by
+   the $3.5B EUC sale and borrowing. Capex $548M.
+
+6. Balance sheet and contingent exposure: WORSE vs FY2023, improving within
+   the year. Debt $69,847M (VMware term loans and $8,250M assumed notes);
+   $16,795M of 2023 Term Loans repaid in the year; floating-rate exposure:
+   100bp = $137M of interest (Market Risk). Cash $9,348M. Purchase
+   commitments $569M (XBRL). No guarantees.
+
+7. Concentration: WORSE. Distributor 21% -> 28% of revenue; top five end
+   customers ~35% -> ~40%; distributors 48% of revenue (57%). China (incl.
+   HK) 32% -> 20%.
+
+8. Accounting judgments: HELD. VMware purchase accounting (intangibles,
+   goodwill); critical estimates unchanged in kind. Unrecognized tax
+   benefits may change by up to $3,580M within 12 months on statute lapses.
+
+9. Legal, regulatory and governance: HELD. Korean FTC investigation into
+   contracting practices disclosed in risk factors; VMware 2020 securities
+   class action pending; no material loss accruals (Note 14). Ten-for-one
+   stock split.
+
+10. Guidance and commitments: New statements: capex "higher in the fiscal year
+   ending November 2, 2025"; VMware restructuring "substantially completed by
+   the end of fiscal year 2025"; 43% of RPO within 12 months; "we expect an
+   increase in our effective tax rate and our cash tax costs"; Singapore
+   global minimum tax effective FY2026; $0.59 quarterly dividend declared
+   December 10, 2024.

@@ -2,9 +2,11 @@ AVGO (Broadcom) INVESTMENT THESIS: PILLARS
 ==========================================
 Written October 2026 from the 10-K dashboard themes and tracked signals (AI
 language, VMware arc, customer concentration, AI-rack purchase and lease arc,
-debt and capital returns, tax arc) and from the FY2025 10-K and Q3 FY2026 10-Q.
-Stances follow BULLBEAR.txt: a stance moves only when findings point the same
-way across two or more filings.
+debt and capital returns, tax arc). Extended the same month to cover every
+10-K and 10-Q filed since October 2024: FY2024 10-K, Q1-Q3 FY2025 10-Qs,
+FY2025 10-K, Q1-Q3 FY2026 10-Qs. Stances follow BULLBEAR.txt: a stance moves
+only when findings point the same way across two or more filings. Starting
+stance for every pillar at the FY2024 10-K: Intact.
 
 P1 AI semiconductor growth
   Bull assumes: custom AI accelerators (XPUs) and AI networking keep growing
@@ -13,8 +15,12 @@ P1 AI semiconductor growth
   Bear fears: AI spending is a cycle or a "bubble"; customers design their own
     silicon ("customer-owned tooling"); growth depends on financing Broadcom
     itself arranges.
-  Stance: Strengthening (FY2025 10-K and Q3 FY2026 10-Q both show accelerating
-    semiconductor revenue and rising RPO).
+  Stance: Strengthening, moved at the Q3 FY2025 10-Q. Semiconductor growth
+    went +7% (FY2024), +11% (Q1 FY2025), +17% (Q2), +26% (Q3, the first
+    filing to name custom AI accelerators as the driver), then +52%, +79% and
+    +127% in FY2026. RPO $20.5B -> $179.2B over the window. Against it: the
+    next-12-month share of RPO fell from 43% to 25%, and the "may not be
+    sustainable" language (FY2024) became an AI "bubble" (Q3 FY2026).
   Tested by: semiconductor segment revenue and operating income, RPO and its
     next-12-month share, customer-count language, the "bubble" risk factor.
 
@@ -23,8 +29,10 @@ P2 Customer concentration and counterparty credit
     concentration is the price of winning the biggest AI programs.
   Bear fears: one distributor and five end customers are most of revenue; some
     AI customers "may be unable to pay"; Broadcom takes their credit risk.
-  Stance: Weakening (distributor 28% -> 32% in FY2025, 50% of Q3 FY2026;
-    ability-to-pay risk added in FY2025 and sharpened in Q3 FY2026).
+  Stance: Weakening, moved at the FY2025 10-K (after Q3 FY2025 and FY2025
+    both showed the distributor share rising to 32% and new wording on AI
+    customers' ability to pay). It kept deteriorating: distributor 42%, 42%
+    and 50% of quarterly revenue in FY2026; top five ~50%, ~45%, ~55%.
   Tested by: distributor and top-five percentages, credit-risk wording,
     backstop payments, receivable allowances, DSO.
 
@@ -34,7 +42,11 @@ P3 Infrastructure software (VMware) franchise
   Bear fears: growth is pulled forward by upfront license recognition on
     non-terminable contracts; customer pushback and regulators (Korea, Japan,
     EU) constrain pricing.
-  Stance: Intact (strong reported growth, but recognition-driven).
+  Stance: Intact (never moved). Software margin rose from 65% (FY2024) to
+    84% (Q3 FY2026) and restructuring finished on schedule, but growth swung
+    with recognition timing: +47% (Q1 FY2025) down to +1% (Q1 FY2026), back
+    to +29% (Q3 FY2026) with upfront license 40% of software revenue. The
+    findings have not pointed one way for two filings running.
   Tested by: software segment revenue and margin, upfront license revenue,
     contract assets, termination-for-convenience share, regulatory language.
 
@@ -43,27 +55,38 @@ P4 Margins and operating leverage
     two-thirds.
   Bear fears: rack and system sales "will likely ... compress or lower future
     gross margin"; semiconductor mix lowers gross margin.
-  Stance: Strengthening (gross margin 63% -> 68% in FY2025, 69% in Q3 FY2026;
-    operating margin 54% in Q3 FY2026).
+  Stance: Strengthening, moved at the Q2 FY2025 10-Q (Q1 and Q2 FY2025 both
+    showed gross margin 68% vs 62% and operating margin roughly doubled on
+    lower VMware headcount). Operating margin went 26% (FY2024) -> 40%
+    (FY2025) -> 54% (Q3 FY2026). The compression warning widened in Q2 FY2026
+    to all AI product sales, but gross margin has held at 68-69%.
   Tested by: gross and operating margin, segment margins, R&D and SG&A trend.
 
 P5 Cash conversion and capital returns
   Bull assumes: free cash flow at or above net income funds a rising dividend
     and buybacks without new debt.
   Bear fears: receivables and contract assets grow faster than revenue;
-    factoring and sell-to-cover flatter cash flow; buybacks stop.
-  Stance: Intact.
+    factoring and sell-to-cover flatter cash flow; buybacks stop or are
+    debt-funded; stock compensation dilutes.
+  Stance: Intact (never moved). FCF exceeded net income in every filing
+    (104%-170% of NI in the 10-Qs), and the dividend rose from $0.59 to $0.65.
+    Against it: DSO rose from 30 to 44 days, FY2024 payouts were 114% of FCF,
+    the Q1 FY2026 buyback took payouts to 137% of FCF while debt rose, and
+    the Two-Year Equity Awards (Q2 FY2025) nearly tripled unrecognized SBC.
   Tested by: OCF / net income, FCF, DSO, factoring volumes, buybacks,
-    dividends, SBC / OCF.
+    dividends, SBC / OCF, diluted share count.
 
 P6 Balance sheet and contingent exposure
   Bull assumes: VMware debt is paid down from cash flow; liquidity is ample.
   Bear fears: off-balance-sheet obligations (lease backstops, customer
     convertible notes, $100B+ purchase commitments) replace on-balance-sheet
     debt as the risk.
-  Stance: Weakening (financing offered to customers stated in FY2025; $29B
-    backstop and $42B convertible-note facility in Q3 FY2026, even as debt
-    fell).
+  Stance: Weakening, moved at the Q2 FY2026 10-Q (Q1 FY2026 added guarantee
+    language to the risk factors and liquidity section; Q2 FY2026 quantified
+    a $29B backstop and $128.1B of purchase commitments; Q3 FY2026 added a
+    $42B convertible-note facility). Reported debt did the opposite:
+    $69,847M (FY2024) -> $61,079M (Q3 FY2026), with every floating-rate term
+    loan refinanced or repaid by Q3 FY2025.
   Tested by: total debt, backstop exposure and payments, notes issued,
     purchase commitments, rating language.
 
@@ -71,7 +94,11 @@ P7 Tax rate
   Bull assumes: Singapore incentives and U.S. planning keep the effective
     rate low.
   Bear fears: Pillar Two and CAMT push the rate up materially from FY2026.
-  Stance: Weakening (FY2025 "expect to materially increase"; Q3 FY2026 14.3%
-    quarterly rate and $2,186M global minimum tax payable).
+  Stance: Weakening, moved at the Q1 FY2026 10-Q (the FY2025 10-K expected a
+    material increase; Q1 FY2026 says the global minimum tax "has materially
+    increased" the provision). Earlier: a one-off 37.8% FY2024 rate (IP
+    transfer), a $1,058M CAMT allowance in Q3 FY2025, then a -1.7% FY2025 rate
+    on statute expirations. Quarterly rates in FY2026: 10.3%, 8.1%, 14.3%;
+    $2,186M global minimum tax payable at Q3 FY2026.
   Tested by: effective tax rate, global minimum tax payable, CAMT valuation
     allowance, incentive value.

@@ -1,0 +1,54 @@
+AVGO Q3 FY2025 10-Q (quarter ended August 3, 2025, filed September 2025): FUNDAMENTALS ANSWERS
+Compared with the Q2 FY2025 10-Q. Figures from the filing text and SEC XBRL
+(financials.py).
+
+1. Growth and pricing: BETTER. Revenue $15,952M (+22% YoY). Semiconductor
+   $9,166M (+26%, Q2 +17%), "primarily custom AI accelerators and AI
+   networking solutions," the first time custom accelerators are named as the
+   driver in MD&A. Software $6,786M (+17%, Q2 +25%). RPO $24.7B -> $27.5B, 34%
+   within 12 months (36%).
+
+2. Margins and unit economics: HELD. Gross margin 67% (64% a year earlier;
+   68% in Q2); operating margin 37% (29% a year earlier; 39% in Q2). R&D +30%
+   on SBC from the Two-Year Equity Awards (SBC $2,322M). Segment margins:
+   semiconductor 57%, software 77%.
+
+3. Earnings quality: WORSE. Tax $1,145M (21.7%) includes a $1,058M valuation
+   allowance on CAMT credits after the One Big Beautiful Bill Act. Other
+   income includes "a gain on the sale of a business." The filing says
+   statute lapses will produce a discrete tax benefit "of up to $2.1 billion"
+   in Q4, which will flatter Q4 earnings.
+
+4. Cash conversion: BETTER. OCF $7,166M; FCF $7.02B (170% of NI, lifted by
+   the non-cash tax charge). DSO 34 -> 37 days; factoring $1,700M. From this
+   quarter withholding taxes are covered by selling vested shares,
+   "eliminating our cash outflow for employee withholding taxes" ($3,860M
+   year to date before the change).
+
+5. Capital allocation: HELD. No buybacks ($7,550M of the $10B authorization
+   left). Dividends $2,786M. Capex $142M. $6,000M of notes issued to repay the
+   last floating-rate term loan.
+
+6. Balance sheet and contingent exposure: BETTER on debt, new contingent
+   risk. Debt $69,407M -> $66,257M; only $1,400M due within 12 months; cash
+   $10,718M; working capital $8,294M. New risk factors: the "sale or leasing
+   of AI racks based on our XPUs" could bring "credit risk to us"; nothing
+   quantified.
+
+7. Concentration: WORSE. Distributor 32% of quarterly revenue (26% a year
+   earlier, 29% in Q2); top five ~40% (35%). New wording ties concentration
+   to customers' "ability to invest in, access, operate or pay for their AI
+   infrastructure."
+
+8. Accounting judgments: HELD. Critical estimates unchanged. Unrecognized
+   tax benefits $6,930M, about $3.1B expected to reverse in Q4.
+
+9. Legal, regulatory and governance: WORSE. Regulatory inquiries widen from
+   the Korean FTC to "regulatory authorities in Korea, Japan and the European
+   Union." Sell-to-cover sends vested shares into the market.
+
+10. Guidance and commitments: Capex YTD $386M vs $426M a year earlier, still
+   behind the FY2024 "higher" statement (met in Q4: FY2025 $623M). New: up
+   to $2.1B discrete tax benefit in Q4; ~$3.1B reduction in unrecognized tax
+   benefits in Q4. Restructuring completion by end FY2025 restated. $0.59
+   dividend declared again September 3, 2025.

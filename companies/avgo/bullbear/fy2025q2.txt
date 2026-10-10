@@ -1,0 +1,46 @@
+AVGO Q2 FY2025 10-Q (quarter ended May 4, 2025, filed June 2025): FUNDAMENTALS ANSWERS
+Compared with the Q1 FY2025 10-Q. Figures from the filing text and SEC XBRL
+(financials.py).
+
+1. Growth and pricing: BETTER. Revenue $15,004M (+20% YoY). Semiconductor
+   $8,408M (+17%, Q1 +11%) on "AI networking solutions." Software $6,596M
+   (+25%, Q1 +47%) on VCF including upfront license ($1,803M, as later
+   reclassified). RPO $22.4B -> $24.7B, 36% within 12 months (40%).
+
+2. Margins and unit economics: BETTER. Gross margin 68% (62% a year earlier);
+   operating margin 39% (24%). R&D +12% on stock-based compensation; SG&A
+   -15% on headcount. Segment margins: semiconductor 57%, software 76%.
+
+3. Earnings quality: HELD. Tax $120M (2.4%). Other income fell to $25M on
+   lower interest income. Upfront license revenue is 27% of software revenue
+   (our arithmetic).
+
+4. Cash conversion: HELD. OCF $6,555M; FCF $6.41B (129% of NI). DSO 30 -> 34
+   days; receivables $5,563M "due to higher software billings"; factoring
+   $1,750M in the quarter.
+
+5. Capital allocation: BETTER. New $10B buyback authorized April 2025;
+   $2,450M used (16M shares). Dividends $2,785M. Capex $144M. But the
+   Two-Year Equity Awards (two years of grants at once) raise unrecognized
+   stock compensation from $10,745M to $27,020M; SBC $1,771M (27% of OCF).
+
+6. Balance sheet and contingent exposure: HELD. Debt $68,757M -> $69,407M;
+   net commercial paper $3,900M; working capital $1,584M. New risk wording:
+   volatility may hurt "our ability to raise or refinance debt at favorable
+   rates." No guarantees.
+
+7. Concentration: HELD. Distributor 29% (29% a year earlier); top five ~40%.
+
+8. Accounting judgments: HELD. Critical estimates unchanged. 66% of contract
+   liabilities are on terminable contracts (59% in Q1).
+
+9. Legal, regulatory and governance: BETTER. VMware 2020 class action
+   settlement approved March 2025. Risk factors now say lifecycle and
+   communication failures "have previously led to" customer dissatisfaction.
+   New tariff risk wording. The stock-repurchase risk factor is restored.
+
+10. Guidance and commitments: The FY2024 statement "we expect an increase in
+   our effective tax rate and our cash tax costs" (U.S. tax reform) is
+   deleted. Capex YTD $244M vs $254M a year earlier, behind the "higher"
+   expectation (not mentioned). New: $10B buyback through December 31, 2025.
+   $0.59 dividend declared again June 4, 2025.

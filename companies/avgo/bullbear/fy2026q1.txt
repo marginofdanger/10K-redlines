@@ -1,0 +1,51 @@
+AVGO Q1 FY2026 10-Q (quarter ended February 1, 2026, filed March 2026): FUNDAMENTALS ANSWERS
+Compared with the FY2025 10-K (and the year-ago quarter where the filing
+gives it). Figures from the filing text and SEC XBRL (financials.py).
+
+1. Growth and pricing: BETTER in semiconductors, WORSE in software. Revenue
+   $19,311M (+29% YoY). Semiconductor $12,515M (+52%), "primarily custom AI
+   accelerators and AI networking products." Software $6,796M (+1%); excluding
+   upfront license ($1,755M vs $1,972M) software grew about 7% (our
+   arithmetic). RPO $33.3B -> $45.0B, 33% within 12 months (35%).
+
+2. Margins and unit economics: HELD. Gross margin 68% (flat): "The gross
+   margin benefit from our net revenue growth was offset by a higher mix of
+   semiconductor solutions net revenue." Operating margin 44% (42%). R&D +32%
+   on SBC. Segment margins: semiconductor 60%, software 78%.
+
+3. Earnings quality: HELD. Other income includes a one-off $315M gain from
+   reversing the VMware excise tax (4% of pre-tax income). Tax $846M (10.3%)
+   is a normal-looking charge after FY2025's one-off benefits.
+
+4. Cash conversion: HELD. OCF $8,260M; FCF $8.01B (109% of NI). DSO 41 -> 40
+   days (quarterly basis); receivables $7,145M -> $8,460M on "higher
+   billings and the timing of collections"; factoring $1,750M. Inventory
+   $2,270M -> $2,961M.
+
+5. Capital allocation: WORSE on funding. Buybacks $7,850M (23M shares), the
+   largest in the window, plus dividends $3,086M ($0.65/share): $10.9B, 137%
+   of FCF (our arithmetic). Cash fell $2,004M and debt rose. Diluted shares
+   still rose to 4.89B (4.85B FY2025 average). Capex $250M.
+
+6. Balance sheet and contingent exposure: WORSE. Debt $67,120M -> $67,970M
+   ($4,500M of notes issued, $3,650M repaid). Risk factors and liquidity now
+   say Broadcom "may agree to financial obligations, including guarantees"
+   and that rack arrangements "may impose financial obligations, including
+   guarantees." Purchase commitments only $54M.
+
+7. Concentration: WORSE. Distributor 29% -> 42% of quarterly revenue; top
+   five ~40% -> ~50%; distributors 55% of revenue (48% in FY2025).
+
+8. Accounting judgments: HELD. "No significant changes" in critical
+   estimates. Upfront license again reclassified to products. 67% of contract
+   liabilities on terminable contracts.
+
+9. Legal, regulatory and governance: HELD. No accrued loss contingencies.
+   New risk factor on AI-native software competitors. Customers may be
+   designated a "supply chain risk" by governments (new).
+
+10. Guidance and commitments: FY2025 10-K items: global minimum tax "has
+   materially increased our provision" (happened); capex higher in FY2026
+   (on track: $250M vs $100M); $10B buyback extended and increased to $11B,
+   $700M left, plus a new $10B program in March 2026; $0.65 dividend paid
+   and declared again March 3, 2026; RPO conversion moved from 35% to 33%.
