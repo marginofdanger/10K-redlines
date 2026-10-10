@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNH Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>UnitedHealth Group: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed August 10, 2026 | Also covered: seven earlier filings back to the Q3 2024 10-Q, filed November 2024 (FY2024 and FY2025 10-Ks, five 10-Qs) | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Two years in one table. Every pillar started the window at Intact. Five weakened during 2025; one, the medical cost ratio, has since recovered to Intact on two 2026 quarters. The rest have not moved back.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Medical cost trend and pricing</td><td class="stance s-intact">Intact</td><td class="ev-bull">Q2 2026 MCR 86.7% vs 89.4% with only about $200M of reserve help; UnitedHealthcare earnings +90%; &ldquo;as expected and contemplated&rdquo; back for two quarters</td><td class="ev-bear">2025 pricing &ldquo;well-short&rdquo; of trend, MCR 89.1% and operating income &minus;41%; Q2 2026 names a new commercial cost driver (No Surprises Act)</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P2 Reserves and earnings quality</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">$1.25B of H1 2026 favorable development, with a named cause, shows year-end 2025 reserves were set conservatively</td><td class="ev-bear">Development $700M (2024) &rarr; $140M (2025), about $290M adverse in Q3 2025; $1.49B of reserve releases = 10% of H1 2026 pre-tax income</td><td>FY2024 10-K</td></tr>
+<tr><td>P3 Medicare Advantage and Medicaid</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">2027 Final Notice &ldquo;moved towards&rdquo; cost trend; 2026 revenue growth from &ldquo;increased Medicaid rates&rdquo;</td><td class="ev-bear">Medicare Advantage &minus;785K and Medicaid &minus;710K year over year by Q2 2026; one state exited; 2025 Medicaid forecast missed; CMS 44% of revenue</td><td>FY2024 10-K</td></tr>
+<tr><td>P4 Optum Health and value-based care</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Q2 2026 earnings $1,190M (5.1% margin) vs a recast $429M; about 4.9% even without the $51M loss-contract release</td><td class="ev-bear">FY2025 loss of $(278)M and a $623M loss-contract reserve; value-based care patients contracting through 2026; $341M of H1 2026 portfolio losses</td><td>Q2 2025 10-Q</td></tr>
+<tr><td>P5 Optum Rx and Optum Insight</td><td class="stance s-intact">Intact</td><td class="ev-bull">Optum Rx 2025 revenue +16% on new and existing clients; Optum Insight Q2 2026 earnings +14%</td><td class="ev-bear">$799M reserve against Change Healthcare provider loans and balances (FY2025); Optum Rx scripts &minus;6% and &minus;7% in the 2026 quarters</td><td>&mdash;</td></tr>
+<tr><td>P6 Cash, capital return and balance sheet</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">H1 2026 operating cash flow $20.0B; total debt &minus;$5.1B to $73.3B; no commercial paper; $7.8B returned out of $18.4B FCF</td><td class="ev-bear">Subsidiaries took $535M net in 2025 after paying $9.2B in 2024; A.M. Best A&minus;; three Negative outlooks for a fourth straight quarter; parent cash $1.1B</td><td>Q2 2025 10-Q</td></tr>
+<tr><td>P7 Legal, regulatory and tax</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Special Master recommended summary judgment for UNH in the DOJ risk-adjustment case (March 2025)</td><td class="ev-bear">IRS seeks to &ldquo;significantly increase taxable income&rdquo; for 2017&ndash;2020 and may go further; gross unrecognized tax benefits $4.1B &rarr; $5.6B</td><td>FY2025 10-K</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. The quarter is the clearest evidence yet that the 2026 repricing is working: unlike Q1, the margin gain does not rest mainly on prior-year reserves. The cost is a smaller company, with 1.6 million fewer UnitedHealthcare members and lower Optum Rx volume.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">MCR 86.7% vs 89.4%; UnitedHealthcare earnings $3,942M vs $2,075M (+90%) on flat revenue</div>
+      <blockquote>Q2 2026: "The MCR decreased due to favorable prior period reserve development, affordability and medical cost management initiatives, and pricing trends, partially offset by medical costs trend which remains above historical levels"</blockquote>
+      <blockquote>Q2 2026: "Medical care ratio (a) | 86.7 | 89.4 | (2.7) | 85.3 | 87.1 | (1.8)"</blockquote>
+      <p class="magnitude"><b>Size:</b> 2.7 points on $86.96B of premiums = about $2.3B of quarterly medical cost. Q2 reserve development was about $200M (0.2 points; six-month $1,250M less Q1 $1,050M), so roughly 2.5 points is pricing and cost management.</p>
+      <p>Q1 2026's 0.9-point improvement was mostly reserve releases. Q2's is not, which is the first sign that the 2026 benefit and pricing actions are lifting the underlying margin.</p>
+      <p class="next"><b>Next filing:</b> Q3 2026 MCR below Q3 2025's 89.9% by a similar margin with little prior-year development.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Debt down $5.1B in six months; commercial paper repaid to zero; operating cash flow $20.0B</div>
+      <blockquote>Q2 2026: "As of June 30, 2026, the Company had no commercial paper outstanding."</blockquote>
+      <blockquote>Q2 2026: "Cash flows from operations for the six months ended June 30, 2026 were $20.0 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> total debt $73.3B vs $78.4B at year end; net repayments $4.81B. Six-month operating cash flow = 164% of net earnings ($12.15B). Commercial paper was $3.4B at March 31.</p>
+      <p>Deleveraging out of operating cash, not asset sales, is what the rating agencies' Negative outlooks need to see. Interest expense already fell 6% in the quarter.</p>
+      <p class="next"><b>Next filing:</b> debt held near $73B after the $1.5B July acquisition payment and the $2.0B forward-repurchase settlement; any outlook revision.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks back to 10.5M shares and dividend +5.0%, both covered by free cash flow</div>
+      <blockquote>Q2 2026: "During the six months ended June 30, 2026, we repurchased approximately 10.5 million shares at an average price of $344.08 per share"</blockquote>
+      <blockquote>Q2 2026: "In June 2026, our Board of Directors increased our quarterly cash dividend to an annual rate of $9.28 compared to $8.84 per share"</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks $3.73B (equity statement) + dividends $4.09B = $7.8B against six-month FCF of $18.4B ($19.96B less $1.56B capex). Diluted shares 906M vs 910M.</p>
+      <p>Capital return resumed after three quarters without buybacks, at about 24% below the 2025 average price ($454.82), and debt fell at the same time. In 2025, deals and returns had exceeded FCF.</p>
+      <p class="next"><b>Next filing:</b> buybacks continuing within FCF; the authorization (10.6M shares left) topped up.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health earns $1,190M (5.1% margin) vs a recast $429M (1.7%)</div>
+      <blockquote>Q2 2026: "Optum Health (a) | 1,190 | 429 | 761 | 177 | 2,331 | 1,840 | 491 | 27"</blockquote>
+      <blockquote>Q2 2026: "Optum Health (a) | 5.1 | 1.7 | 3.4 | 4.9 | 3.7 | 1.2"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$761M year over year. The Q2 restructuring benefit at Optum Health was $51M (loss-contract release), so the margin is about 4.9% without it.</p>
+      <p>After a $(278)M 2025, the segment is back to mid-single-digit margins on fewer, repriced contracts. The base is the recast figure (Optum Financial moved out), lower than the $636M first reported.</p>
+      <p class="next"><b>Next filing:</b> margin at or above 4.5% in Q3 2026 with the loss-contract reserve largely used.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Insight earnings +14% to $1,369M (25.3% margin) after a weak Q1</div>
+      <blockquote>Q2 2026: "Earnings from operations for the three months ended June 30, 2026, increased due to growth in business services."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$164M year over year; Q1 2026 had been &minus;17%. Six-month earnings still &minus;2% ($2,332M vs $2,369M).</p>
+      <p>Business services, which lost volume from Q3 2025 to Q1 2026, grew again. Q2 has no disposition gain at Insight (a $4M loss), so the growth is operating.</p>
+      <p class="next"><b>Next filing:</b> a second quarter of business-services growth.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">New commercial cost driver: No Surprises Act arbitration and &ldquo;more aggressive billing&rdquo;; trend &ldquo;above historical levels&rdquo;</div>
+      <blockquote>Q2 2026: "Commercial medical cost trend is elevated, in part due to the independent resolution process under the No Surprises Act and more aggressive billing practice among providers."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing. Exposed book: 7.655M risk-based commercial members; Employer &amp; Individual revenue $20.0B a quarter.</p>
+      <p>The pressure has moved from Medicare Advantage seniors (2025) to commercial (2026) inside a paragraph that still opens &ldquo;as expected and contemplated&rdquo;. Commercial pricing resets annually, so a 2026 miss would show in 2027 pricing.</p>
+      <p class="next"><b>Next filing:</b> whether the commercial driver stays, widens or is quantified; risk-based commercial membership trend.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Medicare Advantage and Medicaid" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Medicare Advantage and Medicaid</span><span class="chip">Stated</span></div>
+      <div class="title">UnitedHealthcare serves 1.6M fewer people; Medicare Advantage &minus;785K, Medicaid &minus;710K, premiums &minus;1%</div>
+      <blockquote>Q2 2026: "UnitedHealthcare served 1.6 million fewer people due to benefit design and pricing actions and reduced Medicaid eligibility and the exit from one state."</blockquote>
+      <blockquote>Q2 2026: "Medicare Advantage | 7,565 | 8,350 | (785) | (9)"</blockquote>
+      <p class="magnitude"><b>Size:</b> premiums $86.96B vs $87.91B (&minus;$949M); Medicare Advantage &minus;9%, Medicaid &minus;9% to 6.78M (lowest in the series), risk-based commercial &minus;9%.</p>
+      <p>Margin is being bought with volume. The filing says Medicare Advantage contraction will &ldquo;continue throughout 2026&rdquo;, so 2027 revenue starts from a smaller base.</p>
+      <p class="next"><b>Next filing:</b> Medicare Advantage membership stable from Q2's 7,565K (it was 7,555K in Q1); 2027 bid posture.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Rx scripts 387M vs 414M (&minus;6.5%) as UnitedHealthcare shrinks; six-month earnings &minus;3%</div>
+      <blockquote>Q2 2026: "Optum Rx fulfilled 387 million and 414 million adjusted scripts in the second quarters of 2026 and 2025, respectively."</blockquote>
+      <blockquote>Q2 2026: "Earnings from operations decreased due to lower script volumes, partially offset by growth in specialty pharmacy."</blockquote>
+      <p class="magnitude"><b>Size:</b> 27M fewer scripts in the quarter; Q2 revenue $38.29B vs $38.46B; six-month earnings $2,682M vs $2,759M.</p>
+      <p>The integrated model carries UnitedHealthcare's membership loss into Optum Rx. Two consecutive quarters of script declines (Q1 &minus;6%) after years of growth.</p>
+      <p class="next"><b>Next filing:</b> scripts versus Q3 2025's 414M; new external client wins offsetting the internal loss.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Reserves and earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Reserves and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$1.25B of prior-year development plus $236M of reserve releases in six months</div>
+      <blockquote>Q2 2026: "For the six months ended June 30, 2026, prior years’ medical cost reserve development was driven by a favorable respiratory illness season along with various other individually insignificant factors."</blockquote>
+      <blockquote>Q2 2026: "Prior years | ( 1,250 ) | ( 320 )"</blockquote>
+      <p class="magnitude"><b>Size:</b> $1.49B = 10% of six-month pre-tax income ($14.93B); about $250M (4%) in Q2 alone. Full-year 2025 development was $140M.</p>
+      <p>Half-year earnings growth (+21% net) is partly a reversal of conservative 2025 year-end reserves. IBNR fell from $27.6B to $26.5B in the quarter as releases were taken.</p>
+      <p class="next"><b>Next filing:</b> Q3 development near zero with the MCR still improving would show the recovery does not need releases.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health revenue &minus;5%; earnings credited to reserve releases; value-based care still contracting</div>
+      <blockquote>Q2 2026: "Earnings from operations increased due to cost management, increased favorable reserve development and the net decrease in loss contract reserves"</blockquote>
+      <blockquote>Q2 2026: "the number of people served under value-based care arrangements has contracted and is expected to continue throughout 2026"</blockquote>
+      <p class="magnitude"><b>Size:</b> revenue $23.47B vs $24.73B (&minus;$1.25B); loss-contract releases $187M year to date = 8% of six-month Optum Health earnings ($2,331M); six-month portfolio losses at Optum Health $341M.</p>
+      <p>Two of the three earnings drivers named are reserve items, and the business is smaller. The growth case for value-based care is on hold for at least 2026.</p>
+      <p class="next"><b>Next filing:</b> people served under value-based arrangements and the remaining loss-contract reserve.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Cash surge credited partly to timing; ratings outlooks still Negative; parent cash $1.1B</div>
+      <blockquote>Q2 2026: "Increased cash flows provided by operating activities were driven by increased earnings, timing of government payments, other favorable working capital dynamics and legislative changes from the Inflation Reduction Act impacting pharmacy rebates."</blockquote>
+      <blockquote>Q2 2026: "Senior unsecured debt | A2 | Negative | A+ | Negative | A | Negative | A- | Stable"</blockquote>
+      <p class="magnitude"><b>Size:</b> timing effect not quantified. Of $28.6B of cash, $1.1B is available for general corporate use. $3.2B of receivables were sold under the financing facility in H1 (counted as operating cash).</p>
+      <p>Part of the $7.3B cash improvement can reverse. Three agencies have kept Negative outlooks for four quarters, and the parent still depends on subsidiaries that took capital in 2025.</p>
+      <p class="next"><b>Next filing:</b> nine-month operating cash flow still well above net income; any upstream dividend disclosure; outlook changes.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing (newest first; scroll right for older filings). <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (10-Qs versus the preceding filing; 10-Ks versus the prior-year 10-K). Full answers are in the <code>&lt;period&gt;.txt</code> files beside this page.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>Q1 2026 10-Q</th><th>FY2025 10-K</th><th>Q3 2025 10-Q</th><th>Q2 2025 10-Q</th><th>Q1 2025 10-Q</th><th>FY2024 10-K</th><th>Q3 2024 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td>
+<td><span class="mark worse">&#9660;</span> Revenue flat, premiums &minus;1%; 1.6M fewer members (Medicare Advantage &minus;785K, Medicaid &minus;710K)</td>
+<td><span class="mark worse">&#9660;</span> Revenue +2%; 1.1M fewer members; exchange profits pledged as rebates</td>
+<td><span class="mark held">&#9679;</span> Revenue +12%; Medicare Advantage +600K; contraction forecast for 2026</td>
+<td><span class="mark held">&#9679;</span> Revenue +12%; Medicare &amp; Retirement +24%</td>
+<td><span class="mark held">&#9679;</span> Revenue +13%; Medicare Advantage +580K</td>
+<td><span class="mark better">&#9650;</span> Revenue +10%; Medicare Advantage +485K; Optum Health &minus;5%</td>
+<td><span class="mark held">&#9679;</span> Revenue +8%; +2.1M domestic members</td>
+<td><span class="mark held">&#9679;</span> Revenue +9%; Optum Rx +19%; Medicaid &minus;615K</td></tr>
+<tr><td>2. Margins and unit economics</td>
+<td><span class="mark better">&#9650;</span> MCR 86.7% vs 89.4%; operating income +55%; UnitedHealthcare +90%</td>
+<td><span class="mark better">&#9650;</span> MCR 83.9% vs 84.8%; operating income &minus;1%; Optum segments all down</td>
+<td><span class="mark worse">&#9660;</span> MCR 89.1% vs 85.5%; operating income &minus;41%; Optum Health $(278)M</td>
+<td><span class="mark worse">&#9660;</span> MCR 89.9% (series high); operating income &minus;50%</td>
+<td><span class="mark worse">&#9660;</span> MCR 89.4% vs 85.1%; pricing &ldquo;well-short&rdquo;; Optum Health &minus;67%</td>
+<td><span class="mark worse">&#9660;</span> MCR 84.8% vs 84.3%; costs &ldquo;above what we expected&rdquo;</td>
+<td><span class="mark worse">&#9660;</span> MCR 85.5% vs 83.2%; operating income flat on +8% revenue</td>
+<td><span class="mark worse">&#9660;</span> MCR 85.2% vs 82.3%; coding intensity and specialty drugs named</td></tr>
+<tr><td>3. Earnings quality</td>
+<td><span class="mark held">&#9679;</span> H1 reserve releases $1.49B = 10% of pre-tax; Q2 alone about 4%; normal 18.6% tax rate</td>
+<td><span class="mark worse">&#9660;</span> $1.05B development = 13% of pre-tax; $137M loss-contract release</td>
+<td><span class="mark worse">&#9660;</span> Development $140M; $2.5B Q4 actions; $799M loan reserve; tax rate 12.9%</td>
+<td><span class="mark worse">&#9660;</span> About $290M adverse development in Q3; investment income &minus;31%</td>
+<td><span class="mark worse">&#9660;</span> No Q2 development; H2 exchange losses booked early; tax rate 12.5%</td>
+<td><span class="mark held">&#9679;</span> Development $320M vs $310M; tax rate 20.1%</td>
+<td><span class="mark worse">&#9660;</span> $8.3B South America losses; development $700M vs $840M; portfolio gains</td>
+<td><span class="mark worse">&#9660;</span> Investment income +65%; disposition gains at Optum Health</td></tr>
+<tr><td>4. Cash conversion</td>
+<td><span class="mark better">&#9650;</span> H1 operating cash flow $20.0B vs $12.6B; partly &ldquo;timing of government payments&rdquo;</td>
+<td><span class="mark better">&#9650;</span> Operating cash flow $8.9B vs $5.5B; FCF 130% of net income</td>
+<td><span class="mark worse">&#9660;</span> Operating cash flow $19.7B vs $24.2B, incl. $3.0B receivables sold</td>
+<td><span class="mark better">&#9650;</span> Q3 operating cash flow $5.95B vs net income $2.35B</td>
+<td><span class="mark better">&#9650;</span> Q2 operating cash flow $7.19B vs net income $3.41B</td>
+<td><span class="mark better">&#9650;</span> Operating cash flow $5.5B vs $1.1B (cyberattack-hit 2024)</td>
+<td><span class="mark worse">&#9660;</span> Operating cash flow $24.2B vs $29.1B; FCF $20.7B</td>
+<td><span class="mark better">&#9650;</span> Q3 operating cash flow $13.95B vs net income $6.05B</td></tr>
+<tr><td>5. Capital allocation</td>
+<td><span class="mark better">&#9650;</span> Buybacks $3.7B + dividends $4.1B vs FCF $18.4B; net debt repaid $4.8B</td>
+<td><span class="mark better">&#9650;</span> No cash buybacks; $2.0B forward contracts; $1.08B disposition cash</td>
+<td><span class="mark held">&#9679;</span> Buybacks $5.5B (none after Q2); returns + deals $18.0B vs FCF $16.1B</td>
+<td><span class="mark held">&#9679;</span> No buybacks in Q3; pending acquisitions paragraph deleted</td>
+<td><span class="mark worse">&#9660;</span> H1 buybacks $5.5B; $3.0B notes issued</td>
+<td><span class="mark worse">&#9660;</span> Buybacks + dividends $4.9B vs FCF $4.6B; net borrowing $3.9B</td>
+<td><span class="mark worse">&#9660;</span> Deals $13.4B and provider loans $9.0B debt-funded (+$14.7B)</td>
+<td><span class="mark worse">&#9660;</span> Nine months: deals $11.7B, provider loans $8.9B, net debt +$15.1B</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td>
+<td><span class="mark better">&#9650;</span> Debt $73.3B (YE $78.4B); no commercial paper; outlooks still Negative</td>
+<td><span class="mark held">&#9679;</span> Debt $77.9B; commercial paper $3.4B; parent cash $1.1B</td>
+<td><span class="mark worse">&#9660;</span> Subsidiaries took $535M net (2024: paid $9.2B); A.M. Best A&minus;</td>
+<td><span class="mark worse">&#9660;</span> A.M. Best downgrade; subsidiary dividends &ldquo;will be impacted&rdquo;</td>
+<td><span class="mark worse">&#9660;</span> Three outlooks to Negative; subsidiary dividends &ldquo;may be impacted&rdquo;</td>
+<td><span class="mark worse">&#9660;</span> Debt $81.3B; commercial paper $5.2B</td>
+<td><span class="mark worse">&#9660;</span> Debt $76.2B vs $61.5B; parent cash about $800M; covenant ratio dropped</td>
+<td><span class="mark held">&#9679;</span> Debt $78.0B; covenant ratio 43% vs 60% limit; parent cash $5.2B</td></tr>
+<tr><td>7. Concentration</td>
+<td><span class="mark held">&#9679;</span> Medicare &amp; Retirement 49% of UnitedHealthcare revenue; Optum Rx scripts tied to UnitedHealthcare</td>
+<td><span class="mark better">&#9650;</span> Medicare Advantage and Medicaid shrinking</td>
+<td><span class="mark worse">&#9660;</span> CMS premiums 44% of revenue (40%)</td>
+<td><span class="mark held">&#9679;</span> Medicare &amp; Retirement 50% of UnitedHealthcare revenue</td>
+<td><span class="mark worse">&#9660;</span> Medicare &amp; Retirement 49.5% (47% a year earlier)</td>
+<td><span class="mark worse">&#9660;</span> Medicare Advantage +485K in a quarter</td>
+<td><span class="mark held">&#9679;</span> CMS premiums 40% of revenue (40%)</td>
+<td><span class="mark held">&#9679;</span> Global members 1.34M vs 5.48M after Brazil</td></tr>
+<tr><td>8. Accounting judgments</td>
+<td><span class="mark held">&#9679;</span> Respiratory season named again; IBNR $26.5B (Q1 $27.6B)</td>
+<td><span class="mark held">&#9679;</span> First named development driver; Optum Financial recast into Optum Insight</td>
+<td><span class="mark worse">&#9660;</span> First premium-deficiency and loss-contract reserves ($672M)</td>
+<td><span class="mark worse">&#9660;</span> Adverse quarter still &ldquo;no individual factors that were significant&rdquo;</td>
+<td><span class="mark worse">&#9660;</span> Future exchange losses accelerated into Q2</td>
+<td><span class="mark held">&#9679;</span> IBNR $25.9B vs $23.7B; no stated driver</td>
+<td><span class="mark worse">&#9660;</span> &ldquo;80% to 85%&rdquo; MCR range deleted from risk factors</td>
+<td><span class="mark held">&#9679;</span> South America held for sale, $1.245B remeasurement</td></tr>
+<tr><td>9. Legal, regulatory and governance</td>
+<td><span class="mark worse">&#9660;</span> No Surprises Act driver; two execution risks added to forward-looking list</td>
+<td><span class="mark worse">&#9660;</span> IRS NOPAs for 2017&ndash;2020, possibly later years</td>
+<td><span class="mark worse">&#9660;</span> Unrecognized tax benefits $5.6B vs $4.1B; subpoena language; new CEO, CFO</td>
+<td><span class="mark held">&#9679;</span> DOJ paragraph unchanged; new CFO signs</td>
+<td><span class="mark worse">&#9660;</span> DOJ factor widened to &ldquo;legal actions&rdquo;; shareholders added as litigants</td>
+<td><span class="mark better">&#9650;</span> Special Master recommends summary judgment for UNH</td>
+<td><span class="mark worse">&#9660;</span> ~190M breach individuals; 2026 Advance Notice &ldquo;also well short&rdquo;</td>
+<td><span class="mark held">&#9679;</span> DOJ case unchanged; cyberattack impact into 2025</td></tr>
+<tr><td>10. Guidance and commitments</td>
+<td><span class="mark held">&#9679;</span> Contraction forecasts met; $2.0B forward repurchase settled as stated; dividend $9.28</td>
+<td><span class="mark held">&#9679;</span> Contraction &ldquo;expected to continue throughout 2026&rdquo;; $3.0B deals agreed</td>
+<td><span class="mark worse">&#9660;</span> Medicaid &ldquo;will narrow&rdquo; forecast missed; 2026 contraction forecasts</td>
+<td><span class="mark worse">&#9660;</span> ~$4B pending acquisitions dropped</td>
+<td><span class="mark worse">&#9660;</span> Medicaid gap &ldquo;continues&rdquo;; dividend +5.2% (2024: +11.7%)</td>
+<td><span class="mark worse">&#9660;</span> &ldquo;2025 benefit design ... contemplates&rdquo; dropped</td>
+<td><span class="mark held">&#9679;</span> 2025 pricing &ldquo;contemplates these trends&rdquo;; Medicaid gap to narrow</td>
+<td><span class="mark held">&#9679;</span> Pending transactions about $5B; dividend $8.40</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or forecast management stated in these filings, and what later filings said about it. UNH's 10-Qs and 10-Ks carry no EPS or revenue guidance; the commitments below are the ones in the filings themselves.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>&ldquo;Our 2025 benefit design approach contemplates these trends.&rdquo;</td><td>FY2024 10-K</td><td>Q1 2025: dropped (costs &ldquo;above what we expected and contemplated&rdquo;). Q2 2025: missed (pricing &ldquo;well-short&rdquo;; MCR 89.4%). FY2025: missed, MCR 89.1%</td></tr>
+<tr><td>&ldquo;We expect this gap between people&rsquo;s health status and rates will narrow in 2025.&rdquo; (Medicaid)</td><td>FY2024 10-K</td><td>Q1 2025: partly met (&ldquo;more closely align&rdquo;). Q2 2025: missed (&ldquo;continues to be a mismatch&rdquo;). Q3 2025, FY2025, Q1 2026, Q2 2026: still a &ldquo;timing mismatch&rdquo;</td></tr>
+<tr><td>Change Healthcare: direct response costs and disruption to continue &ldquo;at a lesser extent in 2025&rdquo;</td><td>Q3 2024 10-Q; FY2024 10-K</td><td>Q1 and Q2 2025: met (Optum Insight +96%, +83%). FY2025: met on operations, but $799M reserve against provider loans and balances</td></tr>
+<tr><td>Pending transactions: &ldquo;approximately $5 billion&rdquo;</td><td>Q3 2024 10-Q</td><td>FY2024, Q1 2025, Q2 2025: moved to about $4B. Q3 2025: dropped (paragraph deleted). Q1 2026: new $3.0B. Q2 2026: closed July 2 for $1.5B cash plus $1.5B within one year</td></tr>
+<tr><td>Dividend: annual rate $8.40 (June 2024)</td><td>Q3 2024 10-Q</td><td>Q2 2025: raised to $8.84 (+5.2%). Q2 2026: raised to $9.28 (+5.0%)</td></tr>
+<tr><td>Share repurchase authorization: 35M shares added June 2024 (42M available)</td><td>Q3 2024 10-Q</td><td>FY2024 33M; Q1 2025 27M; Q2 2025 21.0M; no buybacks Q3 2025 to Q1 2026 (cash); Q1 2026 19.3M; Q2 2026 10.6M left, not yet topped up</td></tr>
+<tr><td>Subsidiary dividends to parent &ldquo;during the remainder of 2025 may be impacted&rdquo;</td><td>Q2 2025 10-Q</td><td>Q3 2025: firmed to &ldquo;will be impacted&rdquo; ($841M net, nine months). FY2025: confirmed, subsidiaries received $535M net</td></tr>
+<tr><td>&ldquo;we expect some Medicaid membership losses in 2026&rdquo;</td><td>Q2 2025 10-Q</td><td>FY2025: widened to include &ldquo;the exit from one state&rdquo;. Q1 2026: met (&minus;410K). Q2 2026: met (&minus;710K; state exit reported)</td></tr>
+<tr><td>&ldquo;we expect that our Medicare Advantage membership will contract in 2026&rdquo;</td><td>FY2025 10-K</td><td>Q1 2026: met (7,555K, &minus;690K). Q2 2026: met (7,565K, &minus;785K); flat versus Q1</td></tr>
+<tr><td>&ldquo;we expect the number of people served under value-based care arrangements to contract&rdquo;</td><td>FY2025 10-K</td><td>Q1 2026: met. Q2 2026: met, &ldquo;expected to continue throughout 2026&rdquo;</td></tr>
+<tr><td>$623M loss-contract reserve for anticipated 2026 value-based care losses</td><td>FY2025 10-K</td><td>Q1 2026: $137M released. Q2 2026: $187M released year to date</td></tr>
+<tr><td>Net 2026 cash impact of 2025 restructuring &ldquo;is not expected to be material&rdquo;</td><td>FY2025 10-K</td><td>Q1 2026 and Q2 2026: not mentioned; $1.09B of disposition cash received in H1</td></tr>
+<tr><td>Forward repurchase contracts for up to $2.0B, settlement &ldquo;on or before July 1, 2026&rdquo;</td><td>Q1 2026 10-Q</td><td>Q2 2026: met; 6.4M shares at $312.73, $2.0B paid July 1</td></tr>
+<tr><td>Pledge to rebate 2026 individual exchange profits to customers</td><td>Q1 2026 10-Q</td><td>Q2 2026: repeated and cited as a revenue offset; amount not disclosed</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 2026 (filed May 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">MCR 83.9%, the lowest in two years; &ldquo;as expected and contemplated&rdquo; returns after four filings</div>
+      <blockquote>Q1 2026: "As expected and contemplated in our benefits design and pricing, we have continued to observe increased care patterns; health care unit costs; and the intensity of services delivered"</blockquote>
+      <p class="magnitude"><b>Size:</b> MCR 0.9 points lower on $87.56B of premiums. Without the $1,050M of development it would be about 85.1%, so the underlying gain was small.</p>
+      <p>Management says 2026 pricing absorbed the trend it now sees, and deleted the 2025 &ldquo;well-short&rdquo; admission.</p>
+      <p class="next"><b>Next filing:</b> Q2 MCR improvement without large releases (Q2 2026: 86.7% vs 89.4% with about $200M; confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Reserves and earnings quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Reserves and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$1,050M favorable development in one quarter, the first with a named cause</div>
+      <blockquote>Q1 2026: "For the three months ended March 31, 2026, prior years’ medical cost reserve development was driven by a favorable respiratory illness season along with various other individually insignificant factors."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1,050M = 13% of Q1 pre-tax income ($7.96B) and 7.5 times all of 2025 ($140M).</p>
+      <p>Year-end 2025 reserves, set right after the 2025 miss, proved conservative. That reduces the risk of a further reserve shortfall (it is also the bear point on earnings quality).</p>
+      <p class="next"><b>Next filing:</b> development continuing modestly without adverse reversal (Q2 2026: about $200M more).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $8.9B vs $5.5B; FCF 130% of net income with no cash buybacks</div>
+      <blockquote>Q1 2026: "Increased cash flows provided by operating activities were driven by legislative changes from the Inflation Reduction Act impacting pharmacy rebates and other changes in working capital accounts."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF $8.15B vs net income $6.28B; dividends $2.0B; dispositions brought $1.08B.</p>
+      <p>Cash generation recovered ahead of the balance-sheet repair that followed in Q2.</p>
+      <p class="next"><b>Next filing:</b> the cash used to cut debt (Q2 2026: debt &minus;$5.1B since year end).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Medicare Advantage and Medicaid" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Medicare Advantage and Medicaid</span><span class="chip">Stated</span></div>
+      <div class="title">Medicare Advantage &minus;690K and Medicaid &minus;410K year over year; contraction to continue all year</div>
+      <blockquote>Q1 2026: "Continued funding pressures have resulted in benefit and pricing actions, causing contraction in our Medicare Advantage membership in the first quarter, which we expect to continue throughout 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> Medicare Advantage 7,555K vs 8,245K (&minus;8%); UnitedHealthcare served 1.1M fewer people.</p>
+      <p>The FY2025 forecast arrived on schedule; the question is whether the remaining book is profitable enough to justify the smaller base.</p>
+      <p class="next"><b>Next filing:</b> sequential membership (Q2 2026: 7,565K, flat).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and tax" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and tax</span><span class="chip">Stated</span></div>
+      <div class="title">IRS proposes transfer-pricing adjustments for 2017&ndash;2020 and may extend them to later years</div>
+      <blockquote>Q1 2026: "The IRS is seeking to significantly increase taxable income for each of the applicable periods and could also seek similar adjustments for subsequent years after 2020."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing. Gross unrecognized tax benefits were already $5.6B at year end 2025, up $1.5B in the year.</p>
+      <p>The first new named matter in the contingencies note in two years, with an open-ended reach. The company says its reserves &ldquo;are adequate&rdquo;.</p>
+      <p class="next"><b>Next filing:</b> any amount, settlement, or change in unrecognized tax benefits (Q2 2026: unchanged wording).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Rx scripts fall for the first time (383M vs 408M); Optum Insight earnings &minus;17%</div>
+      <blockquote>Q1 2026: "Optum Rx fulfilled 383 million and 408 million adjusted scripts in the first quarters of 2026 and 2025, respectively."</blockquote>
+      <blockquote>Q1 2026: "Optum Insight (a) | 963 | 1,164 | (201) | (17)"</blockquote>
+      <p class="magnitude"><b>Size:</b> scripts &minus;6%; Optum Rx earnings $1,192M vs $1,318M (&minus;10%); Optum Insight &minus;$201M.</p>
+      <p>Every Optum segment earned less than a year earlier; UnitedHealthcare's shrinkage is now visible in the pharmacy business.</p>
+      <p class="next"><b>Next filing:</b> Optum earnings trend (Q2 2026: Insight +14%, Rx +3%, scripts still &minus;7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Voluntary pledge to rebate 2026 individual exchange profits caps a repriced product line</div>
+      <blockquote>Q1 2026: "Additionally, we have voluntarily pledged to rebate 2026 profits on our individual exchange products to customers as policymakers continue to work to determine how to improve affordability in this marketplace."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; it is cited as a revenue offset at UnitedHealthcare.</p>
+      <p>A product that lost money in 2025 was repriced for recovery, and the profit from that repricing is now promised away for 2026, under political pressure (inference).</p>
+      <p class="next"><b>Next filing:</b> any amount accrued for the rebate.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed March 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Statutory capital $43.1B against $23.2B required, up from $37.8B</div>
+      <blockquote>FY2025: "The Company's financially regulated subsidiaries had estimated aggregate statutory capital and surplus of $43.1 billion as of December 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> $19.9B above the estimated requirement (2024: $17.4B above).</p>
+      <p>The $535M net infusion did not leave subsidiaries thin; the excess grew. Upstream dividends can resume once the MCR improves.</p>
+      <p class="next"><b>Next filing:</b> subsidiary dividend figure in the FY2026 10-K.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Rx revenue +16% to $154.7B; scripts 1,659M vs 1,623M</div>
+      <blockquote>FY2025: "Revenues at Optum Rx increased due to higher script volumes from both new clients and growth in existing clients and growth in pharmacy services."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$21.5B revenue; earnings $7.19B vs $5.84B, but $1.5B of that is a deconsolidation gain, so operating earnings were about flat (inference).</p>
+      <p>The pharmacy business kept winning external clients through the insurer's worst year.</p>
+      <p class="next"><b>Next filing:</b> scripts once UnitedHealthcare shrinks (Q1 2026: down 6%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bull" data-basis="inferred">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Inferred</span></div>
+      <div class="title">Expected 2026 value-based care losses pre-booked in a $623M loss-contract reserve</div>
+      <blockquote>FY2025: "Reserves recognized in the current period will be released in subsequent periods as actual costs are incurred."</blockquote>
+      <p class="magnitude"><b>Size:</b> $623M, about 0.6% of Optum Health's 2025 revenue; charged to 2025 medical costs.</p>
+      <p>Losses that would have hit 2026 are already in 2025, so 2026 Optum Health results start from a cleaner base. It flatters 2026 rather than improving the economics.</p>
+      <p class="next"><b>Next filing:</b> pace of release (Q1 2026 $137M; Q2 2026 $187M year to date).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">MCR 89.1% vs 85.5%; operating income $18.96B vs $32.29B (&minus;41%)</div>
+      <blockquote>FY2025: "For 2025, our pricing trends and patient and member health status assumptions were well-short of the medical cost trends incurred, significantly impacting our earnings."</blockquote>
+      <p class="magnitude"><b>Size:</b> 3.6 points on $352.2B of premiums = about $12.7B of medical cost; UnitedHealthcare margin 2.7% vs 5.2%.</p>
+      <p>The FY2024 10-K said 2025 pricing contemplated the trend. It did not, across every line.</p>
+      <p class="next"><b>Next filing:</b> Q1 2026 MCR (83.9%, but helped by $1.05B of releases).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Subsidiaries took $535M of net capital instead of paying $9.2B; operating cash flow propped by $3.0B of receivables sold</div>
+      <blockquote>FY2025: "Our U.S. regulated subsidiaries received capital infusions, net of dividends, of $535 million and paid their parent companies dividends, net of capital infusions, of $9.2 billion in 2025 and 2024, respectively."</blockquote>
+      <blockquote>FY2025: "For the year ended December 31, 2025, the Company sold $3.0 billion of receivables under the receivables funding facility"</blockquote>
+      <p class="magnitude"><b>Size:</b> a $9.7B swing in upstream cash; operating cash flow $19.7B, about $16.7B without the receivables sale. Buybacks $5.5B, none after June.</p>
+      <p>The parent funded its subsidiaries and the dividend in the same year, with $1.1B of cash for general corporate use at year end.</p>
+      <p class="next"><b>Next filing:</b> whether the receivables facility is renewed or unwound, and 2026 upstream dividends.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">$799M reserve against Change Healthcare provider loans and other customer balances</div>
+      <blockquote>FY2025: "In the fourth quarter of 2025, the Company increased its reserves for net collection expectations associated with provider loans and other customer balances of $799 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> $799M = 30% of Optum Insight's 2025 earnings ($2.62B, &minus;15%). About $9.0B was lent in 2024; $6.2B was repaid by the end of 2025.</p>
+      <p>The first admission that the cyberattack loans will not be fully repaid; 2026 repayments slowed to $197M in six months.</p>
+      <p class="next"><b>Next filing:</b> further reserve additions or recoveries.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health loses $(278)M after earning $7.77B; value-based care to contract</div>
+      <blockquote>FY2025: "Optum Health | (278) | 7,770 | 6,560 | (8,048) | (104)"</blockquote>
+      <blockquote>FY2025: "we expect the number of people served under value-based care arrangements to contract"</blockquote>
+      <p class="magnitude"><b>Size:</b> an $8.0B swing; $1.7B of restructuring impact and $821M of portfolio losses at the segment; 95M people served vs 100M.</p>
+      <p>The growth engine of the Optum thesis became a shrinking business with booked future losses.</p>
+      <p class="next"><b>Next filing:</b> Q1 2026 margin (4.7%, earnings &minus;19% on a recast basis).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2025 (filed October 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Rx keeps growing: scripts 414M vs 407M, revenue +16%</div>
+      <blockquote>Q3 2025: "Optum Rx fulfilled 414 million and 407 million adjusted scripts in the third quarters of 2025 and 2024, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> revenue $39.68B (+$5.47B); earnings $1,549M vs $1,544M (flat).</p>
+      <p>The only segment still growing volume in the worst quarter of the cycle; earnings held rather than grew.</p>
+      <p class="next"><b>Next filing:</b> FY2025 script count (1,659M vs 1,623M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Reinsurance agreements put in place to cut statutory capital requirements</div>
+      <blockquote>Q3 2025: "We entered into various agreements with reinsurers that could limit our risk of loss under certain circumstances, thus reducing our capital and surplus requirements."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing. Q3 operating cash flow $5.95B vs net income $2.35B.</p>
+      <p>Management used a capital tool rather than new equity or debt to protect subsidiary capital. The agreements use deposit accounting, so they do not move risk off the GAAP income statement.</p>
+      <p class="next"><b>Next filing:</b> statutory capital versus requirement (FY2025: $43.1B vs $23.2B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Reserves and earnings quality" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 Reserves and earnings quality</span><span class="chip">Inferred</span></div>
+      <div class="title">Reserve development turns adverse: nine-month favorable development falls from $320M to $30M</div>
+      <blockquote>Q3 2025: "Prior years | ( 30 ) | ( 600 )"</blockquote>
+      <blockquote>Q3 2025: "For the nine months ended September 30, 2025, the MCR also increased due to decreased favorable reserve development"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $290M of adverse development in Q3 alone (arithmetic on the year-to-date figures) = 9% of Q3 pre-tax income ($3.23B).</p>
+      <p>Reserves set at mid-year proved short; the note still says development had &ldquo;no individual factors that were significant&rdquo;.</p>
+      <p class="next"><b>Next filing:</b> full-year development (FY2025: $140M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">MCR 89.9% vs 85.2%; operating income $4.3B vs $8.7B</div>
+      <blockquote>Q3 2025: "Medical care ratio (a) | 89.9 | 85.2 | 4.7 | 88.1 | 84.9 | 3.2"</blockquote>
+      <blockquote>Q3 2025: "Consolidated earnings from operations of $4.3 billion compared to $8.7 billion last year, with 2025 impacted by elevated medical cost trend"</blockquote>
+      <p class="magnitude"><b>Size:</b> 4.7 points on $88.98B of premiums = about $4.2B of quarterly medical cost; operating margin 3.8%.</p>
+      <p>The series high for the MCR, a quarter after the pricing miss was admitted.</p>
+      <p class="next"><b>Next filing:</b> FY2025 MCR and 2026 pricing actions.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">A.M. Best downgrades to A&minus;; subsidiary dividends &ldquo;will be impacted&rdquo;; no buybacks</div>
+      <blockquote>Q3 2025: "the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 will be impacted"</blockquote>
+      <blockquote>Q3 2025: "Senior unsecured debt | A2 | Negative | A+ | Negative | A | Negative | A- | Stable"</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month subsidiary dividends $841M net of infusions (six months: $1.9B), implying about $1.1B sent back down in Q3 (inference).</p>
+      <p>The only rating change of the window; all four agencies now negative or downgraded.</p>
+      <p class="next"><b>Next filing:</b> full-year subsidiary flow (FY2025: $535M received).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health earns $255M (1.0% margin) vs $2,161M</div>
+      <blockquote>Q3 2025: "Optum Health | 255 | 2,161 | (1,906) | (88) | 2,505 | 5,979 | (3,474) | (58)"</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$1.9B year over year (&minus;88%); 96M people served vs 104M.</p>
+      <p>A year earlier this was the segment's best quarter; it was close to break-even before the Q4 charges.</p>
+      <p class="next"><b>Next filing:</b> Q4 actions (FY2025: $623M loss-contract reserve, $821M portfolio losses).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 2025 (filed August 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Insight earnings +83% as Change Healthcare recovers; provider loans repaid $1.29B in six months</div>
+      <blockquote>Q2 2025: "Earnings from operations at Optum Insight increased due to decreased business disruption impacts and direct response costs related to the Change Healthcare cyberattack."</blockquote>
+      <blockquote>Q2 2025: "Repayments of care provider loans - cyberattack | 1,293 | 604 | 689"</blockquote>
+      <p class="magnitude"><b>Size:</b> Insight $998M vs $546M; 20.7% margin. Loans repaid in H1 = 14% of the $9.0B lent.</p>
+      <p>The cyberattack drag is lapping and cash is coming back from providers.</p>
+      <p class="next"><b>Next filing:</b> Insight growth without the easy comparison (Q3 2025: &minus;11%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Six-month operating cash flow $12.6B vs $7.9B; Q2 cash twice net income</div>
+      <blockquote>Q2 2025: "Cash flows from operations for the six months ended June 30, 2025 were $12.6 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> Q2 operating cash flow $7.19B vs net income $3.41B (XBRL); six-month FCF $10.9B vs buybacks plus dividends $9.5B.</p>
+      <p>Cash held up better than earnings, helped by working capital and the IRA's Part D timing.</p>
+      <p class="next"><b>Next filing:</b> nine-month cash (Q3 2025: $18.6B vs $21.8B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Pricing admitted &ldquo;well-short&rdquo; of trend; MCR 89.4% vs 85.1%; operating income &minus;35%</div>
+      <blockquote>Q2 2025: "For 2025, our pricing trends and patient and member health status assumptions were well-short of the medical cost trends incurred, significantly impacting our earnings."</blockquote>
+      <p class="magnitude"><b>Size:</b> 4.3 points on $87.91B of premiums = about $3.8B of quarterly medical cost; UnitedHealthcare earnings &minus;48%.</p>
+      <p>Second filing in a row with a cost-trend miss, now extended from Medicare Advantage to all lines; this moved P1 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> MCR trend (Q3 2025: 89.9%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health earnings &minus;67% to $636M; market exits implied</div>
+      <blockquote>Q2 2025: "Optum Health’s fully accountable value-based care businesses have been impacted by Medicare funding reductions and have also seen continued medical cost trend pressures, which may impact future pricing in the markets we continue to participate."</blockquote>
+      <p class="magnitude"><b>Size:</b> $636M vs $1,919M; margin 2.5% vs 7.1%; 98M people served vs 104M.</p>
+      <p>Second consecutive decline (Q1 &minus;15%), now with exit language; this moved P4 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> margin (Q3 2025: 1.0%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Moody's, S&amp;P and A.M. Best outlooks go Negative; subsidiary dividends &ldquo;may be impacted&rdquo;</div>
+      <blockquote>Q2 2025: "While we continue to maintain significant levels of excess statutory capital in our subsidiaries, the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 may be impacted."</blockquote>
+      <blockquote>Q2 2025: "Senior unsecured debt | A2 | Negative | A+ | Negative | A | Stable | A | Negative"</blockquote>
+      <p class="magnitude"><b>Size:</b> six-month subsidiary dividends $1.9B vs $9.2B for all of 2024; $5.5B of buybacks already spent in H1.</p>
+      <p>The first time the MCR is tied to parent cash. With Q1's debt-funded buybacks, this moved P6 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> ratings and nine-month subsidiary dividends.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Reserves and earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Reserves and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Exchange losses for the second half booked in Q2; no prior-year development in the quarter</div>
+      <blockquote>Q2 2025: "the impacts of market morbidity changes on our individual exchange offerings, including the acceleration of anticipated future losses related to the second half of 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> loss accrual not quantified; six-month development $320M, unchanged from Q1, so Q2 added nothing (2024 Q2: $80M).</p>
+      <p>Q2 earnings absorb future losses, which flatters Q3 (the Q3 10-Q says so) and removes the reserve cushion.</p>
+      <p class="next"><b>Next filing:</b> nine-month development (Q3 2025: $30M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 2025 (filed May 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and tax" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and tax</span><span class="chip">Stated</span></div>
+      <div class="title">Special Master recommends summary judgment for UNH in the DOJ risk-adjustment case</div>
+      <blockquote>Q1 2025: "In March 2025, a Special Master appointed by the court issued a report recommending that the court enter summary judgment in the Company’s favor on all remaining claims."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; the case dates to a 2011 whistleblower suit joined by the DOJ in 2017.</p>
+      <p>The first substantive progress in the case in six years. The DOJ moved to reject the report in April 2025, and the paragraph has not changed since.</p>
+      <p class="next"><b>Next filing:</b> a court ruling on the report (none through Q2 2026).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Medicare Advantage and Medicaid" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Medicare Advantage and Medicaid</span><span class="chip">Stated</span></div>
+      <div class="title">2026 Medicare Advantage Final Notice &ldquo;beginning to approach&rdquo; cost trend</div>
+      <blockquote>Q1 2025: "with the Final Notice for 2026 beginning to approach the industry forward medical cost trend"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; Medicare &amp; Retirement revenue $41.7B in the quarter (+18%).</p>
+      <p>After two years of base-rate cuts, the 2026 rate came closer to cost, which supports repricing in 2026.</p>
+      <p class="next"><b>Next filing:</b> the 2027 Advance Notice (FY2025 10-K: &ldquo;far below&rdquo;).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Insight earnings nearly double (+96%) as cyberattack costs fall away</div>
+      <blockquote>Q1 2025: "Earnings from operations at Optum Insight increased due to decreased business disruption impacts and direct response costs related to the Change Healthcare cyberattack."</blockquote>
+      <blockquote>Q1 2025: "Optum Insight | 961 | 490 | 471 | 96"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$471M; margin 20.8% vs 10.9%. Optum Rx earnings +15% on 408M scripts.</p>
+      <p>The FY2024 10-K said the drag would continue &ldquo;at a lesser extent in 2025&rdquo;; that held.</p>
+      <p class="next"><b>Next filing:</b> Insight earnings (Q2 2025: +83%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Costs &ldquo;above what we expected and contemplated&rdquo;: the first admission of a pricing miss</div>
+      <blockquote>Q1 2025: "We have observed increased care patterns, more notably related to physician and outpatient care for seniors served through Medicare Advantage, that are above what we expected and contemplated in our benefits design."</blockquote>
+      <p class="magnitude"><b>Size:</b> MCR 84.8% vs 84.3% (+0.5 points on $86.5B of premiums, about $0.4B); the text moved a quarter before the ratio did.</p>
+      <p>Directly reverses the FY2024 10-K statement that 2025 benefit design contemplated the trend.</p>
+      <p class="next"><b>Next filing:</b> Q2 MCR (89.4%: confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health revenue &minus;5% and earnings &minus;15%; risk contracts converted</div>
+      <blockquote>Q1 2025: "Revenues at Optum Health decreased primarily due to the conversion of risk-based contracts, Medicare Advantage funding reductions and the profile of members served"</blockquote>
+      <p class="magnitude"><b>Size:</b> revenue $25.31B vs $26.73B; earnings $1,614M vs $1,899M; people served 99M vs 104M.</p>
+      <p>Throughout 2024 the same sentence said revenue &ldquo;increased primarily due to organic growth&rdquo;.</p>
+      <p class="next"><b>Next filing:</b> Q2 Optum Health earnings (&minus;67%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">$3.0B of buybacks in a quarter funded partly with $3.9B of net borrowing; commercial paper $5.2B</div>
+      <blockquote>Q1 2025: "As of March 31, 2025, the Company had $5.2 billion of commercial paper outstanding, with a weighted-average annual interest rate of 4.4%."</blockquote>
+      <blockquote>Q1 2025: "During the three months ended March 31, 2025, we repurchased approximately 6.0 million shares at an average price of $503.72 per share."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks + dividends $4.91B vs FCF $4.56B; total debt $81.3B vs $76.9B at year end.</p>
+      <p>Shares were bought at about $504, near the top, with borrowed money, a quarter before the margin collapse.</p>
+      <p class="next"><b>Next filing:</b> buyback pace and ratings (Q2 2025: outlooks Negative).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (filed February 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Regulated subsidiaries pay the parent $9.2B, up from $8.0B; buybacks and dividends within FCF</div>
+      <blockquote>FY2024: "Our U.S. regulated subsidiaries paid their parent companies dividends of $9.2 billion and $8.0 billion in 2024 and 2023, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks $9.0B + dividends $7.53B = $16.5B vs FCF $20.70B; statutory capital $37.8B vs $20.4B required.</p>
+      <p>The capital-return engine still ran on upstream cash in the cyberattack year.</p>
+      <p class="next"><b>Next filing:</b> 2025 subsidiary dividends (Q2 2025 warned; FY2025: reversed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Rx revenue +15% and scripts +5% on new and existing clients</div>
+      <blockquote>FY2024: "Revenues and earnings from operations at Optum Rx increased due to higher script volumes from both new clients and growth in existing clients and growth in pharmacy services."</blockquote>
+      <blockquote>FY2024: "Optum Rx fulfilled 1,623 million and 1,542 million adjusted scripts in 2024 and 2023, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> revenue $133.2B (+$17.1B); earnings $5.84B vs $5.12B (+14%).</p>
+      <p>Organic growth from outside clients, not just UnitedHealthcare members.</p>
+      <p class="next"><b>Next filing:</b> 2025 scripts (Q1 2025: 408M vs 395M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Management says 2025 benefit design already prices in the higher trend</div>
+      <blockquote>FY2024: "Our 2025 benefit design approach contemplates these trends."</blockquote>
+      <p class="magnitude"><b>Size:</b> the claim covers 2025 premiums of $352B (as later reported).</p>
+      <p>Taken at face value, the 2.3-point MCR rise of 2024 would not repeat. Later filings showed this was wrong (see the targets table).</p>
+      <p class="next"><b>Next filing:</b> Q1 2025 cost-trend language (dropped: costs &ldquo;above what we expected&rdquo;).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">MCR 85.5% vs 83.2%; operating income flat at $32.3B on +8% revenue</div>
+      <blockquote>FY2024: "The MCR increased as a result of the revenue effects of the Medicare funding reductions, Medicaid timing mismatch between people’s health status and rates, upshift in hospital coding intensity, specialty pharmaceutical prescribing patterns, member mix"</blockquote>
+      <p class="magnitude"><b>Size:</b> 2.3 points on $308.8B of premiums = about $7.1B of medical cost.</p>
+      <p>Six named drivers, most of them persistent. The risk factor's &ldquo;80% to 85%&rdquo; range was deleted in the same filing.</p>
+      <p class="next"><b>Next filing:</b> Q1 2025 MCR and cost language.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Reserves and earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Reserves and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health profit led by portfolio gains; favorable development $840M &rarr; $700M</div>
+      <blockquote>FY2024: "Earnings from operations increased due to gains related to business portfolio refinement, including strategic transactions, increased investment income and cost management initiatives"</blockquote>
+      <blockquote>FY2024: "Medical costs in 2024, 2023 and 2022 included favorable medical cost development related to prior years of $700 million, $840 million and $410 million, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> gains not quantified; Optum Health earnings $7.77B vs $6.56B. Development down $140M; net income $14.4B after $8.3B of South America losses.</p>
+      <p>Flat operating income depended on one-time gains and a smaller reserve cushion. With Q3 2024's disposition gains, this moved P2 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> development in 2025 quarters ($320M in Q1).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Debt +$14.7B to $76.2B; parent cash falls to about $800M from $5.2B in September</div>
+      <blockquote>FY2024: "As of December 31, 2024, our cash, cash equivalent, available-for-sale debt securities and equity securities balances of $77.1 billion included $25.3 billion of cash and cash equivalents (of which approximately $800 million was available for general corporate use)"</blockquote>
+      <blockquote>FY2024: "Total short-term borrowings and long-term debt | 76,180 | 61,473"</blockquote>
+      <p class="magnitude"><b>Size:</b> net debt issuance $14.66B funded $13.4B of acquisitions and $9.0B of provider loans; the covenant ratio (43% in Q3) is no longer disclosed.</p>
+      <p>Leverage rose sharply in the year before earnings fell.</p>
+      <p class="next"><b>Next filing:</b> commercial paper and buyback funding (Q1 2025: CP $5.2B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Medicare Advantage and Medicaid" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Medicare Advantage and Medicaid</span><span class="chip">Stated</span></div>
+      <div class="title">2026 Advance Notice &ldquo;also well short&rdquo; of trend; Medicaid margin pressure</div>
+      <blockquote>FY2024: "The Advance Notice for 2026 rates proposes an industry base rate increase also well short of forward medical cost trend, creating continued pressure in the Medicare Advantage program."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; CMS premiums 40% of revenue.</p>
+      <p>A third year of rates below trend, with a Medicaid margin warning in the same section. With Q3 2024's Medicaid gap, this moved P3 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> the 2026 Final Notice (Q1 2025: &ldquo;beginning to approach&rdquo;).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2024 (filed November 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P4 Optum Health and value-based care" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Optum Health and value-based care</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health earnings +38% to $2,161M (8.3% margin), revenue +9%</div>
+      <blockquote>Q3 2024: "Revenues at Optum Health increased primarily due to organic growth in patients served under value-based care arrangements."</blockquote>
+      <blockquote>Q3 2024: "Optum Health | 2,161 | 1,568 | 593 | 38 | 5,979 | 4,869 | 1,110 | 23"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$593M; revenue $25.9B; 104M people served.</p>
+      <p>The value-based care model at its peak margin; part of the gain was disposition gains (see bear side).</p>
+      <p class="next"><b>Next filing:</b> full-year margin (FY2024: 7.4%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Rx scripts +6% and earnings +23%</div>
+      <blockquote>Q3 2024: "Optum Rx fulfilled 407 million and 383 million adjusted scripts in the third quarters of 2024 and 2023, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> revenue $34.2B (+19%); earnings $1,544M vs $1,257M.</p>
+      <p>Script growth from new clients plus &ldquo;operating cost efficiencies and supply chain initiatives&rdquo;.</p>
+      <p class="next"><b>Next filing:</b> full-year scripts (FY2024: 1,623M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash, capital return and balance sheet" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash, capital return and balance sheet</span><span class="chip">Stated</span></div>
+      <div class="title">Covenant leverage 43% against a 60% limit; $5.2B of parent cash</div>
+      <blockquote>Q3 2024: "As of September 30, 2024, our debt to debt-plus-shareholders’ equity ratio, as defined and calculated under the credit facilities, was approximately 43%."</blockquote>
+      <p class="magnitude"><b>Size:</b> 17 points of covenant headroom after $18.0B of 2024 note issues; Q3 operating cash flow $13.95B.</p>
+      <p>Ample room despite the cyberattack loans and acquisitions.</p>
+      <p class="next"><b>Next filing:</b> year-end ratio (FY2024: no longer disclosed).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Medical cost trend and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Medical cost trend and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">New cost drivers: hospital coding intensity and specialty drugs; MCR 85.2% vs 82.3%</div>
+      <blockquote>Q3 2024: "In the third quarter, we also experienced higher medical costs due to a pronounced upshift in coding intensity by hospitals and an acceleration of the prescribing of certain high-cost specialty medications"</blockquote>
+      <p class="magnitude"><b>Size:</b> 2.9 points on $77.4B of premiums = about $2.2B of quarterly medical cost; UnitedHealthcare earnings &minus;8%.</p>
+      <p>The first cost driver beyond senior outpatient care, still framed as &ldquo;expected and contemplated&rdquo;.</p>
+      <p class="next"><b>Next filing:</b> FY2024 MCR (85.5%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Medicare Advantage and Medicaid" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Medicare Advantage and Medicaid</span><span class="chip">Stated</span></div>
+      <div class="title">Medicaid rates &ldquo;well short of current care activity&rdquo;; Medicaid members &minus;615K</div>
+      <blockquote>Q3 2024: "The Medicaid redetermination process has also caused a timing mismatch between the current health status of people served through Medicaid and state rate updates, which remain well short of current care activity."</blockquote>
+      <p class="magnitude"><b>Size:</b> Community &amp; State revenue $20.2B in the quarter; Medicaid 7.45M members vs 8.07M.</p>
+      <p>A sicker remaining Medicaid population priced on old rates; the gap persisted through every later filing.</p>
+      <p class="next"><b>Next filing:</b> FY2024 Medicaid language (&ldquo;will narrow in 2025&rdquo;).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Reserves and earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Reserves and earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Health gains partly from dispositions; investment income +65%; lower reserve releases</div>
+      <blockquote>Q3 2024: "Earnings from operations increased due to cost management initiatives, business portfolio and asset dispositions and increased investment income"</blockquote>
+      <blockquote>Q3 2024: "Investment and other income | 1,643 | 997 | 646 | 65 | 3,651 | 2,910 | 741 | 25"</blockquote>
+      <p class="magnitude"><b>Size:</b> the $646M investment-income increase = 7.4% of operating income ($8.71B); nine-month development $600M vs $760M.</p>
+      <p>Operating income grew only 2%, and less than all of that was operating.</p>
+      <p class="next"><b>Next filing:</b> FY2024 development and portfolio gains.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Optum Rx and Optum Insight" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Optum Rx and Optum Insight</span><span class="chip">Stated</span></div>
+      <div class="title">Optum Insight earnings &minus;29%; $8.9B lent to providers after the cyberattack</div>
+      <blockquote>Q3 2024: "Revenues at Optum Insight decreased due the business disruption impacts from the Change Healthcare cyberattack"</blockquote>
+      <blockquote>Q3 2024: "Loans to care providers - cyberattack | (8,904) | — | (8,904)"</blockquote>
+      <p class="magnitude"><b>Size:</b> Insight $791M vs $1,109M; loans outstanding about $5.7B net of $3.2B repaid.</p>
+      <p>Cash tied up with providers; collection risk later crystallized as the FY2025 $799M reserve.</p>
+      <p class="next"><b>Next filing:</b> repayment pace (FY2024: $4.5B repaid).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
