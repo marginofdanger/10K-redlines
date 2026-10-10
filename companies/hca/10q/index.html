@@ -252,7 +252,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>HCA 10-Q Quarterly Scanner</h1>
   <div class="tagline">Quarter-over-quarter textual analysis of ten SEC filings &mdash; eight 10-Qs from Q1 2024 (quarter ended March 31, 2024) through Q2 2026 (June 30, 2026), with the FY2024 and FY2025 10-Ks interleaved at the year boundaries. Nine consecutive transitions covering MD&amp;A, forward-looking factors, Item 1A, Item 2, and legal proceedings.</div>
-  <div class="source">Source: SEC EDGAR | HCA Healthcare, Inc. (NYSE: HCA) | 10 filings, 9 transitions | Q1 2024 &ndash; Q2 2026</div>
+  <div class="source">Source: SEC EDGAR | HCA Healthcare, Inc. (NYSE: HCA) | 10 filings, 9 transitions | Q1 2024 &ndash; Q2 2026 | Analysis: 2026; Q3 2024&ndash;Q2 2026 transitions re-analyzed with sentence-level signals October 2026</div>
 </div>
 
 
@@ -333,79 +333,113 @@ a:hover { text-decoration: underline; }
 <!-- Q2 → Q3 2024 -->
 <div class="transition-header" id="q2q3-2024">
   <h2>Q2 2024 &rarr; Q3 2024</h2>
-  <div class="sub">Same-facility equivalent admissions +4.5% | Capex: $5.1&ndash;5.3B &rarr; $5B for 2024 | Filed Oct 31, 2024</div>
+  <div class="sub">Filed Oct 31, 2024 | Revenues $17.487B (+7.9%) | Diluted EPS $4.88 (+24.8%) | Same-facility equivalent admissions +4.5% | Capex guide $5.1&ndash;5.3B &rarr; $5B for 2024 | Hurricane Helene ~$50M, Q4 hurricanes $200&ndash;300M estimated</div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Hurricanes Helene and Milton first appear: $50M Q3 actual + $200&ndash;300M Q4 estimate</span>
+    <span class="title">Hurricanes Helene and Milton: ~$50M Q3 cost booked, $200&ndash;300M guided for Q4, both before any insurance recovery</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>New Operations Summary paragraph:</p>
-    <blockquote>"Third quarter results for 2024 also included additional expenses and loss of revenues estimated at approximately $50 million, or $0.15 per diluted share, associated with the impact of Hurricane Helene on our Florida, Georgia and North Carolina facilities. Additionally, during the fourth quarter of 2024, we anticipate ongoing additional expenses and loss of revenues of approximately $200 million to $300 million, or $0.60 to $0.90 per diluted share, due to Hurricane Helene's impact to our North Carolina facilities, as well as from Hurricane Milton, which impacted certain facilities in Florida during October. The impact to the third quarter of 2024 and estimates for the fourth quarter of 2024 do not include any insurance recoveries we may receive."</blockquote>
-    <p>The forward-looking statements gained "expected hurricane-related expenses and losses of revenues" in the preamble and "including Hurricanes Helene and Milton" in factor (23); the other-operating-expense driver gained "higher repairs and maintenance expense related to the response to Hurricane Helene at impacted hospitals, primarily in North Carolina."</p>
+    <p class="shift">Shift: named +Hurricane Helene, +Hurricane Milton; quant added, an actual and a forward range (+); condition added "do not include any insurance recoveries"</p>
+    <blockquote>Q3 2024: "Third quarter results for 2024 also included additional expenses and loss of revenues estimated at approximately $50 million, or $0.15 per diluted share, associated with the impact of Hurricane Helene on our Florida, Georgia and North Carolina facilities."</blockquote>
+    <blockquote>Q3 2024: "Additionally, during the fourth quarter of 2024, we anticipate ongoing additional expenses and loss of revenues of approximately $200 million to $300 million, or $0.60 to $0.90 per diluted share, due to Hurricane Helene&rsquo;s impact to our North Carolina facilities, as well as from Hurricane Milton, which impacted certain facilities in Florida during October."</blockquote>
+    <blockquote>Q3 2024: "The impact to the third quarter of 2024 and estimates for the fourth quarter of 2024 do not include any insurance recoveries we may receive."</blockquote>
+    <p class="history">History: "Hurricane Helene" first appears in Q3 2024; "insurance recoveries we may receive" appears in Q3 2024 only. "Hurricanes Helene and Milton" carries into the FY2024 and FY2025 10-Ks.</p>
+    <p>The Q4 estimate is four to six times the Q3 cost, so most of the damage was still ahead at filing. The forward-looking preamble also gained "expected hurricane-related expenses and losses of revenues," and other operating expense now cites "higher repairs and maintenance expense related to the response to Hurricane Helene at impacted hospitals, primarily in North Carolina".</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">ACA enhanced-subsidy expiration enters the forward-looking factors</span>
+    <span class="title">Florida directed-payment catch-up named as a $397M prior-year base; revenue per equivalent admission growth slows from 4.1% to 2.8%</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Factor (3) gained:</p>
-    <blockquote>"and the expiration of enhanced subsidies for individuals eligible to purchase insurance coverage through federal and state-based health insurance marketplaces"</blockquote>
-    <p>First appearance of exchange-subsidy expiration language in this 10-Q series.</p>
+    <p class="shift">Shift: named +Florida Medicaid hospital directed payment program (absent from the Q1&ndash;Q2 2024 10-Qs); quant added (+)</p>
+    <blockquote>Q2 2024: "The increase in consolidated revenues can be primarily attributed to the combined impact of a 4.1% increase in revenue per equivalent admission and a 6.0% increase in equivalent admissions."</blockquote>
+    <blockquote>Q3 2024: "The increase in consolidated revenues can be primarily attributed to the combined impact of a 2.8% increase in revenue per equivalent admission and a 5.0% increase in equivalent admissions."</blockquote>
+    <blockquote>Q3 2024: "We recorded revenues of $397 million during the quarter and nine months ended September 30, 2023 related to the Florida Medicaid hospital directed payment program for the year ended September 30, 2023."</blockquote>
+    <p class="history">History: "Florida Medicaid hospital directed payment" appears in Q3 2024 only; the Q3 2023 10-Q had described the program's approval ("directed payment program" also appears there). A Florida directed-payment application is named again in Q1 2026.</p>
+    <p>The sentence explains the slower pricing growth without saying so: a full program year of Florida payments landed in Q3 2023, about 2.4% of that quarter's $16.213B revenue. The filing does not say whether any 2024 Florida payment was recorded. The same pattern, a state program approved late and booked in one quarter, produced the $1.372B Florida catch-up in Q2 2026.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Florida is the first state named in a supplemental-payment revenue disclosure</span>
+    <span class="title">Exchange-subsidy expiry enters the forward-looking factors: "the expiration of enhanced subsidies" added to factor (3)</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We recorded revenues of $397 million during the quarter and nine months ended September 30, 2023 related to the Florida Medicaid hospital directed payment program for the year ended September 30, 2023."</blockquote>
+    <p class="shift">Shift: named +expiration of enhanced subsidies (+ disclosure); placed beside "Medicare for All" in the same factor</p>
+    <blockquote>Q3 2024: "(3) the impact of current and future federal and state health reform initiatives ... including, but not limited to, proposals to expand coverage of federally-funded insurance programs as an alternative to private insurance or establish a single-payer system (such reforms often referred to as &ldquo;Medicare for All&rdquo;), and the expiration of enhanced subsidies for individuals eligible to purchase insurance coverage through federal and state-based health insurance marketplaces"</blockquote>
+    <p class="history">History: "expiration of enhanced subsidies" appears in Q3 2024 only; the FY2024 10-K renamed it "enhanced premium tax credits" and dropped "Medicare for All". The FY2023 10-K Business section had said only "If these subsidies are not extended beyond 2025" (FY2023 only).</p>
+    <p>Filed five days before the 2024 election, the factor still pairs a coverage-expansion risk with a coverage-contraction one. The next filing deleted the expansion half. The credits expired at the end of 2025, and uninsured admissions rose 15.6% in Q1 2026.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Capex guidance narrowed from $5.1&ndash;5.3B to $5B</span>
+    <span class="title">2024 capex guide cut from $5.1&ndash;5.3B to "approximate $5 billion", below the old floor</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q2 2024:</p>
-    <blockquote>"expected to approximate between $5.1 billion and $5.3 billion in 2024"</blockquote>
-    <p>Q3 2024:</p>
-    <blockquote>"expected to approximate $5 billion in 2024"</blockquote>
+    <p class="shift">Shift: guidance range &rarr; point, set below the prior floor (&minus;)</p>
+    <blockquote>Q2 2024: "Planned capital expenditures are expected to approximate between $5.1 billion and $5.3 billion in 2024."</blockquote>
+    <blockquote>Q3 2024: "Planned capital expenditures are expected to approximate $5 billion in 2024."</blockquote>
+    <p class="history">History: the $5.1&ndash;5.3B range stood in the FY2023 10-K, Q1 and Q2 2024; "expected to approximate $5 billion" appears in Q3 2024 only.</p>
+    <p>Nine-month spending implied a fourth quarter well under the old range. Actual 2024 capex came in at $4.88B, below even the cut figure. Repurchases in the same nine months were $4.342B.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">August 2024 $3.0B senior notes issuance added; total debt $40.880B &rarr; $42.965B</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Three tranches: $750M 5.450% due 2031 (re-opening), $1.25B 5.450% due 2034, $1.0B 5.950% due 2054.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Volume mix shifts: uninsured admissions flip to declines; contract-labor decline decelerates</span>
+    <span class="title">Uninsured admissions turn negative: +4.0% / +3.5% in Q2 becomes &minus;1.6% / &minus;1.8% in Q3</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Uninsured admissions "declined 1.6% and 1.8%" versus Q2's +4.0%/+3.5%. The contract-labor decline decelerated from 25.7% to 17.8% (quarter). Supplies pharmacy cost per equivalent admission flipped from &minus;6.8% to +1.6%.</p>
+    <p class="shift">Shift: direction reversed, increase &rarr; decline (+ for payer mix)</p>
+    <blockquote>Q2 2024: "Consolidated and same facility uninsured admissions increased 4.0% and 3.5%, respectively, for the quarter ended June 30, 2024, compared to the quarter ended June 30, 2023."</blockquote>
+    <blockquote>Q3 2024: "Consolidated and same facility uninsured admissions declined 1.6% and 1.8%, respectively, for the quarter ended September 30, 2024, compared to the quarter ended September 30, 2023."</blockquote>
+    <p class="history">History: "declined 1.8% in the third quarter" is repeated in the quarterly history sentence of the Q1&ndash;Q3 2025 10-Qs, which show Q3 as the only negative quarter of 2024 (+2.4% Q1, +3.5% Q2, +0.1% Q4).</p>
+    <p>Texas and Florida rose to 74% of uninsured admissions from 73%. The full year still ended up 1.0% same facility (FY2024 10-K), and the line reversed sharply once the subsidies expired.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medical-device cost per equivalent admission doubles its growth to 6.8%; pharmacy flips from &minus;6.8% to +1.6%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant up, device inflation 3.4% &rarr; 6.8%; pharmacy direction reversed (&minus;)</p>
+    <blockquote>Q2 2024: "Supply costs per equivalent admission increased 3.4% for medical devices and 0.9% for general medical and surgical items and declined 6.8% for pharmacy supplies in the second quarter of 2024, compared to the second quarter of 2023."</blockquote>
+    <blockquote>Q3 2024: "Supply costs per equivalent admission increased 6.8% for medical devices, 1.6% for pharmacy supplies and 4.4% for general medical and surgical items in the third quarter of 2024, compared to the third quarter of 2023."</blockquote>
+    <p class="history">History: "increased 6.8% for medical devices" appears in Q3 2024 only. Device cost growth was later attributed to "cardiovascular technologies" (from Q2 2025).</p>
+    <p>Pharmacy had been the one falling supply line in Q2. In Q3 all three categories rose while revenue per equivalent admission slowed to 2.8%, so device cost per unit grew more than twice as fast as price per unit.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$3.0B of notes issued in August; cash builds $1.953B ahead of 2025 maturities; operating cash flow +$1.036B on receivable collections</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: direction reversed, Q2 "declined $504 million" &rarr; Q3 "increased $1.036 billion" (+); quant added, cash offset in the working-capital sentence</p>
+    <blockquote>Q3 2024: "During August 2024, we issued $3.000 billion aggregate principal amount of senior notes comprised of (i) $750 million aggregate principal amount of 5.450% senior notes due 2031 (the &ldquo;New 2031 Notes&rdquo;), (ii) $1.250 billion aggregate principal amount of 5.450% senior notes due 2034 and (iii) $1.000 billion aggregate principal amount of 5.950% senior notes due 2054."</blockquote>
+    <blockquote>Q3 2024: "Working capital totaled $1.762 billion at September 30, 2024 and $2.272 billion at December 31, 2023 (decline was primarily due to the $2.258 billion increase in long-term debt due within one year, offset by a $1.953 billion increase in cash and cash equivalents)."</blockquote>
+    <blockquote>Q3 2024: "The increase in cash provided by operating activities was primarily related to positive changes in working capital items of $859 million, mainly from a decline in accounts receivable"</blockquote>
+    <p class="history">History: "offset by a $1.953 billion increase in cash" appears in Q3 2024 only; "mainly from a decline in accounts receivable" last appeared in Q2 2023.</p>
+    <p>Cash reached $2.89B, the highest quarter-end balance in the set (next: $1.93B at December 31, 2024), consistent with pre-funding the $2.600 billion of 5.375% notes repaid at maturity in February 2025 (inference). Days sales outstanding fell to 52 from 53.</p>
   </div>
 </div>
 
@@ -413,86 +447,171 @@ a:hover { text-decoration: underline; }
 <!-- Q3 2024 → FY2024 10-K -->
 <div class="transition-header" id="q3-2024-fy2024">
   <h2>Q3 2024 &rarr; FY2024 10-K</h2>
-  <div class="sub">Annual Filing (Feb 2025) | FY2024 revenues $70.603B | Capex: first 2025 guidance $5.0&ndash;5.2B</div>
+  <div class="sub">Filed Feb 14, 2025 | FY2024 revenues $70.603B (+8.7%) | Diluted EPS $22.00 (+16.0%) | Operating cash flow $10.51B; capex $4.88B | Hurricanes ~$250M | First 2025 capex guide $5.0&ndash;5.2B | January 2025 $10B buyback authorization</div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Hurricane full-year actual lands at $250M &mdash; the bottom of the implied range; insurance-recovery sentence not carried</span>
+    <span class="title">Hurricane cost lands at ~$250M, the floor of the implied $250&ndash;350M; the insurance-recovery caveat is not carried and repair costs are re-attributed to Milton in Florida</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"The 2024 results also include additional expenses and losses of revenues estimated at approximately $250 million, or $0.73 per diluted share, related to Hurricanes Helene and Milton, which impacted our facilities in North Carolina and certain facilities in Florida."</blockquote>
-    <p>Q3's $50M actual plus the $200&ndash;300M Q4 estimate implied $250&ndash;350M. Georgia was dropped from the named states, the "do not include any insurance recoveries we may receive" sentence was not carried forward, and the "expected hurricane-related expenses" topic dropped out of the forward-looking-statements preamble.</p>
+    <p class="shift">Shift: realized, estimate range &rarr; actual at the low end (+); condition dropped "do not include any insurance recoveries"; named &minus;Georgia, &minus;Helene/North Carolina in the expense driver, +Milton/Florida</p>
+    <blockquote>Q3 2024: "The impact to the third quarter of 2024 and estimates for the fourth quarter of 2024 do not include any insurance recoveries we may receive."</blockquote>
+    <blockquote>FY2024 10-K: "The 2024 results also include additional expenses and losses of revenues estimated at approximately $250 million, or $0.73 per diluted share, related to Hurricanes Helene and Milton, which impacted our facilities in North Carolina and certain facilities in Florida."</blockquote>
+    <blockquote>FY2024 10-K: "The 1.2% increase in other operating expenses, as a percentage of revenues for 2024 compared to 2023, was primarily related to increased costs for state provider fees in certain states, professional fees and repairs and maintenance, primarily related to remediation activities in certain hospitals in the state of Florida in response to Hurricane Milton."</blockquote>
+    <p class="history">History: "insurance recoveries we may receive" appears in Q3 2024 only; "approximately $250 million" in the FY2024 and FY2025 10-Ks; "remediation activities in certain hospitals" in FY2024 only.</p>
+    <p>Q3's ~$50M plus the $200&ndash;300M Q4 estimate implied $250&ndash;350M; the full year came in at the bottom, so Q4 cost ~$200M. The filing no longer says whether the figure is before or after insurance. The Q3 expense driver was Helene repairs in North Carolina; the annual one is Milton remediation in Florida.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicaid program revenues quantified for the first time: $4.9B (2024) vs $3.9B (2023)</span>
+    <span class="title">Supplemental-payment risk re-hardened: "replace" and "could result in the payment programs being reduced or eliminated" return after two softer quarters</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree, "significant changes" &rarr; "reduced or eliminated" (&minus; outlook, + candor); "modify" &rarr; "replace"</p>
+    <blockquote>Q3 2024: "These supplemental payment programs are regularly reviewed by certain government agencies, and some states have made requests to CMS to modify their existing supplemental payment programs."</blockquote>
+    <blockquote>Q3 2024: "It is possible that these developments, reviews and requests will result in the restructuring of or other significant changes to supplemental payment programs."</blockquote>
+    <blockquote>FY2024 10-K: "These supplemental payment programs are regularly reviewed by certain government agencies and some states have made requests to CMS to replace their existing supplemental payment programs."</blockquote>
+    <blockquote>FY2024 10-K: "It is possible that these developments, reviews and requests will result in the restructuring of or other significant changes to supplemental payment programs and could result in the payment programs being reduced or eliminated."</blockquote>
+    <p class="history">History: "requests to CMS to modify" appears in Q2 and Q3 2024 only; "requests to CMS to replace" in every filing from Q2 2023 to Q1 2024 and in FY2024. "reduced or eliminated" is absent only from the Q2 and Q3 2024 10-Qs among filings from Q2 2023 to FY2025.</p>
+    <p>The softer wording lasted exactly the two quarters after the May 2024 CMS rule. The 10-K put the elimination risk back in the same filing that first sized these programs at $4.9B in the MD&amp;A.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicaid state directed and supplemental revenue enters the MD&amp;A summary: $4.9B in 2024 vs $3.9B in 2023</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Our revenues from Medicaid state directed and supplemental payment programs totaled approximately $4.9 billion and $3.9 billion in 2024 and 2023, respectively."</blockquote>
-    <p>Word-level, the 10-K reverted Q2 2024's softening: "modify" &rarr; "replace," and "could result in the payment programs being reduced or eliminated" was reinstated.</p>
+    <p class="shift">Shift: quant added to MD&amp;A (+); two years given where FY2023 gave one</p>
+    <blockquote>FY2024 10-K: "Our revenues from Medicaid state directed and supplemental payment programs totaled approximately $4.9 billion and $3.9 billion in 2024 and 2023, respectively."</blockquote>
+    <p class="history">History: "$4.9 billion and $3.9 billion" appears in FY2024 only (Business and MD&amp;A); the FY2023 10-K Business section gave "totaled approximately $3.9 billion" (FY2023 only). None of the 2024 10-Qs gave a figure; the FY2025 10-K restated both years up, to $5.5B and $4.4B.</p>
+    <p>The $1.0B increase is about 18% of the year's $5.6B revenue growth, and roughly 7% of revenue now rides on programs the same paragraph says could be "reduced or eliminated."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">First 2025 capex guidance: $5.0&ndash;5.2B</span>
+    <span class="title">Forward-looking factor on reform rewritten: "Medicare for All" deleted; "health reform initiatives" becomes "public policy developments" led by the premium-tax-credit expiry</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named &minus;"Medicare for All", +"enhanced premium tax credits"; factor moves from (3) to (2), ahead of indebtedness</p>
+    <blockquote>Q3 2024: "(3) the impact of current and future federal and state health reform initiatives and possible changes to other federal, state or local laws and regulations affecting the health care industry, including, but not limited to, proposals to expand coverage of federally-funded insurance programs as an alternative to private insurance or establish a single-payer system"</blockquote>
+    <blockquote>FY2024 10-K: "(2) the impact of current and future health care public policy developments and possible changes to other federal, state or local laws and regulations affecting the health care industry, including, but not limited to, the expiration of enhanced premium tax credits for individuals eligible to purchase insurance coverage through federal and state-based health insurance marketplaces"</blockquote>
+    <p class="history">History: "federal and state health reform initiatives" and "Medicare for All" ran in every filing from Q2 2023 to Q3 2024; "health care public policy developments" first appears in FY2024 and stands in every filing since.</p>
+    <p>Written after the 2024 election, the factor drops the coverage-expansion risk entirely and keeps only the contraction risk. It now ranks second, above HCA's own debt.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Factor (1) adds "interruptions in appropriation or distribution of governmental funds" beside government shutdowns</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope widened, shutdown risk &rarr; shutdown plus funding interruptions (+ disclosure)</p>
+    <blockquote>Q3 2024: "and the impact of potential federal government shutdowns, (2) the impact of our significant indebtedness"</blockquote>
+    <blockquote>FY2024 10-K: "and the impact of potential federal government shutdowns or interruptions in appropriation or distribution of governmental funds, (2) the impact of current and future health care public policy developments"</blockquote>
+    <p class="history">History: "interruptions in appropriation or distribution of governmental funds" appears in FY2024 only; Q1 2025 rewrote it as "holds on or cancellations of congressionally authorized spending and interruptions in the distribution of governmental funds".</p>
+    <p>The clause widens a shutdown risk that had stood unchanged since Q3 2023 to cover funds already appropriated. It was sharpened again the next quarter, and in Q3 2025 "potential federal government shutdowns" (Q3 2023&ndash;Q2 2025) became "federal government shutdowns".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">PAYGO sequestration tied to the American Rescue Plan dropped from the sequestration factor</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named &minus;Pay-As-You-Go Act, &minus;American Rescue Plan Act (&minus; disclosure)</p>
+    <blockquote>Q3 2024: "(4) the effects related to the implementation of sequestration spending reductions required under the Budget Control Act of 2011, related legislation extending these reductions and those required under the Pay-As-You-Go Act of 2010 as a result of the federal budget deficit impact of the American Rescue Plan Act of 2021, and the potential for future deficit reduction legislation"</blockquote>
+    <blockquote>FY2024 10-K: "(4) the effects related to the implementation of sequestration spending reductions required under the Budget Control Act of 2011, related legislation extending these reductions, and the potential for future deficit reduction legislation"</blockquote>
+    <p class="history">History: "Pay-As-You-Go Act of 2010" appears in every filing from Q2 2023 to Q3 2024, is absent from FY2024 and Q1 2025, and returns in Q2 and Q3 2025 tied to the OBBBA.</p>
+    <p>The removal was short-lived. Six months later the same statute came back as a live risk, with Q3 2025 putting a number on it: Medicare cuts "of up to 4% in early 2026".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Supreme Court agency-deference factor deleted after two quarters</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: factor removed (&minus; disclosure); list 27 &rarr; 26 factors</p>
+    <blockquote>Q3 2024: "(26) the impact of recent decisions of the U.S. Supreme Court regarding the actions of federal agencies, and (27) other risk factors described in our annual report on Form 10-K for the year ended December 31, 2023"</blockquote>
+    <p class="history">History: "impact of recent decisions of the U.S. Supreme Court" appears in Q2 and Q3 2024 only (not three quarters, as this page previously said).</p>
+    <p>The FY2024 10-K names Loper Bright in its Business and Risk Factors sections instead ("Loper Bright" appears in FY2024 and FY2025 only), so the risk was relocated rather than dropped; the forward-looking list no longer flags it.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First 2025 capex guide $5.0&ndash;5.2B, after 2024 spending of $4.88B came in under even the cut $5B figure</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Planned capital expenditures are expected to approximate between $5.0 billion and $5.2 billion in 2025."</blockquote>
+    <p class="shift">Shift: guidance reset, point &rarr; range, floor at the prior point (+ disclosure)</p>
+    <blockquote>Q3 2024: "Planned capital expenditures are expected to approximate $5 billion in 2024."</blockquote>
+    <blockquote>FY2024 10-K: "Planned capital expenditures are expected to approximate between $5.0 billion and $5.2 billion in 2025."</blockquote>
+    <p class="history">History: "$5.0 billion and $5.2 billion" appears in FY2024 and Q1 2025; Q2 2025 collapsed it to "approximately $5.0 billion". Construction backlog held at $4.7B from Q3 2024 to FY2024.</p>
+    <p>HCA has guided above what it then spent: $4.88B in 2024 against a $5.1&ndash;5.3B starting range, and $4.94B in 2025 against this $5.0&ndash;5.2B range.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">January 2025 $10B repurchase authorization first disclosed; dividend raised to $0.72</span>
+    <span class="title">January 2025 buyback authorization of $10B, up from $6B a year earlier</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"During January 2023, January 2024 and January 2025, our Board of Directors authorized $3 billion, $6 billion and $10 billion, respectively..."</blockquote>
+    <p class="shift">Shift: quant up, authorization $6B &rarr; $10B (+)</p>
+    <blockquote>FY2024 10-K: "During January 2023, January 2024 and January 2025, our Board of Directors authorized $3 billion, $6 billion and $10 billion, respectively, for share repurchases of the Company&rsquo;s outstanding common stock."</blockquote>
+    <p class="history">History: "January 2023, January 2024 and January 2025" appears in FY2024 only; Q3 2024 named only the January 2024 and 2023 programs.</p>
+    <p>2024 repurchases were $6.04B against free cash flow of $5.64B. The $10B program was used up by Q1 2026, with $10.07B spent in 2025.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Forward-looking factor list rewritten: 27 &rarr; 26 factors</span>
+    <span class="title">Captive malpractice cover per occurrence raised from $80M to $110M; case reserves set "earlier" as IBNR falls</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Removed or replaced: the "Medicare for All" clause; the American Rescue Plan PAYGO clause; the COVID-19 reference; the July 2023 data-security-incident reference; and the Supreme Court/agency-deference factor (added Q2 2024, removed after three quarters). Terminology changes: "enhanced subsidies" &rarr; "enhanced premium tax credits"; "physical risks from climate change" &rarr; "physical risks from changing global weather patterns."</p>
+    <p class="shift">Shift: quant up, $80M &rarr; $110M per occurrence (+ retained risk); named +case-management process change</p>
+    <blockquote>FY2024 10-K: "Our facilities are insured by our insurance subsidiary for losses up to $80 million per occurrence ($110 million effective January 1, 2025), subject, in most cases, to a $15 million per occurrence self-insured retention."</blockquote>
+    <blockquote>FY2024 10-K: "The 2024 increase in case reserves for known claims and the corresponding decrease in reserves for incurred but not reported claims is the result of changes in case management processes at our insurance subsidiary that include establishing case reserve estimates earlier and resolving claims quicker."</blockquote>
+    <p class="history">History: "losses up to $80 million per occurrence" stood in every filing from Q2 2023 to FY2024; "($110 million effective January 1, 2025)" appears in FY2024 only. "establishing case reserve estimates earlier" appears in FY2024 and FY2025.</p>
+    <p>More of each large claim now stays inside HCA's own insurance subsidiary. Case reserves rose to $1.059B from $947M while IBNR fell to $992M from $1.100B; the next 10-K showed a third straight year of adverse prior-year development ($126M).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Professional liability self-insurance limit raised to $110M; new case-reserve process disclosure</span>
+    <span class="title">"Physical risks from climate change" becomes "physical risks from changing global weather patterns" in the disaster factor</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"losses up to $80 million per occurrence ($110 million effective January 1, 2025)"</blockquote>
-    <p>New process disclosure: "establishing case reserve estimates earlier and resolving claims quicker."</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">New "Occupancy rate" metric; same-facility definition expanded; IRS exam status; SBC disclosed</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Occupancy rate reported at 73% (2024) vs 72% (2023). The same-facility definition gained "or removed from service." The IRS completed its 2016&ndash;2018 examinations and began examining 2022&ndash;2023. Share-based compensation disclosed at $360M vs $262M.</p>
+    <p class="shift">Shift: named &minus;"climate change" (&minus;); hurricanes named first</p>
+    <blockquote>Q3 2024: "(23) the impact of natural disasters, such as hurricanes and floods, physical risks from climate change or similar events beyond our control, including Hurricanes Helene and Milton"</blockquote>
+    <blockquote>FY2024 10-K: "(23) the impact of natural disasters, such as hurricanes and floods, including Hurricanes Milton and Helene, physical risks from changing global weather patterns or similar events beyond our control"</blockquote>
+    <p class="history">History: "physical risks from climate change" ran in every filing from Q2 2023 to Q3 2024; "changing global weather patterns" first appears in FY2024 and stands in every filing since.</p>
+    <p>The same edit runs through the 10-K's risk factors, where the Paris-aligned emissions plan was also deleted (see the 10-K dashboard).</p>
   </div>
 </div>
 
@@ -500,98 +619,159 @@ a:hover { text-decoration: underline; }
 <!-- FY2024 10-K → Q1 2025 -->
 <div class="transition-header" id="fy2024-q1-2025">
   <h2>FY2024 10-K &rarr; Q1 2025</h2>
-  <div class="sub">Same-facility equivalent admissions +2.8% | Capex: $5.0&ndash;5.2B (unchanged); construction pipeline $4.7B &rarr; $5.6B | Filed May 1, 2025</div>
+  <div class="sub">Filed May 1, 2025 | Revenues $18.321B (+5.7%) | Diluted EPS $6.45 (+8.8%) | Same-facility equivalent admissions +2.8% | Capex guide $5.0&ndash;5.2B held; construction pipeline $4.7B &rarr; $5.6B | Repurchases $2.51B (7.76M shares) | Total debt $44.576B</div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Tariffs and pharmaceuticals first appear &mdash; forward-looking factor (1) rewritten</span>
+    <span class="title">Item 1A exception restates the debt covenants: seven limits become four, and the cap on dividends and repurchases is gone</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: covenant removed, restricted payments (&minus; creditor protection, + capital-return flexibility); scope narrowed, "specified financial ratios" &rarr; "a specified financial ratio"; stub gains "except as set forth below"</p>
+    <blockquote>FY2024 10-K: "pay dividends on, repurchase or make distributions in respect of our capital stock or make other restricted payments;"</blockquote>
+    <blockquote>FY2024 10-K: "Under our senior secured credit facilities, we are required to satisfy and maintain specified financial ratios."</blockquote>
+    <blockquote>Q1 2025: "Our senior unsecured credit facility and the indentures governing our outstanding notes contain various covenants that limit our ability to engage in specified types of transactions."</blockquote>
+    <blockquote>Q1 2025: "Under our senior unsecured credit facility, we are required to satisfy and maintain a specified financial ratio."</blockquote>
+    <p class="history">History: "pay dividends on, repurchase or make distributions" appears in the FY2023 and FY2024 10-Ks only; "a specified financial ratio" first appears in Q1 2025 (then FY2025). "except as set forth below" appears in Q1 and Q2 2025 only &mdash; the first break in the quarterly no-material-changes stub in this series.</p>
+    <p>The list keeps debt, liens, sale-leasebacks and mergers; it drops restricted payments, investments, asset sales and affiliate transactions, and "to a lesser extent, the indentures" becomes simply "the indentures". The 10-K dashboard dates this change to FY2025; it was first disclosed here. Repurchases ran at twice the prior-year pace in the same quarter.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Secured facilities replaced by an $8.0B unsecured revolver at SOFR + 1.250%; $5.25B of notes issued and $2.6B repaid in February</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"(1) changes in or related to general economic or business conditions nationally and regionally in our markets, including inflation and the impact of trade policies, including changes in, or the imposition of, tariffs and/or trade barriers; ... potential increased expenses related to labor, pharmaceuticals, supply chain or other expenditures; workforce disruptions; supply and pharmaceutical shortages and disruptions (including as a result of tariffs or geopolitical disruptions); and the impact of potential federal government shutdowns, holds on or cancellations of congressionally authorized spending and interruptions in the distribution of governmental funds"</blockquote>
+    <p class="shift">Shift: named +senior unsecured credit facility; collateral language removed (&minus; lender security); quant added</p>
+    <blockquote>Q1 2025: "We entered into a new credit agreement that provides for $8.000 billion of senior unsecured revolving credit commitments with a term of five years (&ldquo;senior unsecured credit facility&rdquo;)."</blockquote>
+    <blockquote>Q1 2025: "We concurrently borrowed funds from the senior unsecured credit facility and repaid outstanding borrowings under our $4.5 billion senior secured asset-based revolving credit facility and our senior secured term loan facility of $1.238 billion."</blockquote>
+    <blockquote>FY2024 10-K: "If we were unable to repay those amounts, the lenders under the senior secured credit facilities could proceed against the collateral granted to them to secure such indebtedness."</blockquote>
+    <blockquote>Q1 2025: "If any of the lenders under our senior unsecured credit facility accelerate the repayment of borrowings, there can be no assurance there will be sufficient assets to repay our senior unsecured credit facility and our other indebtedness."</blockquote>
+    <p class="history">History: "Secured Overnight Financing Rate plus 1.250%" appears in Q1&ndash;Q3 2025 (the FY2025 10-K states SOFR + 1.125%); "against the collateral granted to them" appears in the FY2023 and FY2024 10-Ks only.</p>
+    <p>The $3.5B cash-flow revolver was also terminated. Total debt rose to $44.576B from $43.031B in one quarter while working capital more than doubled to $2.627B, so the new notes did more than refinance (inference from the figures).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Standalone health-policy paragraph first appears: EPTC expiration "scheduled to expire at the end of 2025"</span>
+    <span class="title">Tariffs and pharmaceuticals enter forward-looking factor (1)</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Added at the end of Revenue/Volume Trends:</p>
-    <blockquote>"The health care industry is subject to changing political, regulatory and other influences, including health care reform efforts at the federal and state levels. For example, the enhanced premium tax credits for individuals eligible to purchase insurance coverage through federal and state-based health insurance marketplaces are scheduled to expire at the end of 2025, and further extension is uncertain. We are monitoring and engaged in advocacy efforts around potential health care policy changes and reform."</blockquote>
+    <p class="shift">Shift: named +tariffs, +trade barriers, +pharmaceuticals (+ disclosure)</p>
+    <blockquote>FY2024 10-K: "(1) changes in or related to general economic conditions nationally and regionally in our markets, including inflation and economic and business conditions (and the impact thereof on the economy, financial markets and banking industry)"</blockquote>
+    <blockquote>Q1 2025: "(1) changes in or related to general economic or business conditions nationally and regionally in our markets, including inflation and the impact of trade policies, including changes in, or the imposition of, tariffs and/or trade barriers; changes in revenues resulting from declining patient volumes; changes in payer mix (including increases in uninsured and underinsured patients); potential increased expenses related to labor, pharmaceuticals, supply chain or other expenditures; workforce disruptions; supply and pharmaceutical shortages and disruptions (including as a result of tariffs or geopolitical disruptions)"</blockquote>
+    <p class="history">History: "imposition of, tariffs" first appears in Q1 2025 and stands in every filing since. The FY2024 10-K risk factors had one tariff sentence ("may impact our supply chain operations"); the forward-looking list had none.</p>
+    <p>Tariffs now lead the macro factor. The FY2025 10-K moved from "may impact" to tariffs that "have raised, and may continue to raise" supply costs.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicaid supplemental paragraph rewritten with structural detail; May 2024 CMS rule sentences dropped</span>
+    <span class="title">"Holds on or cancellations of congressionally authorized spending" added to the funding-disruption clause</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The rewrite enumerates upper payment limit payments, Section 1115 waivers, state directed payment arrangements "generally authorized by CMS and subject to periodic extension or reapproval," and provider taxes funding the non-federal share, plus:</p>
-    <blockquote>"These additional payments supplement Medicaid base rates that, when taken together, are insufficient to cover the cost of care provided to Medicaid beneficiaries combined with the state or local provider taxes levied."</blockquote>
+    <p class="shift">Shift: scope widened, interruptions &rarr; holds and cancellations of appropriated funds (+ disclosure)</p>
+    <blockquote>FY2024 10-K: "and the impact of potential federal government shutdowns or interruptions in appropriation or distribution of governmental funds"</blockquote>
+    <blockquote>Q1 2025: "and the impact of potential federal government shutdowns, holds on or cancellations of congressionally authorized spending and interruptions in the distribution of governmental funds"</blockquote>
+    <p class="history">History: "holds on or cancellations of congressionally authorized spending" first appears in Q1 2025 and runs in every filing since; the FY2025 10-K also put it in Business and Risk Factors.</p>
+    <p>"Cancellations" goes beyond delay: it contemplates funds HCA would never receive. The clause has not been softened since.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">February 2025 capital-structure overhaul: secured facilities replaced with $8.0B unsecured revolver; $5.25B notes issued</span>
+    <span class="title">Factor (6): "possible changes" in Medicare and Medicaid becomes "possible reductions or other changes" that "may negatively impact" reimbursement</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: direction named, changes &rarr; reductions (&minus; outlook); "may impact" &rarr; "may negatively impact"</p>
+    <blockquote>FY2024 10-K: "(6) possible changes in Medicare, Medicaid and other state programs, including Medicaid supplemental payment programs, Medicaid waiver programs or state directed payments, that may impact reimbursements to health care providers and insurers"</blockquote>
+    <blockquote>Q1 2025: "(6) possible reductions or other changes in Medicare, Medicaid and other state programs, including Medicaid supplemental payment programs, Medicaid waiver programs or state directed payments, that may negatively impact reimbursements to health care providers and insurers"</blockquote>
+    <p class="history">History: "possible changes in Medicare, Medicaid" stood in every filing from Q2 2023 to FY2024; "possible reductions or other changes" first appears in Q1 2025 and runs to Q1 2026. Q2 2026 dropped "possible" ("the impact of reductions").</p>
+    <p>Two months before the OBBBA passed, the factor named cuts to supplemental and directed payments as the expected direction. Factor (2) also gained "changes in the structure and administration of, and funding for, federal and state agencies and programs".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New health-policy paragraph: premium tax credits "scheduled to expire at the end of 2025, and further extension is uncertain"; HCA "engaged in advocacy efforts"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>All new disclosures: repaid $2.6B 5.375% notes at maturity; entered a new $8.0B five-year senior unsecured revolving credit facility; repaid and terminated the senior secured asset-based revolver, term loan, and $3.5B cash-flow facility; issued $5.25B senior notes in six tranches (5.000% '28, FRN '28, 5.250% '30, 5.500% '32, 5.750% '35, 6.200% '55).</p>
+    <p class="shift">Shift: named +advocacy; date added "end of 2025" (+ disclosure); risk moved from the factor list into the MD&amp;A body</p>
+    <blockquote>Q1 2025: "For example, the enhanced premium tax credits for individuals eligible to purchase insurance coverage through federal and state-based health insurance marketplaces are scheduled to expire at the end of 2025, and further extension is uncertain. We are monitoring and engaged in advocacy efforts around potential health care policy changes and reform."</blockquote>
+    <p class="history">History: "scheduled to expire at the end of 2025" appears in Q1&ndash;Q3 2025 only; "engaged in advocacy efforts" first appears in Q1 2025 and runs through Q2 2026 except the FY2025 10-K.</p>
+    <p>The expiry had been a risk factor and a forward-looking factor; this is the first time the MD&amp;A body discusses it, and the first mention of HCA's own lobbying. Uninsured admissions were still falling (same facility &minus;0.7%) when this was written; they rose 15.5% a year later.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Item 1A breaks the stub pattern: "except as set forth below" + full indebtedness risk section</span>
-    <span class="tag tag-new">New</span>
+    <span class="title">Medicaid supplemental paragraph rewritten: payments recast as filling a gap where base rates "are insufficient to cover the cost of care"; May 2024 CMS rule sentences dropped</span>
+    <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The no-material-changes stub gained ", except as set forth below." followed by a "Risks related to our indebtedness" section tracking the February 2025 secured-to-unsecured refinancing:</p>
-    <blockquote>"As of March 31, 2025, our total indebtedness was $44.576 billion. As of March 31, 2025, we had availability of $7.766 billion under our senior unsecured credit facility (after giving effect to all issued and outstanding letters of credit). Our indebtedness could have important consequences, including: &bull; increasing our vulnerability to downturns... &bull; requiring a portion of cash flows from operations to be dedicated to the payment of principal and interest... &bull; exposing us to the risk of increased interest rates... &bull; limiting our ability to make strategic acquisitions or causing us to make nonstrategic divestitures; &bull; limiting our ability to obtain additional financing... and &bull; limiting our ability to adjust to changing market conditions..."</blockquote>
-    <p>It included a covenant subsection: "Our debt agreements contain restrictions that limit our flexibility in operating our business." (four covenant bullets plus a financial-ratio/acceleration paragraph). This was the first quarter in the series without a verbatim stub.</p>
+    <p class="shift">Shift: named &minus;May 2024 CMS final rule; framing added (payments justified by underpayment); hedge "currently being reviewed" restored</p>
+    <blockquote>FY2024 10-K: "In May 2024, CMS issued a final rule related to Medicaid managed care programs that addresses access, financing and quality within these programs."</blockquote>
+    <blockquote>Q1 2025: "These additional payments supplement Medicaid base rates that, when taken together, are insufficient to cover the cost of care provided to Medicaid beneficiaries combined with the state or local provider taxes levied."</blockquote>
+    <blockquote>Q1 2025: "We are aware these payment programs are currently being reviewed by certain government agencies, and some states requested modifications of their existing supplemental payment programs during the annual renewal process with CMS."</blockquote>
+    <p class="history">History: "are insufficient to cover the cost of care" appears in Q1&ndash;Q3 2025 only (FY2025 rewords it "generally insufficient"); "currently being reviewed by certain government agencies" stood through Q1 2024, was replaced by "regularly reviewed" in Q2 2024&ndash;FY2024, and returns here.</p>
+    <p>Written as Congress debated Medicaid cuts, the new paragraph explains upper-payment-limit, Section 1115 and directed payments and argues they offset underpayment. The 10-K's sizing of these programs ($4.9B) is not repeated.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Contract-labor boilerplate dropped entirely</span>
+    <span class="title">Contract-labor sentences dropped: "We continue to utilize certain contract, overtime and other premium rate labor costs"</span>
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>The long-standing sentences beginning "We continue to utilize certain contract, overtime and other premium rate labor costs..." are absent for the first time since at least 2023.</p>
+    <p class="shift">Shift: sentence removed (&minus; disclosure); no contract-labor figure given</p>
+    <blockquote>FY2024 10-K: "We continue to utilize certain contract, overtime and other premium rate labor costs to support our clinical staff and patients. While these costs have declined compared to the prior year period, future costs may be affected by labor market conditions and other factors."</blockquote>
+    <p class="history">History: the sentence appears in every filing from Q2 2023 to FY2024 and in the FY2025 10-K; it is absent from all 10-Qs from Q1 2025 to Q2 2026.</p>
+    <p>The 2024 10-Qs had quantified the decline (&minus;25.7% in Q2, &minus;21.9% for nine months). With the decline slowing (&minus;4.6% for the first half of 2025, per Q2), the quarterly filings stopped carrying the topic.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Hurricane operational disclosure fully wound down</span>
-    <span class="tag tag-removed">Removed</span>
-  </div>
-  <div class="finding-body">
-    <p>Only forward-looking factor (23)'s "including Hurricanes Helene and Milton" reference remains; all operational hurricane paragraphs are gone.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Construction pipeline jumps $4.7B &rarr; $5.6B; capex guidance unchanged</span>
+    <span class="title">Construction pipeline jumps $4.7B &rarr; $5.6B in one quarter; 2025 capex guide held at $5.0&ndash;5.2B</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Approved-project pipeline up $0.9B in one quarter while the 2025 capex guidance held at $5.0&ndash;5.2B. Q1 2025 repurchases ran at 7,761,597 shares versus 3,893,746 a year earlier.</p>
+    <p class="shift">Shift: quant up, pipeline +$0.9B; guidance unchanged</p>
+    <blockquote>FY2024 10-K: "At December 31, 2024, there were projects under construction which had an estimated additional cost to complete and equip over the next five years of approximately $4.7 billion."</blockquote>
+    <blockquote>Q1 2025: "At March 31, 2025, there were projects under construction that had estimated additional costs to complete and equip over the next five years of approximately $5.6 billion."</blockquote>
+    <p class="history">History: "approximately $5.6 billion" appears in Q1 2025 only. The pipeline then ran $5.9B, $6.0B, $7.1B (FY2025) and $8.8B (Q1 2026).</p>
+    <p>Q1 capex was only $991M, the lowest quarter in the set. Approvals ran well ahead of spending.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Q1 repurchases double: 7,761,597 shares for $2.51B, against 3,893,746 a year earlier</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant up, share count +99% year over year</p>
+    <blockquote>Q1 2024: "During the quarter ended March 31, 2024, we repurchased 3,893,746 shares of our common stock at an average price of $303.06 per share through market purchases pursuant to the January 2023 authorization (which was completed during the first quarter of 2024) and the January 2024 authorization."</blockquote>
+    <blockquote>Q1 2025: "During the quarter ended March 31, 2025, we repurchased 7,761,597 shares of our common stock at an average price of $322.84 per share through market purchases pursuant to the January 2024 authorization (which was completed during the first quarter of 2025) and the January 2025 authorization."</blockquote>
+    <p class="history">History: "we repurchased 7,761,597 shares" appears in Q1 2025 only; Q1 2026 fell back to 3,156,569 shares at $497.63.</p>
+    <p>Operating cash flow was $1.65B and capex $991M, so free cash flow ($660M) covered about a quarter of the buyback; the rest came from the February borrowing. The covenant that had limited repurchases left the filing in the same quarter.</p>
   </div>
 </div>
 
@@ -599,93 +779,141 @@ a:hover { text-decoration: underline; }
 <!-- Q1 → Q2 2025 -->
 <div class="transition-header" id="q1q2-2025">
   <h2>Q1 2025 &rarr; Q2 2025</h2>
-  <div class="sub">Same-facility equivalent admissions +1.7% | Capex: $5.0&ndash;5.2B &rarr; approximately $5.0B (point) | Filed Aug 4, 2025 &mdash; first filing after the OBBBA</div>
+  <div class="sub">Filed Aug 4, 2025 &mdash; first filing after the OBBBA | Revenues $18.605B (+6.4%) | Diluted EPS $6.83 (+23.5%) | Same-facility equivalent admissions +1.7% (from +2.8%) | Capex guide $5.0&ndash;5.2B &rarr; ~$5.0B | $4.0B commercial paper program; working capital &minus;$376M</div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">OBBBA first appears &mdash; new "Recent Developments" section, the first in this 10-Q series</span>
+    <span class="title">OBBBA: SDP payments to be capped at Medicare-based rates instead of average commercial rates; grandfathered programs cut 10 points a year from 2028</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The section details: Medicaid work/community-engagement requirements (state compliance by Dec 31, 2026); six-month eligibility redeterminations; the provider-tax freeze (no new taxes or rate increases for state fiscal years beginning after Oct 1, 2026) and the 6% &rarr; 3.5% safe-harbor glidepath (FY2028&ndash;FY2032 in expansion states); HHS-mandated SDP regulations capping Medicaid managed-care payment rates at Medicare rates instead of average commercial rates; SDP grandfathering (applications submitted before Jul 4, 2025 / approvals or good-faith efforts before May 1, 2025) with 10-percentage-point annual reductions beginning Jan 1, 2028; and pre-enrollment verification. An Exchanges paragraph covers the end of automatic renewals and the June 2025 CMS final rule shortening open enrollment, "currently the subject of legal challenges." Plus:</p>
-    <blockquote>"...we are working to develop and implement resiliency plans designed to enhance efficiency and reduce costs in response to the potential impact of these developments, as well as the scheduled expiration of EPTCs... and potential impacts of changes to U.S. trade policy and tariff levels."</blockquote>
-    <p>On tax:</p>
-    <blockquote>"The OBBBA also included a number of tax provisions, including permanently reinstating the 100% bonus depreciation provisions of the Tax Cuts and Jobs Act of 2017..."</blockquote>
+    <p class="shift">Shift: realized, proposals &rarr; enacted law (&minus; for SDP revenue); named +OBBBA; quant added, 10-point annual step-down and dated cut-offs</p>
+    <blockquote>Q2 2025: "These regulations must cap total payment rates paid by Medicaid managed care organizations for specified services, including hospital services, by tying caps to Medicare payment rates instead of average commercial rates and imposing lower caps in Medicaid expansion states."</blockquote>
+    <blockquote>Q2 2025: "Beginning January 1, 2028, grandfathered payments will be reduced by 10 percentage points annually until they reach the allowable payment limits."</blockquote>
+    <p class="history">History: "tying caps to Medicare payment rates" appears in Q2 2025 and the FY2025 10-K risk factors; "reduced by 10 percentage points annually" in Q2 2025, Q3 2025 and FY2025. Q1 2025 described SDPs only as "generally authorized by CMS and subject to periodic extension or reapproval".</p>
+    <p>The FY2024 10-K had sized these programs at $4.9B of revenue. The filing gives no estimate of the cap's effect; the Medicaid paragraph still says HCA is "unable to estimate the financial impact". Grandfathering turns on dates: applications submitted before July 4, 2025, or approvals sought before May 1, 2025.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Forward-looking factors updated for the OBBBA: PAYGO sequestration and resiliency plans enter the list</span>
-    <span class="tag tag-changed">Changed</span>
+    <span class="title">OBBBA "expected to decrease access to health insurance": Medicaid work requirements, six-month redeterminations, provider-tax limits cut from 6% to 3.5%</span>
+    <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Factor (2) gains "and effects of the One Big Beautiful Bill Act (the "OBBBA")" and the "EPTCs" defined term; factor (4) gains Pay-As-You-Go sequestration risk from the OBBBA deficit impact; factor (5) gains "develop and execute resiliency plans to offset to the extent possible impacts from the OBBBA, the scheduled expiration of EPTCs and tariffs".</p>
+    <p class="shift">Shift: certainty, "expected to" (+ firmer than "may"); quant added, 6% &rarr; 3.5% safe harbor by FY2032; named +work or community engagement requirements</p>
+    <blockquote>Q2 2025: "The OBBBA includes significant health care policy changes that are expected to decrease access to health insurance and result in reductions to federal health care spending, particularly within the Medicaid program."</blockquote>
+    <blockquote>Q2 2025: "For example, beginning in federal fiscal year 2028, the OBBBA reduces this 6% tax limit by 0.5% annually in states that have expanded Medicaid under the Affordable Care Act, until the safe harbor limit in those states reaches 3.5% in federal fiscal year 2032, subject to certain exceptions."</blockquote>
+    <p class="history">History: "expected to decrease access to health insurance" appears in Q2 and Q3 2025 only; "6% tax limit" in Q2 2025 only. "Recent Developments" as an MD&amp;A heading appears in Q2 and Q3 2025 only.</p>
+    <p>HCA states the coverage loss as expected, not possible. Provider taxes fund the state share of the SDPs in the previous finding, so the tax limits and the rate caps hit the same revenue from two sides. Exchange enrollment is addressed separately: automatic renewals end and a June 2025 CMS rule shortens open enrollment.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Capex guidance collapses to a point estimate at the prior low end</span>
+    <span class="title">"Resiliency plans" introduced to offset the OBBBA, subsidy expiry and tariffs "to the extent possible"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +resiliency plans; hedge added "to the extent possible" (&minus;); condition "subject to known and unknown risks"</p>
+    <blockquote>Q2 2025: "In addition, we are working to develop and implement resiliency plans designed to enhance efficiency and reduce costs in response to the potential impact of these developments, as well as the scheduled expiration of EPTCs for individuals eligible to purchase coverage through federal and state health insurance marketplaces and potential impacts of changes to U.S. trade policy and tariff levels."</blockquote>
+    <blockquote>Q2 2025: "(5) the ability to achieve operating and financial targets, develop and execute resiliency plans to offset to the extent possible impacts from the OBBBA, the scheduled expiration of EPTCs and tariffs"</blockquote>
+    <p class="history">History: "resiliency plans" and "offset to the extent possible" first appear in Q2 2025 and run in every filing since; the FY2025 10-K turned them into "financial resiliency initiatives" that "offset in part".</p>
+    <p>The program comes with no target, cost or timeline. "To the extent possible" concedes from the start that the offset will be partial.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">PAYGO sequestration returns to the factor list, now tied to the OBBBA's deficit impact</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +Pay-As-You-Go Act, +OBBBA; hedge "may be required"</p>
+    <blockquote>Q2 2025: "(4) the effects related to the implementation of sequestration spending reductions required under the Budget Control Act of 2011, related legislation extending these reductions, and those that may be required under the Pay-As-You-Go Act of 2010 as a result of the federal budget deficit impact of the OBBBA"</blockquote>
+    <p class="history">History: "Pay-As-You-Go Act of 2010" ran from Q2 2023 to Q3 2024 (tied to the American Rescue Plan), was absent from FY2024 and Q1 2025, and returns in Q2 and Q3 2025.</p>
+    <p>One quarter later HCA quantified it: a Medicare cut "of up to 4% in early 2026, absent congressional action." The FY2025 10-K dropped it again.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2025 capex guide narrowed from $5.0&ndash;5.2B to "approximately $5.0 billion", the old floor, while the pipeline grows to $5.9B</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2025:</p>
-    <blockquote>"expected to approximate between $5.0 billion and $5.2 billion in 2025"</blockquote>
-    <p>Q2 2025:</p>
-    <blockquote>"expected to be approximately $5.0 billion in 2025"</blockquote>
+    <p class="shift">Shift: guidance range &rarr; point at the low end (&minus;); pipeline quant up</p>
+    <blockquote>Q1 2025: "Planned capital expenditures are expected to approximate between $5.0 billion and $5.2 billion in 2025."</blockquote>
+    <blockquote>Q2 2025: "Planned capital expenditures are expected to be approximately $5.0 billion in 2025."</blockquote>
+    <blockquote>Q2 2025: "At June 30, 2025, there were projects under construction which had estimated additional costs to complete and equip over the next five years of approximately $5.9 billion."</blockquote>
+    <p class="history">History: "$5.0 billion and $5.2 billion" appears in FY2024 and Q1 2025; "expected to be approximately $5.0 billion" in Q2 and Q3 2025. The same move (range to the low end) happened in Q3 2024.</p>
+    <p>Second year running that the guide was trimmed mid-year. Full-year capex came in at $4.94B.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New $4.0B commercial paper program (June 2025); working capital turns negative</span>
+    <span class="title">$4.0B commercial paper program opened in June; working capital turns negative (&minus;$376M) for the first time in the series</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Up to $4.0B with maturities of 397 days or less, backstopped by the $8.0B unsecured facility; $1.778B outstanding at June 30, 2025. Working capital turned negative ($376M); April/June note maturities repaid ($1.4B 5.25%, $291M 7.69%).</p>
+    <p class="shift">Shift: named +commercial paper program; direction reversed, positive &rarr; negative working capital (&minus;); condition added "excluding the impact of our outstanding commercial paper"</p>
+    <blockquote>Q2 2025: "During June 2025, we established a commercial paper program under which we may issue unsecured commercial paper notes from time to time up to a maximum aggregate face or principal amount of $4.000 billion outstanding at any time."</blockquote>
+    <blockquote>Q2 2025: "We had negative working capital of $376 million at June 30, 2025 and positive working capital of $1.237 billion at December 31, 2024."</blockquote>
+    <blockquote>Q2 2025: "Excluding the impact of our outstanding commercial paper notes, our working capital at June 30, 2025 would have been $1.402 billion."</blockquote>
+    <p class="history">History: "commercial paper program" and "negative working capital" first appear in Q2 2025 and recur in every filing since; negative working capital reached $3.206B in Q1 2026.</p>
+    <p>HCA supplies its own adjusted figure the first time the reported one goes negative. Short-term paper ($1.778B) now funds part of the balance sheet, and revolver availability is reported net of it.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">IRS Tennessee deferral disclosed in operating cash flow</span>
+    <span class="title">Operating cash flow flattered by an $862M IRS tax deferral for Tennessee taxpayers, payable in Q4 2025</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"...a decline in income taxes paid of $862 million related to an IRS deferral of quarterly estimated income tax payments for Tennessee-based taxpayers until the fourth quarter of 2025."</blockquote>
+    <p class="shift">Shift: named +IRS deferral; quant added (+ disclosure of a timing benefit)</p>
+    <blockquote>Q2 2025: "The increase in cash provided by operating activities was primarily related to a $216 million increase in net income, excluding the non-cash impact of losses and gains on sales of facilities, favorable working capital changes of $1.186 billion, including increased collections on accounts receivable, as well as a decline in income taxes paid of $862 million related to an IRS deferral of quarterly estimated income tax payments for Tennessee-based taxpayers until the fourth quarter of 2025."</blockquote>
+    <p class="history">History: "IRS deferral of quarterly estimated income tax payments" appears in Q2 2025, Q3 2025 and Q2 2026 (the last as the prior-year comparison).</p>
+    <p>The quarter's operating cash flow ($4.21B, against $1.97B a year earlier) includes a payment HCA still owed. It explains part of the Q2 2026 year-over-year decline in operating cash flow.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Item 1A indebtedness disclosure trimmed: covenant subsection deleted; ratings-downgrade sentence added</span>
+    <span class="title">Item 1A: indebtedness risk updated with the commercial-paper backstop and a ratings-downgrade sentence; covenant text incorporated from Q1 rather than restated</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Numbers updated with the first commercial-paper linkage:</p>
-    <blockquote>"As of June 30, 2025, our total indebtedness was $44.483 billion. ...availability of $6.208 billion under our senior unsecured credit facility (after giving effect to all issued and outstanding letters of credit and our intention to maintain a minimum available borrowing capacity under our senior unsecured credit facility equal to the aggregate amount outstanding under the commercial paper program ($1.778 billion as of June 30, 2025))."</blockquote>
-    <p>New sentence:</p>
-    <blockquote>"Any downgrade in our credit ratings may also negatively affect availability of debt financing and the rates at which such financing is available."</blockquote>
-    <p>The entire covenant subsection ("Our debt agreements contain restrictions...") was deleted.</p>
+    <p class="shift">Shift: quant down, availability $7.766B &rarr; $6.208B (&minus;); condition added (CP backstop); named +credit-rating downgrade</p>
+    <blockquote>Q2 2025: "As of June 30, 2025, we had availability of $6.208 billion under our senior unsecured credit facility (after giving effect to all issued and outstanding letters of credit and our intention to maintain a minimum available borrowing capacity under our senior unsecured credit facility equal to the aggregate amount outstanding under the commercial paper program ($1.778 billion as of June 30, 2025))."</blockquote>
+    <blockquote>Q2 2025: "Any downgrade in our credit ratings may also negatively affect availability of debt financing and the rates at which such financing is available."</blockquote>
+    <p class="history">History: "Any downgrade in our credit ratings" appears in Q2 2025 only (FY2025 rewords it "Downgrades in our credit ratings"). The stub now incorporates the Q1 2025 10-Q as well as the 10-K, so the Q1 covenant subsection is not restated; it has not been withdrawn (this page previously said it was deleted).</p>
+    <p>The ratings sentence arrives in the same quarter HCA began relying on commercial paper, which depends on short-term credit ratings (inference).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Contract-labor decline decelerates to &minus;4.6% (six months); cardiovascular supplies attribution added</span>
+    <span class="title">Volume slows, price carries growth: same-facility equivalent admissions +2.8% &rarr; +1.7%, revenue per equivalent admission +2.9% &rarr; +4.0%</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Down from the ~20%+ declines quantified through 2024. The supplies-expense attribution gains "primarily related to cardiovascular technologies."</p>
+    <p class="shift">Shift: attribution reordered, volume-led &rarr; rate-led; hedge "primarily" added back</p>
+    <blockquote>Q1 2025: "The same facility revenues increase resulted from the combined impact of a 2.8% increase in same facility equivalent admissions and a 2.9% increase in same facility revenue per equivalent admission."</blockquote>
+    <blockquote>Q2 2025: "The same facility revenues increase primarily resulted from the combined impact of a 4.0% increase in same facility revenue per equivalent admission and a 1.7% increase in same facility equivalent admissions."</blockquote>
+    <p class="history">History: same-facility equivalent admissions were +4.5% in Q3 2024, +2.8% in Q1 2025 and +1.7% here; contract labor fell 4.6% for the six months ("4.6% decline in contract labor", Q2 2025 only), after &minus;21.9% for nine months of 2024.</p>
+    <p>Volume growth has fallen by more than half since Q3 2024. Device cost per equivalent admission rose 7.5% for the half, newly attributed to "cardiovascular technologies".</p>
   </div>
 </div>
 
@@ -693,89 +921,141 @@ a:hover { text-decoration: underline; }
 <!-- Q2 → Q3 2025 -->
 <div class="transition-header" id="q2q3-2025">
   <h2>Q2 2025 &rarr; Q3 2025</h2>
-  <div class="sub">Same-facility equivalent admissions +2.4% | Capex: ~$5.0B for 2025 (unchanged); pipeline $5.9B &rarr; $6.0B | Filed Oct 30, 2025</div>
+  <div class="sub">Filed Oct 30, 2025 | Revenues $19.161B (+9.6%) | Diluted EPS $6.96 (+42.6%, against a hurricane-hit Q3 2024) | Revenue per equivalent admission +6.1% (from +3.9%) | Capex ~$5.0B held; pipeline $5.9B &rarr; $6.0B | Working capital &minus;$2.611B</div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicare sequestration risk quantified: "up to 4% in early 2026"</span>
+    <span class="title">PAYGO risk quantified: OBBBA "potentially triggering a reduction in Medicare reimbursement of up to 4% in early 2026"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Recent Developments rewritten:</p>
-    <blockquote>"...the changes required by the OBBBA are expected to increase the federal budget such that the sequestration mandated by the Pay-As-You-Go Act of 2010 is required, potentially triggering a reduction in Medicare reimbursement of up to 4% in early 2026, absent congressional action."</blockquote>
+    <p class="shift">Shift: quant added, "may be required" &rarr; "is required ... up to 4%" (+ disclosure); certainty "expected to"; condition "absent congressional action"</p>
+    <blockquote>Q2 2025: "and those that may be required under the Pay-As-You-Go Act of 2010 as a result of the federal budget deficit impact of the OBBBA"</blockquote>
+    <blockquote>Q3 2025: "Additionally, the changes required by the OBBBA are expected to increase the federal budget such that the sequestration mandated by the Pay-As-You-Go Act of 2010 is required, potentially triggering a reduction in Medicare reimbursement of up to 4% in early 2026, absent congressional action."</blockquote>
+    <p class="history">History: "up to 4% in early 2026" appears in Q3 2025 only; the FY2025 10-K deleted the PAYGO clause from the factor list without saying whether the cut was waived.</p>
+    <p>Medicare and managed Medicare together were about a third of revenue in FY2024 (15.3% and 17.0%), so a 4% cut is material on HCA's own payer table. The number is stated once and never followed up.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Government shutdown and $8.0B/year Medicaid DSH reductions enter the MD&amp;A</span>
+    <span class="title">Medicaid DSH cuts of $8.0B a year "began October 1, 2025"; unclear whether Congress will defer them "retroactively"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"In addition, the federal government entered a partial shutdown effective October 1, 2025. ... current law provides for Medicaid disproportionate share hospital ("DSH") payments to be reduced by $8.0 billion in each of federal fiscal years 2026 through 2028, meaning the reductions began October 1, 2025. ... Congress has repeatedly deferred these reductions, but it is unclear whether it will do so again when the government shutdown has ended and whether any such delay would apply retroactively."</blockquote>
-    <p>Factor (1) changed "potential federal government shutdowns" to "federal government shutdowns."</p>
+    <p class="shift">Shift: realized, scheduled cut &rarr; in effect (&minus;); named +Medicaid DSH; quant added</p>
+    <blockquote>Q3 2025: "For example, current law provides for Medicaid disproportionate share hospital (&ldquo;DSH&rdquo;) payments to be reduced by $8.0 billion in each of federal fiscal years 2026 through 2028, meaning the reductions began October 1, 2025."</blockquote>
+    <blockquote>Q3 2025: "Congress has repeatedly deferred these reductions, but it is unclear whether it will do so again when the government shutdown has ended and whether any such delay would apply retroactively."</blockquote>
+    <p class="history">History: "disproportionate share hospital" appears in the FY2023, FY2024 and FY2025 10-K Business sections and in Q3 2025, the only 10-Q to discuss it.</p>
+    <p>The 10-Ks treat DSH as background; the 10-Q presents it as a cut already running. HCA does not give its own DSH revenue.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">SDP grandfathering moves into Revenue/Volume Trends with a new upside statement</span>
+    <span class="title">Shutdown moves from "potential" to actual: factor (1) drops "potential"; "to date we have not been significantly impacted"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Certain states in which we operate have submitted application forms to CMS for approval where the grandfathered payments we receive could be impacted, and in some instances, increased. ... Some states have received approval of grandfathered applications, but we are unable to predict the timing or extent of any additional approvals by CMS and the resulting recognition of the related revenues."</blockquote>
-    <p>A new forward-looking factor (26) was added: "changes to, and the timing and amount of future approvals (if any) of, state Medicaid directed and supplemental payments" (list 26 &rarr; 27). Factor (2) pinned the EPTC expiration to "currently scheduled to take effect after December 31, 2025."</p>
+    <p class="shift">Shift: realized, "potential federal government shutdowns" &rarr; "federal government shutdowns" (+); hedge "to date"</p>
+    <blockquote>Q2 2025: "and the impact of potential federal government shutdowns, holds on or cancellations of congressionally authorized spending and interruptions in the distribution of governmental funds"</blockquote>
+    <blockquote>Q3 2025: "Although Medicare and Medicaid reimbursement generally remains available during a shutdown, and to date we have not been significantly impacted, we may experience delays in payment for services rendered and other effects related to government agencies operating at reduced capacity."</blockquote>
+    <p class="history">History: "impact of potential federal government shutdowns" ran from Q3 2023 to Q2 2025; "impact of federal government shutdowns" first appears in Q3 2025 and has stayed through Q2 2026.</p>
+    <p>The reassurance is time-limited ("to date"). The firmer factor wording was never softened back.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">First quantified linkage of revenue growth to supplemental Medicaid programs</span>
+    <span class="title">Revenue per equivalent admission jumps to +6.1% from +3.9%, credited to "state supplemental Medicaid revenue ... related to recently approved programs"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"The increases in consolidated and same facility revenue per equivalent admission were favorably impacted by an increase in state supplemental Medicaid revenue during the quarter related to recently approved programs."</blockquote>
-    <p>Parallel expense-side disclosure:</p>
-    <blockquote>"The increase in other operating expenses, as a percentage of revenues, is primarily related to growth in state supplemental Medicaid program expenses and higher professional fees."</blockquote>
+    <p class="shift">Shift: named +state supplemental Medicaid revenue as a growth driver (+ disclosure); quant none for the amount</p>
+    <blockquote>Q2 2025: "The increase in consolidated revenues can be primarily attributed to the combined impact of a 3.9% increase in revenue per equivalent admission and a 2.3% increase in equivalent admissions."</blockquote>
+    <blockquote>Q3 2025: "The increase in consolidated revenues can be primarily attributed to the combined impact of a 6.1% increase in revenue per equivalent admission and a 3.2% increase in equivalent admissions."</blockquote>
+    <blockquote>Q3 2025: "The increases in consolidated and same facility revenue per equivalent admission were favorably impacted by an increase in state supplemental Medicaid revenue during the quarter related to recently approved programs."</blockquote>
+    <p class="history">History: "state supplemental Medicaid revenue" appears in Q3 2025 only; the expense side, "growth in state supplemental Medicaid program expenses," appears in Q3 2025 and Q1 2026.</p>
+    <p>The quarter's pricing gain is partly a state-program gain, but HCA gives no amount. Other operating expenses rose with it, so the net effect is smaller than the revenue line suggests. Q2 2026 repeated the pattern on a larger scale with Florida.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Labor management initiatives" first named</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"The decrease in salaries and benefits, as a percentage of revenues, is primarily related to continued improvements in salaries and contract labor growth resulting from our labor management initiatives combined with the increase in revenues..."</blockquote>
-    <p>No contract-labor percentage was given this quarter.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Item 1A indebtedness disclosure withdrawn &mdash; reverts to a pure no-material-changes stub</span>
-    <span class="tag tag-removed">Removed</span>
-  </div>
-  <div class="finding-body">
-    <p>The indebtedness section that appeared in Q1 2025 and was trimmed in Q2 2025 was deleted entirely; the exception clause ("except as set forth below") was withdrawn. No quarter ever added Medicaid/ACA material-change text to Item 1A &mdash; those changes arrived in the FY2025 10-K.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">IRS concludes 2022&ndash;2023 examinations; credit facility amended; hurricane base-effect paragraph reappears</span>
+    <span class="title">SDP grandfathering turns two-sided: payments "could be impacted, and in some instances, increased"; new factor (26) on approvals "(if any)"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>IRS examinations concluded "resolving all federal income tax matters for those years." The credit facility was amended October 23, 2025 to remove the 0.10% credit spread adjustment. A prior-year hurricane comparison paragraph reappears to explain the Q3 2024 base.</p>
+    <p class="shift">Shift: direction added, upside named alongside cap (+); named +factor (26); hedge "(if any)"</p>
+    <blockquote>Q3 2025: "Certain states in which we operate have submitted application forms to CMS for approval where the grandfathered payments we receive could be impacted, and in some instances, increased."</blockquote>
+    <blockquote>Q3 2025: "Some states have received approval of grandfathered applications, but we are unable to predict the timing or extent of any additional approvals by CMS and the resulting recognition of the related revenues."</blockquote>
+    <blockquote>Q3 2025: "(26) changes to, and the timing and amount of future approvals (if any) of, state Medicaid directed and supplemental payments"</blockquote>
+    <p class="history">History: "in some instances, increased" first appears in Q3 2025 (then FY2025, Q1 2026); "timing and amount of future approvals" first appears in Q3 2025 and is in every filing since.</p>
+    <p>Q2 described grandfathering only as a limit on cuts. Q3 says pending applications could raise payments before the 2028 step-down, which is what Florida's approval did in Q2 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Subsidy expiry gets a hedge: "currently scheduled to take effect after December 31, 2025"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: hedge added "currently" (&minus;); date made explicit</p>
+    <blockquote>Q3 2025: "including the expiration of enhanced premium tax credits (&ldquo;EPTCs&rdquo;) currently scheduled to take effect after December 31, 2025, for individuals eligible to purchase insurance coverage through federal and state-based health insurance marketplaces"</blockquote>
+    <p class="history">History: "currently scheduled to take effect after December 31, 2025" appears in Q3 2025 only. The FY2025 10-K replaced it with "the expiration at the end of 2025".</p>
+    <p>Filed during the partial shutdown that the same MD&amp;A describes, and alongside new advocacy language on the credits, the factor left room for an extension. The next filing reports that none came.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Labor management initiatives" named as the reason salaries fell as a share of revenue; no contract-labor figure</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +labor management initiatives (attribution to management action); quant removed, Q2's "4.6% decline in contract labor" not updated (&minus;)</p>
+    <blockquote>Q2 2025: "Salaries and benefits were favorably impacted by a 4.6% decline in contract labor during the six months ended June 30, 2025, compared to the six months ended June 30, 2024."</blockquote>
+    <blockquote>Q3 2025: "The decrease in salaries and benefits, as a percentage of revenues, is primarily related to continued improvements in salaries and contract labor growth resulting from our labor management initiatives combined with the increase in revenues for the quarter ended September 30, 2025."</blockquote>
+    <p class="history">History: "labor management initiatives" appears in Q3 2025 only; "4.6% decline in contract labor" in Q2 2025 only. No 10-Q since has given a contract-labor percentage.</p>
+    <p>"Improvements in ... contract labor growth" describes slower growth, not the outright declines quantified through 2024. The figure is replaced with a credit to management, and part of the ratio improvement is the supplemental revenue in the denominator.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Negative working capital deepens to $2.611B; nine-month buybacks $7.509B against $1.305B of net new debt and $1.259B of deferred taxes</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant down, &minus;$376M &rarr; &minus;$2.611B (&minus;); adjusted "excluding commercial paper" figure dropped</p>
+    <blockquote>Q3 2025: "We had negative working capital of $2.611 billion at September 30, 2025 and positive working capital of $1.237 billion at December 31, 2024."</blockquote>
+    <blockquote>Q3 2025: "During the first nine months of 2025, net cash flows used in financing activities included a net increase of $1.305 billion in our indebtedness, payment of dividends of $517 million, repurchase of common stock of $7.509 billion and distributions to noncontrolling interests of $631 million."</blockquote>
+    <p class="history">History: "negative working capital of $2.611 billion" appears in Q3 2025 only; Q2's "Excluding the impact of our outstanding commercial paper notes" sentence was not repeated.</p>
+    <p>Nine-month operating cash flow of $10.277B includes $1.259B of Tennessee tax payments deferred to Q4 2025, so roughly that much of the buyback was funded by taxes still owed (inference from the filing's figures). Commercial paper outstanding rose to $1.910B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Item 1A exception clause dropped: no new risk text, Q1 and Q2 indebtedness disclosures incorporated by reference</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: condition dropped "except as set forth below"; scope widened, incorporation now covers both 2025 10-Qs</p>
+    <blockquote>Q3 2025: "There have not been any material changes to the risk factors previously disclosed in our annual report on Form 10-K for the year ended December 31, 2024 and our quarterly reports on Form 10-Q for the quarters ended March 31, 2025 and June 30, 2025."</blockquote>
+    <p class="history">History: "except as set forth below" appears in Q1 and Q2 2025 only. This page previously called the indebtedness section "withdrawn"; it is incorporated, not deleted.</p>
+    <p>The quarter added the shutdown, DSH and 4% Medicare cut to the MD&amp;A but none to Item 1A, which still points to the FY2024 10-K.</p>
   </div>
 </div>
 
@@ -783,7 +1063,7 @@ a:hover { text-decoration: underline; }
 <!-- Q3 2025 → FY2025 10-K -->
 <div class="transition-header" id="q3-2025-fy2025">
   <h2>Q3 2025 &rarr; FY2025 10-K</h2>
-  <div class="sub">Annual Filing (early 2026) | FY2025 revenues $75.600B, diluted EPS $28.33 | Capex: first 2026 guidance $5.0&ndash;5.5B; pipeline $6.0B &rarr; $7.1B</div>
+  <div class="sub">Filed Feb 10, 2026 | FY2025 revenues $75.600B (+7.1%) | Diluted EPS $28.33 (+28.8%) | Free cash flow $7.69B; buybacks $10.07B | SDP revenue $6.2B | First 2026 capex guide $5.0&ndash;5.5B; pipeline $6.0B &rarr; $7.1B</div>
 </div>
 
 <div class="finding-group">
@@ -792,176 +1072,168 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">OBBBA renamed "the 2025 Federal Budget Act (the "FBA")"; EPTC expiration moves from scheduled to occurred</span>
+    <span class="title">First 2026 outlook: SDP revenue "to decline", excluding approvals; subsidy expiry and Exchange reforms to "adversely affect" results, "offset in part"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty, "unable to predict" &rarr; "we expect" (+ disclosure); condition added "Excluding the expected impact of any additional approvals" (&minus;); scope hedge "offset in part"</p>
+    <blockquote>Q3 2025: "Some states have received approval of grandfathered applications, but we are unable to predict the timing or extent of any additional approvals by CMS and the resulting recognition of the related revenues."</blockquote>
+    <blockquote>FY2025 10-K: "Excluding the expected impact of any additional approvals, we expect revenues from SDP arrangements to decline in 2026 compared to 2025. We also expect certain administrative reforms relating to the Exchanges and the expiration of the enhanced premium tax credits at the end of 2025 to adversely affect our results of operations in 2026, offset in part by our ongoing resiliency efforts."</blockquote>
+    <p class="history">History: "expect revenues from SDP arrangements to decline" and "offset in part by our ongoing resiliency efforts" appear in FY2025 only. Q1 2026 deleted the SDP decline sentence; Q2 2026 booked $1.372B from Florida's approval.</p>
+    <p>The first directional guidance on either issue, but without a number. The SDP outlook excludes the approvals that, two quarters later, dominated the result.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">SDP revenue sized for the first time since the FY2024 10-K: $6.2B in 2025 vs $5.5B in 2024 (the FY2024 10-K had said $4.9B)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+); prior year restated up, $4.9B &rarr; $5.5B, no reason given (&minus; comparability)</p>
+    <blockquote>FY2025 10-K: "Our revenues from Medicaid state directed and supplemental payment programs totaled approximately $6.2 billion and $5.5 billion in 2025 and 2024, respectively."</blockquote>
+    <p class="history">History: "$6.2 billion and $5.5 billion" appears in FY2025 only; "$4.9 billion and $3.9 billion" in FY2024 only. No 2025 10-Q gave a figure.</p>
+    <p>These programs are 8.2% of 2025 revenue. On the restated base they grew about 13%; against the $4.9B first reported they would show 27%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicaid DSH cut deferred: "$8.0 billion in each of federal fiscal years 2026 through 2028 ... began October 1, 2025" becomes "$8 billion in federal fiscal year 2028"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The renaming applies throughout. The EPTC language becomes:</p>
-    <blockquote>"the expiration at the end of 2025 of enhanced premium tax credits ("EPTCs")"</blockquote>
-    <p>The PAYGO sequestration clause was deleted from factor (4), and the entire Recent Developments section (shutdown, DSH, 4% Medicare sequestration, resiliency, bonus depreciation) was dropped from MD&amp;A (moved to Item 1 Business).</p>
+    <p class="shift">Shift: realized &rarr; deferred, three years of cuts &rarr; one (+ for HCA); quant changed</p>
+    <blockquote>Q3 2025: "For example, current law provides for Medicaid disproportionate share hospital (&ldquo;DSH&rdquo;) payments to be reduced by $8.0 billion in each of federal fiscal years 2026 through 2028, meaning the reductions began October 1, 2025."</blockquote>
+    <blockquote>FY2025 10-K: "Under current law, Medicaid DSH payments will be reduced by $8 billion in federal fiscal year 2028."</blockquote>
+    <p class="history">History: "reduced by $8.0 billion in each of federal fiscal years" appears in Q3 2025 only; "reduced by $8 billion in federal fiscal year 2028" in FY2025 only. FY2024 had the cuts starting April 1, 2025.</p>
+    <p>Q3 had flagged that it was "unclear" whether Congress would defer the cuts again, and "retroactively." The 10-K shows it did, but says so only by restating current law in the Business section; the MD&amp;A paragraph that raised the risk was dropped.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">SDP revenues quantified ($6.2B vs $5.5B) + first directional 2026 guidance</span>
+    <span class="title">The 4% Medicare PAYGO cut disappears: sequestration factor rewritten without the OBBBA clause</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed, "up to 4%" no longer stated (&minus; disclosure); named &minus;Pay-As-You-Go Act</p>
+    <blockquote>Q3 2025: "Additionally, the changes required by the OBBBA are expected to increase the federal budget such that the sequestration mandated by the Pay-As-You-Go Act of 2010 is required, potentially triggering a reduction in Medicare reimbursement of up to 4% in early 2026, absent congressional action."</blockquote>
+    <blockquote>FY2025 10-K: "(4) the effects related to the implementation of sequestration spending reductions required under the Budget Control Act of 2011, related legislation extending these reductions, and the potential for future deficit or other spending reduction legislation that may alter current spending reductions"</blockquote>
+    <p class="history">History: "Pay-As-You-Go Act of 2010" appears in Q2 and Q3 2025 (and Q2 2023&ndash;Q3 2024); absent from FY2025 and the 2026 10-Qs. "up to 4% in early 2026" appears in Q3 2025 only.</p>
+    <p>The filing never says whether the cut was triggered or waived; a reader has to infer from the silence that it did not take effect.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"One Big Beautiful Bill Act" renamed "the 2025 Federal Budget Act"; subsidy expiry moves from "currently scheduled" to "the expiration at the end of 2025"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named, statute's enacted name &rarr; generic label; realized, scheduled &rarr; occurred (+); hedge "currently" dropped</p>
+    <blockquote>Q3 2025: "including the expiration of enhanced premium tax credits (&ldquo;EPTCs&rdquo;) currently scheduled to take effect after December 31, 2025, for individuals eligible to purchase insurance coverage through federal and state-based health insurance marketplaces, changes in the structure and administration of, and funding for, federal and state agencies and programs, and effects of the One Big Beautiful Bill Act (the &ldquo;OBBBA&rdquo;)"</blockquote>
+    <blockquote>FY2025 10-K: "including the expiration at the end of 2025 of enhanced premium tax credits (&ldquo;EPTCs&rdquo;) for eligible individuals purchasing insurance coverage through federal and state-based health insurance marketplaces, changes in the structure and administration of, and funding for, federal and state agencies and programs, and effects of the 2025 Federal Budget Act (the &ldquo;FBA&rdquo;)"</blockquote>
+    <p class="history">History: "One Big Beautiful Bill Act" appears in Q2 and Q3 2025 only; "2025 Federal Budget Act" first appears in FY2025 and is used in both 2026 10-Qs.</p>
+    <p>A neutral name for a law whose effects HCA now describes as adverse. The MD&amp;A "Recent Developments" section was also dropped; the law's provisions are described in Business and Risk Factors instead.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI becomes a strategy pillar ("Advance Our Digital and Artificial Intelligence Capabilities") and the AI factor jumps from 25th to 7th</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Our revenues from Medicaid state directed and supplemental payment programs totaled approximately $6.2 billion and $5.5 billion in 2025 and 2024, respectively."</blockquote>
-    <blockquote>"Excluding the expected impact of any additional approvals, we expect revenues from SDP arrangements to decline in 2026 compared to 2025. We also expect certain administrative reforms relating to the Exchanges and the expiration of the enhanced premium tax credits at the end of 2025 to adversely affect our results of operations in 2026, offset in part by our ongoing resiliency efforts."</blockquote>
-    <p>This replaces the quarterly "unable to estimate the financial impact" stance.</p>
+    <p class="shift">Shift: named +AI strategy pillar; factor reordered up (+ emphasis)</p>
+    <blockquote>Q3 2025: "(25) the results of our efforts to use technology and resilience initiatives, including artificial intelligence and machine learning, to drive efficiencies, better outcomes and an enhanced patient experience"</blockquote>
+    <blockquote>FY2025 10-K: "(7) the results of our efforts to use technology and resilience initiatives, including artificial intelligence and machine learning, to drive efficiencies, better outcomes and an enhanced patient experience"</blockquote>
+    <p class="history">History: "Advance Our Digital and Artificial Intelligence" appears in FY2025 only (Business and MD&amp;A); no 10-Q carried it.</p>
+    <p>The factor wording is unchanged; only its rank moved, to just after the Medicare and Medicaid factor. It already paired AI with "resilience initiatives", the cost program meant to offset the FBA and subsidy losses. The 10-K adds an EHR rollout risk factor (below).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New Business Strategy pillar: "Advance Our Digital and Artificial Intelligence Capabilities"</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>First new strategy pillar since at least FY2018:</p>
-    <blockquote>"We are investing in digital, data, and artificial intelligence capabilities to improve clinical quality, enhance the experience of our patients and colleagues, and drive operational efficiency at scale..."</blockquote>
-    <p>The AI forward-looking factor also relocated from position (25) to position (7).</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">First 2026 capex guidance: $5.0&ndash;5.5B; construction pipeline $6.0B &rarr; $7.1B</span>
+    <span class="title">2026 capex guide $5.0&ndash;5.5B, a wider range with a higher ceiling; construction pipeline $6.0B &rarr; $7.1B in one quarter</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Planned capital expenditures are expected to approximate between $5.0 billion and $5.5 billion in 2026."</blockquote>
+    <p class="shift">Shift: guidance point &rarr; range, ceiling raised (+); pipeline quant up</p>
+    <blockquote>Q3 2025: "Planned capital expenditures are expected to be approximately $5.0 billion in 2025."</blockquote>
+    <blockquote>FY2025 10-K: "At December 31, 2025, there were projects under construction which had an estimated additional cost to complete and equip over the next five years of approximately $7.1 billion."</blockquote>
+    <p class="history">History: "expected to approximate between $5.0 billion and $5.5 billion" and "approximately $7.1 billion" appear in FY2025 only; Q1 2026 rewords the guide ("expected to be approximately between") and lifts the pipeline to $8.8B.</p>
+    <p>2025 capex was $4.94B, under the "approximately $5.0 billion" guide for a second straight year. The +$1.1B pipeline step is the second largest in the series.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">January 2026 $10B repurchase authorization; dividend raised to $0.78; Q4 2025 financing</span>
+    <span class="title">January 2026 buyback authorization of $10B after a record $10.07B of 2025 repurchases; captive malpractice cover raised again to $120M</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>2025 repurchases totaled 26.739M shares / $10.067B. Q4 2025 financing: $3.25B senior notes issued (4.300% '30, 4.600% '32, 4.900% '35, 5.700% '55); $1.5B 5.875% '26 notes redeemed; revolver spread restated at SOFR + 1.125%. Professional liability limit raised again: "$110 million per occurrence ($120 million effective January 1, 2026)".</p>
+    <p class="shift">Shift: quant, new $10B authorization (+); per-occurrence cover $110M &rarr; $120M (+ retained risk)</p>
+    <blockquote>FY2025 10-K: "During January 2024, January 2025 and January 2026, our Board of Directors authorized $6 billion, $10 billion and $10 billion, respectively, for share repurchases of the Company&rsquo;s outstanding common stock."</blockquote>
+    <blockquote>FY2025 10-K: "Our facilities are insured by one of our insurance subsidiaries for losses up to $110 million per occurrence ($120 million effective January 1, 2026), subject, in most cases, to a $15 million per occurrence self-insured retention."</blockquote>
+    <p class="history">History: "January 2026" authorization first appears in FY2025; "($120 million effective January 1, 2026)" appears in FY2025 only, a year after "($110 million effective January 1, 2025)" (FY2024 only).</p>
+    <p>2025 buybacks of $10.07B exceeded free cash flow of $7.69B. The captive cover has risen $40M per occurrence in two years while adverse prior-year development rose to $126M (10-K dashboard).</p>
   </div>
 </div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--gold);"></span>Risk Factors (FY2024 vs FY2025 10-K)</h3>
+<h3><span class="dot" style="background:var(--gold);"></span>Risk Factors (FY2025 10-K vs the FY2024 text the 2025 10-Qs incorporated)</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New EHR / financial-resiliency risk factor</span>
+    <span class="title">New risk factor: a new EHR platform and "financial resiliency initiatives" that "offset in part" the policy losses</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Failure to effectively manage change associated with our technology, resiliency and other initiatives, including with respect to the implementation of a new EHR platform, may adversely affect our business, services and results of operations."</blockquote>
-    <p>Body text:</p>
-    <blockquote>"We are implementing a new EHR platform across our facilities, which is complex and time-intensive. ... While we have taken steps intended to mitigate implementation risks, including staged deployments in certain facilities, there is no guarantee these mitigation efforts will be effective."</blockquote>
-    <blockquote>"Further, we are executing financial resiliency initiatives designed to generate efficiencies and cost reductions that we expect will offset in part the adverse effects on our business from recent health care policy reforms, including the expiration of the enhanced premium tax credits and changes resulting from the FBA."</blockquote>
+    <p class="shift">Shift: named +EHR platform, +financial resiliency initiatives; scope hedge "in part" (&minus;); condition "failure to realize the expected benefits"</p>
+    <blockquote>FY2025 10-K: "Failure to effectively manage change associated with our technology, resiliency and other initiatives, including with respect to the implementation of a new EHR platform, may adversely affect our business, services and results of operations."</blockquote>
+    <blockquote>FY2025 10-K: "Further, we are executing financial resiliency initiatives designed to generate efficiencies and cost reductions that we expect will offset in part the adverse effects on our business from recent health care policy reforms, including the expiration of the enhanced premium tax credits and changes resulting from the FBA."</blockquote>
+    <p class="history">History: "implementation of a new EHR platform" appears in FY2025 only; the 10-Qs' "resiliency plans" (from Q2 2025) become "initiatives" being executed.</p>
+    <p>The quarterly "develop and implement" plans are now "executing", with an explicit risk that they fail. Q1 2026 named "technology investments" as a driver of higher other operating expense.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">EPTC expiration shifts from conditional to occurred</span>
+    <span class="title">Texas named as a state where the FBA's Medicare-based SDP cap will "impact payment rates"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +Texas (+ disclosure); certainty "we anticipate will impact"</p>
+    <blockquote>Q2 2025: "These regulations must cap total payment rates paid by Medicaid managed care organizations for specified services, including hospital services, by tying caps to Medicare payment rates instead of average commercial rates and imposing lower caps in Medicaid expansion states."</blockquote>
+    <blockquote>FY2025 10-K: "The FBA requires HHS to revise regulations governing SDP arrangements to cap total payment rates paid by Medicaid managed care organizations for specified services, tying caps to Medicare payment rates instead of average commercial rates, a change that we anticipate will impact payment rates in many states in which we operate, including Texas."</blockquote>
+    <p class="history">History: "tying caps to Medicare payment rates" appears in Q2 2025 and FY2025; "including Texas" in this context appears in FY2025 only.</p>
+    <p>Texas is HCA's largest state (28% of 2025 revenue, per the 10-K dashboard) and the only one named.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs "have raised, and may continue to raise" supply costs, replacing "may impact our supply chain operations"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>FY2024 10-K:</p>
-    <blockquote>"Subsequent legislation extended these enhanced premium tax credits through 2025. However, further extension is uncertain, and we believe the expiration of these enhanced premium tax credits would adversely impact Exchange enrollment and significantly increase the uninsured rate."</blockquote>
-    <p>FY2025 10-K:</p>
-    <blockquote>"...these enhanced premium tax credits expired at the end of 2025. We believe the expiration of the enhanced premium tax credits will adversely impact Exchange enrollment and significantly increase the uninsured rate."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">FBA inserted throughout the policy factors; Texas named in the SDP cap</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"The FBA requires HHS to revise regulations governing SDP arrangements to cap total payment rates paid by Medicaid managed care organizations for specified services, tying caps to Medicare payment rates instead of average commercial rates, a change that we anticipate will impact payment rates in many states in which we operate, including Texas."</blockquote>
-    <p>Also new: Medicaid work requirements / financing restrictions "with greater restrictions in states that have expanded Medicaid"; HHS restructuring (March 2025); "holds on or cancellations of congressionally authorized spending"; and "HHS also announced a change in its policy on public participation in rulemaking..."</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Three new payment models named: WISeR, TEAM, Ambulatory Specialty Model</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"in 2026, CMS is implementing a new payment and service delivery model, the WISeR model, under which technology vendors will use enhanced technologies, including AI, to address compliance with Medicare coverage criteria... Providers will be required to submit prior authorization requests or be subject to post-service, pre-payment medical review."</blockquote>
-    <blockquote>"beginning January 2026, CMS requires hospitals in selected markets to participate in TEAM, a new model focused on five specified surgical episodes"</blockquote>
-    <p>The Ambulatory Specialty Model (heart failure / low back pain) starts January 2027. Also new: private-payer "downcoding policies" and the Medicare inpatient-only list phase-out over three years beginning 2026.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">New tariff disclosure in the macro factor</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"Additionally, imposed or threatened tariffs have raised, and may continue to raise, the cost of certain medical supplies and products we source from outside the United States. While our response to the currently enacted tariffs has generally managed their impact on our overall cost of supplies, there can be no assurances that we will effectively be able to mitigate the effects of future changes in tariff policy."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Removed: new-technology reimbursement factor, climate paragraph, FTC/DOJ antitrust sentence</span>
-    <span class="tag tag-removed">Removed</span>
-  </div>
-  <div class="finding-body">
-    <p>Deleted in full: "We may not be adequately reimbursed by third-party payers for services involving new technology." (entire factor); the compliance-list bullet "certifications of patient eligibility for home health and hospice services;"; the FY2024 sustainability/climate-commitments paragraph; and the sentence "Antitrust enforcement in the health care industry is currently a priority of the Federal Trade Commission and the DOJ..."</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Retitled factors: information systems, weather, economic weakness</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>"Our operations could be impaired by a failure of our information systems." &rarr; "...by a failure in or breach of our information systems or those of third parties on whose systems our business relies."</p>
-    <p>"Our business and operations are subject to risks related to changing global weather patterns." &rarr; "...related to hurricanes, extreme weather events or other natural disasters."</p>
-    <p>"Our overall business results may suffer during periods of general economic weakness or recessions." &rarr; "...during periods of significant inflation, general economic weakness or recessions or as a result of changing governmental policies."</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Workforce: FBA student-loan and immigration-policy sentences added</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"New limitations on federal loan eligibility, other student loan changes imposed pursuant to the FBA and changes to immigration policies may also impact health care personnel shortages."</blockquote>
-    <blockquote>"...changes in immigration policies could reduce the availability of international physicians."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Capital structure and other risk-factor data points updated</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Total indebtedness $43.031B &rarr; $46.492B; availability now described under the unsecured facility plus commercial paper ($2.207B outstanding at Dec 31, 2025); covenant list 7 bullets &rarr; 4 (dividend/restricted-payment, investment, asset-sale, and affiliate-transaction limits dropped; sale-leaseback added); the asset-based revolver borrowing-base paragraph deleted; a ratings-downgrade sentence added. Other: Medicare/Medicaid revenue share 44.5% &rarr; 45.4%; sequestration extension "first eight months of federal fiscal year 2032" &rarr; "first five months of federal fiscal year 2033"; uncompensated care $4.366B &rarr; $4.605B; "undocumented aliens" &rarr; "undocumented immigrants"; an FBA uninsured-rate sentence added (pre-enrollment verification, immigration-status limits); privacy factor gains "transfer and storage of personal information, including restrictions on the offshoring of data"; Frist-family voting stake ~28% &rarr; ~31%; 102 of 190 hospitals in FL/TX (51% of revenues).</p>
+    <p class="shift">Shift: realized, may &rarr; have (+); quant none</p>
+    <blockquote>FY2024 10-K: "These may include changes to trade policy and new or increased tariffs, which may impact our supply chain operations."</blockquote>
+    <blockquote>FY2025 10-K: "Additionally, imposed or threatened tariffs have raised, and may continue to raise, the cost of certain medical supplies and products we source from outside the United States."</blockquote>
+    <p class="history">History: "have raised, and may continue to raise" appears in FY2025 only; the tariff clause in factor (1) has run since Q1 2025.</p>
+    <p>The paragraph adds that HCA's response "has generally managed their impact" but gives no figure; MD&amp;A attributes device cost growth to "cardiovascular technologies", not tariffs.</p>
   </div>
 </div>
 </div>
@@ -980,9 +1252,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, 10-K &ldquo;expect ... to adversely affect&rdquo; &rarr; &ldquo;As expected ... were unfavorably impacted&rdquo; (+); quant, uninsured admissions +15.6%</p>
     <p>The 10-K's forward-looking "expected to adversely impact" becomes a realized result one quarter later:</p>
     <blockquote>Q1 2026: "Consolidated and same facility uninsured admissions increased 15.6% and 15.5%, respectively, for the quarter ended March 31, 2026 compared to the quarter ended March 31, 2025."</blockquote>
     <blockquote>Q1 2026: "As expected, during the quarter ended March 31, 2026, our revenues from managed care and insurers were unfavorably impacted by the expiration of the EPTCs at the end of 2025 and administrative reforms"</blockquote>
+    <p class="history">History: &ldquo;increased 15.6% and 15.5%&rdquo; appears in Q1 2026 only; &ldquo;As expected&rdquo; enters the 10-Q MD&amp;A in Q1 2026 (again in Q2 2026). The FY2025 10-K gave full-year uninsured admissions of +1.9% consolidated, +1.2% same facility.</p>
     <p>Managed care and insurer revenue grew only 0.5% in dollars ($9.084B vs $9.041B), while Medicaid revenue rose 21% ($1.444B vs $1.190B). "As expected" lets management present the hit as already forecast, but the 10-K gave no number to measure it against.</p>
   </div>
 </div>
@@ -994,9 +1268,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant added, a quarterly breakdown that exposes Q4 2025 (+ disclosure)</p>
     <p>The 10-K gave only a full-year figure. The 10-Q's quarter-by-quarter history adds a fourth-quarter number that was not disclosed before:</p>
     <blockquote>FY2025 10-K: "Same facility uninsured emergency room visits declined 0.6% and same facility uninsured admissions increased 1.2% during 2025 compared to 2024."</blockquote>
     <blockquote>Q1 2026: "Same facility uninsured admissions in 2025, compared to 2024, increased 7.1% in the fourth quarter, declined 2.0% in the third quarter, increased 0.4% in the second quarter and declined 0.7% in the first quarter."</blockquote>
+    <p class="history">History: &ldquo;increased 7.1% in the fourth quarter&rdquo; appears in Q1 and Q2 2026 only; the FY2025 10-K gave only the annual figure.</p>
     <p>The 1.2% annual figure hid a fourth-quarter jump that came before the January 1 subsidy expiry. The filing attributes only the Q1 2026 increase to the expiry and gives no cause for Q4. The jump is consistent with enrollees dropping coverage ahead of 2026 premium increases, but that is an inference.</p>
   </div>
 </div>
@@ -1008,8 +1284,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant, charity care +51% in the uncompensated-care note (no wording change)</p>
     <p>The note to the uncompensated-care table, outside the MD&amp;A, shows where the newly uninsured patients are being recorded:</p>
     <blockquote>Q1 2026: "The total uncompensated care amounts for the quarters ended March 31, 2026 and 2025 include charity care of $5.513 billion and $3.644 billion, respectively, and the related estimated costs of charity care were $507 million and $350 million, respectively."</blockquote>
+    <p class="history">History: &ldquo;charity care of $5.513 billion&rdquo; appears in Q1 2026 only. The &ldquo;Cost-to-charges ratio&rdquo; line ran in every filing from Q2 2023 to Q1 2026 and was dropped in Q2 2026.</p>
     <p>HCA's charity policy covers non-elective patients at or below 400% of the federal poverty level. That is the income band the enhanced credits had subsidized. Charity care grew more than twice as fast as total uncompensated care. The cost-to-charges ratio also fell from 9.6% to 9.2%, which lowers the reported cost of the same gross charges.</p>
   </div>
 </div>
@@ -1021,13 +1299,15 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: guidance removed, &ldquo;expect ... to decline&rdquo; deleted (+ tone); degree added &ldquo;which may be significant&rdquo; (&times;2); named +Florida program year</p>
     <p>FY2025 10-K:</p>
     <blockquote>"Excluding the expected impact of any additional approvals, we expect revenues from SDP arrangements to decline in 2026 compared to 2025."</blockquote>
     <blockquote>"Some states have received approval of grandfathered applications, but we are unable to predict the timing or extent of any additional approvals by CMS and the resulting recognition of the related revenues."</blockquote>
     <p>Q1 2026 deletes the decline sentence and adds:</p>
     <blockquote>"Some states have received preliminary grandfathering determinations with application approvals, and any such approvals or future approvals could result in the recognition of additional revenues, which may be significant."</blockquote>
     <blockquote>"We continue to monitor pending applications to CMS regarding state Medicaid directed payment programs, including the application for the Medicaid directed payment program in the state of Florida for the program year beginning October 1, 2024 through September 30, 2025"</blockquote>
-    <p>Less than three months after guiding SDP revenue down, management drops the guidance and points to possible upside, naming a specific state and program year. The FBA language also gains "temporarily" ("the FBA temporarily grandfathers"). Florida was approved the next quarter.</p>
+    <p class="history">History: &ldquo;expect revenues from SDP arrangements to decline&rdquo; appears in FY2025 only; &ldquo;which may be significant&rdquo; first appears in Q1 2026 (twice; once in Q2 2026); &ldquo;state of Florida for the program year&rdquo; in Q1 2026 only.</p>
+    <p>Less than three months after guiding SDP revenue down, management drops the guidance and points to possible upside, naming a specific state and program year. The MD&amp;A also adopts the 10-K Business section's "the FBA temporarily grandfathers" (the 10-K MD&amp;A said "grandfathers"). Florida was approved the next quarter.</p>
   </div>
 </div>
 
@@ -1038,8 +1318,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant, diluted shares &minus;9.1%; named +technology investments as a cost driver</p>
     <blockquote>Q1 2026: "Shares used for diluted earnings per share were 226.652 million shares for the quarter ended March 31, 2026 and 249.440 million shares for the quarter ended March 31, 2025."</blockquote>
     <blockquote>Q1 2026: "The increase in other operating expenses, as a percentage of revenues, is primarily related to growth in state supplemental Medicaid program expenses, higher professional fees and an increase in technology investments."</blockquote>
+    <p class="history">History: &ldquo;an increase in technology investments&rdquo; appears in Q1 2026 only; &ldquo;growth in state supplemental Medicaid program expenses&rdquo; in Q3 2025 and Q1 2026.</p>
     <p>Income before taxes fell from $2.327B to $2.287B and net income attributable rose only 0.6%, so all of the EPS growth came from the buyback. Other operating expenses rose from 21.0% to 21.9% of revenue. "Technology investments" is new as a named driver and fits the EHR rollout disclosed in the 10-K (inference). It is gone again in Q2.</p>
   </div>
 </div>
@@ -1051,8 +1333,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +respiratory activity as the volume explanation; quant added</p>
     <blockquote>Q1 2026: "During the quarter ended March 31, 2026, consolidated admissions increased 0.7% and same facility admissions increased 0.9% compared to the quarter ended March 31, 2025."</blockquote>
     <blockquote>Q1 2026: "During the first quarter of 2026, we did not experience a typical seasonal volume increase, primarily due to respiratory activity. Respiratory-related admissions declined 42%, and respiratory-related emergency room visits declined 32%, compared to the first quarter of 2025."</blockquote>
+    <p class="history">History: &ldquo;did not experience a typical seasonal volume increase&rdquo; and &ldquo;Respiratory-related admissions declined 42%&rdquo; appear in Q1 2026 only.</p>
     <p>Inpatient surgeries fell 0.4% and ER visits fell 0.4% (consolidated). The explanation covers admissions and ER visits but not surgeries, which were already flat to down in 2025 (outpatient &minus;0.2%). Revenue per equivalent admission (+3.1%) accounted for most of the revenue growth.</p>
   </div>
 </div>
@@ -1064,7 +1348,9 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant up, pipeline +$1.7B; guidance range unchanged, &ldquo;approximate between&rdquo; &rarr; &ldquo;be approximately between&rdquo;</p>
     <blockquote>Q1 2026: "Planned capital expenditures are expected to be approximately between $5.0 billion and $5.5 billion in 2026. At March 31, 2026, there were projects under construction that had estimated additional costs to complete and equip over the next five years of approximately $8.8 billion."</blockquote>
+    <p class="history">History: &ldquo;approximately $8.8 billion&rdquo; appears in Q1 2026 only. Pipeline: $4.7B (FY2024), $5.6B, $5.9B, $6.0B, $7.1B (FY2025), $8.8B, then $8.6B (Q2 2026).</p>
     <p>The +$1.7B step is the largest single-quarter increase in the series and came in the first quarter after the 10-K. Annual spending guidance did not move, so the added projects extend the multi-year commitment rather than lifting 2026 spend.</p>
   </div>
 </div>
@@ -1076,7 +1362,9 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant down, negative working capital $567M &rarr; $3.206B (&minus;)</p>
     <blockquote>Q1 2026: "We had negative working capital of $3.206 billion and $567 million at March 31, 2026 and December 31, 2025, respectively."</blockquote>
+    <p class="history">History: &ldquo;negative working capital&rdquo; first appears in Q2 2025 and in every filing since; &ldquo;negative working capital of $3.206 billion&rdquo; in Q1 2026 only.</p>
     <p>Quarter-end debt was $48.023B against $46.492B at year end. Repurchases of $1.571B and dividends of $183M exceeded operating cash flow less capex and acquisitions (about $0.63B), and the gap was covered by a $1.377B net increase in debt. Variable-rate debt of $3.950B raised the rate sensitivity of a 1% move to ~$40M (from $25M). The $3.0B note issue in April 2026 (see Q2) refinanced the commercial paper.</p>
   </div>
 </div>
@@ -1088,20 +1376,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant down, shares &minus;59% year over year; January 2025 authorization &ldquo;fully utilized&rdquo;</p>
     <blockquote>Q1 2026: "During the quarter ended March 31, 2026, we repurchased 3,156,569 shares of our common stock at an average price of $497.63 per share through market purchases pursuant to the January 2025 authorization (which was fully utilized during the first quarter of 2026) and the January 2026 authorization."</blockquote>
+    <p class="history">History: &ldquo;fully utilized during the first quarter of 2026&rdquo; appears in Q1 and Q2 2026; Q1 2025 had repurchased 7,761,597 shares (Q1 2025 only).</p>
     <p>Dollar repurchases fell from $2.506B to $1.571B and share count from 7.76M to 3.16M, at an average price 54% higher. That is consistent with price sensitivity in the program, which the filing does not discuss.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Frist-entity Exchange Agreement: 36,629,188 shares exchanged for 36,557,141 new shares</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"On February 6, 2026, the Company entered into an Exchange Agreement with an entity controlled by the Company's founder, Dr. Thomas F. Frist, Jr. and certain of his affiliates. Under the Exchange Agreement, the Company exchanged 36,629,188 shares of our common stock delivered to the Company for 36,557,141 new shares of our common stock"</blockquote>
-    <p>Disclosed in Note 9, outside the MD&amp;A. The net effect is a 72,047-share reduction, separate from the open-market program. The 10-K had just added "Frisco Holding II" alongside Hercules Holding II as a Frist-affiliated holder (about 31% of shares). The filing does not say why the shares were exchanged.</p>
   </div>
 </div>
 
@@ -1300,8 +1578,8 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1 2024</td><td>No exchange-subsidy or reconciliation language</td></tr>
         <tr><td>Q2 2024</td><td class="val-new">Supreme Court/agency factor added; May 2024 CMS managed-care rule appears</td></tr>
         <tr><td>Q3 2024</td><td class="val-new">"expiration of enhanced subsidies" enters FLS factor (3)</td></tr>
-        <tr><td>FY2024 10-K</td><td>"enhanced premium tax credits" terminology; Supreme Court factor removed</td></tr>
-        <tr><td>Q1 2025</td><td class="val-new">Standalone health-policy paragraph ("scheduled to expire at the end of 2025"); tariffs/pharmaceuticals enter factor (1)</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-new">"enhanced premium tax credits" terminology; "Medicare for All" deleted; reform factor becomes "public policy developments" and moves ahead of debt; PAYGO/ARPA clause and Supreme Court factor removed</td></tr>
+        <tr><td>Q1 2025</td><td class="val-new">Standalone health-policy paragraph ("scheduled to expire at the end of 2025"); tariffs/pharmaceuticals and "holds on or cancellations of congressionally authorized spending" enter factor (1); factor (6) "possible changes" &rarr; "possible reductions or other changes"</td></tr>
         <tr><td>Q2 2025</td><td class="val-new">OBBBA Recent Developments section (full Medicaid/SDP/Exchange detail); resiliency plans; PAYGO factor</td></tr>
         <tr><td>Q3 2025</td><td class="val-new">Quantified: "up to 4%" Medicare sequestration; shutdown + $8.0B/yr DSH; SDP grandfathering with possible increases; new FLS factor on SDP approvals</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">OBBBA &rarr; "FBA"; SDP revenues quantified ($6.2B vs $5.5B); 2026 guidance: SDP revenues to decline, EPTC expiration adverse "offset in part by our ongoing resiliency efforts"</td></tr>
@@ -1321,9 +1599,9 @@ a:hover { text-decoration: underline; }
       <tbody>
         <tr><td>Q1 2024</td><td>"currently being reviewed"; states ask CMS to "replace" programs; "reduced or eliminated" risk stated</td></tr>
         <tr><td>Q2 2024</td><td class="val-new">"regularly reviewed"; "replace" &rarr; "modify"; "reduced or eliminated" deleted; May 2024 CMS final rule described</td></tr>
-        <tr><td>Q3 2024</td><td class="val-new">Florida $397M directed-payment revenue disclosed (first state named)</td></tr>
-        <tr><td>FY2024 10-K</td><td class="val-new">First quantification: $4.9B (2024) vs $3.9B (2023); "modify" &rarr; "replace" reverted; "reduced or eliminated" reinstated</td></tr>
-        <tr><td>Q1 2025</td><td>Structural rewrite: UPL payments, Section 1115 waivers, SDP arrangements, provider taxes; CMS-rule sentences dropped</td></tr>
+        <tr><td>Q3 2024</td><td class="val-new">Florida directed-payment program named as a $397M prior-year (Q3 2023) base; first named in the Q3 2023 10-Q</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-new">First MD&amp;A quantification: $4.9B (2024) vs $3.9B (2023) (FY2023 10-K Business gave $3.9B); "modify" &rarr; "replace" reverted; "reduced or eliminated" reinstated; risk factor adds "could result in such payments being reduced or eliminated"</td></tr>
+        <tr><td>Q1 2025</td><td>Structural rewrite: UPL payments, Section 1115 waivers, SDP arrangements, provider taxes; base rates "are insufficient to cover the cost of care"; CMS-rule sentences dropped; "currently being reviewed" restored</td></tr>
         <tr><td>Q2 2025</td><td class="val-new">OBBBA SDP cap (Medicare rates vs average commercial); grandfathering rules; 10-pp annual reductions from Jan 1, 2028</td></tr>
         <tr><td>Q3 2025</td><td class="val-new">Grandfathering moves to Revenue/Volume Trends; "could be impacted, and in some instances, increased"; revenue growth linked to supplemental Medicaid</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">$6.2B vs $5.5B quantified; 2026 SDP decline guided; Texas named in risk-factor SDP cap</td></tr>
@@ -1374,7 +1652,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q2 2026</td><td>4,752,930</td><td class="val-neg">$414.25</td><td>$7.210B</td></tr>
       </tbody>
     </table>
-    <p>Q1 2025 repurchase pace doubled year over year (7.76M vs 3.89M shares); Q1 2026 pace halved at ~$500 average prices, then rose 50.6% sequentially in Q2 2026 as the average price fell 16.8% to $414.25. The Q2 2026 monthly path runs $475.23 (April), $418.99 (May), $379.12 (June) &mdash; June below every monthly average printed in 2026. H1 2026 totals 7,909,499 shares and $3.540B, against H1 2025's 14,792,965 shares and $5.012B. Dividends per quarter: $0.66 (2024) &rarr; $0.72 (2025) &rarr; $0.78 (2026, held in Q2). The sentence "Our ability to declare future dividends may also from time to time be limited by the terms of our debt agreements." appears in the FY2023&ndash;FY2025 10-Ks but in none of the 10-Qs, so its absence from Q1 and Q2 2026 is a difference between forms, not a deletion. The FY2025 move to an unsecured revolver did drop the restricted-payments covenant. One 10b5-1 disclosure in the set: May 7, 2024, Michael S. Cuffe, M.D. (EVP &amp; Chief Clinical Officer), up to 22,080 SARs, window Sep 10, 2024 &ndash; Sep 10, 2025; Q2 2026 reports no adoptions or terminations.</p>
+    <p>Q1 2025 repurchase pace doubled year over year (7.76M vs 3.89M shares); Q1 2026 pace halved at ~$500 average prices, then rose 50.6% sequentially in Q2 2026 as the average price fell 16.8% to $414.25. The Q2 2026 monthly path runs $475.23 (April), $418.99 (May), $379.12 (June) &mdash; June below every monthly average printed in 2026. H1 2026 totals 7,909,499 shares and $3.540B, against H1 2025's 14,792,965 shares and $5.012B. Dividends per quarter: $0.66 (2024) &rarr; $0.72 (2025) &rarr; $0.78 (2026, held in Q2). The sentence "Our ability to declare future dividends may also from time to time be limited by the terms of our debt agreements." appears in the FY2023&ndash;FY2025 10-Ks but in none of the 10-Qs, so its absence from Q1 and Q2 2026 is a difference between forms, not a deletion. The February 2025 move to an unsecured revolver did drop the restricted-payments covenant (first shown in the Q1 2025 Item 1A restatement). One 10b5-1 disclosure in the set: May 7, 2024, Michael S. Cuffe, M.D. (EVP &amp; Chief Clinical Officer), up to 22,080 SARs, window Sep 10, 2024 &ndash; Sep 10, 2025; Q2 2026 reports no adoptions or terminations.</p>
   </div>
 </div>
 
@@ -1390,7 +1668,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1&ndash;Q3 2024</td><td>Dec 31, 2023</td><td>none</td><td>none (verbatim &times;3)</td></tr>
         <tr><td>Q1 2025</td><td>Dec 31, 2024</td><td>none</td><td class="val-new">adds ", except as set forth below."</td></tr>
         <tr><td>Q2 2025</td><td>Dec 31, 2024</td><td>+ 10-Q for Mar 31, 2025</td><td class="val-new">retains exception clause</td></tr>
-        <tr><td>Q3 2025</td><td>Dec 31, 2024</td><td>+ 10-Qs for Mar 31 and Jun 30, 2025</td><td class="val-neg">exception withdrawn &mdash; pure stub</td></tr>
+        <tr><td>Q3 2025</td><td>Dec 31, 2024</td><td>+ 10-Qs for Mar 31 and Jun 30, 2025</td><td>exception clause dropped; Q1/Q2 2025 10-Q text incorporated by reference, no new body</td></tr>
         <tr><td>Q1 2026</td><td>Dec 31, 2025</td><td>none</td><td>none &mdash; plain stub</td></tr>
         <tr><td>Q2 2026</td><td>Dec 31, 2025</td><td>none</td><td>none &mdash; byte-identical to Q1 2026</td></tr>
       </tbody>
@@ -1398,9 +1676,9 @@ a:hover { text-decoration: underline; }
   </div>
   <div class="signal-card full">
     <h3><span class="num">6b</span> The Q1&ndash;Q2 2025 Indebtedness Exception Lifecycle</h3>
-    <p><strong>Born (Q1 2025):</strong> a full "Risks related to our indebtedness" section appended after the stub, tracking the February 2025 replacement of the senior secured credit facilities with the $8.0B senior unsecured facility &mdash; total indebtedness $44.576B, availability $7.766B, six consequence bullets, and a covenant subsection ("Our debt agreements contain restrictions that limit our flexibility in operating our business.") with four covenant bullets plus a financial-ratio/acceleration paragraph.</p>
-    <p><strong>Trimmed (Q2 2025):</strong> numbers updated ($44.483B; availability $6.208B net of the commercial-paper backstop intention, $1.778B CP outstanding); a ratings-downgrade sentence added; the entire covenant subsection deleted.</p>
-    <p><strong>Withdrawn (Q3 2025):</strong> the indebtedness disclosure deleted entirely, reverting to a pure no-material-changes stub. No quarter ever added Medicaid/ACA material-change text to Item 1A; those changes arrived in the FY2025 10-K.</p>
+    <p><strong>Born (Q1 2025):</strong> a full "Risks related to our indebtedness" section appended after the stub, tracking the February 2025 replacement of the senior secured credit facilities with the $8.0B senior unsecured facility &mdash; total indebtedness $44.576B, availability $7.766B, six consequence bullets, and a covenant subsection ("Our debt agreements contain restrictions that limit our flexibility in operating our business.") with four covenant bullets plus a financial-ratio/acceleration paragraph. Against the FY2024 10-K list of seven, the restricted-payments limit on dividends and repurchases, investments, asset sales and affiliate transactions are gone, and "specified financial ratios" became "a specified financial ratio".</p>
+    <p><strong>Trimmed (Q2 2025):</strong> numbers updated ($44.483B; availability $6.208B net of the commercial-paper backstop intention, $1.778B CP outstanding); a ratings-downgrade sentence added; the covenant subsection not restated, because the stub now incorporates the Q1 2025 10-Q as well as the 10-K.</p>
+    <p><strong>Folded into the stub (Q3 2025):</strong> the exception clause is dropped and no new body appears; the stub incorporates both the Q1 and Q2 2025 10-Qs, so the indebtedness text is carried by reference rather than withdrawn (this card previously said it was deleted). No quarter ever added Medicaid/ACA material-change text to Item 1A; those changes arrived in the FY2025 10-K.</p>
   </div>
 </div>
 
@@ -1433,7 +1711,7 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="signal-card">
       <h3>2. Capex Guidance Flat, Pipeline Up 87%</h3>
-      <p>Annual capex guidance stayed within $5.0&ndash;5.5B across all ten filings, while the approved construction pipeline rose from $4.6B to a peak of $8.8B, with the two largest single-quarter increases (+$0.9B in Q1 2025, +$1.7B in Q1 2026) occurring after annual filings that left guidance unchanged. Q2 2026 recorded the series' first pipeline decline, to $8.6B, in the same filing that narrowed the guidance sentence to exclude acquisitions.</p>
+      <p>Annual capex guidance stayed within $5.0&ndash;5.5B across all ten filings, while the approved construction pipeline rose from $4.6B to a peak of $8.8B, with the two largest single-quarter increases (+$0.9B in Q1 2025, +$1.7B in Q1 2026) occurring after annual filings that left guidance unchanged. Q2 2026 recorded the series' first pipeline decline, to $8.6B, in the same filing that narrowed the guidance sentence to exclude acquisitions. The guide was also cut mid-year in both 2024 (Q3: to "$5 billion") and 2025 (Q2: to "approximately $5.0 billion"), and actual spending ($4.88B, $4.94B) landed below each cut figure.</p>
     </div>
     <div class="signal-card">
       <h3>3. Hurricane Disclosure Had a Three-Filing Lifecycle</h3>
@@ -1441,7 +1719,7 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="signal-card">
       <h3>4. Item 1A Carried One Material-Change Disclosure in Ten Filings</h3>
-      <p>The quarterly risk-factor stub carried no material-change body in six of the eight 10-Qs. The single exception &mdash; the indebtedness section tied to the February 2025 secured-to-unsecured refinancing &mdash; was added in Q1 2025, trimmed in Q2 2025 (covenant subsection deleted), and withdrawn in Q3 2025. The Medicaid/EPTC policy changes were never run through Item 1A; they arrived in the FY2025 10-K risk factors. Q2 2026 is byte-identical to Q1 2026, and carries no Item 1A text against the April 30, 2026 issuance of 4.700% notes due 2031, 5.000% due 2033, and 5.300% due 2036 (Supplemental Indentures 54&ndash;56) &mdash; the 2025 precedent paired a refinancing with an exception body.</p>
+      <p>The quarterly risk-factor stub carried no material-change body in six of the eight 10-Qs. The single exception &mdash; the indebtedness section tied to the February 2025 secured-to-unsecured refinancing &mdash; was added in Q1 2025, restated in shorter form in Q2 2025 (covenants carried by reference to Q1), and folded into the stub by reference in Q3 2025. Its main content was the covenant list, which dropped the limit on dividends and repurchases in the same quarter repurchases doubled. The Medicaid/EPTC policy changes were never run through Item 1A; they arrived in the FY2025 10-K risk factors. Q2 2026 is byte-identical to Q1 2026, and carries no Item 1A text against the April 30, 2026 issuance of 4.700% notes due 2031, 5.000% due 2033, and 5.300% due 2036 (Supplemental Indentures 54&ndash;56) &mdash; the 2025 precedent paired a refinancing with an exception body.</p>
     </div>
   </div>
 </div>
@@ -1501,7 +1779,7 @@ a:hover { text-decoration: underline; }
         <td>$1.610B / $6.45</td>
         <td>+2.8%</td>
         <td>$5.0&ndash;5.2B</td>
-        <td>Feb 2025 secured&rarr;unsecured refinancing; Item 1A exception born</td>
+        <td>Feb 2025 secured&rarr;unsecured refinancing; Item 1A exception born, restricted-payments covenant gone</td>
       </tr>
       <tr>
         <td><strong>Q2 2025</strong></td>
@@ -1517,7 +1795,7 @@ a:hover { text-decoration: underline; }
         <td>$1.643B / $6.96</td>
         <td>+2.4%</td>
         <td>~$5.0B</td>
-        <td>SDP revenue tailwind; shutdown/DSH disclosed; Item 1A exception withdrawn</td>
+        <td>SDP revenue tailwind; shutdown/DSH disclosed; 4% PAYGO risk; Item 1A exception clause dropped</td>
       </tr>
       <tr>
         <td><strong>FY2025 10-K</strong></td>
