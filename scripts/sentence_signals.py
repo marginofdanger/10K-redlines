@@ -30,7 +30,7 @@ WORD = re.compile(r"[A-Za-z][A-Za-z'’-]*|\$?\d[\d,.]*%?")
 # certainty ladder: higher = firmer commitment / more actual
 LADDER = {"might": 1, "possible": 1, "possibly": 1, "may": 2, "could": 2, "potentially": 2, "would": 2,
           "likely": 3, "should": 3, "believe": 3, "believes": 3, "anticipate": 3, "anticipates": 3,
-          "expect": 4, "expects": 4, "intend": 4, "intends": 4, "plan": 4, "plans": 4, "committed": 4,
+          "expect": 4, "expects": 4, "intend": 4, "intends": 4, "committed": 4,
           "will": 5, "are": 5, "is": 5, "have": 5, "has": 5, "had": 5, "did": 5, "were": 5, "was": 5,
           "continue": 4, "continues": 4}
 REALIZED_FROM = {"could", "may", "might", "would", "can"}
@@ -64,7 +64,7 @@ PERIOD_TOKEN = re.compile(r"\b(20\d\d|january|february|march|april|may|june|july
                           r"november|december|first|second|third|fourth|three|six|nine|q[1-4])\b", re.I)
 
 
-ABBR = re.compile(r"\b(U\.S\.|U\.K\.|E\.U\.|Inc\.|Co\.|Corp\.|Ltd\.|No\.|vs\.|e\.g\.|i\.e\.|Mr\.|Ms\.|Dr\.|St\.)")
+ABBR = re.compile(r"\b(U\.S\.|U\.K\.|E\.U\.|Inc\.|Co\.|Corp\.|Ltd\.|No\.|vs\.|v\.|e\.g\.|i\.e\.|Mr\.|Ms\.|Dr\.|St\.|L\.P\.|LLC\.|Cir\.|Cal\.|Del\.|D\.)")
 
 
 def is_table_row(s):
@@ -116,9 +116,14 @@ def phrase_hits(s, phrases):
     return {p for p in phrases if " " + p + " " in sl or (" " + p) in sl and p.endswith(" ")}
 
 
+XREF = re.compile(r"\b(note|item|part)\s+[0-9ivx]+[a-c]?\b", re.I)
+
+
 def classify(a, b):
     """Signals for a changed sentence pair (a may be None = added, b None = removed)."""
     sig, score = [], 0.0
+    if a is not None and b is not None and XREF.sub("#", a) == XREF.sub("#", b):
+        return "ROLLED", ["renumbered cross-reference"], 0.0
     if a is None or b is None:
         s = b if a is None else a
         kind = "ADDED" if a is None else "REMOVED"
@@ -161,8 +166,12 @@ def classify(a, b):
     elif (iset & REALIZED_FROM) and (dset & REALIZED_TO):
         sig.append("de-realized: actual -> hypothetical")
         score += 2.5
-    # quantification
+    # quantification (a comparison that rolled forward a year, "2025, 2024 and 2023" -> "2026,
+    # 2025 and 2024", drops its oldest figure without anything being withheld)
     na, nb = nums(a), nums(b)
+    ya, yb = {int(y) for y in re.findall(r"\b(20\d\d)\b", a)}, {int(y) for y in re.findall(r"\b(20\d\d)\b", b)}
+    if ya and yb and max(yb) == max(ya) + 1 and len(yb) >= len(ya) - 1:
+        na = nb = []
     if na and not nb:
         sig.append(f"quant: removed ({', '.join(na[:3])}) (-)")
         score += 3.0
@@ -269,10 +278,13 @@ def elsewhere(s, pool):
     return False
 
 
-def persistence(company, sentence, section):
-    """Periods in which the sentence stood identical before the 'to' period (uses phrase_history index)."""
+def persistence(company, sentence, section, upto):
+    """Consecutive periods, ending at the 'from' period, in which the sentence stood identical."""
     run, first = 0, None
-    for label, d in ph.periods(company):
+    seq = ph.periods(company)
+    labels = [l for l, _ in seq]
+    seq = seq[:labels.index(upto) + 1] if upto in labels else seq
+    for label, d in seq:
         secs = ph.load_sections(d, label, section)
         found = any(ph.norm(sentence) == ph.norm(s) for lines in secs.values() for s in ph.sentences(lines))
         if found:
@@ -370,7 +382,7 @@ def main():
         shown += 1
         pers = ""
         if pa and not a.no_persistence and kind != "ADDED":
-            run, first = persistence(company, pa, sn)
+            run, first = persistence(company, pa, sn, a.p1)
             if run >= 2:
                 pers = f" | before-sentence unchanged for {run} periods (since {first})"
         print(f"\n[{sc:4.1f}] {sn} {kind}  {'; '.join(sig) or '(wording edit)'}{pers}")

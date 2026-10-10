@@ -85,6 +85,10 @@ def fragments(quote):
 
 
 def added_lines(path, ref):
+    tracked = subprocess.run(["git", "cat-file", "-e", f"{ref}:{os.path.relpath(path)}"], capture_output=True)
+    if tracked.returncode != 0:  # a page that did not exist at ref: every line is new
+        with open(path, encoding="utf-8") as f:
+            return set(range(1, sum(1 for _ in f) + 2))
     diff = subprocess.run(["git", "diff", "-U0", ref, "--", path], capture_output=True, text=True).stdout
     lines, cur = set(), 0
     for l in diff.splitlines():

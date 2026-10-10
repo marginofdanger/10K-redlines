@@ -38,8 +38,10 @@ def load_sections(d, label, only=None):
     secs = {}
     for p in sorted(glob.glob(os.path.join(d, f"{label}_*.txt"))):
         name = os.path.basename(p)[len(label) + 1:-4]
-        if name == "full" or (only and name != only):
+        if only and name != only:
             continue
+        if name == "full" and only is None:
+            name = "elsewhere in filing"  # text outside the extracted sections
         with open(p, encoding="utf-8") as f:
             secs[name] = [l for l in f.read().splitlines() if l.strip()]
     return secs
@@ -125,6 +127,8 @@ def main():
     ap.add_argument("--sentence")
     ap.add_argument("--section")
     a = ap.parse_args()
+    if os.path.basename(os.path.normpath(a.company)) == "10q":
+        a.company = os.path.dirname(os.path.normpath(a.company))  # always search 10-Ks and 10-Qs
     if a.sentence:
         sentence_timeline(a.company, a.sentence, a.section)
     elif a.phrase:
