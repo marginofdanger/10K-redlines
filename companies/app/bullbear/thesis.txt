@@ -1,0 +1,76 @@
+APPLOVIN (APP): INVESTMENT THESIS PILLARS
+Written October 2026 from the 10-K dashboard themes (AXON/AI engine, Apps arc, EBITDA margin
+trajectory, capital structure, e-commerce expansion), the 10-Q scanner, and the eight filings from
+the Q3 2024 10-Q to the Q2 2026 10-Q. A stance moves only when two or more filings point the same way.
+Baseline: every pillar started the window (October 2024) at Intact.
+
+P1 Ad engine growth and pricing
+  Bull assumes: Axon keeps raising advertiser returns, so net revenue per installation and total
+    ad revenue keep compounding well above the ad market, first in gaming and then beyond it.
+  Bear fears: growth is all price and no volume; installation volume stalls as mobile gaming
+    saturates, and the growth rate keeps decaying toward the market.
+  Stance: Strengthening (moved at the FY2024 10-K: Software Platform / Advertising revenue +66% in
+    Q3 2024 and +75% for 2024; then +71%, +77%, +68%, +70% (FY2025), +59%, +53%). Held there despite
+    installation volume falling in Q3 2025 (-1%), Q1 2026 (-18%) and Q2 2026 (-2%), because revenue
+    growth in the same filings stayed above 50%.
+  Tests: revenue growth, net revenue per installation, installation volume, sequential revenue.
+
+P2 Margins and operating leverage
+  Bull assumes: a lean, software-only cost base (datacenter, a few hundred engineers) turns most
+    incremental revenue into EBITDA; exiting Apps lifted margins structurally.
+  Bear fears: datacenter costs and stock-based compensation rise faster than revenue once the
+    pricing gains slow.
+  Stance: Strengthening (moved at the Q2 2025 10-Q: Adjusted EBITDA margin 67.7% in Q1 2025 and
+    80.9% in Q2 2025 after the Apps exit; 82.4%, 82.3%, 84.5%, 83.9% since).
+  Tests: Adjusted EBITDA and operating margin, cost of revenue growth vs revenue, SBC.
+
+P3 Earnings quality
+  Bull assumes: continuing-operations earnings are clean: impairments and the Apps loss sit in
+    discontinued operations, and operating income is 76-78% of revenue.
+  Bear fears: earlier EPS was flattered by a near-zero tax rate from stock-award deductions; tax
+    normalizes (Pillar 2, smaller SBC benefit) and stock-based compensation, excluded from Adjusted
+    EBITDA, climbs again.
+  Stance: Weakening (moved at the Q1 2026 10-Q: FY2025 tax rate 13.1% vs 1.4% in 2024 (continuing operations) and
+    unrecognized SBC $145.6M -> $489.0M; Q1 2026 tax +$154.7M on a smaller SBC benefit and R&D SBC
+    payroll +$36.5M; Q2 2026 SBC $85.8M vs $34.6M and tax +$126.8M).
+  Tests: effective tax rate, SBC expense and unrecognized balance, non-operating gains in other income.
+
+P4 Cash conversion and capital return
+  Bull assumes: free cash flow at or above net income funds buybacks that shrink the share count,
+    without borrowing.
+  Bear fears: buybacks outrun free cash flow (as in Q1 2025, when the FCF cap was loosened and the
+    revolver drawn), receivables build, and net share settlement of awards eats the cash.
+  Stance: Strengthening (moved at the FY2025 10-K: Q3 2025 and FY2025 both show buybacks inside
+    free cash flow with cash rising; FY2025 FCF $3.95B = 119% of net income).
+  Tests: FCF vs net income, receivables / DSO, buybacks and withholding taxes vs FCF, diluted shares.
+
+P5 Balance sheet and liquidity
+  Bull assumes: $3.6B of fixed-rate unsecured notes (2029-2054) with an undrawn $1.0B revolver and a
+    cash pile that now nearly matches debt.
+  Bear fears: debt-funded buybacks or a large acquisition (the TikTok indication of interest in
+    2025) re-lever the company.
+  Stance: Strengthening (moved at the Q2 2025 10-Q: FY2024 10-K refinancing of secured term loans
+    into unsecured notes; Q2 2025 revolver repaid and cash doubled to $1.19B; cash $3.05B by Q2 2026).
+  Tests: cash vs $3.6B notes, revolver usage, net debt / EBITDA covenant (3.50x).
+
+P6 Expansion beyond gaming and concentration
+  Bull assumes: the Apps sale makes APP a pure ad platform; e-commerce / web advertisers and a
+    self-serve Axon Ads Manager widen the customer base; no customer is 10% of revenue.
+  Bear fears: the business remains a mobile-gaming ad network dependent on Apple and Google
+    policies; new verticals bring credit losses and the self-serve launch slips.
+  Stance: Intact (bull: Apps sold for $430.6M cash plus 22% of Tripledot; bear: bad debt from "new
+    initiatives" in Q2 2025, Q3 2025 and FY2025; the "launch more broadly in the first half of 2026"
+    sentence of Q3 2025 dropped from the FY2025 10-K; Tripledot is now a related-party customer).
+  Tests: e-commerce disclosure, bad debt, related-party revenue, geographic mix, platform policies.
+
+P7 Legal, regulatory and reputation
+  Bull assumes: short-seller claims and the follow-on suits fail; privacy regimes (ATT, Privacy
+    Sandbox) do not impair targeting.
+  Bear fears: the securities class action or a regulatory inquiry into data practices succeeds;
+    reputation damage deters advertisers.
+  Stance: Weakening (moved at the Q3 2025 10-Q: Q1 2025 securities and derivative suits filed; Q3
+    2025 amended complaint plus new risk language on "improper advertising practices" and misuse of
+    user data; FY2025 adds "misleading or false statements" about the company). Bull offsets: two of
+    three complaints voluntarily dismissed (Q2 2025); Google retired Privacy Sandbox (Q3 2025/FY2025).
+  Tests: ruling on the motion to dismiss (fully briefed February 2026), any government inquiry,
+    loss accrual.

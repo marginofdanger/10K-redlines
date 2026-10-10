@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>AppLovin: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed August 5, 2026 | Also covered: Q1 2026 10-Q, FY2025 10-K, Q3 2025, Q2 2025 and Q1 2025 10-Qs, FY2024 10-K, Q3 2024 10-Q (filed from November 2024) | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Ad engine growth and pricing</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">FY2025 revenue +70% on net revenue per installation +72%; Q2 2026 still +53%</td><td class="ev-bear">Installations fell in three filings (Q3 2025 &minus;1%, Q1 2026 &minus;18%, Q2 2026 &minus;2%); growth slowed from 77% (Q2 2025) to 53%</td><td>FY2024 10-K</td></tr>
+<tr><td>P2 Margins and operating leverage</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Adjusted EBITDA margin 60.2% (Q3 2024) &rarr; 82.3% (FY2025) &rarr; 83.9% (Q2 2026); operating margin 78%</td><td class="ev-bear">Stock-based compensation back to $85.8M a quarter (+148%); cost of revenue +46%, close to revenue's +53%</td><td>Q2 2025 10-Q</td></tr>
+<tr><td>P3 Earnings quality</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Impairments and the Apps loss sit in discontinued operations; continuing operating income is 78% of revenue</td><td class="ev-bear">Tax rate 1.4% (2024) &rarr; 13.1% (2025) &rarr; 15.9% (Q2 2026); SBC $34.6M &rarr; $85.8M a quarter, unrecognized SBC $145.6M &rarr; $489.0M</td><td>Q1 2026 10-Q</td></tr>
+<tr><td>P4 Cash conversion and capital return</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">FY2025 FCF $3.95B = 119% of net income; $2.2B of buybacks inside it while cash rose to $2.49B</td><td class="ev-bear">Q2 2026 FCF about $863M = 68% of net income; about $490M absorbed by working capital, DSO 97 &rarr; 103 days</td><td>FY2025 10-K</td></tr>
+<tr><td>P5 Balance sheet and liquidity</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Secured term loans replaced by $3.6B of fixed-rate unsecured notes; cash $0.57B (Q3 2024) &rarr; $3.05B (Q2 2026)</td><td class="ev-bear">Q1 2025: $200M revolver draw "to fund share repurchases" (repaid by May 2025)</td><td>Q2 2025 10-Q</td></tr>
+<tr><td>P6 Expansion beyond gaming and concentration</td><td class="stance s-intact">Intact</td><td class="ev-bull">Apps sold for $430.6M cash plus 22% of Tripledot; no customer at 10% of revenue</td><td class="ev-bear">"Launch more broadly in the first half of 2026" (Q3 2025) dropped; bad debt from "new initiatives" +$24.5M in 2025</td><td>&mdash;</td></tr>
+<tr><td>P7 Legal, regulatory and reputation</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Two of three securities complaints voluntarily dismissed (May 2025); Google retired Privacy Sandbox</td><td class="ev-bear">Securities class action and consolidated derivative suits since March 2025; motion to dismiss fully briefed in February 2026, still pending</td><td>Q3 2025 10-Q</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. Revenue and margins kept compounding; the new weak spots are cash conversion in the quarter and the return of stock-based compensation.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +53% to $1.924B on net revenue per installation +58%; the installation decline narrows to &minus;2% from &minus;18% in Q1</div>
+      <blockquote>Q2 2026: "For the three months ended June 30, 2026, our revenue increased by $664.9 million, or 53%, compared to the same period in the prior year due primarily to improved AppLovin Ads performance, where net revenue per installation increased 58%, partially offset by a decrease in the volume of installations of 2%."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$664.9M year over year; +4.4% sequentially ($1.842B &rarr; $1.924B). Rest of world +56%, United States +50%.</p>
+      <p>Revenue still grows by half a year after the Apps exit, and the volume drag that dominated Q1 largely faded.</p>
+      <p class="next"><b>Next filing:</b> installations back to growth, or revenue growth holding above 40% if they do not.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Adjusted EBITDA margin 83.9% vs 80.9%; G&amp;A down 27% as bad debt falls</div>
+      <blockquote>Q2 2026: "Adjusted EBITDA margin | 83.9% | 80.9% | 84.2% | 80.9%"</blockquote>
+      <blockquote>Q2 2026: "General and administrative expenses in the three months ended June 30, 2026 decreased by $14.7 million, or 27%, compared to the same period in the prior year, due to a decrease of $9.5 million in bad debt expense"</blockquote>
+      <p class="magnitude"><b>Size:</b> Adjusted EBITDA $1.614B (+58%); operating income $1.494B = 78% of revenue (76%). Total costs and expenses 22% of revenue (24%).</p>
+      <p>Incremental revenue converts to profit at about 90 cents on the dollar; the bad-debt problem from 2025's "new initiatives" is reversing.</p>
+      <p class="next"><b>Next filing:</b> margin at or above 83% with cost of revenue growing no faster than revenue.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Six-month buybacks $1.5B inside $2.15B of free cash flow; diluted shares &minus;1.5%</div>
+      <blockquote>Q2 2026: "During the six months ended June 30, 2026, we repurchased and retired 3.3 million shares of Class A common stock for $1.5 billion."</blockquote>
+      <blockquote>Q2 2026: "Free Cash Flow | 2,150,065 | 1,593,794"</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks = 70% of six-month FCF; withholding taxes on awards only $46.5M (H1 2025: $256.7M). Diluted shares 337.0M vs 342.2M; $1.8B authorization left.</p>
+      <p>Capital return stays inside internally generated cash, and the cash cost of net share settlement has collapsed.</p>
+      <p class="next"><b>Next filing:</b> buybacks still within FCF; a new authorization once the $1.8B is used.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and liquidity" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Cash $3.1B against $3.6B of notes; revolver undrawn</div>
+      <blockquote>Q2 2026: "As of June 30, 2026, we had cash and cash equivalents of $3.1 billion, consisting primarily of cash in checking and interest-bearing deposit accounts, as well as investments in money market funds."</blockquote>
+      <p class="magnitude"><b>Size:</b> net debt about $0.5B = 0.08x annualized Adjusted EBITDA ($6.5B); interest income rose $21.3M in the quarter.</p>
+      <p>The company is close to net-cash with fixed-rate debt maturing from 2029; the 3.50x leverage covenant is irrelevant at this level.</p>
+      <p class="next"><b>Next filing:</b> cash above the notes balance, or a stated use for it.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Q2 free cash flow about $863M = 68% of net income; working capital absorbs about $490M</div>
+      <blockquote>Q2 2026: "Net cash provided by operating activities was $2.2 billion for the six months ended June 30, 2026, primarily consisting of $2.5 billion of net income, adjusted for certain non-cash items"</blockquote>
+      <blockquote>Q2 2026: "which were partially offset by a net decrease in operating assets and liabilities of $504.8 million"</blockquote>
+      <p class="magnitude"><b>Size:</b> Q2 operating cash flow about $869M vs $1.291B in Q1 (six-month total less Q1); $490M of the $504.8M working-capital drain fell in Q2. Receivables $1.96B &rarr; $2.17B; DSO 97 &rarr; 103 days (XBRL).</p>
+      <p>The MD&amp;A cites "increased publisher payments" and higher cash taxes but does not explain the quarter's swing; conversion was 107% in Q1. Inferred: some of it is receivable timing.</p>
+      <p class="next"><b>Next filing:</b> Q3 FCF back above net income and DSO back under 100 days would refute; a second quarter below 80% confirms.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Stock-based compensation $85.8M vs $34.6M (+148%); R&amp;D +127%, all of it SBC payroll</div>
+      <blockquote>Q2 2026: "Research and development expenses in the three months ended June 30, 2026 increased by $55.9 million, or 127%, compared to the same period in the prior year, due primarily to an increase of $54.8 million in personnel-related expenses related to an increase in stock-based compensation-related payroll costs."</blockquote>
+      <p class="magnitude"><b>Size:</b> SBC = 4.5% of revenue (2.7%) and 5.7% of pre-tax income; it is excluded from Adjusted EBITDA. The FY2025 10-K put unrecognized SBC at $489.0M over 1.95 years.</p>
+      <p>The 2025 margin story partly reflected SBC falling to $208M after the 2024 PSU cycle; new grants are now running back through the income statement.</p>
+      <p class="next"><b>Next filing:</b> SBC near $85M a quarter (on schedule) or higher (new grants); share count still falling net of awards.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Growth slows for a fourth straight filing; six-month installation volume &minus;10%</div>
+      <blockquote>Q2 2026: "For the six months ended June 30, 2026, our revenue increased by $1.3 billion, or 56%, compared to the same period in the prior year due primarily to improved AppLovin Ads performance, where net revenue per installation increased 75%, partially offset by a decrease in the volume of installations of 10%."</blockquote>
+      <p class="magnitude"><b>Size:</b> quarterly growth 77% (Q2 2025) &rarr; 68% &rarr; 59% &rarr; 53%; all of the growth is price per installation.</p>
+      <p>Revenue now depends on extracting more per install from a shrinking install base, which has a ceiling the filing does not discuss.</p>
+      <p class="next"><b>Next filing:</b> installation volume growth, or a disclosed contribution from e-commerce / web advertisers.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Tax provision +113% to $239.0M (rate 15.9% vs 12.7%); $31.3M of pre-tax income is a fair-value gain</div>
+      <blockquote>Q2 2026: "The increase was primarily driven by higher pre-tax income from business operations during the three months ended June 30, 2026, foreign income taxed at different rates, and a decrease in stock-based compensation benefits"</blockquote>
+      <blockquote>Q2 2026: "due primarily to a net fair value remeasurement gain of $31.3 million related to certain non-marketable equity securities in the current period"</blockquote>
+      <p class="magnitude"><b>Size:</b> net income from continuing operations +64% vs pre-tax income +70%; the 3.2-point rate rise cost about $48M in the quarter. Other income $62.4M = 4.1% of pre-tax income.</p>
+      <p>Net income grows slower than operations as the stock-award tax shield shrinks; a small part of pre-tax income is marks on private-fund stakes.</p>
+      <p class="next"><b>Next filing:</b> effective rate stable near 16%; other income without fair-value gains.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing (full answers in this folder's &lt;period&gt;.txt files). <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (10-Qs vs the prior 10-Q; 10-Ks vs the prior 10-K, except the FY2024 10-K vs the Q3 2024 10-Q). From Q2 2025, figures are continuing operations (Apps sold June 30, 2025).</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>Q1 2026 10-Q</th><th>FY2025 10-K</th><th>Q3 2025 10-Q</th><th>Q2 2025 10-Q</th><th>Q1 2025 10-Q</th><th>FY2024 10-K</th><th>Q3 2024 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark held">&#9679;</span> Revenue $1.924B, +53%; revenue per install +58%, installs &minus;2%</td><td><span class="mark worse">&#9660;</span> Revenue $1.842B, +59%; revenue per install +93%, installs &minus;18%</td><td><span class="mark held">&#9679;</span> Revenue $5.481B, +70%; installs +3% (2024: +50%), revenue per install +72%</td><td><span class="mark held">&#9679;</span> Revenue $1.405B, +68%; revenue per install +75%, installs &minus;1%</td><td><span class="mark better">&#9650;</span> Revenue $1.259B, +77%; revenue per install +70%, installs +8%</td><td><span class="mark better">&#9650;</span> Advertising $1.159B, +71%; Apps &minus;14%</td><td><span class="mark better">&#9650;</span> Advertising $3.224B, +75% (installs +50%); Apps +3%</td><td><span class="mark better">&#9650;</span> Software Platform $835.2M, +66% (installs +39%); Apps flat</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark held">&#9679;</span> Adj. EBITDA margin 83.9% (80.9%); operating margin 78%; cost of revenue +46%</td><td><span class="mark better">&#9650;</span> Adj. EBITDA margin 84.5% (80.9%); G&amp;A &minus;15%</td><td><span class="mark better">&#9650;</span> Adj. EBITDA margin 82.3% (74.8%); operating margin 76% (59%)</td><td><span class="mark better">&#9650;</span> Adj. EBITDA margin 82.4% (77.5%); bad debt +$11.1M</td><td><span class="mark better">&#9650;</span> Adj. EBITDA margin 80.9% (71.9%) after the Apps exit</td><td><span class="mark better">&#9650;</span> Adj. EBITDA margin 67.7% (51.9%)</td><td><span class="mark better">&#9650;</span> Adj. EBITDA margin 57.8% (45.8%)</td><td><span class="mark better">&#9650;</span> Adj. EBITDA margin 60.2% (48.5%)</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark worse">&#9660;</span> SBC $85.8M (+148%); tax rate 15.9% (12.7%); $31.3M fair-value gain</td><td><span class="mark worse">&#9660;</span> Tax +$154.7M on smaller SBC benefit (rate 15.8%); SBC $83.4M</td><td><span class="mark worse">&#9660;</span> Tax 13.1% vs 1.4%; Pillar 2 $82.7M; disc. ops loss $99.4M</td><td><span class="mark worse">&#9660;</span> Tax rate 18.2% incl. global minimum tax; $20.4M fair-value loss</td><td><span class="mark held">&#9679;</span> $106.2M gain on Apps sale and $125.6M DTA write-off, both in disc. ops</td><td><span class="mark worse">&#9660;</span> $188.9M Apps goodwill impairment in net income of $576.4M</td><td><span class="mark worse">&#9660;</span> $3.8M tax benefit on $1.58B pre-tax income (SBC deductions)</td><td><span class="mark held">&#9679;</span> Tax 7.1% of pre-tax; all PSUs vested</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark worse">&#9660;</span> Q2 FCF about $863M = 68% of net income; DSO 103 days</td><td><span class="mark worse">&#9660;</span> FCF $1.287B = 107% of net income (Q3 2025: 126%)</td><td><span class="mark better">&#9650;</span> FCF $3.952B = 119% of net income</td><td><span class="mark better">&#9650;</span> Q3 FCF about $1.049B = 126% of net income</td><td><span class="mark held">&#9679;</span> Q2 FCF about $768M = 94% of net income</td><td><span class="mark held">&#9679;</span> FCF $825.7M = 143% of net income (non-cash impairment)</td><td><span class="mark held">&#9679;</span> FCF $2.073B = 131% of net income; DSO 110 days</td><td><span class="mark held">&#9679;</span> Nine-month FCF $1.378B = 141% of net income</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark held">&#9679;</span> H1 buybacks $1.5B vs H1 FCF $2.150B; diluted shares &minus;1.5%</td><td><span class="mark held">&#9679;</span> Buybacks $1.0B within FCF; $2.3B authorization left</td><td><span class="mark better">&#9650;</span> Buybacks $2.2B + withholding $392M = 66% of FCF</td><td><span class="mark better">&#9650;</span> Q3 buybacks about $0.5B; authorization +$3.2B</td><td><span class="mark better">&#9650;</span> Apps sold: $430.6M cash + 22% of Tripledot</td><td><span class="mark worse">&#9660;</span> Buybacks $1.0B exceed FCF; FCF cap loosened; revolver funds $200M</td><td><span class="mark worse">&#9660;</span> Withholding taxes $1.1B exceed buybacks $981.3M</td><td><span class="mark held">&#9679;</span> Buybacks $981.3M (9 months); +$2.0B authorization capped at FCF</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark better">&#9650;</span> Cash $3.05B vs $3.6B notes; cloud payments $953.5M of $1.3B</td><td><span class="mark better">&#9650;</span> Cash $2.76B; revolver undrawn</td><td><span class="mark better">&#9650;</span> Cash $2.49B; net debt about 0.25x Adj. EBITDA</td><td><span class="mark better">&#9650;</span> Cash $1.67B; revolver undrawn</td><td><span class="mark better">&#9650;</span> Revolver repaid; cash $1.193B</td><td><span class="mark worse">&#9660;</span> Revolver drawn $200M; cash $551.0M</td><td><span class="mark better">&#9650;</span> $3.55B unsecured notes replace secured term loans</td><td><span class="mark worse">&#9660;</span> New $1.26B three-year cloud commitment; term loans at SOFR + 2.5%</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark held">&#9679;</span> US 51%; Tripledot related-party revenue $18.0M</td><td><span class="mark held">&#9679;</span> US 49%; Tripledot revenue continues</td><td><span class="mark held">&#9679;</span> No customer at 10%; US 52%</td><td><span class="mark held">&#9679;</span> US 49%; TikTok bid disclosed</td><td><span class="mark held">&#9679;</span> US 52%; Tripledot becomes investee</td><td><span class="mark held">&#9679;</span> US 55%; Apps sale agreed</td><td><span class="mark held">&#9679;</span> US 57%; no customer at 10%</td><td><span class="mark held">&#9679;</span> US 55%; Apps 30% of revenue</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark held">&#9679;</span> No changes to critical estimates</td><td><span class="mark held">&#9679;</span> ASU 2025-06 early adopted, no material impact</td><td><span class="mark worse">&#9660;</span> Unrecognized SBC $489.0M (was $145.6M); valuation allowance +$215.7M</td><td><span class="mark held">&#9679;</span> No changes disclosed</td><td><span class="mark held">&#9679;</span> $204.3M capital loss fully reserved</td><td><span class="mark held">&#9679;</span> Interim goodwill test on Apps (Level 3)</td><td><span class="mark held">&#9679;</span> Critical estimates shortened; no method change</td><td><span class="mark held">&#9679;</span> No changes disclosed</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark held">&#9679;</span> Motion to dismiss pending; no accrual</td><td><span class="mark held">&#9679;</span> Motion fully briefed February 2026</td><td><span class="mark worse">&#9660;</span> "Misleading or false statements" risk added; hearing set</td><td><span class="mark worse">&#9660;</span> Amended complaint; "improper advertising practices" risk added</td><td><span class="mark held">&#9679;</span> Two complaints dismissed; second derivative suit</td><td><span class="mark worse">&#9660;</span> Securities class actions and derivative suit filed</td><td><span class="mark held">&#9679;</span> No material proceedings</td><td><span class="mark held">&#9679;</span> No material proceedings</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark held">&#9679;</span> No guidance; product renamed AppLovin Ads</td><td><span class="mark held">&#9679;</span> Broad-launch timing not mentioned</td><td><span class="mark worse">&#9660;</span> First-half 2026 broad-launch sentence removed</td><td><span class="mark held">&#9679;</span> Ads Manager broad launch expected in first half 2026</td><td><span class="mark better">&#9650;</span> Apps sale closed all-cash, no note</td><td><span class="mark worse">&#9660;</span> FCF cap on buybacks loosened</td><td><span class="mark held">&#9679;</span> FCF cap restated; no numeric guidance</td><td><span class="mark held">&#9679;</span> FCF cap on new authorization</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated, and what later filings said about it. AppLovin gives no numeric financial guidance in its filings; these are its stated commitments.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>Buyback authorization (+$2.0B, October 2024) "subject to a limitation in any fiscal quarter of the amount of our Free Cash Flow in the preceding fiscal quarter"</td><td>Q3 2024 10-Q</td><td>FY2024 10-K: restated. Q1 2025: moved; Board made "$500 million" available "notwithstanding" the cap and borrowed $200.0M to buy back stock. FY2025 and 2026 filings: not mentioned; buybacks have stayed inside FCF since Q2 2025</td></tr>
+<tr><td>Cloud computing "minimum of $1.26 billion over a three-year period" (August 2024)</td><td>Q3 2024 10-Q</td><td>Restated as $1.3B from the FY2024 10-K. Paid: $353.8M (Q2 2025), $485.1M (Q3 2025), $780.4M (Q1 2026), $953.5M (Q2 2026): on pace</td></tr>
+<tr><td>Apps sale: $150.0M cash, $250.0M secured promissory note, about 20% of Tripledot</td><td>Q1 2025 10-Q</td><td>Q2 2025: beaten; closed June 30, 2025 for $430.6M cash and 22% of Tripledot ($285.0M); "No promissory note was issued"</td></tr>
+<tr><td>Revolver borrowing $200.0M (March 2025)</td><td>Q1 2025 10-Q</td><td>Q2 2025: met; repaid $100.0M in April and $100.0M in May 2025; undrawn since</td></tr>
+<tr><td>"For example, in October 2025 we opened a public referral program to onboard customers to Axon Ads Manager, which we expect to launch more broadly in the first half of 2026."</td><td>Q3 2025 10-Q</td><td>FY2025 10-K: dropped (sentence replaced by "since 2024 we have begun expanding our customer base to include web-based e-commerce advertisers"). Q1 and Q2 2026: not mentioned</td></tr>
+<tr><td>Buyback authorization +$3.2B (October 2025), about $3.3B available</td><td>Q3 2025 10-Q</td><td>FY2025 10-K: $3.3B left. Q1 2026: $2.3B. Q2 2026: $1.8B</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 2026 (filed May 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +59% to $1.842B; net revenue per installation +93%</div>
+      <blockquote>Q1 2026: "For the three months ended March 31, 2026, our revenue increased by $683.5 million, or 59%, compared to the same period in the prior year due primarily to improved Axon Ads Manager"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$683.5M year over year; +11% sequentially on Q4 2025 ($1.658B, FY2025 less nine months).</p>
+      <p>Pricing power per installation nearly doubled.</p>
+      <p class="next"><b>Next filing:</b> growth above 50% (Q2 2026: +53%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">FCF $1.287B covers $1.0B of buybacks; cash rises to $2.8B</div>
+      <blockquote>Q1 2026: "During the three months ended March 31, 2026, we repurchased and retired 2.2 million shares of Class A common stock for $1.0 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks = 78% of FCF; FCF = 107% of net income ($1.206B).</p>
+      <p>Return of capital stayed self-funded at a record pace.</p>
+      <p class="next"><b>Next filing:</b> FCF still above net income (Q2 2026: 68%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Installation volume &minus;18%, the steepest decline in the window</div>
+      <blockquote>Q1 2026: "where net revenue per installation increased 93%, partially offset by a decrease in the volume of installations of 18%"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in units; growth slowed from 68% (Q3 2025) to 59%.</p>
+      <p>Revenue increasingly rests on price per install while volume shrinks.</p>
+      <p class="next"><b>Next filing:</b> volume trend (Q2 2026: &minus;2%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Tax provision +$154.7M on a smaller stock-award benefit; R&amp;D +67% on SBC payroll</div>
+      <blockquote>Q1 2026: "In the three months ended March 31, 2026, the provision for income taxes increased by $154.7 million compared to the same period in the prior year."</blockquote>
+      <blockquote>Q1 2026: "Research and development expenses in the three months ended March 31, 2026 increased by $37.7 million, or 67%, compared to the same period in the prior year"</blockquote>
+      <p class="magnitude"><b>Size:</b> effective rate 15.8% vs 8.9% (XBRL); SBC $83.4M vs $61.3M.</p>
+      <p>Second filing in a row with tax normalization and rising SBC; the pillar moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> SBC and rate trend (Q2 2026: $85.8M and 15.9%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed February 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +70% to $5.481B as a pure-play ad platform</div>
+      <blockquote>FY2025: "For the twelve months ended December 31, 2025, our revenue increased by $2.3 billion, or 70%, from the prior year period primarily due to improved Axon Ads Manager performance, where the volume of installations increased 3% and net revenue per installation increased 72% compared to the prior year period."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$2.26B; operating income $4.152B = 76% of revenue.</p>
+      <p>A full year of 70% growth at this scale confirms the engine; the composition shifted to price.</p>
+      <p class="next"><b>Next filing:</b> quarterly growth above 50%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">FCF $3.952B = 119% of net income; buybacks $2.2B; cash $0.74B &rarr; $2.49B</div>
+      <blockquote>FY2025: "Free Cash Flow | 3,951,952 | 2,073,360 | 1,037,094"</blockquote>
+      <blockquote>FY2025: "In 2025, we repurchased and retired 5.5 million shares of Class A common stock for $2.2 billion"</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks + withholding taxes ($392.4M) = 66% of FCF; diluted shares 342.0M (&minus;1.7%).</p>
+      <p>Second filing in a row (with Q3 2025) of self-funded buybacks and rising cash; the pillar moves to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> conversion at or above 100%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and reputation" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and reputation</span><span class="chip">Stated</span></div>
+      <div class="title">Google retired Privacy Sandbox, a long-running threat to Android targeting</div>
+      <blockquote>FY2025: "However, in October 2025, Google retired the Privacy Sandbox initiative and announced plans to discontinue most of its associated technologies across both Chrome and Android."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; Android identifiers underpin Axon targeting outside iOS.</p>
+      <p>One of the two platform-privacy overhangs (with Apple's ATT) is gone.</p>
+      <p class="next"><b>Next filing:</b> no replacement restriction from Google.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Tax provision $519.7M = 13.1% (2024: 1.4%); Pillar 2 trims the Singapore benefit by $82.7M</div>
+      <blockquote>FY2025: "The tax benefit related to the negotiated tax rate in Singapore was reduced by $82.7 million of the global minimum tax under Pillar 2."</blockquote>
+      <blockquote>FY2025: "Provision for income taxes | 519,715 | 22,419 | 43,776"</blockquote>
+      <p class="magnitude"><b>Size:</b> at the 2024 rate, 2025 net income would have been about $0.46B higher (inference); the SBC deduction still cut 3.4 points.</p>
+      <p>2024 earnings growth was flattered by near-zero tax; the rate is normalizing as SBC deductions shrink.</p>
+      <p class="next"><b>Next filing:</b> quarterly effective rate (Q1 2026: 15.8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Unrecognized stock-based compensation triples to $489.0M</div>
+      <blockquote>FY2025: "As of December 31, 2025, the total unrecognized stock-based compensation was $489.0 million, which is expected to be recognized over a weighted-average period of 1.95 years."</blockquote>
+      <p class="magnitude"><b>Size:</b> vs $145.6M a year earlier; about $250M a year of future SBC vs $208M expensed in 2025.</p>
+      <p>The low 2025 SBC figure is not the run-rate; Adjusted EBITDA will diverge further from GAAP.</p>
+      <p class="next"><b>Next filing:</b> quarterly SBC (Q1 2026: $83.4M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Expansion beyond gaming and concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Expansion beyond gaming and concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bad debt +$24.5M "primarily related to new initiatives"; broad self-serve launch date dropped</div>
+      <blockquote>FY2025: "General and administrative expenses in 2025 increased by $68.6 million, or 42% compared to 2024, due primarily to an increase of $31.6 million in professional services costs primarily associated with transaction support and an increase of $24.5 million in bad debt expense primarily related to new initiatives."</blockquote>
+      <p class="magnitude"><b>Size:</b> $24.5M = 0.4% of revenue; small, but it is the only cost line tied to the new verticals.</p>
+      <p>The Q3 2025 expectation of a broader Axon Ads Manager launch in the first half of 2026 no longer appears (inferred: timing not reaffirmed).</p>
+      <p class="next"><b>Next filing:</b> bad debt trend (fell in 2026) and any e-commerce metric.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and reputation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and reputation</span><span class="chip">Stated</span></div>
+      <div class="title">New risk language on false statements about the company; securities suit heads to a motion hearing</div>
+      <blockquote>FY2025: "We have, from time to time in the past, and may in the future be, the target of incomplete, inaccurate, and misleading or false statements about our company and our business that could damage our reputation and brands"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; no loss estimate for the class action.</p>
+      <p>The company now treats the 2025 short-seller allegations as a standing reputational risk.</p>
+      <p class="next"><b>Next filing:</b> ruling on the motion to dismiss.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2025 (filed November 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +68% to $1.405B; net revenue per installation +75%</div>
+      <blockquote>Q3 2025: "For the three months ended September 30, 2025, our revenue increased by $569.9 million, or 68%, compared to the same period in the prior year due primarily to improved Axon Advertising performance"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$569.9M; Adjusted EBITDA margin 82.4% vs 77.5%.</p>
+      <p>Growth held near 70% in the first full quarter as a pure ad platform.</p>
+      <p class="next"><b>Next filing:</b> full-year growth (FY2025: +70%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Q3 FCF about $1.049B = 126% of net income; authorization +$3.2B</div>
+      <blockquote>Q3 2025: "In October 2025, the Company’s board of directors authorized an increase to the repurchase program of $3.2 billion, such that an aggregate amount of approximately $3.3 billion remained available for repurchases as of October 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month FCF $2.643B vs buybacks $1.8B; cash $1.67B.</p>
+      <p>Cash conversion improved while buybacks ran below FCF.</p>
+      <p class="next"><b>Next filing:</b> buybacks inside FCF (FY2025: yes).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Installation volume turns negative (&minus;1%) for the first time in the window</div>
+      <blockquote>Q3 2025: "where net revenue per installation increased 75%, partially offset by a decrease in the volume of installations of 1%"</blockquote>
+      <p class="magnitude"><b>Size:</b> volume growth +22% (Q1 2025) &rarr; +8% (Q2) &rarr; &minus;1%.</p>
+      <p>All growth now comes from price per install.</p>
+      <p class="next"><b>Next filing:</b> volume trend (Q1 2026: &minus;18%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and reputation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and reputation</span><span class="chip">Stated</span></div>
+      <div class="title">New risk factor on misuse of user data and "improper advertising practices"; amended class action</div>
+      <blockquote>Q3 2025: "Such incidents and activities have in the past, and may in the future, include the processing of user data or use of our systems in manners inconsistent with our terms, contracts or policies, the existence of false or undesirable user accounts, improper advertising practices"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing.</p>
+      <p>The company concedes past incidents of data misuse on its systems, the theme of the 2025 short-seller reports; with the Q1 2025 suits, two filings now point the same way and the pillar moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> any regulator named, or the class action dismissed.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Expansion beyond gaming and concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Expansion beyond gaming and concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bad debt +$11.1M from "new initiatives" lifts G&amp;A 62%</div>
+      <blockquote>Q3 2025: "General and administrative expenses in the three months ended September 30, 2025 increased by $22.5 million, or 62%, compared to the same period in the prior year, due to an increase of $11.1 million in bad debt expense primarily related to new initiatives"</blockquote>
+      <p class="magnitude"><b>Size:</b> $11.1M = 0.8% of revenue.</p>
+      <p>Second quarter of credit losses tied to new advertisers.</p>
+      <p class="next"><b>Next filing:</b> bad debt in FY2025 (+$24.5M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 2025 (filed August 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +77% and Adjusted EBITDA margin 80.9% vs 71.9% as a continuing ad business</div>
+      <blockquote>Q2 2025: "Adjusted EBITDA margin | 80.9% | 71.9% | 80.9% | 71.6%"</blockquote>
+      <blockquote>Q2 2025: "For the three months ended June 30, 2025, our revenue increased by $547.7 million, or 77%, compared to the same period in the prior year due primarily to improved AppDiscovery performance"</blockquote>
+      <p class="magnitude"><b>Size:</b> Adjusted EBITDA $1.018B; margin up 9 points; Q1 2025 was 67.7% including Apps.</p>
+      <p>Two filings in a row of margin expansion; the pillar moves to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> margin above 80% (Q3 2025: 82.4%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and liquidity" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Apps sold for $430.6M cash plus 22% of Tripledot; revolver repaid; cash $1.19B</div>
+      <blockquote>Q2 2025: "In connection with the transaction, the Company received $715.6 million in total consideration, consisting of $430.6 million in cash and 596,869,142 ordinary shares of Tripledot, valued at $285.0 million."</blockquote>
+      <blockquote>Q2 2025: "We repaid $100.0 million of the outstanding borrowings in April 2025 and the remaining $100.0 million in May 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> cash $551.0M &rarr; $1.193B; revolver availability $993.7M.</p>
+      <p>All-cash closing instead of the agreed $250M note; with the FY2024 refinancing, the pillar moves to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> cash building toward the $3.6B of notes.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P6 Expansion beyond gaming and concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Expansion beyond gaming and concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Bad debt +$10.5M "primarily related to new initiatives"</div>
+      <blockquote>Q2 2025: "General and administrative expenses in the three months ended June 30, 2025 increased by $16.3 million, or 42%, compared to the same period in the prior year, due to an increase of $10.5 million in bad debt expense primarily related to new initiatives"</blockquote>
+      <p class="magnitude"><b>Size:</b> $10.5M = 0.8% of revenue.</p>
+      <p>The first cost of expanding to new advertisers shows up as credit losses.</p>
+      <p class="next"><b>Next filing:</b> bad debt trend (Q3 2025: +$11.1M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Apps sale writes off $125.6M of deferred tax assets</div>
+      <blockquote>Q2 2025: "For tax purposes, the transfer of certain Apps Business subsidiaries was treated as an asset sale and resulted in a write-off of $125.6 million of deferred tax assets from the carrying value of Apps Business net assets"</blockquote>
+      <p class="magnitude"><b>Size:</b> exceeds the $106.2M pre-tax gain; net income includes $47.7M from discontinued operations.</p>
+      <p>Confined to discontinued operations, so continuing earnings are unaffected; flagged because headline net income mixes both.</p>
+      <p class="next"><b>Next filing:</b> continuing operations only (from Q3 2025).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 2025 (filed May 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Advertising revenue +71%: price per install +49% and volume +22%</div>
+      <blockquote>Q1 2025: "For the three months ended March 31, 2025, our Advertising Revenue increased by $480.6 million, or 71%, compared to the same period in the prior year due primarily to improved AppDiscovery performance, where net revenue per installation increased 49% and the volume of installations increased 22%."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$480.6M; Adjusted EBITDA margin 67.7% vs 51.9%.</p>
+      <p>Growth came from both price and volume.</p>
+      <p class="next"><b>Next filing:</b> volume growth sustained (Q2 2025: +8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Expansion beyond gaming and concentration" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Expansion beyond gaming and concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Definitive agreement to sell the mobile gaming business to Tripledot</div>
+      <blockquote>Q1 2025: "On May 7, 2025, the Company and certain of its subsidiaries entered into a definitive agreement with Tripledot and its affiliates to sell the Company’s mobile gaming business for total consideration consisting of $150.0 million in cash, a $250.0 million secured promissory note, and equity representing approximately 20% of Tripledot’s fully diluted equity capitalization at closing"</blockquote>
+      <p class="magnitude"><b>Size:</b> Apps was $325.0M of Q1 revenue (22%), down 14%.</p>
+      <p>Removes a shrinking, low-margin segment and the channel conflict of owning studios.</p>
+      <p class="next"><b>Next filing:</b> closing terms (Q2 2025: all cash).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Board loosens the FCF cap; $1.0B of buybacks partly funded with a $200M revolver draw</div>
+      <blockquote>Q1 2025: "In February 2025, our Board modified our stock repurchase program such that $500 million was immediately available for repurchase of shares of our Class A common stock, notwithstanding the amount that otherwise would have remained available during the quarter under the prior program limitation"</blockquote>
+      <blockquote>Q1 2025: "In March 2025, we borrowed $200.0 million under our revolving credit facility pursuant to the credit agreement entered in 2024 to fund share repurchases under our repurchase program."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks $1.0B + withholding taxes $185.7M vs FCF $825.7M; cash fell to $551.0M.</p>
+      <p>The self-imposed FCF discipline gave way the first time the stock fell.</p>
+      <p class="next"><b>Next filing:</b> revolver repaid and buybacks back inside FCF (Q2 2025: yes).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and reputation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and reputation</span><span class="chip">Stated</span></div>
+      <div class="title">Securities class actions and a derivative suit filed after short-seller reports</div>
+      <blockquote>Q1 2025: "The Securities Complaints allege that the defendants made materially false and misleading statements regarding our Advertising solutions and financial growth."</blockquote>
+      <p class="magnitude"><b>Size:</b> "we cannot reasonably estimate the maximum potential exposure or range of possible loss"; class period May 2023 to March 2025.</p>
+      <p>First material litigation in the window, aimed at how the ad engine's growth was described.</p>
+      <p class="next"><b>Next filing:</b> consolidation, lead plaintiff, any dismissals.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$188.9M goodwill impairment on the Apps reporting unit</div>
+      <blockquote>Q1 2025: "Based on this assessment, the Company determined that the carrying amount of the Apps reporting unit exceeded its estimated fair value and recorded a non-cash goodwill impairment charge of $188.9 million."</blockquote>
+      <p class="magnitude"><b>Size:</b> 33% of Q1 net income ($576.4M); non-cash.</p>
+      <p>Confirms the Apps acquisitions destroyed value; later reclassified into discontinued operations.</p>
+      <p class="next"><b>Next filing:</b> any further Apps loss at closing (Q2 2025: $106.2M gain).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (filed February 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Advertising revenue +75% to $3.224B on installations +50%</div>
+      <blockquote>FY2024: "For the twelve months ended December 31, 2024, our Advertising Revenue increased by $1.4 billion, or 75%, from the prior year period primarily due to improved AppDiscovery performance, where the volume of installations increased 50% and net revenue per installation increased 22% compared to the prior year period."</blockquote>
+      <p class="magnitude"><b>Size:</b> Advertising = 68% of revenue; Adjusted EBITDA margin 57.8% vs 45.8%.</p>
+      <p>With Q3 2024 (+66%), two filings of ad-platform growth above 65%; the pillar moves to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> growth above 60% (Q1 2025: +71%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and liquidity" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Secured term loans replaced with $3.55B of fixed-rate unsecured notes and an unsecured $1.0B revolver</div>
+      <blockquote>FY2024: "In December 2024, the Company issued $3.6 billion in aggregate principal amount of senior notes, consisting of $1.0 billion in aggregate principal amount of 5.125% notes due December 1, 2029"</blockquote>
+      <blockquote>FY2024: "The obligations of the Company under the 2024 Credit Agreement are unsecured and are not guaranteed by any of the Company's subsidiaries."</blockquote>
+      <p class="magnitude"><b>Size:</b> FY2025 interest expense fell $78.7M "as a result of lower interest rates"; first maturity 2029.</p>
+      <p>Investment-grade style capital structure, fixed rates, no amortization.</p>
+      <p class="next"><b>Next filing:</b> revolver unused (Q1 2025: drawn $200M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">FCF $2.073B = 131% of net income; buybacks capped at prior-quarter FCF</div>
+      <blockquote>FY2024: "Free Cash Flow | 2,073,360 | 1,037,094 | 388,028"</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF doubled; $2.3B authorization left.</p>
+      <p>Cash generation is twice the prior year and the buyback rule ties returns to it.</p>
+      <p class="next"><b>Next filing:</b> whether the cap holds (Q1 2025: loosened).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Near-zero tax: a $172.9M increase in stock-award benefit wipes out the provision</div>
+      <blockquote>FY2024: "The decrease in tax provision was primarily driven by an increase of $172.9 million of stock-based compensation benefit"</blockquote>
+      <p class="magnitude"><b>Size:</b> income tax a $3.8M benefit on $1.58B pre-tax income (XBRL); a 21% rate would have cut net income by about $330M (21%).</p>
+      <p>2024 EPS growth rode on the PSU vesting cycle's tax deductions, which do not recur at that size.</p>
+      <p class="next"><b>Next filing:</b> effective rate (FY2025: 13.1%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">$1.1B paid for employee withholding taxes on awards, more than the $981.3M of buybacks</div>
+      <blockquote>FY2024: "Net cash used in financing activities was $1.7 billion for 2024, primarily consisting of $4.2 billion of principal repayments of debt, $1.1 billion of payments for withholding taxes related to net share settlement of equity awards, and $981.3 million of stock repurchases"</blockquote>
+      <p class="magnitude"><b>Size:</b> withholding = 53% of FCF; diluted shares &minus;4.1% (XBRL).</p>
+      <p>Stock-based pay had a cash cost larger than the buyback program.</p>
+      <p class="next"><b>Next filing:</b> withholding falls as the PSU cycle ends (2025: $392.4M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2024 (filed November 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Ad engine growth and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Ad engine growth and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Software Platform revenue +66% on installations +39% and revenue per installation +22%</div>
+      <blockquote>Q3 2024: "For the three months ended September 30, 2024, our Software Platform Revenue increased by $330.7 million, or 66%, compared to the same period in the prior year primarily due to improved AppDiscovery performance, where net revenue per installation increased 22% and the volume of installations increased 39%."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$330.7M; Software Platform = 70% of revenue.</p>
+      <p>Volume and price both rising.</p>
+      <p class="next"><b>Next filing:</b> full-year growth (FY2024: +75%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Adjusted EBITDA margin 60.2% vs 48.5%</div>
+      <blockquote>Q3 2024: "Adjusted EBITDA margin | 60.2 | 48.5 | 56.1 | 44.1"</blockquote>
+      <p class="magnitude"><b>Size:</b> Adjusted EBITDA $721.6M vs $419.3M.</p>
+      <p>Mix shift to the ad platform lifts consolidated margin.</p>
+      <p class="next"><b>Next filing:</b> full-year margin (FY2024: 57.8%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P6 Expansion beyond gaming and concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Expansion beyond gaming and concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Apps revenue flat; in-app purchase volume &minus;5%</div>
+      <blockquote>Q3 2024: "For the three months ended September 30, 2024, our Apps Revenue increased by $3.2 million, from the prior year period, of which, our IAP Revenue from Apps decreased by $1.0 million, due primarily to a 5% decrease in the volume of in-app purchases"</blockquote>
+      <p class="magnitude"><b>Size:</b> Apps $363.0M = 30% of revenue.</p>
+      <p>Nearly a third of revenue was not growing.</p>
+      <p class="next"><b>Next filing:</b> strategic options for Apps (sold June 2025).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">New $1.26B three-year minimum cloud spending commitment</div>
+      <blockquote>Q3 2024: "Under the amended agreement, the Company committed to spend a minimum of $1.26 billion over a three-year period."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $420M a year = 9% of 2024 revenue; non-cancelable.</p>
+      <p>Fixes a large part of the cost base in advance; harmless while revenue grows.</p>
+      <p class="next"><b>Next filing:</b> payment pace vs the minimum ($953.5M paid by June 2026).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
