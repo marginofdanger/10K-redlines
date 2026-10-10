@@ -182,6 +182,8 @@ a:hover { text-decoration: underline; }
   font-style: italic; color: var(--text);
 }
 .finding-body strong { color: var(--text); }
+.finding-body .shift { font-size: 12px; font-weight: 600; color: var(--purple); margin: 2px 0 6px; }
+.finding-body .history { font-size: 12px; color: var(--text-dim); margin: 6px 0 8px; padding-top: 6px; border-top: 1px dashed var(--border); }
 
 /* Tables */
 .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
@@ -278,7 +280,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>TSM 20-F Redline Analysis</h1>
   <div class="tagline">Year-over-year textual analysis of Taiwan Semiconductor Manufacturing Company's 20-F filings reveals the arc from pure foundry to geopolitical linchpin -- export controls, geographic expansion, AI demand, and market redefinition tracked through seven years of SEC disclosure.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001046179) | 20-F Filings, FY2018-2025 | Analysis: May 2026; FY2023-FY2025 transitions re-analyzed October 2026</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001046179) | 20-F Filings, FY2018-2025 | Analysis: May 2026; FY2023-FY2025 transitions redone from sentence-level signals with phrase-history checks October 2026</div>
 </div>
 
 <!-- Strategic Eras -->
@@ -310,13 +312,13 @@ a:hover { text-decoration: underline; }
   </div>
   <div class="era-card">
     <div class="years">FY2023 &rarr; FY2024</div>
-    <h3>"Largest" Dropped, Subsidies Signed</h3>
-    <p>Both "largest dedicated foundry" claims removed; share metric switched to "Foundry 2.0." Antitrust risk names TSMC itself. January 2025 16nm global licensing rule; October 2024 chip-diversion notice. CHIPS Act $6.6B + $5B with parent guarantee and new clawback risk. HPC becomes "the key growth driver."</p>
+    <h3>"Largest" Dropped, Controls Go Global</h3>
+    <p>Both "largest" claims removed; share metric switched to "Foundry 2.0." Antitrust risk names TSMC itself. January 2025 16nm licensing "to any global destination"; October 2024 chip-diversion notice; Nanjing VEU obtained as "permanent." CHIPS Act $6.6B + $5B with parent guarantee. JASM 86.5% stake target dropped. Carbon fees move from "could" to "will."</p>
   </div>
   <div class="era-card">
     <div class="years">FY2024 &rarr; FY2025</div>
     <h3>Tariff Costs &amp; Narrower Disclosure</h3>
-    <p>Tariffs "affected our cost of operations in the U.S."; Section 232 25% chip tariff; U.S.-Taiwan deal. March 2025 U.S. expansion plan deleted. Capex US$40.9B, 2026 guide US$52-56B, with a new "if the market demand does not materialize" hedge. Share metric and customer roster removed; #2 customer 17%.</p>
+    <p>Tariffs "affected our cost of operations in the U.S."; Section 232 and U.S.-Taiwan deal. March 2025 U.S. expansion plan deleted. "If the market demand does not materialize" hedge beside a US$52-56B guide. Customer roster and share metric removed; "in the R.O.C." dropped from the ecosystem; concentration effect "will" becomes "may"; antitrust heading folded away.</p>
   </div>
 </div>
 
@@ -449,112 +451,381 @@ a:hover { text-decoration: underline; }
 
 <!-- FY2023 -> FY2024 -->
 <div class="transition-header" id="yoy-2024">
-  <h2>FY2023 &rarr; FY2024: "Largest" Dropped, Subsidies Signed, Controls Go Global</h2>
-  <div class="sub">Filed April 17, 2025 | Revenue: NT$2,161.7B &rarr; NT$2,894.3B (+34%) | Operating margin 42.6% &rarr; 45.7% | Net income attributable NT$851.7B &rarr; NT$1,158.4B | Capex US$30.4B &rarr; US$29.8B</div>
+  <h2>FY2023 &rarr; FY2024: "Largest" Dropped, Controls Go Global, Nanjing's VEU Granted</h2>
+  <div class="sub">Filed April 17, 2025 | Revenue: NT$2,161.7B &rarr; NT$2,894.3B (+33.9%) | Gross margin 54.4% &rarr; 56.1% | Operating margin 42.6% &rarr; 45.7% | Net income attributable NT$851.7B &rarr; NT$1,158.4B | Capex US$30.4B &rarr; US$29.8B | Free cash flow NT$292.2B &rarr; NT$870.2B</div>
 </div>
 
 <div class="finding-group">
   <h3><span class="dot" style="background:var(--accent)"></span> Self-Description &amp; Market Position</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Both "largest" claims deleted: "world's largest dedicated foundry" and "largest capacity among the world's dedicated foundries" become "a strong position in manufacturing capacity"</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2023: "We believe we are currently the world's largest dedicated foundry in the semiconductor industry."</blockquote><blockquote>FY2023: "Since our establishment, we have possessed the largest capacity among the world's dedicated foundries."</blockquote><blockquote>FY2024: "Since our establishment, we have built a strong position in manufacturing capacity as a dedicated foundry."</blockquote>The filing gives up both size superlatives in the same year it adds that it faces "increasing criticism on the concentration of the semiconductor industry and sometimes directly on us" (see the antitrust finding below). TSMC's position did not shrink, so the deletions look like deliberate softening of dominance language, not a change in fact.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Both "largest" claims deleted: "world's largest dedicated foundry" and "possessed the largest capacity" become "built a strong position in manufacturing capacity"</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">Claim removed (business, REMOVED in signals file) (-); superlative replaced by unranked "strong position" (-)</p>
+      <blockquote>FY2023: "We believe we are currently the world's largest dedicated foundry in the semiconductor industry."</blockquote>
+      <blockquote>FY2023: "Since our establishment, we have possessed the largest capacity among the world's dedicated foundries."</blockquote>
+      <blockquote>FY2024: "Since our establishment, we have built a strong position in manufacturing capacity as a dedicated foundry."</blockquote>
+      <p class="history">History: "world's largest dedicated foundry" and "largest capacity among" appear in FY2023 only of the three downloaded 20-Fs (FY2023-FY2025); this dashboard's self-description table records the first claim from FY2018. Neither returns in FY2025.</p>
+      <p>The filing gives up both size superlatives in the same year it adds that it faces "increasing criticism on the concentration of the semiconductor industry and sometimes directly on us" (see below). TSMC's position did not shrink, so the deletions are consistent with deliberately softening dominance language rather than a change in fact.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Share metric switched from "semiconductor excluding memory" (28%, down from 30%) to "Foundry 2.0" (34%, up from 28%)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "We produced 28 percent of the world semiconductor excluding memory output value in 2023, as compared to 30 percent in the previous year, mainly due to an inventory correction within the semiconductor industry."</blockquote><blockquote>FY2024: "We produced 34% of the ... industry, which we define as all logic wafer manufacturing, packaging, testing, mask-making and others, an increase from 28% in 2023."</blockquote>The FY2023 filing had to report a share decline (30% to 28%). The new definition, which adds packaging, testing and masks to the denominator, produces a rising series. 2023 comes out at 28% under both definitions. The old metric is not carried forward, so readers cannot compare the two.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Share metric switched from "semiconductor excluding memory" (28%, down from 30%) to "Foundry 2.0" (34%, up from 28%)</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Quant: old figures (28%, 30%) and their explanation removed (-); new metric and figure (34%) added under a self-chosen definition</p>
+      <blockquote>FY2023: "We produced 28 percent of the world semiconductor excluding memory output value in 2023, as compared to 30 percent in the previous year, mainly due to an inventory correction within the semiconductor industry."</blockquote>
+      <blockquote>FY2024: "We produced 34% of the "Foundry 2.0" industry, which we define as all logic wafer manufacturing, packaging, testing, mask-making and others, an increase from 28% in 2023."</blockquote>
+      <p class="history">History: "Foundry 2.0" appears in FY2024 only; FY2025 drops it with no replacement.</p>
+      <p>FY2023 had to report a falling share and explain it. The new definition adds packaging, testing and masks and produces a rising series; 2023 is 28% under both definitions, so the change in denominator, not the restatement, is what turns a decline into growth. The old metric is not carried forward.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">HPC promoted from "one of the key growth drivers" to "the key growth driver", and a new warning that AI growth may be "volatile or not sustainable"</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2023: "HPC has become one of the key growth drivers for our business."</blockquote><blockquote>FY2024: "HPC has become the key growth driver for our business."</blockquote><blockquote>FY2024 (new, customer risk factor): "These shifting business models could lead to significant variations in our sales if the growth of their products and services, particularly in the AI sector, is volatile or not sustainable."</blockquote>The end-market risk factor also renames the segment "HPC (including AI applications)". The business section names HPC as the single growth engine, while the risk factors add the filing's first warning that AI demand may not last. HPC was 51% of revenue (NT$1,476.9B, +58%).</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New warning that AI customers' growth may be "volatile or not sustainable", in the year the end-market list is renamed "HPC (including AI applications)"</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Risk added (customer risk factor) (+ disclosure); named: AI sector</p>
+      <blockquote>FY2024: "These shifting business models could lead to significant variations in our sales if the growth of their products and services, particularly in the AI sector, is volatile or not sustainable."</blockquote>
+      <blockquote>FY2023: "A vast majority of our revenue is derived from customers who use our products in high performance computing ("HPC"), smartphones, IoT, automotive, and digital consumer electronics."</blockquote>
+      <blockquote>FY2024: "A vast majority of our revenue is derived from customers who use our products in HPC (including AI applications), smartphones, IoT, automotive, and digital consumer electronics."</blockquote>
+      <p class="history">History: "volatile or not sustainable" appears in FY2024 and FY2025, not FY2023. In the business section, "one of the key growth drivers" (FY2023) became "the key growth driver" (FY2024 and FY2025).</p>
+      <p>The same filing makes HPC the single growth engine (51% of revenue, +58%) and, in the risk factors, says for the first time in the set that AI demand may not last. The FY2025 filing keeps the sentence word for word.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Antitrust risk rewritten to name TSMC itself as a target of "increasing criticism" over concentration</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "With our success in the foundry business and the increasing criticism on the concentration of the semiconductor industry and sometimes directly on us, we are subject to heightened risks of antitrust investigations."</blockquote>FY2023 introduced the 2017 European Commission inquiry with "For example". FY2024 replaces that with a statement that TSMC's own success raises its antitrust risk. This is the first time the filing ties antitrust exposure to its market position.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Antitrust risk now names TSMC itself as a target of "increasing criticism" over concentration</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Risk sharpened: "For example" (a past, closed inquiry) becomes a present statement of "heightened risks" tied to TSMC's own position (+ disclosure)</p>
+      <blockquote>FY2023: "We are subject to antitrust laws and regulations in multiple jurisdictions, and from time to time receive related inquiries from enforcement agencies. For example, on September 28, 2017, we were contacted by the European Commission"</blockquote>
+      <blockquote>FY2024: "With our success in the foundry business and the increasing criticism on the concentration of the semiconductor industry and sometimes directly on us, we are subject to heightened risks of antitrust investigations."</blockquote>
+      <p class="history">History: "sometimes directly on us" appears in FY2024 and FY2025 only. The 2017 European Commission inquiry (closed May 2020) stays in FY2024 and is deleted in FY2025.</p>
+      <p>The filing for the first time in the set ties antitrust exposure to TSMC's success and to criticism aimed "directly on us", in the same year both "largest" claims were removed.</p>
+    </div>
+  </div>
 </div>
 
 <div class="finding-group">
   <h3><span class="dot" style="background:var(--red)"></span> Export Controls &amp; Trade</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">January 2025 rules: a license may be needed to ship 16nm-and-below products "to any global destination"</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "Under the new rules, we may need to obtain an export license prior to shipping products using 16-nanometer or below process to any global destination unless specific conditions are met. As a result, shipments of certain products may be delayed or prohibited due to the license requirements and our financial results may be adversely affected."</blockquote>Earlier export-control language covered China-bound items and named customers (Huawei). This rule applies to every destination and to nodes two generations behind the leading edge, so most of TSMC's advanced revenue is now potentially subject to licensing.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">January 2025 rules: a license may be needed to ship 16nm-and-below products "to any global destination"</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Named: new rule (January 2025); scope: China-specific controls extended to "any global destination" (+ disclosure, more risk)</p>
+      <blockquote>FY2024: "Under the new rules, we may need to obtain an export license prior to shipping products using 16-nanometer or below process to any global destination unless specific conditions are met. As a result, shipments of certain products may be delayed or prohibited due to the license requirements and our financial results may be adversely affected."</blockquote>
+      <p class="history">History: "any global destination" appears in FY2024 only; FY2025 narrows it to "specified destinations".</p>
+      <p>The earlier controls in this paragraph were about China-bound items and China fabs. This rule reaches every destination and nodes several generations behind the leading edge, so most advanced revenue became potentially subject to licensing.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">New: October 2024 notice to U.S. and Taiwan authorities of a possible chip diversion to a restricted entity, plus an admission of limited downstream visibility</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "Our role in the semiconductor supply chain inherently limits our visibility and information available to us regarding the downstream use or user of final products that incorporate semiconductors manufactured by us."</blockquote><blockquote>FY2024: "In October 2024, we notified relevant U.S. and Taiwan authorities that one type of our customer's chip manufactured by us might have been diverted to a restricted entity or incorporated into a restricted entity's product, and since then have been cooperating with the authorities' requests for additional information and documents."</blockquote>This is the first disclosed export-control incident involving TSMC's own production rather than a customer ban. The paragraph also says there is "no assurance that our business activities will not be found incompliant", which leaves open the possibility of penalties.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">October 2024 notice to U.S. and Taiwan authorities that a customer's chip "might have been diverted to a restricted entity"</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Realized: a compliance incident disclosed as having happened (ADDED paragraph) (+ disclosure); hedge: "no assurance" of compliance</p>
+      <blockquote>FY2024: "In October 2024, we notified relevant U.S. and Taiwan authorities that one type of our customer's chip manufactured by us might have been diverted to a restricted entity or incorporated into a restricted entity's product, and since then have been cooperating with the authorities' requests for additional information and documents."</blockquote>
+      <blockquote>FY2024: "Despite our best efforts to comply with all relevant export control and sanctions laws and regulations, there is no assurance that our business activities will not be found incompliant with export control laws and regulations."</blockquote>
+      <p class="history">History: "might have been diverted" appears in FY2024 and FY2025 (still described as ongoing cooperation); absent in FY2023.</p>
+      <p>This is an incident involving TSMC's own production rather than a customer ban, and the paragraph opens by conceding that TSMC's place in the supply chain "inherently limits our visibility" into end use. The closing sentence leaves open a finding of non-compliance.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Tariffs enter the risk factors: the April 2, 2025 baseline and reciprocal tariffs, and "significant uncertainty" over chip tariffs</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "U.S. President Donald Trump announced on April 2, 2025 a 10% baseline tariff on imports into the United States from all countries, as well as varying reciprocal tariffs on certain trading partners, including Taiwan."</blockquote><blockquote>FY2024: "Semiconductors were not subject to the reciprocal tariffs announced on April 2, 2025. However, given ongoing discussions between the United States and its trading partners, there remains significant uncertainty about whether the United States may further change the scope and level of tariffs it imposes, including any potential tariffs it may impose on semiconductor imports."</blockquote>The filing went in two weeks after the announcement and names Taiwan. Its risk is demand: tariffs on chip-containing products "may, in turn, lead to decreased demand for our products". It does not yet discuss TSMC's own cost of operating in the U.S. (that arrives in FY2025).</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Tariffs enter the trade-tension risk: the April 2, 2025 baseline and reciprocal tariffs name Taiwan; chips exempt, but "significant uncertainty"</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Named: U.S. President, Taiwan, April 2, 2025 tariffs (+ disclosure); quant added (10%)</p>
+      <blockquote>FY2024: "For example, U.S. President Donald Trump announced on April 2, 2025 a 10% baseline tariff on imports into the United States from all countries, as well as varying reciprocal tariffs on certain trading partners, including Taiwan."</blockquote>
+      <blockquote>FY2024: "Semiconductors were not subject to the reciprocal tariffs announced on April 2, 2025. However, given ongoing discussions between the United States and its trading partners, there remains significant uncertainty about whether the United States may further change the scope and level of tariffs it imposes, including any potential tariffs it may impose on semiconductor imports."</blockquote>
+      <p class="history">History: "baseline tariff" appears in FY2024 and FY2025; "Donald Trump" in FY2024 only (FY2025 says "the U.S. President").</p>
+      <p>The filing went in two weeks after the announcement. Its risk is customers' demand: tariffs on chip-containing products "may, in turn, lead to decreased demand for our products". TSMC's own cost of operating in the U.S. is not mentioned until FY2025.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nanjing: VEU status moves from "applying for" to obtained, and Nanjing drops out of the list of places TSMC is adding capacity</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "This general authorization has been renewed and extended to be effective until May 31, 2024. We are also applying for a Validated End-User ... authorization for our Nanjing fab"</blockquote><blockquote>FY2024: "which is a permanent authorization that allows our fab in Nanjing to receive exports of eligible items from the U.S. without separate licenses"</blockquote><blockquote>FY2023: "we have continued to add capacity to meet market needs for our products and services, including in Taiwan, in Arizona, U.S., in Nanjing, China, in Kumamoto, Japan and in Dresden, Germany."</blockquote><blockquote>FY2024: "we have continued to add capacity to meet market needs for our products and services, including in Taiwan, in Arizona, U.S., in Kumamoto, Japan and in Dresden, Germany."</blockquote>Nanjing's supply of U.S. tools is now covered by a "permanent" authorization, yet the filing stops listing it as a growth site. Nanjing appears to have become maintain-only. FY2025 then reports that this "permanent" VEU expired.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nanjing VEU moves from "applying for" to obtained, called "a permanent authorization"; Nanjing drops out of the capacity-addition list</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Realized: hypothetical -> actual (risk_factors, top-ranked in signals file) (+); named: +China, Commerce</p>
+      <blockquote>FY2023: "We are also applying for a Validated End-User (the "VEU") authorization for our Nanjing fab, which, once obtained, would be a permanent authorization that allows us to receive exports of eligible items from the U.S. without separate licenses."</blockquote>
+      <blockquote>FY2024: "In response, we obtained from the U.S. Department of Commerce a Validated End-User (the "VEU") authorization for our fab located in Nanjing, China, which is a permanent authorization that allows our fab in Nanjing to receive exports of eligible items from the U.S. without separate licenses."</blockquote>
+      <p class="history">History: "permanent authorization" appears in FY2023 (as a prospect) and FY2024 (as fact); FY2025 reports the VEU expired in December 2025. "in Nanjing, China, in Kumamoto" (the capacity-addition list) appears in FY2023 only.</p>
+      <p>Nanjing's supply of U.S. tools was secured, yet the capacity risk factor now lists additions only "in Taiwan, in Arizona, U.S., in Kumamoto, Japan and in Dresden, Germany". Consistent with Nanjing becoming maintain-only. The "permanent" label lasted one filing.</p>
+    </div>
+  </div>
 </div>
 
 <div class="finding-group">
   <h3><span class="dot" style="background:var(--orange)"></span> Subsidies &amp; Overseas Expansion</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CHIPS Act signed: up to US$6.6B grants + US$5B loans, backed by an "irrevocable, absolute and unconditional" parent guarantee; EUR5B German aid</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "Under this agreement, the DOC agrees to award TSMC Arizona up to US$6.6 billion in direct funding related to TSMC Arizona's semiconductor manufacturing facilities in Phoenix, Arizona"</blockquote><blockquote>FY2024: "the Company entered into certain guarantee agreements, under which the Company agrees to provide an irrevocable, absolute and unconditional guarantee to the DOC regarding any financial obligations owed by TSMC Arizona to the DOC. The awards under the Direct Funding Agreement are subject to various conditions, compliance requirements, program requirements and project milestone requirements."</blockquote>The headline amounts were public in November 2024. What the filing adds is that the Taiwan parent guarantees its Arizona subsidiary's obligations to the U.S. government, and that the awards depend on milestones. ESMC separately signed for "up to EUR5 billion state aid under the European Chips Act".</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">CHIPS Act signed: up to US$6.6B grants and US$5B loans, backed by an "irrevocable, absolute and unconditional" parent guarantee and milestone conditions</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Quant added (US$6.6B, US$5B) (+); named: Direct Funding Agreement, Loan Agreements; condition added (milestones)</p>
+      <blockquote>FY2024: "Under this agreement, the DOC agrees to award TSMC Arizona up to US$6.6 billion in direct funding related to TSMC Arizona's semiconductor manufacturing facilities in Phoenix, Arizona"</blockquote>
+      <blockquote>FY2024: "the Company entered into certain guarantee agreements, under which the Company agrees to provide an irrevocable, absolute and unconditional guarantee to the DOC regarding any financial obligations owed by TSMC Arizona to the DOC. The awards under the Direct Funding Agreement are subject to various conditions, compliance requirements, program requirements and project milestone requirements."</blockquote>
+      <p class="history">History: "irrevocable, absolute and unconditional" appears in FY2024 and FY2025, not FY2023.</p>
+      <p>The headline amounts were public in November 2024. What the filing adds is that the Taiwan parent guarantees its Arizona subsidiary's obligations to the U.S. government and that the awards depend on milestones. ESMC separately signed for up to EUR5 billion of German state aid.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Subsidy risk rewritten: clawbacks, forfeiture and a grantor that may "be unable to provide the funding"; competition heading adds "equal access to governmental financial incentives"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "the grantors could seek to recover any funds provided to us, or cancel, reduce or deny our requested subsidies or grants in the future."</blockquote><blockquote>FY2024: "Noncompliance with the terms and conditions of the grants that we may receive could result in a delay or forfeiture of all or a portion of any future amounts to be received, as well as obligate us to repay all or a portion of amounts already received pursuant to the grants. Even if we satisfy the conditions and requirements for the funding disbursement, it is possible that the grantor may delay the disbursement or be unable to provide the funding."</blockquote><blockquote>FY2024: "if we are unable to compete effectively in the highly competitive foundry segment of the semiconductor industry, including through equal access to governmental financial incentives, especially those available to our competitors, we may lose customers"</blockquote>The new risk covers a grantor that does not pay even when TSMC complies, which was a live political question in early 2025. The "equal access" clause frames subsidies to rivals as a competitive threat. The overseas-expansion list likewise adds "non-receipt, delay and potential claw backs of government subsidies".</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Subsidy risk rewritten: forfeiture, repayment, and a grantor that may "be unable to provide the funding" even if TSMC complies</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Condition added: risk now applies "even if we satisfy the conditions" (+ disclosure); scope: recovery of funds becomes forfeiture plus repayment</p>
+      <blockquote>FY2023: "the grantors could seek to recover any funds provided to us, or cancel, reduce or deny our requested subsidies or grants in the future."</blockquote>
+      <blockquote>FY2024: "Noncompliance with the terms and conditions of the grants that we may receive could result in a delay or forfeiture of all or a portion of any future amounts to be received, as well as obligate us to repay all or a portion of amounts already received pursuant to the grants. Even if we satisfy the conditions and requirements for the funding disbursement, it is possible that the grantor may delay the disbursement or be unable to provide the funding."</blockquote>
+      <p class="history">History: "be unable to provide the funding" and "equal access to governmental financial incentives" both appear in FY2024 and FY2025, not FY2023.</p>
+      <p>The new sentence covers a grantor that does not pay even when TSMC complies. The competition heading adds "equal access to governmental financial incentives, especially those available to our competitors", and the overseas list adds "non-receipt, delay and potential claw backs of government subsidies".</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Arizona: "three" fabs becomes "multiple"; Fab 21 in volume production by end-2024 (target had been 2025); March 2025 plan for three more fabs, two packaging plants and an R&amp;D center</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2023: "TSMC Arizona plans to build and operate three advanced semiconductor manufacturing facilities in Phoenix, Arizona. Construction on the first facility commenced in April 2021 and commercial production is targeted in 2025."</blockquote><blockquote>FY2024: "TSMC Arizona plans to build and operate multiple advanced semiconductor manufacturing facilities in Phoenix, Arizona. Construction on the first facility commenced in April 2021 and volume production commenced by the end of 2024."</blockquote><blockquote>FY2024: "In March 2025, we further announced our intention to build three additional semiconductor manufacturing facilities, two advanced packaging facilities and a R&amp;D center in the United States."</blockquote>The site count is left open-ended, the first fab beat its target, and the March 2025 U.S. commitment appears as an "intention". Track the "intention" sentence: the FY2025 filing deletes it.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">March 2025 "intention" to build three more U.S. fabs, two advanced packaging facilities and an R&amp;D center; Arizona's "three" fabs become "multiple"</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Commitment at "intention" strength (ADDED); scope: "three" -> "multiple" (quant removed, open-ended)</p>
+      <blockquote>FY2023: "TSMC Arizona plans to build and operate three advanced semiconductor manufacturing facilities in Phoenix, Arizona."</blockquote>
+      <blockquote>FY2024: "TSMC Arizona plans to build and operate multiple advanced semiconductor manufacturing facilities in Phoenix, Arizona."</blockquote>
+      <blockquote>FY2024: "In March 2025, we further announced our intention to build three additional semiconductor manufacturing facilities, two advanced packaging facilities and a R&amp;D center in the United States."</blockquote>
+      <p class="history">History: "our intention to build" and "three additional semiconductor" appear in FY2024 only; "multiple advanced semiconductor manufacturing facilities" in FY2024 and FY2025.</p>
+      <p>The site count is left open-ended and the larger U.S. commitment appears only as an "intention". Track this sentence: the FY2025 filing deletes it.</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">JASM: the stated plan to own "approximately 86.5%" after the second-fab investment is deleted; stake reported at 72.6%</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">Quant removed: forward ownership figure no longer stated (-); "will also take" -> "also took" (realized)</p>
+      <blockquote>FY2023: "As of February 29, 2024, we owned approximately 71.4% of the equity interest in JASM. After the completion of the new investment, we will own approximately 86.5% of the equity interest in JASM."</blockquote>
+      <blockquote>FY2024: "By way of such investment, Toyota also took a minority stake in JASM. As of February 28, 2025, we owned approximately 72.6% of the equity interest in JASM."</blockquote>
+      <p class="history">History: "we will own approximately" appears in FY2023 only. "72.6%" appears in FY2024 and again, unchanged, in FY2025.</p>
+      <p>A year after saying its stake would rise to 86.5%, TSMC reports 72.6% and drops the target without explanation. Read with FY2025 (second Kumamoto site under construction from October 2025, stake still 72.6%), the planned increase has not happened, or has been restructured; the filing does not say which.</p>
+    </div>
+  </div>
 </div>
 
 <div class="finding-group">
-  <h3><span class="dot" style="background:var(--purple)"></span> Pricing, Costs &amp; Disclosure</h3>
+  <h3><span class="dot" style="background:var(--purple)"></span> Costs, Power &amp; Disclosure</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Pricing rationale extended: price now also funds "healthy financial conditions to expand capacity"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "Our pricing enables us to continue to invest significantly in research and development to deliver ever-improving products to our customers."</blockquote><blockquote>FY2024: "Our pricing enables us to continue to invest significantly in research and development to deliver ever-improving products to our customers, and sustain healthy financial conditions to expand capacity and support customers' growth."</blockquote>Price is now justified by capacity funding as well as R&amp;D. Read with the MD&amp;A, which cites "higher electricity cost" in the gross-margin bridge and overseas fab start-up expenses in G&amp;A, this sets up the argument for passing costs through to customers. The ASP sentence ("the historical trend of declining average selling prices") did not change; it already read that way in FY2023.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Carbon fees move from "could be required to pay" to "we will start to pay" from 2026</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Certainty: could -> will (+, firmer); quant added (2026 start date); the line that the rate "has yet to be determined" removed</p>
+      <blockquote>FY2023: "We could be required to pay any incurred carbon fees since our emission levels exceed applicable thresholds pursuant to the current regulatory requirements, which will result in increased operating costs for us and affect us financially to a certain extent."</blockquote>
+      <blockquote>FY2024: "As our emissions from each fab in Taiwan exceed the current regulatory threshold, we will start to pay carbon fees from 2026 (for the 2025 fees), which will result in increased manufacturing costs for us."</blockquote>
+      <p class="history">History: "could be required to pay any incurred carbon fees" appears in FY2023 only; "will start to pay carbon fees" in FY2024 and FY2025.</p>
+      <p>A possible cost becomes a scheduled one. The same paragraph drops "as well as of the carbon fee" from the sentence saying the impact of climate rules is "currently indeterminable".</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Electricity: "estimated" 25% hike becomes actual, plus another 14% in October 2024; the warning that utility shortages could curtail expansion is deleted</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "effective from April 1, 2024, we became subject to a higher electricity tariff rate in Taiwan, which increased by 25% as compared to the tariff rate applicable to us in 2023. In October 2024, the electricity tariff rate further increased by 14%."</blockquote><blockquote>FY2023 (deleted in FY2024): "Moreover, our future capacity expansions in Taiwan and elsewhere could be curtailed by utility shortages."</blockquote>Power became a named margin headwind: the MD&amp;A says the 2024 gross margin gain was "partially offset by 3-nanometer ramp-up and higher electricity cost". In the same year the filing deleted the warning that power or water shortages could cap expansion. FY2025 restores a version of it.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Electricity hike becomes actual (25%, then 14% more), and the warning that utility shortages could curtail expansion is deleted</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">Risk sentence removed (risk_factors REMOVED) (-); realized: "is estimated to increase" -> "increased" (+)</p>
+      <blockquote>FY2023 (deleted in FY2024): "Moreover, our future capacity expansions in Taiwan and elsewhere could be curtailed by utility shortages."</blockquote>
+      <blockquote>FY2024: "effective from April 1, 2024, we became subject to a higher electricity tariff rate in Taiwan, which increased by 25% as compared to the tariff rate applicable to us in 2023. In October 2024, the electricity tariff rate further increased by 14%."</blockquote>
+      <p class="history">History: "could be curtailed by utility shortages" appears in FY2023 only; "is estimated to increase" in FY2023 only. FY2025 restores a version ("our future capacity expansions could be curtailed").</p>
+      <p>Power becomes a named margin headwind (the MD&amp;A cites "higher electricity cost" in the gross-margin bridge) in the same year the filing stops warning that shortages could cap expansion. The deletion lasted one year.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Carbon fees move from "could be required" to "we will start to pay" from 2026</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2023: "We could be required to pay any incurred carbon fees since our emission levels exceed applicable thresholds pursuant to the current regulatory requirements, which will result in increased operating costs for us and affect us financially to a certain extent."</blockquote><blockquote>FY2024: "As our emissions from each fab in Taiwan exceed the current regulatory threshold, we will start to pay carbon fees from 2026 (for the 2025 fees), which will result in increased manufacturing costs for us."</blockquote>"Could" becomes "will" and the cost now has a start date, a commitment-strength change in the cost-headwind direction. The FY2023 line that the rate "has yet to be determined" is gone.</div></div>
-
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Raw-wafer supplier names and their 96% share of supply removed</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2023: "The principal suppliers for our wafers are Formosa SUMCO Technology Corporation of Taiwan, GlobalWafers of Taiwan, Shin-Etsu Handotai of Japan, Siltronic AG of Germany, Soitec Microelectronics of Singapore, and SUMCO Corporation of Japan. Together they supplied approximately 96.0%, 95.0% and 96.2% of our total wafer needs in 2021, 2022 and 2023, respectively."</blockquote><blockquote>FY2024: "In pursuit of high quality raw wafers, the majority of our raw wafers are supplied by a limited number of suppliers located in Taiwan, Japan, Germany, and Singapore."</blockquote>A named, quantified supplier concentration becomes an unquantified "majority". This is the same kind of cut as the customer roster removed in FY2025: counterparties and percentages are being taken out.</div></div>
-
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Marlin (Longitude Licensing) ITC patent case filed February 2025 replaces the settled Daedalus matter</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "In February 2025, Longitude Licensing Ltd. and Marlin Semiconductor Limited (collectively, ... filed complaints with the U.S. International Trade Commission ... and the U.S. District Court for the Eastern District of Texas alleging that TSMC and its customers infringe five U.S. patents."</blockquote>An ITC case can lead to an exclusion order on imports, and this complaint also names TSMC's customers. It is the only material litigation disclosed. FY2025 adds only that the Texas case was stayed.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Raw-wafer supplier names and their 96% share of supply removed</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">De-named (six suppliers) (-); quant removed (96.0%, 95.0%, 96.2%) (-)</p>
+      <blockquote>FY2023: "The principal suppliers for our wafers are Formosa SUMCO Technology Corporation of Taiwan, GlobalWafers of Taiwan, Shin-Etsu Handotai of Japan, Siltronic AG of Germany, Soitec Microelectronics of Singapore, and SUMCO Corporation of Japan. Together they supplied approximately 96.0%, 95.0% and 96.2% of our total wafer needs in 2021, 2022 and 2023, respectively."</blockquote>
+      <blockquote>FY2024: "In pursuit of high quality raw wafers, the majority of our raw wafers are supplied by a limited number of suppliers located in Taiwan, Japan, Germany, and Singapore."</blockquote>
+      <p class="history">History: "Formosa SUMCO" appears in FY2023 only; "limited number of suppliers located in" in FY2024 and FY2025.</p>
+      <p>A named, quantified supplier concentration becomes an unquantified "majority". The same filing drops Infineon from the named-customer roster; FY2025 removes the roster entirely.</p>
+    </div>
+  </div>
 </div>
 
 <!-- FY2024 -> FY2025 -->
 <div class="transition-header" id="yoy-2025">
-  <h2>FY2024 &rarr; FY2025: Tariffs Hit U.S. Costs, the U.S. Plan Goes Quiet, Disclosure Narrows</h2>
+  <h2>FY2024 &rarr; FY2025: Tariffs Hit U.S. Costs, the U.S. Plan Goes Quiet, Taiwan Drops Out of the "Ecosystem"</h2>
   <div class="sub">Filed April 16, 2026 | Revenue: NT$2,894.3B &rarr; NT$3,809.1B (+31.6%; US$121.4B) | Gross margin 56.1% &rarr; 59.9% | Operating margin 45.7% &rarr; 50.8% | Net income attributable NT$1,158.4B &rarr; NT$1,697.6B (+46.5%) | Capex US$29.8B &rarr; US$40.9B (FY2025 figures from the 20-F text; not yet in SEC XBRL)</div>
 </div>
 
 <div class="finding-group">
   <h3><span class="dot" style="background:var(--red)"></span> Tariffs &amp; Export Controls</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Reciprocal tariffs exempted chips but "nonetheless affected our cost of operations in the U.S."; struck down February 2026, then replaced by a Section 122 tariff and Section 301 probes that name Taiwan</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2024: "Semiconductors were not subject to the reciprocal tariffs announced on April 2, 2025."</blockquote><blockquote>FY2025: "Collection of the reciprocal tariffs was delayed until August 2025, and while they excluded semiconductors, semiconductor manufacturing equipment and their respective derivative products (collectively ... these tariffs nonetheless affected our cost of operations in the U.S. These tariffs were declared unlawful by a February 2026 U.S. Supreme Court ruling."</blockquote><blockquote>FY2025: "Following the Supreme Court ruling, the U.S. imposed a replacement tariff under Section 122 of the Trade Act of 1974 and in March 2026, the U.S. Trade Representative, using authority in Section 301 of the Trade Act of 1974, initiated two investigations relating to alleged manufacturing overcapacity and failures to take action on forced labor, targeting various economies, including Taiwan"</blockquote>FY2024's tariff risk was about customers' demand. FY2025 is the first filing to say tariffs raised TSMC's own costs in Arizona, even with chips exempt. The Supreme Court ruling did not end the exposure: a replacement tariff followed and two new investigations name Taiwan.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Chips were exempt from reciprocal tariffs, but the tariffs "nonetheless affected our cost of operations in the U.S."</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Realized: a demand risk (FY2024) becomes a cost already incurred (+ disclosure); named: IEEPA, Supreme Court, Section 122, Section 301</p>
+      <blockquote>FY2024: "Semiconductors were not subject to the reciprocal tariffs announced on April 2, 2025."</blockquote>
+      <blockquote>FY2025: "Collection of the reciprocal tariffs was delayed until August 2025, and while they excluded semiconductors, semiconductor manufacturing equipment and their respective derivative products (collectively ... these tariffs nonetheless affected our cost of operations in the U.S. These tariffs were declared unlawful by a February 2026 U.S. Supreme Court ruling."</blockquote>
+      <p class="history">History: "cost of operations in the U.S." appears in FY2025 only; "Section 301" likewise FY2025 only.</p>
+      <p>FY2024's tariff risk was about customers' demand. FY2025 says tariffs raised TSMC's own Arizona costs even with chips exempt; the filing does not size the cost. The Supreme Court ruling did not end the exposure: a Section 122 replacement tariff followed, and two Section 301 investigations name Taiwan.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Section 232 ends in a 25% tariff on certain advanced computing chips; the January 2026 U.S.-Taiwan deal caps reciprocal rates at 15% and promises "preferential" 232 treatment, but the details "are still unclear"</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2025: "the U.S. issues a proclamation imposing a 25% ad valorem tariff on the import of certain advanced computing chips and derivative products meeting specified technical performance thresholds, unless such products are imported for designated use in the U.S."</blockquote><blockquote>FY2025: "The agreement also grants preferential Section 232 treatment for Taiwanese semiconductor producers investing in U.S. manufacturing capacity. However, details regarding the impacts of the U.S. Supreme Court decision striking down the IEEPA reciprocal tariffs as well as the preferential treatment with respect to Section 232 tariffs, including any offsets, are still unclear."</blockquote><blockquote>FY2025: "Any tariffs imposed on imports of semiconductor manufacturing materials and equipment into the U.S. may result in increased costs for our manufacturing operations in the U.S. and reduce our profitability."</blockquote>The preferential treatment depends on "investing in U.S. manufacturing capacity", which ties tariff relief to the Arizona build-out. That gives weight to the deletion of the March 2025 U.S. expansion plan below. The last sentence is a new risk: tariffs on the tools and materials TSMC itself imports for its U.S. fabs.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">January 2026 U.S.-Taiwan deal: reciprocal rate capped at 15% and "preferential Section 232 treatment" for producers "investing in U.S. manufacturing capacity", details "still unclear"</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Named: Section 232, U.S.-Taiwan agreement (+); quant added (25%, 15%); hedge: "still unclear" (-)</p>
+      <blockquote>FY2025: "the U.S. issues a proclamation imposing a 25% ad valorem tariff on the import of certain advanced computing chips and derivative products meeting specified technical performance thresholds, unless such products are imported for designated use in the U.S."</blockquote>
+      <blockquote>FY2025: "The agreement also grants preferential Section 232 treatment for Taiwanese semiconductor producers investing in U.S. manufacturing capacity. However, details regarding the impacts of the U.S. Supreme Court decision striking down the IEEPA reciprocal tariffs as well as the preferential treatment with respect to Section 232 tariffs, including any offsets, are still unclear."</blockquote>
+      <p class="history">History: "Section 232" and "no more than 15%" appear in FY2025 only.</p>
+      <p>Tariff relief is tied to "investing in U.S. manufacturing capacity", which gives weight to the deletion of the March 2025 U.S. expansion plan below. A separate added sentence says tariffs on imported materials and equipment "may result in increased costs for our manufacturing operations in the U.S. and reduce our profitability".</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Export-control compliance: "business partners" becomes "customers" as possible diverters, and foundries "may not be able to verify" what they make</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "This constraint impedes our ability to fully ensure that semiconductors manufactured by us will not be diverted to unintended end use or end-user, including potentially by our business partners, or by third parties with an intent of circumvention."</blockquote><blockquote>FY2025: "This constraint impedes our ability to fully ensure such semiconductors will not be diverted to unintended end use or end-user, including potentially by our customers, or by third parties. In addition, export controls over certain semiconductors often depend on the products' specific features or performance characteristics that foundries may not be able to verify independently."</blockquote>TSMC now names its own customers as possible sources of diversion. It also argues that a foundry cannot independently verify whether a design meets export-control thresholds, which positions it to put the compliance burden on customers if the October 2024 diversion inquiry (still disclosed as ongoing cooperation) leads to penalties.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Possible diverters change from "business partners" to "customers"; foundries "may not be able to verify" whether a design is export-controlled</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Named: "business partners" -> "customers" (+, more specific); "with an intent of circumvention" dropped; new limitation clause added</p>
+      <blockquote>FY2024: "This constraint impedes our ability to fully ensure that semiconductors manufactured by us will not be diverted to unintended end use or end-user, including potentially by our business partners, or by third parties with an intent of circumvention."</blockquote>
+      <blockquote>FY2025: "This constraint impedes our ability to fully ensure such semiconductors will not be diverted to unintended end use or end-user, including potentially by our customers, or by third parties. In addition, export controls over certain semiconductors often depend on the products' specific features or performance characteristics that foundries may not be able to verify independently."</blockquote>
+      <p class="history">History: "by our business partners" appears in FY2024 only; "foundries may not be able to verify" in FY2025 only. The October 2024 diversion notice is still described as ongoing cooperation.</p>
+      <p>TSMC now names its own customers as possible diverters and argues that a foundry cannot check whether a design crosses export thresholds. That reads as laying the ground to place compliance responsibility on customers if the diversion inquiry leads to penalties (an inference).</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nanjing's "permanent" VEU expired December 2025; the fab now runs on an annual export license that may not be renewed in time</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "which is a permanent authorization that allows our fab in Nanjing to receive exports of eligible items from the U.S. without separate licenses"</blockquote><blockquote>FY2025: "the U.S. Department of Commerce has granted TSMC Nanjing Company Limited (... an annual export license that allows U.S. export-controlled items to be supplied to TSMC Nanjing, which ensures uninterrupted fab operations and product deliveries. However, there is no assurance that this annual export license will not be terminated, or we can timely get the license renewed in the future."</blockquote>A year after being called "permanent", the authorization expired. Nanjing now depends on a yearly license, which adds renewal risk on top of the risk of termination.</div></div>
-
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Huawei disappears from the filing; the January 2025 16nm rule is narrowed from "any global destination" to "specified destinations"</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2024 (deleted): "To comply with relevant laws and regulations, we have discontinued shipment of products to Huawei since September 2020."</blockquote><blockquote>FY2024: "we may need to obtain an export license prior to shipping products using 16-nanometer or below process to any global destination unless specific conditions are met"</blockquote><blockquote>FY2025: "nanometer or below process to specified destinations unless specific conditions are met"</blockquote>This is the first filing since FY2020 with no reference to Huawei. The 16nm licensing requirement is narrowed to specified destinations, consistent with the U.S. stepping back from the worldwide licensing framework issued in January 2025 (an inference; the filing does not say why).</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Nanjing's "permanent" VEU expired in December 2025; the fab now runs on an annual export license that may not be renewed in time</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Certainty: "permanent authorization" -> "annual export license" (-); condition added: renewal risk</p>
+      <blockquote>FY2024: "which is a permanent authorization that allows our fab in Nanjing to receive exports of eligible items from the U.S. without separate licenses"</blockquote>
+      <blockquote>FY2025: "the U.S. Department of Commerce has granted TSMC Nanjing Company Limited (... an annual export license that allows U.S. export-controlled items to be supplied to TSMC Nanjing, which ensures uninterrupted fab operations and product deliveries. However, there is no assurance that this annual export license will not be terminated, or we can timely get the license renewed in the future."</blockquote>
+      <p class="history">History: "permanent authorization" appears in FY2023 (as a prospect) and FY2024; "annual export license" in FY2025 only.</p>
+      <p>One filing after it was called "permanent", the authorization lapsed. Nanjing now carries renewal risk every year on top of termination risk. The same section narrows the January 2025 16nm licensing rule from "any global destination" to "specified destinations" and no longer mentions Huawei (present in FY2023 and FY2024).</p>
+    </div>
+  </div>
 </div>
 
 <div class="finding-group">
   <h3><span class="dot" style="background:var(--orange)"></span> U.S. Build-Out, Capex &amp; Capacity</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">March 2025 U.S. plan deleted: no mention of "three additional" fabs, "two advanced packaging facilities" or an R&amp;D center; Arizona text now ends at fab three plus "an additional parcel of land"</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2024: "In March 2025, we further announced our intention to build three additional semiconductor manufacturing facilities, two advanced packaging facilities and a R&amp;D center in the United States."</blockquote><blockquote>FY2025: "Our first facility successfully entered high volume production at the end of 2024. Construction of our second facility is ongoing, and the construction of our third facility commenced in 2025. Furthermore, we acquired an additional parcel of land in 2026 to support our current expansion plans and provide more flexibility in response to strong customer demand."</blockquote>The FY2025 filing does not mention the March 2025 commitment anywhere, although the trade deal ties Section 232 relief to U.S. investment. What the filing now commits to is three fabs, one in production, plus land. It does not say whether the deletion means a scaled-back plan or more cautious drafting.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">March 2025 U.S. plan deleted: no "three additional" fabs, "two advanced packaging facilities" or R&amp;D center; Arizona text ends at fab three plus "an additional parcel of land"</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">Commitment removed (business REMOVED) (-); quant removed (three fabs, two packaging facilities)</p>
+      <blockquote>FY2024: "In March 2025, we further announced our intention to build three additional semiconductor manufacturing facilities, two advanced packaging facilities and a R&amp;D center in the United States."</blockquote>
+      <blockquote>FY2025: "Our first facility successfully entered high volume production at the end of 2024. Construction of our second facility is ongoing, and the construction of our third facility commenced in 2025. Furthermore, we acquired an additional parcel of land in 2026 to support our current expansion plans and provide more flexibility in response to strong customer demand."</blockquote>
+      <p class="history">History: "three additional semiconductor" appears in FY2024 only and is absent from the whole FY2025 filing; "additional parcel of land" in FY2025 only.</p>
+      <p>The trade deal ties Section 232 relief to U.S. investment, yet the filing no longer states the larger commitment. What it now describes is three fabs, one in production, plus land "to support our current expansion plans". It does not say whether the deletion reflects a scaled-back plan or more cautious drafting.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Capex US$29.8B to US$40.9B, guided to US$52-56B for 2026, while the capacity risk factor gains a new hedge: "if the market demand does not materialize"</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2025: "Our capital expenditures in 2026 are expected to be between US$52 billion and US$56 billion, which, depending on market conditions, may be adjusted later."</blockquote><blockquote>FY2024: "If we do not increase our net revenue accordingly, our financial performance may be adversely affected by these increased costs."</blockquote><blockquote>FY2025: "If the market demand does not materialize, and/or we do not increase our net revenue accordingly, our financial performance may be adversely affected by these increased costs."</blockquote>The FY2025 capex guide (US$38-42B a year earlier) was met at US$40.9B (NT$1,272.4B), and unrecorded capital purchase obligations rose from NT$1,144.1B to NT$1,534.6B. Alongside the step-up, the risk factor adds for the first time that the demand may not arrive. This is the most explicit overbuild caveat in the three filings reviewed here.</div></div>
-
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Customer capacity prepayments fall a third: temporary receipts NT$291.1B to NT$189.9B in a year revenue rose 32%</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2025: "some of our customers have entered into agreements with us to pay temporary receipts in order to retain specified capacity at our fabs"</blockquote>The contractual-obligations table shows advance temporary receipts from customers of NT$278.3B (end-2023), NT$291.1B (end-2024) and NT$189.9B (end-2025). Prepayments to reserve capacity are falling while the MD&amp;A cites "higher capacity utilization", so customers are paying less up front to hold capacity. That suggests either easier capacity access or a shift in contract terms; the filing gives no reason.</div></div>
-
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">2nm in volume production, 16&Aring; risk production in 2026, advanced backend fabs five to seven; reported capacity barely moves ("exceeded 17 million" vs ~17 million wafers)</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Also, the development of our 2-nanometer technology is on track, and its volume production is expected in 2025."</blockquote><blockquote>FY2025: "Our 2-nanometer technology entered volume production in 2025. Also, the development of our 16-angstrom technology is on track, and its risk production is expected in 2026."</blockquote><blockquote>FY2025: "In 2025, our annual capacity (in 12-inch equivalent wafers) exceeded 17 million wafers, compared to approximately 17 million wafers in 2024."</blockquote>2nm was delivered on the date given a year earlier. The facility count adds two advanced backend (packaging) fabs, five to seven, so the 2025 capacity growth was in packaging. Front-end capacity in 12-inch equivalents is essentially flat while wafer shipments rose from 12.9M to 15.0M. The 2026 capex focus drops 5nm ("mainly for 2-nanometer and 3-nanometer nodes") and lists only Fab 24 for specialty and packaging, although JASM's second Kumamoto site began construction in October 2025.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Capacity risk adds "if the market demand does not materialize" while capex steps to US$40.9B and a US$52-56B 2026 guide</span><span class="tag tag-signal">Signal</span></div>
+    <div class="finding-body">
+      <p class="shift">Condition added (the signals file ranks it 0.8 as a "wording edit") (-); quant: 2026 guide US$52-56B (up from US$38-42B for 2025)</p>
+      <blockquote>FY2024: "If we do not increase our net revenue accordingly, our financial performance may be adversely affected by these increased costs."</blockquote>
+      <blockquote>FY2025: "If the market demand does not materialize, and/or we do not increase our net revenue accordingly, our financial performance may be adversely affected by these increased costs."</blockquote>
+      <blockquote>FY2025: "Our capital expenditures in 2026 are expected to be between US$52 billion and US$56 billion, which, depending on market conditions, may be adjusted later."</blockquote>
+      <p class="history">History: the FY2024 sentence also stood in FY2023; "if the market demand does not materialize" appears in FY2025 only.</p>
+      <p>The 2025 guide (US$38-42B) was met at US$40.9B (NT$1,272.4B), and unrecorded capital purchase obligations rose from NT$1,144.1B to NT$1,534.6B. Alongside the step-up, the risk factor now says the demand may not arrive. Customers' capacity prepayments (temporary receipts) fell from NT$291.1B to NT$189.9B in the contractual-obligations table.</p>
+    </div>
+  </div>
 </div>
 
 <div class="finding-group">
   <h3><span class="dot" style="background:var(--accent)"></span> Customers, Competition &amp; Positioning</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Business Overview drops both the "Foundry 2.0" 34% share figure and the ten-name customer roster</span><span class="tag tag-removed">Removed</span></div><div class="finding-body"><blockquote>FY2024: "We produced 34% of the ... industry, which we define as all logic wafer manufacturing, packaging, testing, mask-making and others, an increase from 28% in 2023."</blockquote><blockquote>FY2024: "including, but not limited to, Advanced Micro Devices, Inc., Amazon Web Services, Inc., Broadcom Inc., Intel Corporation, MediaTek Inc., NVIDIA Corporation, NXP Semiconductors N.V., Qualcomm Inc., Renesas Electronics Corporation and Sony Semiconductor Solutions Corporation."</blockquote><blockquote>FY2025: "We count among our customers many of the world's leading semiconductor companies, ranging from fabless semiconductor companies, system companies to integrated device manufacturers."</blockquote>The share metric was introduced only a year earlier and is now gone, with no replacement; there is no market-share figure anywhere in the filing. Along with removed antitrust history and supplier names (FY2024), this continues a pattern of taking out details that quantify TSMC's dominance or identify counterparties.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Ten-name customer roster removed: AMD, AWS, Broadcom, Intel, MediaTek, NVIDIA, NXP, Qualcomm, Renesas, Sony</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">De-named: ten customers -> "many of the world's leading semiconductor companies" (-)</p>
+      <blockquote>FY2024: "including, but not limited to, Advanced Micro Devices, Inc., Amazon Web Services, Inc., Broadcom Inc., Intel Corporation, MediaTek Inc., NVIDIA Corporation, NXP Semiconductors N.V., Qualcomm Inc., Renesas Electronics Corporation and Sony Semiconductor Solutions Corporation."</blockquote>
+      <blockquote>FY2025: "We count among our customers many of the world's leading semiconductor companies, ranging from fabless semiconductor companies, system companies to integrated device manufacturers."</blockquote>
+      <p class="history">History: the roster appears in FY2023 (with Infineon, without Renesas) and FY2024; "Renesas" appears in FY2024 only. No customer is named in FY2025's business overview.</p>
+      <p>The roster goes in the year the second-largest customer jumps to 17% of revenue. With supplier names removed in FY2024, the filing is steadily taking out the names of counterparties.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">#2 customer jumps 12% to 17% while #1 falls 22% to 19%; top ten at 78%; concentration effect softened from "will" to "may"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2025: "Our largest customer in 2023, 2024 and 2025 accounted for 25%, 22% and 19% of our net revenue in the respective year. Our second largest customer in 2023, 2024 and 2025 accounted for 11%, 12%, and 17% of our net revenue in the respective year."</blockquote><blockquote>FY2024: "A more concentrated customer base will subject our revenue to seasonal demand fluctuations from our large customers"</blockquote><blockquote>FY2025: "A more concentrated customer base may subject our revenue to seasonal demand fluctuations from our large customers"</blockquote>The second-largest customer was 17% of revenue in 2025 (12% in 2024), and the gap to #1 narrowed from 10 points to 2. Concentration rose while the filing changed its effect from a certainty to a possibility. The structural-shift sentence now reads "HPC and smartphone" (was "mobile and HPC").</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"Foundry 2.0" share figure (34%) removed one year after it was introduced; no market-share figure remains</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">Quant removed: 3 figures no longer stated (signals file) (-)</p>
+      <blockquote>FY2024: "We produced 34% of the "Foundry 2.0" industry, which we define as all logic wafer manufacturing, packaging, testing, mask-making and others, an increase from 28% in 2023."</blockquote>
+      <blockquote>FY2025: "We also offer design, mask making, TSMC 3DFabric&reg; advanced silicon stacking and packaging services, and testing services."</blockquote>
+      <p class="history">History: "Foundry 2.0" appears in FY2024 only. The FY2023 metric ("semiconductor excluding memory", 28%) appears in FY2023 only.</p>
+      <p>The paragraph now ends with the list of services. Two definitions in two years, then none: TSMC no longer gives readers a share figure to track.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">China revenue falls in absolute terms (NT$331.7B to NT$327.5B, 11% to 9%) while North America rises 42% to 75% of revenue</span><span class="tag tag-signal">Signal</span></div><div class="finding-body"><blockquote>FY2025: "In 2025, our net revenue increased by a total of NT$914,746 million compared to 2024, which was mainly due to an increase in orders from North America of NT$843,944 million, or a 42% year-over-year increase"</blockquote>Per the geography table, China declined about 1% in NT dollars in a year when total revenue grew 31.6%. It is the only region whose revenue fell in absolute terms, and the decline coincides with the 16nm licensing rules and the Nanjing license change. North America provided 92% of the year's revenue increase.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Concentration effect softened from "will" to "may" as the #2 customer jumps 12% to 17% and top ten reach 78%</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Certainty: will -> may (weaker -); old sentence unchanged since FY2023 in the signals file</p>
+      <blockquote>FY2024: "A more concentrated customer base will subject our revenue to seasonal demand fluctuations from our large customers and cause different seasonal patterns in our business."</blockquote>
+      <blockquote>FY2025: "A more concentrated customer base may subject our revenue to seasonal demand fluctuations from our large customers and cause different seasonal patterns in our business."</blockquote>
+      <p class="history">History: "will subject" stood in FY2023 and FY2024; "may subject" in FY2025 only.</p>
+      <p>Concentration rose (top ten 76% to 78%; #1 22% to 19%; #2 12% to 17%), and the filing turned its effect from a certainty into a possibility. The structural-shift sentence also reorders "mobile and HPC" to "HPC and smartphone".</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Competition risk: "rise of new foundry service providers" clause deleted; competitors' "aggressive pricing" no longer limited to "one or several technology nodes"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "In light of the rise of new foundry service providers worldwide, if we are unable to compete effectively in the highly competitive foundry segment of the semiconductor industry"</blockquote><blockquote>FY2025: "If we are unable to compete effectively in the highly competitive foundry segment of the semiconductor industry,"</blockquote><blockquote>FY2024: "Moreover, our competitors may, from time to time, also decide to undertake aggressive pricing initiatives in one or several technology nodes."</blockquote><blockquote>FY2025: "Moreover, our competitors may, from time to time, also decide to undertake aggressive pricing initiatives."</blockquote>The new-entrant framing is gone, but the pricing threat now applies to all nodes, and the paragraph adds that losing business to "contenders" means "our profit margin and earnings may decrease". The concern has moved from new competitors to price competition across all nodes, which most plausibly means mature nodes, though the filing does not say so.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">"In the R.O.C." deleted from the ecosystem that gives TSMC its "operational synergies"</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">De-named: R.O.C. dropped (twice) (-); "overseas" dropped from the expansion-cost bullet</p>
+      <blockquote>FY2024: "An important aspect of our business operation is an ecosystem of interconnected semiconductor fabs, employees and suppliers in the R.O.C. that provides us with significant operational synergies, flexibility and efficiencies."</blockquote>
+      <blockquote>FY2025: "An important aspect of our business operation is an ecosystem of interconnected semiconductor fabs, employees and suppliers that provides us with significant operational synergies, flexibility and efficiencies."</blockquote>
+      <p class="history">History: "ecosystem of interconnected semiconductor fabs, employees and suppliers in the R.O.C." appears in FY2023 and FY2024 (twice each), and nowhere in FY2025.</p>
+      <p>The overseas-cost bullet changes the same way: FY2024's risk to productivity "provided by our ecosystem of interconnected semiconductor fabs, employees and suppliers in the R.O.C." becomes productivity "provided by our ecosystem". The filing no longer locates its main operating advantage in Taiwan, consistent with presenting Arizona as part of it (an inference); the sentence sits in the risk factor about policies that push customers to source outside Taiwan.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">AI written into the core narrative: megatrends become "5G, AI and high performance computing"; the technology-shift risk swaps "smartphones" for "AI smartphones, AI PCs, and AI accelerators"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "These factors have also been intensified by the shift of the global technology market to consumer driven products, such as smartphones, and increasing competition and concentration of customers"</blockquote><blockquote>FY2025: "These factors have also been intensified by the shift of the global technology market to [AI-related] products, such as AI smartphones, AI PCs, and AI accelerators, and increasing competition and concentration of customers"</blockquote><blockquote>FY2025: "We are entering a period of higher growth as the multiyear megatrends of 5G, AI and high performance computing"</blockquote>The same risk factor also changes customers having "significantly decreased the time" to market to having "accelerated the cadence" of launches. The FY2024 warning that AI-sector growth may be "volatile or not sustainable" is kept word for word.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Talent shortfall softened from "we cannot ensure" to "could potentially lead to"</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Certainty: is -> could (weaker -); de-realized: actual -> hypothetical (top-ranked change in the signals file, 7.0)</p>
+      <blockquote>FY2024: "Since there is fierce competition for talent recruitment, we cannot ensure timely fulfillment of our personnel demand."</blockquote>
+      <blockquote>FY2025: "The fierce competition for talent could potentially lead to our being unable to ensure timely fulfillment of our personnel demand."</blockquote>
+      <p class="history">History: the FY2024 sentence is identical in FY2023; FY2025 is the first rewording in the set.</p>
+      <p>A present inability becomes a possible one, with two hedges ("could potentially"). Headcount rose 8% to 90,557 and North America staff to 5,290 (4,497), so the softer wording fits a year of successful hiring; the expansion-cost bullet also drops "in various overseas locations" from "recruiting and retaining talent".</p>
+    </div>
+  </div>
 </div>
 
 <div class="finding-group">
-  <h3><span class="dot" style="background:var(--purple)"></span> Margins, Power &amp; IP</h3>
+  <h3><span class="dot" style="background:var(--purple)"></span> Margins, Power, IP &amp; Antitrust</h3>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Gross margin 59.9% explained by "cost improvement"; electricity and 3nm ramp drop out of the bridge, and overseas start-up costs drop out of G&amp;A</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "mainly attributable to higher capacity utilization and productivity gains, and partially offset by 3-nanometer ramp-up and higher electricity cost."</blockquote><blockquote>FY2025: "In 2025, our gross margin increased to 59.9% of net revenue from 56.1% in 2024, mainly attributable to higher capacity utilization and cost improvement, partially offset by unfavorable foreign exchange rate."</blockquote>Operating margin reached 50.8% (45.7%) despite NT dollar appreciation (32.13 to 31.11 per US$). The MD&amp;A names no dilution from Arizona, Kumamoto or the 2nm ramp. G&amp;A rose 2.4% and is attributed only to profit sharing, where FY2024 cited "start-up expenses of overseas fabs preparation". R&amp;D fell to 6.5% of revenue (7.1%, 8.5% in 2023), the lowest share in the three years shown.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Gross margin 59.9% explained by "cost improvement"; "higher electricity cost" and the 3nm ramp drop out of the bridge</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">De-named cost drivers: electricity, 3nm ramp (-); overseas start-up costs dropped from G&amp;A</p>
+      <blockquote>FY2024: "mainly attributable to higher capacity utilization and productivity gains, and partially offset by 3-nanometer ramp-up and higher electricity cost."</blockquote>
+      <blockquote>FY2025: "In 2025, our gross margin increased to 59.9% of net revenue from 56.1% in 2024, mainly attributable to higher capacity utilization and cost improvement, partially offset by unfavorable foreign exchange rate."</blockquote>
+      <p class="history">History: "higher electricity cost" appears in FY2024 only; "start-up expenses of overseas fabs" in FY2023 and FY2024, not FY2025.</p>
+      <p>Operating margin reached 50.8% (45.7%) despite NT dollar appreciation (32.13 to 31.11 per US$). The MD&amp;A names no dilution from Arizona, Kumamoto or the 2nm ramp, and G&amp;A (+2.4%) is attributed only to profit sharing. R&amp;D fell to 6.5% of revenue (7.1%; 8.5% in 2023). Yet the risk factors add tariff costs in the U.S. (above) and the business section now expects utility prices to keep rising (below).</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Power: specific tariff hikes deleted, but TSMC now "anticipate[s] continued increases", names "constraints in power supply" as an end-market risk, and restores the line that expansion "could be curtailed"</span><span class="tag tag-changed">Changed</span></div><div class="finding-body"><blockquote>FY2024: "Moreover, we have encountered and may continue to encounter increases in the prices of utilities."</blockquote><blockquote>FY2025: "Moreover, we have encountered and anticipate continued increases in utility prices."</blockquote><blockquote>FY2025: "If such events were to occur over prolonged periods, our operations and financial performance may be materially adversely affected and our future capacity expansions could be curtailed."</blockquote><blockquote>FY2025: "end markets, driven by various factors such as shortages in the supply of certain components, constraints in power supply"</blockquote>The 25% and 14% Taiwan tariff figures were cut. The business section now expects increases to continue, the risk factor ends with "our future capacity expansions could be curtailed" (deleted in FY2024), and power shortages appear as a risk to customers' demand, a reference to AI data-center power limits. Power is now presented as both a cost and a capacity constraint.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Utility prices: "may continue to encounter" becomes "anticipate continued increases"; the 25% and 14% hike figures are cut</span><span class="tag tag-changed">Changed</span></div>
+    <div class="finding-body">
+      <p class="shift">Certainty: may continue -> anticipate (+, firmer; the signals file labels it weaker); quant removed (25%, 14%) (-)</p>
+      <blockquote>FY2024: "Moreover, we have encountered and may continue to encounter increases in the prices of utilities."</blockquote>
+      <blockquote>FY2025: "Moreover, we have encountered and anticipate continued increases in utility prices."</blockquote>
+      <p class="history">History: "anticipate continued increases" appears in FY2025's business section only; the FY2025 risk factor still says "may continue to encounter utility price increases". "Constraints in power supply" and "future capacity expansions could be curtailed" are FY2025 only.</p>
+      <p>The business section now expects higher power prices, while the risk factor keeps the weaker "may". The risk factors also add "constraints in power supply" as a threat to customers' end markets and restore the line that "our future capacity expansions could be curtailed" (deleted in FY2024). Power is presented as both a cost and a capacity limit.</p>
+    </div>
+  </div>
 
-  <div class="finding"><div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">IP risk escalates: USPTO limits on inter partes review flagged; overseas-expansion list swaps "insufficient" IP protection for "increased" infringement assertions against TSMC</span><span class="tag tag-new">New</span></div><div class="finding-body"><blockquote>FY2025: "Recent developments at the U.S. Patent and Trademark Office limiting access to inter partes review to remove erroneously issued patents may result in an increase of such assertions and lawsuits, and hinder our ability to reach a reasonable resolution with patent owners."</blockquote><blockquote>FY2024: "limited or insufficient intellectual property protection or difficulties enforcing our rights to intellectual property"</blockquote><blockquote>FY2025: "increased intellectual property infringement assertions and enforcement actions against us"</blockquote>The overseas IP risk is reversed, from TSMC being unable to protect its own IP to TSMC being sued, and the filing names a specific U.S. Patent Office change as the cause. The Marlin ITC case (first disclosed in FY2024) is still the only material litigation, and the Texas case is stayed.</div></div>
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">IP risk flips: USPTO limits on inter partes review flagged, and overseas risk swaps "insufficient" IP protection for "increased" assertions against TSMC</span><span class="tag tag-new">New</span></div>
+    <div class="finding-body">
+      <p class="shift">Named: U.S. Patent and Trademark Office (+); scope: TSMC's IP unprotected -> TSMC accused (risk reversed)</p>
+      <blockquote>FY2025: "Recent developments at the U.S. Patent and Trademark Office limiting access to inter partes review to remove erroneously issued patents may result in an increase of such assertions and lawsuits, and hinder our ability to reach a reasonable resolution with patent owners."</blockquote>
+      <blockquote>FY2024: "limited or insufficient intellectual property protection or difficulties enforcing our rights to intellectual property"</blockquote>
+      <blockquote>FY2025: "increased intellectual property infringement assertions and enforcement actions against us"</blockquote>
+      <p class="history">History: "inter partes review" and "increased intellectual property infringement assertions" appear in FY2025 only; "insufficient intellectual property protection" in FY2023 and FY2024.</p>
+      <p>The overseas IP risk is reversed, from TSMC being unable to protect its own IP to TSMC being sued, and a specific Patent Office change is named as the cause. The Longitude/Marlin ITC case (FY2024) is still the only material litigation; the Texas case is stayed.</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="finding-header" onclick="toggle(this)"><span class="arrow">&#9654;</span><span class="title">Standalone antitrust risk heading removed and the European Commission inquiry deleted; "antitrust" folded into the compliance heading</span><span class="tag tag-removed">Removed</span></div>
+    <div class="finding-body">
+      <p class="shift">Risk heading removed (risk_factors REMOVED) (-); named: European Commission dropped (-)</p>
+      <blockquote>FY2024: "Any adverse results of potential antitrust proceedings that we may be subject to could harm our business and operational results or subject us to potential significant legal liability."</blockquote>
+      <blockquote>FY2024: "In September 2017, we were contacted by the European Commission, which asked us for information and documents concerning alleged anti-competitive practices in relation to semiconductor sales."</blockquote>
+      <blockquote>FY2025: "Our failure to comply with applicable laws and regulations material to our operations, such as export control, antitrust, environmental and climate related laws and regulations"</blockquote>
+      <p class="history">History: the standalone heading appears in FY2023 and FY2024; "European Commission" in FY2023 and FY2024; "export control, antitrust, environmental" in FY2025 only. The "increasing criticism ... sometimes directly on us" sentence (FY2024) is kept.</p>
+      <p>Antitrust no longer gets its own risk factor and loses its only concrete example, which reduces its prominence, although the body still says TSMC faces "heightened risks of antitrust investigations".</p>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== DEEP SIGNALS ==================== -->
@@ -697,8 +968,8 @@ a:hover { text-decoration: underline; }
       <tr><td>FY2021</td><td class="val-new">JASM disclosed; 81% ownership; construction commenced 2022</td><td>No mention</td></tr>
       <tr><td>FY2022</td><td>Listed in capacity plan; production expected 2024</td><td class="val-new">ESMC/Dresden first disclosed</td></tr>
       <tr><td>FY2023</td><td>Listed in capacity plan; second fab under discussion</td><td>Listed in capacity plan; EUR5B under discussion</td></tr>
-      <tr><td>FY2024</td><td>Fab 23 operational; Kumamoto in facilities list</td><td class="val-pos">EUR5B state aid agreement signed December 2024</td></tr>
-      <tr><td>FY2025</td><td>Second Kumamoto site construction commenced October 2025; Fab 23 dropped from FY2026 capex bullets (specialty/packaging now Fab 24 only)</td><td>Fab 24 (Dresden) construction continues; EUR5B unchanged; no commercial production yet</td></tr>
+      <tr><td>FY2024</td><td>Fab 23 in volume production December 2024; FY2023's "we will own approximately 86.5%" after the second-fab investment deleted; stake 72.6%</td><td class="val-pos">EUR5B state aid agreement signed December 2024</td></tr>
+      <tr><td>FY2025</td><td>Second Kumamoto site construction commenced October 2025; stake still 72.6%; Fab 23 dropped from the 2026 capex bullets in Item 4 (specialty/packaging now Fab 24 only)</td><td>Fab 24 (Dresden) construction continues; EUR5B unchanged; no commercial production yet</td></tr>
     </tbody>
   </table>
 </div>
@@ -745,7 +1016,7 @@ a:hover { text-decoration: underline; }
       <tr><td>FY2021</td><td class="val-new">"political, economic, financial, military or other conditions" -- "military" added</td></tr>
       <tr><td>FY2022</td><td>Ukraine conflict added; "military conflicts" now plural</td></tr>
       <tr><td>FY2023-FY2024</td><td>Maintained; no further escalation of cross-strait language</td></tr>
-      <tr><td>FY2025</td><td class="val-changed">Cross-strait paragraph narrowed; the FY2024 sentence on R.O.C. trade/investment restrictions affecting plans in P.R.C. is shortened to "applicable export controls which impose license requirements on our P.R.C. fab's acquisition of certain manufacturing tools"</td></tr>
+      <tr><td>FY2025</td><td class="val-changed">Cross-strait paragraph narrowed; the FY2024 sentence on R.O.C. trade/investment restrictions affecting plans in P.R.C. is shortened to "applicable export controls which impose license requirements on our P.R.C. fab's acquisition of certain manufacturing tools"; "in the R.O.C." deleted from the "ecosystem of interconnected semiconductor fabs, employees and suppliers" sentence in the same risk factor</td></tr>
     </tbody>
   </table>
   <p>The core cross-strait risk factor has remained structurally stable since FY2021. Changes have been additive (military, Ukraine) rather than escalatory regarding Taiwan specifically.</p>
@@ -871,7 +1142,7 @@ a:hover { text-decoration: underline; }
 
 <div class="signal-card">
   <h3>2. Geographic Diversification Under Geopolitical Pressure</h3>
-  <p>Arizona appeared in FY2020, Japan (JASM) in FY2021, Germany (ESMC) in FY2022. By FY2024, TSMC had secured $6.6B + $5B from U.S. CHIPS Act and EUR5B from the European Chips Act. Nanjing was demoted from second in location ordering (FY2021) to dropped entirely (FY2024). FY2024 added a March 2025 "intention" to build three more U.S. fabs, two advanced packaging facilities and an R&amp;D center; FY2025 deletes that sentence and describes only Fab 1 in high-volume production, Fab 2 ongoing, Fab 3 construction commenced 2025, and an additional parcel of land acquired 2026, even as the U.S.-Taiwan deal ties Section 232 relief to U.S. investment. North America revenue share rose to 75% (from 70% in FY2024); China dropped to 9% (from 11%). North America headcount nearly doubled in two years (2,668 to 5,290).</p>
+  <p>Arizona appeared in FY2020, Japan (JASM) in FY2021, Germany (ESMC) in FY2022. By FY2024, TSMC had secured $6.6B + $5B from U.S. CHIPS Act and EUR5B from the European Chips Act. Nanjing was demoted from second in location ordering (FY2021) to dropped entirely (FY2024). FY2024 added a March 2025 "intention" to build three more U.S. fabs, two advanced packaging facilities and an R&amp;D center; FY2025 deletes that sentence and describes only Fab 1 in high-volume production, Fab 2 ongoing, Fab 3 construction commenced 2025, and an additional parcel of land acquired 2026, even as the U.S.-Taiwan deal ties Section 232 relief to U.S. investment. North America revenue share rose to 75% (from 70% in FY2024); China dropped to 9% (from 11%). North America headcount nearly doubled in two years (2,668 to 5,290). FY2025 also stops locating TSMC's core advantage in Taiwan: the "ecosystem of interconnected semiconductor fabs, employees and suppliers" is no longer "in the R.O.C."</p>
 </div>
 
 <div class="signal-card">
@@ -881,7 +1152,7 @@ a:hover { text-decoration: underline; }
 
 <div class="signal-card">
   <h3>4. Market Definition as Strategic Tool</h3>
-  <p>TSMC's share metric changed four times: 56% of dedicated foundries (FY2018), 28% of semiconductor ex-memory (FY2023), 34% of "Foundry 2.0" (FY2024), and no metric cited (FY2025). FY2025 also dropped the named-customer roster (AMD, AWS, Broadcom, Intel, MediaTek, NVIDIA, NXP, Qualcomm, Renesas, Sony) from the Business Overview, and folded the standalone antitrust risk factor into a broader compliance heading. FY2024 had already removed the named raw-wafer suppliers and their 96% supply share, and both "largest" self-descriptions. The "increasing criticism on the concentration of the semiconductor industry and sometimes directly on us" language is retained.</p>
+  <p>TSMC's share metric changed four times: 56% of dedicated foundries (FY2018), 28% of semiconductor ex-memory (FY2023), 34% of "Foundry 2.0" (FY2024), and no metric cited (FY2025). FY2025 also dropped the named-customer roster (AMD, AWS, Broadcom, Intel, MediaTek, NVIDIA, NXP, Qualcomm, Renesas, Sony) from the Business Overview, folded the standalone antitrust risk factor into the compliance heading, and deleted the 2017 European Commission inquiry, its only example. FY2024 had already removed the named raw-wafer suppliers and their 96% supply share, and both "largest" self-descriptions. The "increasing criticism on the concentration of the semiconductor industry and sometimes directly on us" language is retained.</p>
 </div>
 
 <div class="signal-card">
@@ -891,12 +1162,12 @@ a:hover { text-decoration: underline; }
 
 <div class="signal-card">
   <h3>6. Customer Concentration and Platform Shift</h3>
-  <p>Top-10 customer concentration rose from 68% (FY2018) to 78% (FY2025). The #2 customer crossed 10% at 14% in FY2019, dropped below 10% after FY2020, then returned above 10% in FY2023 (11%), 12% (FY2024), and 17% (FY2025). The #1 customer share moved 25% → 22% → 19% over the same period -- the gap between #1 and #2 narrowed from 14 to 2 percentage points. HPC overtook Smartphone as the largest platform in FY2022 (41% vs 40%) and reached 58% in FY2025; Smartphone fell to 29%.</p>
+  <p>Top-10 customer concentration rose from 68% (FY2018) to 78% (FY2025). The #2 customer crossed 10% at 14% in FY2019, dropped below 10% after FY2020, then returned above 10% in FY2023 (11%), 12% (FY2024), and 17% (FY2025). The #1 customer share moved 25% → 22% → 19% over the same period -- the gap between #1 and #2 narrowed from 14 to 2 percentage points. As concentration rose in FY2025, the filing changed "a more concentrated customer base will subject our revenue to seasonal demand fluctuations" to "may", and removed the named-customer roster. HPC overtook Smartphone as the largest platform in FY2022 (41% vs 39%) and reached 58% in FY2025; Smartphone fell to 29%.</p>
 </div>
 
 <div class="signal-card">
   <h3>7. Capex Step-Change and 2nm Production</h3>
-  <p>Capex stepped from US$29.8B (FY2024) to US$40.9B (FY2025), with FY2026 guidance of US$52-56B. 2-nanometer entered volume production in 2025 at Fab 20 (Hsinchu) and Fab 22 (Kaohsiung); 16-angstrom risk production targeted for 2026. Advanced node mix (7nm and below) reached 74% of wafer revenue. The FY2026 capex bullets dropped Fab 23 (Kumamoto) from the specialty/packaging expansion list, leaving only Fab 24 (Dresden), although JASM's second site began construction in October 2025. The capacity risk factor now adds "if the market demand does not materialize" to its overbuild warning. Gross margin reached 59.9% and operating margin 50.8% -- both new highs in the filing history.</p>
+  <p>Capex stepped from US$29.8B (FY2024) to US$40.9B (FY2025), with FY2026 guidance of US$52-56B. 2-nanometer entered volume production in 2025 at Fab 20 (Hsinchu) and Fab 22 (Kaohsiung); 16-angstrom risk production targeted for 2026. Advanced node mix (7nm and below) reached 74% of wafer revenue. The FY2026 capex bullets dropped Fab 23 (Kumamoto) from the specialty/packaging expansion list, leaving only Fab 24 (Dresden), although JASM's second site began construction in October 2025. The capacity risk factor now adds "if the market demand does not materialize" to its overbuild warning, while the business section expects utility prices to keep rising and the MD&amp;A no longer names electricity or overseas start-up costs as margin drags. Gross margin reached 59.9% and operating margin 50.8% -- both new highs in the filing history.</p>
 </div>
 
 </div><!-- end themes signal-grid -->
