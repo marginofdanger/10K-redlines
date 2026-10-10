@@ -272,7 +272,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>AVGO 10-Q Quarterly Scanner</h1>
   <div class="tagline">Quarter-over-quarter textual analysis of Broadcom's 10-Q filings, FY2024 Q1 (quarter ended February 4, 2024 &mdash; the first full VMware quarter) through FY2026 Q3 (quarter ended August 2, 2026, filed September 10, 2026), with the FY2024 and FY2025 10-K boundary transitions included. Broadcom restates its full risk factors every quarter, so the quarterly redline chain is unusually rich: language changes surface here 3&ndash;9 months before annual comparisons would catch them.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001730168) | 9 quarterly 10-Qs + 2 annual 10-Ks | FY2024 Q1 &ndash; FY2026 Q3 | Analysis: June 2026, extended October 2026; Q2&rarr;Q3 FY2026 re-done with sentence signals October 2026</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001730168) | 9 quarterly 10-Qs + 2 annual 10-Ks | FY2024 Q1 &ndash; FY2026 Q3 | Analysis: June 2026, extended October 2026; every transition from the FY2024 10-K onward re-done with sentence signals October 2026</div>
   <button class="toggle-btn" id="toggle-all">Expand all</button>
 </div>
 
@@ -290,15 +290,15 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="era-card">
       <h3>FY24 Q3 &rarr; FY2024 10-K</h3>
-      <p>"Custom AI accelerators or XPUs" appears for the first time anywhere, alongside hyperscale-customer concentration, design-win strain language and a "record revenue, which may not be sustainable" caveat. The Huawei example is deleted and the VMware risk is reframed around the subscription-licensing transition.</p>
+      <p>"Custom AI accelerators or XPUs" appears for the first time anywhere, with design-win costs "which we expect to continue," hyperscale-customer concentration and a "record revenue, which may not be sustainable" caveat. The Huawei example is deleted (China revenue fell only 9% in dollars), the VMware risk is reframed around the subscription-licensing transition, and the one-quarter-old "ratable revenue recognition" clause is dropped.</p>
     </div>
     <div class="era-card">
       <h3>FY2024 10-K &rarr; FY25 Q1</h3>
-      <p>"VMware Merger" becomes "acquisition of VMware" throughout, and MD&amp;A attribution moves from VMware contributions to organic VCF demand. A standing Macroeconomic Factors section debuts citing tariffs, export-control language hardens to present tense, and commercial paper debuts at $4.0B.</p>
+      <p>Software growth is credited to VCF demand and "license revenue recognized on contracts where customers do not have the right to terminate" instead of "contributions from VMware," and semiconductors are split into AI and shrinking "non-AI solutions." A Macroeconomic Factors section debuts citing tariffs, the U.S. "continues to add" companies to its restricted list, trade tensions widen from China to "U.S. trading partners," and $4.0B of commercial paper is outstanding.</p>
     </div>
     <div class="era-card">
       <h3>FY25 Q1 &rarr; Q2</h3>
-      <p>Tariffs get a dedicated risk paragraph after the April 2025 escalation. Buybacks resume under a new $10B authorization ($2,450M in the quarter) and the buyback risk factor returns. Two-Year Equity Awards replace annual grants, lifting unrecognized compensation from $10.7B to $27.0B.</p>
+      <p>Product lifecycle management "have previously led to" customer dissatisfaction, the quarter's only "realized" change. The U.S. tax-reform sentence drops "we expect an increase in our effective tax rate." Tariffs get their own risk sentences, the buyback factor returns with a $10B program ($2,450M bought), and Two-Year Equity Awards lift unrecognized compensation from $10.7B to $27.0B.</p>
     </div>
     <div class="era-card">
       <h3>FY25 Q2 &rarr; Q3</h3>
@@ -306,7 +306,7 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="era-card">
       <h3>FY25 Q3 &rarr; FY2025 10-K</h3>
-      <p>A new lead risk factor states the industry is "undergoing profound change due to AI" and that AI customers "may be unable to pay." The business section is rewritten around AI with "AI frontier models" customers named, the first tariff materiality statement appears, $7.8B of upfront license revenue is reported within products, and the Seasonality section is deleted.</p>
+      <p>The lead risk factor states the industry is "undergoing profound change due to AI" and that AI customers "may be unable to pay." Customers "have made" rack-lease demands and Broadcom "may offer and have offered" financing; racks "will likely" compress gross margin. "The majority of our sales" concentration sentence is deleted, factoring enters the risk factors, and $7.8B of upfront license revenue is reported within products.</p>
     </div>
     <div class="era-card">
       <h3>FY2025 10-K &rarr; FY26 Q1</h3>
@@ -612,7 +612,7 @@ a:hover { text-decoration: underline; }
 <!-- T3: FY24 Q3 -> FY2024 10-K -->
 <div class="transition-header" id="t-24q3-fy24">
   <h2>FY2024 Q3 &rarr; FY2024 10-K</h2>
-  <div class="sub">Annual boundary | FY ended Nov 3, 2024, filed Dec 2024 | FY2024 net revenue $51,574M | Semiconductor $30,096M | Infrastructure software $21,478M</div>
+  <div class="sub">Annual boundary | FY ended Nov 3, 2024, filed Dec 20, 2024 | FY2024 net revenue $51,574M | Semiconductor $30,096M | Infrastructure software $21,478M | Operating income $13,460M | Net income $5,890M | Free cash flow $19.41B</div>
 </div>
 
 <div class="finding-group">
@@ -621,121 +621,203 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">First appearance of "custom AI accelerators or XPUs" anywhere</span>
+    <span class="title">"Custom AI accelerators or XPUs" named for the first time, in the R&amp;D factor and the stock-price list</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>A new R&amp;D risk factor introduces the XPU terminology that anchors every subsequent filing. The stock-price factor list was also reordered with AI promoted: "anticipated or actual demand for AI-related products, including ASICs such as custom AI accelerators or XPUs."</p>
-    <p class="qlabel">FY2024 10-K (new)</p>
+    <p class="shift">Named: new product class (+ disclosure)</p>
+    <p class="qlabel">Q3 FY2024 (prior)</p>
+    <blockquote>"Failure to successfully develop increasingly advanced technologies could impair our competitive position."</blockquote>
+    <p class="qlabel">FY2024 10-K (current)</p>
     <blockquote>"Failure to successfully develop increasingly advanced technologies, including ASICs such as <strong>custom AI accelerators or XPUs</strong> and other AI-related products, could impair our competitive position."</blockquote>
+    <blockquote>"&bull;anticipated or actual demand for AI-related products, including ASICs such as custom AI accelerators or XPUs;"</blockquote>
+    <p class="history">History: "custom AI accelerators or XPUs" appears in no filing before the FY2024 10-K (phrase_history) and in every filing after it, rising to nine mentions by Q3 FY2026.</p>
+    <p>The term that anchors every later filing arrives here, in the risk factors, three quarters before MD&amp;A names "custom AI accelerators" as a revenue driver (Q3 FY2025).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Design-win strain language tied to AI accelerators</span>
-    <span class="tag tag-new">New</span>
+    <span class="title">AI design wins "may strain our resources," with added costs "which we expect to continue for our AI-related products"</span>
+    <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>New language on simultaneous major design wins straining resources, explicitly attributed to AI products and expected to continue.</p>
-    <p class="qlabel">FY2024 10-K (new)</p>
-    <blockquote>"&hellip;such as our design wins for our custom AI accelerators or XPUs and other AI-related products, may strain our resources and those of our CMs&hellip;"</blockquote>
+    <p class="shift">Certainty: cost stated as an expectation ("we expect to continue") (firmer +); named: XPU design wins</p>
+    <p class="qlabel">Q3 FY2024 (prior)</p>
+    <blockquote>"In such event, we may be forced to dedicate significant additional resources and incur additional costs and expenses."</blockquote>
+    <p class="qlabel">FY2024 10-K (current)</p>
+    <blockquote>"&hellip;implementing production for a major design win or multiple design wins at the same time, such as our design wins for our custom AI accelerators or XPUs and other AI-related products, may strain our resources and those of our CMs."</blockquote>
+    <blockquote>"In such event, we may be forced to dedicate significant additional resources such as product engineering and incur additional costs and expenses, which we expect to continue for our AI-related products."</blockquote>
+    <p class="history">History: "which we expect to continue for our AI-related products" appears in the FY2024 10-K, Q1 and Q2 FY2025; Q3 FY2025 replaces it with the sale-or-leasing of AI racks.</p>
+    <p>A generic design-win risk now has a named product and a cost Broadcom says it expects to keep paying. Three quarters later the same sentence is where rack leasing first appears.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI upturn sustainability caveat: "record revenue, which may not be sustainable"</span>
+    <span class="title">AI upturn caveat: "record revenue, which may not be sustainable"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Added: hedge on the AI cycle ("may not be sustainable") (+ disclosure)</p>
     <p class="qlabel">FY2024 10-K (new)</p>
     <blockquote>"The market for AI-related products has resulted in a significant upturn in certain segments of the industry resulting in record revenue, which may not be sustainable."</blockquote>
+    <p class="history">History: "record revenue, which may not be sustainable" appears in the FY2024 10-K and Q1 to Q3 FY2025. The FY2025 10-K rewrites it as an industry "undergoing profound change due to AI," and Q3 FY2026 adds an AI spending "bubble."</p>
+    <p>The first description of the AI boom in the risk factors already says it may not last.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Hyperscale customers named in concentration risk</span>
-    <span class="tag tag-new">New</span>
+    <span class="title">Top-customer factor adds "including our hyperscale customers"</span>
+    <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The customer-concentration factor also moved above the cyclical-industry factor in the risk summary.</p>
-    <p class="qlabel">FY2024 10-K (new)</p>
-    <blockquote>"The loss of, or any substantial reduction in sales to, any of our top customers, <strong>including our hyperscale customers</strong>, could have a material adverse effect&hellip;"</blockquote>
+    <p class="shift">Named: customer class (+ disclosure)</p>
+    <p class="qlabel">Q3 FY2024 (prior)</p>
+    <blockquote>"The loss of, or any substantial reduction in sales to, any of our top customers could have a material adverse effect on our business, financial condition, results of operations and cash flows."</blockquote>
+    <p class="qlabel">FY2024 10-K (current)</p>
+    <blockquote>"The loss of, or any substantial reduction in sales to, any of our top customers, including our hyperscale customers, could have a material adverse effect on our business, financial condition, results of operations and cash flows."</blockquote>
+    <p class="history">History: "including our hyperscale customers" appears in the FY2024 10-K, Q1 and Q2 FY2025; Q3 FY2025 replaces it with "our customers for our custom AI accelerators, XPUs or AI racks."</p>
+    <p>The concentration risk is tied to a named group of buyers for the first time. The customer-concentration factor also moves above the cyclical-industry factor in the summary.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Customer in-house development named as a demand risk</span>
+    <span class="title">Customers may buy less "due to their internal development of the products"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Added: customer in-sourcing named as a demand risk (-)</p>
     <p class="qlabel">FY2024 10-K (new)</p>
     <blockquote>"Some customers may even reduce the amount of products or decline to purchase due to their internal development of the products."</blockquote>
+    <p class="history">History: "internal development of the products" first appears in the FY2024 10-K and stands through the FY2025 10-K; Q3 FY2025 adds customers as "new competitors," and Q1 FY2026 adds "customer-owned tooling."</p>
+    <p>Hyperscalers designing their own chips is named as a risk in the same filing that names them as top customers.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Huawei example deleted entirely from the export-controls factor</span>
+    <span class="title">Huawei export-license example deleted; China shipments 32% &rarr; 20% of revenue, but only $11,533M &rarr; $10,483M in dollars</span>
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>Zero occurrences of "Huawei" in the FY2024 10-K risk factors, versus the present-tense license language one quarter earlier.</p>
+    <p class="shift">De-named: the only named export-control example removed (-)</p>
     <p class="qlabel">Q3 FY2024 (prior, now removed)</p>
-    <blockquote>"&hellip;that require us to suspend sales to Huawei if we fail to maintain licenses issued by the U.S. Department of Commerce."</blockquote>
+    <blockquote>"For example, Huawei Technologies Co., Ltd., one of our customers, is subject to certain U.S. export restrictions that require us to suspend sales to Huawei if we fail to maintain licenses issued by the U.S. Department of Commerce."</blockquote>
+    <p class="qlabel">FY2024 10-K (current)</p>
+    <blockquote>"Net revenue from China (including Hong Kong) for fiscal years 2024, 2023 and 2022 was $10,483 million, $11,533 million and $11,637 million, respectively."</blockquote>
+    <p class="history">History: "Huawei" appears in every filing from Q3 FY2023 to Q3 FY2024 and in none after.</p>
+    <p>The share drop is mostly mix: China revenue fell 9% in dollars while total revenue rose 44% with VMware. The filing adds that "a substantially smaller percentage" of revenue ultimately depends on end customers in China.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">VMware risk reframed around the subscription-licensing transition</span>
+    <span class="title">VMware risk names the "transition from a perpetual to a subscription licensing model"; the integration-challenges list is deleted</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The seven-bullet integration-challenge list from the 10-Qs was deleted and replaced with a strategy-acceptance framing.</p>
+    <p class="shift">Named: licensing transition (+ disclosure); removed: integration checklist</p>
+    <p class="qlabel">Q3 FY2024 (prior)</p>
+    <blockquote>"If VMware customers do not accept our business strategy, the investments we have made or may make to implement our strategy may be of no or limited value, we may lose significant customers, our financial results may be adversely affected and our stock price may suffer."</blockquote>
+    <blockquote>"The challenges involved in this integration, which are complex and time consuming, include the following:"</blockquote>
     <p class="qlabel">FY2024 10-K (current)</p>
-    <blockquote>"If VMware customers do not accept our business strategy, including our <strong>transition from a perpetual to a subscription licensing model</strong> and our simplified product portfolio&hellip;"</blockquote>
+    <blockquote>"If VMware customers do not accept our business strategy, including our transition from a perpetual to a subscription licensing model and our simplified product portfolio, the investments we have made or may make to implement our strategy may be of no or limited value, we may lose significant customers&hellip;"</blockquote>
+    <p class="history">History: "transition from a perpetual to a subscription licensing model" appears in the FY2024 10-K and Q1 to Q3 FY2025. "We may lose significant customers" had already appeared in Q3 FY2024.</p>
+    <p>The risk moves from whether Broadcom can integrate VMware to whether customers accept the new licensing model. The bullets on integrating controls, IT and the VMware workforce are gone.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Which result in ratable revenue recognition" dropped from the termination-for-convenience sentence</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Removed: accounting consequence (-)</p>
+    <p class="qlabel">Q3 FY2024 (prior)</p>
+    <blockquote>"These customers often do not have a contractual obligation to purchase additional solutions and often have termination for convenience clauses without payment of a substantive penalty, which result in ratable revenue recognition of software revenue over the contractual period."</blockquote>
+    <p class="qlabel">FY2024 10-K (current)</p>
+    <blockquote>"These customers often do not have a contractual obligation to purchase additional solutions and often have termination for convenience clauses without payment of a substantive penalty."</blockquote>
+    <p class="history">History: "which result in ratable revenue recognition" appears in Q3 FY2024 only.</p>
+    <p>The clause linking terminable contracts to ratable revenue lasted one quarter. The link still holds in reverse: the FY2025 10-K reports $7,800M of upfront license revenue from contracts customers cannot terminate, and Q3 FY2026 says most new contracts no longer allow termination.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Debt-servicing and buyback risk factors deleted; aggregate indebtedness $72,319M &rarr; $69,847M</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Removed: two standalone factors (-)</p>
+    <p class="qlabel">Q3 FY2024 (prior, now removed)</p>
+    <blockquote>"Servicing our debt requires a significant amount of cash, and we may not have sufficient cash flow from our business to pay our substantial debt."</blockquote>
+    <blockquote>"&bull;The amount and frequency of our stock repurchases may fluctuate."</blockquote>
+    <p class="history">History: the debt-servicing sentence stands from Q3 FY2023 to Q3 FY2024 and is absent after. The buyback factor is absent from the FY2024 10-K and Q1 FY2025 and returns in Q2 FY2025.</p>
+    <p>Part of this is consolidation into a shorter indebtedness factor. Still, the sentence saying cash flow might not cover the debt goes as debt is paid down, and the buyback factor goes in a year with no repurchases after Q1.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Singapore global minimum tax dated: "will be effective for our fiscal year 2026"; incentives worth $2,261M</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Added: dated tax risk (+ disclosure)</p>
+    <p class="qlabel">FY2024 10-K (new)</p>
+    <blockquote>"For example, Singapore recently adopted the global minimum tax, which will be effective for our fiscal year 2026."</blockquote>
+    <p class="history">History: "recently adopted the global minimum tax" first appears in the FY2024 10-K and is kept through Q3 FY2025. The FY2025 10-K moves to "we expect to materially increase"; Q1 FY2026 to "have materially increased."</p>
+    <p>The tax incentives cut FY2024's provision by about $2,261M ($0.47 per diluted share). The filing now dates when Singapore's minimum tax starts to erode them, while the incentive itself is "scheduled to expire in November 2030."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tax risk de-quantified: the GILTI 50% &rarr; 37.5% step, the IRA's 15% book minimum tax and the 18% large-holder figure are cut; "we expect an increase in our effective tax rate" replaces them</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Quant removed (-); certainty: specific mechanisms &rarr; general expectation</p>
+    <p class="qlabel">Q3 FY2024 (prior, now removed)</p>
+    <blockquote>"Beginning in fiscal year 2027, the deduction allowable under the GILTI regime will decrease from 50% to 37.5%, which will increase the effective tax rate imposed on our income."</blockquote>
+    <blockquote>"The U.S. also enacted the Inflation Reduction Act of 2022 (&ldquo;IRA&rdquo;) in August 2022, which created a new book minimum tax of at least 15% of consolidated GAAP pre-tax income for corporations with average book income in excess of $1 billion."</blockquote>
+    <p class="qlabel">FY2024 10-K (current)</p>
+    <blockquote>"As a result of U.S. tax reforms, our global income is subject to tax in the U.S. and we expect an increase in our effective tax rate and our cash tax costs."</blockquote>
+    <p class="history">History: the GILTI and IRA sentences, and "10 of our 20 largest holders," stand from Q3 FY2023 to Q3 FY2024 and are absent after. "We expect an increase in our effective tax rate" appears in the FY2024 10-K and Q1 FY2025 only.</p>
+    <p>The named mechanisms and their rates come out of the risk factors in the year Broadcom moved IP to the U.S. (FY2024 tax provision $3,748M, effective rate 37.8%). A general expectation replaces them, and that expectation is itself deleted two filings later (Q2 FY2025). The Pillar Two sentence also loses its "(Pillar Two)" label and its "if."</p>
   </div>
 </div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--cyan)"></span>Business Section</h3>
+<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Seasonality discussion now cites AI products</span>
-    <span class="tag tag-changed">Changed</span>
+    <span class="title">"We expect to incur additional restructuring and other charges in future periods as a result of the VMware Merger" deleted</span>
+    <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>The Business-section Seasonality discussion, historically keyed to wireless launches, adds AI. (The entire section is deleted one year later in the FY2025 10-K.)</p>
-    <p class="qlabel">FY2024 10-K (current)</p>
-    <blockquote>"&hellip;significant product transitions and launches by large OEMs, particularly with our <strong>AI and</strong> wireless communications products."</blockquote>
-  </div>
-</div>
-</div>
-
-<div class="finding-group">
-<h3><span class="dot" style="background:var(--orange)"></span>Notes / Financial</h3>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Footprint and tax data: China share down, Singapore minimum tax, factor consolidation</span>
-    <span class="tag tag-signal">Signal</span>
-  </div>
-  <div class="finding-body">
-    <p>China (incl. Hong Kong) shipments fell to 20% of FY2024 revenue from 32% in FY2023. Singapore "recently adopted the global minimum tax, which will be effective for our fiscal year 2026"; FY2024 tax incentives were worth ~$2,261M (+$0.47 EPS). Aggregate indebtedness $69,847M; ~37,000 employees (55% in R&amp;D). Personnel risk adds "our AI-related product engineers and cybersecurity experts" and "or our stock underperforms." Several risk factors (environmental, ASP-decline, FX, debt-servicing) were consolidated.</p>
+    <p class="shift">Guidance removed (-, or + if read as integration complete)</p>
+    <p class="qlabel">Q3 FY2024 (prior, now removed)</p>
+    <blockquote>"We expect to incur additional restructuring and other charges in future periods as a result of the VMware Merger."</blockquote>
+    <p class="history">History: the sentence appears in the FY2023 10-K and Q1 to Q3 FY2024, and in no filing after.</p>
+    <p>Restructuring charges in operating expenses were $1,533M for FY2024, against $244M in FY2023. The forward warning is dropped, and FY2025 charges fell 61% "primarily due to lower employee termination costs associated with the integration of the VMware business," so the deletion was borne out.</p>
   </div>
 </div>
 </div>
@@ -744,7 +826,7 @@ a:hover { text-decoration: underline; }
 <!-- T4: FY2024 10-K -> FY25 Q1 -->
 <div class="transition-header" id="t-fy24-25q1">
   <h2>FY2024 10-K &rarr; FY2025 Q1</h2>
-  <div class="sub">Annual boundary | Qtr ended Feb 2, 2025 | Net revenue $14,916M | Semiconductor $8,212M | Infrastructure software $6,704M</div>
+  <div class="sub">Annual boundary | Qtr ended Feb 2, 2025 (filed Mar 12, 2025) | Net revenue $14,916M | Semiconductor $8,212M | Infrastructure software $6,704M | Operating income $6,260M | Diluted EPS $1.14 | Free cash flow $6.01B</div>
 </div>
 
 <div class="finding-group">
@@ -753,40 +835,62 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Software attribution switches from "contributions from VMware" to organic VCF demand</span>
+    <span class="title">Software growth attribution: "contributions from VMware" becomes VCF demand plus "license revenue recognized on contracts where customers do not have the right to terminate"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Attribution: acquisition &rarr; organic demand and contract terms (+ disclosure); named: VCF</p>
     <p class="qlabel">FY2024 10-K (prior)</p>
-    <blockquote>"&hellip;increased primarily due to <strong>contributions from VMware</strong>."</blockquote>
+    <blockquote>"Net revenue from our infrastructure software segment increased primarily due to contributions from VMware."</blockquote>
     <p class="qlabel">Q1 FY2025 (current)</p>
-    <blockquote>"&hellip;primarily due to <strong>strong demand for our VMware Cloud Foundation (&ldquo;VCF&rdquo;) product</strong>, additional license revenue recognized on contracts where customers do not have the right to terminate, and the transition to a subscription license model."</blockquote>
+    <blockquote>"Net revenue from our infrastructure software segment increased in the fiscal quarter ended February 2, 2025 compared to the prior year fiscal period primarily due to strong demand for our VMware Cloud Foundation (&ldquo;VCF&rdquo;) product, additional license revenue recognized on contracts where customers do not have the right to terminate, and the transition to a subscription license model."</blockquote>
+    <p class="history">History: "contributions from VMware" appears from Q1 FY2024 to the FY2024 10-K. "Additional license revenue recognized on contracts where customers do not have the right to terminate" first appears in Q1 FY2025 (kept through Q3 FY2025, and again in Q3 FY2026).</p>
+    <p>With VMware in both periods, Broadcom has to explain software growth on its own terms. One of the three reasons is accounting: contracts without termination rights let license revenue be booked upfront. The FY2025 10-K later quantifies this at $7,800M for the year.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New standing "Macroeconomic Factors" MD&amp;A section</span>
+    <span class="title">Semiconductor revenue now split into AI and "non-AI solutions," with non-AI demand lower</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>A recurring section that did not exist in the FY2024 10-K MD&amp;A, citing trade tensions and tariffs in its first appearance.</p>
+    <p class="shift">Named: new AI / non-AI split (+ disclosure)</p>
     <p class="qlabel">Q1 FY2025 (new)</p>
-    <blockquote>"&hellip;an increase in trade tensions and related tariffs with U.S. trading partners&hellip;"</blockquote>
+    <blockquote>"Net revenue from our semiconductor solutions segment increased in the fiscal quarter ended February 2, 2025 compared to the prior year fiscal period due to strong demand for our networking products, primarily AI networking solutions, partially offset by lower demand for our non-AI solutions, primarily broadband products."</blockquote>
+    <p class="history">History: "non-AI solutions" appears in Q1 and Q2 FY2025 only.</p>
+    <p>For two quarters the filing reports the semiconductor business as AI against everything else, with the non-AI part shrinking. From Q3 FY2025 the attribution names "custom AI accelerators" instead and the non-AI offset is no longer mentioned.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Commercial paper debuts</span>
+    <span class="title">Standing "Macroeconomic Factors" section debuts, citing "an increase in trade tensions and related tariffs"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>First commercial paper issuance in the set; the CP program was upsized from $2B to $4B in January 2025. Floating-rate term loans dropped from $19,195M to $6,000M.</p>
+    <p class="shift">Added: new MD&amp;A section (+ disclosure)</p>
     <p class="qlabel">Q1 FY2025 (new)</p>
-    <blockquote>"We issued $4.0 billion of commercial paper and $3.0 billion of senior unsecured notes and used the net proceeds, as well as cash on hand, to repay $7,595 million of our unsecured term loans."</blockquote>
+    <blockquote>"We are subject to risks and exposures from the evolving macroeconomic environment, including uncertainty and volatility in financial markets, efforts of governments to stimulate or stabilize the economy and other unfavorable changes in economic conditions, as well as an increase in trade tensions and related tariffs with U.S. trading partners&hellip;"</blockquote>
+    <p class="history">History: "Macroeconomic Factors" first appears in Q1 FY2025 and is in every filing since.</p>
+    <p>Tariffs enter MD&amp;A a quarter before they get their own risk-factor sentences (Q2 FY2025) and three quarters before the first "have not had a material impact" statement (FY2025 10-K).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$4.0B of commercial paper and $3.0B of notes repay $7,595M of term loans</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Quant: added (refinancing figures)</p>
+    <p class="qlabel">Q1 FY2025 (new)</p>
+    <blockquote>"&bull;We issued $4.0 billion of commercial paper and $3.0 billion of senior unsecured notes and used the net proceeds, as well as cash on hand, to repay $7,595 million of our unsecured term loans."</blockquote>
+    <p class="history">History: the commercial paper program is described in every filing; Q1 FY2025 is the first quarter in the set with paper outstanding ($4.0B). Floating-rate term loans fell from $13,595M to $6,000M (fully repaid in Q3 FY2025).</p>
+    <p>Floating-rate VMware loans were swapped for short-term paper and fixed-rate notes. Paper outstanding was $3.9B at Q2 and $500M at Q3, with maturities lengthening from "generally less than sixty days" to as long as 187 days.</p>
   </div>
 </div>
 </div>
@@ -797,74 +901,103 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"VMware Merger" renamed "acquisition of VMware" throughout</span>
+    <span class="title">Products "may contain" errors and vulnerabilities becomes "have contained in the past," some "undiscovered before the product was released"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The FY2024 10-K risk factors used "VMware Merger" 10 times; Q1 FY2025 uses it zero times, replacing it with "acquisition of VMware" (7 instances).</p>
+    <p class="shift">Realized: may contain &rarr; have contained (firmer +)</p>
     <p class="qlabel">FY2024 10-K (prior)</p>
-    <blockquote>"Our dependence on channel partners has increased following the <strong>VMware Merger</strong>."</blockquote>
+    <blockquote>"Our products are complex and, when deployed, may contain errors, defects or security vulnerabilities, some of which may not be discovered before the product has been released, installed and used by customers."</blockquote>
     <p class="qlabel">Q1 FY2025 (current)</p>
-    <blockquote>"Our dependence on channel partners has increased following the <strong>acquisition of VMware</strong>."</blockquote>
+    <blockquote>"Our products are complex and, when deployed, have contained in the past and may contain in the future errors, defects or security vulnerabilities, some of which were undiscovered before the product was released, installed and used by customers."</blockquote>
+    <p class="history">History (sentence_signals): the "may contain" sentence stood unchanged for five filings, FY2023 10-K to FY2024 10-K. "Have contained in the past" first appears in Q1 FY2025; the FY2025 10-K narrows it to "Our software portfolio ... has contained in the past."</p>
+    <p>One of two "realized" changes in this transition, both about product security. The filing names no incident. The FY2025 10-K's narrowing to software points at VMware and Symantec (an inference).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Export-control language hardened to present tense, broadened beyond China</span>
+    <span class="title">Cyber threats: "it is possible that" some "will be undetected" becomes some "have in the past been" undetected</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The same quarter, "ongoing trade tensions with China" became "ongoing trade tensions with U.S. trading partners," "decoupling of the U.S. and China economies" became "decoupling of the global economies," and a new clause states "foreign government authorities have proposed, and may take, retaliatory actions&hellip;"</p>
+    <p class="shift">Realized: possible &rarr; have in the past been (firmer +)</p>
     <p class="qlabel">FY2024 10-K (prior)</p>
-    <blockquote>"The U.S. government <strong>may continue to add</strong> companies to its restricted entity list&hellip;"</blockquote>
+    <blockquote>"Although we continually seek to improve our countermeasures to prevent such incidents, we may be unable to anticipate every scenario and it is possible that certain cyber threats or vulnerabilities will be undetected or unmitigated in time to prevent an attack or an accidental incident on us and our customers."</blockquote>
     <p class="qlabel">Q1 FY2025 (current)</p>
-    <blockquote>"The U.S. government <strong>continues to add</strong> companies to its restricted entity list&hellip; <strong>which have had and may in the future have an adverse effect on our revenue, supply chain</strong> and our ability to manufacture or sell our products."</blockquote>
+    <blockquote>"Although we continually seek to improve our countermeasures to prevent such incidents, we may be unable to anticipate every scenario and, as a result, certain cyber threats or vulnerabilities have in the past been and may in the future be undetected or unmitigated in time to prevent an attack or an accidental incident on us and our customers."</blockquote>
+    <p class="history">History (sentence_signals): the "it is possible that" sentence stood unchanged for six filings, Q3 FY2023 to the FY2024 10-K. "Have in the past been and may in the future be undetected" first appears in Q1 FY2025 and is kept through Q3 FY2026.</p>
+    <p>Broadcom now states that threats have already gone undetected or unmitigated in time. No breach is disclosed. Q2 FY2026 adds that AI "has also led" to new attack methods.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"ESG" renamed "corporate responsibility," with backlash clause added</span>
+    <span class="title">Export controls: the U.S. "may continue to add" becomes "continues to add" companies to its restricted list, now hitting "supply chain" too</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The renamed factor adds: "an increasing number of state-level and federal legislation, executive orders and other backlash against corporate responsibility matters in the United States."</p>
+    <p class="shift">Certainty: may continue &rarr; continues (realized, firmer +); scope: revenue &rarr; revenue and supply chain (-)</p>
     <p class="qlabel">FY2024 10-K (prior)</p>
-    <blockquote>"<strong>Environmental, social and governance (&ldquo;ESG&rdquo;)</strong> matters may adversely affect our relationships with customers and investors and increase compliance costs."</blockquote>
+    <blockquote>"&hellip;government may continue to add companies to its restricted entity list and/or technologies to its list of prohibited exports to specific countries, which have had and may in the future have an adverse effect on our revenue and our ability to sell our products."</blockquote>
     <p class="qlabel">Q1 FY2025 (current)</p>
-    <blockquote>"<strong>Corporate responsibility</strong> matters may adversely affect our relationships with customers and investors and increase compliance costs."</blockquote>
+    <blockquote>"&hellip;government continues to add companies to its restricted entity list and/or technologies to its list of prohibited exports to specific countries, which have had and may in the future have an adverse effect on our revenue, supply chain and our ability to manufacture or sell our products."</blockquote>
+    <p class="history">History: "may continue to add companies" appears in the FY2024 10-K only; "continues to add companies" first appears in Q1 FY2025 and is kept through Q3 FY2026.</p>
+    <p>The same factor adds "foreign government authorities have proposed, and may take, retaliatory actions" (Q1 to Q3 FY2025). Restrictions now reach Broadcom's ability to "manufacture," not only to sell.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Materials concentration: "two-thirds" becomes "three-quarters" from five suppliers</span>
+    <span class="title">"Ongoing trade tensions with China" becomes "with U.S. trading partners"; "decoupling of the U.S. and China" becomes "of the global economies"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">De-named: China &rarr; "U.S. trading partners" (scope wider)</p>
     <p class="qlabel">FY2024 10-K (prior)</p>
-    <blockquote>"&hellip;approximately <strong>two-thirds</strong> of our manufacturing materials from five materials suppliers, some of which are single source suppliers."</blockquote>
+    <blockquote>"&hellip;companies by other governments, especially in light of ongoing trade tensions with China, will likely limit or prevent us from doing business with certain of our customers or suppliers&hellip;"</blockquote>
     <p class="qlabel">Q1 FY2025 (current)</p>
-    <blockquote>"&hellip;approximately <strong>three-quarters</strong> of our manufacturing materials from five materials suppliers, some of which are single source suppliers."</blockquote>
+    <blockquote>"&hellip;and its trading partners, especially China, and the decoupling of the global economies could result in a global economic slowdown and long-term changes to global trade."</blockquote>
+    <p class="history">History: "especially in light of ongoing trade tensions with China" stood from Q3 FY2023 to the FY2024 10-K. "Ongoing trade tensions with U.S. trading partners" and "decoupling of the global economies" first appear in Q1 FY2025 and are kept through Q3 FY2026.</p>
+    <p>The trade risk is no longer only about China. Filed in March 2025, the wording widens to U.S. trading partners generally, as U.S. tariff policy broadened.</p>
   </div>
 </div>
-</div>
-
-<div class="finding-group">
-<h3><span class="dot" style="background:var(--orange)"></span>Notes / Financial</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">R&amp;D location re-scope and balance items</span>
-    <span class="tag tag-signal">Signal</span>
+    <span class="title">"ESG" renamed "corporate responsibility," with a new sentence on "backlash against corporate responsibility matters"</span>
+    <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>R&amp;D personnel locations re-scoped from "the Czech Republic, India, Israel, and the U.S." to "India and the U.S." Distributor channel share 47%; aggregate indebtedness $68,757M. "FBAR components" became "FBAR filters" in the sole-source facilities sentence, and "module assembly and test capabilities" was dropped from the outsourced-manufacturing description.</p>
+    <p class="shift">Named: ESG &rarr; corporate responsibility; condition added: political backlash</p>
+    <p class="qlabel">FY2024 10-K (prior)</p>
+    <blockquote>"Environmental, social and governance (&ldquo;ESG&rdquo;) matters may adversely affect our relationships with customers and investors and increase compliance costs."</blockquote>
+    <p class="qlabel">Q1 FY2025 (current)</p>
+    <blockquote>"Corporate responsibility matters may adversely affect our relationships with customers and investors and increase compliance costs."</blockquote>
+    <blockquote>"Further, there is an increasing number of state-level and federal legislation, executive orders and other backlash against corporate responsibility matters in the United States that may conflict with other regulatory requirements or our various stakeholders&rsquo; expectations."</blockquote>
+    <p class="history">History: "Corporate responsibility matters" first appears in Q1 FY2025 and is kept through Q3 FY2026. "Backlash against corporate responsibility" appears in Q1 to Q3 FY2025 only.</p>
+    <p>A rename that tracks U.S. politics. Q2 FY2026 goes further and deletes "climate change" and the "publicly disclosed corporate responsibility initiatives" sentence.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Five-supplier materials share: "approximately two-thirds" &rarr; "approximately three-quarters"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Quant: two-thirds &rarr; three-quarters (concentration up)</p>
+    <p class="qlabel">FY2024 10-K (prior)</p>
+    <blockquote>"During fiscal year 2024, we purchased approximately two-thirds of our manufacturing materials from five materials suppliers, some of which are single source suppliers."</blockquote>
+    <p class="qlabel">Q1 FY2025 (current)</p>
+    <blockquote>"During the fiscal quarter ended February 2, 2025, we purchased approximately three-quarters of our manufacturing materials from five materials suppliers, some of which are single source suppliers."</blockquote>
+    <p class="history">History: "approximately two-thirds" appears in every filing from Q3 FY2023 to the FY2024 10-K; "approximately three-quarters" in Q1 to Q3 FY2025; the FY2025 10-K returns to two-thirds and Q1 FY2026 says "more than three-quarters."</p>
+    <p>The quarterly basis is narrower than the annual one, but the year-to-date 10-Qs hold three-quarters for all of FY2025. The R&amp;D location list narrows the same quarter, from "the Czech Republic, India, Israel, and the U.S." to "India and the U.S."</p>
   </div>
 </div>
 </div>
@@ -873,7 +1006,7 @@ a:hover { text-decoration: underline; }
 <!-- T5: FY25 Q1 -> Q2 -->
 <div class="transition-header" id="t-25q1q2">
   <h2>FY2025 Q1 &rarr; Q2</h2>
-  <div class="sub">Qtrs ended Feb 2, 2025 &rarr; May 4, 2025 | Net revenue $14,916M &rarr; $15,004M | Semiconductor $8,212M &rarr; $8,408M | Infrastructure software $6,704M &rarr; $6,596M</div>
+  <div class="sub">Qtrs ended Feb 2, 2025 &rarr; May 4, 2025 (filed June 11, 2025) | Net revenue $14,916M &rarr; $15,004M | Semiconductor $8,212M &rarr; $8,408M | Infrastructure software $6,704M &rarr; $6,596M | Operating income $6,260M &rarr; $5,830M | Diluted EPS $1.14 &rarr; $1.03 | Free cash flow $6.01B &rarr; $6.41B</div>
 </div>
 
 <div class="finding-group">
@@ -882,57 +1015,83 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Tariffs get a dedicated paragraph after the April 2025 escalation</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Related new language the same quarter: "increased geopolitical volatility," "protectionism and economic nationalism," "Uncertainty due to the evolving trade restrictions also may disrupt our supply chain," and acquisition approvals at risk "including due to U.S.-international relationships and other geopolitical events."</p>
-    <p class="qlabel">Q2 FY2025 (new)</p>
-    <blockquote>"The proposed and enacted U.S. tariffs and counter-tariffs, or additional sector-based tariffs, could also lead to increased costs and supply chain disruptions. &hellip; If we are unable to effectively navigate these changes, it could have a material adverse effect on our business, operating results and stock price."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Market-volatility language attached to debt management</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>The indebtedness factor adds macro-driven refinancing risk; a related clause states "the current market volatility may adversely impact our ability to manage our debt."</p>
-    <p class="qlabel">Q2 FY2025 (new)</p>
-    <blockquote>"&hellip;market volatility stemming from current macroeconomic events may materially impact our cash flow and our ability to raise or refinance debt at favorable rates&hellip;"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Buyback risk factor reinstated</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Absent from the Q1 FY2025 risk factors (zero matches), the stock-repurchase factor returns to the summary with a restored full factor.</p>
-    <p class="qlabel">Q2 FY2025 (new)</p>
-    <blockquote>"The amount and frequency of our stock repurchases may fluctuate&hellip;"</blockquote>
-  </div>
-</div>
-</div>
-
-<div class="finding-group">
-<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"AI semiconductor solutions" becomes "AI-related semiconductor solutions"</span>
+    <span class="title">Product lifecycle management "could lead to" becomes "have previously led to" customer dissatisfaction and "potential contractual liabilities"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Certainty: could &rarr; have (realized, firmer +); "and communications thereof" added</p>
     <p class="qlabel">Q1 FY2025 (prior)</p>
-    <blockquote>"The increase was primarily due to higher software revenue and strong product demand for our <strong>AI semiconductor solutions</strong>."</blockquote>
+    <blockquote>"Failure to effectively manage our products and services lifecycles could lead to customer dissatisfaction and contractual liabilities, which could adversely affect our business and operating results."</blockquote>
     <p class="qlabel">Q2 FY2025 (current)</p>
-    <blockquote>"The increases were primarily due to higher software revenue and strong product demand for our <strong>AI-related semiconductor solutions</strong>."</blockquote>
+    <blockquote>"Failure to effectively manage our products and services lifecycles <strong>and communications thereof have previously led to</strong>, and may in the future lead to, customer dissatisfaction and potential contractual liabilities, which could adversely affect our business and operating results."</blockquote>
+    <p class="history">History (sentence_signals): the "could lead to" sentence stood unchanged for six filings, FY2023 10-K through Q1 FY2025. "Have previously led to, and may in the future lead to" first appears in Q2 FY2025 and is kept in every filing through Q3 FY2026.</p>
+    <p>This is the top-ranked change of the quarter and its only "realized" label. Broadcom concedes that the way it ended or changed products, and how it told customers, has already caused dissatisfaction. The filing names no product. Coming 18 months into the VMware licensing overhaul, it is consistent with pushback on VMware end-of-life and support changes (an inference). The FY2025 10-K narrows "products" to "software."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"We expect an increase in our effective tax rate and our cash tax costs" from U.S. tax reform deleted</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Expectation removed: "we expect an increase" (softer -); the bare fact "Our global income is subject to tax in the U.S." kept</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"As a result of U.S. tax reforms, our global income is subject to tax in the U.S. and we expect an increase in our effective tax rate and our cash tax costs."</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"Our global income is subject to tax in the U.S. In addition, many countries are implementing anti-base-erosion legislation and guidance aimed at standardizing and modernizing global corporate tax policy&hellip;"</blockquote>
+    <p class="history">History: "we expect an increase in our effective tax rate" appears only in the FY2024 10-K and Q1 FY2025. The global-minimum-tax sentence beside it still says "may materially increase."</p>
+    <p>The stated expectation of a higher U.S. tax bill is withdrawn one quarter before the One Big Beautiful Bill Act, which Q3 FY2025 says made Broadcom's CAMT credits unusable ($1,058M valuation allowance). The filing gives no reason for the deletion. The Q2 provision was $120M, an implied rate of 2.4% (financials.py).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs get their own sentences after the April 2025 escalation: "The ultimate impact remains uncertain"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Added: named risk (+ disclosure); hedge: "remains uncertain"</p>
+    <p class="qlabel">Q2 FY2025 (new)</p>
+    <blockquote>"The proposed and enacted U.S. tariffs and counter-tariffs, or additional sector-based tariffs, could also lead to increased costs and supply chain disruptions. The ultimate impact remains uncertain and will depend on several factors outside of our control. If we are unable to effectively navigate these changes, it could have a material adverse effect on our business, operating results and stock price."</blockquote>
+    <blockquote>"Uncertainty due to the evolving trade restrictions also may disrupt our supply chain and if we are unable to effectively mitigate any adverse impacts from such measures, this could adversely affect our business, financial condition and results of operations."</blockquote>
+    <p class="history">History: "sector-based tariffs" and "Uncertainty due to the evolving trade restrictions" appear in Q2 FY2025 only. "The ultimate impact remains uncertain" and "protectionism and economic nationalism" first appear in Q2 FY2025 and are kept through Q3 FY2026.</p>
+    <p>Q1 mentioned tariffs only inside broader macroeconomic and trade-tension sentences. Q2 gives them standalone sentences on cost, supply and the stock price. The FY2025 10-K follows with the first statement that tariffs "have not had a material impact."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Buyback risk factor returns as a $10B program starts; $2,450M repurchased in the quarter</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Added: risk factor restored (+ disclosure); quant: $10 billion authorization, $2,450 million repurchased</p>
+    <p class="qlabel">Q2 FY2025 (new)</p>
+    <blockquote>"The amount, timing and execution of our stock repurchase program may fluctuate based on our priorities for the use of cash for other purposes."</blockquote>
+    <blockquote>"In April 2025, our Board of Directors authorized a stock repurchase program to repurchase up to $10 billion of our common stock from time to time through December 31, 2025."</blockquote>
+    <p class="history">History: "The amount and frequency of our stock repurchases may fluctuate" stands in every filing from Q3 FY2023 to Q3 FY2024, is absent from the FY2024 10-K and Q1 FY2025, and returns in Q2 FY2025 through Q3 FY2026.</p>
+    <p>The factor was dropped while buybacks were zero for three quarters and VMware debt was being repaid. It returns with the first repurchases since Q1 FY2024 (16M shares). The listed competing uses of cash include "repayment of debt."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Market volatility stemming from current macroeconomic events" may hit cash flow and the ability "to raise or refinance debt at favorable rates"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Scope: debt risk widened to cash flow and rates (-); certainty: "may materially impact"</p>
+    <p class="qlabel">Q1 FY2025 (prior)</p>
+    <blockquote>"Macroeconomic weakness and uncertainty may also make it more difficult to accurately forecast operating results and raise or refinance debt."</blockquote>
+    <p class="qlabel">Q2 FY2025 (current)</p>
+    <blockquote>"Macroeconomic weakness and uncertainty may also make it more difficult to accurately forecast operating results and <strong>market volatility stemming from current macroeconomic events may materially impact our cash flow</strong> and our ability to raise or refinance debt at favorable rates."</blockquote>
+    <p class="history">History: "market volatility stemming from current macroeconomic events" first appears in Q2 FY2025 and is kept through Q3 FY2026.</p>
+    <p>A new indebtedness bullet adds "market volatility impacting our ability to raise debt at favorable rates." Broadcom still had $6,000M of floating-rate term loans and $3.9B of commercial paper, now with maturities "ranging from 22 days to 187 days" rather than "generally less than sixty days."</p>
   </div>
 </div>
 </div>
@@ -943,26 +1102,15 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Buybacks resume: April 2025 $10B authorization, $2,450M repurchased</span>
+    <span class="title">Two-Year Equity Awards replace the annual grant; unrecognized compensation $10,745M &rarr; $27,020M</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>First repurchases since Q1 FY2024 ($7,176M); 16M shares bought for $2,450M in the quarter.</p>
+    <p class="shift">Named: new defined term; quant: unrecognized compensation up $16,275M</p>
     <p class="qlabel">Q2 FY2025 (new)</p>
-    <blockquote>"In April 2025, our Board of Directors authorized a stock repurchase program to repurchase up to $10 billion of our common stock from time to time through December 31, 2025&hellip;"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Two-Year Equity Awards replace annual grants</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>116M RSUs were granted at a $187.54 weighted-average grant-date fair value; unrecognized compensation jumped from $10,745M to $27,020M in one quarter, with the weighted-average recognition period extending from 2.9 to 3.8 years.</p>
-    <p class="qlabel">Q2 FY2025 (new)</p>
-    <blockquote>"&hellip;we granted two-year time- and market-based RSU awards (the &ldquo;Two-Year Equity Awards&rdquo;), in lieu of our annual employee equity awards historically granted in the second quarter of each fiscal year."</blockquote>
+    <blockquote>"During the fiscal quarter ended May 4, 2025, we granted two-year time- and market-based RSU awards (the &ldquo;Two-Year Equity Awards&rdquo;), in lieu of our annual employee equity awards historically granted in the second quarter of each fiscal year."</blockquote>
+    <p class="history">History: "Two-Year Equity Awards" first appears in Q2 FY2025 and is in every filing since.</p>
+    <p>Two years of grants (116M RSUs) were made at once, with expense recognized over four to five years. The weighted-average recognition period lengthened from 2.9 to 3.8 years, and quarterly stock compensation rose from $1.28B to $1.77B, then $2.32B in Q3 (financials.py). MD&amp;A attributes the higher expense to the awards being "granted at higher grant-date fair values."</p>
   </div>
 </div>
 </div>
@@ -971,7 +1119,7 @@ a:hover { text-decoration: underline; }
 <!-- T6: FY25 Q2 -> Q3 -->
 <div class="transition-header" id="t-25q2q3">
   <h2>FY2025 Q2 &rarr; Q3</h2>
-  <div class="sub">Qtrs ended May 4, 2025 &rarr; Aug 3, 2025 | Net revenue $15,004M &rarr; $15,952M | Semiconductor $8,408M &rarr; $9,166M | Infrastructure software $6,596M &rarr; $6,786M</div>
+  <div class="sub">Qtrs ended May 4, 2025 &rarr; Aug 3, 2025 (filed Sept 10, 2025) | Net revenue $15,004M &rarr; $15,952M | Semiconductor $8,408M &rarr; $9,166M | Infrastructure software $6,596M &rarr; $6,786M | Operating income $5,830M &rarr; $5,890M | Diluted EPS $1.03 &rarr; $0.85 | Free cash flow $6.41B &rarr; $7.02B</div>
 </div>
 
 <div class="finding-group">
@@ -980,71 +1128,120 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"AI racks based on our XPUs" first appears; sale-or-lease model disclosed</span>
+    <span class="title">"The sale or leasing of AI racks based on our XPUs" appears, with "credit risk to us, and reduced margins and cash flows"; the costs "we expect to continue" become costs that "could result"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The largest single-quarter risk rewrite in the set. "AI racks based on our XPUs" enters in multiple places: the top-customers factor ("including our customers for our custom AI accelerators, XPUs or AI racks based on our XPUs") and the gross-margin factor ("A shift in sales mix away from our higher margin products, including an increase in the sale or leasing of AI racks based on our XPUs&hellip;"). The risk-summary ordering was also overhauled: customer-concentration, R&amp;D/business-model, design-win and cyclical factors all moved above VMware.</p>
-    <p class="qlabel">Q3 FY2025 (new)</p>
-    <blockquote>"Some of our customers who have selected us may also have constrained resources or capital but require immediate availability of our custom AI accelerators or XPUs. In such event, we may dedicate significant additional resources such as product engineering, or execute on new strategies or models such as <strong>the sale or leasing of AI racks based on our XPUs</strong> to our customers, which could result in additional costs, expenses and credit risk to us, and reduced margins and cash flows."</blockquote>
+    <p class="shift">Certainty: expect &rarr; could on the costs (weaker -); named: new business model (+ disclosure); credit risk added (-)</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"In such event, we may be forced to dedicate significant additional resources such as product engineering and incur additional costs and expenses, which we expect to continue for our AI-related products."</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"Some of our customers who have selected us may also have constrained resources or capital but require immediate availability of our custom AI accelerators or XPUs."</blockquote>
+    <blockquote>"In such event, we may dedicate significant additional resources such as product engineering, or execute on new strategies or models such as <strong>the sale or leasing of AI racks based on our XPUs</strong> to our customers, which could result in additional costs, expenses and <strong>credit risk to us, and reduced margins and cash flows</strong>."</blockquote>
+    <p class="history">History: "sale or leasing of AI racks" first appears in Q3 FY2025 and is in every filing through Q3 FY2026. "Which we expect to continue for our AI-related products" stood in the FY2024 10-K, Q1 and Q2 FY2025.</p>
+    <p>This is the second-ranked change in the quarter. Broadcom first describes customers who want XPUs immediately but lack the capital to pay, and a model in which Broadcom sells or leases whole racks to them. Five filings later this becomes the $29B backstop (Q2 FY2026) and the AI XPV platform (Q3 FY2026).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI-customer credit and financing risk introduced</span>
+    <span class="title">Gross-margin factor adds "an increase in the sale or leasing of AI racks" to a sentence unchanged for eight filings</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Named: rack mix as a margin risk (+ disclosure, - for margins)</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"A shift in sales mix away from our higher margin products, as well as the timing and amount of our software licensing and non-product revenue, could adversely affect our future gross margin percentages."</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"A shift in sales mix away from our higher margin products, <strong>including an increase in the sale or leasing of AI racks based on our XPUs</strong>, as well as the timing and amount of our software licensing and non-product revenue, could adversely affect our future gross margin percentages."</blockquote>
+    <p class="history">History (sentence_signals): the prior sentence was unchanged for eight filings, Q3 FY2023 through Q2 FY2025. This version is in Q3 FY2025 only; the FY2025 10-K replaces it with "will likely ... compress or lower future gross margin."</p>
+    <p>The filing flags rack-driven margin dilution before any rack revenue is reported. Gross margin was 67% for the quarter, against 68% in Q2.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI customers "may have insufficient capital to ultimately pay"; concentration risk now includes "their ability to ... pay for their AI infrastructure"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Related new language: "those customers may not purchase the amount of product we expect or may have insufficient capital to ultimately pay for those products&hellip; such arrangements may increase our exposure to credit risks."</p>
+    <p class="shift">Added: customer credit risk (+ disclosure, - for the business)</p>
     <p class="qlabel">Q3 FY2025 (new)</p>
     <blockquote>"This customer concentration increases the risk of quarterly fluctuations in our operating results and our sensitivity to any material adverse developments experienced by these customers, including <strong>their ability to invest in, access, operate or pay for their AI infrastructure</strong>."</blockquote>
+    <blockquote>"&hellip;those customers may not purchase the amount of product we expect or <strong>may have insufficient capital to ultimately pay for those products</strong>."</blockquote>
+    <p class="history">History: "pay for their AI infrastructure" and "may have insufficient capital to ultimately pay" appear in Q3 FY2025 only. The FY2025 10-K restates the idea more strongly: AI customers "may be unable to pay for their required AI infrastructure."</p>
+    <p>The ability of AI customers to pay is raised for the first time. The same filing adds "such arrangements may increase our exposure to credit risks" to the sourcing-agreement risk.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Customers named as potential competitors</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p class="qlabel">Q3 FY2025 (new)</p>
-    <blockquote>"&hellip;as new competitors, <strong>including our customers</strong>, enter our markets."</blockquote>
-  </div>
-</div>
-</div>
-
-<div class="finding-group">
-<h3><span class="dot" style="background:var(--accent2)"></span>MD&amp;A</h3>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"Custom AI accelerators" first named in revenue attribution</span>
+    <span class="title">Top-customer factor: "including our hyperscale customers" becomes "our customers for our custom AI accelerators, XPUs or AI racks"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Named: customers defined by product rather than type (narrower, +)</p>
     <p class="qlabel">Q2 FY2025 (prior)</p>
-    <blockquote>"&hellip;due to strong demand for our networking products, <strong>primarily AI networking solutions</strong>."</blockquote>
+    <blockquote>"The loss of, or any substantial reduction in sales to, any of our top customers, including our hyperscale customers, could have a material adverse effect on our business, financial condition, results of operations and cash flows."</blockquote>
     <p class="qlabel">Q3 FY2025 (current)</p>
-    <blockquote>"&hellip;due to strong demand for our networking products, <strong>primarily custom AI accelerators and AI networking solutions</strong>."</blockquote>
+    <blockquote>"The loss of, or any substantial reduction in sales to, any of our top customers, <strong>including our customers for our custom AI accelerators, XPUs or AI racks based on our XPUs</strong>, could have a material adverse effect on our business, financial condition, results of operations and cash flows."</blockquote>
+    <p class="history">History: "including our hyperscale customers" stood in the FY2024 10-K, Q1 and Q2 FY2025. The Q3 FY2025 wording is used in that filing only; the FY2025 10-K extends it to "AI racks or systems based on our XPUs."</p>
+    <p>The concentration risk is now pinned to the custom-silicon business. MD&amp;A the same quarter names "custom AI accelerators" as a revenue driver for the first time ("primarily custom AI accelerators and AI networking solutions," against "primarily AI networking solutions" in Q2).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Liquidity sentence drops "assumed" obligations</span>
+    <span class="title">Customers move from buyers who may build in-house to competitors: "new competitors, including our customers, enter our markets"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>A single-word deletion closes out the VMware-assumed-obligations framing, in the same quarter the VMware restructuring program effectively wound down.</p>
+    <p class="shift">Named: customers as competitors (-); internal-development sentence removed</p>
     <p class="qlabel">Q2 FY2025 (prior)</p>
-    <blockquote>"&hellip;fund our <strong>current and assumed</strong> obligations for at least the next 12 months."</blockquote>
+    <blockquote>"Some customers may even reduce the amount of products or decline to purchase due to their internal development of the products."</blockquote>
+    <blockquote>"We expect competition in these industries to continue to increase as existing competitors improve or expand their product offerings or as new competitors enter our markets."</blockquote>
     <p class="qlabel">Q3 FY2025 (current)</p>
-    <blockquote>"&hellip;fund our <strong>current</strong> obligations for at least the next 12 months."</blockquote>
+    <blockquote>"We expect competition in these industries to continue to increase as existing competitors improve or expand their product offerings or as new competitors, <strong>including our customers</strong>, enter our markets."</blockquote>
+    <p class="history">History: "internal development of the products" appears from the FY2024 10-K through Q2 FY2025, and again in the FY2025 10-K. "Including our customers, enter our markets" first appears in Q3 FY2025 and is kept through Q3 FY2026.</p>
+    <p>A customer building its own chips is now described as a competitor entering Broadcom's market, not only as a lost sale. The FY2025 10-K repeats the point in the business section, and Q1 FY2026 adds "customer-owned tooling."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Design-win risk: "from which we may ultimately generate no revenue" becomes a process that may require Broadcom to "adopt a new business model"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Removed: "generate no revenue" (-); added: "unpredictable," "evolve our business strategy or adopt a new business model"</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"Winning business in the semiconductor solutions industry is subject to a lengthy process that often requires us to incur significant expense, from which we may ultimately generate no revenue."</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"Winning business in the semiconductor solutions industry is a lengthy and unpredictable process that often requires us to incur significant expenses, evolve our business strategy or adopt a new business model, which may negatively impact our results of operations."</blockquote>
+    <p class="history">History: "from which we may ultimately generate no revenue" stood in every filing from Q3 FY2023 to Q2 FY2025 (eight filings). "Lengthy and unpredictable process" is Q3 FY2025's wording.</p>
+    <p>The risk changes from spending on a design win that never pays to having to change how Broadcom does business in order to win it. That fits the rack sale-or-lease model introduced in the same filing.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Antitrust inquiries widen from the Korean Fair Trade Commission to authorities in Korea, Japan and the European Union</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Named: one regulator &rarr; three jurisdictions (wider, -)</p>
+    <p class="qlabel">Q2 FY2025 (prior)</p>
+    <blockquote>"We have previously been, and may in the future be, involved or required to participate in regulatory investigations or inquiries, such as the ongoing investigation by the Korean Fair Trade Commission into certain of our contracting and business practices&hellip;"</blockquote>
+    <p class="qlabel">Q3 FY2025 (current)</p>
+    <blockquote>"We have previously been, and may in the future be, involved or required to participate in regulatory investigations or inquiries from regulatory authorities in Korea, Japan and the European Union into certain of our contracting and business practices&hellip;"</blockquote>
+    <p class="history">History: "Korean Fair Trade Commission" appears from Q3 FY2023 through Q2 FY2025. "Korea, Japan and the European Union" first appears in Q3 FY2025 and is kept through Q3 FY2026.</p>
+    <p>Two more jurisdictions are looking at the same "contracting and business practices." The filing quantifies nothing and Legal Proceedings still refers to the notes.</p>
   </div>
 </div>
 </div>
@@ -1055,57 +1252,48 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">OBBBA: $1,058M CAMT valuation allowance established</span>
+    <span class="title">One Big Beautiful Bill Act: CAMT credits no longer "more-likely-than-not" usable; $1,058M valuation allowance, tax provision $120M &rarr; $1,145M</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The quarterly tax provision was $1,145M (implied ~21.7% rate vs. ~0&ndash;5% in prior non-charge quarters). A subsequent event also flagged statutes-of-limitations lapses expected to produce a discrete tax benefit of up to $2.1 billion in Q4 FY2025.</p>
+    <p class="shift">Named: new law; quant: added ($1,058 million allowance, up to $2.1 billion benefit)</p>
     <p class="qlabel">Q3 FY2025 (new)</p>
-    <blockquote>"On July 4, 2025, the United States enacted the One Big Beautiful Bill Act&hellip; As a result, it is no longer more-likely-than-not that we are able to utilize our federal corporate alternative minimum tax (&ldquo;CAMT&rdquo;) credits, and we established a $1,058 million valuation allowance against our CAMT credit carryforwards and CAMT credits generated in the current fiscal year."</blockquote>
+    <blockquote>"As a result, it is no longer more-likely-than-not that we are able to utilize our federal corporate alternative minimum tax (&ldquo;CAMT&rdquo;) credits, and we established a $1,058 million valuation allowance against our CAMT credit carryforwards and CAMT credits generated in the current fiscal year."</blockquote>
+    <blockquote>"As a result of these lapses of statutes of limitations, we estimate that we will recognize a discrete tax benefit of up to $2.1 billion during the fiscal quarter ending November 2, 2025."</blockquote>
+    <p class="history">History: "One Big Beautiful Bill Act" first appears in Q3 FY2025 and is in every filing since. "Discrete tax benefit of up to $2.1 billion" appears in Q3 FY2025 only.</p>
+    <p>The implied quarterly tax rate went from 2.4% to 21.7% (financials.py), and diluted EPS fell from $1.03 to $0.85 although operating income rose. The tax risk factor names the act. The flagged Q4 benefit explains FY2025's full-year tax benefit of $397M.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Floating-rate debt eliminated</span>
-    <span class="tag tag-new">New</span>
+    <span class="title">"We had no floating-rate term loans outstanding"; the floating-rate risk bullet is deleted</span>
+    <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>$6,000M of senior unsecured notes were issued to repay the last floating-rate term loan; the floating-rate bullet disappeared from the indebtedness risk factor and aggregate indebtedness fell to $66,257M. The $30.4B of SOFR-plus VMware term loans (7.0&ndash;7.2% effective) were fully replaced by fixed-rate debt in seven quarters.</p>
+    <p class="shift">Removed: interest-rate risk bullet (risk resolved, +)</p>
+    <p class="qlabel">Q2 FY2025 (prior, now removed)</p>
+    <blockquote>"&bull;exposing us to interest rate risk as our unsecured term loans bear floating interest rates;"</blockquote>
     <p class="qlabel">Q3 FY2025 (new)</p>
     <blockquote>"We had no floating-rate term loans outstanding as of August 3, 2025."</blockquote>
+    <p class="history">History: "exposing us to interest rate risk" stood in every filing from Q3 FY2023 to Q2 FY2025. "No floating-rate term loans outstanding" appears in Q3 FY2025 only.</p>
+    <p>$6,000M of new senior notes repaid the last floating-rate loan. The $30.4B of VMware term loans had been refinanced into fixed-rate debt over seven quarters. Aggregate indebtedness fell to $66,257M.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Sell-to-cover settlement of employee withholding taxes</span>
+    <span class="title">Withholding taxes on vesting now settled by selling shares, "eliminating our cash outflow" ($3,802M in the first half)</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The FY2026 cash-flow statements subsequently show $0 of "Shares repurchased for tax withholdings on vesting of equity awards" (vs $3,802M in FY2025 H1).</p>
+    <p class="shift">Policy change: net settlement &rarr; sell-to-cover (cash outflow eliminated)</p>
     <p class="qlabel">Q3 FY2025 (new)</p>
     <blockquote>"Beginning in the fiscal quarter ended August 3, 2025, we settle withholding taxes upon the vesting of employee equity awards using proceeds from the sale of a portion of the vested shares, thereby eliminating our cash outflow for employee withholding taxes on equity award vesting."</blockquote>
-  </div>
-</div>
-</div>
-
-<div class="finding-group">
-<h3><span class="dot" style="background:var(--pink)"></span>Legal / Contingencies</h3>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">KFTC-only investigation broadened to Korea, Japan and the European Union</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p class="qlabel">Q2 FY2025 (prior)</p>
-    <blockquote>"&hellip;such as <strong>the ongoing investigation by the Korean Fair Trade Commission</strong> into certain of our contracting and business practices&hellip;"</blockquote>
-    <p class="qlabel">Q3 FY2025 (current)</p>
-    <blockquote>"&hellip;regulatory investigations or inquiries from <strong>regulatory authorities in Korea, Japan and the European Union</strong> into certain of our contracting and business practices&hellip;"</blockquote>
+    <p class="history">History: "eliminating our cash outflow for employee withholding taxes" appears in Q3 FY2025 only; the sell-to-cover description is kept through Q3 FY2026.</p>
+    <p>In the first half of FY2025 Broadcom paid $3,802M of withholding taxes and withheld 17M shares, which worked like a buyback. From Q3 that cash stays in the company, but the shares are sold into the market instead of retired. Financing cash flow improves; share dilution from vesting rises (an inference from the mechanism).</p>
   </div>
 </div>
 </div>
@@ -1114,7 +1302,7 @@ a:hover { text-decoration: underline; }
 <!-- T7: FY25 Q3 -> FY2025 10-K -->
 <div class="transition-header" id="t-25q3-fy25">
   <h2>FY2025 Q3 &rarr; FY2025 10-K</h2>
-  <div class="sub">Annual boundary | FY ended Nov 2, 2025, filed Dec 2025 | FY2025 net revenue $63,887M | Semiconductor $36,858M | Infrastructure software $27,029M</div>
+  <div class="sub">Annual boundary | FY ended Nov 2, 2025, filed Dec 18, 2025 | FY2025 net revenue $63,887M | Semiconductor $36,858M | Infrastructure software $27,029M | Operating income $25,480M | Net income $23,130M | Free cash flow $26.91B | Days sales outstanding 31 &rarr; 41</div>
 </div>
 
 <div class="finding-group">
@@ -1123,108 +1311,236 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New lead risk factor: industry "undergoing profound change due to AI"</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>The cyclical-industry factor was rewritten and re-headed; the AI transformation is now in the headline of the first risk factor.</p>
-    <p class="qlabel">FY2025 10-K (new header)</p>
-    <blockquote>"We operate in a highly cyclical semiconductor industry that is undergoing profound change due to AI."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">AI customers "may be unable to pay for their required AI infrastructure"</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>The factor continues: "If our AI customers substantially reduce their expansion plans, cancel, reduce or delay their orders, are unable to generate the profit required to offset their spending or are otherwise unable to meet their obligations and we cannot offset the downturn in their business, it could have a material adverse effect&hellip;"</p>
-    <p class="qlabel">FY2025 10-K (new)</p>
-    <blockquote>"Some of these AI customers may have constrained resources or capital and may be unable to pay for their required AI infrastructure and/or seek alternative financings or novel or deferred payment models from their vendors and suppliers."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">First tariff materiality statement</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>After three quarters of escalating tariff language, the first operative materiality statement arrives.</p>
-    <p class="qlabel">FY2025 10-K (new)</p>
-    <blockquote>"While U.S. tariffs and counter-tariffs, including semiconductor-related tariffs, <strong>have not had a material impact on our financial condition or results of operations</strong>, tariffs and other macroeconomic factors could materially increase costs and disrupt our supply chain. We continuously manage product availability and costs in our supply chain to mitigate the direct and indirect impact of tariffs&hellip;"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Global minimum tax: "may materially increase" becomes "we expect to materially increase" for FY2026</span>
+    <span class="title">Lead risk factor re-headed: "a highly cyclical semiconductor industry that is undergoing profound change due to AI"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Scope: generic cyclicality &rarr; AI-specific (+ disclosure)</p>
     <p class="qlabel">Q3 FY2025 (prior)</p>
-    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which <strong>may</strong> materially increase our effective tax rate and cash tax costs."</blockquote>
+    <blockquote>"We operate in the highly cyclical semiconductor industry."</blockquote>
     <p class="qlabel">FY2025 10-K (current)</p>
-    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which <strong>we expect to</strong> materially increase our effective tax rate and cash tax costs <strong>for our fiscal year ending November 1, 2026</strong>."</blockquote>
+    <blockquote>"We operate in a highly cyclical semiconductor industry that is undergoing profound change due to AI."</blockquote>
+    <p class="history">History (phrase_history, sentence): the prior heading was identical in every filing from Q3 FY2023 to Q3 FY2025 (nine filings). The AI variant first appears in the FY2025 10-K and is kept through Q3 FY2026.</p>
+    <p>The heading that had not changed in nine filings now names AI as the force acting on the industry. The paragraph beneath it carries the customer-credit sentences below.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Dell consolidated-group tax-audit risk deleted</span>
+    <span class="title">AI customers "may be unable to pay for their required AI infrastructure" or to "generate the profit required to offset their spending"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Added: customer solvency named as a risk (+ disclosure, - for the business)</p>
+    <p class="qlabel">FY2025 10-K (new)</p>
+    <blockquote>"Some of these AI customers may have constrained resources or capital and may be unable to pay for their required AI infrastructure and/or seek alternative financings or novel or deferred payment models from their vendors and suppliers."</blockquote>
+    <blockquote>"If our AI customers substantially reduce their expansion plans, cancel, reduce or delay their orders, are unable to generate the profit required to offset their spending or are otherwise unable to meet their obligations and we cannot offset the downturn in their business, it could have a material adverse effect on our business, operating results, financial condition and stock price."</blockquote>
+    <p class="history">History: "may be unable to pay" first appears in the FY2025 10-K and is kept through Q3 FY2026. Q3 FY2025 had raised a narrower version: customers "may have insufficient capital to ultimately pay." The 10-K deletes that clause from the sourcing-agreement sentence, which now says customers "from time to time may not or do not purchase the amount of product we expect."</p>
+    <p>Q3 FY2026 later adds that AI customers may be "unable to generate a profit required to support their expenditures" and names an AI spending "bubble."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Customers "may make and have made" demands to lease racks "instead of purchasing"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Realized: "has, in some cases, given them the ability" &rarr; "may make and have made" with a named example (firmer +)</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"Moreover, our top customers&rsquo; purchasing power has, in some cases, given them the ability to make greater demands on us with regards to pricing and contractual terms in general."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"Moreover, our top customers, including our AI customers, may make and have made greater demands on us with regards to pricing and contractual terms, such as seeking to lease AI racks or systems based on our XPUs instead of purchasing, as well as alternative financings for such leases or other novel or deferred payment models."</blockquote>
+    <p class="history">History: "may make and have made greater demands" first appears in the FY2025 10-K and is kept through Q3 FY2026. The "purchasing power has, in some cases" wording stood through Q3 FY2025.</p>
+    <p>Q3 FY2025 had described leasing as a model Broadcom might choose. The 10-K says customers have already asked for it.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Broadcom "may offer and have offered alternative financings or other novel or deferred payment models" for rack leases</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Realized: "have offered" (firmer +); named: revenue, free cash flow and gross margin at risk (-)</p>
+    <p class="qlabel">FY2025 10-K (new)</p>
+    <blockquote>"Moreover, we may offer and have offered alternative financings or other novel or deferred payment models for the leasing of AI racks or systems based on our XPUs to effectively complete, which could have a material adverse effect on our revenue, free cash flow and gross margin and expose us to credit or customer default risks."</blockquote>
+    <p class="history">History: "may offer and have offered" first appears in the FY2025 10-K and is kept through Q3 FY2026.</p>
+    <p>Broadcom states that it has already offered financing, and names free cash flow as exposed. ("Complete" is the filing's wording; "compete" was presumably meant.) Q1 FY2026 adds guarantees; Q2 FY2026 discloses the $29B backstop.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Gross-margin warning firms from "could adversely affect" to racks "will likely ... compress or lower future gross margin, which would adversely impact our stock price"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Certainty: could &rarr; will likely (firmer +); stock price named</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"A shift in sales mix away from our higher margin products, including an increase in the sale or leasing of AI racks based on our XPUs, as well as the timing and amount of our software licensing and non-product revenue, could adversely affect our future gross margin percentages."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"The sale or leasing of AI racks or systems based on our XPUs will likely increase our operating margin but compress or lower future gross margin, which would adversely impact our stock price."</blockquote>
+    <p class="history">History: "compress or lower future gross margin" first appears in the FY2025 10-K and is kept through Q3 FY2026 (widened to all AI products in Q2 FY2026).</p>
+    <p>A possibility becomes an expectation in one quarter. Reported gross margin was 68% for the year, so the warning is about a mix that had not yet shown up in the numbers.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"The majority of our sales have historically come from a small number of customers" deleted as one distributor reaches 32%</span>
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>The audit-exposure sentence is gone from the FY2025 10-K; the remaining Dell references concern the tax-free spin-off risk only.</p>
-    <p class="qlabel">FY2024 10-K (prior, now removed)</p>
-    <blockquote>"While VMware is no longer a member of the Dell consolidated group, it is still subject to audit for the periods in which it was member of the Dell consolidated group."</blockquote>
+    <p class="shift">Scope: "the majority of our sales" &rarr; "certain customers" (narrower, -)</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"The majority of our sales have historically come from a small number of customers and a significant reduction in demand or loss of one or more of our significant customers may adversely affect our business."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"A significant reduction in demand from certain customers or loss of one or more of our significant customers may adversely affect our business."</blockquote>
+    <p class="history">History: "majority of our sales" stands in every downloaded filing from Q3 FY2023 to Q3 FY2025 and is absent from the FY2025 10-K through Q3 FY2026.</p>
+    <p>The summary statement of how concentrated revenue is goes away in the year concentration rose: the largest distributor was 32% of FY2025 revenue (28% in FY2024) and reached 50% of Q3 FY2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Factoring enters the list of things that move results: "the timing and extent to which we enter into and utilize factoring arrangements"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Named: factoring added to the operating-results list (+ disclosure)</p>
+    <p class="qlabel">FY2025 10-K (new)</p>
+    <blockquote>"&bull;the timing and extent to which we enter into and utilize factoring arrangements;"</blockquote>
+    <p class="history">History: "factoring arrangements" does not appear in the risk factors of any filing before the FY2025 10-K; it is kept through Q3 FY2026. Factoring itself has been disclosed in the notes since FY2023.</p>
+    <p>Broadcom sold $7,401M of receivables in FY2025, against $5,900M in FY2024, and receivables still rose from $4,416M to $7,145M (days sales outstanding 31 &rarr; 41, financials.py). Naming factoring as a driver of results tells readers that reported cash flow depends partly on how much is sold.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Global minimum tax: "may materially increase" becomes "we expect to materially increase" for the fiscal year ending November 1, 2026</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Certainty: may &rarr; expect, with a date (firmer +)</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which may materially increase our effective tax rate and cash tax costs."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which we expect to materially increase our effective tax rate and cash tax costs for our fiscal year ending November 1, 2026."</blockquote>
+    <p class="history">History: "may materially increase" stood from the FY2024 10-K to Q3 FY2025. "We expect to materially increase" appears in the FY2025 10-K only; Q1 FY2026 changes it to "have materially increased."</p>
+    <p>FY2025 itself shows a $397M tax benefit, helped by the statute-of-limitations release flagged in Q3. The 10-K dates the step-up to the next year, and the FY2026 10-Qs show implied rates of 8&ndash;14%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First tariff materiality statement: tariffs "have not had a material impact"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Quantified reassurance added (+ disclosure)</p>
+    <p class="qlabel">FY2025 10-K (new)</p>
+    <blockquote>"&hellip;tariffs and counter-tariffs, including semiconductor-related tariffs, have not had a material impact on our financial condition or results of operations, tariffs and other macroeconomic factors could materially increase costs and disrupt our supply chain."</blockquote>
+    <p class="history">History: "have not had a material impact on our financial condition" first appears in the FY2025 10-K and is kept through Q3 FY2026.</p>
+    <p>After three quarters of escalating tariff language (Q1 to Q3 FY2025), the filing states that the effect so far has been immaterial. The same factor changes "anti-competition" to "antitrust" and adds "The technology industry is subject to intense media, political and regulatory scrutiny."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cyber detection "may not cover every system" becomes "technical limitations that, in some instances, have led ... to gaps in visibility"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Realized: may not cover &rarr; have led to gaps (firmer +)</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"Our logging, alerting and cyber incident detection mechanisms may not cover every system potentially targeted by threat actors, may not have the capability to detect certain types of unauthorized activities, and may not capture and surface information sufficient to enable us to timely detect and take responsive action to insider or external threats."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"Our logging, alerting and cyber incident detection mechanisms have technical limitations that, in some instances, have led, and may in the future lead, to gaps in visibility into events occurring on systems targeted by threat actors or other unauthorized activities&hellip;"</blockquote>
+    <p class="history">History (sentence_signals): the "may not cover every system" sentence stood unchanged for eight filings, FY2023 10-K to Q3 FY2025. "Have technical limitations that, in some instances, have led" first appears in the FY2025 10-K and is kept through Q3 FY2026.</p>
+    <p>The top-ranked "realized" change in the 10-K's risk factors. Broadcom states that gaps in its own monitoring have already occurred. No incident is disclosed. It follows Q1 FY2025's "have in the past been ... undetected" and precedes Q2 FY2026's AI threats that "has also led" to new attacks.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Materials supply "may be negatively impacted" by U.S.-China trade tensions becomes "has been, from time to time, impacted"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Certainty: may &rarr; has been (realized, firmer +)</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"Additionally, the supply of these materials may be negatively impacted by increased trade tensions between the U.S. and its trading partners, particularly China, and the uncertainty due to evolving trade restrictions."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"Additionally, the supply of these materials has been, from time to time, impacted by increased trade tensions between the U.S. and its trading partners, particularly China, and the uncertainty due to evolving trade restrictions."</blockquote>
+    <p class="history">History: "may be negatively impacted by increased trade tensions" stood in every filing from Q3 FY2023 to Q3 FY2025 (nine filings). "Has been, from time to time, impacted" first appears in the FY2025 10-K and is kept through Q3 FY2026.</p>
+    <p>The paragraph covers manufacturing materials such as wafers, "precious and rare earth metals" and chemicals. Broadcom says trade tensions have already disrupted that supply, in the same filing that calls tariffs immaterial to results so far.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Trade tensions "has resulted in trade restrictions" that harm market access softens to "may continue to result"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Certainty: has resulted &rarr; may continue to result (de-realized, softer -)</p>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"An escalation of trade tensions between the U.S. and its trading partners has resulted in trade restrictions and increased protectionism that harm our ability to participate in some markets or compete effectively."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"An escalation of trade tensions between the U.S. and its trading partners may continue to result in trade restrictions and increased protectionism on both ends that harm our ability to participate in some markets or compete effectively."</blockquote>
+    <p class="history">History: "has resulted in trade restrictions and increased protectionism" appears in Q1 to Q3 FY2025 only. "May continue to result" first appears in the FY2025 10-K and is kept through Q3 FY2026.</p>
+    <p>The two trade edits move in opposite directions: supply effects are now stated as having happened, while the harm to market access is moved back to a possibility ("continue" still implies it has occurred). "On both ends" adds retaliation by trading partners.</p>
   </div>
 </div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--cyan)"></span>Business Section</h3>
+<h3><span class="dot" style="background:var(--cyan)"></span>Business Section (compared with the FY2024 10-K)</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI portfolio defined &mdash; including racks and systems</span>
+    <span class="title">AI portfolio defined to include "racks and systems based on our XPUs," sold to "hyperscalers and companies with AI frontier models"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The self-description expanded to "semiconductor and semiconductor-based solutions&hellip; and, in some cases, racks," and end markets were renamed (Networking Connectivity, Wireless Device Connectivity, Servers and Storage Systems, Broadband, Industrial).</p>
+    <p class="shift">Scope: chips &rarr; racks and systems (wider); named: customer classes</p>
     <p class="qlabel">FY2025 10-K (new)</p>
     <blockquote>"Our AI semiconductor solutions include custom accelerators or XPUs, Ethernet switching and routing silicon, Ethernet NICs, physical layer devices (&ldquo;PHYs&rdquo;) and optical components, <strong>as well as racks and systems based on our XPUs</strong>."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"AI frontier models" customers named</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p class="qlabel">FY2025 10-K (new)</p>
     <blockquote>"Customers of these solutions are hyperscalers and <strong>companies with AI frontier models</strong>, as well as original equipment manufacturers (&ldquo;OEMs&rdquo;) and system integrators that develop servers, switches and racks deployed in large-scale AI data centers to run training and inference workloads."</blockquote>
+    <p class="history">History: "racks and systems based on our XPUs" and "AI frontier models" appear in the FY2025 10-K only (the 10-Qs carry no business section; Q3 FY2026 MD&amp;A uses "leading frontier AI labs").</p>
+    <p>Racks enter the business description in the same filing whose risk factors cover leasing them and their margin effect. The customers named here are the ones the risk factors say "may be unable to pay."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Standalone Seasonality section deleted</span>
+    <span class="title">Seasonality section deleted; risk factor drops "seasonal variations for wireless applications"</span>
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>Present in every prior 10-K; the FY2025 Business section has zero "Seasonality" headings (only a risk bullet remains).</p>
-    <p class="qlabel">FY2024 10-K (prior, now removed)</p>
+    <p class="shift">Removed (-)</p>
+    <p class="qlabel">FY2024 10-K, Item 1 (prior, now removed)</p>
     <blockquote>"Historically, our net revenue has typically been higher in the second half of the fiscal year than in the first half, primarily due to seasonality in our wireless communications products."</blockquote>
+    <p class="qlabel">Q3 FY2025 (prior)</p>
+    <blockquote>"This is particularly true of our products used in AI and wireless applications as fluctuations may be magnified by the timing of customer deployments, as well as product launches and seasonal variations for wireless applications."</blockquote>
+    <p class="qlabel">FY2025 10-K (current)</p>
+    <blockquote>"This is particularly true of our products used in AI and wireless applications as fluctuations may be magnified by the timing of customer deployments, as well as product launches."</blockquote>
+    <p class="history">History: "Seasonality" headings appear in Item 1 of the FY2023 and FY2024 10-Ks and not in FY2025. "Seasonal variations for wireless applications" appears in Q1 to Q3 FY2025 only and is dropped in the FY2025 10-K.</p>
+    <p>The second-half wireless pattern (phone launches) no longer sets the revenue calendar in the filing's telling; "the timing of customer deployments" for AI does.</p>
   </div>
 </div>
 </div>
@@ -1235,24 +1551,15 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">$7.8B of upfront license revenue reported within products revenue</span>
+    <span class="title">$7,800M of upfront license revenue reported within products revenue</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>This reclassification from subscriptions and services foreshadows the FY2026 10-Q presentation change that recast prior-year product/subscription mix ($1,972M for Q1 FY2025 alone).</p>
+    <p class="shift">Quant: added ($7,800 million) (+ disclosure)</p>
     <p class="qlabel">FY2025 10-K (new)</p>
     <blockquote>"In fiscal year 2025, we included upfront license revenue of $7,800 million within products revenue."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Footprint data: employees down, China share down, incentives up, NSTAC bio</span>
-    <span class="tag tag-signal">Signal</span>
-  </div>
-  <div class="finding-body">
-    <p>Employees ~33,000 (from ~37,000), with R&amp;D share rising 55% &rarr; 57%. China shipments 17% of revenue (20% FY2024). FY2025 tax incentives $2,709M (+$0.56 EPS). Distributors 48%, top five ~40%, TSMC ~95%. Aggregate indebtedness $67,120M. Hock Tan's bio adds membership of the President's National Security and Telecommunications Advisory Committee since 2020. "Anti-competition" becomes "antitrust," with a new sentence: "The technology industry is subject to intense media, political and regulatory scrutiny."</p>
+    <p class="history">History: "upfront license revenue" first appears in the FY2025 10-K and is reported in every 10-Q since.</p>
+    <p>That is about 29% of the $27,029M software segment, booked at signing because the contracts cannot be terminated. The FY2026 10-Qs recast prior-year quarters the same way ($1,972M for Q1 FY2025).</p>
   </div>
 </div>
 </div>
@@ -1261,7 +1568,7 @@ a:hover { text-decoration: underline; }
 <!-- T8: FY2025 10-K -> FY26 Q1 -->
 <div class="transition-header" id="t-fy25-26q1">
   <h2>FY2025 10-K &rarr; FY2026 Q1</h2>
-  <div class="sub">Annual boundary | Qtr ended Feb 1, 2026 | Net revenue $19,311M (+29% YoY) | Semiconductor $12,515M (+52%) | Infrastructure software $6,796M (+1%) | Operating income $8,563M | Diluted EPS $1.50</div>
+  <div class="sub">Annual boundary | Qtr ended Feb 1, 2026 (filed Mar 11, 2026) | Net revenue $19,311M (+29% YoY) | Semiconductor $12,515M (+52%) | Infrastructure software $6,796M (+1%) | Operating income $8,563M | Diluted EPS $1.50 | Free cash flow $8.01B</div>
 </div>
 
 <div class="finding-group">
@@ -1270,15 +1577,18 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Concentration steps up: distributors 48% &rarr; 55% of revenue, top five end customers ~40% &rarr; ~50%, one distributor 42%</span>
-    <span class="tag tag-signal">Signal</span>
+    <span class="title">AI-rack sale-or-lease moves from "we may dedicate" to "We have dedicated, and expect to continue dedicating"; leasing arrangements with "other third-parties" added</span>
+    <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The sentences are unchanged; only the numbers moved. Note the bases differ: the 10-K figures cover a full year and the Q1 figures cover one quarter. The MD&amp;A puts the single largest customer, a distributor, at 42% of Q1 revenue. The comparisons it gives are 29% in Q1 FY2025 and 32% for full-year FY2025. All three figures were the series highs at the time.</p>
+    <p class="shift">Certainty: may &rarr; have dedicated (realized, firmer +); named: "other third-parties" (+)</p>
     <p class="qlabel">FY2025 10-K (prior)</p>
-    <blockquote>"For fiscal year 2025, sales to distributors accounted for 48% of our net revenue. We believe aggregate sales, through all channels, to our top five end customers accounted for approximately 40% of our net revenue for fiscal year 2025."</blockquote>
+    <blockquote>"In such event, we may dedicate significant additional resources or execute on new business strategies or models such as the sale or leasing of AI racks or systems based on our XPUs to our customers with alternative financings or novel or deferred payment models&hellip;"</blockquote>
     <p class="qlabel">Q1 FY2026 (current)</p>
-    <blockquote>"For fiscal quarter ended February 1, 2026, sales to distributors accounted for 55% of our net revenue. We believe aggregate sales, through all channels, to our top five end customers accounted for approximately 50% of our net revenue for the fiscal quarter ended February 1, 2026."</blockquote>
+    <blockquote>"We have dedicated, and expect to continue dedicating, significant additional resources to execute on new business strategies or models such as the sale or leasing of AI racks or systems based on our XPUs to our customers with alternative financings or novel or deferred payment models&hellip;"</blockquote>
+    <blockquote>"To support our new business strategies or models, we may enter into leasing or other arrangements with customers or other third-parties that could increase our costs and operational complexity."</blockquote>
+    <p class="history">History: "In such event, we may dedicate" stood in Q3 FY2025 and the FY2025 10-K. "We have dedicated, and expect to continue dedicating" and "other third-parties" first appear in Q1 FY2026 and are kept through Q3 FY2026.</p>
+    <p>The 10-K offered the model as something Broadcom might do. Q1 says it has already committed resources. The new sentence lets the arrangements involve parties other than the customer, which in Q2 turns out to be a financial partner taking on a lease with Broadcom's backstop.</p>
   </div>
 </div>
 
@@ -1289,46 +1599,34 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>None of the three sentences is in the FY2025 10-K. They read as hypothetical here. In Q2 each is rewritten to "backstops," and the Q2 filing discloses a $29B backstop arranged on June 8, 2026. The language arrived one quarter before the obligation.</p>
+    <p class="shift">Added: new obligation type named in three sections (+ disclosure, - for the balance sheet)</p>
     <p class="qlabel">Q1 FY2026, customer risk factor (new)</p>
     <blockquote>"In addition, such arrangements may impose financial obligations, including guarantees, upon us or increase our exposure to credit or customer default risks, and failure to mitigate these risks could negatively impact our business, financial condition or results of operations."</blockquote>
     <p class="qlabel">Q1 FY2026, indebtedness risk factor (new)</p>
     <blockquote>"Furthermore, we may enter into other financing arrangements, such as guarantees, to support our strategic initiatives or other corporate purposes, which could increase our fixed obligations, have a negative impact on our financial condition and reduce our financial and business flexibility."</blockquote>
     <p class="qlabel">Q1 FY2026, MD&amp;A liquidity (new)</p>
     <blockquote>"In addition, we may agree to financial obligations, including guarantees, or increase our exposure to credit or customer default risks to support our strategic initiatives or other corporate purposes."</blockquote>
+    <p class="history">History: "including guarantees" and "such as guarantees" appear in Q1 FY2026 only. In Q2 FY2026 all three become "backstops or guarantees" / "a backstop or a guarantee."</p>
+    <p>None of the three sentences is in the FY2025 10-K, and here they read as hypothetical. The Q2 filing discloses a $29B backstop arranged on June 8, 2026. The language arrived one quarter before the obligation.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI-rack sale-or-lease moves from "we may dedicate" to "We have dedicated, and expect to continue dedicating"; leasing arrangements with "other third-parties" added</span>
+    <span class="title">Pillar Two moves from "we expect to materially increase" to "have materially increased"; the incentive country's minimum tax "has materially increased our provision"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The 10-K offered the model as something Broadcom might do. Q1 says it has already committed resources to it. A new sentence also allows the arrangements to involve parties other than the customer, which in Q2 turns out to be a financial partner.</p>
+    <p class="shift">Certainty: expect &rarr; have (realized, firmer +); could &rarr; has on the incentive</p>
     <p class="qlabel">FY2025 10-K (prior)</p>
-    <blockquote>"In such event, we may dedicate significant additional resources or execute on new business strategies or models such as the sale or leasing of AI racks or systems based on our XPUs to our customers with alternative financings or novel or deferred payment models&hellip;"</blockquote>
+    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which we expect to materially increase our effective tax rate and cash tax costs for our fiscal year ending November 1, 2026."</blockquote>
+    <blockquote>"Adoption of global minimum tax provisions in a country in which we have an existing tax incentive could have a material adverse impact on the tax benefits of the incentive."</blockquote>
     <p class="qlabel">Q1 FY2026 (current)</p>
-    <blockquote>"We have dedicated, and expect to continue dedicating, significant additional resources to execute on new business strategies or models such as the sale or leasing of AI racks or systems based on our XPUs to our customers with alternative financings or novel or deferred payment models&hellip;"</blockquote>
-    <blockquote>"To support our new business strategies or models, we may enter into leasing or other arrangements with customers or other third-parties that could increase our costs and operational complexity."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Software licensing risk corrected from "perpetual" to "subscription licensing model" while software revenue grows 1% and upfront license revenue falls $1,972M &rarr; $1,755M</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>The 10-K risk factor said customers might reject a "perpetual" model, while the same filing's MD&amp;A credited "the transition to a subscription license model." The Q1 wording fixes that contradiction. It also drops "on-premises" from the public-cloud sentence. The MD&amp;A no longer names the subscription transition as a cause of revenue swings and gives no reason for software growth. Software segment revenue was $6,796M against $6,704M a year earlier. Upfront license revenue in products was $1,755M, against $1,972M as restated for Q1 FY2025.</p>
-    <p class="qlabel">FY2025 10-K (prior)</p>
-    <blockquote>"Current and future customers may not accept our perpetual licensing model or perceive benefits associated with adopting our enterprise-grade private and hybrid cloud platform&hellip;"</blockquote>
-    <blockquote>"For infrastructure software, the transition to subscription licenses, as well as whether or not a customer has the right to terminate, causes variations in revenue recognized in each period."</blockquote>
-    <p class="qlabel">Q1 FY2026 (current)</p>
-    <blockquote>"Current and future customers may not accept our subscription licensing model or perceive benefits associated with adopting our enterprise-grade private and hybrid cloud platform&hellip;"</blockquote>
-    <blockquote>"For infrastructure software, whether or not a customer has the right to terminate causes variations in revenue recognized in each period."</blockquote>
+    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which have materially increased and we expect may further materially increase our effective tax rate and cash tax costs."</blockquote>
+    <blockquote>"Adoption of global minimum tax provisions in a country in which we have an existing tax incentive has materially increased our provision for income taxes."</blockquote>
+    <p class="history">History: "may materially increase" stood from the FY2024 10-K to Q3 FY2025; "we expect to materially increase" is FY2025 10-K only; "have materially increased" first appears in Q1 FY2026 and is kept through Q3 FY2026.</p>
+    <p>The forecast became a fact within one quarter. The Q1 provision was $846M on $8,195M of pre-tax income, an implied rate of 10.3%, against a $13M benefit a year earlier (financials.py). The incentive sentence turns past tense ("have benefitted"), and the 10-K's quantification of the benefit ($2,709M) is not repeated. The filing does not say why.</p>
   </div>
 </div>
 
@@ -1339,41 +1637,49 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The 10-K's list of reasons customers might stop buying gains two items: a government designation and customer-owned tooling. Customer-owned tooling means a customer takes the chip design and manufacturing relationship in-house. The tooling point is repeated in the R&amp;D risk factor as a reason demand for XPUs may fall. In Q2 the "supply chain risk" designation also moves into the export-control factor.</p>
+    <p class="shift">Conditions added: government designation, customer-owned tooling (-)</p>
     <p class="qlabel">Q1 FY2026 (new)</p>
     <blockquote>"In addition, some customers may cancel, reduce or delay their orders or decline to purchase from us due to reduced capital expenditure spending, lack of access to sufficient capital, downturn in their business, governmental actions such as being designated a &ldquo;supply chain risk,&rdquo; purchases from our competitors or their internal development of competing products or customer-owned tooling."</blockquote>
+    <blockquote>"&hellip;or customers proceed with customer-owned tooling, demand for our products and solutions such as our custom AI accelerators or XPUs, network switches or other AI-related products may be reduced."</blockquote>
+    <p class="history">History: "supply chain risk" and "customer-owned tooling" first appear in Q1 FY2026 and are kept through Q3 FY2026.</p>
+    <p>Customer-owned tooling means a customer takes the chip design and the manufacturing relationship in-house, using Broadcom for less of the work. It is named directly as a reason XPU demand may fall. In Q2 the "supply chain risk" designation also moves into the export-control factor.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Five-supplier materials share: "approximately two-thirds" &rarr; "more than three-quarters"; memory chips named</span>
+    <span class="title">Software licensing risk corrected from "perpetual" to "subscription licensing model"; MD&amp;A drops "the transition to subscription licenses" as a cause of revenue swings</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Memory chips are added to the materials list and named as a category suppliers may allocate away from Broadcom. Contract manufacturers "have had and may continue to have" capacity constraints. The TSMC sentence adds that the foundry could "materially" prioritize other customers.</p>
+    <p class="shift">Named: perpetual &rarr; subscription (correction); cause removed from MD&amp;A (-)</p>
+    <p class="qlabel">FY2025 10-K (prior)</p>
+    <blockquote>"Current and future customers may not accept our perpetual licensing model or perceive benefits associated with adopting our enterprise-grade private and hybrid cloud platform&hellip;"</blockquote>
+    <blockquote>"For infrastructure software, the transition to subscription licenses, as well as whether or not a customer has the right to terminate, causes variations in revenue recognized in each period."</blockquote>
+    <p class="qlabel">Q1 FY2026 (current)</p>
+    <blockquote>"Current and future customers may not accept our subscription licensing model or perceive benefits associated with adopting our enterprise-grade private and hybrid cloud platform&hellip;"</blockquote>
+    <blockquote>"For infrastructure software, whether or not a customer has the right to terminate causes variations in revenue recognized in each period."</blockquote>
+    <p class="history">History: "perpetual licensing model" appears in the FY2025 10-K only. "Subscription licensing model" is used from the FY2024 10-K through Q3 FY2025 and again from Q1 FY2026.</p>
+    <p>The 10-K's "perpetual" was out of line with every 10-Q before and after it, and with its own MD&amp;A. The subscription transition is no longer cited as a cause of revenue variation, consistent with it being complete. Software revenue was $6,796M against $6,704M a year earlier (+1%), and upfront license revenue was $1,755M against $1,972M restated for Q1 FY2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Five-supplier materials share: "approximately two-thirds" &rarr; "more than three-quarters"; memory chips named; CMs "have had and may continue to have capacity constraints"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Quant: two-thirds &rarr; more than three-quarters (concentration up); named: memory chips; certainty: "have had" &rarr; "have had and may continue to have"</p>
     <p class="qlabel">FY2025 10-K (prior)</p>
     <blockquote>"During fiscal year 2025, we purchased approximately two-thirds of our manufacturing materials from five materials suppliers, some of which are single source suppliers."</blockquote>
     <p class="qlabel">Q1 FY2026 (current)</p>
     <blockquote>"During the fiscal quarter ended February 1, 2026, we purchased more than three-quarters of our manufacturing materials from five materials suppliers, some of which are single source suppliers."</blockquote>
     <blockquote>"Suppliers have previously, and may in the future, extend lead times, limit supplies, place products on allocation, increase prices, or prioritize supplies for other customers, including with respect to memory chips&hellip;"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Pillar Two moves from "we expect to materially increase" to "have materially increased"; the $2,709M tax-incentive figure is deleted</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>The forecast became a fact within one quarter. The Q1 provision was $846M on $8,195M of pre-tax income, an implied rate of about 10%. A year earlier there was a $13M benefit. The incentive sentence turns past tense ("have benefitted"), and the 10-K's quantification of the benefit ($2,709M, or $0.56 per diluted share) is removed. That is consistent with the incentive losing much of its value under the minimum tax. This reading is an inference: the filing does not say why the figure was dropped.</p>
-    <p class="qlabel">FY2025 10-K (prior)</p>
-    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which we expect to materially increase our effective tax rate and cash tax costs for our fiscal year ending November 1, 2026."</blockquote>
-    <p class="qlabel">Q1 FY2026 (current)</p>
-    <blockquote>"Many countries have implemented or are in the process of implementing a global minimum tax, which have materially increased and we expect may further materially increase our effective tax rate and cash tax costs."</blockquote>
-    <blockquote>"Adoption of global minimum tax provisions in a country in which we have an existing tax incentive has materially increased our provision for income taxes."</blockquote>
+    <p class="history">History: share by filing (phrase_history): "approximately two-thirds" FY2023 10-K to FY2024 10-K and again in the FY2025 10-K; "approximately three-quarters" Q1 to Q3 FY2025; "more than three-quarters" from Q1 FY2026. "Memory chips" first appears in Q1 FY2026.</p>
+    <p>The 10-Q figures cover one quarter and the 10-K a full year, so part of the swing is the basis. "More than three-quarters" is still the highest wording in the set. Memory chips are added to the materials list and named as something suppliers may allocate away. Q3 FY2026 says memory shortages "have previously disrupted supply."</p>
   </div>
 </div>
 
@@ -1384,15 +1690,36 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The summary risk about software being incompatible with other platforms is replaced by one about failing to "successfully address market trends and competitive developments." The detailed factor adds: "we expect more competition as AI continues to advance."</p>
+    <p class="shift">Named: new competitor class (+ disclosure, -)</p>
     <p class="qlabel">Q1 FY2026 (new)</p>
     <blockquote>"Our competitors, including cloud-based and AI-native vendors, may develop competitive software or AI solutions that could impact our ability to retain existing customers and attract new customers."</blockquote>
+    <p class="history">History: "cloud-based and AI-native vendors" first appears in Q1 FY2026 and is kept through Q3 FY2026.</p>
+    <p>The summary risk about software being incompatible with other platforms is replaced by one about failing to "successfully address market trends and competitive developments." The detailed factor adds "we expect more competition as AI continues to advance." Read with +1% software growth, the filing names AI as a threat to VMware's installed base.</p>
   </div>
 </div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--orange)"></span>Notes / Financial</h3>
+<h3><span class="dot" style="background:var(--orange)"></span>MD&amp;A / Notes</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Concentration steps up: distributors 48% &rarr; 55% of revenue, top five end customers ~40% &rarr; ~50%, one distributor 42%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Figures: 48% &rarr; 55%, ~40% &rarr; ~50%, 32% &rarr; 42% (concentration up); sentences unchanged</p>
+    <p class="qlabel">FY2025 10-K (prior)</p>
+    <blockquote>"For fiscal year 2025, sales to distributors accounted for 48% of our net revenue."</blockquote>
+    <blockquote>"We believe aggregate sales, through all channels, to our top five end customers accounted for approximately 40% of our net revenue for fiscal year 2025."</blockquote>
+    <p class="qlabel">Q1 FY2026 (current)</p>
+    <blockquote>"For fiscal quarter ended February 1, 2026, sales to distributors accounted for 55% of our net revenue."</blockquote>
+    <blockquote>"Direct sales to one semiconductor solutions customer, which is a distributor, accounted for 42% and 29% of our net revenue for the fiscal quarters ended February 1, 2026 and February 2, 2025, respectively."</blockquote>
+    <p class="history">History (phrase_history): top five ~35% to ~40% in every filing from FY2023 to FY2025, then ~50%. Distributor channel 47&ndash;48% in every filing from FY2024 to FY2025, then 55%. Largest distributor 26&ndash;32% from Q3 FY2024 to FY2025, then 42%.</p>
+    <p>All three figures were the highest in the set at the time. The 10-K figures cover a year and the Q1 figures a quarter, but the year-ago quarter (29%, ~40%) shows the step is real.</p>
+  </div>
+</div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
@@ -1401,24 +1728,28 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>This is the first large step in the series. RPO had run $21&ndash;28B in the 10-Qs before ending FY2025 at $33.3B. No sentence explains the $11.7B increase. In Q2 the figure jumps to $164.6B, and the filing attributes that to a single long-term custom AI accelerator contract.</p>
+    <p class="shift">Figures: $33.3B &rarr; $45.0B; 35% &rarr; 33% (later-dated)</p>
     <p class="qlabel">FY2025 10-K (prior)</p>
     <blockquote>"&hellip;the remaining performance obligations under these contracts as of November 2, 2025 were approximately $33.3 billion. We expect approximately 35% of this amount to be recognized as revenue over the next 12 months."</blockquote>
     <p class="qlabel">Q1 FY2026 (current)</p>
     <blockquote>"&hellip;the remaining performance obligations under these contracts as of February 1, 2026 were approximately $45.0 billion. We expect approximately 33% of this amount to be recognized as revenue over the next 12 months."</blockquote>
+    <p class="history">History: RPO by filing: $20.5B (FY2024), $22.4B, $24.7B, $27.5B (Q1 to Q3 FY2025), $33.3B (FY2025), $45.0B (Q1 FY2026), $164.6B (Q2), $179.2B (Q3).</p>
+    <p>No sentence explains the $11.7B increase. In Q2 the figure jumps to $164.6B, which the filing attributes to a single long-term custom AI accelerator contract.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">$7,850M bought back in one quarter (FY2025 total: $2,450M); "capital expenditures to be higher" guidance sentence deleted</span>
+    <span class="title">$7,850M bought back in one quarter (FY2025 total: $2,450M); "We expect capital expenditures to be higher" deleted</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q1 repurchases of 23M shares exhausted the April 2025 program, which had been extended and raised to $11B; $700M remained at quarter-end. A new $10B program was authorized in March 2026. Cash fell from $16,178M to $14,174M. The 10-K's forward capex sentence was removed, although XBRL capex rose to $250M from $100M a year earlier. The January 2026 notes ($4,500M) included a 5.700% tranche due 2056, and together with the September 2025 notes they carry no 101% change-of-control repurchase right.</p>
+    <p class="shift">Quant: buybacks up 3.2x the prior full year; guidance sentence removed (-)</p>
     <p class="qlabel">FY2025 10-K (prior, now removed)</p>
     <blockquote>"We expect capital expenditures to be higher in fiscal year 2026 as compared to fiscal year 2025."</blockquote>
+    <p class="history">History: the capex sentence appears in the 10-Ks for FY2023, FY2024 and FY2025 (and Q3 FY2023, Q1 FY2024), never in a later 10-Q. Buybacks by quarter (financials.py): zero in Q3 and Q4 FY2025, $7,850M in Q1 FY2026.</p>
+    <p>Q1 repurchases of 23M shares used up the April 2025 program (extended and raised to $11B), leaving $700M. A new $10B program was authorized in March 2026. Cash fell from $16,178M to $14,174M. The capex sentence's removal follows the usual 10-K-only pattern, so it is not itself a signal; capex was $250M against $100M a year earlier. The January 2026 notes ($4,500M) included a 5.700% tranche due 2056.</p>
   </div>
 </div>
 </div>
@@ -1433,9 +1764,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>The "Lawsuits Relating to VMware Backlog" securities class action (N.D. Cal.) was the only named case in the set. It ran from "We intend to vigorously defend" (FY2024 Q1&ndash;Q2) to settlement terms (Q3 FY2024&ndash;Q1 FY2025) to court approval (Q2 FY2025 through the FY2025 10-K). Q1 FY2026 does not mention it.</p>
+    <p class="shift">Removed (case closed)</p>
     <p class="qlabel">FY2025 10-K (prior, now removed)</p>
     <blockquote>"The parties have agreed to settlement terms and in March 2025 the California Court approved the settlement."</blockquote>
+    <p class="history">History: "California Court approved the settlement" appears in Q2 FY2025, Q3 FY2025 and the FY2025 10-K, and is absent from Q1 FY2026 on.</p>
+    <p>The "Lawsuits Relating to VMware Backlog" securities class action was the only named case in the set. With it gone, the contingencies note names no litigation.</p>
   </div>
 </div>
 </div>
@@ -1444,7 +1777,7 @@ a:hover { text-decoration: underline; }
 <!-- T9: FY26 Q1 -> Q2 -->
 <div class="transition-header" id="t-26q1q2">
   <h2>FY2026 Q1 &rarr; Q2</h2>
-  <div class="sub">Qtrs ended Feb 1, 2026 &rarr; May 3, 2026 (filed June 9, 2026) | Net revenue $19,311M &rarr; $22,187M | Semiconductor $12,515M &rarr; $15,009M | Infrastructure software $6,796M &rarr; $7,178M (+9% YoY) | Operating income $8,563M &rarr; $10,788M | Diluted EPS $1.50 &rarr; $1.91</div>
+  <div class="sub">Qtrs ended Feb 1, 2026 &rarr; May 3, 2026 (filed June 9, 2026) | Net revenue $19,311M &rarr; $22,187M | Semiconductor $12,515M &rarr; $15,009M | Infrastructure software $6,796M &rarr; $7,178M (+9% YoY) | Operating income $8,563M &rarr; $10,788M | Diluted EPS $1.50 &rarr; $1.91 | Free cash flow $8.01B &rarr; $10.26B</div>
 </div>
 
 <div class="finding-group">
@@ -1457,9 +1790,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The arrangement is disclosed twice. Note 11 (Subsequent Events) refers to "an investor partner." Part II, Item 5 repeats the text and names Apollo. The lease customer is not named. The 10-Q was filed one day after the arrangement date. The $29B exceeds the $19,628M of cash at quarter-end.</p>
+    <p class="shift">Realized: the "guarantees" of Q1's risk factors become an executed obligation; quant: added ($29 billion) (+ disclosure)</p>
     <p class="qlabel">Q2 FY2026, Part II Item 5 (new)</p>
     <blockquote>"On June 8, 2026, we arranged for <strong>Apollo (&ldquo;investor partner&rdquo;)</strong> to take on certain agreements to purchase AI racks based on custom AI accelerators designed by us and the related lease agreements with a customer that enable access to compute capacity. In connection with the arrangement, we entered into a <strong>backstop agreement</strong> with the investor partner for the customer&rsquo;s lease obligations over <strong>5-year terms</strong>. The backstop will increase over time as the AI racks are deployed and decrease as the customer makes payments on its lease obligations, with a <strong>maximum exposure of $29 billion</strong>. In the event of default by the customer, we have various remedies, including the assumption of the lease or effecting a sale of the AI racks, which would reduce our maximum exposure."</blockquote>
+    <p class="history">History: "backstop" appears in no filing before Q2 FY2026. "Maximum exposure of $29 billion," "investor partner" and "Apollo" appear in Q2 FY2026 only; Q3 FY2026 restates the cap and says "a financial partner."</p>
+    <p>The arrangement is disclosed twice. Note 11 (Subsequent Events) says "an investor partner"; Part II, Item 5 repeats the text and names Apollo. The lease customer is not named. The 10-Q was filed one day after the arrangement date, and the $29B exceeds the $19,628M of cash at quarter-end. The agreements "to purchase AI racks" that Apollo took over were Broadcom's, which means Broadcom had itself contracted to buy racks.</p>
   </div>
 </div>
 
@@ -1470,9 +1805,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>The increase of about $120B came in one quarter and is attributed to a single contract. At 30%, roughly $49B is expected within 12 months, which leaves about $115B further out. These figures are derived from the filing's approximate percentages. The share due within 12 months was 44% at FY2024 Q1.</p>
+    <p class="shift">Quant: guidance figures 33% &rarr; 30% (later-dated); named: single contract as the driver (+ disclosure)</p>
     <p class="qlabel">Q2 FY2026 (new)</p>
     <blockquote>"These commitments include obligations under <strong>a long-term contract for custom AI accelerators entered in the fiscal quarter ended May 3, 2026</strong>. We expect approximately 30% of this amount to be recognized as revenue over the next 12 months."</blockquote>
+    <p class="history">History: "long-term contract for custom AI accelerators" first appears in Q2 FY2026 and is kept in Q3. Next-12-month share (phrase_history, sentence): FY2024 43%, Q1 FY2025 40%, Q2 36%, Q3 34%, FY2025 35%, Q1 FY2026 33%, Q2 FY2026 30%.</p>
+    <p>About $120B was added in one quarter and attributed to one contract. At 30%, roughly $49B is expected within 12 months, which leaves about $115B further out (derived from the filing's approximate percentages).</p>
   </div>
 </div>
 
@@ -1483,7 +1820,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>The note's defined term changed from "unconditional purchase obligations" to "unconditional purchase commitments." The definition still covers commitments to purchase goods or services, "primarily inventory." The note gives no narrative. The dates match the AI-rack purchase agreements in the subsequent event and the new RPO contract, though the filing does not tie them together. The FY2025 10-K total was $132M.</p>
+    <p class="shift">Quant: figures up roughly 2,400x; defined term renamed "obligations" &rarr; "commitments"</p>
+    <p class="qlabel">Q2 FY2026, Commitments note</p>
+    <blockquote>"Represent unconditional purchase commitments to purchase goods or services, primarily inventory, that are enforceable and legally binding on us and specify all significant terms, including fixed or minimum quantities to be purchased, price provisions, and the approximate timing of the transaction."</blockquote>
+    <p class="history">History: "unconditional purchase commitments" first appears in Q2 FY2026 (earlier filings say "obligations"). Tagged totals (financials.py): $569M (FY2024), $132M (FY2025), $54M (Q1 FY2026), $128,110M (Q2 FY2026).</p>
+    <p>The note gives no narrative. The dates match the AI-rack purchase agreements in the subsequent event and the new RPO contract, though the filing does not tie them together.</p>
   </div>
 </div>
 
@@ -1494,20 +1835,26 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Finished goods rose from $682M to $1,858M. Over the first half, receivables (+$3,685M) and inventory (+$2,058M) were the largest working-capital uses of cash. MD&amp;A notes that receivables rose partly on "lower receivables sold through factoring arrangements."</p>
+    <p class="shift">Named: product-specific attribution added (+)</p>
     <p class="qlabel">Q2 FY2026 (new)</p>
     <blockquote>"Inventory increased to $4,328 million at May 3, 2026 from $2,270 million at November 2, 2025 <strong>primarily to support higher expected shipments for custom AI accelerators</strong>."</blockquote>
+    <p class="history">History: "higher expected shipments for custom AI accelerators" appears in Q2 FY2026 only. Q1 FY2025 had used the generic "primarily to support higher expected shipments."</p>
+    <p>Over the first half, receivables (+$3,685M) and inventory (+$2,058M) were the largest working-capital uses of cash. MD&amp;A attributes part of the receivables rise to "lower receivables sold through factoring arrangements," a phrase used only this quarter.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Buybacks $7,850M &rarr; $600M; none after March 1 even with $10.1B authorized</span>
+    <span class="title">Buybacks $7,850M &rarr; $600M; nothing bought after March 1 with $10.1B authorized</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q2 repurchases were 2M shares at an average of $326.05, all in the February 2 &ndash; March 1 window. Nothing was bought from March 2 to May 3, 2026, although the new March 2026 $10B program left $10.1B available. Cash rose from $14,174M to $19,628M, and $1,250M of senior notes were redeemed (loss on extinguishment in interest expense). The pause in buybacks came in the same quarter as the RPO contract and the purchase commitments. The filing gives no reason for it.</p>
+    <p class="shift">Quant: repurchases down 92%; remaining authorization $700 million &rarr; $10.1 billion</p>
+    <p class="qlabel">Q2 FY2026 (current)</p>
+    <blockquote>"We repurchased and retired 2 million and 25 million shares for $600 million and $8,450 million during the fiscal quarter and two fiscal quarters ended May 3, 2026, respectively."</blockquote>
+    <p class="history">History: quarterly buybacks (financials.py) $7,176M (Q1 FY2024), zero for the next four quarters, $2,450M (Q2 FY2025), zero for two quarters, $7,850M (Q1 FY2026), $600M (Q2 FY2026), zero (Q3 FY2026).</p>
+    <p>All Q2 repurchases fell in the February 2 to March 1 window. Nothing was bought from March 2 to May 3, although the new March 2026 $10B program left $10.1B available. Cash rose from $14,174M to $19,628M, and $1,250M of senior notes were redeemed. The pause came in the same quarter as the RPO contract and the purchase commitments. The filing gives no reason for it.</p>
   </div>
 </div>
 
@@ -1518,9 +1865,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>This builds on the OBBBA valuation allowance first set up in Q3 FY2025 ($1,058M) and raised to $1,321M in the 10-K: "&hellip;we continue to maintain a full valuation allowance against our CAMT credit carryforwards&hellip;" The Q2 implied tax rate is about 8%.</p>
+    <p class="shift">Certainty: expectation stated (firmer +)</p>
     <p class="qlabel">Q2 FY2026 (new)</p>
     <blockquote>"We expect to remain subject to the Corporate Alternative Minimum Tax (&ldquo;CAMT&rdquo;) for fiscal year 2026 and subsequent years."</blockquote>
+    <p class="history">History: "remain subject to the Corporate Alternative Minimum Tax" appears in Q2 FY2026 only; Q3 FY2026 deletes it without explanation.</p>
+    <p>This builds on the CAMT valuation allowance first set up in Q3 FY2025 ($1,058M) and raised to $1,321M in the 10-K. The Q2 implied tax rate is 8.1% (financials.py).</p>
   </div>
 </div>
 </div>
@@ -1531,33 +1880,38 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Guarantees" become "backstops or guarantees," and "may enter into" becomes "have entered into"</span>
+    <span class="title">"Guarantees" become "backstops or guarantees," and "we may enter into" becomes "we have entered into"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>All three Q1 guarantee sentences now refer to backstops. "Backstop" appears nowhere in earlier filings in the set. The two risk factors move from hypothetical to actual. The MD&amp;A liquidity section swaps "guarantees" for "backstops" and adds a pointer to Note 11 and Part II, Item 5.</p>
+    <p class="shift">Certainty: may &rarr; have (realized, firmer +); named: "backstop" added</p>
     <p class="qlabel">Q1 FY2026 (prior)</p>
     <blockquote>"In addition, such arrangements <strong>may impose</strong> financial obligations, <strong>including guarantees</strong>, upon us or increase our exposure to credit or customer default risks&hellip;"</blockquote>
     <blockquote>"Furthermore, <strong>we may enter into other financing arrangements, such as guarantees,</strong> to support our strategic initiatives or other corporate purposes&hellip;"</blockquote>
     <p class="qlabel">Q2 FY2026 (current)</p>
     <blockquote>"In addition, such arrangements <strong>have and may impose</strong> financial obligations, <strong>including backstops or guarantees</strong>, upon us or increase our exposure to credit or customer default risks&hellip;"</blockquote>
     <blockquote>"Furthermore, <strong>we have entered into and may enter into financing arrangements where we provide a backstop or a guarantee</strong> to support our strategic initiatives or other corporate purposes&hellip;"</blockquote>
+    <p class="history">History: "including guarantees" appears in Q1 FY2026 only. "Including backstops or guarantees" and "we have entered into and may enter into financing arrangements" first appear in Q2 FY2026 and are kept in Q3.</p>
+    <p>All three Q1 guarantee sentences now refer to backstops, and the two risk factors move from hypothetical to actual. The MD&amp;A liquidity section swaps "guarantees" for "backstops" and points to Note 11 and Part II, Item 5.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Customers now "requiring us to purchase and then lease to them full AI racks"; "sale or leasing" becomes "purchase and leasing" to give customers "access additional compute capacity"</span>
+    <span class="title">Customers now "requiring us to purchase and then lease to them full AI racks"; five passages rename the model as giving customers "access additional compute capacity"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>In this model Broadcom is the buyer and lessor of racks, not their seller. Customers now seek to lease chips as well as racks. Five risk-factor passages now describe new business models as "those that enable our customers to access additional compute capacity," where Q1 named "the sale or leasing of AI racks." The arrangements list gains "purchasing." "Alternative financings" becomes "alternative financing arrangements" throughout.</p>
+    <p class="shift">Realized: customers "requiring" (firmer +); de-named: "AI racks or systems based on our XPUs" &rarr; "those that enable our customers to access additional compute capacity" (-)</p>
     <p class="qlabel">Q1 FY2026 (prior)</p>
     <blockquote>"&hellip;such as seeking to lease AI racks or systems based on our XPUs instead of purchasing, as well as alternative financings for such leases or other novel or deferred payment models."</blockquote>
+    <blockquote>"To remain competitive, we seek to evolve our business strategy or adopt new business models from time to time, such as the sale or leasing of AI racks or systems based on our XPUs, that require significant financial resources&hellip;"</blockquote>
     <p class="qlabel">Q2 FY2026 (current)</p>
     <blockquote>"&hellip;such as seeking to lease our custom AI accelerators or XPUs or <strong>requiring us to purchase and then lease to them full AI racks or systems based on our XPUs instead of purchasing these chips or racks directly</strong>, as well as alternative financing arrangements for such leases or other novel or deferred payment models."</blockquote>
-    <blockquote>"&hellip;such as those that enable our customers to access additional compute capacity, including through the purchase and leasing of AI racks or systems based on our XPUs&hellip;"</blockquote>
+    <blockquote>"To remain competitive, we seek to evolve our business strategy or adopt new business models from time to time, such as those that enable our customers to access additional compute capacity, that may require significant financial resources&hellip;"</blockquote>
+    <p class="history">History: "purchase and then lease" and "access additional compute capacity" first appear in Q2 FY2026 and are kept in Q3.</p>
+    <p>In this model Broadcom buys the racks and leases them out, rather than selling them. Customers now also seek to lease chips. At the same time the business-model sentences stop naming racks and describe the model by what it gives customers. "Require significant financial resources" softens to "may require."</p>
   </div>
 </div>
 
@@ -1568,11 +1922,30 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>The same factor adds "industry oversupply <em>or undersupply</em>" as a margin risk. Reported gross margin was 69%, against 68% a year earlier.</p>
+    <p class="shift">Scope: racks &rarr; all AI products (wider, -)</p>
     <p class="qlabel">Q1 FY2026 (prior)</p>
     <blockquote>"<strong>The sale or leasing of AI racks or systems based on our XPUs</strong> will likely increase our operating margin but compress or lower future gross margin, which would adversely impact our stock price&hellip;"</blockquote>
     <p class="qlabel">Q2 FY2026 (current)</p>
     <blockquote>"<strong>The sale of our custom AI accelerators or XPUs, network switches and other AI-related products, including the sale or leasing of AI racks or systems based on our XPUs,</strong> will likely increase our operating margin but compress or lower future gross margin&hellip;"</blockquote>
+    <p class="history">History (sentence_signals): the racks-only sentence stood in the FY2025 10-K and Q1 FY2026. The widened version first appears in Q2 FY2026 and is kept in Q3.</p>
+    <p>The warning now covers the whole AI semiconductor business, not only racks. The factor also adds "industry oversupply or undersupply" (first in Q2 FY2026). MD&amp;A adds that semiconductor revenue "has a lower gross margin than infrastructure software." Reported gross margin was 69%, against 68% a year earlier.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI cyber threat moves from "may also lead" to "has also led," after eight filings unchanged</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Certainty: may &rarr; has (realized, firmer +)</p>
+    <p class="qlabel">Q1 FY2026 (prior)</p>
+    <blockquote>"The emergence and maturation of AI capabilities <strong>may also lead</strong> to new and/or more sophisticated methods of attack, including fraud that relies upon &ldquo;deep fake&rdquo; impersonation technology or other forms of generative automation that <strong>may scale up the efficiency or effectiveness</strong> of cyber threat activity."</blockquote>
+    <p class="qlabel">Q2 FY2026 (current)</p>
+    <blockquote>"The emergence and maturation of AI capabilities, <strong>including their use by threat actors, has also led</strong> to new and/or more sophisticated methods of attack, including fraud that relies upon &ldquo;deep fake&rdquo; impersonation technology or other forms of generative automation that <strong>has increased and may continue to increase the effectiveness and frequency</strong> of cyber threat activity."</blockquote>
+    <p class="history">History (sentence_signals): the "may also lead" sentence stood unchanged for eight filings, Q2 FY2024 through Q1 FY2026. "Has also led" and "pace of discovery of vulnerabilities" first appear in Q2 FY2026.</p>
+    <p>This is the top-ranked "realized" change of the quarter. A separate new sentence says AI "increased the pace of discovery of vulnerabilities," which matters for a company selling VMware and Symantec software. No incident is disclosed.</p>
   </div>
 </div>
 
@@ -1583,60 +1956,32 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>MD&amp;A gives ~45% for both the quarter and the first half, against ~50% in Q1. This is the only decline in the top-five series in FY2026; Q3 rises to ~55%. The largest distributor held at 42%. A new cancellation reason, a customer changing its own business strategy, is added in the same quarter Broadcom signed a long-term XPU contract and a lease backstop.</p>
+    <p class="shift">Figures: ~50% &rarr; ~45%; condition added: customer strategy change (-)</p>
     <p class="qlabel">Q1 FY2026 (prior)</p>
     <blockquote>"We believe aggregate sales, through all channels, to our top five end customers accounted for approximately 50% of our net revenue for the fiscal quarter ended February 1, 2026."</blockquote>
     <p class="qlabel">Q2 FY2026 (current)</p>
     <blockquote>"We believe aggregate sales, through all channels, to our top five end customers accounted for approximately 45% of our net revenue for the two fiscal quarters ended May 3, 2026."</blockquote>
     <blockquote>"&hellip;decline to purchase from us due to reduced capital expenditure spending, changes in their business strategy, lack of access to sufficient capital&hellip;"</blockquote>
+    <p class="history">History: "changes in their business strategy" first appears in Q2 FY2026 and is kept in Q3. Top-five series: ~40% through FY2025, ~50% (Q1 FY2026), ~45% (Q2), ~55% (Q3).</p>
+    <p>MD&amp;A gives ~45% for both the quarter and the first half; this is the only decline in the series in FY2026. The largest distributor held at 42%. The new cancellation reason arrives in the quarter Broadcom signed a long-term XPU contract and a lease backstop.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Export-control factor: "will likely limit" softens to "can limit"; "foreign" dropped from government retaliation; "supply chain risk" designation can force Broadcom to stop selling</span>
+    <span class="title">Export controls: "will likely limit" softens to "can limit"; a "supply chain risk" designation can force Broadcom to stop selling</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Two edits pull in opposite directions. The likelihood of losing customers or suppliers is downgraded. But the retaliation sentence no longer limits itself to foreign governments, and it now covers conditions on the "sale" of products and requirements for "licenses or approvals." A third edit carries the Q1 "supply chain risk" designation over from the customer factor. If a supplier or customer is designated, Broadcom "may be required to suspend purchasing from such suppliers or selling to such customers." The U.S. restricted-list sentence also adds "licensing" requirements.</p>
+    <p class="shift">Certainty: will likely &rarr; can (weaker -); condition added: "designated a 'supply chain risk'" (-)</p>
     <p class="qlabel">Q1 FY2026 (prior)</p>
     <blockquote>"&hellip;will likely limit or prevent us from doing business with certain of our customers or suppliers and harm our ability to compete effectively&hellip;"</blockquote>
-    <blockquote>"Furthermore, foreign government authorities have proposed and may take retaliatory actions, impose conditions for the supply of products or require the license or other transfer of IP&hellip;"</blockquote>
     <p class="qlabel">Q2 FY2026 (current)</p>
     <blockquote>"&hellip;can limit or prevent us from doing business with certain of our customers or suppliers, which may materially impact our ability to compete effectively or to sell our products and services."</blockquote>
-    <blockquote>"Furthermore, government authorities have proposed and may take retaliatory actions, impose conditions for the supply or sale of products or require licenses or approvals&hellip;"</blockquote>
     <blockquote>"In addition, if our suppliers or customers fail or choose not to comply with these legal requirements or governmental actions, become subject to export restrictions or are designated a &ldquo;supply chain risk,&rdquo; we may be required to suspend purchasing from such suppliers or selling to such customers&hellip;"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">AI cyber threat moves from "may also lead" to "has also led"</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>A separate new sentence in the software-security factor reads: "AI and other forms of generative automation have increased the pace of discovery of vulnerabilities as well as the effectiveness and frequency of cyber threat activity."</p>
-    <p class="qlabel">Q1 FY2026 (prior)</p>
-    <blockquote>"The emergence and maturation of AI capabilities <strong>may also lead</strong> to new and/or more sophisticated methods of attack, including fraud that relies upon &ldquo;deep fake&rdquo; impersonation technology or other forms of generative automation that <strong>may scale up the efficiency or effectiveness</strong> of cyber threat activity."</blockquote>
-    <p class="qlabel">Q2 FY2026 (current)</p>
-    <blockquote>"The emergence and maturation of AI capabilities, <strong>including their use by threat actors, has also led</strong> to new and/or more sophisticated methods of attack, including fraud that relies upon &ldquo;deep fake&rdquo; impersonation technology or other forms of generative automation that <strong>has increased and may continue to increase the effectiveness and frequency</strong> of cyber threat activity."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Customers may "be unable to obtain" data-center power or water, not just underestimate it</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>The underestimate sentence dates from the FY2025 10-K. Q2 adds the risk that customers simply cannot get the capacity. Macroeconomic Factors in MD&amp;A also adds "geopolitical events, supply constraints."</p>
-    <p class="qlabel">Q1 FY2026 (prior)</p>
-    <blockquote>"Our customers may also <strong>underestimate</strong> the data center or related power or water capacity needed to address end-user demand&hellip;"</blockquote>
-    <p class="qlabel">Q2 FY2026 (current)</p>
-    <blockquote>"Our customers may also <strong>underestimate or be unable to obtain</strong> the data center or related power or water capacity&hellip;"</blockquote>
+    <p class="history">History: "will likely limit or prevent" stood in every filing from Q3 FY2023 to Q1 FY2026 (eleven filings). "Can limit or prevent" first appears in Q2 FY2026. "Supply chain risk" first appears in Q1 FY2026 in the customer factor.</p>
+    <p>The likelihood of losing customers or suppliers is downgraded, while the consequence ("to sell our products and services") is widened. The retaliation sentence also drops "foreign" and now covers the "sale" of products and "licenses or approvals."</p>
   </div>
 </div>
 
@@ -1647,12 +1992,14 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>Both deletions remove ESG-related wording. The climate cut leaves "severe weather events" in place. The corporate-responsibility sentence had carried over, renamed from "ESG", since the FY2025 10-K.</p>
+    <p class="shift">Removed (-)</p>
     <p class="qlabel">Q1 FY2026 (prior)</p>
     <blockquote>"&hellip;due to natural- or man-made disasters or other events outside of our control, such as <strong>climate change,</strong> severe weather events, water or power shortages, political unrest, military conflicts&hellip;"</blockquote>
     <blockquote>"Our actual or perceived failure to achieve our publicly disclosed corporate responsibility initiatives could negatively impact our reputation, subject us to litigation or enforcement actions, or otherwise harm our business."</blockquote>
     <p class="qlabel">Q2 FY2026 (current)</p>
     <blockquote>"&hellip;due to natural- or man-made disasters or other events outside of our control, such as severe weather events, water or power shortages, political unrest, military conflicts&hellip;"</blockquote>
+    <p class="history">History: "climate change" appears in every filing from Q3 FY2023 to Q1 FY2026 and is absent from Q2 FY2026 on. "Publicly disclosed corporate responsibility initiatives" appears from Q1 FY2025 to Q1 FY2026.</p>
+    <p>Both deletions remove ESG-related wording; "severe weather events" stays. The same quarter adds that customers may "be unable to obtain" data-center power or water capacity, not only underestimate it.</p>
   </div>
 </div>
 </div>
@@ -1663,20 +2010,22 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Software growth returns (+1% &rarr; +9% YoY) with VCF named again; revenue swings now tied to "the relative volume of customer contracts signed with the right to terminate"</span>
+    <span class="title">Software revenue swings tied to "the relative volume of customer contracts signed with the right to terminate"; risk factor says it "can cause material variations"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q1 had no explanation for software growth. Q2 restores one. The revenue-variation sentence moves from whether "a customer" can terminate to the mix of contracts signed with that right. The matching risk factor now says that mix "can cause material variations." That sets up Q3, when termination for convenience is dropped from most new contracts. Upfront license revenue was $1,964M, against $1,803M restated for Q2 FY2025. The distributor factor deletes its last VMware sentence: "Our dependence on channel partners has increased following the acquisition of VMware."</p>
+    <p class="shift">Degree: variations &rarr; "material variations" (firmer +); scope: one customer's right &rarr; mix of contracts</p>
     <p class="qlabel">Q1 FY2026 (prior)</p>
     <blockquote>"For infrastructure software, whether or not a customer has the right to terminate causes variations in revenue recognized in each period."</blockquote>
+    <blockquote>"In addition, software license agreements under which customers do not have the right to terminate could cause variations in revenue recognized in each period and our operating results fluctuate from time to time."</blockquote>
     <p class="qlabel">Q2 FY2026 (current)</p>
     <blockquote>"For infrastructure software, the relative volume of customer contracts signed with the right to terminate causes variations in revenue recognized in each period."</blockquote>
-    <blockquote>"Net revenue from our infrastructure software segment increased in the fiscal quarter and two fiscal quarters ended May 3, 2026 compared to the prior year fiscal periods primarily due to strong demand for our VMware Cloud Foundation&hellip;"</blockquote>
+    <blockquote>"In addition, the relative volume of our customer agreements signed with the right to terminate can cause material variations in revenue recognized in each period and our operating results to fluctuate from time to time."</blockquote>
+    <p class="history">History: "relative volume of customer contracts signed with the right to terminate" appears in Q2 FY2026 only. "Our dependence on channel partners has increased" stood from Q2 FY2024 to Q1 FY2026 and is deleted this quarter.</p>
+    <p>The revenue lever is now the mix of terminable and non-terminable contracts Broadcom signs. That sets up Q3, when termination for convenience is dropped from most new contracts and upfront license revenue jumps. MD&amp;A names VCF demand as the software driver again (+9% year over year). Upfront license revenue in products was $1,964M for the quarter.</p>
   </div>
 </div>
 </div>
-
 
 
 <!-- T10: FY26 Q2 -> Q3 -->
@@ -2077,7 +2426,8 @@ a:hover { text-decoration: underline; }
         <tr><td>FY24Q2</td><td>"we are focusing"; channel dependence "has increased"</td></tr>
         <tr><td>FY24Q3</td><td>EUC business sold ($3.5B); termination-for-convenience / ratable-recognition detail added</td></tr>
         <tr><td>FY2024 10-K</td><td>Seven-bullet integration list deleted; risk reframed around "transition from a perpetual to a subscription licensing model"</td></tr>
-        <tr><td>FY25Q1</td><td class="val-new">"VMware Merger" &rarr; "acquisition of VMware"; "contributions from VMware" &rarr; organic VCF demand</td></tr>
+        <tr><td>FY25Q1</td><td class="val-new">"VMware Merger" &rarr; "acquisition of VMware" in the 10-Q; "contributions from VMware" &rarr; VCF demand and "license revenue recognized on contracts where customers do not have the right to terminate"</td></tr>
+        <tr><td>FY25Q2</td><td class="val-neg">Lifecycle management "could lead to" &rarr; "have previously led to" customer dissatisfaction and "potential contractual liabilities"</td></tr>
         <tr><td>FY25Q3</td><td>Liquidity drops "assumed" obligations; VMware restructuring program winds down (liability $32M)</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">$7,800M upfront license revenue reported within products; Dell audit factor deleted</td></tr>
         <tr><td>FY26Q1</td><td>VMware Backlog lawsuit removed; restructuring note gone; licensing risk "perpetual" &rarr; "subscription licensing model"; upfront license $1,755M vs $1,972M (restated prior-year qtr); software +1% YoY</td></tr>
@@ -2100,7 +2450,7 @@ a:hover { text-decoration: underline; }
         <tr><td>FY24Q3</td><td class="val-neg">$4,238M</td><td>151%</td><td class="val-neg">IP-onshoring provision recorded</td></tr>
         <tr><td>FY2024 10-K</td><td>&mdash;</td><td>&mdash;</td><td>Singapore minimum tax effective FY2026; incentives $2,261M (+$0.47 EPS)</td></tr>
         <tr><td>FY25Q1</td><td>$(13)M benefit</td><td>(0.2)%</td><td>&mdash;</td></tr>
-        <tr><td>FY25Q2</td><td>$120M</td><td>2.4%</td><td>&mdash;</td></tr>
+        <tr><td>FY25Q2</td><td>$120M</td><td>2.4%</td><td class="val-new">"we expect an increase in our effective tax rate and our cash tax costs" (U.S. tax reform) deleted</td></tr>
         <tr><td>FY25Q3</td><td class="val-neg">$1,145M</td><td>21.7%</td><td class="val-new">OBBBA (July 4, 2025): $1,058M CAMT valuation allowance; up to $2.1B discrete benefit flagged for Q4</td></tr>
         <tr><td>FY2025 10-K</td><td>&mdash;</td><td>&mdash;</td><td>Pillar Two "we expect to materially increase&hellip; fiscal year ending November 1, 2026"; incentives $2,709M (+$0.56 EPS)</td></tr>
         <tr><td>FY26Q1</td><td>$846M</td><td>10.3%</td><td class="val-new">Pillar Two "have materially increased"; incentive-country adoption "has materially increased our provision"</td></tr>
@@ -2121,8 +2471,8 @@ a:hover { text-decoration: underline; }
         <tr><td>FY24Q1&ndash;Q3</td><td>~95% (all quarters)</td><td>"approximately two-thirds"</td><td>Taiwan earthquake example added (FY24Q2); "concentrated in the same geographic regions" (FY24Q3)</td></tr>
         <tr><td>FY2024 10-K</td><td>~95%</td><td>"approximately two-thirds"</td><td>&mdash;</td></tr>
         <tr><td>FY25Q1&ndash;Q3</td><td>~95%</td><td class="val-new">"approximately three-quarters" (FY25Q1)</td><td>"FBAR components" &rarr; "FBAR filters"</td></tr>
-        <tr><td>FY2025 10-K</td><td>~95%</td><td>"approximately two-thirds" (full year)</td><td>&mdash;</td></tr>
-        <tr><td>FY26Q1</td><td>~95%; "could choose or be required to <em>materially</em> prioritize capacity for other customers"</td><td class="val-new">"more than three-quarters"</td><td class="val-new">Memory chips named ("including with respect to memory chips"); CM "capacity constraints in times of unprecedented demand"</td></tr>
+        <tr><td>FY2025 10-K</td><td>~95%; TSMC "could choose or be required to <em>materially</em> prioritize capacity for other customers"</td><td>"approximately two-thirds" (full year)</td><td>CMs "have had capacity constraints in times of unprecedented demand"</td></tr>
+        <tr><td>FY26Q1</td><td>~95%</td><td class="val-new">"more than three-quarters"</td><td class="val-new">Memory chips named ("including with respect to memory chips"); CMs "have had and may continue to have capacity constraints"</td></tr>
         <tr><td>FY26Q2</td><td>~95%</td><td>"more than three-quarters"</td><td>CM dependence broadened to "manufacturing and packaging capacity and critical components"</td></tr>
         <tr><td>FY26Q3</td><td>~95%</td><td>"more than three-quarters"</td><td class="val-new">CM capacity commitments "do not generally have" &rarr; "may enter into"; memory shortages "have previously disrupted supply"; CM "capacity and memory constraints"</td></tr>
       </tbody>
@@ -2146,7 +2496,7 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="signal-card">
       <h3>3. Concentration Disclosure Narrowed as Concentration Rose</h3>
-      <p>Apple (17%) and WT Microelectronics (27%) were named in FY24Q1; both names were removed at FY24Q2 and never restored. By FY26Q1 the anonymous largest distributor was 42% of revenue, top five end customers ~50%, and the distributor channel 55% &mdash; all-time highs for the series at the time, disclosed with unchanged sentence structures. After a dip to ~45% in FY26Q2, FY26Q3 set new highs: one distributor at 50% of quarterly revenue and the top five end customers at ~55%.</p>
+      <p>Apple (17%) and WT Microelectronics (27%) were named in FY24Q1; both names were removed at FY24Q2 and never restored. By FY26Q1 the anonymous largest distributor was 42% of revenue, top five end customers ~50%, and the distributor channel 55% &mdash; all-time highs for the series at the time, disclosed with unchanged sentence structures, one filing after the FY2025 10-K deleted "The majority of our sales have historically come from a small number of customers." After a dip to ~45% in FY26Q2, FY26Q3 set new highs: one distributor at 50% of quarterly revenue and the top five end customers at ~55%.</p>
     </div>
     <div class="signal-card">
       <h3>4. Funded Debt Fell as Contingent Obligations Rose</h3>
@@ -2154,11 +2504,11 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="signal-card">
       <h3>5. The Tax Regime Shifted From Near-Zero to Structural</h3>
-      <p>Implied quarterly rates ran ~0&ndash;5% through FY25H1 (excluding the one-time $4,238M IP-onshoring charge). From FY25Q3: OBBBA produced a $1,058M CAMT valuation allowance, Pillar Two language escalated from "may materially increase" to "have materially increased," and FY26Q1&ndash;Q2 implied rates settled at 8&ndash;10% with a full CAMT allowance maintained. FY26Q3 broke that range at 14.3%, and the CAMT expectation sentences were deleted without explanation.</p>
+      <p>Implied quarterly rates ran ~0&ndash;5% through FY25H1 (excluding the one-time $4,238M IP-onshoring charge). In FY25Q2 the risk factors quietly dropped "we expect an increase in our effective tax rate and our cash tax costs" from U.S. tax reform, one quarter before the tax law changed. From FY25Q3: OBBBA produced a $1,058M CAMT valuation allowance, Pillar Two language escalated from "may materially increase" to "have materially increased," and FY26Q1&ndash;Q2 implied rates settled at 8&ndash;10% with a full CAMT allowance maintained. FY26Q3 broke that range at 14.3%, and the CAMT expectation sentences were deleted without explanation.</p>
     </div>
     <div class="signal-card">
       <h3>6. VMware Was Fully Absorbed, Then Its Contract Terms Became a Revenue Lever</h3>
-      <p>The integration arc ran from "we plan to focus" (FY24Q1) through tense shifts (FY24Q2), the EUC sale (FY24Q3), the "acquisition of VMware" rename and organic VCF attribution (FY25Q1), the liquidity sentence dropping "assumed" (FY25Q3), the $7.8B upfront license reclassification (FY2025 10-K), the Backlog lawsuit's removal (FY26Q1), and deletion of the last channel-dependence sentence (FY26Q2). In FY26Q3, termination for convenience was dropped from "the majority of new software contracts." This let license revenue be recognized upfront ($3,465M vs $1,964M in Q2) and lifted software growth from 9% to 29% year over year. Part of that jump reflects when revenue is recognized rather than demand alone.</p>
+      <p>The integration arc ran from "we plan to focus" (FY24Q1) through tense shifts (FY24Q2), the EUC sale (FY24Q3), the "acquisition of VMware" rename and VCF attribution (FY25Q1), the admission that lifecycle changes "have previously led to" customer dissatisfaction (FY25Q2), the liquidity sentence dropping "assumed" (FY25Q3), the $7.8B upfront license reclassification (FY2025 10-K), the Backlog lawsuit's removal (FY26Q1), and deletion of the last channel-dependence sentence (FY26Q2). In FY26Q3, termination for convenience was dropped from "the majority of new software contracts." This let license revenue be recognized upfront ($3,465M vs $1,964M in Q2) and lifted software growth from 9% to 29% year over year. Part of that jump reflects when revenue is recognized rather than demand alone.</p>
     </div>
   </div>
 </div>
