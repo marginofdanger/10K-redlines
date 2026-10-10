@@ -101,13 +101,28 @@ def clean_lines(path):
 UNFINISHED = re.compile(r"[^.!?:;”\")]$")
 
 
+def join_split(lines):
+    """Rejoin a sentence that a page break split: a long line without closing punctuation
+    followed by a line that starts in lowercase."""
+    out = []
+    for l in lines:
+        if (out and len(out[-1]) >= 60 and UNFINISHED.search(out[-1]) and " | " not in out[-1]
+                and re.match(r"[a-z]", l)):
+            out[-1] += " " + l
+        else:
+            out.append(l)
+    return out
+
+
 def reflow(lines):
     """Some filings (TSM's 20-F) put each printed line in its own block, so paragraphs
     arrive hard-wrapped. When most long lines end mid-sentence, join each long line
     that lacks closing punctuation to the line after it."""
     long = [l for l in lines if len(l) >= 80]
     if not long or sum(1 for l in long if UNFINISHED.search(l)) < 0.5 * len(long):
-        return lines
+        # not hard-wrapped, but a page break can still split a sentence: rejoin a long
+        # unfinished line with a following line that starts in lowercase
+        return join_split(lines)
     out = []
     for l in lines:
         mid_paragraph = out and len(out[-1]) >= 80 and UNFINISHED.search(out[-1])
@@ -155,7 +170,7 @@ def tidy(text, heading_line):
     head = key(heading_line)
     keep = [l for k, l in enumerate(text.split("\n"))
             if k == 0 or not (FURNITURE.fullmatch(l) or (key(l) == head and k > 0))]
-    return "\n".join(keep).strip()
+    return "\n".join(join_split(keep)).strip()
 
 
 def offsets(lines):
@@ -266,7 +281,7 @@ def notes(lines):
         body.append(l)
         if cur:
             parts[cur][1].append(l)
-    return "\n".join(body), {n: (t, "\n".join(x)) for n, (t, x) in parts.items()}
+    return "\n".join(join_split(body)), {n: (t, "\n".join(join_split(x))) for n, (t, x) in parts.items()}
 
 
 def mda_subsections(mda):

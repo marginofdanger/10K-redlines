@@ -115,8 +115,6 @@ def redline(a, b, label_a, label_b, section):
             f"{len(WORD.findall(' '.join(b))):,}",
             "added {ADDED}, removed {REMOVED}, changed {CHANGED}, moved {MOVED}, "
             "numbers-only {ROLLED} (listed last)".format(**tally),
-            "modal/hedge word shifts: " + (", ".join(f"{w} {d:+d}" for w, d in
-                                                   sorted(shifts.items(), key=lambda x: -abs(x[1]))) or "none"),
             ""]
     ordered = sorted(entries, key=lambda e: e[0])
     body = [f"## {kind}\n{text}\n" for _, kind, text in ordered if kind != "ROLLED"]

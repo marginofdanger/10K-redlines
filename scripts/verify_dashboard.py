@@ -165,6 +165,21 @@ def card_fields(src, new_lines):
     return fails
 
 
+def shift_fields(src, new_lines):
+    """Dashboards: each new finding needs a <p class="shift"> label and a <p class="history"> line."""
+    fails, lines = [], src.split("\n")
+    for ln in sorted(new_lines):
+        if '<div class="finding"' not in (lines[ln - 1] if ln - 1 < len(lines) else ""):
+            continue
+        block = "\n".join(lines[ln - 1:ln + 80])
+        end = block.find('<div class="finding"', 10)
+        block = block if end < 0 else block[:end]
+        for cls in ("shift", "history"):
+            if f'class="{cls}"' not in block:
+                fails.append(f"line {ln}: new finding has no <p class=\"{cls}\"> line")
+    return fails
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("page")
@@ -199,7 +214,8 @@ def main():
     if a.since:
         new = added_lines(a.page, a.since)
         quotes = [q for q in quotes if q[1] in new or any(l in new for l in range(q[1] - 3, q[1] + 1))]
-        fails += card_fields(src, new)
+        bullbear = os.path.basename(os.path.dirname(os.path.abspath(a.page))) == "bullbear"
+        fails += card_fields(src, new) if bullbear else shift_fields(src, new)
     checked = unmatched = 0
     if corpus_files:
         # drop page furniture so a paragraph split across a page break reads continuously
