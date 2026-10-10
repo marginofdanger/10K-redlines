@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGR Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Progressive Corporation: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed August 3, 2026 | Also covered: seven earlier 10-K and 10-Q filings back to the Q3 2024 10-Q, filed November 2024 | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Two years in one view. Profitability stayed far above Progressive's 4% underwriting profit goal throughout; what changed is the direction. Growth, retention and the accident-year loss ratio have turned, while reserves and capital kept getting stronger.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Policy growth</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Policies in force passed 40 million in Q2 2026 (+7%); renewal applications +11%</td><td class="ev-bear">Premium growth 25% (Q3 2024) &rarr; 5% (Q2 2026); personal vehicle new applications +1%</td><td>Q1 2026 10-Q</td></tr>
+<tr><td>P2 Pricing and loss trends</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Underwriting margin 12.6% in 2025 and 13.1% in H1 2026 against a 4% goal; Commercial Lines 14.7%, property 22.0%</td><td class="ev-bear">Accident-year loss ratio 70.0 vs 68.4; bodily injury severity +7% to +12% in every 10-Q of the window while auto rates are cut</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P3 Reserve adequacy</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Favorable development in every filing: $416M (2024, after $1,094M adverse in 2023), $1,394M (2025), $1,002M (H1 2026)</td><td class="ev-bear">Releases are 2.6 points of the Q2 2026 margin; assumed personal auto severity cut from 8.8% to 7.2% in the FY2025 reserves</td><td>FY2024 10-K</td></tr>
+<tr><td>P4 Retention and competitive position</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Direct auto conversion +9% in Q2 2026; core commercial auto policy life expectancy up (+10% in 2025)</td><td class="ev-bear">Personal auto trailing 12-month policy life expectancy flat (Q3 2024), then &minus;4%, &minus;7%, &minus;8%; competition now the first-named cause</td><td>FY2024 10-K</td></tr>
+<tr><td>P5 Regulation and litigation</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Certified total-loss class states nine (FY2024) &rarr; three (Q1 2026); no material settlements</td><td class="ev-bear">Florida profit cap: $1.2B credited to policyholders for 2023&ndash;2025, paid in Q1 2026; profit limits added to risk factors</td><td>Q3 2025 10-Q</td></tr>
+<tr><td>P6 Capital and shareholder returns</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">$8.1B of dividends declared for 2025 (72% of net income); 5.4M shares bought back in H1 2026; debt-to-total capital 19.6%</td><td class="ev-bear">$1.5B of senior notes issued in March 2026 as the $7.9B dividend went out; debt-to-total capital 18.5% &rarr; 20.7%</td><td>FY2025 10-K</td></tr>
+<tr><td>P7 Investment portfolio</td><td class="stance s-intact">Intact</td><td class="ev-bull">Book yield 3.9% (2024) &rarr; 4.2%; Q2 2026 net income growth came from investment income</td><td class="ev-bear">After-tax unrealized loss of $832M at June 30, 2026 (gain of $117M at year end); credit floor lowered from A+ to A</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. Net income rose $136M, but underwriting profit fell $78M: the accident-year loss ratio worsened for a second quarter and larger reserve releases covered part of it.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P3 Reserve adequacy" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Reserve adequacy</span><span class="chip">Stated</span></div>
+      <div class="title">Prior-year reserves release $551M in the quarter and $1,002M in H1; $670M comes from accident year 2025</div>
+      <blockquote>Q2 2026: "We experienced favorable reserve development of $1,002 million and $607 million during the first six months of 2026 and 2025, respectively"</blockquote>
+      <blockquote>Q2 2026: "The favorable prior-year reserve development included approximately $670 million attributable to accident year 2025, $220 million to accident year 2024, and the remainder to accident years 2023 and prior."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1,002M = 18% of H1 underwriting profit ($5,582M) and 2.4 points of the H1 combined ratio.</p>
+      <p>Accident year 2025 was reserved on a lower severity assumption (7.2% vs 8.8% a year earlier), and it is releasing, citing "lower than anticipated bodily injury severity". So far the reserving looks conservative, not stretched.</p>
+      <p class="next"><b>Next filing:</b> development still favorable in Q3; the FY2026 10-K's assumed severity for accident year 2026.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital and shareholder returns" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital and shareholder returns</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks of 5.4M shares ($1.1B) in H1, at lower prices, and a fresh 25M-share authorization</div>
+      <blockquote>Q2 2026: "During the first six months of 2026, we repurchased 5.4 million common shares, at a total cost of $1.1 billion, both in the open market and to satisfy tax withholding obligations"</blockquote>
+      <blockquote>Q2 2026: "In May 2026, the Board of Directors approved an authorization for the company to repurchase up to 25 million of its common shares."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1.1B = 18% of H1 net income ($6.13B) and 14% of H1 operating cash flow ($8.0B); diluted shares 584.2M vs 587.8M (&minus;0.6%). Q2 average price $199.85 vs $275.78 in Q2 2025.</p>
+      <p>In 2024 and 2025 buybacks were about 0.7M shares a year, mostly withholding on equity awards. The policy sentence now puts "opportunistically" first, and cash flow covers the purchases.</p>
+      <p class="next"><b>Next filing:</b> continued repurchases with debt-to-total capital near 20% and no new debt.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Policies in force pass 40 million: +2.8M (+7%) year over year, direct auto +10%</div>
+      <blockquote>Q2 2026: "We also surpassed the 40 million policies in force milestone by adding 0.5 million more policies during the quarter and ending the second quarter with 2.8 million more policies in force than at June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> 40.086M vs 37.315M policies; net premiums earned +6% to $21.6B.</p>
+      <p>Renewals of the 2024&ndash;2025 new-business wave (+11% renewal applications) keep the book growing, and direct conversion rose 9%, so the brand still wins the shoppers it sees.</p>
+      <p class="next"><b>Next filing:</b> policies in force growth holding at 5% or more.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial Lines margin 14.7% (13.2%) and personal property 22.0% (16.4%)</div>
+      <blockquote>Q2 2026: "Commercial Lines reported an underwriting profit margin of 14.7% for the second quarter 2026, compared to 13.2% in the same period last year."</blockquote>
+      <blockquote>Q2 2026: "The strong underwriting profit margin in our personal property products was primarily driven by a low level of incurred catastrophe losses, lower loss frequency during the period, and increased rates."</blockquote>
+      <p class="magnitude"><b>Size:</b> Commercial Lines $397M (+$33M) and property $171M (+$43M) of underwriting profit, together 21% of the companywide $2,730M.</p>
+      <p>The two lines that took heavy rate in 2024&ndash;2025 now earn more than personal auto, which gives room to reopen property for bundles.</p>
+      <p class="next"><b>Next filing:</b> property margin through hurricane season (Q3), and commercial auto margin after targeted rate cuts.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Investment portfolio" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Investment portfolio</span><span class="chip">Stated</span></div>
+      <div class="title">Net income +$136M on higher investment income while underwriting profit fell</div>
+      <blockquote>Q2 2026: "For the second quarter 2026, we experienced a $136 million year-over-year increase in net income, compared to the second quarter 2025, primarily reflecting an increase in total net investment income."</blockquote>
+      <p class="magnitude"><b>Size:</b> net income $3.31B (+4%) with underwriting profit $2,730M (&minus;$78M); portfolio $97.2B at a 4.2% book yield, duration 3.5 years.</p>
+      <p>A second earnings engine is growing with the float, cushioning a normalizing underwriting margin.</p>
+      <p class="next"><b>Next filing:</b> book yield at or above 4.2% as about $11.2B of non-Treasury principal reinvests over 12 months.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Accident-year loss ratio 70.0 vs 68.4, the second quarter of deterioration; bodily injury severity +7%</div>
+      <blockquote>Q2 2026: "Accident year &ndash; Loss &amp; loss adjustment expense ratio 2 | 70.0 | 68.4 | 1.6 | 69.1 | 67.8 | 1.3"</blockquote>
+      <blockquote>Q2 2026: "The year-over-year increase in total severity was predominantly driven by bodily injury coverage, due to higher medical costs, more large losses, and a higher rate of plaintiff-attorney represented claims"</blockquote>
+      <p class="magnitude"><b>Size:</b> 1.6 points on $21.6B of earned premium = about $345M a quarter; catastrophes were nearly flat (3.6 vs 3.5 points). Q1 2026 was +0.9 points.</p>
+      <p>Loss costs per claim rose 4% while personal auto written premium per policy fell 2%: the core product's margin is compressing from the inside. The filing still calls all three products "adequately priced".</p>
+      <p class="next"><b>Next filing:</b> Q3 accident-year loss ratio vs 66.6 a year earlier; any return to personal auto rate increases.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Reserve adequacy" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P3 Reserve adequacy</span><span class="chip">Inferred</span></div>
+      <div class="title">Reserve releases supply 2.6 points of margin (1.6 a year ago); without them the margin is about 10.1% vs 12.2%</div>
+      <blockquote>Q2 2026: "(Increase) decrease to calendar-year combined ratio | 2.6 | pts. | 1.6 | pts. | 2.4 | pts. | 1.5 | pts."</blockquote>
+      <blockquote>Q2 2026: "Our total loss and LAE ratio increased 0.6 points and 0.4 points, for the three and six months ended June 30, 2026, respectively, compared to the same periods last year, primarily due to higher severity, partially offset by greater favorable prior accident years reserve development."</blockquote>
+      <p class="magnitude"><b>Size:</b> $551M = 20% of Q2 underwriting profit; margin excluding development 10.1% vs 12.2% (arithmetic on disclosed figures).</p>
+      <p>The headline margin decline (1.1 points) understates the current-year decline (2.1 points before development). Releases cannot grow forever; if they shrink, the trend shows in full.</p>
+      <p class="next"><b>Next filing:</b> development as a share of underwriting profit; a fall below 1 point with the accident-year ratio still near 70 would confirm.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Premiums +5%, personal vehicle new applications +1%, direct quotes &minus;7%</div>
+      <blockquote>Q2 2026: "Companywide net premiums written were $21.1 billion, an increase of $1.0 billion, or 5%, compared to the second quarter last year, while net premiums earned increased 6%."</blockquote>
+      <blockquote>Q2 2026: "Personal vehicles experienced an increase in new business applications of 1% and an increase in renewal business applications of 11% during the second quarter 2026"</blockquote>
+      <p class="magnitude"><b>Size:</b> premium growth 25% (Q3 2024) &rarr; 12% (2025) &rarr; 5%; policies in force growth 18% (2024) &rarr; 7%. Advertising +16% bought 1% more new applications.</p>
+      <p>Growth now comes from renewing last year's customers, and renewals themselves stay with Progressive for less time (see P4).</p>
+      <p class="next"><b>Next filing:</b> new applications growth back above low single digits, or premium growth below 5%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Retention and competitive position" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Retention and competitive position</span><span class="chip">Stated</span></div>
+      <div class="title">Personal auto policy life expectancy &minus;8% (12-month) and &minus;9% (3-month); rates cut again</div>
+      <blockquote>Q2 2026: "For the second quarter 2026, trailing 12-month total personal auto policy life expectancy decreased 8% year over year, while trailing 3-month policy life expectancy decreased 9%, compared to the same period last year."</blockquote>
+      <blockquote>Q2 2026: "On a countrywide basis, during the second quarter 2026, we decreased personal auto rates by less than 1% and increased personal property rates about 1%, in the aggregate."</blockquote>
+      <p class="magnitude"><b>Size:</b> direct trailing 3-month &minus;10%; personal auto written premium per policy &minus;2%. The 3-month measure, which the filing calls a possible indicator of the 12-month trend, is the weaker of the two.</p>
+      <p>The cause list now leads with "increased shopping and competition"; mix, the cause Progressive controls, comes last. Shorter policy lives raise the acquisition cost of each policy.</p>
+      <p class="next"><b>Next filing:</b> trailing 3-month life expectancy better than &minus;9%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial auto buys growth with targeted rate cuts while its injury severity rises</div>
+      <blockquote>Q2 2026: "Increases in both net premiums written and policies in force were primarily driven by volume growth due to rate decreases in targeted state and BMT combinations, and increased advertising and agent incentive spend."</blockquote>
+      <blockquote>Q2 2026: "partially offset by higher than anticipated injury severity and litigation defense costs in our core commercial auto products"</blockquote>
+      <p class="magnitude"><b>Size:</b> core commercial auto trailing 12-month severity +5%; companywide advertising $1.4B (+16%, 0.5 points of expense ratio). Commercial auto took about 9% of rate in 2025.</p>
+      <p>Two quarters after a year of rate increases, the line is cutting price in places while its own reserves show adverse injury trends. The 14.7% margin is helped by TNC reserve releases.</p>
+      <p class="next"><b>Next filing:</b> core commercial auto severity and its development line in the reserve note.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before. One file of full answers per filing sits in this folder.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>Q1 2026 10-Q</th><th>FY2025 10-K</th><th>Q3 2025 10-Q</th><th>Q2 2025 10-Q</th><th>Q1 2025 10-Q</th><th>FY2024 10-K</th><th>Q3 2024 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td>
+<td><span class="mark worse">&#9660;</span> Premiums +5%, policies +7% to 40.1M; personal vehicle new applications +1%; auto rates cut &lt;1%.</td>
+<td><span class="mark worse">&#9660;</span> Premiums +6%, slowest to that point; policies +9%; personal vehicle new applications +2% (Q1 2025: +32%).</td>
+<td><span class="mark worse">&#9660;</span> Premiums +12% (2024: +21%); policies +10%; Commercial Lines &minus;3% on lost TNC business.</td>
+<td><span class="mark worse">&#9660;</span> Premiums +10%; personal auto new applications &minus;2%; Commercial Lines &minus;6%.</td>
+<td><span class="mark worse">&#9660;</span> Premiums +12% (Q1: +17%); policies +15%; personal auto rates cut &lt;1%.</td>
+<td><span class="mark held">&#9679;</span> Premiums +17%, policies +18%; personal auto new applications +32%; homeowners new applications down over 55%.</td>
+<td><span class="mark better">&#9650;</span> Premiums +21% to $74.4B; policies +18%; personal auto new applications +44%.</td>
+<td><span class="mark better">&#9650;</span> Premiums +25%; policies +14%; personal auto new applications +110%.</td></tr>
+<tr><td>2. Margins and unit economics</td>
+<td><span class="mark worse">&#9660;</span> Margin 12.7% vs 13.8%; accident-year loss ratio 70.0 vs 68.4; severity +4%; advertising +16%.</td>
+<td><span class="mark held">&#9679;</span> Margin 13.6% vs 14.0%; accident-year 68.1 vs 67.2 despite fewer catastrophes; bodily injury severity +8%.</td>
+<td><span class="mark better">&#9650;</span> Margin 12.6% vs 11.2% after a 1.5-point Florida credit; severity +6%, frequency &minus;3%.</td>
+<td><span class="mark worse">&#9660;</span> Margin 10.5% vs 11.0% after the $950M credit (4.6 points); accident-year 66.6 vs 68.8.</td>
+<td><span class="mark better">&#9650;</span> Margin 13.8% vs 8.1%; catastrophes 3.5 vs 7.4 points; bodily injury severity +12%.</td>
+<td><span class="mark better">&#9650;</span> Margin 14.0% vs 13.9%; loss ratio &minus;2.0 points, expense ratio +1.9 (advertising +86%).</td>
+<td><span class="mark better">&#9650;</span> Margin 11.2% vs 5.1%; accident-year 69.7 vs 75.7; advertising $4.0B (+150%).</td>
+<td><span class="mark better">&#9650;</span> Combined ratio 89.0 vs 92.4; frequency &minus;5%; Helene 3.1 points; expense ratio +4.8.</td></tr>
+<tr><td>3. Earnings quality</td>
+<td><span class="mark worse">&#9660;</span> Development $551M = 20% of underwriting profit; margin ex-development 10.1% vs 12.2%.</td>
+<td><span class="mark held">&#9679;</span> Development $451M vs $278M; catastrophes 1.3 points vs 2.4.</td>
+<td><span class="mark held">&#9679;</span> $1,394M of favorable development offsets the $1,224M Florida credit.</td>
+<td><span class="mark worse">&#9660;</span> $950M one-off credit; development $461M; catastrophes only 1.1 points.</td>
+<td><span class="mark held">&#9679;</span> Development $329M vs $52M; lower tax rate on deferred-compensation distributions.</td>
+<td><span class="mark held">&#9679;</span> Development $278M vs $11M; realized losses offset higher investment income.</td>
+<td><span class="mark better">&#9650;</span> Development +$416M vs &minus;$1,094M in 2023; recurring investment income +50%.</td>
+<td><span class="mark held">&#9679;</span> Development $137M (0.7 points); 1.2 points of favorable development on first-half storms.</td></tr>
+<tr><td>4. Cash conversion</td>
+<td><span class="mark worse">&#9660;</span> H1 operating cash flow $8.0B vs $9.2B (Florida credits); Q2 cash flow 109% of net income.</td>
+<td><span class="mark worse">&#9660;</span> Operating cash flow $4.4B vs $5.1B after the $1.2B Florida payout; 155% of net income.</td>
+<td><span class="mark held">&#9679;</span> Operating cash flow $17.55B = 155% of net income; FCF $17.20B.</td>
+<td><span class="mark held">&#9679;</span> Nine-month cash flow $14.4B vs $12.1B; Q3 198% of net income.</td>
+<td><span class="mark held">&#9679;</span> H1 cash flow $9.2B vs $7.5B; Q2 127% of net income.</td>
+<td><span class="mark held">&#9679;</span> Cash flow $5.1B vs $4.2B; 200% of net income.</td>
+<td><span class="mark held">&#9679;</span> Cash flow $15.12B = 178% of net income.</td>
+<td><span class="mark better">&#9650;</span> Nine-month cash flow $12.1B vs $8.2B; Q3 198% of net income.</td></tr>
+<tr><td>5. Capital allocation</td>
+<td><span class="mark better">&#9650;</span> H1 buybacks 5.4M shares ($1.1B); new 25M-share authorization; $0.10 quarterly dividend.</td>
+<td><span class="mark better">&#9650;</span> Buybacks 2.3M shares ($478M) vs 0.7M in all of 2025; $8.0B of dividends paid; $1.5B notes issued.</td>
+<td><span class="mark better">&#9650;</span> $13.90 per share declared ($8.1B, 72% of net income); buybacks $166M.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $107M year to date; variable-dividend intent restated.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $67M year to date; new 25M-share authorization.</td>
+<td><span class="mark held">&#9679;</span> $4.50 variable dividend paid ($2.64B); buybacks $54M.</td>
+<td><span class="mark better">&#9650;</span> $4.90 per share declared ($2.9B); preferred redeemed ($500M); buybacks $134M.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $134M year to date; $0.10 quarterly; preferred redeemed in Q1.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td>
+<td><span class="mark held">&#9679;</span> Debt $8.39B, 19.6% of capital; statutory surplus $32.9B; after-tax unrealized loss $832M.</td>
+<td><span class="mark worse">&#9660;</span> Debt-to-capital 20.7% (18.5%) after $1.5B of notes; surplus $31.1B.</td>
+<td><span class="mark held">&#9679;</span> Debt-to-capital 18.5%; surplus $28.4B after the dividend; premiums-to-surplus 2.9x; purchase obligations $3.0B.</td>
+<td><span class="mark better">&#9650;</span> Debt-to-capital 16.3%; surplus $33.7B; two states allow 3.5:1 premiums-to-surplus.</td>
+<td><span class="mark held">&#9679;</span> Debt-to-capital 17.5%; surplus $31.1B.</td>
+<td><span class="mark better">&#9650;</span> Debt-to-capital 19.2%; surplus $29.6B.</td>
+<td><span class="mark better">&#9650;</span> Debt-to-capital 21.2% (25.4%); surplus $27.2B; premiums-to-surplus 2.7x.</td>
+<td><span class="mark better">&#9650;</span> Debt-to-capital 20.2%; no maturities until 2027; surplus $27.2B.</td></tr>
+<tr><td>7. Concentration</td>
+<td><span class="mark held">&#9679;</span> Personal Lines 88% of premiums; volatile-weather homeowners policies &minus;17%.</td>
+<td><span class="mark held">&#9679;</span> Commercial Lines growth rests on TNC renewals (ex-TNC &minus;1%).</td>
+<td><span class="mark worse">&#9660;</span> TNC now Uber only (14 states); Platinum agents nearly 6,000 vs 7,100.</td>
+<td><span class="mark worse">&#9660;</span> 2.7M Florida policyholders share the credit; TNC mileage down.</td>
+<td><span class="mark worse">&#9660;</span> Florida profit cap becomes an exposure; Florida rates cut twice in a year.</td>
+<td><span class="mark held">&#9679;</span> TNC renewal timing drives Commercial Lines; bundles fall with the homeowners pullback.</td>
+<td><span class="mark worse">&#9660;</span> New TNC customer risk factor (Uber 16 states, Lyft 4).</td>
+<td><span class="mark held">&#9679;</span> Personal auto about 80% of policy growth; Florida non-renewals paused by moratoriums.</td></tr>
+<tr><td>8. Accounting judgments</td>
+<td><span class="mark held">&#9679;</span> Critical policies unchanged; property reinsurance retention raised to $300M.</td>
+<td><span class="mark held">&#9679;</span> No changes disclosed.</td>
+<td><span class="mark worse">&#9660;</span> Assumed personal auto severity 7.2% (8.8%) vs reported bodily injury +10%; Florida basis now accident years.</td>
+<td><span class="mark worse">&#9660;</span> Florida credit is an estimate to be refined through Q4.</td>
+<td><span class="mark held">&#9679;</span> No changes; Florida exposure not yet estimable.</td>
+<td><span class="mark held">&#9679;</span> No changes disclosed.</td>
+<td><span class="mark worse">&#9660;</span> Property folded into Personal Lines; portfolio credit floor lowered from A+ to A.</td>
+<td><span class="mark held">&#9679;</span> No changes disclosed.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td>
+<td><span class="mark held">&#9679;</span> Certified total-loss states three; no material settlements; no Florida accrual disclosed for 2024&ndash;2026.</td>
+<td><span class="mark better">&#9650;</span> Certified states cut to three (CO, NC, OH); Florida credits paid.</td>
+<td><span class="mark worse">&#9660;</span> Florida limit "exceeded"; profit limits added to risk factors.</td>
+<td><span class="mark worse">&#9660;</span> Florida refund "probable"; certified states nine &rarr; six.</td>
+<td><span class="mark worse">&#9660;</span> Florida profit statute first disclosed ("possible").</td>
+<td><span class="mark worse">&#9660;</span> Nine certified states; accruals for specific suits acknowledged.</td>
+<td><span class="mark worse">&#9660;</span> Nine certified states; jury verdicts added to reserve risks.</td>
+<td><span class="mark worse">&#9660;</span> Eight certified states plus a data-security class.</td></tr>
+<tr><td>10. Guidance and commitments</td>
+<td><span class="mark worse">&#9660;</span> All three products "adequately priced"; planned property increases and the tariff paragraph dropped.</td>
+<td><span class="mark held">&#9679;</span> Commercial auto now "adequately priced"; property increases still planned.</td>
+<td><span class="mark held">&#9679;</span> 2025 rate guides met; advertising floor met then dropped; 2026 "increasing rates modestly".</td>
+<td><span class="mark better">&#9650;</span> Florida estimate delivered a quarter early.</td>
+<td><span class="mark worse">&#9660;</span> "Near double-digit" rate guide dropped after one quarter.</td>
+<td><span class="mark held">&#9679;</span> Commercial auto guide raised to "near double-digit"; quarterly 96 combined ratio sentence dropped.</td>
+<td><span class="mark held">&#9679;</span> 4% goal met; new 2025 guides (stable auto rates, property and commercial auto up).</td>
+<td><span class="mark held">&#9679;</span> 96 combined ratio goal restated; Q4 rates to stay stable.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated in the window, and what later filings said about it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"growing as fast as we can, at or below a companywide 96 combined ratio on a calendar-year basis, as long as we can provide high-quality customer service."</td><td>Q3 2024 10-Q</td><td>FY2024: met (combined ratio 88.8, margin 11.2%). Q1 2025: sentence dropped from the 10-Q MD&amp;A; the goal is stated as a 4% underwriting profit. FY2025: met (12.6%). Q2 2026: met (H1 13.1%)</td></tr>
+<tr><td>"Our financial policies include a goal of maintaining debt below 30% of total capital at book value."</td><td>Q3 2024 10-Q</td><td>Met throughout: FY2024 21.2%; Q3 2025 16.3%; FY2025 18.5%; Q1 2026 20.7%; Q2 2026 19.6%</td></tr>
+<tr><td>"we expect rates to stay stable in the fourth quarter 2024."</td><td>Q3 2024 10-Q</td><td>FY2024: met; 2024 personal auto rates +3% in aggregate, "modest"</td></tr>
+<tr><td>"we expect rates to stay relatively stable in 2025."</td><td>FY2024 10-K</td><td>FY2025: met; personal auto rates decreased less than 1%</td></tr>
+<tr><td>"we expect to have relatively modest rate increases in 2025." (core commercial auto)</td><td>FY2024 10-K</td><td>Q1 2025: moved up to "near double-digit". FY2025: beaten, about 9%</td></tr>
+<tr><td>"We expect both the personal property and core commercial auto products to have near double-digit rate increases through the remainder of 2025."</td><td>Q1 2025 10-Q</td><td>Q2 2025: number dropped. FY2025: met (property about 10%, commercial auto about 9%)</td></tr>
+<tr><td>"will continue to spend at or above this level" (2024 advertising, $4.0B)</td><td>FY2024 10-K</td><td>FY2025: met ($5.1B), then the floor was dropped. Q2 2026: H1 $2.9B (+18%)</td></tr>
+<tr><td>"We expect to be able to reasonably estimate any potential exposure by the end of the fourth quarter 2025, and to pay amounts owed, if any, during late 2025 or 2026."</td><td>Q2 2025 10-Q</td><td>Q3 2025: beaten, $950M estimated a quarter early. FY2025: raised to $1.2B. Q1 2026: met, paid</td></tr>
+<tr><td>"While we expect to continue increasing rates modestly in our personal property and core commercial auto products during 2026"</td><td>FY2025 10-K</td><td>Q1 2026: moved; commercial auto now "adequately priced", rates flat. Q2 2026: dropped for property (year to date +3%); commercial auto cutting rates in targeted markets (year to date +1%)</td></tr>
+<tr><td>"In May 2025, the Board of Directors approved an authorization for the company to repurchase up to 25 million of its common shares."</td><td>Q2 2025 10-Q</td><td>Q2 2026: replaced by a new 25M-share authorization with 20.9M shares unused (about 4.1M bought)</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 2026 (filed May 4, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P6 Capital and shareholder returns" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital and shareholder returns</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks restart: 2.3M shares for $478M in one quarter, against 0.7M shares in all of 2025</div>
+      <blockquote>Q1 2026: "During the first three months of 2026, we repurchased 2.3 million common shares, at a total cost of $478 million, both in the open market and to satisfy tax withholding obligations"</blockquote>
+      <p class="magnitude"><b>Size:</b> $478M = 17% of Q1 net income ($2.82B); average price $204.90.</p>
+      <p>After two years of returning capital almost only through variable dividends, the company bought stock at a lower price.</p>
+      <p class="next"><b>Next filing:</b> repurchases continue (Q2 2026: 3.07M more shares).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Reserve adequacy" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Reserve adequacy</span><span class="chip">Stated</span></div>
+      <div class="title">Favorable development $451M vs $278M, $320M of it from accident year 2025</div>
+      <blockquote>Q1 2026: "We experienced favorable reserve development of $451 million and $278 million during the first three months of 2026 and 2025, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about 2.2 points of earned premium ($21.0B); 16% of underwriting profit ($2,852M).</p>
+      <p>The release cites "lower than anticipated bodily injury severity", the line where reported severity has been running hottest.</p>
+      <p class="next"><b>Next filing:</b> development stays favorable (Q2 2026: $551M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Nearly one million policies added in the quarter; policies in force +9%</div>
+      <blockquote>Q1 2026: "We ended the first quarter 2026 with 3.3 million, or 9%, more policies in force than at March 31, 2025; adding nearly one million policies in force in the first quarter 2026 alone."</blockquote>
+      <p class="magnitude"><b>Size:</b> 39.565M policies; personal auto policies +11%.</p>
+      <p>Seasonally strong shopping still converts to policy growth well above the premium growth rate.</p>
+      <p class="next"><b>Next filing:</b> policy growth near 9% (Q2 2026: 7%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Premium growth slows to 6%, the slowest quarter to that point; personal vehicle new applications +2%</div>
+      <blockquote>Q1 2026: "We wrote $23.6 billion of companywide net premiums written in the first quarter 2026, which was $1.4 billion, or 6%, more than we generated during the same period last year, with an 8% increase in net premiums earned."</blockquote>
+      <p class="magnitude"><b>Size:</b> premiums +6% vs +17% in Q1 2025; Commercial Lines ex-TNC &minus;1%; personal property &minus;5%.</p>
+      <p>The second filing in a row (after FY2025) showing growth carried by renewals, not new customers; this moved the growth pillar to Weakening.</p>
+      <p class="next"><b>Next filing:</b> premium growth (Q2 2026: 5%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Accident-year loss ratio 68.1 vs 67.2 even with catastrophes down to 1.3 points from 2.4</div>
+      <blockquote>Q1 2026: "Accident year &ndash; Loss &amp; loss adjustment expense ratio 2 | 68.1 | 67.2 | 0.9"</blockquote>
+      <blockquote>Q1 2026: "The year-over-year increase in total severity was predominantly driven by bodily injury coverage, due to higher medical costs, more large losses, and a higher rate of plaintiff-attorney represented claims, compared to the prior year."</blockquote>
+      <p class="magnitude"><b>Size:</b> excluding catastrophes the accident-year ratio rose about 2.0 points (arithmetic); bodily injury severity +8%.</p>
+      <p>The calendar margin (13.6%) looked stable only because of light catastrophes and larger releases.</p>
+      <p class="next"><b>Next filing:</b> accident-year ratio (Q2 2026: +1.6 points, confirming).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital and shareholder returns" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital and shareholder returns</span><span class="chip">Stated</span></div>
+      <div class="title">$1.5B of senior notes issued as the $7.9B variable dividend was paid; debt-to-total capital 20.7%</div>
+      <blockquote>Q1 2026: "Our debt-to-total capital ratio was 20.7% at March 31, 2026, 19.2% at March 31, 2025, and 18.5% at December 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $74M a year of added interest (4.60% on $500M, 5.15% on $1.0B); quarterly interest expense $88M in Q2 vs $70M (XBRL).</p>
+      <p>The FY2024 10-K had pointed to no maturities until 2027; the notes are for "general corporate purposes", issued in the quarter buybacks resumed. Leverage is still well under the 30% policy.</p>
+      <p class="next"><b>Next filing:</b> no further issuance; refinancing of the $1.0B due in 2027.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Regulation and litigation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Regulation and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">The $1.2B Florida refund is paid, cutting operating cash flow to $4.4B from $5.1B</div>
+      <blockquote>Q1 2026: "The decrease in operating cash flows for the first three months of 2026, compared to the same period last year, was primarily driven by the $1.2 billion Florida policyholder credits that were paid out during the first quarter 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1.2B = 27% of Q1 operating cash flow; expensed in 2025, so no new earnings hit.</p>
+      <p>The cap turned two years of Florida tort-reform gains into a cash refund, and the statute keeps applying to rolling three-accident-year periods.</p>
+      <p class="next"><b>Next filing:</b> any accrual for 2024&ndash;2026 (none disclosed in Q2 2026).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed March 2, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Underwriting margin 12.6% vs 11.2%, after absorbing the $1.2B Florida credit; net income $11.31B</div>
+      <blockquote>FY2025: "Our underwriting profit margin was 12.6%, which was 1.4 points better than the 11.2% margin earned in 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> underwriting profit $10.25B; about 14.1% before the 1.5-point credit; net income +33% (XBRL).</p>
+      <p>Lower frequency, light catastrophes and releases carried the year; personal property earned 24.9% after two years of rate.</p>
+      <p class="next"><b>Next filing:</b> margin held near 13% in 2026 (Q1 13.6%, Q2 12.7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Reserve adequacy" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Reserve adequacy</span><span class="chip">Stated</span></div>
+      <div class="title">Favorable development $1,394M, more than three times 2024's $416M</div>
+      <blockquote>FY2025: "We experienced favorable development of $1,394 million and $416 million in 2025 and 2024, respectively, compared to unfavorable reserve development of $1,094 million in 2023"</blockquote>
+      <p class="magnitude"><b>Size:</b> 1.7 points of earned premium ($81.7B); 14% of underwriting profit; about $800M from accident year 2024.</p>
+      <p>Two straight years of releases after 2023's adverse year; Florida loss costs drove most of it.</p>
+      <p class="next"><b>Next filing:</b> 2026 releases on accident year 2025, reserved at a lower severity assumption.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital and shareholder returns" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital and shareholder returns</span><span class="chip">Stated</span></div>
+      <div class="title">$13.90 per share declared ($8.1B), including a $13.50 variable dividend</div>
+      <blockquote>FY2025: "Common Share Dividends - declared aggregate dividends of $13.90 per common share, or $8.1 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> 72% of net income and 46% of operating cash flow ($17.55B); 2024 was $4.90 ($2.9B).</p>
+      <p>Paid from earnings and a $13.0B holding-company portfolio, with debt-to-total capital down to 18.5%.</p>
+      <p class="next"><b>Next filing:</b> surplus rebuilt after the payout (Q2 2026: $32.9B).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Regulation and litigation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Regulation and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">Florida profit cap costs $1.2B; "limit the profit an insurer may earn" joins the risk factors</div>
+      <blockquote>FY2025: "As a result, in 2025, we recorded a $1.2 billion policyholder credit expense (Florida policyholder credits), which represents our current estimate of the profit we earned on the three-accident-year period ending December 31, 2025, in excess of the permitted profit limit."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1,224M = 8.6% of 2025 pre-tax income ($14.22B); 1.7 points of Personal Lines margin.</p>
+      <p>The estimate rose 26% from Q3's $950M. Excess profit in one large state is capped by law, so better loss experience there cannot be kept.</p>
+      <p class="next"><b>Next filing:</b> payment (Q1 2026) and any accrual for later periods.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Personal auto severity +6% (bodily injury +10%) in a year of personal auto rate cuts</div>
+      <blockquote>FY2025: "The year-over-year increase in total severity was predominantly driven by more large losses, higher medical costs, and increased bodily injury coverage reserves due to a higher rate of plaintiff-attorney represented claims."</blockquote>
+      <blockquote>FY2025: "During 2025, in the aggregate, we decreased personal auto rates less than 1% and increased our personal property rates about 10%."</blockquote>
+      <p class="magnitude"><b>Size:</b> severity +6% vs +1% in 2024; frequency &minus;3% masked it. Personal auto is just under 80% of premiums.</p>
+      <p>Falling frequency cannot offset rising severity indefinitely; the 10-K itself assumed only 7.2% severity growth for accident year 2025 liability reserves (8.8% a year earlier).</p>
+      <p class="next"><b>Next filing:</b> accident-year loss ratio in 2026 (it rose in Q1 and Q2).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Retention and competitive position" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Retention and competitive position</span><span class="chip">Stated</span></div>
+      <div class="title">Trailing 3-month personal auto policy life expectancy &minus;10%, 12-month &minus;7%</div>
+      <blockquote>FY2025: "On a trailing 3-month basis, our personal auto policy life expectancy was down 10% for 2025, compared to 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> 12-month measure &minus;7% (2024: &minus;4%); the re-quoting effect the filing cites is not quantified.</p>
+      <p>The leading measure is worse than the lagging one, so the decline had not bottomed; "changes in billing plans" are added as a cause.</p>
+      <p class="next"><b>Next filing:</b> 3-month measure (Q1 2026 &minus;7%, Q2 2026 &minus;9%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial Lines premiums &minus;3% as TNC policies are not renewed; Lyft drops out</div>
+      <blockquote>FY2025: "The decline in net premiums written was primarily due to certain TNC policies that were not renewed in 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> Commercial Lines 13% of premiums (15%); ex-TNC &minus;1%. TNC now written only for Uber in 14 states (16 plus Lyft in 4 a year earlier).</p>
+      <p>The customer-concentration risk added in the FY2024 10-K came true within a year.</p>
+      <p class="next"><b>Next filing:</b> Commercial Lines growth ex-TNC.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2025 (filed November 3, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Before the Florida credit, Personal Lines earned 15.8%; accident-year loss ratio 66.6 vs 68.8</div>
+      <blockquote>Q3 2025: "Excluding the Florida personal auto excess profit policyholder credit, the Personal Lines underwriting margin would have been 15.8%."</blockquote>
+      <p class="magnitude"><b>Size:</b> reported companywide margin 10.5%; the credit was 4.6 points. Catastrophes 1.1 points vs 4.0.</p>
+      <p>Underlying profitability was at a high, helped by a quiet hurricane season.</p>
+      <p class="next"><b>Next filing:</b> full-year margin (FY2025: 12.6%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital and shareholder returns" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital and shareholder returns</span><span class="chip">Stated</span></div>
+      <div class="title">Statutory surplus $33.7B and debt-to-total capital 16.3%; two states allow 3.5:1 premiums-to-surplus</div>
+      <blockquote>Q3 2025: "As of September 30, 2025, our estimated consolidated statutory surplus was $33.7 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> surplus +$6.5B since year-end 2024; total capital $42.3B.</p>
+      <p>Excess capital built up ahead of the $13.50 variable dividend declared in December.</p>
+      <p class="next"><b>Next filing:</b> size of the variable dividend (FY2025: $7.9B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Reserve adequacy" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Reserve adequacy</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month favorable development $1,068M vs $199M</div>
+      <blockquote>Q3 2025: "We experienced favorable reserve development of $1,068 million and $199 million during the first nine months of 2025 and 2024, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> Q3 alone $461M vs $136M.</p>
+      <p>Releases kept growing through the year.</p>
+      <p class="next"><b>Next filing:</b> full-year development (FY2025: $1,394M).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Regulation and litigation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Regulation and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">$950M Florida excess-profit credit booked: "possible" becomes "probable"</div>
+      <blockquote>Q3 2025: "As a result, in September 2025, we recorded a $950 million policyholder credit expense, which represents our current estimate of the profit we will earn on the three-calendar-year period ending December 31, 2025, in excess of the permitted profit limit."</blockquote>
+      <p class="magnitude"><b>Size:</b> 4.6 points of the companywide ratio; about 29% of Q3 pre-tax income ($3.32B).</p>
+      <p>The second filing in a row on the profit cap; this moved the regulation pillar to Weakening.</p>
+      <p class="next"><b>Next filing:</b> final estimate (FY2025: $1.2B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Personal auto new applications fall 2%; growth now comes from renewals</div>
+      <blockquote>Q3 2025: "New and renewal personal auto applications decreased 2% and increased 20%, respectively, for the third quarter 2025, compared to the same period in the prior year."</blockquote>
+      <p class="magnitude"><b>Size:</b> premiums +10%; Commercial Lines &minus;6%; advertising +10% after +35% and +86%.</p>
+      <p>The new-customer engine stalled; the book still grew as last year's wave renewed.</p>
+      <p class="next"><b>Next filing:</b> new applications (FY2025: +9% for the year; Q1 2026: +2%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Personal auto severity +7%, bodily injury +11%, on plaintiff-attorney representation</div>
+      <blockquote>Q3 2025: "The year-over-year increases in total severity was predominantly driven by increased bodily injury coverage reserves, compared to the same periods last year, due to higher medical costs and a higher rate of plaintiff-attorney represented injury claims."</blockquote>
+      <p class="magnitude"><b>Size:</b> severity +7% vs frequency &minus;2%; personal auto rates rose less than 1%.</p>
+      <p>Social-inflation pressure persisted for a third quarter while pricing stayed flat.</p>
+      <p class="next"><b>Next filing:</b> full-year severity (FY2025: +6%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 2025 (filed August 4, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Underwriting margin 13.8% vs 8.1%: fewer catastrophes and releases</div>
+      <blockquote>Q2 2025: "Our underwriting profit margin was 13.8% during the second quarter 2025, compared to 8.1% during the second quarter 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> underwriting profit $2,808M vs $1,386M; catastrophes 3.5 vs 7.4 points.</p>
+      <p>A doubled underwriting profit on 18% more earned premium.</p>
+      <p class="next"><b>Next filing:</b> margin with a normal hurricane season.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Policies in force +15% (5.0M), 1.0M added in the quarter</div>
+      <blockquote>Q2 2025: "Policies in force increased 15%, or by 5.0 million policies, compared to June 30, 2024; with policies in force increasing by 1.0 million in the second quarter 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> 37.3M policies; renewal personal auto applications +22%.</p>
+      <p>The 2024 new-business wave was renewing at scale.</p>
+      <p class="next"><b>Next filing:</b> policy growth (Q3 2025: +12%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Regulation and litigation" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Regulation and litigation</span><span class="chip">Stated</span></div>
+      <div class="title">Florida excess-profit statute first disclosed: refund of 2023&ndash;2025 profit is "possible"</div>
+      <blockquote>Q2 2025: "Despite these actions, it is possible that our profit for personal auto in Florida for the 2023 to 2025 period will exceed the statutory profit limit that a Florida statute imposes on the profit that any insurance group can earn on personal auto insurance over any three-calendar-year period"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing (later $1.2B).</p>
+      <p>Florida rates were already cut twice in a year; the statute limits what tort reform can add to earnings.</p>
+      <p class="next"><b>Next filing:</b> an estimate (Q3 2025: $950M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Bodily injury severity +12% as personal auto rates are cut</div>
+      <blockquote>Q2 2025: "The year-over-year increase in total severity was predominantly driven by increased bodily injury coverage reserves, compared to the same periods last year, due to higher medical costs and a higher rate of litigated injury claims."</blockquote>
+      <blockquote>Q2 2025: "During the second quarter 2025, on a countrywide basis, we decreased personal auto rates less than 1% and increased our personal property rates about 4%, in the aggregate."</blockquote>
+      <p class="magnitude"><b>Size:</b> total personal auto severity +6%; written premium per policy &minus;1%.</p>
+      <p>Pricing turned down while the most expensive coverage accelerated.</p>
+      <p class="next"><b>Next filing:</b> severity (Q3 2025: +7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial Lines premiums &minus;6% despite 6% policy growth</div>
+      <blockquote>Q2 2025: "In Commercial Lines, we experienced a decrease in net premiums written of 6% during the second quarter 2025, compared to the same period last year, despite experiencing policies in force growth of 6%."</blockquote>
+      <p class="magnitude"><b>Size:</b> ex-TNC &minus;2%; companywide premiums +12% (Q1: +17%).</p>
+      <p>TNC timing and a shift to 6-month terms and smaller accounts shrink premium per policy.</p>
+      <p class="next"><b>Next filing:</b> Commercial Lines premiums (Q3 2025: &minus;6%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 2025 (filed May 5, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Premiums +17%, policies +18%, new personal auto applications +32%</div>
+      <blockquote>Q1 2025: "During the first three months of 2025, companywide net premiums written and earned increased 17% and 20%, respectively, compared to the same period last year, and policies in force increased 18%."</blockquote>
+      <blockquote>Q1 2025: "New personal auto applications increased 32% during the first quarter 2025, compared to the same period in the prior year."</blockquote>
+      <p class="magnitude"><b>Size:</b> $22.2B of premiums (+$3.2B); 36.3M policies.</p>
+      <p>The growth push was still running at full speed.</p>
+      <p class="next"><b>Next filing:</b> new application growth (Q2 2025: +8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Margin 14.0% while advertising rose 86%</div>
+      <blockquote>Q1 2025: "Our underwriting profit margin was 14.0% during the first quarter 2025, compared to 13.9% during the first quarter 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> loss ratio &minus;2.0 points absorbed a 1.9-point higher expense ratio; underwriting profit $2,717M.</p>
+      <p>Growth spending was self-funded by better loss experience.</p>
+      <p class="next"><b>Next filing:</b> margin with advertising growth (Q2 2025: 13.8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Reserve adequacy" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Reserve adequacy</span><span class="chip">Stated</span></div>
+      <div class="title">Favorable development $278M vs $11M</div>
+      <blockquote>Q1 2025: "We experienced favorable reserve development of $278 million and $11 million during the first three months of 2025 and 2024, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about 1.4 points of earned premium.</p>
+      <p>Florida loss costs keep coming in below reserves.</p>
+      <p class="next"><b>Next filing:</b> development (Q2 2025: $329M).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Tariffs "will likely result in higher loss costs"; severity +5%</div>
+      <blockquote>Q1 2025: "While our focus has been on trying to maintain stable rates for customers, tariffs and other retaliatory actions will likely result in higher loss costs, which could result in a reduction in profitability and higher than currently anticipated rate increases throughout 2025 and 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; personal auto severity +5% (bodily injury +9%).</p>
+      <p>The strongest tariff wording in the window, in a quarter when severity was already rising.</p>
+      <p class="next"><b>Next filing:</b> severity and tariff wording (both softened later; severity kept rising).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Retention and competitive position" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Retention and competitive position</span><span class="chip">Stated</span></div>
+      <div class="title">Personal auto policy life expectancy &minus;5% (12-month), &minus;6% (3-month)</div>
+      <blockquote>Q1 2025: "Our trailing 12-month total personal auto policy life expectancy was down 5% year over year for the first quarter 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> personal property &minus;17%.</p>
+      <p>Retention kept slipping while new-customer growth was strong, attributed to "increased shopping and the competitiveness in the marketplace".</p>
+      <p class="next"><b>Next filing:</b> retention (Q2 2025: &minus;5% and &minus;7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Homeowners/condo new applications down more than 55%; bundles suffer</div>
+      <blockquote>Q1 2025: "The new application growth in our homeowners/condo products was down just over 55% on a year-over-year basis for the first quarter 2025"</blockquote>
+      <p class="magnitude"><b>Size:</b> personal property premiums flat; property about 5% of Personal Lines.</p>
+      <p>Property de-risking protects margin but works against the auto-and-home bundle the strategy is built on.</p>
+      <p class="next"><b>Next filing:</b> homeowners new applications (2025: &minus;45%; reopening from late 2025).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (filed March 3, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Underwriting margin 11.2% vs 5.1%; net income $8.48B (+$4.6B)</div>
+      <blockquote>FY2024: "Our underwriting profit margin was 11.2%, which was 6.1 points better than the 5.1% underwriting margin we earned in 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> underwriting profit $7.96B vs $2.99B; accident-year loss ratio 69.7 vs 75.7.</p>
+      <p>The 2023 rate increases earned in while frequency fell 5%.</p>
+      <p class="next"><b>Next filing:</b> margin with rates now flat.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">Premiums +$12.9B (+21%) to $74.4B; just over 5M policies added</div>
+      <blockquote>FY2024: "We wrote $74.4 billion of net premiums written during 2024, which was $12.9 billion more than we generated during 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> policies 35.0M (+18%); new personal auto applications +44%.</p>
+      <p>Advertising and lifted restrictions converted competitors' rate increases into share.</p>
+      <p class="next"><b>Next filing:</b> growth rate in 2025.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Reserve adequacy" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Reserve adequacy</span><span class="chip">Stated</span></div>
+      <div class="title">Reserves turn: 0.6 points favorable after 1.9 points adverse in 2023</div>
+      <blockquote>FY2024: "The companywide favorable prior accident years reserve development of 0.6 points during 2024, compared to unfavorable development during 2023 of 1.9 points, also contributed to our increased underwriting profitability."</blockquote>
+      <p class="magnitude"><b>Size:</b> $416M favorable vs $1,094M adverse, a $1.5B swing.</p>
+      <p>The second filing in a row with releases (after Q3 2024); this moved the reserve pillar to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> 2025 development.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Capital and shareholder returns" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Capital and shareholder returns</span><span class="chip">Stated</span></div>
+      <div class="title">$4.90 per share declared ($2.9B); debt-to-total capital 21.2% from 25.4%</div>
+      <blockquote>FY2024: "Common Share Dividends - declared aggregate dividends of $4.90 per common share, or $2.9 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> 34% of net income; statutory surplus $27.2B (+$5.0B).</p>
+      <p>Capital return resumed while surplus and leverage both improved.</p>
+      <p class="next"><b>Next filing:</b> payout for 2025.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Retention and competitive position" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Retention and competitive position</span><span class="chip">Stated</span></div>
+      <div class="title">Personal auto policy life expectancy &minus;4%, direct &minus;7%</div>
+      <blockquote>FY2024: "Our trailing 12-month total personal auto policy life expectancy was down 4% year over year, with agency personal auto up 2% and direct down 7%."</blockquote>
+      <p class="magnitude"><b>Size:</b> after +24% in 2023; 3-month measure also &minus;4%.</p>
+      <p>The second filing with falling retention (after Q3 2024's direct &minus;6%); this moved the retention pillar to Weakening.</p>
+      <p class="next"><b>Next filing:</b> retention in 2025 (&minus;7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Advertising +150% to $4.0B; expense ratio +2.4 points</div>
+      <blockquote>FY2024: "During 2024, on a year-over-year basis, our companywide advertising spend increased 150%, bringing our 2024 advertising costs to $4.0 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> about 5.6% of earned premium; the filing commits to spend "at or above this level".</p>
+      <p>A fixed spending floor locks in cost just as growth would naturally slow.</p>
+      <p class="next"><b>Next filing:</b> advertising efficiency (2025: $5.1B, floor dropped).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">New risk factor: losing TNC customers' geographic coverage</div>
+      <blockquote>FY2024: "Additionally, our Commercial Lines business may be adversely affected by a loss of or reduction in geographic coverage from one or more customers, including transportation network company customers."</blockquote>
+      <p class="magnitude"><b>Size:</b> TNC about 15% of Commercial Lines premiums, written for two counterparties.</p>
+      <p>A named concentration risk in the segment with the weakest growth.</p>
+      <p class="next"><b>Next filing:</b> TNC renewals (FY2025: policies not renewed, Lyft gone).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Investment portfolio" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Investment portfolio</span><span class="chip">Stated</span></div>
+      <div class="title">Portfolio credit floor lowered from A+ to A from January 1, 2025</div>
+      <blockquote>FY2024: "we moved our internal ratings guideline for our portfolio down from an A+ to an A minimum weighted average portfolio credit rating."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; actual weighted average stayed AA- through Q2 2026, while BB-rated holdings rose to 1.6% (1.0% a year earlier).</p>
+      <p>The stated reason is the Treasury downgrade, but the looser guideline gives room to add credit risk.</p>
+      <p class="next"><b>Next filing:</b> credit quality distribution.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2024 (filed November 4, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Policy growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Policy growth</span><span class="chip">Stated</span></div>
+      <div class="title">New personal auto applications +110%; premiums +25%</div>
+      <blockquote>Q3 2024: "New personal auto applications increased 110% for the third quarter 2024, compared to a decrease of 20% in the third quarter last year."</blockquote>
+      <p class="magnitude"><b>Size:</b> premiums $19.5B (+$3.9B); policies 33.9M (+14%).</p>
+      <p>Growth switched back on after the 2023 profit-first restrictions.</p>
+      <p class="next"><b>Next filing:</b> full-year growth.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Combined ratio 89.0, 3.4 points better; frequency &minus;5%, severity +1%</div>
+      <blockquote>Q3 2024: "We reported a companywide combined ratio of 89.0, which was 3.4 points better than the third quarter last year."</blockquote>
+      <blockquote>Q3 2024: "our incurred personal auto accident frequency decreased 5% and severity trends remained relatively stable, with a 1% increase over the prior year."</blockquote>
+      <p class="magnitude"><b>Size:</b> underwriting profit $2.0B vs $1.1B; accident-year loss ratio 68.8 vs 76.1.</p>
+      <p>Earned rate ran well ahead of loss trend.</p>
+      <p class="next"><b>Next filing:</b> severity trend (FY2024: +1%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Investment portfolio" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Investment portfolio</span><span class="chip">Stated</span></div>
+      <div class="title">Recurring investment income +45%</div>
+      <blockquote>Q3 2024: "During the third quarter 2024, pretax recurring investment income increased 45%, primarily due to investing new cash from operations and proceeds from maturing bonds in higher coupon rate securities."</blockquote>
+      <p class="magnitude"><b>Size:</b> book yield 4.0% vs 3.3%; portfolio $79.4B.</p>
+      <p>Float growth plus higher yields compound.</p>
+      <p class="next"><b>Next filing:</b> book yield (FY2024: 3.9%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Hurricane Helene 3.1 points; Milton adds about $140M property and part of about $600M vehicle losses</div>
+      <blockquote>Q3 2024: "Hurricane Helene, which made landfall as a category 4 storm late in the third quarter 2024, accounted for 3.1 loss ratio points on a companywide basis."</blockquote>
+      <blockquote>Q3 2024: "As of October 31, 2024, we estimated that our Property business will incur losses and allocated loss adjustment expenses (ALAE), net of reinsurance, of about $140 million."</blockquote>
+      <p class="magnitude"><b>Size:</b> catastrophes 4.0 points vs 3.2; Q3 catastrophe losses $732M.</p>
+      <p>Weather volatility in Florida-heavy exposures; vehicle losses have no catastrophe reinsurance.</p>
+      <p class="next"><b>Next filing:</b> Q4 catastrophe losses.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Pricing and loss trends" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Pricing and loss trends</span><span class="chip">Stated</span></div>
+      <div class="title">Expense ratio +4.8 points as advertising rises nearly 400%</div>
+      <blockquote>Q3 2024: "Partially offsetting the impact the improved loss ratio had on profitability, was a 4.8 point increase in our expense ratio over the third quarter 2023, primarily driven by increased advertising expense."</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month advertising $2.8B, more than any previous full year.</p>
+      <p>Growth is bought, and the cost is a recurring expense.</p>
+      <p class="next"><b>Next filing:</b> advertising per point of growth.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Retention and competitive position" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Retention and competitive position</span><span class="chip">Stated</span></div>
+      <div class="title">Trailing 3-month personal auto policy life expectancy &minus;6%; direct 12-month &minus;6%</div>
+      <blockquote>Q3 2024: "Our total personal auto trailing 3-month policy life expectancy was down 6% at the end of the third quarter 2024, due to rate and non-rate actions put in place throughout 2023"</blockquote>
+      <p class="magnitude"><b>Size:</b> total 12-month measure flat (Q2 2024: +9%).</p>
+      <p>Retention peaked; the direct channel is already shortening.</p>
+      <p class="next"><b>Next filing:</b> retention in the 10-K (&minus;4%).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
