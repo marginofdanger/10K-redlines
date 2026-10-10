@@ -247,7 +247,7 @@ NOTES_END = re.compile(r"(report of independent registered public accounting fir
 NOTE_HEAD = re.compile(r"(?:note\s+)?(\d{1,2})\s*[\.:\u2014\u2013\-]\s*((?:[A-Za-z]|401\(k\)).{2,140})", re.I)
 # A table-of-contents row: a title with its page number in the last cell
 # ("12. Commitments and Contingencies | 63", "Note 14. ... | F-73"): an index row, not a note.
-TOC_ROW = re.compile(r".*\|\s*(page\s*)?(f-)?\d{1,3}$", re.I)
+TOC_ROW = re.compile(r".*\|\s*(page\s*)?(f-)?\d{1,4}\s*$", re.I)
 # a table's last cell glued onto the next note heading ("+42.8+Note 5 - Cash ...")
 GLUED_NOTE = re.compile(r"([\d\s.,+\-()$%]*\d[\d\s.,+\-()$%]*?)(Note\s+\d{1,2}\s*[\.:\u2014\u2013\-]\s*[A-Za-z].{2,140})")
 
@@ -314,7 +314,8 @@ def mda_subsections(mda):
         starts = [i for i, l in enumerate(lines) if len(l) < 90 and re.match(rx, l, re.I)]
         best = ""
         for i in starts:  # the body heading has the longest run; earlier hits are in-text overviews
-            j = next((k for k in range(i + 1, len(lines)) if len(lines[k]) < 90 and MDA_TOP.match(lines[k])
+            # start at i + 2: a top-level word straight after the heading ("Overview") is its sub-heading
+            j = next((k for k in range(i + 2, len(lines)) if len(lines[k]) < 90 and MDA_TOP.match(lines[k])
                       and not re.match(rx, lines[k], re.I)), len(lines))
             if j - i > best.count("\n") + 1:
                 best = "\n".join(raw[i:j])
