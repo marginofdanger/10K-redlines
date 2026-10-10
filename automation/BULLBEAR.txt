@@ -1,0 +1,128 @@
+BULL / BEAR: FUNDAMENTALS ANALYSIS RUNBOOK
+=========================================
+
+A separate analysis from the redline dashboards. The redlines (RUNBOOK.txt)
+ask what the company changed in its wording. This asks what the filing does
+to the investment case, for and against, on fundamentals. Each company has
+one page, companies/<t>/bullbear/index.html, updated after every new 10-K,
+20-F or 10-Q (after the redline update for that filing, in the same run).
+The page is published unreviewed, like the dashboards, and the repository is
+public: never write the SEC contact email anywhere.
+
+The reader is an investor who owns or is considering the stock. They want
+the evidence in this filing that should make them more or less confident,
+weighed fairly. A page that only lists risks is as useless as one that only
+lists positives.
+
+
+1. INPUTS
+---------
+Use the same downloaded filings and extracted sections as the redline run
+(RUNBOOK.txt section 2). Read, in this order:
+  a. companies/<t>/bullbear/thesis.txt: the investment case as 5-8 pillars.
+     Each pillar states what the bull case assumes, what the bear case
+     fears, the current stance, and what tests it. If it does not exist,
+     write it first from the dashboards' themes and tracked signals.
+  b. the bull/bear page as it stands, especially the scoreboard, the
+     fundamentals table and the stated-targets table.
+  c. python scripts/financials.py <TICKER> --years 4 --quarters 6
+     (reported XBRL figures and derived ratios; "!" marks a sharp move)
+  d. redlines and full text of: notes, contingencies, subsequent_events,
+     mda_liquidity, mda_critical_estimates, mda, risk_factors,
+     legal_proceedings, business (in that order). Table rows appear as
+     "label | value | value".
+
+
+2. THE FUNDAMENTALS QUESTIONS
+-----------------------------
+Answer each from the new filing in one or two lines, citing the note or
+MD&A heading, and say whether it got better, worse or held versus the prior
+filing. Write the answers to companies/<t>/bullbear/<period>.txt.
+  1. Growth and pricing: revenue drivers (volume vs price vs mix), segment
+     growth, backlog / remaining performance obligations, bookings.
+  2. Margins and unit economics: gross and operating margin by segment,
+     cost drivers named in the MD&A, operating leverage.
+  3. Earnings quality: how much of net income is one-off or non-operating
+     (tax items, gains, fair-value marks, PIK, accruals, catch-up payments)
+     in either direction.
+  4. Cash conversion: operating cash flow vs net income and what drove the
+     gap; free cash flow; DSO and other working capital.
+  5. Capital allocation: capex and its stated return, buybacks, dividends,
+     M&A, equity issuance, debt-funded vs cash-funded.
+  6. Balance sheet and contingent exposure: debt, maturities, covenants,
+     ratings language, liquidity; guarantees, purchase and supply
+     commitments, leases not yet commenced, VIEs, TRAs.
+  7. Concentration: customers, suppliers, distributors, geographies, payers.
+  8. Accounting judgments: critical estimates, useful lives, reserve
+     development, segment or metric redefinitions, restatements.
+  9. Legal, regulatory and governance: proceedings, investigations,
+     rule changes, related parties, insider plans.
+ 10. Guidance and commitments: every number, range or target management
+     stated before (the stated-targets table). Met, beaten, moved, dropped
+     or not mentioned?
+
+
+3. THE TWO PASSES
+-----------------
+Do both passes over the same evidence, separately, before writing anything.
+
+Bull pass: what in this filing makes a pillar stronger? Look for a risk
+removed or narrowed, a hedge dropped, a target met or beaten early, margins
+or cash conversion improving, debt repaid or refinanced on better terms,
+concentration falling, a lawsuit dismissed or settled cheaply, a reserve
+released for a stated reason, guidance raised, a new customer, product or
+contract quantified, capital returned from free cash flow.
+
+Bear pass: what makes a pillar weaker? Look for one-off earnings, cash
+lagging earnings, new guarantees or commitments, rising leverage or
+loosened covenants, concentration rising, reserves strengthened or
+released without a reason, estimates changed in the company's favour,
+targets dropped or missed, new proceedings, metrics no longer disclosed.
+
+Each finding names its pillar, its side (Bull or Bear), the evidence quoted
+verbatim, the size of it relative to something that matters (from
+financials.py: "$45.95B maximum exposure = 55% of FY2025 operating income";
+or "not quantified in the filing"), whether it is Stated by the filing or
+Inferred by you, and what the next filing must show to confirm or refute it.
+
+A side with nothing material says so in one line ("No bullish evidence on
+the balance sheet this quarter"). Never pad a side to balance the count,
+and never drop real evidence to balance it either. Aim for the 3-6 most
+material findings per side.
+
+Skeptical check before writing: for every finding ask whether an investor
+who knows the company would change their confidence. Check every "first
+time" or "since" claim against the earlier filings. Check that each bull
+finding has been looked at as a bear finding too (and vice versa): a
+buyback is bullish if funded from free cash flow and bearish if funded by
+debt while cash conversion falls.
+
+
+4. THE PAGE
+-----------
+Copy automation/templates/bullbear.html for a new company; keep its
+structure, CSS and script. Sections, top to bottom:
+  - header: company, ticker, latest filing covered, links to the 10-K
+    dashboard and 10-Q scanner
+  - scoreboard: one row per pillar: stance (Strengthening / Intact /
+    Weakening / Broken), the strongest bull and bear evidence in one line
+    each, and the filing that last moved it. A stance moves only when
+    findings point the same way across two or more filings.
+  - latest filing: Bull and Bear findings side by side, each a card with
+    pillar, quote(s) labelled by period, magnitude, basis and next.
+  - fundamentals table: the ten questions as rows, one column per filing
+    covered (newest first), each cell the one-line answer with a better /
+    worse / held marker.
+  - stated targets: sentence, filing it was stated in, number, and the
+    outcome in each later filing (met / beaten / moved / dropped / not
+    mentioned).
+  - earlier filings: previous Bull/Bear findings, collapsed, newest first.
+Quotes must be verbatim and are checked by verify_dashboard.py like the
+dashboards' quotes. Root index.html: the company's bullbear link (bb field).
+
+
+5. VERIFY AND PUBLISH
+---------------------
+    python scripts/verify_dashboard.py companies/<t>/bullbear/index.html --since origin/main
+must print OK. Commit the page, thesis.txt and the <period>.txt answers in
+the same commit as that filing's redline update, or as the next commit.

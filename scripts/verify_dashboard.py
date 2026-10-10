@@ -136,35 +136,32 @@ def render(path):
     return __import__("json").loads(r.stdout.strip().splitlines()[-1])
 
 
-DIRECTIONS = {"bearish", "bullish", "mixed", "watch"}
+SIDES = {"bull", "bear"}
 
 
-def finding_fields(src, new_lines):
-    """New findings must carry the investment fields the runbook defines: data-pillar,
-    data-direction and data-basis on the finding, plus a .magnitude and a .next line inside it."""
+def card_fields(src, new_lines):
+    """Bull/bear pages: each new evidence card needs data-pillar, data-side (bull|bear) and
+    data-basis (stated|inferred), plus a .magnitude and a .next line inside it."""
     fails = []
     lines = src.split("\n")
     for ln in sorted(new_lines):
         line = lines[ln - 1] if ln - 1 < len(lines) else ""
-        if '<div class="finding"' not in line:
+        if '<div class="bb-card"' not in line:
             continue
-        tail = "\n".join(lines[ln - 1:ln + 5])  # the opening tag may wrap
-        m = re.search(r'<div class="finding"([^>]*)>', tail)
-        if not m:
-            continue
-        attrs = dict(re.findall(r'data-(\w+)="([^"]*)"', m.group(1)))
+        m = re.search(r'<div class="bb-card"([^>]*)>', "\n".join(lines[ln - 1:ln + 5]))
+        attrs = dict(re.findall(r'data-(\w+)="([^"]*)"', m.group(1))) if m else {}
         if not attrs.get("pillar"):
-            fails.append(f"line {ln}: new finding has no data-pillar")
-        if attrs.get("direction") not in DIRECTIONS:
-            fails.append(f"line {ln}: new finding data-direction must be one of {sorted(DIRECTIONS)}")
+            fails.append(f"line {ln}: card has no data-pillar")
+        if attrs.get("side") not in SIDES:
+            fails.append(f"line {ln}: card data-side must be bull or bear")
         if attrs.get("basis") not in ("stated", "inferred"):
-            fails.append(f"line {ln}: new finding data-basis must be stated or inferred")
-        block = "\n".join(lines[ln - 1:ln + 80])
-        end = block.find('<div class="finding"', 10)
+            fails.append(f"line {ln}: card data-basis must be stated or inferred")
+        block = "\n".join(lines[ln - 1:ln + 60])
+        end = block.find('<div class="bb-card"', 10)
         block = block if end < 0 else block[:end]
         for cls in ("magnitude", "next"):
             if f'class="{cls}"' not in block:
-                fails.append(f"line {ln}: new finding has no element with class=\"{cls}\"")
+                fails.append(f"line {ln}: card has no element with class=\"{cls}\"")
     return fails
 
 
@@ -195,11 +192,14 @@ def main():
     corpus_files = glob.glob(os.path.join(folder, "sections", "*_full.txt"))
     if os.path.basename(folder) == "10q":
         corpus_files += glob.glob(os.path.join(folder, "..", "sections", "*_full.txt"))
+    if os.path.basename(folder) == "bullbear":  # quotes come from the company's 10-K and 10-Q text
+        corpus_files += glob.glob(os.path.join(folder, "..", "sections", "*_full.txt"))
+        corpus_files += glob.glob(os.path.join(folder, "..", "10q", "sections", "*_full.txt"))
     quotes = p.quotes
     if a.since:
         new = added_lines(a.page, a.since)
         quotes = [q for q in quotes if q[1] in new or any(l in new for l in range(q[1] - 3, q[1] + 1))]
-        fails += finding_fields(src, new)
+        fails += card_fields(src, new)
     checked = unmatched = 0
     if corpus_files:
         # drop page furniture so a paragraph split across a page break reads continuously

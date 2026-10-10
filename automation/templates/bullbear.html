@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TICKER Bull / Bear | latest: FILING</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>COMPANY: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: FORM for PERIOD, filed DATE | Source: SEC EDGAR | Analysis: MONTH YYYY</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<!-- one row per thesis pillar -->
+<tr><td>P1 PILLAR NAME</td><td class="stance s-intact">Intact</td><td class="ev-bull">one line</td><td class="ev-bear">one line</td><td>FILING</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: FORM PERIOD</h2>
+<p class="note">What this filing adds, for and against. 3-6 of the most material findings per side; a side with nothing material says so.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <!-- one card per finding -->
+    <div class="bb-card" data-pillar="P1 PILLAR NAME" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 PILLAR NAME</span><span class="chip">Stated</span></div>
+      <div class="title">The change as a fact, with numbers</div>
+      <blockquote>PERIOD: "verbatim quote"</blockquote>
+      <p class="magnitude"><b>Size:</b> amount as a share of something that matters, or "not quantified in the filing"</p>
+      <p>Why it strengthens the pillar, in one or two sentences.</p>
+      <p class="next"><b>Next filing:</b> what must show up to confirm or refute it</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 PILLAR NAME" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P1 PILLAR NAME</span><span class="chip">Inferred</span></div>
+      <div class="title">The change as a fact, with numbers</div>
+      <blockquote>PERIOD: "verbatim quote"</blockquote>
+      <p class="magnitude"><b>Size:</b> ...</p>
+      <p>Why it weakens the pillar.</p>
+      <p class="next"><b>Next filing:</b> ...</p>
+    </div>
+    <!-- if nothing material: <p class="none">No bearish evidence on X this filing.</p> -->
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>NEWEST FILING</th><th>PRIOR FILING</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark better">&#9650;</span> one-line answer</td><td><span class="mark held">&#9679;</span> one-line answer</td></tr>
+<!-- 2. Margins and unit economics ... 10. Guidance and commitments -->
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated, and what later filings said about it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"verbatim target sentence"</td><td>FILING</td><td>FILING: met / beaten / moved / dropped / not mentioned</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<!-- previous "Latest filing" sections move here, newest first -->
+<details class="earlier"><summary>FORM PERIOD (filed DATE)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3></div><div class="side bear"><h3>Bear case</h3></div>
+</div></details>
+
+</div>
+</body>
+</html>
