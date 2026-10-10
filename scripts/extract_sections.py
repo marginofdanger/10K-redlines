@@ -52,9 +52,9 @@ CONTINGENCY_HEADINGS = ["COMMITMENTS AND CONTINGENCIES", "Commitments and Contin
                         "LEGAL PROCEEDINGS AND CONTINGENCIES", "Legal Proceedings"]
 # MD&A sub-sections redlined on their own: they hold the commitments, funding and judgment
 # calls that a long results discussion buries. Each runs to the next top-level MD&A heading.
-MDA_SUBSECTIONS = {"mda_liquidity": r"liquidity and capital resources",
+MDA_SUBSECTIONS = {"mda_liquidity": r"liquidity(, financial condition)? and capital resources",
                    "mda_critical_estimates": r"critical accounting (policies and )?(estimates|policies)"}
-MDA_TOP = re.compile(r"(overview|executive (overview|summary)|results of operations|liquidity and capital resources|"
+MDA_TOP = re.compile(r"(overview|executive (overview|summary)|results of operations|liquidity(, financial condition)? and capital resources|"
                      r"critical accounting|recent(ly)? (issued |adopted )?accounting|non-gaap|contractual obligations|"
                      r"off-balance sheet|segment (results|information|operating)|business outlook|forward-looking|"
                      r"market risk|quantitative and qualitative)", re.I)
@@ -243,6 +243,11 @@ def find_note(lines, heading):
 
 NOTES_START = re.compile(r"notes to (the )?(unaudited )?(condensed )?(consolidated )?(financial statements|statements)", re.I)
 NOTE_HEAD = re.compile(r"(?:note\s+)?(\d{1,2})\s*[\.:\u2014\u2013\-]\s*([A-Za-z].{2,140})", re.I)
+TOC_ROW = re.compile(r".*\|\s*\d{1,3}$")  # "12. Commitments and Contingencies | 63": an index row, not a note
+
+
+def note_head(l):
+    return None if TOC_ROW.fullmatch(l or "") else NOTE_HEAD.fullmatch(l or "")
 
 
 def notes(lines):
@@ -251,12 +256,12 @@ def notes(lines):
     best = (0, None)
     for i, l in enumerate(lines):
         if len(l) < 120 and NOTES_START.match(l):
-            m = next((NOTE_HEAD.fullmatch(x) for x in lines[i + 1:i + 6] if NOTE_HEAD.fullmatch(x or "")), None)
+            m = next((note_head(x) for x in lines[i + 1:i + 6] if note_head(x)), None)
             if m and m.group(1) == "1":
                 # count how many sequential notes follow; the real block has the longest run
                 n, k = 1, i + 1
                 for j in range(i + 1, len(lines)):
-                    h = NOTE_HEAD.fullmatch(lines[j])
+                    h = note_head(lines[j])
                     if h and int(h.group(1)) == n + 1 and "continued" not in lines[j].lower():
                         n += 1
                     if ITEM_LINE.match(lines[j]) and j > i + 50:
@@ -269,7 +274,7 @@ def notes(lines):
     i, k = best[1]
     body, parts, cur = [], {}, None
     for l in lines[i:k + 1]:
-        h = NOTE_HEAD.fullmatch(l)
+        h = note_head(l)
         low = l.lower()
         if "(continued)" in low or (NOTES_START.match(l) and len(l) < 120 and body):
             continue  # running page headers

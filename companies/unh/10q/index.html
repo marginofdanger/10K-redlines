@@ -149,6 +149,8 @@ a:hover { text-decoration: underline; }
   font-style: italic; color: var(--text);
 }
 .finding-body strong { color: var(--text); }
+.finding-body p.shift { font-size: 12px; font-weight: 600; color: var(--gold-dark); margin: 4px 0 6px; }
+.finding-body p.history { font-size: 12px; color: var(--text-dim); border-top: 1px dashed var(--border); padding-top: 6px; margin: 8px 0 6px; }
 
 /* Section headings */
 .section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
@@ -251,7 +253,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>UNH 10-Q Quarterly Scanner</h1>
   <div class="tagline">Quarter-over-quarter textual analysis of ten SEC filings: eight 10-Qs from Q1 2024 (quarter ended March 31, 2024) through Q2 2026 (June 30, 2026), with the FY2024 and FY2025 10-Ks interleaved at the year boundaries. Nine consecutive transitions covering MD&amp;A (business trends, medical cost trends, regulatory trends, segments, liquidity), the Commitments and Contingencies note that Part II Item 1 incorporates by reference, and Item 1A. Across the set, the medical-cost language went from &ldquo;as expected and contemplated&rdquo; to &ldquo;well-short&rdquo; and back again, and prior-year reserve development went from $30M to $1.05B.</div>
-  <div class="source">Source: SEC EDGAR | UnitedHealth Group Incorporated (NYSE: UNH) | 10 filings, 9 transitions | Q1 2024 &ndash; Q2 2026 | Analysis: October 2026</div>
+  <div class="source">Source: SEC EDGAR | UnitedHealth Group Incorporated (NYSE: UNH) | 10 filings, 9 transitions | Q1 2024 &ndash; Q2 2026 | Analysis: October 2026; Q3 2024 &ndash; Q2 2026 transitions redone with sentence-level wording signals</div>
 </div>
 
 
@@ -339,70 +341,131 @@ a:hover { text-decoration: underline; }
 <!-- Q2 → Q3 2024 -->
 <div class="transition-header" id="q2q3-2024">
   <h2>Q2 2024 &rarr; Q3 2024</h2>
-  <div class="sub">Filed Nov 4, 2024 | Revenue $100.82B | MCR 85.2% (Q3 2023 82.3%) | Diluted EPS $6.51 | Optum Health operating margin 8.3%</div>
+  <div class="sub">Filed Nov 4, 2024 | Revenue $100.82B (Q3 2023 $92.36B) | Earnings from operations $8.71B vs $8.53B | Diluted EPS $6.51 | MCR 85.2% (Q3 2023 82.3%) | No buybacks in Q2; $956M in Q3 | Optum Health operating margin 8.3%</div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A: Medical Costs &amp; Segments</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New cost drivers named: hospital "coding intensity" and specialty-drug prescribing</span>
+    <span class="title">New cost drivers named: hospital "coding intensity" and high-cost specialty drugs (cardiovascular, auto-immune, cancer)</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"In the third quarter, we also experienced higher medical costs due to a pronounced upshift in coding intensity by hospitals and an acceleration of the prescribing of certain high-cost specialty medications, primarily those used to treat cardiovascular disease, auto-immune disorders and cancer."</blockquote>
-    <p>"Hospitals" was also added to the parties UNH engages to mitigate costs. This is the first quarter that names a cost driver beyond senior outpatient care. The opening clause "As expected and contemplated in our benefits design" stayed, so the new pressure was presented as an addition to an expected trend rather than a miss.</p>
+    <p class="shift">Shift: ADDED sentence; named cost drivers added (+ more disclosure)</p>
+    <blockquote>Q3 2024 (added): "In the third quarter, we also experienced higher medical costs due to a pronounced upshift in coding intensity by hospitals and an acceleration of the prescribing of certain high-cost specialty medications, primarily those used to treat cardiovascular disease, auto-immune disorders and cancer."</blockquote>
+    <p class="history">History: "coding intensity" first appears in the Q3 2024 10-Q; repeated in the FY2024 10-K; absent from all five 2025 filings and Q1 2026; returns in Q2 2026 as commercial "coding intensity".</p>
+    <p>This is the first time the filings blame providers' billing behavior rather than member utilization. "Hospitals" was also added to the parties UNH engages to mitigate costs ("engaging hospitals, physicians and consumers"). The opening clause "As expected and contemplated in our benefits design" stayed, so the new pressure was presented as an addition to an expected trend, not as a miss.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicaid rates "well short of current care activity": the rate/acuity gap first appears</span>
+    <span class="title">Medicaid state rates "remain well short of current care activity": the rate/acuity gap first appears</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"The Medicaid redetermination process has also caused a timing mismatch between the current health status of people served through Medicaid and state rate updates, which remain well short of current care activity."</blockquote>
-    <p>Before this the Medicaid paragraph covered only membership. This sentence starts an eight-filing thread (Tracked Signal #3): it was predicted to narrow, described as narrowing, and then described as persisting.</p>
+    <p class="shift">Shift: ADDED sentence; realized: a gap stated as present fact (+)</p>
+    <blockquote>Q3 2024 (added): "The Medicaid redetermination process has also caused a timing mismatch between the current health status of people served through Medicaid and state rate updates, which remain well short of current care activity."</blockquote>
+    <p class="history">History: "well short of current care activity" appears only in the Q3 2024 10-Q and the FY2024 10-K ("remained"); from Q1 2025 the gap is described in other words ("more closely align", then "continues to be a mismatch").</p>
+    <p>Until this quarter the Medicaid paragraph covered only membership losses from redeterminations. The new sentence says the members who stayed are sicker than the rates assume, which starts an eight-filing thread (Tracked Signal #3).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">UnitedHealthcare narrative flips to "decreased", citing lower favorable reserve development</span>
+    <span class="title">UnitedHealthcare earnings explanation flips from "increased" to "decreased", now citing "decreased favorable reserve development"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Earnings from operations decreased due to Medicare Advantage funding reductions, the impacts of Medicaid redeterminations and decreased favorable reserve development, partially offset by the factors impacting revenue above."</blockquote>
-    <p>The segment earned $4,212M vs $4,592M (&minus;8%). Year-to-date favorable development was $600M vs $760M a year earlier. Reserve development is named as a segment driver for the first time.</p>
+    <p class="shift">Shift: direction reversed (increased &rarr; decreased); new driver named (+ candor)</p>
+    <blockquote>Q2 2024: "Earnings from operations increased due to the factors impacting revenue, partially offset by Medicare Advantage funding reductions and incremental medical costs for accommodations to support care providers as a result of the Change Healthcare cyberattack."</blockquote>
+    <blockquote>Q3 2024: "Earnings from operations decreased due to Medicare Advantage funding reductions, the impacts of Medicaid redeterminations and decreased favorable reserve development, partially offset by the factors impacting revenue above."</blockquote>
+    <p class="history">History: the Q2 "increased" sentence stood unchanged in Q1 and Q2 2024 (sentence_signals persistence). "Decreased favorable reserve development" was already in the MCR explanation in Q1 and Q2 2024; Q3 2024 is the first time it is given as a reason segment earnings fell.</p>
+    <p>The segment earned $4,212M vs $4,592M (&minus;8%) in the quarter. Year-to-date favorable development was $600M vs $760M a year earlier. The Q2 sentence had said "increased" while the Q2 segment table showed &minus;8%; the text caught up with the numbers here.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Optum Health earnings growth now credited partly to "business portfolio and asset dispositions"</span>
+    <span class="title">Optum Health earnings growth now credited partly to "business portfolio and asset dispositions"; businesses with $241M carrying value sold for $1.0B</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Earnings from operations increased due to cost management initiatives, business portfolio and asset dispositions and increased investment income, partially offset by Medicare Advantage funding reductions and costs associated with serving newly added patients under value-based care arrangements."</blockquote>
-    <p>Optum Health earnings rose 38% to $2,161M (8.3% margin), the series high. Part of the increase is attributed to disposition gains and investment income rather than operations. Four quarters later the same segment earned $255M.</p>
+    <p class="shift">Shift: driver added (non-operating gains) ahead of investment income (+ disclosure; - earnings quality)</p>
+    <blockquote>Q2 2024: "Earnings from operations increased due to cost management initiatives, partially offset by costs associated with serving newly added patients under value-based care arrangements."</blockquote>
+    <blockquote>Q3 2024: "Earnings from operations increased due to cost management initiatives, business portfolio and asset dispositions and increased investment income, partially offset by Medicare Advantage funding reductions and costs associated with serving newly added patients under value-based care arrangements."</blockquote>
+    <blockquote>Q3 2024 (notes, added): "The Company also sold other businesses and assets for $1.0 billion in total consideration, with a carrying value of $241 million, and the difference reflected in the Condensed Consolidated Statement of Operations."</blockquote>
+    <p class="history">History: "business portfolio and asset dispositions" appears in the Q3 2024 10-Q only; the FY2024 10-K renames it "gains related to business portfolio refinement" (FY2024 10-K, Q3 2025 10-Q, FY2025 10-K).</p>
+    <p>Optum Health earnings rose 38% to $2,161M (8.3% margin), the high point of the series. The note implies roughly $760M of gains on sales booked inside operating results (our arithmetic: $1.0B less $241M). The operating cost ratio sentence adds the same dispositions as a reason costs fell. Four quarters later the segment earned $255M.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Change Healthcare drag extended into 2025; provider loans "more than" &rarr; "nearly" $9B</span>
+    <span class="title">Change Healthcare drag extended into 2025 "as we work to ... win new business"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q2 2024 expected disruption "over the remainder of the year, including costs to continue to restore Change Healthcare’s services." Q3 2024:</p>
-    <blockquote>"...experience business disruption impacts over the remainder of the year, which will continue at a lesser extent in 2025 as we work to bring transaction volumes back to pre-event levels and win new business."</blockquote>
-    <p>This is the first time the impact was said to run into 2025, and "win new business" suggests clients were lost. "Notifications of impacted persons" joined the list of direct response costs.</p>
+    <p class="shift">Shift: certainty: continue &rarr; will (+ firmer); time horizon extended into 2025</p>
+    <blockquote>Q2 2024: "We expect to continue to incur direct response costs and experience business disruption impacts over the remainder of the year, including costs to continue to restore Change Healthcare’s services."</blockquote>
+    <blockquote>Q3 2024: "We expect to continue to incur direct response costs and experience business disruption impacts over the remainder of the year, which will continue at a lesser extent in 2025 as we work to bring transaction volumes back to pre-event levels and win new business."</blockquote>
+    <p class="history">History: "at a lesser extent in 2025" appears in the Q3 2024 10-Q and the FY2024 10-K only; the Q1 2025 10-Q drops the Change Healthcare section from the Executive Overview.</p>
+    <p>This is the first time the impact is said to run past 2024, and "win new business" suggests clients left after the outage. "Notifications of impacted persons" joined the list of direct response costs ($341M in the quarter, $1.7B year to date).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Provider-loan figure revised down: "accelerated funding and ... more than $9 billion" becomes "nearly $9 billion"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope narrowed ("accelerated funding" dropped); degree: more than &rarr; nearly (-)</p>
+    <blockquote>Q2 2024: "To support care providers, we accelerated funding and provided interest-free loans of more than $9 billion through June 30, 2024."</blockquote>
+    <blockquote>Q3 2024: "To support care providers we provided interest-free loans of nearly $9 billion through September 30, 2024."</blockquote>
+    <p class="history">History: "accelerated funding and" appears in Q1 and Q2 2024 only; the FY2024 10-K goes back to "more than $9 billion through December 31, 2024"; the loan sentence is absent from every 2025 and 2026 filing.</p>
+    <p>A cumulative figure cannot fall unless the definition changed: the Q3 sentence no longer counts accelerated claim payments, only loans. This matters because the loans, not the accelerated payments, are what a year later needed a $799M collection reserve (FY2025 10-K).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Notes &amp; Contingencies</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AARP de-named: the Medicare Supplement program is now with "a membership organization"; its assets move onto UNH's balance sheet</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named (AARP &rarr; "a membership organization") (-); new accounting disclosure (+)</p>
+    <blockquote>FY2023 10-K: "The Company provides health insurance products and services to members of AARP under a Supplemental Health Insurance Program (the AARP Program) and to AARP members and non-members under separate Medicare Advantage and Medicare Part D arrangements."</blockquote>
+    <blockquote>Q3 2024 (added): "In July 2024, the Company amended and restated its Medicare Supplement Program with a membership organization (the Medicare Supplement Program). The amendments provide the Company the right to use a trade name and other intellectual property in marketing efforts for Medicare Supplement offerings. Amounts previously reported as assets under management are now included within the Company’s Condensed Consolidated Balance Sheet based upon their classification."</blockquote>
+    <p class="history">History: "AARP" last appears in the Q2 2024 10-Q (a cash-flow caption, "changes in AARP balances"); absent from Q3 2024 onward. "A membership organization" first appears in Q3 2024 and is used in the FY2024 and FY2025 10-Ks.</p>
+    <p>The annual dashboard records the AARP removal in the FY2024 10-K; it happened here, one filing earlier. The partner is no longer named, but the program continues and its assets are now consolidated, so the change is in how the relationship is described rather than whether it exists.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Food and Drug Administration added to the list of agencies investigating or auditing UNH</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: + Food and Drug Administration (+ disclosure)</p>
+    <blockquote>Q3 2024: "the Federal Deposit Insurance Corporation, the Consumer Financial Protection Bureau, the Defense Contract Audit Agency, the Food and Drug Administration and other governmental authorities"</blockquote>
+    <p class="history">History: "Food and Drug" is absent from the Q1 and Q2 2024 contingencies notes; present in every contingencies note from Q3 2024 through Q2 2026 (it appeared earlier only in the FY2023 10-K risk factors).</p>
+    <p>The agency list in the government-investigations paragraph is long and rarely edited, so an addition means a new regulator is engaging with the company. The filing does not say what the FDA is reviewing, and no FDA matter is described anywhere else in the note.</p>
   </div>
 </div>
 </div>
@@ -411,70 +474,132 @@ a:hover { text-decoration: underline; }
 <!-- Q3 2024 → FY2024 10-K -->
 <div class="transition-header" id="q3-2024-fy2024">
   <h2>Q3 2024 &rarr; FY2024 10-K</h2>
-  <div class="sub">Annual Filing (Feb 27, 2025) | FY2024 revenue $400.28B | MCR 85.5% | Diluted EPS $15.51 | Favorable development $700M (2023: $840M)</div>
+  <div class="sub">Annual Filing (Feb 27, 2025) | FY2024 revenue $400.28B (+8%) | Earnings from operations $32.29B vs $32.36B | Net income $14.40B vs $22.38B | Diluted EPS $15.51 | MCR 85.5% | Buybacks $9.0B | Favorable development $700M (2023: $840M)</div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A: Medical Costs &amp; Rates</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicaid gap given a date: "will narrow in 2025"</span>
+    <span class="title">Medicaid gap given a date: rates "remained well short", and "We expect this gap ... will narrow in 2025"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"The Medicaid redetermination process has also caused a timing mismatch between the current health status of people served through Medicaid and state rate updates, which remained well short of current care activity. We expect this gap between people’s health status and rates will narrow in 2025."</blockquote>
-    <p>"Remain" became "remained" and a dated forecast was added. Two filings later (Q2 2025) the text said the mismatch "continues".</p>
+    <p class="shift">Shift: certainty: forecast added ("We expect ... will narrow") (+ firmer); tense remain &rarr; remained</p>
+    <blockquote>Q3 2024: "The Medicaid redetermination process has also caused a timing mismatch between the current health status of people served through Medicaid and state rate updates, which remain well short of current care activity."</blockquote>
+    <blockquote>FY2024 10-K: "The Medicaid redetermination process has also caused a timing mismatch between the current health status of people served through Medicaid and state rate updates, which remained well short of current care activity. We expect this gap between people’s health status and rates will narrow in 2025."</blockquote>
+    <p class="history">History: "will narrow in 2025" appears in the FY2024 10-K only. Q1 2025 reports rates that "more closely align"; Q2 2025 says "there continues to be a mismatch".</p>
+    <p>A dated, checkable forecast is rare in these filings. It was wrong within two quarters, which makes it a useful test of how much weight to give the company's later forecasts of improvement.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Specialty-drug cause recast from diseases to the Inflation Reduction Act, with a forecast attached</span>
+    <span class="title">Specialty-drug cause recast from diseases to "early response to the Inflation Reduction Act", with "We expect these additional factors to continue"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2024 named cardiovascular, auto-immune and cancer drugs. FY2024 10-K:</p>
-    <blockquote>"As expected and contemplated in our benefits design, we have continued to observe increased care patterns, which may continue in future periods. We also observed an upshift in hospital coding intensity and an acceleration in the prescribing of certain high-cost medications in early response to the Inflation Reduction Act (IRA). We expect these additional factors to continue into future periods."</blockquote>
-    <p>The text now points to a policy cause instead of a clinical one. "Primarily related to outpatient procedures for seniors" was dropped. The 10-K also added that the Advance Notice for 2026 "proposes an industry base rate increase also well short of forward medical cost trend."</p>
+    <p class="shift">Shift: named: + Inflation Reduction Act; clinical detail dropped; certainty: forecast added (+ firmer)</p>
+    <blockquote>Q3 2024: "In the third quarter, we also experienced higher medical costs due to a pronounced upshift in coding intensity by hospitals and an acceleration of the prescribing of certain high-cost specialty medications, primarily those used to treat cardiovascular disease, auto-immune disorders and cancer."</blockquote>
+    <blockquote>FY2024 10-K: "We also observed an upshift in hospital coding intensity and an acceleration in the prescribing of certain high-cost medications in early response to the Inflation Reduction Act (IRA). We expect these additional factors to continue into future periods."</blockquote>
+    <p class="history">History: "in early response to the Inflation Reduction Act" appears in the FY2024 10-K only; the FY2025 10-K deletes this paragraph, including "We expect these additional factors to continue".</p>
+    <p>The cause moves from clinical categories to a federal law, which places it outside the company's control. The opening "As expected and contemplated in our benefits design" was kept, so two new cost drivers expected to persist sit inside a paragraph that says the trend was priced in.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Change Healthcare breach quantified at ~190 million individuals</span>
+    <span class="title">Medicare Advantage: 2026 Advance Notice "also well short of forward medical cost trend"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: + Advance Notice for 2026 (+ forward-looking); rate direction: decrease &rarr; proposed increase</p>
+    <blockquote>Q3 2024: "For example, the Final Notices for 2024 and 2025 rates resulted in an industry base rate decrease, both well short of an increasing industry forward medical cost trend, creating continued pressure in the Medicare Advantage program."</blockquote>
+    <blockquote>FY2024 10-K: "The Advance Notice for 2026 rates proposes an industry base rate increase also well short of forward medical cost trend, creating continued pressure in the Medicare Advantage program."</blockquote>
+    <p class="history">History: the Q3 2024 sentence stood unchanged in Q1, Q2 and Q3 2024 (persistence 3 periods). Q1 2025 says the 2026 Final Notice was "beginning to approach" trend.</p>
+    <p>The company extends its funding complaint to a third rate year, now against a proposed increase rather than a decrease. The next filing describes the final 2026 rates as nearer to trend, so this was the low point of the rate language.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicaid margin warning reappears; the 10-Q sentence that government programs carry "lower cost trends" is gone for good</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: sentence removed (government programs' "lower cost trends") (-); risk sentence restored (+)</p>
+    <blockquote>Q3 2024 (not carried forward): "Government programs in the community and senior sector tend to receive lower rates of increase than the commercial market due to governmental budget pressures and lower cost trends."</blockquote>
+    <blockquote>FY2024 10-K: "In Medicaid, we believe the payment rate environment creates the risk of continued downward pressure on Medicaid margin percentages."</blockquote>
+    <p class="history">History: "lower cost trends" appears in every 10-Q from Q2 2023 to Q3 2024 and in no 10-K; it is absent from all 10-Qs from Q1 2025. The Medicaid margin sentence is not new: it is in the FY2023 10-K, was absent from the three 2024 10-Qs, returns here, and is in every filing through Q2 2026.</p>
+    <p>An earlier version of this page called the margin warning new; it is a restored FY2023 sentence. The durable change is the other one: the claim that government programs have lower cost trends stopped appearing once the filings were describing elevated Medicaid and Medicare Advantage costs.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Earnings Quality, Capital &amp; Change Healthcare</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Portfolio gains quantified: $3.3 billion, about 80 basis points of the operating cost ratio; $1.4B at Optum Health, $1.1B at UnitedHealthcare, $800M at Optum Insight</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We have determined the estimated total number of individuals impacted by the Change Healthcare cyberattack is approximately 190 million. The vast majority of those people have already been provided individual or substitute notice."</blockquote>
-    <p>This replaces "a substantial proportion of people in America." Full-year direct response costs were $2.2B and Optum Insight disruption $867M. The opening also changed from "made substantial progress in mitigating" to "substantially mitigated", and from "restored" to "restored or replaced" services.</p>
+    <p class="shift">Shift: quant added (+ disclosure); UnitedHealthcare earnings now "partially offset by gains related to business portfolio refinement"</p>
+    <blockquote>FY2024 10-K (added): "The gains from business portfolio refinement, including strategic transactions, were recorded within operating costs in the Consolidated Statement of Operations and contributed about 80 basis points ($3.3 billion) to the operating cost ratio, nearly half ($1.4 billion) related to Optum Health with the remainder split between UnitedHealthcare ($1.1 billion) and Optum Insight ($800 million)."</blockquote>
+    <blockquote>FY2024 10-K: "Earnings from operations decreased due to Medicare Advantage funding reductions, the impacts of Medicaid redeterminations, member mix and incremental medical costs for accommodations to support care providers as a result of the Change Healthcare cyberattack, partially offset by gains related to business portfolio refinement, including strategic transactions"</blockquote>
+    <p class="history">History: "contributed about 80 basis points" appears in the FY2024 10-K (and is repeated as the 2024 comparison in the FY2025 10-K); no 10-Q quantifies the gains. Q3 2024 disclosed only the $1.0B sale of assets carried at $241M.</p>
+    <p>Consolidated earnings from operations were $32.29B, flat with 2023. Without the $3.3B of gains, booked as a reduction of operating costs, they would have fallen about 10% (our arithmetic). Optum Health's $7.77B record year includes $1.4B of these gains.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New Medicaid margin warning; new paragraph tying 2025 benefit design to observed trends</span>
+    <span class="title">Leverage covenant ratio dropped: "approximately 43%" at September 30 replaced by "in compliance"</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed (covenant ceiling and actual ratio) (-)</p>
+    <blockquote>Q3 2024: "As of September 30, 2024, our debt to debt-plus-shareholders’ equity ratio, as defined and calculated under the credit facilities, was approximately 43%."</blockquote>
+    <blockquote>FY2024 10-K: "As of December 31, 2024, we were in compliance with the various covenants under our bank credit facilities."</blockquote>
+    <p class="history">History: "debt-plus-shareholders" appears in every filing from Q2 2023 through Q3 2024 (38% at FY2023) and in none from the FY2024 10-K through Q2 2026.</p>
+    <p>The ratio had risen from 38% to about 43% in nine months as long-term debt grew from $58.3B to $74.1B. It stopped being reported at the next filing, and the 60% covenant ceiling went with it.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Change Healthcare breach quantified at ~190 million individuals; "a substantial proportion of people in America" retired</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"In Medicaid, we believe the payment rate environment creates the risk of continued downward pressure on Medicaid margin percentages."</blockquote>
-    <p>The sentence "Government programs in the community and senior sector tend to receive lower rates of increase than the commercial market due to governmental budget pressures and lower cost trends" was deleted. "Lower cost trends" no longer matched what the filing described elsewhere.</p>
+    <p class="shift">Shift: quant added (vague scope &rarr; a number) (+)</p>
+    <blockquote>FY2024 10-K (added): "We have determined the estimated total number of individuals impacted by the Change Healthcare cyberattack is approximately 190 million. The vast majority of those people have already been provided individual or substitute notice."</blockquote>
+    <p class="history">History: "approximately 190 million" appears in the FY2024 10-K only; the Q1 2025 10-Q drops the Change Healthcare section.</p>
+    <p>Full-year direct response costs were $2.2B and Optum Insight disruption $867M. The opening also changed from "made substantial progress in mitigating" to "substantially mitigated".</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Parent cash for general corporate use falls from $5.2B (Sep 30) to ~$800M; regulated subsidiaries paid $9.2B in dividends</span>
+    <span class="title">Parent cash for general corporate use falls from $5.2B (Sep 30) to "approximately $800 million"; regulated subsidiaries paid $9.2B in dividends</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Our U.S. regulated subsidiaries paid their parent companies dividends of $9.2 billion and $8.0 billion in 2024 and 2023, respectively."</blockquote>
-    <p>This is the high point for subsidiary dividends in the series. In 2025 the flow reversed to net capital infusions of $535M (Tracked Signal #7).</p>
+    <p class="shift">Shift: quant: $5.2 billion &rarr; approximately $800 million; hedge added: approximately (-)</p>
+    <blockquote>Q3 2024: "As of September 30, 2024, our cash, cash equivalent, available-for-sale debt securities and equity securities balances of $83.5 billion included approximately $32.4 billion of cash and cash equivalents (of which $5.2 billion was available for general corporate use)"</blockquote>
+    <blockquote>FY2024 10-K: "Our U.S. regulated subsidiaries paid their parent companies dividends of $9.2 billion and $8.0 billion in 2024 and 2023, respectively."</blockquote>
+    <p class="history">History: the $9.2B in 2024 is the high point of the series; the FY2025 10-K reports net capital infusions of $535M received instead. Parent cash was $1.3B at FY2023 and $1.5B at Q1 2025.</p>
+    <p>The parent's own liquidity is thin at year-end even after record subsidiary dividends, which is why the 2025 reversal of those dividends (Tracked Signal #7) mattered.</p>
   </div>
 </div>
 </div>
@@ -483,77 +608,120 @@ a:hover { text-decoration: underline; }
 <!-- FY2024 10-K → Q1 2025 -->
 <div class="transition-header" id="fy2024-q1-2025">
   <h2>FY2024 10-K &rarr; Q1 2025</h2>
-  <div class="sub">Filed May 6, 2025 | Revenue $109.58B | MCR 84.8% (Q1 2024 84.3%) | Diluted EPS $6.85 | Optum Health revenue &minus;5%, earnings &minus;15%</div>
+  <div class="sub">Filed May 7, 2025 | Revenue $109.58B (Q1 2024 $99.80B) | Earnings from operations $9.12B vs $7.93B | Diluted EPS $6.85 vs $(1.53) | MCR 84.8% (Q1 2024 84.3%) | Buybacks $3.00B | Optum Health revenue &minus;5%, earnings &minus;15%</div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A: Medical Costs &amp; Pricing</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"As expected and contemplated" becomes "above what we expected": the cost-trend miss enters the text</span>
+    <span class="title">"As expected and contemplated" becomes "above what we expected and contemplated": the cost-trend miss enters the text at an 84.8% MCR</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>FY2024 10-K:</p>
-    <blockquote>"As expected and contemplated in our benefits design, we have continued to observe increased care patterns, which may continue in future periods."</blockquote>
-    <p>Q1 2025:</p>
-    <blockquote>"We have observed increased care patterns, more notably related to physician and outpatient care for seniors served through Medicare Advantage, that are above what we expected and contemplated in our benefits design. These elevated care patterns may continue in future periods."</blockquote>
-    <p>This is the first filing in the set that admits a miss on cost trend. The FY2024 10-K had said "Our 2025 benefit design approach contemplates these trends." Q1 2025 replaces that with "which may impact pricing and benefit design in future periods." Consolidated MCR rose only 0.5 points, which suggests the language moved before the headline ratio did.</p>
+    <p class="shift">Shift: realized: expected trend &rarr; trend above expectations (+ candor); named: Medicare Advantage seniors</p>
+    <blockquote>FY2024 10-K: "As expected and contemplated in our benefits design, we have continued to observe increased care patterns, which may continue in future periods."</blockquote>
+    <blockquote>Q1 2025: "We have observed increased care patterns, more notably related to physician and outpatient care for seniors served through Medicare Advantage, that are above what we expected and contemplated in our benefits design. These elevated care patterns may continue in future periods."</blockquote>
+    <p class="history">History: "above what we expected" first appears in this Q1 2025 10-Q; present in Q2 2025, Q3 2025 and the FY2025 10-K; absent from Q1 and Q2 2026, when "As expected and contemplated" returns.</p>
+    <p>This is the first filing in the set to admit a miss on cost trend, and it came while the consolidated MCR was up only 0.5 points. The ratio reached 89.4% one quarter later, so the wording moved before the headline number did.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicaid: "will narrow" becomes "more closely align", with "insufficient" added in the same sentence</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"While the updated rates in 2025 more closely align with underlying member acuity, the funding and payment rate environment remains insufficient to meet the health needs of patients and creates the risk of continued downward pressure on Medicaid margin percentages."</blockquote>
-    <p>The 10-K's forecast is reported as partly met, with a stronger caveat attached. One quarter later "more closely align" was replaced by "there continues to be a mismatch".</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Optum Health revenue declines, citing "conversion of risk-based contracts" and member profile</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"Revenues at Optum Health decreased primarily due to the conversion of risk-based contracts, Medicare Advantage funding reductions and the profile of members served, partially offset by growth in patients served under value-based arrangements."</blockquote>
-    <p>Throughout 2024 this sentence read "increased primarily due to organic growth in patients served under value-based care arrangements." Revenue fell to $25,309M from $26,731M and earnings to $1,614M from $1,899M. People served dropped from 104M to 99M. "The member profile of newly added patients under value-based care arrangements" also first appears as an MCR driver.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Change Healthcare Cyberattack section dropped from the Executive Overview</span>
+    <span class="title">"Our 2025 benefit design approach contemplates these trends" withdrawn; trends now "may impact pricing and benefit design in future periods"</span>
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>All three 2024 10-Qs and the 10-K opened the MD&amp;A with a Change Healthcare section covering loans, response costs and the 190 million figure. Q1 2025 has none. The attack survives only as a favorable prior-year comparison ("the Change Healthcare cyberattack incurred in 2024"), and Optum Insight's 96% earnings increase is credited to "decreased business disruption impacts and direct response costs." The topic came back in the FY2025 10-K as a $799M reserve against provider loans and customer balances.</p>
+    <p class="shift">Shift: certainty: contemplates (stated fact) &rarr; may impact (-); reassurance removed</p>
+    <blockquote>FY2024 10-K: "Medicare Advantage funding continues to be pressured, as discussed below in “Regulatory Trends and Uncertainties” and we have observed increased care patterns as discussed below in “Medical Cost Trends.” Our 2025 benefit design approach contemplates these trends."</blockquote>
+    <blockquote>Q1 2025: "Medicare Advantage funding continues to be pressured, as discussed below in “Regulatory Trends and Uncertainties” and we have observed increased care patterns as discussed below in “Medical Cost Trends,” which may impact pricing and benefit design in future periods."</blockquote>
+    <p class="history">History: "Our 2025 benefit design approach contemplates" appears in the FY2024 10-K only (filed ten weeks earlier).</p>
+    <p>The 10-K's assurance that 2025 benefits were designed for the observed trend lasted one filing. The replacement pushes the response to "future periods", which is consistent with the cost overrun being locked into 2025 benefits that could not be repriced mid-year (our inference).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicare Advantage rates: 2026 Final Notice "beginning to approach" trend; risk-model cuts "have and will"</span>
+    <span class="title">New IRA paragraph: Part D redesign "shifting more risk to plans" and changing the quarterly cost pattern; Q1 UnitedHealthcare earnings credited partly to "the seasonal impact of the IRA"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED sentences; named: + IRA, Medicare Part D (+ disclosure)</p>
+    <blockquote>Q1 2025 (added): "Additionally, the Inflation Reduction Act (IRA) altered the Medicare Part D model and benefits, shifting more risk to plans, which results in both increased premiums and medical costs. The IRA also changed the quarterly relationship of medical costs to premiums, altering the seasonal progression and creating a more consistent relationship between medical costs and premiums throughout the year."</blockquote>
+    <blockquote>Q1 2025: "Earnings from operations increased primarily due to growth in people served in Medicare Advantage, the seasonal impact of the IRA on Medicare Part D and the incremental medical costs for accommodations to support care providers as a result of the Change Healthcare cyberattack incurred in 2024"</blockquote>
+    <p class="history">History: "seasonal impact of the IRA" appears in the Q1, Q2 and Q3 2025 10-Qs only; the FY2025 10-K keeps the IRA as an MCR driver but drops the seasonal wording, and Q1 2026 deletes the IRA paragraph.</p>
+    <p>A more even cost pattern through the year lowers first-quarter Part D costs relative to the old pattern, so part of Q1 2025's earnings increase is timing rather than improvement (our inference from the stated seasonal change). The other two named drivers are membership growth and a weak 2024 comparison.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicaid: "will narrow in 2025" becomes "more closely align", with "remains insufficient" added and "we believe" dropped</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Medicare Advantage rate notices for numerous years have resulted in industry base rates well below the industry forward medical cost trend, with the Final Notice for 2026 beginning to approach the industry forward medical cost trend. The compounding impact of the previous multi-year rate shortfalls creates sustained pressure on the Medicare Advantage program."</blockquote>
-    <p>"Over the years have at times" became "for numerous years have". The risk-adjustment revisions now "have and will result in reduced funding", where they previously only "will" (past tense added).</p>
+    <p class="shift">Shift: hedge dropped: "we believe" (+ firmer); forecast restated as partly met</p>
+    <blockquote>FY2024 10-K: "We expect this gap between people’s health status and rates will narrow in 2025. ... In Medicaid, we believe the payment rate environment creates the risk of continued downward pressure on Medicaid margin percentages."</blockquote>
+    <blockquote>Q1 2025: "While the updated rates in 2025 more closely align with underlying member acuity, the funding and payment rate environment remains insufficient to meet the health needs of patients and creates the risk of continued downward pressure on Medicaid margin percentages."</blockquote>
+    <p class="history">History: "more closely align" appears in this Q1 2025 10-Q only; Q2 2025 replaces it with "there continues to be a mismatch".</p>
+    <p>The 10-K forecast is reported as partly met, but the margin warning is now stated as the company's position rather than a belief, and "insufficient" is new. One quarter later the improvement claim was withdrawn.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicare Advantage rate history hardens from "at times" to "for numerous years"; 2026 Final Notice "beginning to approach" trend</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree: "over the years have at times" &rarr; "for numerous years have" (+ firmer); risk-model cuts "have and will" (realized +)</p>
+    <blockquote>FY2024 10-K: "Medicare Advantage rate notices over the years have at times resulted in industry base rates well below industry forward medical trend."</blockquote>
+    <blockquote>Q1 2025: "Medicare Advantage rate notices for numerous years have resulted in industry base rates well below the industry forward medical cost trend, with the Final Notice for 2026 beginning to approach the industry forward medical cost trend. The compounding impact of the previous multi-year rate shortfalls creates sustained pressure on the Medicare Advantage program."</blockquote>
+    <p class="history">History: "for numerous years" first appears in Q1 2025 and is in every filing since, through Q2 2026.</p>
+    <p>The company now frames rate pressure as cumulative ("compounding") rather than episodic, in the same filing that admits its own cost trend ran above plan. Both explanations for the margin squeeze are now stated firmly.</p>
   </div>
 </div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--gold);"></span>Contingencies (Note 6)</h3>
+<h3><span class="dot" style="background:var(--gold);"></span>MD&amp;A: Optum &amp; Change Healthcare; Contingencies (Note 6)</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Optum Health revenue "decreased" on "the conversion of risk-based contracts"; organic value-based growth language gone</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: direction reversed (increased &rarr; decreased); named driver added: conversion of risk-based contracts (+ disclosure)</p>
+    <blockquote>FY2024 10-K: "Revenues at Optum Health increased primarily due to organic growth in patients served under value-based care arrangements."</blockquote>
+    <blockquote>Q1 2025: "Revenues at Optum Health decreased primarily due to the conversion of risk-based contracts, Medicare Advantage funding reductions and the profile of members served, partially offset by growth in patients served under value-based arrangements."</blockquote>
+    <p class="history">History: "organic growth in patients served under value-based care" ran from the Q2 2023 10-Q through the FY2024 10-K (seven filings); "conversion of risk-based contracts" first appears here and runs through the FY2025 10-K.</p>
+    <p>Revenue fell to $25,309M from $26,731M and earnings to $1,614M from $1,899M; people served dropped from 104M to 99M. "The member profile of newly added patients under value-based care arrangements" also enters as an earnings drag, so the newly signed value-based patients are described as costlier than expected.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Change Healthcare section dropped from the Executive Overview: loan, cost and 190-million figures no longer stated</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed ($2.2B response costs, $867M disruption, ~190 million people, "more than $9 billion" loans) (-)</p>
+    <blockquote>FY2024 10-K (not carried forward): "To support care providers we provided interest-free loans of more than $9 billion through December 31, 2024."</blockquote>
+    <blockquote>FY2024 10-K (not carried forward): "We have determined the estimated total number of individuals impacted by the Change Healthcare cyberattack is approximately 190 million."</blockquote>
+    <p class="history">History: the "Change Healthcare Cyberattack" heading stood in the Q1, Q2 and Q3 2024 10-Qs and the FY2024 10-K (persistence 4 periods); "interest-free loans of" appears in those four filings only. The FY2025 10-K brings back a heading as "Direct Response Costs – Cyberattack".</p>
+    <p>The attack survives only as a favorable prior-year comparison ("the Change Healthcare cyberattack incurred in 2024"), and Optum Insight's earnings increase is credited to "decreased business disruption impacts and direct response costs." The loans stopped being discussed while repayments were still under way; they returned as a $799M collection reserve in the FY2025 10-K.</p>
+  </div>
+</div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
@@ -562,8 +730,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"In March 2025, a Special Master appointed by the court issued a report recommending that the court enter summary judgment in the Company’s favor on all remaining claims. In April 2025, the DOJ filed a motion asking the court to reject the Special Master’s report."</blockquote>
-    <p>These sentences replace a procedural history (2018 motions, March 2019 rulings) that had been unchanged in all three 2024 10-Qs. The paragraph has not changed since. It reads the same, word for word, in Q2 2025, Q3 2025, Q1 2026 and Q2 2026.</p>
+    <p class="shift">Shift: named: + Special Master; 2018&ndash;2019 procedural history removed (+ disclosure)</p>
+    <blockquote>FY2024 10-K: "In March 2019, the court denied the government’s motion for partial summary judgment and dismissed the Company’s counterclaims without prejudice."</blockquote>
+    <blockquote>Q1 2025: "In March 2025, a Special Master appointed by the court issued a report recommending that the court enter summary judgment in the Company’s favor on all remaining claims. In April 2025, the DOJ filed a motion asking the court to reject the Special Master’s report."</blockquote>
+    <p class="history">History: the April 2025 sentence first appears in Q1 2025 and is identical in Q2 2025, Q3 2025, the FY2025 10-K, Q1 2026 and Q2 2026 (phrase_history --sentence).</p>
+    <p>This is the only substantive update to the 2011 whistleblower case in the series. The note still says the company "cannot reasonably estimate the outcome", and the paragraph has not moved in the five filings since.</p>
   </div>
 </div>
 </div>
@@ -572,7 +743,7 @@ a:hover { text-decoration: underline; }
 <!-- Q1 → Q2 2025 -->
 <div class="transition-header" id="q1q2-2025">
   <h2>Q1 2025 &rarr; Q2 2025</h2>
-  <div class="sub">Filed Aug 11, 2025 | Revenue $111.62B | MCR 89.4% (Q2 2024 85.1%) | Diluted EPS $3.74 | UnitedHealthcare earnings &minus;48%; Optum Health &minus;67% | First 10-Q signed by Stephen Hemsley</div>
+  <div class="sub">Filed Aug 11, 2025 | Revenue $111.62B (Q2 2024 $98.86B) | Earnings from operations $5.15B vs $7.88B (&minus;35%) | Diluted EPS $3.74 vs $4.54 | MCR 89.4% (Q2 2024 85.1%) | Buybacks $2.54B | UnitedHealthcare earnings &minus;48%; Optum Health &minus;67% | First 10-Q signed by Stephen Hemsley</div>
 </div>
 
 <div class="finding-group">
@@ -581,54 +752,117 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Pricing admission added: assumptions "well-short of the medical cost trends incurred"; "will continue seeking" softened to "seek"</span>
+    <span class="title">Pricing admission added: 2025 pricing and health-status assumptions "were well-short of the medical cost trends incurred, significantly impacting our earnings"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2025:</p>
-    <blockquote>"We frequently evaluate and adjust our approach in each of the local markets we serve ... We will continue seeking to balance growth and profitability across all these dimensions."</blockquote>
-    <p>Q2 2025:</p>
-    <blockquote>"For 2025, our pricing trends and patient and member health status assumptions were well-short of the medical cost trends incurred, significantly impacting our earnings. We continually evaluate and adjust our approach in each of the local markets we serve"</blockquote>
-    <p>The annual dashboard records this wording as a FY2025 10-K change. It first appeared here, two quarters earlier, and the 10-K repeated it. The sentence was deleted in Q1 2026.</p>
+    <p class="shift">Shift: ADDED; realized: pricing miss stated as fact (+ candor)</p>
+    <blockquote>Q2 2025 (added): "For 2025, our pricing trends and patient and member health status assumptions were well-short of the medical cost trends incurred, significantly impacting our earnings."</blockquote>
+    <p class="history">History: "well-short of the medical cost trends incurred" first appears here; repeated in Q3 2025 and the FY2025 10-K; deleted in Q1 2026.</p>
+    <p>The annual dashboard records this wording as a FY2025 10-K change; it first appeared here, two filings earlier. It is the plainest statement in the series that the problem was UNH's own pricing, not only government rates.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Cost-trend paragraph broadened: inpatient, ER, unit costs, "services bundled per visit", exchange and VBC member profiles</span>
+    <span class="title">"We will continue seeking to balance growth and profitability" softened to "We seek to balance", after eight unchanged filings</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We have observed increased care patterns, more notably related to physician and outpatient care, and to a lesser extent inpatient and emergency room utilization, that are above what we expected and contemplated in our pricing and benefits design. We have also observed an increase in health care unit costs and the intensity of services delivered, driven by increases in provider pricing and additional services bundled per visit."</blockquote>
-    <p>Three changes from Q1: "for seniors served through Medicare Advantage" is gone, so the overrun now covers all lines; "pricing" is added next to "benefits design"; and unit-cost and intensity drivers appear for the first time. A new sentence follows the paragraph:</p>
-    <blockquote>"Additionally, we have elevated our audit, clinical policy and payment integrity tools to protect customers and patients from unnecessary costs."</blockquote>
-    <p>The annual dashboard places this "elevated audit tools" line in the FY2025 10-K. It first appears here.</p>
+    <p class="shift">Shift: certainty: will continue seeking &rarr; seek (-)</p>
+    <blockquote>Q1 2025: "We will continue seeking to balance growth and profitability across all these dimensions."</blockquote>
+    <blockquote>Q2 2025: "We seek to balance growth and profitability across all these dimensions."</blockquote>
+    <p class="history">History: the Q1 2025 sentence stood unchanged for 8 periods, from the Q2 2023 10-Q through Q1 2025 (sentence_signals persistence).</p>
+    <p>A small edit to a long-stable sentence, made in the same paragraph that now admits the pricing miss. The forward commitment to continue the old balance is withdrawn; consistent with the later shift toward margin over membership (our inference).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Individual exchange: future losses accelerated; "markets we choose to remain"; membership declines flagged</span>
+    <span class="title">Cost overrun widened beyond Medicare Advantage seniors: "pricing" added beside "benefits design"; unit costs and "services bundled per visit" named</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope widened (Medicare Advantage seniors &rarr; all lines); named drivers added: unit costs, intensity (+ disclosure)</p>
+    <blockquote>Q1 2025: "We have observed increased care patterns, more notably related to physician and outpatient care for seniors served through Medicare Advantage, that are above what we expected and contemplated in our benefits design."</blockquote>
+    <blockquote>Q2 2025: "We have observed increased care patterns, more notably related to physician and outpatient care, and to a lesser extent inpatient and emergency room utilization, that are above what we expected and contemplated in our pricing and benefits design. We have also observed an increase in health care unit costs and the intensity of services delivered, driven by increases in provider pricing and additional services bundled per visit."</blockquote>
+    <p class="history">History: "services bundled per visit" first appears here and is in every filing through Q2 2026, including after "As expected and contemplated" returns in Q1 2026.</p>
+    <p>One quarter after admitting a Medicare Advantage problem, the filing describes a company-wide one that includes provider pricing. The MCR rose to 89.4% from 85.1%.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Costlier members named: new value-based care patients, Medicare Advantage members "in markets where other plans exited", and exchange members</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Continued increased medical costs may impact both future pricing and benefit design, including for our individual exchange products in markets we choose to remain, and result in shifts between product categories for our employer benefits. These potential changes, along with certain regulatory impacts, may result in decreased membership in future periods."</blockquote>
-    <p>The MCR explanation adds "the impacts of market morbidity changes on our individual exchange offerings, including the acceleration of anticipated future losses related to the second half of 2025". UNH booked losses expected for the second half of 2025 in Q2.</p>
+    <p class="shift">Shift: ADDED; named cost sources (+ disclosure)</p>
+    <blockquote>Q2 2025 (added): "Additionally, the member profile of newly added patients under value-based care arrangements, people served in Medicare Advantage in markets where other plans exited, and peopled served within our individual exchange business has contributed to increased medical costs."</blockquote>
+    <p class="history">History: "markets where other plans exited" appears in Q2 2025 and the FY2025 10-K only.</p>
+    <p>The membership growth reported through 2025 (Medicare Advantage up 600K) is now partly described as adverse selection: members UNH picked up when competitors left. That explains why growth and margin moved in opposite directions.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicaid reverses: "more closely align" becomes "continues to be a mismatch"; 2026 membership losses forecast</span>
+    <span class="title">Individual exchange: losses for the second half of 2025 booked in Q2; pricing "in markets we choose to remain"; lower membership flagged</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; realized: future losses accelerated into the quarter; condition added: "markets we choose to remain" (exit implied)</p>
+    <blockquote>Q2 2025: "the impacts of market morbidity changes on our individual exchange offerings, including the acceleration of anticipated future losses related to the second half of 2025"</blockquote>
+    <blockquote>Q2 2025 (added): "Continued increased medical costs may impact both future pricing and benefit design, including for our individual exchange products in markets we choose to remain, and result in shifts between product categories for our employer benefits. These potential changes, along with certain regulatory impacts, may result in decreased membership in future periods."</blockquote>
+    <p class="history">History: "choose to remain" first appears here; repeated in Q3 2025 and the FY2025 10-K (as "markets where we choose to remain"); absent from Q1 2026 onward.</p>
+    <p>This is the first reference to exiting exchange markets and the first loss accrual for a future period in the series. The same "acceleration of anticipated future losses" mechanism was used again in Q4 for Optum Health's 2026 value-based contracts ($623M).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicaid reverses: "more closely align" becomes "there continues to be a mismatch"; behavioral, pharmacy and home health named; 2026 losses forecast</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Due to elevated care activity, specifically related to behavioral, pharmacy and home health, there continues to be a mismatch between the updated rates in 2025 and underlying member acuity."</blockquote>
-    <blockquote>"Additionally, we expect some Medicaid membership losses in 2026 as a result of early adoption of recent legislation."</blockquote>
-    <p>This contradicts the FY2024 10-K forecast ("will narrow in 2025"). Behavioral, pharmacy and home health are named for the first time.</p>
+    <p class="shift">Shift: improvement claim withdrawn (-); named: behavioral, pharmacy, home health; forecast added (membership losses 2026)</p>
+    <blockquote>Q1 2025: "While the updated rates in 2025 more closely align with underlying member acuity, the funding and payment rate environment remains insufficient to meet the health needs of patients and creates the risk of continued downward pressure on Medicaid margin percentages."</blockquote>
+    <blockquote>Q2 2025: "Due to elevated care activity, specifically related to behavioral, pharmacy and home health, there continues to be a mismatch between the updated rates in 2025 and underlying member acuity."</blockquote>
+    <p class="history">History: "continues to be a mismatch" appears in Q2 and Q3 2025 (the FY2025 10-K says "timing mismatch"); "early adoption of recent legislation" (the 2026 loss forecast) in Q2 and Q3 2025 only.</p>
+    <p>This contradicts the FY2024 10-K forecast that the gap "will narrow in 2025", one quarter after Q1 reported it narrowing.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicare Advantage pressure now blamed on UNH's own costs too: "significantly above initial cost trend estimates"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: cause added: own cost estimates (+ candor); degree: "significantly"</p>
+    <blockquote>Q1 2025: "The compounding impact of the previous multi-year rate shortfalls creates sustained pressure on the Medicare Advantage program."</blockquote>
+    <blockquote>Q2 2025: "Additionally, increased medical costs in 2025, which are significantly above initial cost trend estimates, adds to the compounding impact of the previous multi-year rate shortfalls creating sustained pressure on the Medicare Advantage program."</blockquote>
+    <p class="history">History: "significantly above initial cost trend estimates" appears in Q2 and Q3 2025 only; the FY2025 10-K replaces it with "expected to continue in future periods".</p>
+    <p>In the rates paragraph, the cause of pressure shifts from CMS's rates alone to UNH's own cost estimates as well.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New sentence: "we have elevated our audit, clinical policy and payment integrity tools"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; realized action ("we have elevated") (+)</p>
+    <blockquote>Q2 2025 (added): "Additionally, we have elevated our audit, clinical policy and payment integrity tools to protect customers and patients from unnecessary costs."</blockquote>
+    <p class="history">History: "elevated our audit, clinical policy" first appears here and is in every filing through Q2 2026.</p>
+    <p>This is the company's stated response to provider billing: tighter claim review. The annual dashboard places it in the FY2025 10-K; it first appears here. It does not use the words "prior authorization".</p>
   </div>
 </div>
 
@@ -639,19 +873,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>The medical-costs-payable rollforward shows "Prior years (320) (390)" for six months, the same $320M as Q1 2025, so Q2 2025 alone added nothing. A year earlier Q2 had added $80M. The note still says development "included no individual factors that were significant." See Tracked Signal #2.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Medicare Advantage costs "significantly above initial cost trend estimates"</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"Additionally, increased medical costs in 2025, which are significantly above initial cost trend estimates, adds to the compounding impact of the previous multi-year rate shortfalls creating sustained pressure on the Medicare Advantage program."</blockquote>
-    <p>In the rates paragraph, the cause of pressure shifts from CMS's rates alone to UNH's own cost estimates as well.</p>
+    <p class="shift">Shift: quant (same line, no change in YTD figure); stated driver unchanged</p>
+    <blockquote>Q2 2025 (notes): "For the six months ended June 30, 2025 and 2024, prior years’ medical cost reserve development included no individual factors that were significant."</blockquote>
+    <p class="history">History: the medical-costs-payable rollforward shows "Prior years (320) (390)" for six months, the same $320M as at Q1 2025; the "no individual factors" sentence appears in every 10-Q until Q1 2026 names a driver.</p>
+    <p>Q2 2025 alone added nothing (a year earlier Q2 added $80M). See Tracked Signal #2.</p>
   </div>
 </div>
 </div>
@@ -662,24 +887,28 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New paragraph on Optum Health value-based care; segment margin 2.5%</span>
+    <span class="title">New paragraph on Optum Health value-based care: "in the markets we continue to participate"; segment margin 2.5%</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Optum Health’s fully accountable value-based care businesses have been impacted by Medicare funding reductions and have also seen continued medical cost trend pressures, which may impact future pricing in the markets we continue to participate."</blockquote>
-    <p>"In the markets we continue to participate" implies market exits. Optum Health earnings fell to $636M from $1,919M. "Contractual settlements" is added as a driver of lower earnings.</p>
+    <p class="shift">Shift: ADDED; condition added (market exits implied); named: contractual settlements as an earnings drag</p>
+    <blockquote>Q2 2025 (added): "Optum Health’s fully accountable value-based care businesses have been impacted by Medicare funding reductions and have also seen continued medical cost trend pressures, which may impact future pricing in the markets we continue to participate."</blockquote>
+    <p class="history">History: "fully accountable value-based care" was used in the FY2023 and FY2024 10-Ks as a growth goal ("accelerate the transition ... to fully accountable value-based care"); here it first appears as a business under pressure, and the sentence recurs through Q2 2026.</p>
+    <p>Optum Health earnings fell to $636M from $1,919M. "Contractual settlements" is added as a reason. The term the 10-Ks used for the growth strategy is now attached to the problem.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New "Regulatory Capital" paragraph: subsidiary dividends "may be impacted"</span>
+    <span class="title">New Regulatory Capital paragraph: higher MCR raises required statutory capital; subsidiary dividends "may be impacted"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Regulatory Capital. As a result of an increased MCR impacting our regulated insurance and HMO subsidiaries, the specified levels of required statutory capital required to be maintained are expected to increase. While we continue to maintain significant levels of excess statutory capital in our subsidiaries, the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 may be impacted."</blockquote>
-    <p>This is the first time the MCR is tied to parent-company cash in this series. Subsidiary dividends were $1.9B for six months, against $9.2B for all of 2024.</p>
+    <p class="shift">Shift: ADDED; certainty: "expected to increase" (required capital), "may be impacted" (dividends)</p>
+    <blockquote>Q2 2025 (added): "Regulatory Capital. As a result of an increased MCR impacting our regulated insurance and HMO subsidiaries, the specified levels of required statutory capital required to be maintained are expected to increase. While we continue to maintain significant levels of excess statutory capital in our subsidiaries, the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 may be impacted."</blockquote>
+    <p class="history">History: "As a result of an increased MCR impacting" first appears here; in Q3 2025 and the FY2025 10-K; dropped in Q1 2026.</p>
+    <p>This is the first time the MCR is tied to parent-company cash in the series. Subsidiary dividends were $1.9B for six months, against $9.2B for all of 2024.</p>
   </div>
 </div>
 
@@ -690,20 +919,41 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Senior unsecured debt row, Q1 2025: "A2 Stable A+ Stable A Stable A Stable". Q2 2025: "A2 Negative A+ Negative A Stable A Negative". Fitch kept a Stable outlook until Q3 2025. The ratings themselves had not changed since the start of the series.</p>
+    <p class="shift">Shift: outlook Stable &rarr; Negative at three agencies (-)</p>
+    <blockquote>Q1 2025: "Senior unsecured debt | A2 | Stable | A+ | Stable | A | Stable | A | Stable"</blockquote>
+    <blockquote>Q2 2025: "Senior unsecured debt | A2 | Negative | A+ | Negative | A | Stable | A | Negative"</blockquote>
+    <p class="history">History: every filing from Q1 2024 through Q1 2025 shows Stable at all four agencies; Fitch moves to Negative and A.M. Best downgrades to A- in Q3 2025; the row is unchanged from Q3 2025 through Q2 2026.</p>
+    <p>The ratings themselves did not change this quarter; the table shows the agencies' direction turning before any downgrade.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">DOJ forward-looking factor broadened from one "matter" to "legal actions" over Medicare participation; "shareholders" join the litigant list</span>
+    <span class="title">DOJ forward-looking factor broadened from one "matter" to "legal actions concerning our participation in the Medicare program"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2025 forward-looking factor: "the DOJ’s legal action relating to the risk adjustment submission matter". Q2 2025:</p>
-    <blockquote>"changes in Medicare, the CMS star ratings program or the application of risk adjustment data validation audits; the DOJ’s legal actions concerning our participation in the Medicare program; our ability to maintain and achieve improvement in quality scores impacting revenue"</blockquote>
-    <p>The factor changes from singular to plural and from one named matter to the whole Medicare program. The contingencies note, however, still describes only the 2011 whistleblower case, word for word as in Q1. The note's generic litigation sentence gains "shareholders" ("customers, shareholders, and regulators"), and the RADV sentence gains the OIG ("CMS and OIG have selected certain of the Company’s local plans"). No new matter is named in either section. The change is visible only in the forward-looking list and in those two added words.</p>
+    <p class="shift">Shift: scope widened (singular matter &rarr; plural actions on Medicare participation) (-)</p>
+    <blockquote>Q1 2025: "changes in Medicare, the CMS star ratings program or the application of risk adjustment data validation audits; the DOJ’s legal action relating to the risk adjustment submission matter"</blockquote>
+    <blockquote>Q2 2025: "changes in Medicare, the CMS star ratings program or the application of risk adjustment data validation audits; the DOJ’s legal actions concerning our participation in the Medicare program"</blockquote>
+    <p class="history">History: "concerning our participation in the Medicare program" appears in the Q2 and Q3 2025 and Q1 and Q2 2026 10-Qs; it is not in the FY2025 10-K.</p>
+    <p>The contingencies note still describes only the 2011 whistleblower case, word for word as in Q1. The broadening is visible only in the forward-looking list. The note's litigation sentence also adds "shareholders" to the parties that sue the company.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OIG joins CMS in selecting UNH plans for risk adjustment data validation audits</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: + OIG (+ disclosure)</p>
+    <blockquote>Q1 2025: "CMS has selected certain of the Company’s local plans for risk adjustment data validation (RADV) audits"</blockquote>
+    <blockquote>Q2 2025: "CMS and OIG have selected certain of the Company’s local plans for risk adjustment data validation (RADV) audits to validate the coding practices of and supporting documentation maintained by health care providers"</blockquote>
+    <p class="history">History: "CMS and OIG" first appears here and is in every filing through Q2 2026, including the FY2025 10-K.</p>
+    <p>The HHS Inspector General auditing risk-adjustment coding adds an enforcement-oriented reviewer to what had been a CMS payment audit. The filing gives no number of plans or contract years.</p>
   </div>
 </div>
 
@@ -714,8 +964,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Dividends. In June 2025, our Board of Directors increased our quarterly cash dividend to an annual rate of $8.84 compared to $8.40 per share, which we had paid since June 2024."</blockquote>
-    <p>That is a 5.2% increase, against 11.7% in June 2024. Six-month repurchases were 12.1M shares at $454.82, and no shares were bought in any later 2025 quarter.</p>
+    <p class="shift">Shift: quant: $8.40 &rarr; $8.84 (+5.2%, vs +11.7% in 2024)</p>
+    <blockquote>Q2 2025: "Dividends. In June 2025, our Board of Directors increased our quarterly cash dividend to an annual rate of $8.84 compared to $8.40 per share, which we had paid since June 2024."</blockquote>
+    <p class="history">History: the June 2024 sentence raised the rate to $8.40 from $7.52; the June 2026 increase is again +$0.44, to $9.28.</p>
+    <p>Six-month repurchases were 12.1M shares at $454.82, and no shares were bought in Q3 or Q4 2025.</p>
   </div>
 </div>
 </div>
@@ -724,68 +976,145 @@ a:hover { text-decoration: underline; }
 <!-- Q2 → Q3 2025 -->
 <div class="transition-header" id="q2q3-2025">
   <h2>Q2 2025 &rarr; Q3 2025</h2>
-  <div class="sub">Filed Oct 28, 2025 | Revenue $113.16B | MCR 89.9% (series high) | Diluted EPS $2.59 | Optum Health margin 1.0% | First 10-Q signed by CFO Wayne DeVeydt</div>
+  <div class="sub">Filed Oct 28, 2025 | Revenue $113.16B (Q3 2024 $100.82B) | Earnings from operations $4.32B vs $8.71B (&minus;50%) | Diluted EPS $2.59 vs $6.51 | MCR 89.9% (series high) | No buybacks | Optum Health margin 1.0% | First 10-Q signed by CFO Wayne DeVeydt</div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+<h3><span class="dot" style="background:var(--accent);"></span>Capital &amp; Liquidity</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Subsidiary dividends: "may be impacted" becomes "will be impacted"; nine-month figure falls to $841M net of capital infusions</span>
+    <span class="title">Subsidiary dividends: "may be impacted" becomes "will be impacted"; nine-month figure falls to $841M "net of capital infusions"</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q2 2025: "...the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 may be impacted. During the six months ended June 30, 2025, our domestic insurance and HMO subsidiaries paid their parent companies dividends of $1.9 billion." Q3 2025:</p>
-    <blockquote>"While we continue to maintain significant levels of excess statutory capital in our subsidiaries, the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 will be impacted. During the nine months ended September 30, 2025, our domestic insurance and HMO subsidiaries paid their parent companies dividends, net of capital infusions, of $841 million."</blockquote>
-    <p>"May" became "will" (a firmer statement), and "net of capital infusions" appears. Year-to-date net dividends fell from $1.9B to $841M, which implies the parent put about $1.1B back into subsidiaries in Q3 (our inference from the two figures).</p>
+    <p class="shift">Shift: certainty: may &rarr; will (+ firmer); quant: $1.9 billion (six months) &rarr; $841 million net (nine months)</p>
+    <blockquote>Q2 2025: "While we continue to maintain significant levels of excess statutory capital in our subsidiaries, the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 may be impacted."</blockquote>
+    <blockquote>Q3 2025: "While we continue to maintain significant levels of excess statutory capital in our subsidiaries, the amount of dividends our subsidiaries are able to pay to their parent companies during the remainder of 2025 will be impacted. During the nine months ended September 30, 2025, our domestic insurance and HMO subsidiaries paid their parent companies dividends, net of capital infusions, of $841 million."</blockquote>
+    <p class="history">History: "will be impacted" appears in this Q3 2025 10-Q only; the FY2025 10-K reports the outcome (net infusions of $535M received).</p>
+    <p>Year-to-date net dividends fell from $1.9B to $841M, which implies the parent put about $1.1B back into subsidiaries in Q3 (our inference from the two figures).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Capital-relief reinsurance with deposit accounting first disclosed</span>
+    <span class="title">Capital-relief reinsurance first disclosed; agreements "do not qualify for reinsurance accounting"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We entered into various agreements with reinsurers that could limit our risk of loss under certain circumstances, thus reducing our capital and surplus requirements. These agreements do not qualify for reinsurance accounting and are therefore accounted for under deposit accounting."</blockquote>
-    <p>These agreements are described by their effect on statutory capital. Because they do not qualify for reinsurance accounting, they move no risk off the GAAP income statement.</p>
+    <p class="shift">Shift: ADDED (+ disclosure); hedge: "could limit our risk of loss under certain circumstances"</p>
+    <blockquote>Q3 2025 (added): "We entered into various agreements with reinsurers that could limit our risk of loss under certain circumstances, thus reducing our capital and surplus requirements. These agreements do not qualify for reinsurance accounting and are therefore accounted for under deposit accounting."</blockquote>
+    <p class="history">History: "do not qualify for reinsurance accounting" first appears here and is in the FY2025 10-K, Q1 2026 and Q2 2026.</p>
+    <p>The agreements are described by their effect on statutory capital. Because they do not qualify for reinsurance accounting, they move no risk off the GAAP income statement; their purpose as disclosed is to ease the capital requirement that the higher MCR raised.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">A.M. Best downgrades to A&minus;; Fitch outlook goes Negative</span>
+    <span class="title">A.M. Best downgrades senior debt to A&minus; and commercial paper to AMB-1; Fitch outlook goes Negative</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Senior unsecured row: "A2 Negative A+ Negative A Negative A- Stable". The A.M. Best commercial-paper rating moves from AMB-1+ to AMB-1. This is the only rating change in the series. The table is unchanged through Q2 2026.</p>
+    <p class="shift">Shift: rating cut (A &rarr; A-); outlook Stable &rarr; Negative at Fitch (-)</p>
+    <blockquote>Q2 2025: "Senior unsecured debt | A2 | Negative | A+ | Negative | A | Stable | A | Negative"</blockquote>
+    <blockquote>Q3 2025: "Senior unsecured debt | A2 | Negative | A+ | Negative | A | Negative | A- | Stable"</blockquote>
+    <p class="history">History: the only rating change in the series; the row is identical in the FY2025 10-K, Q1 2026 and Q2 2026. A.M. Best commercial paper moves from AMB-1+ to AMB-1 in the same table.</p>
+    <p>All four agencies have now acted. A.M. Best rates the insurance operations, so its cut bears most directly on the regulated subsidiaries whose dividends are shrinking.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Reserve development turns adverse in Q3: year-to-date favorable development falls from $320M to $30M</span>
+    <span class="title">South America sale slips: "expected to close within the year" becomes "the second half of 2026"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: date pushed out (within 2025 &rarr; second half of 2026) (-)</p>
+    <blockquote>Q2 2025: "The Company’s planned sales of its remaining South American operations are expected to close within the year, subject to regulatory and other customary closing conditions."</blockquote>
+    <blockquote>Q3 2025: "The Company’s planned sale of its remaining South American operations continues to progress and is now expected to close in the second half of 2026, subject to regulatory and other customary closing conditions."</blockquote>
+    <p class="history">History: the "within the year" sentence stood in Q1 and Q2 2025; "expected to close in the second half of 2026" is in every filing from Q3 2025 to Q2 2026. The businesses were first classified as held for sale in Q2 2024.</p>
+    <p>"Sales" also became "sale", singular. The exit announced in mid-2024 is now expected to take more than two years, and the FY2025 10-K income statement shows a further $265M loss on sale of subsidiaries held for sale.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Results, Reserves &amp; Segments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Reserve development turns adverse in Q3: year-to-date favorable development falls from $320M to $30M; "decreased favorable reserve development" back in the MCR text</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>The rollforward shows "Prior years (30) (600)". Going from $320M at six months to $30M at nine months implies about $290M of unfavorable development in Q3 alone (our inference). It is the only negative quarter in the set. The MD&amp;A gives it one clause, "For the nine months ended September 30, 2025, the MCR also increased due to decreased favorable reserve development". The note again says development "included no individual factors that were significant."</p>
+    <p class="shift">Shift: driver added: decreased favorable reserve development (+ disclosure)</p>
+    <blockquote>Q2 2025: "For the three months ended June 30, 2025, the MCR also increased due to the seasonal impacts of the IRA on Medicare Part D."</blockquote>
+    <blockquote>Q3 2025: "For the nine months ended September 30, 2025, the MCR also increased due to decreased favorable reserve development, partially offset by the incremental medical costs for accommodations made to care providers in 2024 as a result of the Change Healthcare cyberattack."</blockquote>
+    <p class="history">History: "decreased favorable reserve development" appeared in the 2024 10-Qs, was absent from the FY2024 10-K and the first two 2025 10-Qs, and returns here; the rollforward reads "Prior years (30) (600)".</p>
+    <p>Going from $320M at six months to $30M at nine months implies about $290M of unfavorable development in Q3 alone (our arithmetic), the only negative quarter in the set. The note again says development "included no individual factors that were significant."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Buybacks stop: the nine-month figure equals the six-month figure; pending-acquisitions paragraph deleted</span>
-    <span class="tag tag-removed">Removed</span>
+    <span class="title">Q3 MCR and earnings flattered by the exchange loss accrual booked in Q2: "decreased the MCR for the three months"</span>
+    <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"During the nine months ended September 30, 2025, we repurchased approximately 12.1 million shares of common stock at an average price of $454.82 per share."</blockquote>
-    <p>The numbers match the Q2 disclosure exactly, so no shares were bought in Q3. The "Pending Acquisitions" paragraph (~$4B in every quarter since Q1 2024) is deleted from both the MD&amp;A and the contingencies note. It returned in Q1 2026 at $3.0B.</p>
+    <p class="shift">Shift: ADDED; realized: the Q2 accrual reverses into Q3 (+ disclosure)</p>
+    <blockquote>Q3 2025 (added): "The acceleration of anticipated future losses related to our individual exchange offerings recorded in the second quarter of 2025 decreased the MCR for the three months ended September 30, 2025 and increased the MCR for the nine months ended September 30, 2025."</blockquote>
+    <p class="history">History: "decreased the MCR for the three months" appears in the Q3 2025 10-Q only; the accrual itself was first described in Q2 2025.</p>
+    <p>The Q3 MCR of 89.9%, the series high, is lower than it would have been, because losses for this quarter were charged in Q2. The underlying third-quarter cost level was therefore worse than the headline ratio (our inference from the sentence).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Buybacks stop: the nine-month repurchase figure equals the six-month figure</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant unchanged across periods (12.1 million shares at $454.82) = no Q3 activity</p>
+    <blockquote>Q3 2025: "During the nine months ended September 30, 2025, we repurchased approximately 12.1 million shares of common stock at an average price of $454.82 per share."</blockquote>
+    <p class="history">History: Q2 2025 reported the same 12.1 million shares at $454.82 for six months; XBRL shows $0 of repurchases in Q3 2025, Q4 2025 and Q1 2026.</p>
+    <p>The pause is disclosed only by the unchanged figure; no sentence says repurchases stopped. It coincides with the "will be impacted" dividend sentence and the downgrade above.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Pending acquisitions close: $4.7B of business combinations, $3.4B of goodwill attributed to Optum Health</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+); "Pending Acquisitions" (~$4 billion) paragraph removed as deals completed</p>
+    <blockquote>Q3 2025 (added): "During the nine months ended September 30, 2025, the Company completed several business combinations for total consideration of $4.7 billion."</blockquote>
+    <blockquote>Q3 2025 (added): "Goodwill attributable to Optum Health from the business combinations completed was $3.4 billion."</blockquote>
+    <p class="history">History: the "Pending Acquisitions" paragraph (about $4 billion) appears in Q1 2024, the FY2024 10-K, Q1 2025 and Q2 2025, and returns in Q1 2026; "Goodwill attributable to Optum Health" appears in Q3 2025 only.</p>
+    <p>An earlier version of this page read the paragraph's removal as a dropped disclosure; the deals closed. Most of the goodwill went to Optum Health in the quarter its margin fell to 1.0%, which adds to the asset base exposed to the value-based care losses recorded in Q4.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Optum Health earnings drag: "contractual settlements" replaced by "decreased gains related to business portfolio refinement"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: driver swapped (settlements &rarr; absence of 2024 gains)</p>
+    <blockquote>Q2 2025: "Earnings from operations decreased due to Medicare Advantage funding reductions, the member profile of newly added patients under value-based care arrangements, elevated medical cost trends and contractual settlements, partially offset by cost management initiatives."</blockquote>
+    <blockquote>Q3 2025: "Earnings from operations decreased due to Medicare Advantage funding reductions, the member profile of newly added patients under value-based care arrangements, elevated medical cost trends and decreased gains related to business portfolio refinement, partially offset by cost management initiatives."</blockquote>
+    <p class="history">History: "decreased gains related to business portfolio refinement" appears in this Q3 2025 10-Q only; the FY2025 10-K calls it "gains on dispositions in 2024".</p>
+    <p>Optum Health earned $255M vs $2,161M. Part of the 88% fall is the absence of the Q3 2024 disposition gains, confirming that the 2024 peak leaned on them (see Q2 2024 &rarr; Q3 2024).</p>
   </div>
 </div>
 
@@ -796,8 +1125,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Revenues and earnings from operations at Optum Insight decreased for the three months ended September 30, 2025 due to lower volumes within business services, partially offset by growth in technology services and decreased impacts related to the Change Healthcare cyberattack."</blockquote>
-    <p>Earnings were $706M vs $791M. This is the first post-recovery decline attributed to volume, and it came in the third quarter after the Change Healthcare narrative was dropped from the Executive Overview.</p>
+    <p class="shift">Shift: direction reversed (increased &rarr; decreased); named driver: business-services volume</p>
+    <blockquote>Q2 2025: "Revenues at Optum Insight increased due to decreased business disruption impacts related to the Change Healthcare cyberattack."</blockquote>
+    <blockquote>Q3 2025: "Revenues and earnings from operations at Optum Insight decreased for the three months ended September 30, 2025 due to lower volumes within business services, partially offset by growth in technology services and decreased impacts related to the Change Healthcare cyberattack."</blockquote>
+    <p class="history">History: "lower volumes within business services" first appears here; repeated in the FY2025 10-K and Q1 2026.</p>
+    <p>Earnings were $706M vs $791M. This is the first post-recovery decline attributed to volume, in the third quarter after the Change Healthcare narrative left the Executive Overview.</p>
   </div>
 </div>
 </div>
@@ -806,59 +1138,130 @@ a:hover { text-decoration: underline; }
 <!-- Q3 2025 → FY2025 10-K -->
 <div class="transition-header" id="q3-2025-fy2025">
   <h2>Q3 2025 &rarr; FY2025 10-K</h2>
-  <div class="sub">Annual Filing (Mar 2, 2026) | FY2025 revenue $447.57B | MCR 89.1% | Diluted EPS $13.23 | Optum Health earnings $(278)M | Favorable development $140M</div>
+  <div class="sub">Annual Filing (Mar 2, 2026) | FY2025 revenue $447.57B (+12%) | Earnings from operations $18.96B vs $32.29B (&minus;41%) | Net income $12.06B | Diluted EPS $13.23 | MCR 89.1% | Operating cash flow $19.70B | Buybacks $5.54B (none after Q2) | Optum Health earnings $(278)M | Favorable development $140M</div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A: Outlook &amp; Membership</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Q4 2025 charges: $2.5B restructuring including a $623M loss-contract reserve for 2026 value-based care; $799M provider-loan reserve</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"Additionally, in the fourth quarter of 2025 the Company took restructuring and other actions that resulted in a total impact of $2.5 billion, which included real estate rationalization and workforce reductions of $746 million, contractual reassessments of $573 million, the establishment a loss contract reserve related to anticipated future losses in 2026 for certain value-based care businesses of $623 million"</blockquote>
-    <blockquote>"In the fourth quarter of 2025, the Company increased its reserves for net collection expectations associated with provider loans and other customer balances of $799 million, which were recorded within operating costs on the Consolidated Statements of Operations and related to Optum Insight."</blockquote>
-    <p>The $799M reserve is the first time the Change Healthcare loans (nearly $9B at the peak) were reported as partly uncollectible. Separately, portfolio actions produced a net gain of $568M, made up of a $1.5B gain at Optum Rx offset by an $821M loss at Optum Health. The 2026 loss reserve was released in pieces through 2026 ($137M in Q1, $187M year-to-date in Q2), which helped Optum Health's 2026 earnings.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Medicare Advantage membership "will contract in 2026"; value-based care enrollment "to contract"</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"As a result of continued funding pressures, which have resulted in benefit and pricing actions, we expect that our Medicare Advantage membership will contract in 2026."</blockquote>
-    <blockquote>"As a result of increased pricing in response to anticipated care patterns in 2026 and decreased people served through UnitedHealthcare Medicare Advantage offerings, we expect the number of people served under value-based care arrangements to contract."</blockquote>
-    <p>Medicare Advantage membership had grown every quarter in the series, reaching 8,445K at year-end. In Q3 2025 the text still said trends "may impact pricing and benefit design in future periods". The annual filing states a contraction.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">2027 Advance Notice "far below" trend; 2025 cost increases "expected to continue"</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"While the Final Notice for 2026 approached the expected industry forward medical cost trend, the Advanced Notice for 2027 is far below. Additionally, increased medical costs in 2025, which are expected to continue in future periods, have added to the compounding impact of the previous multi-year rate shortfalls"</blockquote>
-    <p>The Q3 2025 phrase "significantly above initial cost trend estimates" becomes "expected to continue in future periods": the cost level is described as persistent rather than as a surprise. Medicaid gains a market exit: "We expect Medicaid membership losses in 2026 as a result of reduced Medicaid eligibility and the exit from one state."</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Capital flow reverses: subsidiaries received $535M net instead of paying $9.2B</span>
+    <span class="title">The failed 2025 assurance returns for 2026: cost trends now "contemplated in our 2026 benefit design approach"</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Our U.S. regulated subsidiaries received capital infusions, net of dividends, of $535 million and paid their parent companies dividends, net of capital infusions, of $9.2 billion in 2025 and 2024, respectively."</blockquote>
-    <p>This confirms the direction the Q3 2025 "will be impacted" sentence pointed to. Full-year favorable development was $140M, against $700M (2024) and $840M (2023). A new $9.7B of loan receivables appears in the liquidity discussion.</p>
+    <p class="shift">Shift: certainty: may impact (future) &rarr; is contemplated (stated fact) (+ firmer); realized</p>
+    <blockquote>Q3 2025: "Medicare Advantage funding continues to be pressured, as discussed below in “Regulatory Trends and Uncertainties,” and we have observed increased care patterns as discussed below in “Medical Cost Trends,” which may impact pricing and benefit design in future periods."</blockquote>
+    <blockquote>FY2025 10-K: "Medicare Advantage funding continues to be pressured, as discussed below in “Regulatory Trends and Uncertainties” and we have observed increased care patterns as discussed below in “Medical Cost Trends”, which is contemplated in our 2026 benefit design approach."</blockquote>
+    <p class="history">History: the FY2024 10-K used the same construction ("Our 2025 benefit design approach contemplates these trends"), withdrawn in Q1 2025. "Contemplated in our 2026 benefit design" first appears here and is kept in Q1 and Q2 2026.</p>
+    <p>A year after the 2025 version of this sentence failed, the 10-K makes the same claim for 2026. Readers can test it the same way: the 2025 claim was reversed one quarter later; through Q2 2026 this one has held.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicare Advantage membership "will contract in 2026" after growing every quarter in the series</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; certainty: will (+ firm forecast); realized: funding pressures "have resulted in benefit and pricing actions"</p>
+    <blockquote>FY2025 10-K (added): "As a result of continued funding pressures, which have resulted in benefit and pricing actions, we expect that our Medicare Advantage membership will contract in 2026."</blockquote>
+    <p class="history">History: "Medicare Advantage membership will contract" appears in the FY2025 10-K only; Q1 2026 reports "contraction in our Medicare Advantage membership in the first quarter".</p>
+    <p>Medicare Advantage membership grew every quarter from Q1 2024 to 8,445K at year-end 2025. In Q3 2025 the text still said trends "may impact pricing and benefit design in future periods"; the annual filing states that the pricing actions were taken and that members will leave.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2027 Advance Notice "far below" trend; 2025 cost increases go from "significantly above initial cost trend estimates" to "expected to continue"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: + Advance Notice for 2027; certainty: surprise &rarr; expected to continue (+ firmer)</p>
+    <blockquote>Q3 2025: "Additionally, increased medical costs in 2025, which are significantly above initial cost trend estimates, adds to the compounding impact of the previous multi-year rate shortfalls creating sustained pressure on the Medicare Advantage program."</blockquote>
+    <blockquote>FY2025 10-K: "While the Final Notice for 2026 approached the expected industry forward medical cost trend, the Advanced Notice for 2027 is far below. Additionally, increased medical costs in 2025, which are expected to continue in future periods, have added to the compounding impact of the previous multi-year rate shortfalls creating sustained pressure on the Medicare Advantage program."</blockquote>
+    <p class="history">History: "far below" appears in the FY2025 10-K only; Q1 2026 says the 2027 Final Notice "moved towards" trend but "remains below".</p>
+    <p>The cost level is now described as persistent rather than as a surprise, so 2026 pricing has to absorb it. At the same time the next rate year is described as worse than the last.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Medicaid: 2026 losses now include "the exit from one state"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: cause added: market exit (named action); "early adoption of recent legislation" &rarr; "reduced Medicaid eligibility"</p>
+    <blockquote>Q3 2025: "Additionally, we expect some Medicaid membership losses in 2026 as a result of early adoption of recent legislation."</blockquote>
+    <blockquote>FY2025 10-K: "We expect Medicaid membership losses in 2026 as a result of reduced Medicaid eligibility and the exit from one state."</blockquote>
+    <p class="history">History: "exit from one state" first appears here and is in Q1 and Q2 2026, where it is reported as a cause of the decline.</p>
+    <p>"Some" is dropped, and a company decision is added to the external cause. The state is not named. Together with the exchange "markets where we choose to remain", this is the second line of business where the response to rate pressure is withdrawal.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Charges, Reserves &amp; Capital</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Q4 2025 restructuring and other actions of $2.5B, including a $623M loss-contract reserve for 2026 value-based care losses</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added (+); realized: future losses accrued now</p>
+    <blockquote>FY2025 10-K (added): "Additionally, in the fourth quarter of 2025 the Company took restructuring and other actions that resulted in a total impact of $2.5 billion, which included real estate rationalization and workforce reductions of $746 million, contractual reassessments of $573 million, the establishment a loss contract reserve related to anticipated future losses in 2026 for certain value-based care businesses of $623 million"</blockquote>
+    <p class="history">History: "loss contract reserve" first appears here; Q1 and Q2 2026 report its release ($137M in Q1, $187M year to date at Q2).</p>
+    <p>$1.7B of the $2.5B fell on Optum Health. Releases of the reserve during 2026 count toward Optum Health's reported 2026 earnings, so 2025 absorbed costs that would otherwise hit 2026.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$799M reserve for "net collection expectations associated with provider loans and other customer balances"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added (+); counterparty unnamed ("provider loans and other customer balances")</p>
+    <blockquote>FY2025 10-K (added): "In the fourth quarter of 2025, the Company increased its reserves for net collection expectations associated with provider loans and other customer balances of $799 million, which were recorded within operating costs on the Consolidated Statements of Operations and related to Optum Insight."</blockquote>
+    <p class="history">History: "net collection expectations" appears in the FY2025 10-K only. The provider loans were last quantified as "more than $9 billion" in the FY2024 10-K.</p>
+    <p>This is the first time the Change Healthcare loans were reported as partly uncollectible, though the reserve also covers "other customer balances" and the split is not given. The loans had dropped out of the MD&amp;A narrative in Q1 2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Capital flow reverses: regulated subsidiaries received $535M net instead of paying $9.2B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: direction reversed (dividends paid &rarr; infusions received); quant</p>
+    <blockquote>Q3 2025: "During the nine months ended September 30, 2025, our domestic insurance and HMO subsidiaries paid their parent companies dividends, net of capital infusions, of $841 million."</blockquote>
+    <blockquote>FY2025 10-K: "Our U.S. regulated subsidiaries received capital infusions, net of dividends, of $535 million and paid their parent companies dividends, net of capital infusions, of $9.2 billion in 2025 and 2024, respectively."</blockquote>
+    <p class="history">History: subsidiary dividends were $8.0B (2023) and $9.2B (2024); Q2 2025 warned they "may be impacted", Q3 2025 that they "will be impacted".</p>
+    <p>From $841M net paid at nine months to $535M net received for the year implies about $1.4B put into the subsidiaries in Q4 (our arithmetic). The notes add that the 2025 dividends paid "included $893 million of extraordinary dividends."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New $3.3B receivables financing facility: $3.0B of receivables sold in 2025 and counted as operating cash flow</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added (+ disclosure)</p>
+    <blockquote>FY2025 10-K (added): "In 2025, the Company entered into a $3.3 billion 364-day uncommitted receivables financing facility under which certain receivables may be sold to financial institutions."</blockquote>
+    <blockquote>FY2025 10-K (added): "For the year ended December 31, 2025, the Company sold $3.0 billion of receivables under the receivables funding facility, and the loss on discounted receivables was immaterial."</blockquote>
+    <p class="history">History: "receivables financing facility" first appears in the FY2025 10-K (not in any 2025 10-Q) and is in Q1 and Q2 2026.</p>
+    <p>Full-year operating cash flow was $19.7B. The 10-K lists "the impact of the sale of receivables" as an offset to the decline, so part of the reported operating cash came from selling receivables early. The facility was not disclosed in any of the three 2025 10-Qs.</p>
   </div>
 </div>
 
@@ -869,7 +1272,9 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Optum Financial, including Optum Bank, which was historically included in Optum Health, will now be included in Optum Insight."</blockquote>
+    <p class="shift">Shift: ADDED; segment boundary changed</p>
+    <blockquote>FY2025 10-K (added): "Optum Financial, including Optum Bank, which was historically included in Optum Health, will now be included in Optum Insight."</blockquote>
+    <p class="history">History: "will now be included in Optum Insight" appears in the FY2025 10-K only; Q1 and Q2 2026 present Optum Health with prior periods recast.</p>
     <p>The recast moves Optum Health's Q2 2025 earnings from $636M (as filed) to $429M in the Q2 2026 comparison. The 2026 year-over-year improvement shown for Optum Health is therefore measured against a lower base than the one originally reported.</p>
   </div>
 </div>
@@ -879,7 +1284,7 @@ a:hover { text-decoration: underline; }
 <!-- FY2025 10-K → Q1 2026 -->
 <div class="transition-header" id="fy2025-q1-2026">
   <h2>FY2025 10-K &rarr; Q1 2026</h2>
-  <div class="sub">Filed May 5, 2026 | Revenue $111.72B | MCR 83.9% (Q1 2025 84.8%) | Diluted EPS $6.90 | Favorable development $1,050M in one quarter | UnitedHealthcare served 1.1M fewer people</div>
+  <div class="sub">Filed May 5, 2026 | Revenue $111.72B (Q1 2025 $109.58B) | Earnings from operations $8.99B vs $9.12B | Diluted EPS $6.90 vs $6.85 | MCR 83.9% (Q1 2025 84.8%) | Operating cash flow $8.91B | No cash buybacks (forward contracts only) | Favorable development $1,050M in one quarter | UnitedHealthcare served 1.1M fewer people</div>
 </div>
 
 <div class="finding-group">
@@ -892,22 +1297,40 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"For the three months ended March 31, 2026, prior years’ medical cost reserve development was driven by a favorable respiratory illness season along with various other individually insignificant factors."</blockquote>
-    <blockquote>"The MCR decreased due to increased favorable reserve development, affordability initiatives and pricing trends, partially offset by expected elevated medical costs trend."</blockquote>
-    <p>Q1 2026's $1,050M is 7.5 times all of 2025 ($140M) and more than three times Q1 2025 ($320M). Every earlier 10-Q said development "included no individual factors that were significant". This is the first named driver in the set. Reserves for claims incurred but not reported (IBNR) went from $26.7B at year-end to $27.6B. Favorable development is listed first among the MCR drivers, and the MCR of 83.9% is the lowest in the set. This suggests the year-end 2025 reserves, set after the 2025 miss, were conservative.</p>
+    <p class="shift">Shift: named driver replaces "no individual factors that were significant" (+ disclosure); quant: $1,050M in one quarter</p>
+    <blockquote>Q3 2025: "For the nine months ended September 30, 2025 and 2024, prior years’ medical cost reserve development included no individual factors that were significant."</blockquote>
+    <blockquote>Q1 2026: "For the three months ended March 31, 2026, prior years’ medical cost reserve development was driven by a favorable respiratory illness season along with various other individually insignificant factors."</blockquote>
+    <p class="history">History: "respiratory illness season" first appears here and is repeated in Q2 2026; every 10-Q from Q1 2024 to Q3 2025 said "no individual factors that were significant".</p>
+    <p>Q1 2026's $1,050M is 7.5 times all of 2025 ($140M) and more than three times Q1 2025 ($320M). Favorable development is listed first among MCR drivers ("The MCR decreased due to increased favorable reserve development, affordability initiatives and pricing trends"), and the 83.9% MCR is the lowest in the set. This is consistent with conservative year-end 2025 reserves, set after the 2025 miss.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"As expected and contemplated" returns after four filings; "well-short" admission and IRA paragraph deleted</span>
+    <span class="title">"As expected and contemplated" returns after four filings, now "in our benefits design and pricing"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K: "We have observed increased care patterns that are above what we expected and contemplated in our pricing and benefits design." Q1 2026:</p>
-    <blockquote>"As expected and contemplated in our benefits design and pricing, we have continued to observe increased care patterns; health care unit costs; and the intensity of services delivered, which are driven by increases in provider pricing and additional services bundled per visit."</blockquote>
-    <p>The opening last used in the FY2024 10-K returns, with "and pricing" added. The Pricing Trends sentence "For 2025, our pricing trends and patient and member health status assumptions were well-short of the medical cost trends incurred" is gone, after appearing in three filings (Q2 2025, Q3 2025, FY2025 10-K). The IRA/Part D seasonality paragraph present since Q1 2025 is also dropped.</p>
+    <p class="shift">Shift: reassurance restored: above expectations &rarr; as expected (- candor / + confidence)</p>
+    <blockquote>FY2025 10-K: "We have also observed an increase in health care unit costs and in the intensity of services delivered, driven by increases in provider pricing and additional services bundled per visit."</blockquote>
+    <blockquote>Q1 2026: "As expected and contemplated in our benefits design and pricing, we have continued to observe increased care patterns; health care unit costs; and the intensity of services delivered, which are driven by increases in provider pricing and additional services bundled per visit."</blockquote>
+    <p class="history">History: "As expected and contemplated in our benefits design" ran from Q1 2024 through the FY2024 10-K, was absent from Q1 2025 through the FY2025 10-K (replaced by "above what we expected"), and returns here, kept in Q2 2026.</p>
+    <p>The same cost drivers (unit costs, intensity, bundling) are still described; what changed is the claim that pricing now covers them. The last time this clause was used, it was reversed one quarter later.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The "well-short" pricing admission is deleted after three filings</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: REMOVED; realized admission withdrawn (-)</p>
+    <blockquote>FY2025 10-K (not carried forward): "For 2025, our pricing trends and patient and member health status assumptions were well-short of the medical cost trends incurred, significantly impacting our earnings."</blockquote>
+    <p class="history">History: "well-short of the medical cost trends incurred" appears in Q2 2025, Q3 2025 and the FY2025 10-K only.</p>
+    <p>The sentence was about 2025, so dropping it in a 2026 filing is defensible; but nothing replaces it to say whether 2026 pricing assumptions are tracking. The only statement on 2026 is the restored "As expected and contemplated" clause.</p>
   </div>
 </div>
 
@@ -918,8 +1341,25 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Additionally, we have voluntarily pledged to rebate 2026 profits on our individual exchange products to customers as policymakers continue to work to determine how to improve affordability in this marketplace."</blockquote>
-    <p>The pledge is listed as a revenue offset in the UnitedHealthcare segment discussion ("our pledge to rebate profits on our individual exchange products to customers"). It is a new kind of disclosure: a cap on profit in a product line the company says it priced for recovery. Separately, "markets where we choose to remain" is dropped from the exchange sentence.</p>
+    <p class="shift">Shift: ADDED; new commitment (realized: "we have voluntarily pledged") (+)</p>
+    <blockquote>Q1 2026 (added): "Additionally, we have voluntarily pledged to rebate 2026 profits on our individual exchange products to customers as policymakers continue to work to determine how to improve affordability in this marketplace."</blockquote>
+    <p class="history">History: "voluntarily pledged to rebate" first appears here and is repeated in Q2 2026. The FY2025 10-K's "markets where we choose to remain" is dropped from the exchange sentence in the same filing.</p>
+    <p>The pledge appears as a revenue offset in the UnitedHealthcare segment discussion ("our pledge to rebate profits on our individual exchange products to customers"). It caps profit in a product line the company re-priced after 2025 losses, and is tied in the text to policymakers' affordability work.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Optum Health earnings helped by a $137M release of the loss-contract reserve set up in Q4 2025</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; realized: reserve release named as an earnings offset</p>
+    <blockquote>Q1 2026 (added): "This was partially offset by a $137 million reduction of loss contract reserves established in the fourth quarter of 2025 and $59 million of net valuation gains on equity securities."</blockquote>
+    <blockquote>Q1 2026: "Earnings from operations decreased due to continued elevated medical cost trends, the impacts of net portfolio divestitures and investments to support future growth, partially offset by cost management, favorable reserve development and the reduction of loss contract reserves established in the fourth quarter of 2025."</blockquote>
+    <p class="history">History: "loss contract reserve" first appears in the FY2025 10-K ($623M); Q2 2026 reports $187M released year to date.</p>
+    <p>Of Optum Health's three named positives, two are releases of reserves set up in 2025. The $623M charged to 2025 is flowing back into 2026 earnings as expected losses are incurred against it.</p>
   </div>
 </div>
 </div>
@@ -930,12 +1370,59 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Forecast contraction becomes reported contraction: Medicare Advantage &minus;690K, value-based care down, Optum Rx scripts lower</span>
+    <span class="title">Forecast becomes fact: Medicare Advantage "contraction ... in the first quarter" (&minus;690K), "which we expect to continue throughout 2026"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Continued funding pressures have resulted in benefit and pricing actions, causing contraction in our Medicare Advantage membership in the first quarter, which we expect to continue throughout 2026."</blockquote>
-    <p>Medicare Advantage stood at 7,555K vs 8,245K and Medicaid at 7,160K vs 7,570K. Optum Rx filled 383M adjusted scripts vs 408M, the first year-over-year decline in the set, "due to contraction in people served at UnitedHealthcare." Optum Rx earnings fell 10%. The integrated model now carries the membership loss from UnitedHealthcare into Optum Rx.</p>
+    <p class="shift">Shift: realized: will contract &rarr; has contracted (+); forecast extended through 2026</p>
+    <blockquote>FY2025 10-K: "As a result of continued funding pressures, which have resulted in benefit and pricing actions, we expect that our Medicare Advantage membership will contract in 2026."</blockquote>
+    <blockquote>Q1 2026: "Continued funding pressures have resulted in benefit and pricing actions, causing contraction in our Medicare Advantage membership in the first quarter, which we expect to continue throughout 2026."</blockquote>
+    <p class="history">History: "will contract" appears in the FY2025 10-K only; the Q1 2026 sentence is repeated in Q2 2026.</p>
+    <p>Medicare Advantage stood at 7,555K vs 8,245K and Medicaid at 7,160K vs 7,570K. UnitedHealthcare "served 1.1 million fewer people due to benefit design and pricing actions and reduced Medicaid eligibility".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Value-based care "has contracted"; "the exit from certain markets" added as a cause</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: expect to contract &rarr; has contracted (+); cause added: market exits</p>
+    <blockquote>FY2025 10-K: "As a result of increased pricing in response to anticipated care patterns in 2026 and decreased people served through UnitedHealthcare Medicare Advantage offerings, we expect the number of people served under value-based care arrangements to contract."</blockquote>
+    <blockquote>Q1 2026: "As a result of increased pricing in response to anticipated care patterns in 2026, the exit from certain markets and decreased people served through UnitedHealthcare Medicare Advantage offerings, the number of people served under value-based care arrangements has contracted in the first quarter and is expected to continue throughout 2026."</blockquote>
+    <p class="history">History: "exit from certain markets" first appears here and is in Q2 2026; "has contracted in the first quarter" in Q1 2026 only.</p>
+    <p>Optum Health revenue now "decreased primarily due to fewer patients served under value-based arrangements, partially offset by business combinations". The Q2 2025 phrase "markets we continue to participate" has become reported exits.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Optum Rx script volume falls "due to contraction in people served at UnitedHealthcare"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: driver reversed (script growth &rarr; script decline); named: UnitedHealthcare as the cause</p>
+    <blockquote>FY2025 10-K: "Revenues at Optum Rx increased due to higher script volumes from both new clients and growth in existing clients and growth in pharmacy services."</blockquote>
+    <blockquote>Q1 2026: "Revenues at Optum Rx increased due to growth in specialty pharmacy partially offset by decreased script volume due to contraction in people served at UnitedHealthcare."</blockquote>
+    <p class="history">History: "higher script volumes from both new clients" appears in every filing from Q3 2023 through the FY2025 10-K and is absent from Q1 2026.</p>
+    <p>Optum Rx filled 383M adjusted scripts vs 408M, the first year-over-year decline in the set, and its earnings fell on "lower script volumes and investments in people". The integrated model carries UnitedHealthcare's membership loss into Optum Rx.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$400M contribution to the United Health Foundation, funded by the gain on an Optum Insight sale</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added (+)</p>
+    <blockquote>Q1 2026 (added): "In the first quarter of 2026, restructuring and other items included a $400 million contribution to the United Health Foundation funded by the cash gain on the disposition of an Optum Insight business."</blockquote>
+    <p class="history">History: "contribution to the United Health Foundation" first appears here (Q2 2026 repeats it); the FY2025 10-K had already charged $250M of "advance funding" to the Foundation in Q4 2025.</p>
+    <p>Optum Insight's $528M portfolio gain was largely offset by the contribution, both inside "restructuring and other" items. Over two quarters the company has directed $650M to its foundation through charges that sit beside one-time gains.</p>
   </div>
 </div>
 
@@ -946,20 +1433,54 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"On March 6, 2026, we received Notices of Proposed Adjustment (“NOPAs”) from the IRS for transactions undertaken during the 2017 through 2020 tax years involving intercompany transfer pricing with a foreign subsidiary. The IRS is seeking to significantly increase taxable income for each of the applicable periods and could also seek similar adjustments for subsequent years after 2020."</blockquote>
-    <p>This is the first new named matter in the contingencies note in the series. No amount is given. The company says its reserves for uncertain tax positions "are adequate". "Could also seek similar adjustments for subsequent years" leaves the exposure open-ended.</p>
+    <p class="shift">Shift: ADDED; named: + IRS NOPAs; no amount (quant absent)</p>
+    <blockquote>Q1 2026 (added): "On March 6, 2026, we received Notices of Proposed Adjustment (“NOPAs”) from the IRS for transactions undertaken during the 2017 through 2020 tax years involving intercompany transfer pricing with a foreign subsidiary. The IRS is seeking to significantly increase taxable income for each of the applicable periods and could also seek similar adjustments for subsequent years after 2020."</blockquote>
+    <p class="history">History: "Notices of Proposed Adjustment" first appears here and is repeated in Q2 2026; the FY2025 10-K (filed four days before the NOPAs) said only that 2017&ndash;2023 were "under exam".</p>
+    <p>This is the first new named matter in the contingencies note in the series. No amount is given, and the company says its reserves for uncertain tax positions "are adequate". "Could also seek similar adjustments for subsequent years" leaves the exposure open-ended.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Buybacks restart through forward contracts at $285.68; Regulatory Capital paragraph drops the MCR warning</span>
+    <span class="title">Buybacks restart through forward contracts at $285.68, with no cash paid in the quarter</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; new structure (counterparty buys and holds) (+ disclosure)</p>
+    <blockquote>Q1 2026 (added): "During the three months ended March 31, 2026, a counterparty purchased and held 1.7 million shares at an average price of $285.68 per share pursuant to forward share repurchase contracts."</blockquote>
+    <p class="history">History: "forward share repurchase" first appears here; Q2 2026 reports 6.4M forward shares settled July 1, 2026. XBRL shows $0 of cash repurchases from Q3 2025 through Q1 2026.</p>
+    <p>Repurchases resume after three quarters without any, in a form that defers the cash outlay. The price is 37% below the 2025 average of $454.82 (our arithmetic).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Regulatory Capital drops "As a result of an increased MCR ... expected to increase"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"During the three months ended March 31, 2026, a counterparty purchased and held 1.7 million shares at an average price of $285.68 per share pursuant to forward share repurchase contracts."</blockquote>
-    <p>Repurchases resume after three quarters without any, through a new structure in which no cash had been paid at quarter-end. Regulatory Capital no longer opens with "As a result of an increased MCR"; it now reads "Our regulated insurance and HMO subsidiaries have specified levels of statutory capital required to be maintained, which fluctuates based upon premiums received and the MCR of the regulated subsidiary." The forward-looking list adds "risks and uncertainties associated with our increasing use of artificial intelligence and other emerging technologies".</p>
+    <p class="shift">Shift: warning softened to a general description (-)</p>
+    <blockquote>FY2025 10-K: "As a result of an increased MCR impacting our regulated insurance and HMO subsidiaries, the specified levels of required statutory capital required to be maintained are expected to increase."</blockquote>
+    <blockquote>Q1 2026: "Our regulated insurance and HMO subsidiaries have specified levels of statutory capital required to be maintained, which fluctuates based upon premiums received and the MCR of the regulated subsidiary."</blockquote>
+    <p class="history">History: "As a result of an increased MCR impacting" appears in Q2 2025, Q3 2025 and the FY2025 10-K only; the Q1 2026 sentence is repeated in Q2 2026.</p>
+    <p>Consistent with the lower MCR this quarter. The deposit-accounted reinsurance paragraph stays.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Operating cash flow rises on "legislative changes from the Inflation Reduction Act impacting pharmacy rebates"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: driver named: + IRA pharmacy rebates (+ disclosure)</p>
+    <blockquote>FY2025 10-K: "Decreased cash flows provided by operating activities were driven by decreased cash flows from net earnings, partially offset by changes in working capital accounts, the impact of the sale of receivables and the impacts of the Change Healthcare cyberattack in 2024."</blockquote>
+    <blockquote>Q1 2026: "Increased cash flows provided by operating activities were driven by legislative changes from the Inflation Reduction Act impacting pharmacy rebates and other changes in working capital accounts."</blockquote>
+    <p class="history">History: "impacting pharmacy rebates" first appears here and is repeated in Q2 2026.</p>
+    <p>First-quarter operating cash flow was $8.91B vs $5.46B. The increase is attributed to a working-capital effect of the IRA on rebates, not to earnings, which were flat; that is a timing source of cash (our inference from the stated driver).</p>
   </div>
 </div>
 </div>
@@ -968,70 +1489,131 @@ a:hover { text-decoration: underline; }
 <!-- Q1 → Q2 2026 -->
 <div class="transition-header" id="q1q2-2026">
   <h2>Q1 2026 &rarr; Q2 2026</h2>
-  <div class="sub">Filed Aug 10, 2026 | Revenue $112.03B | MCR 86.7% (Q2 2025 89.4%) | Diluted EPS $6.04 | UnitedHealthcare earnings +90% | UnitedHealthcare served 1.6M fewer people</div>
+  <div class="sub">Filed Aug 10, 2026 | Revenue $112.03B (Q2 2025 $111.62B) | Earnings from operations $7.99B vs $5.15B | Diluted EPS $6.04 vs $3.74 | MCR 86.7% (Q2 2025 89.4%) | Buybacks $1.65B | UnitedHealthcare earnings +90% | UnitedHealthcare served 1.6M fewer people</div>
 </div>
 
 <div class="finding-group">
-<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A: Medical Costs &amp; Segments</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">New commercial cost driver: the No Surprises Act arbitration process and "more aggressive billing practice"</span>
+    <span class="title">New commercial cost driver: the No Surprises Act arbitration process and "more aggressive billing practice among providers"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Commercial medical cost trend is elevated, in part due to the independent resolution process under the No Surprises Act and more aggressive billing practice among providers."</blockquote>
-    <blockquote>"The MCR decreased due to favorable prior period reserve development, affordability and medical cost management initiatives, and pricing trends, partially offset by medical costs trend which remains above historical levels and continues to be affected by higher provider reimbursement under the No Surprises Act and increased service and coding intensity in commercial."</blockquote>
-    <p>This is the first time the commercial book is singled out and the first named federal statute as a cost driver since the IRA. Q1 2026 said "expected elevated medical costs trend". Q2 says the trend "remains above historical levels". The paragraph still opens "As expected and contemplated in our benefits design and pricing". The pressure has moved from Medicare Advantage seniors (2025) to commercial (2026) within the same framing.</p>
+    <p class="shift">Shift: ADDED; named: + No Surprises Act (+ disclosure)</p>
+    <blockquote>Q2 2026 (added): "Commercial medical cost trend is elevated, in part due to the independent resolution process under the No Surprises Act and more aggressive billing practice among providers."</blockquote>
+    <p class="history">History: "No Surprises Act" first appears in this Q2 2026 10-Q; no earlier 10-Q or 10-K names it. "Coding intensity" also returns (last used in the FY2024 10-K), now as "increased service and coding intensity in commercial".</p>
+    <p>This is the first time the commercial book is singled out, and the first federal statute named as a cost driver since the IRA. The paragraph still opens "As expected and contemplated in our benefits design and pricing", so the pressure has moved from Medicare Advantage seniors (2025) to commercial (2026) inside the restored framing.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Favorable development continues: $1,250M year-to-date; Optum Health earnings "increased" with help from reserve releases</span>
+    <span class="title">Trend wording firms: "expected elevated medical costs trend" becomes trend "which remains above historical levels"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree: "expected elevated" &rarr; "remains above historical levels" (+ firmer, - reassurance)</p>
+    <blockquote>Q1 2026: "The MCR decreased due to increased favorable reserve development, affordability initiatives and pricing trends, partially offset by expected elevated medical costs trend."</blockquote>
+    <blockquote>Q2 2026: "The MCR decreased due to favorable prior period reserve development, affordability and medical cost management initiatives, and pricing trends, partially offset by medical costs trend which remains above historical levels and continues to be affected by higher provider reimbursement under the No Surprises Act and increased service and coding intensity in commercial."</blockquote>
+    <p class="history">History: "remains above historical levels" first appears here.</p>
+    <p>Q1 described the trend as expected; Q2 describes it as above history and still being pushed by named causes. Favorable reserve development is again listed first among the reasons the MCR fell.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Optum Health earnings flip to "increased", led by reserve development and "the net decrease in loss contract reserves"</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Earnings from operations increased due to cost management, increased favorable reserve development and the net decrease in loss contract reserves, partially offset by continued elevated medical cost trends, the impacts of net portfolio divestitures and investments to support future growth."</blockquote>
-    <p>In Q1 2026 the same sentence began "Earnings from operations decreased". Optum Health earned $1,190M vs a recast $429M. Year-to-date development of $1,250M implies about $200M in Q2 (our inference). Loss-contract reserves fell by a net $50M in the quarter ($187M year-to-date). Two of the three positive drivers named are reserve-related. IBNR fell from $27.6B to $26.5B.</p>
+    <p class="shift">Shift: direction reversed (decreased &rarr; increased); reserve items moved to the front of the explanation</p>
+    <blockquote>Q1 2026: "Earnings from operations decreased due to continued elevated medical cost trends, the impacts of net portfolio divestitures and investments to support future growth, partially offset by cost management, favorable reserve development and the reduction of loss contract reserves established in the fourth quarter of 2025."</blockquote>
+    <blockquote>Q2 2026: "Earnings from operations increased due to cost management, increased favorable reserve development and the net decrease in loss contract reserves, partially offset by continued elevated medical cost trends, the impacts of net portfolio divestitures and investments to support future growth."</blockquote>
+    <p class="history">History: "net decrease in loss contract reserves" first appears here; the reserve was set up at $623M in the FY2025 10-K, with $137M released in Q1 and $187M year to date at Q2.</p>
+    <p>Optum Health earned $1,190M vs a recast $429M. Two of the three positive drivers are reserve-related, and the comparison base was lowered by the Optum Financial recast. Year-to-date development of $1,250M implies about $200M in Q2 (our arithmetic).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Forward-repurchase contracts scaled to 6.4M shares at $312.73; dividend +5.0% to $9.28</span>
+    <span class="title">Medicaid state exit now reported as a cause; the "further contraction expected" forecast is dropped</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"During the six months ended June 30, 2026, we repurchased approximately 10.5 million shares at an average price of $344.08 per share, including 6.4 million shares purchased and held by a counterparty at an average price of $312.73 per share pursuant to forward share repurchase contracts that were settled on July 1, 2026."</blockquote>
-    <p>Remaining authorization fell from 19.3M to 10.6M shares, the lowest in the series. The dividend rose to an annual rate of $9.28 from $8.84 (+$0.44, the same dollar increase as 2025). The pending-acquisition paragraph became a closed deal with deferred consideration: "On July 2, 2026, we completed the acquisition for $1.5 billion in cash, with the remaining $1.5 billion payable within one year."</p>
+    <p class="shift">Shift: realized: forecast exit &rarr; reported cause (+); forecast clause removed</p>
+    <blockquote>Q1 2026: "People served by Medicaid offerings has declined in the first quarter of 2026 due to reduced Medicaid eligibility with further contraction expected during the remainder of 2026 due to reduced Medicaid eligibility and the exit from one state."</blockquote>
+    <blockquote>Q2 2026: "People served by Medicaid offerings declined in the first half of 2026 due to the exit from one state and reduced Medicaid eligibility."</blockquote>
+    <p class="history">History: "exit from one state" first appears in the FY2025 10-K as a 2026 forecast; this is the first filing to report it as having happened.</p>
+    <p>Medicaid stood at 6,780K vs 7,490K, the lowest in the series. The state exit, listed second in Q1, is now the first cause.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Two new forward-looking factors on execution: consumer experience and value-based care strategy</span>
+    <span class="title">Two new forward-looking factors on execution: the consumer experience and "our value-based care strategies"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"our ability to successfully execute initiatives designed to simplify and improve the consumer healthcare experience; our ability to effectively execute our value-based care strategies"</blockquote>
+    <p class="shift">Shift: ADDED risk factors (internal execution named) (+ disclosure)</p>
+    <blockquote>Q2 2026 (added): "our ability to successfully execute initiatives designed to simplify and improve the consumer healthcare experience; our ability to effectively execute our value-based care strategies"</blockquote>
+    <p class="history">History: both phrases first appear in this Q2 2026 10-Q.</p>
     <p>These are the first forward-looking factors in the series about UNH carrying out its own strategy rather than about outside conditions. They are inserted directly before the DOJ factor.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Cash, Capital &amp; Deals</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Receivables sold under the financing facility jump from $585M (Q1) to $3.2B (six months); cash flow now also credited to "timing of government payments"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: $585 million &rarr; $3.2 billion; drivers added to operating cash flow (+ disclosure)</p>
+    <blockquote>Q1 2026: "During the three months ended March 31, 2026, the Company sold $585 million of receivables under the receivables financing facility, of which $245 million has been collected from counterparties and not yet remitted to financial institutions."</blockquote>
+    <blockquote>Q2 2026: "Increased cash flows provided by operating activities were driven by increased earnings, timing of government payments, other favorable working capital dynamics and legislative changes from the Inflation Reduction Act impacting pharmacy rebates."</blockquote>
+    <p class="history">History: the facility first appears in the FY2025 10-K ($3.0B sold in all of 2025); "timing of government payments" first appears here.</p>
+    <p>Six-month 2026 receivable sales ($3.2B) already exceed all of 2025. Year-to-date operating cash flow of $19.96B is helped by receivable sales, government payment timing and IRA rebate timing, three working-capital sources the text names alongside earnings.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Medicaid state exit now reported as a cause; Medicaid membership down 710K</span>
+    <span class="title">Forward-repurchase contracts scaled to 6.4M shares at $312.73, a $2.0B liability paid July 1; dividend +5.0% to $9.28</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"People served by Medicaid offerings declined in the first half of 2026 due to the exit from one state and reduced Medicaid eligibility."</blockquote>
-    <p>Medicaid stood at 6,780K vs 7,490K, the lowest in the series. The Q1 forecast clause "with further contraction expected during the remainder of 2026" is dropped, and the state exit, a 2026 forecast in the 10-K, is now reported as the first cause. Medicare Advantage held at 7,565K (&minus;785K year over year).</p>
+    <p class="shift">Shift: quant: 1.7M &rarr; 6.4M forward shares; liability recorded and settled after quarter-end</p>
+    <blockquote>Q2 2026: "During the six months ended June 30, 2026, we repurchased approximately 10.5 million shares at an average price of $344.08 per share, including 6.4 million shares purchased and held by a counterparty at an average price of $312.73 per share pursuant to forward share repurchase contracts that were settled on July 1, 2026."</blockquote>
+    <blockquote>Q2 2026 (added): "As of June 30, 2026, the Company had a liability of $2.0 billion related to the settlement of the forward contracts, which was paid on July 1, 2026."</blockquote>
+    <p class="history">History: "forward share repurchase" first appears in Q1 2026 (1.7M shares at $285.68). The dividend sentence follows the June 2025 pattern (+$0.44 both years).</p>
+    <p>The $2.0B of forward buybacks was paid one day after quarter-end, so it is absent from the Q2 cash flow statement. Remaining authorization fell to 10.6M shares, the lowest in the series.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$3.0B acquisition closes with half the price deferred: "$1.5 billion payable within one year"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: pending &rarr; completed; payment terms disclosed (+)</p>
+    <blockquote>Q1 2026: "The total anticipated capital required for these acquisitions was approximately $3.0 billion."</blockquote>
+    <blockquote>Q2 2026 (added): "In the first quarter of 2026, the Company entered into an agreement to acquire a company in the health care sector for $3.0 billion. On July 2, 2026, the Company completed the acquisition for $1.5 billion in cash, with the remaining $1.5 billion payable within one year."</blockquote>
+    <p class="history">History: "remaining $1.5 billion payable within one year" first appears here; the pending-acquisitions paragraph returned in Q1 2026 after being dropped in Q3 2025 when the 2025 deals closed.</p>
+    <p>No earlier acquisition paragraph in the series describes deferred consideration ("payable within one year" appears only here). The target is not named. Like the forward buybacks, the cash leaves after the quarter-end balance sheet.</p>
   </div>
 </div>
 </div>
@@ -1163,7 +1745,7 @@ a:hover { text-decoration: underline; }
       <tbody>
         <tr><td>Q1 2024</td><td>~$3.9B</td><td>$593M</td><td>"could cover a substantial proportion of people in America"; reserve-variability warning</td></tr>
         <tr><td>Q2 2024</td><td>more than $9B</td><td>$1.4B</td><td class="val-new">"cover" (hedge dropped); HIPAA notice; reserve warning deleted</td></tr>
-        <tr><td>Q3 2024</td><td>nearly $9B</td><td>$1.7B</td><td>impact "will continue at a lesser extent in 2025"</td></tr>
+        <tr><td>Q3 2024</td><td>nearly $9B ("accelerated funding" no longer counted)</td><td>$1.7B</td><td>impact "will continue at a lesser extent in 2025"</td></tr>
         <tr><td>FY2024 10-K</td><td>more than $9B (cumulative)</td><td>$2.2B</td><td class="val-new">~190 million individuals; "substantially mitigated"</td></tr>
         <tr><td>Q1 2025</td><td>net repayments</td><td>&mdash;</td><td class="val-neg">section removed from Executive Overview</td></tr>
         <tr><td>Q2&ndash;Q3 2025</td><td>&mdash;</td><td>&mdash;</td><td>favorable year-over-year comparison only</td></tr>
@@ -1193,7 +1775,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q2 2026</td><td>unchanged (three Negative outlooks, four quarters on)</td><td>~10.5M @ $344.08 (6.4M forward)</td><td class="val-neg">10.6M sh</td><td>$9.28</td></tr>
       </tbody>
     </table>
-    <p>Regulated-subsidiary flow: $9.2B in dividends to the parent (2024); $1.9B (H1 2025); $841M net of infusions (nine months 2025); $535M net infusions received (2025). The Regulatory Capital paragraph moved from "may be impacted" (Q2 2025) to "will be impacted" (Q3 2025), added deposit-accounted reinsurance (Q3 2025), and dropped its MCR warning in Q1 2026. Cash buybacks per XBRL: $3.07B (Q1 2024), $0 (Q2 2024), $3.00B (Q1 2025), $2.54B (Q2 2025), $0 (Q3 2025 through Q1 2026), $1.65B (Q2 2026).</p>
+    <p>Regulated-subsidiary flow: $9.2B in dividends to the parent (2024); $1.9B (H1 2025); $841M net of infusions (nine months 2025); $535M net infusions received (2025). The Regulatory Capital paragraph moved from "may be impacted" (Q2 2025) to "will be impacted" (Q3 2025), added deposit-accounted reinsurance (Q3 2025), and dropped its MCR warning in Q1 2026. Two cash sources sit outside earnings from the FY2025 10-K on: a receivables financing facility ($3.0B sold in 2025, $3.2B in the first half of 2026) and, in Q2 2026, "timing of government payments". Forward buybacks ($2.0B) and half of a $3.0B acquisition were paid after the Q2 2026 quarter-end. Cash buybacks per XBRL: $3.07B (Q1 2024), $0 (Q2 2024), $3.00B (Q1 2025), $2.54B (Q2 2025), $0 (Q3 2025 through Q1 2026), $1.65B (Q2 2026).</p>
   </div>
 </div>
 
@@ -1209,7 +1791,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1&ndash;Q3 2024</td><td>2017 DOJ intervention in 2011 whistleblower case; 2018&ndash;2019 procedural history; FDA added to agency list (Q3)</td><td>"the DOJ’s legal action relating to the risk adjustment submission matter"</td></tr>
         <tr><td>Q1 2025</td><td class="val-new">Special Master recommends summary judgment for UNH (Mar 2025); DOJ moves to reject (Apr 2025)</td><td>unchanged</td></tr>
         <tr><td>Q2 2025</td><td class="val-new">"shareholders" added to litigants; "CMS and OIG" select plans for RADV audits</td><td class="val-neg">"the DOJ’s legal actions concerning our participation in the Medicare program"</td></tr>
-        <tr><td>Q3 2025</td><td>pending-acquisitions paragraph removed; DOJ paragraph unchanged</td><td>unchanged</td></tr>
+        <tr><td>Q3 2025</td><td>pending acquisitions closed ($4.7B of business combinations; paragraph removed); DOJ paragraph unchanged</td><td>unchanged</td></tr>
         <tr><td>Q1 2026</td><td class="val-new">IRS transfer-pricing NOPAs (2017&ndash;2020); $3.0B pending acquisition</td><td>unchanged; AI factor added to list</td></tr>
         <tr><td>Q2 2026</td><td>acquisition closed ($1.5B cash + $1.5B within one year); DOJ paragraph unchanged</td><td>unchanged; execution factors added before it</td></tr>
       </tbody>
@@ -1226,7 +1808,7 @@ a:hover { text-decoration: underline; }
   <div class="signal-grid">
     <div class="signal-card">
       <h3>1. The Text Moved Before the Ratio, in Both Directions</h3>
-      <p>Q1 2025 replaced "As expected and contemplated" with "above what we expected" while the MCR was 84.8%, one quarter before it reached 89.4%. The pricing admission ("well-short") and the regulatory-capital warning followed in Q2 2025. In Q1 2026 the "as expected" clause returned and "well-short" was deleted in the same filing that reported $1.05B of favorable development and an 83.9% MCR. By Q2 2026 a new commercial driver (the No Surprises Act) had been added inside the restored framing, and the MCR was back at 86.7%. On this evidence the opening clause of the Medical Cost Trends paragraph is the earliest indicator in these filings, but it has turned once each way; whether it leads a second time is untested.</p>
+      <p>Q1 2025 replaced "As expected and contemplated" with "above what we expected" while the MCR was 84.8%, one quarter before it reached 89.4%. The pricing admission ("well-short") and the regulatory-capital warning followed in Q2 2025. In Q1 2026 the "as expected" clause returned and "well-short" was deleted in the same filing that reported $1.05B of favorable development and an 83.9% MCR. By Q2 2026 a new commercial driver (the No Surprises Act) had been added inside the restored framing, and the MCR was back at 86.7%. On this evidence the opening clause of the Medical Cost Trends paragraph is the earliest indicator in these filings, but it has turned once each way. The FY2025 10-K also repeated, for 2026, the benefit-design assurance that failed in 2025 ("contemplated in our 2026 benefit design approach"); through Q2 2026 it has held, whereas the 2025 version was withdrawn after one filing.</p>
     </div>
     <div class="signal-card">
       <h3>2. 2026 Earnings Rest Partly on 2025 Reserves</h3>
@@ -1238,7 +1820,7 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="signal-card">
       <h3>4. Capital Stress Appeared in the Liquidity Section, Not Item 1A</h3>
-      <p>Item 1A said "no material changes" in all eight quarters. Meanwhile the liquidity section recorded negative outlooks (Q2 2025), an A.M. Best downgrade (Q3 2025), subsidiary dividends going from $9.2B paid to $535M received, capital-relief reinsurance, three quarters without buybacks, and a 2026 restart through forward contracts. The DOJ factor widened in the forward-looking list while the contingencies note stayed the same. For UNH, the 10-Q's capital and legal changes show up in the MD&amp;A liquidity text and the forward-looking factors, not in the risk factors.</p>
+      <p>Item 1A said "no material changes" in all eight quarters. Meanwhile the liquidity section recorded negative outlooks (Q2 2025), an A.M. Best downgrade (Q3 2025), subsidiary dividends going from $9.2B paid to $535M received, capital-relief reinsurance, three quarters without buybacks, and a 2026 restart through forward contracts. The DOJ factor widened in the forward-looking list while the contingencies note stayed the same. For UNH, the 10-Q's capital and legal changes show up in the MD&amp;A liquidity text and the forward-looking factors, not in the risk factors. The debt-covenant ratio, reported at about 43% in Q3 2024, has not been disclosed since, while operating cash flow has leaned on a receivables facility and payment timing in 2025&ndash;2026.</p>
     </div>
   </div>
 </div>
