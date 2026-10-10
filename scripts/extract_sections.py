@@ -242,6 +242,8 @@ def find_note(lines, heading):
 
 
 NOTES_START = re.compile(r"notes to (the )?(unaudited )?(condensed )?(consolidated )?(financial statements|statements)", re.I)
+# What follows the notes in an annual-report exhibit (PGR's EX-13), where there is no Item heading.
+NOTES_END = re.compile(r"(report of independent registered public accounting firm|management.s (report on internal control|discussion and analysis))\s*$", re.I)
 NOTE_HEAD = re.compile(r"(?:note\s+)?(\d{1,2})\s*[\.:\u2014\u2013\-]\s*((?:[A-Za-z]|401\(k\)).{2,140})", re.I)
 # A table-of-contents row: a title with its page number in the last cell
 # ("12. Commitments and Contingencies | 63", "Note 14. ... | F-73"): an index row, not a note.
@@ -275,7 +277,7 @@ def notes(lines):
                     h = note_head(lines[j])
                     if h and int(h.group(1)) == n + 1 and "continued" not in lines[j].lower():
                         n += 1
-                    if ITEM_LINE.match(lines[j]) and j > i + 50:
+                    if (ITEM_LINE.match(lines[j]) or NOTES_END.match(lines[j])) and j > i + 50:
                         break
                     k = j
                 if n > best[0]:
@@ -300,8 +302,13 @@ def notes(lines):
     return "\n".join(join_split(body)), {n: (t, "\n".join(join_split(x))) for n, (t, x) in parts.items()}
 
 
+# Outline prefixes on MD&A headings ("II. FINANCIAL CONDITION", "A. Liquidity and Capital Resources", PGR).
+OUTLINE = re.compile(r"(?:[IVX]{1,4}|[A-H])\.\s+")
+
+
 def mda_subsections(mda):
-    lines = mda.split("\n")
+    lines = [OUTLINE.sub("", l, count=1) if OUTLINE.match(l) else l for l in mda.split("\n")]
+    raw = mda.split("\n")
     out = {}
     for name, rx in MDA_SUBSECTIONS.items():
         starts = [i for i, l in enumerate(lines) if len(l) < 90 and re.match(rx, l, re.I)]
@@ -310,7 +317,7 @@ def mda_subsections(mda):
             j = next((k for k in range(i + 1, len(lines)) if len(lines[k]) < 90 and MDA_TOP.match(lines[k])
                       and not re.match(rx, lines[k], re.I)), len(lines))
             if j - i > best.count("\n") + 1:
-                best = "\n".join(lines[i:j])
+                best = "\n".join(raw[i:j])
         out[name] = best
     return out
 
@@ -349,9 +356,11 @@ def main(folder):
             f.write("\n".join(full))
         if form in ("10-K", "10-Q"):
             all_notes, by_num = notes(lines)
+            if not all_notes and form == "10-K" and os.path.exists(exhibit) and ticker in EXHIBIT_SECTIONS:
+                all_notes, by_num = notes(ex_lines)  # notes incorporated from the annual-report exhibit
             secs["notes"] = all_notes
             pick = lambda rx: next((t for n, (title, t) in sorted(by_num.items()) if re.search(rx, title, re.I)), "")
-            secs["contingencies"] = pick(r"contingenc") or pick(r"commitments") or pick(r"legal")
+            secs["contingencies"] = pick(r"contingenc") or pick(r"commitments") or pick(r"legal") or pick(r"litigation")
             secs["subsequent_events"] = pick(r"subsequent event")
             if not secs["contingencies"]:
                 for h in CONTINGENCIES_NOTE.get(ticker, CONTINGENCY_HEADINGS):
