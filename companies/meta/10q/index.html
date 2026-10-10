@@ -250,7 +250,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>META 10-Q Quarterly Scanner</h1>
   <div class="tagline">Quarter-over-quarter textual analysis of 12 SEC filings (eleven 10-Qs plus the FY2025 10-K). The value is speed: catching language changes at quarterly cadence that annual 10-K comparisons would miss by 3&ndash;9 months.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001326801) | 12 Filings | Q1 2023 &ndash; Q2 2026 | Analysis: March 2026, extended June 2026, July 2026; Q1&ndash;Q2 2026 re-analyzed October 2026</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001326801) | 12 Filings | Q1 2023 &ndash; Q2 2026 | Analysis: March 2026, extended June 2026, July 2026; Q2 2024&ndash;Q2 2026 re-analyzed sentence by sentence October 2026</div>
 </div>
 
 
@@ -505,284 +505,742 @@ a:hover { text-decoration: underline; }
 <!-- Q2 → Q3 2024 -->
 <div class="transition-header" id="q2q3-2024">
   <h2>Q2 2024 &rarr; Q3 2024</h2>
-  <div class="sub">Headcount: 71K &rarr; 72K | Capex: $37-40B &rarr; $38-40B</div>
+  <div class="sub">Filed Oct 31, 2024 | Revenue: $40.59B (+19%) | Op Income: $17.35B (+26%; margin 43%) | Capex guide: $37-40B &rarr; $38-40B (2024) | Purchases of property and equipment $8.26B vs. operating cash flow $24.72B | Long-term debt: $18.39B &rarr; $28.82B | Headcount: 70,799 &rarr; 72,404 | Buybacks: $8.82B</div>
 </div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Computing power, and related energy requirements" added to AI infrastructure risks</span>
+    <span class="title">Ad enforcement admitted to cost revenue, "which may be material"; ad-demand risk now names "our enforcement efforts"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2024 added energy as a named constraint on AI deployment:</p>
-    <blockquote>"...our ability to continue to develop and effectively deploy AI technologies is dependent on access to specific third-party equipment, technology, and other technical and physical infrastructure, such as processing hardware, network capacity, models, computing power, and related energy requirements..."</blockquote>
+    <p class="shift">Shift: ADDED (MD&amp;A); realized: enforcement "adversely affect[s] our revenue" (+ disclosure); degree added to the risk factor: "and could be material"</p>
+    <blockquote>Q3 2024: "Our ongoing efforts to enhance enforcement against ads and marketers which violate our advertising policies adversely affect our revenue, and we expect that the continued enhancement of such efforts will have an impact on our revenue in the future, which may be material."</blockquote>
+    <blockquote>Q2 2024: "The occurrence of any of these or other factors in the future could result in a reduction in demand for our ads, which may reduce the prices we receive for our ads, or cause marketers to stop advertising with us altogether, either of which would negatively affect our revenue and financial results."</blockquote>
+    <blockquote>Q3 2024: "The occurrence of any of these or other factors in the future, including our enforcement efforts, could result in a reduction in marketer spend or demand for our ads, which may reduce the prices we receive for our ads, could cause marketers to stop advertising with us altogether, or could otherwise negatively affect our revenue and financial results, and could be material."</blockquote>
+    <p class="history">History (phrase_history): the MD&amp;A sentence and "including our enforcement efforts" both first appear in Q3 2024 and are in every filing since (8 of 8 through Q2 2026); the old risk-factor sentence had stood unchanged for 5 filings (since Q2 2023).</p>
+    <p>Meta concedes that part of its revenue comes from ads that break its own policies and that cleaning them up may cost a material amount. It arrives in the same filing as the CFPB's warning on financial-product ads (below), and it never quantifies the amount.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Tariffs shift from future possibility to existing reality</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2024 risk factors moved tariff language from a hypothetical to a present-tense description:</p>
-    <blockquote>"...could result in tariffs, sanctions, export or import controls, and other measures that restrict international trade, could reduce or eliminate the ability of our suppliers, manufacturers, or other third-party providers to continue their operations..."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">EU AI Act added to named regulatory frameworks</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2024 risk factor TOC added the EU AI Act:</p>
-    <blockquote>"...including the General Data Protection Regulation (GDPR), Digital Markets Act (DMA), Digital Services Act (DSA), Artificial Intelligence Act (EU AI Act), and the UK Digital Markets, Competition and Consumer Act (DMCC)"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Capex narrowed to $38-40B with 2025 growth confirmation</span>
+    <span class="title">Capex floor raised $37B &rarr; $38B; 2025 growth hedge "currently expect" dropped for "continue to expect significant capital expenditures growth"</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We anticipate making capital expenditures of approximately $38 billion to $40 billion in 2024 and continue to expect significant capital expenditures growth in 2025."</blockquote>
+    <p class="shift">Shift: guidance figures: floor $37B &rarr; $38B, ceiling held at $40B (+); hedge dropped: "currently" (+); the purpose clause "to support our AI research and product development efforts" removed (&minus;)</p>
+    <blockquote>Q2 2024: "We anticipate making capital expenditures of approximately $37 billion to $40 billion in 2024."</blockquote>
+    <blockquote>Q2 2024: "We currently expect our capital expenditures to grow significantly in 2025 as we invest to support our AI research and product development efforts."</blockquote>
+    <blockquote>Q3 2024: "We anticipate making capital expenditures of approximately $38 billion to $40 billion in 2024 and continue to expect significant capital expenditures growth in 2025."</blockquote>
+    <p class="history">History (phrase_history): "currently expect our capital expenditures to grow significantly" in Q2 2024 only; "significant capital expenditures growth in 2025" and the $38-40B range in Q3 2024 only. The FY2024 10-K then guided 2025 to $60-65B.</p>
+    <p>The 2025 signal moves into the guidance sentence itself and loses its hedge. Nine-month capex including finance lease principal was $24.39B, so the $38B floor implies at least about $13.6B in Q4 (computed), the largest quarter of the year.</p>
   </div>
 </div>
 
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">RL revenue driver de-named: "Meta Quest sales" &rarr; "consumer hardware products sold"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: name dropped: Meta Quest (de-named, &minus;)</p>
+    <blockquote>Q2 2024: "The increases in RL revenue were driven by a net increase in the volume of Meta Quest sales."</blockquote>
+    <blockquote>Q3 2024: "The increases in RL revenue were mostly due to increases in our consumer hardware products sold."</blockquote>
+    <p class="history">History (phrase_history): "consumer hardware products sold" appears in Q3 2024 and the FY2024 10-K only; "Meta Quest sales" returns in Q1 2025 and is in every filing since.</p>
+    <p>RL revenue grew 29%. With Ray-Ban Meta named beside Quest in the segment description, the generic wording is consistent with glasses, not headsets, driving the quarter, but the filing does not say so.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#b45309;"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First bond issue since May 2023: $10.50B of notes in August 2024; notes outstanding $18.50B &rarr; $29.0B</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; named: +August 2024 Notes (five series); quant: $18.50B &rarr; $29.0B</p>
+    <blockquote>Q3 2024: "As of September 30, 2024 and December 31, 2023, we had $29.0 billion and $18.50 billion of fixed-rate senior unsecured notes (the Notes), respectively."</blockquote>
+    <p class="history">History (phrase_history): "$10.50 billion of fixed-rate senior unsecured notes" appears in Q3 2024 only; the debt was $18.50B in every filing from Q2 2023 to Q2 2024. "We are not subject to any financial covenants" returns to the notes after being absent from the Q1 and Q2 2024 10-Qs.</p>
+    <p>Meta borrowed while still repurchasing $8.82B of stock in the quarter and paying the dividend; nine-month capital returns were $33.93B. The issuance came a quarter before capex guidance nearly doubled, the first step in a debt load that reached $84.0B by Q2 2026.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#7c3aed;"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Policy failures restated as happening: "We may also be unsuccessful" &rarr; "From time to time we are unsuccessful"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: may &rarr; are (+); realized: hypothetical &rarr; actual (signals rank 1, score 8.8); hedge added: "from time to time"</p>
+    <blockquote>Q2 2024: "We may also be unsuccessful in our efforts to enforce our policies or otherwise prevent or remediate any such incidents."</blockquote>
+    <blockquote>Q3 2024: "From time to time we are unsuccessful in our efforts to enforce our policies or otherwise prevent or remediate any such incidents."</blockquote>
+    <p class="history">History (phrase_history): the "may" sentence stood in every filing from Q2 2023 to Q2 2024 (unchanged for 4 periods by the signals count); the realized wording first appears here and is in every filing since.</p>
+    <p>The "incidents" are the list just before it: election interference, child exploitation, illicit drugs, scams and other illegal activity. Meta now states that its enforcement fails on these, in the same filing that admits ad enforcement costs revenue. Both later underpin the youth and scam litigation.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Youth laws named (Arkansas, Utah, Texas, California, Florida) with a compliance warning: "we may not be able to comply with these statutes by their respective effective dates"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; named: +Arkansas, Utah, Texas, California, Florida; condition: "Should enforcement... not be enjoined"</p>
+    <blockquote>Q3 2024: "For example, several U.S. states, including Arkansas, Utah, Texas, California, and Florida, among others, have passed laws restricting our ability to offer services to minors without parental consent or otherwise limiting the services that we can provide to minors."</blockquote>
+    <blockquote>Q3 2024: "Should enforcement of one or more of these statutes not be enjoined, we may not be able to comply with these statutes by their respective effective dates."</blockquote>
+    <p class="history">History (phrase_history): "Arkansas, Utah, Texas, California, and Florida" runs Q3 2024 to Q1 2025; "may not be able to comply with these statutes" appears in Q3 2024 only. "youth, safety, consumer protection, advertising" enters the summary bullet in the same filing and stays through Q2 2026.</p>
+    <p>A company rarely says it may be unable to comply with a law on time. The warning lasted one quarter; by Q2 2025 the youth paragraph had moved to "We are also subject to new legislation... that restrict" our services to minors.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">EU AI Act named in the risk-factor summary; "youth, safety... advertising" added to the law categories</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +Artificial Intelligence Act (EU AI Act); scope widened: +youth, +safety, +advertising</p>
+    <blockquote>Q2 2024: "...complex and evolving U.S. and foreign privacy, data use, data combination, data protection, content, competition, consumer protection, and other laws and regulations, including the General Data Protection Regulation (GDPR), Digital Markets Act (DMA), Digital Services Act (DSA), and the UK Digital Markets, Competition and Consumer Act (DMCC);"</blockquote>
+    <blockquote>Q3 2024: "...complex and evolving U.S. and foreign privacy, data use, data combination, data protection, content, competition, youth, safety, consumer protection, advertising, and other laws and regulations, including the General Data Protection Regulation (GDPR), Digital Markets Act (DMA), Digital Services Act (DSA), Artificial Intelligence Act (EU AI Act)..."</blockquote>
+    <p class="history">History (phrase_history): "Artificial Intelligence Act (EU AI Act)" first appears in Q3 2024 and is in every filing since; the EU AI Act was already discussed in the risk-factor body from Q1 2024.</p>
+    <p>The summary bullet is the list Meta puts in front of every reader. Youth and advertising enter it in the quarter the youth-law and ad-enforcement disclosures appear, and the AI Act joins as the first AI-specific law named there.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI deployment made dependent on "computing power, and related energy requirements," not just hardware and network capacity</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +computing power, +related energy requirements, +"technical" infrastructure; scope widened</p>
+    <blockquote>Q2 2024: "Further, our ability to continue to develop and effectively deploy AI technologies is dependent on access to specific third-party equipment and other physical infrastructure, such as processing hardware and network capacity, as to which we cannot control the availability or pricing, especially in a highly competitive environment."</blockquote>
+    <blockquote>Q3 2024: "Further, our ability to continue to develop and effectively deploy AI technologies is dependent on access to specific third-party equipment and other technical and physical infrastructure, such as processing hardware, network capacity, computing power, and related energy requirements, as to which we cannot control the availability or pricing, especially in a highly competitive environment."</blockquote>
+    <p class="history">History (phrase_history): the new AI wording first appears in Q3 2024 and is in every filing since. "related energy requirements" was already in the general infrastructure risk from Q1 2024; Q3 2024 extends it to the AI-dependency sentence (the earlier version of this page misquoted this sentence and dated energy to Q3).</p>
+    <p>Power joins chips and networks as an input Meta says it cannot control on price or availability. By Q2 2026 the same risk factor adds local opposition to data-center construction.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#dc2626;"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">CFPB opens a NORA process on financial-product ads and "could file a lawsuit in the near-term"; scam-ad inquiries "in other parts of the world"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; named: +CFPB, +NORA; hedge: "in the near-term" (timing given)</p>
+    <blockquote>Q3 2024: "The result of the NORA process is uncertain at this time, but if the Director authorizes an action against us, the CFPB could file a lawsuit in the near-term and seek financial penalties and equitable relief."</blockquote>
+    <blockquote>Q3 2024: "We are also responding to regulatory inquiries and litigation related to allegedly deceptive advertising, including but not limited to financial scams, in other parts of the world."</blockquote>
+    <p class="history">History (phrase_history): "could file a lawsuit in the near-term" in Q3 2024 and the FY2024 10-K only; the CFPB paragraph runs Q3 2024 to Q3 2025 and is gone from the FY2025 10-K. "financial scams" first appears here and is in every filing since.</p>
+    <p>A U.S. regulator moved to the step before suing over the same scam ads the MD&amp;A now says cost revenue to remove. No suit was ever disclosed; scams, however, became a standing legal and regulatory heading.</p>
+  </div>
+</div>
+</div>
 
 <!-- Q3 2024 → Q1 2025 (annual boundary) -->
 <div class="transition-header" id="q3-2024-q1-2025">
   <h2>Q3 2024 &rarr; Q1 2025</h2>
-  <div class="sub">Annual Boundary | Headcount: 72K &rarr; 77K | Capex nearly doubles: $38-40B (2024) &rarr; $64-72B (2025)</div>
+  <div class="sub">Annual boundary (FY2024 10-K filed Jan 30, 2025 in between) | Filed May 1, 2025 | Revenue: $42.31B (+16%) | Op Income: $17.55B (+27%; margin 41%) | Capex guide: $38-40B (2024) &rarr; $64-72B (2025) | Purchases of property and equipment $12.94B vs. operating cash flow $24.03B | Unstarted leases $18.49B &rarr; $35.27B | Headcount: 72,404 &rarr; 76,834 | Buybacks: $12.75B; dividend raised to $0.525</div>
 </div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Discipline and habits" disappears from Investment Philosophy</span>
-    <span class="tag tag-removed">Removed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2024 MDA still contained the "discipline and habits" framing. Q1 2025 MDA replaced it with:</p>
-    <blockquote>"We remain focused on operating efficiently while investing in significant opportunities."</blockquote>
-    <p>The specific phrase "discipline and habits" &mdash; present since Q2 2023 &mdash; was removed after a 7-quarter lifecycle.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"Reality Labs strategy" replaces "metaverse strategy"</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2024 risk factor:</p>
-    <blockquote>"We may not be successful in our metaverse strategy and investments, which could adversely affect our business, reputation, or financial results."</blockquote>
-    <p>Q1 2025 risk factor:</p>
-    <blockquote>"We may not be successful in our Reality Labs strategy and investments, which could adversely affect our business, reputation, or financial results."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"Next computing platform" replaces "next chapter of the internet"</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2024 MDA:</p>
-    <blockquote>"We are investing now because we believe this is the next chapter of the internet..."</blockquote>
-    <p>Q1 2025 MDA:</p>
-    <blockquote>"We are investing now because we believe this will become the next computing platform..."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"Content moderation" added to regulatory categories; Meta Verified added to revenue</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Q1 2025 risk factor TOC added "content and content moderation" as a regulatory category:</p>
-    <blockquote>"complex and evolving U.S. and foreign privacy, data use, data combination, data protection, content and content moderation, competition, youth, safety, consumer protection, advertising, and other laws and regulations..."</blockquote>
-    <p>Q1 2025 MDA also added Meta Verified to the FoA Other revenue definition:</p>
-    <blockquote>"Other revenue consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Capex nearly doubles to $64-72B</span>
+    <span class="title">2025 capex $64-72B, raised at both ends ($4B floor, $7B ceiling) within three months of the 10-K's $60-65B</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We anticipate making capital expenditures of approximately $64 billion to $72 billion in 2025 to support our core business and generative AI efforts."</blockquote>
-    <p>From $38-40B (2024) to $64-72B (2025) &mdash; the midpoint nearly doubled in one annual boundary crossing.</p>
+    <p class="shift">Shift: guidance figures $38-40B (2024) &rarr; $64-72B (2025) (signals score 6.0); against the FY2024 10-K: floor +$4B, ceiling +$7B, range widened $5B &rarr; $8B</p>
+    <blockquote>Q3 2024: "We anticipate making capital expenditures of approximately $38 billion to $40 billion in 2024 and continue to expect significant capital expenditures growth in 2025."</blockquote>
+    <blockquote>Q1 2025: "We anticipate making capital expenditures of approximately $64 billion to $72 billion in 2025 to support our core business and generative AI efforts."</blockquote>
+    <p class="history">History (phrase_history): "core business and generative AI efforts" appears in the FY2024 10-K and Q1 2025 only; the FY2024 10-K guided $60-65B. Q2 2025 dropped "generative"; the FY2025 10-K put AI first.</p>
+    <p>The midpoint moves from $62.5B to $68B in one quarter. Q1 capex including finance leases was $13.69B, so the remaining three quarters need about $50-58B (computed). The pattern of raising the annual guide at the first 10-Q repeated in Q1 2026 ($115-135B to $125-145B).</p>
   </div>
 </div>
 
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Discipline and habits" deleted from the investment philosophy after seven filings</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: REMOVED (signals: unchanged for 4 periods by exact match); replaced by a shorter efficiency clause (&minus;)</p>
+    <blockquote>Q3 2024: "We expect to continue to build on the discipline and habits that we developed in 2022 when we initiated several efforts to increase our operating efficiency, while still remaining focused on investing in significant opportunities."</blockquote>
+    <blockquote>Q1 2025: "We remain focused on operating efficiently while investing in significant opportunities."</blockquote>
+    <p class="history">History (phrase_history): "discipline and habits" is in all 7 filings from the Q2 2023 10-Q to the FY2024 10-K (the FY2024 10-K still carried it verbatim); "remain focused on operating efficiently" first appears in Q1 2025 and is in every filing since.</p>
+    <p>The 2022 efficiency program stops being cited as the frame for spending in the same quarter the capex guide was raised. The cut was made in a 10-Q, three months after the annual filing kept the sentence.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Reality Labs rationale: "the next chapter of the internet" &rarr; "will become the next computing platform"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: tense: "is" &rarr; "will become" (&minus;, claim deferred); named: +next computing platform</p>
+    <blockquote>Q3 2024: "We are investing now because we believe this is the next chapter of the internet and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods."</blockquote>
+    <blockquote>Q1 2025: "We are investing now because we believe this will become the next computing platform and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods."</blockquote>
+    <p class="history">History (phrase_history): "next chapter of the internet" is in the MD&amp;A of every filing through the FY2024 10-K; the "will become the next computing platform" sentence first appears in Q1 2025, runs through the FY2025 10-K, and is deleted in Q1 2026. The risk-factor heading had already changed to "Reality Labs strategy" in the FY2024 10-K.</p>
+    <p>The claim moves from present ("is") to future ("will become"), so the payoff is pushed out. The sentence lasted four filings before Q1 2026 dropped the rationale entirely.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Server-life change quantified in the quarter: $826M lower depreciation, $695M ($0.27 per share) added to net income</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added (+ disclosure)</p>
+    <blockquote>Q1 2025: "Based on the servers and network assets placed in service as of December 31, 2024, the financial impact of this change in estimate included a reduction in depreciation expense of $826 million and an increase in net income of $695 million, or $0.27 per diluted share, for the three months ended March 31, 2025."</blockquote>
+    <p class="history">History (phrase_history): "reduction in depreciation expense of" appears in Q1, Q2 and Q3 2025 and the FY2025 10-K (running totals $826M, $1.58B, $2.29B); the 10-K's full-year forecast of "approximately $2.9 billion" appears in the FY2024 10-K only.</p>
+    <p>The accounting change supplied about 4% of Q1 net income ($695M of $16.64B, computed) and about 5% of operating income. Operating income grew 27%; a few points of that are an estimate, not operations.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">RL revenue falls 6%; driver named again: "net decrease in Meta Quest sales," offset by Ray-Ban Meta AI glasses</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +Meta Quest, +Ray-Ban Meta AI glasses (+ disclosure); direction: increase &rarr; decrease</p>
+    <blockquote>Q3 2024: "The increases in RL revenue were mostly due to increases in our consumer hardware products sold."</blockquote>
+    <blockquote>Q1 2025: "The decrease in RL revenue was driven by a net decrease in Meta Quest sales, partially offset by an increase in sales of Ray-Ban Meta AI glasses."</blockquote>
+    <p class="history">History (phrase_history): "net decrease in Meta Quest sales" appears in Q1 and Q2 2025 only; from Q3 2025 the driver is "sales of AI glasses." "Ray-Ban Meta AI glasses" first appears in the FY2024 10-K.</p>
+    <p>The products are named in the quarter they moved in opposite directions: headsets down, glasses up. The split matches the FY2025 10-K's shift of 70% of the RL budget to wearables.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Sales arrangements changed: ~$300 million of Asia-Pacific advertiser revenue now booked under United States and Canada</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added (+ disclosure); geography reclassification</p>
+    <blockquote>Q1 2025: "(1)In the first quarter of 2025, we made changes to our sales arrangements with certain Asia-Pacific advertisers to sell ads to such advertisers through their international subsidiaries. Absent these changes, approximately $300 million of revenue reflected under United States and Canada would have been reflected as Asia-Pacific revenue."</blockquote>
+    <p class="history">History (phrase_history): "approximately $300 million of revenue" appears in Q1 2025 only; Q2 2025 dropped the footnote, so later quarters give no figure for the same effect.</p>
+    <p>The revenue-by-geography table is how readers track the China-based advertiser exposure that the risk factors warn about. From Q1 2025 some of it is reported as North American revenue, and after one quarter the size of the shift is no longer disclosed.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#b45309;"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unstarted leases nearly double, $18.49B &rarr; $35.27B; commencement window stretches from 2029 to 2034</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: figures $18.49B &rarr; $35.27B (+); date range "remainder of 2024 and 2029" &rarr; "remainder of 2025 and 2034"; named: +network infrastructure</p>
+    <blockquote>Q3 2024: "As of September 30, 2024, we have additional operating leases, that have not yet commenced, with lease obligations of approximately $18.49 billion, mostly for data centers and colocations."</blockquote>
+    <blockquote>Q1 2025: "These lease obligations were approximately $35.27 billion, mostly for data centers, certain network infrastructure, and colocations, which will commence between the remainder of 2025 and 2034."</blockquote>
+    <p class="history">History (phrase_history): $18.49B appears in Q3 2024 only and $35.27B in Q1 2025 only, followed by $52.56B (Q2 2025), $58.14B (Q3 2025) and $103.77B (FY2025 10-K). The 2034 end date ran until Q3 2025 shortened it to 2030.</p>
+    <p>Signed future leases now nearly match a full year of capex guidance, and none of it is in the capex figure or on the balance sheet yet. Contractual commitments fell slightly ($32.14B to $30.05B) and were re-described: "consumer hardware products in Reality Labs" dropped out and "content costs" came in (the RL wording is absent from the FY2024 10-K and Q1 2025 only, and returns in Q2 2025).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Renewable energy spend estimate deleted: "approximately $18.01 billion" no longer given</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed (&minus;), signals score 4.5</p>
+    <blockquote>Q3 2024: "Using the expected volume consumption, the total estimated spend related to our renewable energy agreements as of September 30, 2024 is approximately $18.01 billion, a majority of which is due beyond five years."</blockquote>
+    <blockquote>Q1 2025: "Additionally, as part of the normal course of business, we have entered into multi-year agreements to purchase renewable energy that do not specify a fixed or minimum volume commitment."</blockquote>
+    <p class="history">History (phrase_history): "renewable energy agreements as of" with an estimated total appears in the FY2023 10-K, the three 2024 10-Qs and the FY2024 10-K; it is absent from Q1 2025 and every filing since. The "do not specify a fixed or minimum volume commitment" sentence remains.</p>
+    <p>The one figure that sized Meta's long-term power purchases disappeared in the quarter the capex guide jumped, while the risk factors name "related energy requirements" as a constraint on AI. Readers can no longer track the energy side of the build.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#7c3aed;"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI competition sharpened: rivals' technology "may be similar or superior to our technologies or more cost-effective to develop and deploy"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: clause added (&minus;): "similar or superior," "more cost-effective"; signals: unchanged for 4 periods (since FY2023) before this edit</p>
+    <blockquote>Q3 2024: "Further, we face significant competition from other companies that are developing their own AI features and technologies."</blockquote>
+    <blockquote>Q1 2025: "Further, we face significant competition from other companies that are developing their own AI features and technologies, including competition from AI features and technologies that may be similar or superior to our technologies or more cost-effective to develop and deploy."</blockquote>
+    <p class="history">History (phrase_history): the short sentence was unchanged from the FY2023 10-K through the FY2024 10-K; the added clause first appears in Q1 2025 and is in every filing since.</p>
+    <p>Meta now allows that competitors' AI may be better or cheaper to build, a concession about cost as well as quality, in the quarter it nearly doubled its own infrastructure spending. The filing names no competitor.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Ad-demand risk: "can be subject to adverse effects from the Israel-Hamas war" &rarr; "is subject to adverse effects from conflicts in the Middle East and the implementation of tariffs"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: "can be subject" &rarr; "is subject" (signals score 6.5); named: +tariffs, +United States, +China</p>
+    <blockquote>Q3 2024: "...the war in Ukraine and service restrictions imposed by the Russian government have adversely affected our advertising business in Europe and other regions, and advertiser spending also can be subject to adverse effects from the Israel-Hamas war)."</blockquote>
+    <blockquote>Q1 2025: "...the war in Ukraine and service restrictions imposed by the Russian government have adversely affected our advertising business in Europe and other regions, and advertiser spending also is subject to adverse effects from conflicts in the Middle East and the implementation of tariffs or other existing or future trade policies by the United States, China, and other governments)."</blockquote>
+    <p class="history">History (phrase_history): "Israel-Hamas war" runs Q3 2023 to Q3 2024; "conflicts in the Middle East" and the tariff clause first appear in the FY2024 10-K and stand through Q2 2026.</p>
+    <p>Tariffs move from a supply-chain risk for hardware into the list of forces acting on ad demand, and the verb moves from possibility to present.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#dc2626;"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">DMA: EUR &euro;200M fine on "subscription for no ads"; Meta expects model changes that "could result in a materially worse user experience" and "a significant impact to our European business and revenue as early as the third quarter of 2025"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added: EUR &euro;200 million; certainty: "we expect we will need" (+); date given: Q3 2025</p>
+    <blockquote>Q1 2025: "In April 2025, the European Commission issued a final decision that our "subscription for no ads" model does not comply with such requirements and imposed a fine of EUR €200 million."</blockquote>
+    <blockquote>Q1 2025: "Based on feedback from the European Commission in connection with the DMA, we expect we will need to make some modifications to our model, which could result in a materially worse user experience for European users and a significant impact to our European business and revenue as early as the third quarter of 2025."</blockquote>
+    <p class="history">History (phrase_history): both sentences first appear in Q1 2025; "we expect we will need to make some modifications" is in Q1 2025 only. Q2 2025 softened it to "cannot rule out that further fines or modifications... may be imposed," and the FY2025 10-K dropped "further fines."</p>
+    <p>This is the first time Meta put a date and the word "significant" on a European revenue hit. The confident "we expect we will need" lasted one quarter; it was walked back once Meta appealed.</p>
+  </div>
+</div>
+</div>
 
 <!-- Q1 → Q2 2025 -->
 <div class="transition-header" id="q1q2-2025">
   <h2>Q1 2025 &rarr; Q2 2025</h2>
-  <div class="sub">Headcount: 77K &rarr; 76K | Capex: $64-72B &rarr; $66-72B</div>
+  <div class="sub">Filed Jul 31, 2025 | Revenue: $47.52B (+22%) | Op Income: $20.44B (+38%; margin 43%) | Capex guide: $64-72B &rarr; $66-72B (2025) | Purchases of property and equipment $16.54B vs. operating cash flow $25.56B | Non-marketable equity investments $15.21B (6M, incl. Scale AI) | Unstarted leases $35.27B &rarr; $52.56B | Headcount: 76,834 &rarr; 75,945 | Buybacks: $10.17B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tax guide withdrawn: "12-15%" for 2025 replaced by "we cannot quantify the magnitude at this time" after OBBBA</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed (&minus;), signals score 5.0; named: +OBBBA (Tax Act example replaced)</p>
+    <blockquote>Q1 2025: "If our stock price remains constant to the April 25, 2025 price, and absent any changes to our tax landscape, we expect our effective tax rate for the full year 2025 to be in the range of 12-15%."</blockquote>
+    <blockquote>Q2 2025: "While we estimate that the 2025 tax rate will be higher than our tax rate in the second quarter of 2025, we cannot quantify the magnitude at this time."</blockquote>
+    <blockquote>Q2 2025: "For example, the One Big Beautiful Bill Act (OBBBA) enacted in July 2025 is expected to have a significant impact on our tax obligations and effective tax rate for the third quarter of 2025."</blockquote>
+    <p class="history">History (phrase_history): the 12-15% full-year guide appears in the FY2024 10-K and Q1 2025; "cannot quantify the magnitude at this time" in Q2 2025 only. The risk-factor example had cited the 2017 Tax Act, unchanged for 6 filings, until this one.</p>
+    <p>The only numeric tax guidance was pulled, with a warning that the rate would be "higher" and a "significant impact" in Q3. Q3 2025 then booked a $15.93B charge and an 87% rate. The same MD&amp;A said OBBBA would cut cash taxes, so the hit was to reported earnings, not cash.</p>
+  </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"SUPERINTELLIGENCE" first appears in SEC filing</span>
+    <span class="title">"Superintelligence" enters the AI investment sentence, in both risk factors and MD&amp;A</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2025 risk factor:</p>
-    <blockquote>"We are making significant investments in AI initiatives, including generative AI, to, among other things, recommend relevant content across our products..."</blockquote>
-    <p>Q2 2025 risk factor:</p>
-    <blockquote>"We are making significant investments in AI initiatives, including generative AI and superintelligence, to, among other things, recommend relevant content across our products, enhance our advertising tools, develop new products, and develop new features for existing products."</blockquote>
-    <p>"Superintelligence" inserted into the standard AI investment sentence alongside "generative AI" &mdash; not detectable from annual filings alone.</p>
+    <p class="shift">Shift: named: +superintelligence (+)</p>
+    <blockquote>Q1 2025: "We are making significant investments in AI initiatives, including generative AI, to, among other things, recommend relevant content across our products, enhance our advertising tools, develop new products, and develop new features for existing products."</blockquote>
+    <blockquote>Q2 2025: "We are making significant investments in AI initiatives, including generative AI and superintelligence, to, among other things, recommend relevant content across our products, enhance our advertising tools, develop new products, and develop new features for existing products."</blockquote>
+    <p class="history">History (phrase_history): "superintelligence" appears in no filing before Q2 2025 and in every filing since (5 of 5); the FY2025 10-K defined it as "AI that surpasses human intelligence."</p>
+    <p>The word is inserted into an otherwise unchanged list of practical uses (recommendations, ad tools), so the filing gives no separate description, budget or timeline for it. The same quarter brought the $13.79B Scale AI stake (below).</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Paid messaging from WhatsApp" replaces "WhatsApp Business Platform" in revenue</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q1 2025 MDA:</p>
-    <blockquote>"Other revenue consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions..."</blockquote>
-    <p>Q2 2025 MDA:</p>
-    <blockquote>"Other revenue consists of revenue from paid messaging from WhatsApp, Meta Verified subscriptions..."</blockquote>
-    <p>Renaming from a platform brand to a product description signals consumer-facing messaging monetization beyond business API.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"Generative" dropped from capex attribution</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q1 2025:</p>
-    <blockquote>"...to support our core business and generative AI efforts."</blockquote>
-    <p>Q2 2025:</p>
-    <blockquote>"...to support our core business and AI efforts."</blockquote>
-    <p>Dropping "generative" broadens the capex justification from one AI category to all AI investment.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Capex floor raised $64B to $66B</span>
+    <span class="title">Capex floor raised $64B &rarr; $66B; "generative" dropped from the purpose clause</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We anticipate making capital expenditures of approximately $66 billion to $72 billion in 2025 to support our core business and AI efforts."</blockquote>
+    <p class="shift">Shift: guidance figures: floor $64B &rarr; $66B, ceiling held at $72B (range narrowed, +); scope widened: "generative AI efforts" &rarr; "AI efforts"</p>
+    <blockquote>Q1 2025: "We anticipate making capital expenditures of approximately $64 billion to $72 billion in 2025 to support our core business and generative AI efforts."</blockquote>
+    <blockquote>Q2 2025: "We anticipate making capital expenditures of approximately $66 billion to $72 billion in 2025 to support our core business and AI efforts."</blockquote>
+    <p class="history">History (phrase_history): "generative AI efforts" in the FY2024 10-K and Q1 2025 only; "core business and AI efforts" in Q2 and Q3 2025, then reversed to "AI efforts and core business" in the FY2025 10-K.</p>
+    <p>Six-month capex including finance leases was $30.70B, so the floor implies at least $35.3B in the second half (computed). Dropping "generative" lets the budget cover superintelligence work as well, the same quarter that word appeared.</p>
   </div>
 </div>
 
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"WhatsApp Business Platform" de-named to "paid messaging from WhatsApp"; other revenue +50%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: name dropped: WhatsApp Business Platform; scope widened to "paid messaging"</p>
+    <blockquote>Q1 2025: "Other revenue consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources."</blockquote>
+    <blockquote>Q2 2025: "Other revenue consists of revenue from paid messaging from WhatsApp, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources."</blockquote>
+    <p class="history">History (phrase_history): "paid messaging from WhatsApp" first appears in Q2 2025 and is in every filing since; Q2 2026 later dropped "Meta Verified" from the same sentence.</p>
+    <p>The line is described by what is paid for rather than by a product brand, which leaves room for other paid messaging on WhatsApp. FoA other revenue grew 50% to $583M.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#b45309;"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Scale AI stake: $13.79B booked as a non-voting minority investment "as we do not have significant influence"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; named: +Scale AI; quant added: $13.79 billion</p>
+    <blockquote>Q2 2025: "In June 2025, we completed an investment in Scale AI by acquiring a non-voting minority of its outstanding equity."</blockquote>
+    <blockquote>Q2 2025: "Out of the total consideration, $13.79 billion was included in non-marketable equity investments accounted for under the measurement alternative method, as we do not have significant influence over Scale AI's operations."</blockquote>
+    <p class="history">History (phrase_history): "Scale AI" appears in Q2 2025, Q3 2025 and the FY2025 10-K, and not in the 2026 10-Qs.</p>
+    <p>The stake is structured to avoid consolidation or equity-method accounting, so it sits at cost unless an observable price change or impairment occurs. Six-month cash spent on non-marketable equity investments was $15.21B, about half of six-month capex.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Data-center assets put up for sale: $2.04B reclassified as held-for-sale in June 2025</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added: $2.04 billion, $3.26 billion</p>
+    <blockquote>Q2 2025: "At the beginning of June 2025, we approved a plan to dispose of certain data center assets and reclassified $2.04 billion of these assets as held-for-sale."</blockquote>
+    <p class="history">History (phrase_history): "held-for-sale" first appears in Q2 2025 and is in every filing since; the Q3 2025 subsequent-events note shows where the assets went (the Louisiana Venture, $4.3B contributed "which included held-for-sale assets").</p>
+    <p>A company building at Meta's pace does not usually sell data-center assets. This was the first visible step of the off-balance-sheet financing that closed in October 2025, disclosed one quarter later as a subsequent event.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unstarted leases +$17.3B in one quarter ($35.27B &rarr; $52.56B); "data centers" added to commitments</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures $35.27B &rarr; $52.56B (signals score 4.0); named: +data centers in the commitments description (signals score 5.8)</p>
+    <blockquote>Q1 2025: "In addition to lease liabilities, we have leases that have not yet commenced of approximately $35.27 billion as of March 31, 2025, which will commence between the remainder of 2025 and 2034."</blockquote>
+    <blockquote>Q2 2025: "In addition to lease liabilities, we have leases that have not yet commenced of approximately $52.56 billion as of June 30, 2025, which will commence between the remainder of 2025 and 2034."</blockquote>
+    <p class="history">History (phrase_history): $35.27B in Q1 2025 only, $52.56B in Q2 2025 only, then $58.14B (Q3 2025) and $103.77B (FY2025). The commitments sentence names "data centers" for the first time in Q2 2025.</p>
+    <p>Signed but unstarted leases grew faster in the quarter than capex itself ($17.3B against about $17B). Commitments fell to $27.95B, so the growth was in leases, which are not in the capex guide.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#7c3aed;"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Scam rules restated as in force: "may also subject us to new requirements" &rarr; "we are also, and expect to continue to be, subject"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: may &rarr; are; realized: hypothetical &rarr; actual (signals rank 1, score 9.3); "could cause" &rarr; "could continue to cause"</p>
+    <blockquote>Q1 2025: "Legislative proposals and evolving interpretation of existing laws in Europe, Asia-Pacific, and other jurisdictions may also subject us to new requirements relating to allegedly fraudulent or illegal activities by third parties on our platform, which could cause us to incur significant compliance costs or make changes to our products or business practices..."</blockquote>
+    <blockquote>Q2 2025: "As a result of legislative proposals, new laws, and evolving interpretation of existing laws in Europe, Asia-Pacific, and other jurisdictions, we are also, and expect to continue to be, subject to new requirements relating to allegedly fraudulent or illegal activities by third parties on our platform, which could continue to cause us to incur significant compliance costs..."</blockquote>
+    <p class="history">History (phrase_history): "may also subject us to new requirements" ran from Q1 2024 through Q1 2025 (5 filings); the realized wording first appears in Q2 2025 and stands through Q2 2026. The FY2025 10-K added Latin America.</p>
+    <p>Liability rules for third-party fraud move from proposals to obligations Meta is already under, and "continue to cause" concedes compliance costs are already being incurred. This sits alongside the Q3 2024 admission that ad enforcement costs revenue.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Youth laws restated as in force: "may restrict" &rarr; "We are also subject to... that restrict"; "We may face similar challenges" &rarr; "We are facing similar challenges"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: may &rarr; are; realized (signals score 8.2); named: +Europe, +Asia-Pacific</p>
+    <blockquote>Q1 2025: "New legislation or regulatory decisions may restrict our ability to collect and use information about minors or also limit our advertising services or our ability to offer products and services to minors in certain jurisdictions."</blockquote>
+    <blockquote>Q2 2025: "We are also subject to new legislation or regulatory decisions that restrict our ability to collect and use information about minors or also limit our advertising services or our ability to offer products and services to minors in certain jurisdictions."</blockquote>
+    <blockquote>Q2 2025: "We are facing similar challenges in other jurisdictions, including Europe and Asia-Pacific."</blockquote>
+    <p class="history">History (phrase_history): the "may restrict" sentence stood in the FY2024 10-K and Q1 2025 (unchanged for 2 periods by the signals count); "We are also subject to new legislation or regulatory decisions that restrict" first appears in Q2 2025 and stands through Q2 2026. Q1 2025 had said "We may face similar challenges in light of recent legislation in Australia."</p>
+    <p>Youth restrictions now limit ad targeting and product access in several regions, not just as a future risk. The FY2025 10-K added Latin America and made youth a named investment priority.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#dc2626;"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">DMA walked back: "we expect we will need to make some modifications" &rarr; "cannot rule out that further fines or modifications... may be imposed"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: will &rarr; may (weaker, &minus;; signals score 6.5); timing: "as early as the third quarter" &rarr; "as early as later in the third quarter"; named: +"further fines"</p>
+    <blockquote>Q1 2025: "Based on feedback from the European Commission in connection with the DMA, we expect we will need to make some modifications to our model, which could result in a materially worse user experience for European users and a significant impact to our European business and revenue as early as the third quarter of 2025."</blockquote>
+    <blockquote>Q2 2025: "We appealed the European Commission's decision on July 4, 2025, but cannot rule out that further fines or modifications to our model may be imposed during the appeal process, which could result in a materially worse user experience for European users and a significant impact to our European business and revenue as early as later in the third quarter of 2025."</blockquote>
+    <p class="history">History (phrase_history): "we expect we will need to make some modifications" in Q1 2025 only; "cannot rule out that further" and "as early as later in the third quarter of 2025" in Q2 2025 only. The FY2025 10-K dropped "further fines or" and the Q4 2025 timing.</p>
+    <p>The appeal turned an expected change into a possible one and pushed the timing back. The "significant impact to our European business and revenue" clause stayed, so the size of the risk did not change; only its certainty did.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">IRS worst-case ceilings deleted ("up to approximately $9.0 billion" and "$680 million"); Tax Court values the transferred IP $1.48B above Meta's figure</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed (&minus;, signals score 4.5 each); realized: Tax Court opinion issued</p>
+    <blockquote>Q1 2025: "If the IRS prevails in its updated position, this could result in an additional federal tax liability of an estimated, aggregate amount of up to approximately $9.0 billion in excess of the amounts in our originally filed U.S. return, plus interest and any penalties asserted."</blockquote>
+    <blockquote>Q2 2025: "The Tax Court opinion provided a value of $7.79 billion for the intellectual property transferred to our international subsidiary, which is $1.48 billion higher than we reported."</blockquote>
+    <p class="history">History (phrase_history): "up to approximately $9.0 billion" and "up to approximately $680 million" both appear in every filing from Q2 2023 through Q1 2025 (8 filings) and in none since; "$1.48 billion higher than we reported" first appears in Q2 2025 and stands through Q2 2026.</p>
+    <p>The ceilings were replaced by a court valuation that went partly against Meta, with the tax due still to be computed. The next quarter brought a new $15.89B deficiency notice on the same transaction for 2017-2019, larger than the ceiling that was dropped.</p>
+  </div>
+</div>
+</div>
 
 <!-- Q2 → Q3 2025 -->
 <div class="transition-header" id="q2q3-2025">
   <h2>Q2 2025 &rarr; Q3 2025</h2>
-  <div class="sub">Headcount: 76K &rarr; 78K | Capex: $66-72B &rarr; $70-72B + 2026 growth signal</div>
+  <div class="sub">Filed Oct 30, 2025 | Revenue: $51.24B (+26%) | Op Income: $20.54B (+18%; margin 40%) | Net Income: $2.71B after a $15.93B OBBBA tax charge (ETR 87%) | Capex guide: $66-72B &rarr; $70-72B (2025) + "significant" 2026 growth | Purchases of property and equipment $18.83B vs. operating cash flow $30.00B | Commitments: $27.95B &rarr; $81.19B | Headcount: 75,945 &rarr; 78,450 | Buybacks: $3.33B</div>
 </div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Guidance &amp; MD&amp;A</h3>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Products liability" added to AI risk enumeration</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2025 AI risk factor added "products liability" to the list of AI-specific legal risks:</p>
-    <blockquote>"...subject us to risks related to harmful or illegal content, accuracy, misinformation and deepfakes (including related to elections), bias, discrimination, toxicity, consumer protection, products liability, intellectual property infringement or misappropriation..."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">FTC and Congress investigations named</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2025 added specific government actors investigating AI:</p>
-    <blockquote>"...we have been the subject of media and government scrutiny relating to AI and AI chatbots, including inquiries and investigations by the FTC, members of Congress and state attorneys general."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"We have made" replaces "We are making" (past tense shift)</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q2 2025 risk factor:</p>
-    <blockquote>"We are making significant investments in AI initiatives..."</blockquote>
-    <p>Q3 2025 risk factor:</p>
-    <blockquote>"We have made significant investments in AI initiatives, including generative AI and superintelligence..."</blockquote>
-    <p>Shift from present continuous to present perfect &mdash; investment is now an established fact, not an ongoing decision.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">"Headcount" dropped from AI investment sentence in MDA</span>
-    <span class="tag tag-removed">Removed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q2 2025 MDA Investment Philosophy:</p>
-    <blockquote>"In particular, we expect our AI initiatives will require increased investment in infrastructure and headcount."</blockquote>
-    <p>Q3 2025 MDA Investment Philosophy:</p>
-    <blockquote>"In particular, we expect our AI initiatives will require significantly increased investment in infrastructure."</blockquote>
-    <p>"Headcount" removed; "significantly" added before "increased." The AI investment sentence now frames the commitment as infrastructure-only.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">UK OSA added to named regulatory frameworks</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2025 risk factor TOC:</p>
-    <blockquote>"...including the General Data Protection Regulation (GDPR), Digital Markets Act (DMA), Digital Services Act (DSA), UK Online Safety Act (OSA), Artificial Intelligence Act (EU AI Act), and the UK Digital Markets, Competition and Consumer Act (DMCC)"</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Capex $70-72B + 2026 growth signal + $40B cloud commitment</span>
+    <span class="title">Capex floor raised $66B &rarr; $70B (ceiling held at $72B); "significant capital expenditures growth in 2026" added</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We anticipate making capital expenditures of approximately $70 billion to $72 billion in 2025 to support our core business and AI efforts, and expect significant capital expenditures growth in 2026."</blockquote>
-    <p>Range narrowed from $66-72B to $70-72B. A 2026 growth signal added. The risk factors also disclosed:</p>
-    <blockquote>"...we will need an increasing amount of technical infrastructure, including network capacity, computing power, and related energy requirements..."</blockquote>
+    <p class="shift">Shift: guidance figures: floor $66B &rarr; $70B, ceiling unchanged (range narrowed, +); forward clause added for 2026 (+)</p>
+    <blockquote>Q2 2025: "We anticipate making capital expenditures of approximately $66 billion to $72 billion in 2025 to support our core business and AI efforts."</blockquote>
+    <blockquote>Q3 2025: "We anticipate making capital expenditures of approximately $70 billion to $72 billion in 2025 to support our core business and AI efforts, and expect significant capital expenditures growth in 2026."</blockquote>
+    <p class="history">History (phrase_history): "significant capital expenditures growth in 2026" appears in Q3 2025 only (the same device as "significant capital expenditures growth in 2025" in Q3 2024); the FY2025 10-K then guided 2026 to $115-135B.</p>
+    <p>The 2025 floor was raised for the third quarter running ($64B, $66B, $70B) while the ceiling stayed at $72B. Actual 2025 capex including finance leases came in at $72.22B, at the ceiling.</p>
   </div>
 </div>
 
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">MD&amp;A AI sentence drops "headcount" and adds "significantly": "will require significantly increased investment in infrastructure"</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope narrowed: "infrastructure and headcount" &rarr; "infrastructure" (&minus; for headcount); degree: "increased" &rarr; "significantly increased" (+)</p>
+    <blockquote>Q2 2025: "In particular, we expect our AI initiatives will require increased investment in infrastructure and headcount."</blockquote>
+    <blockquote>Q3 2025: "In particular, we expect our AI initiatives will require significantly increased investment in infrastructure."</blockquote>
+    <p class="history">History (phrase_history): "investment in infrastructure and headcount" was in the MD&amp;A from Q2 2024 through Q2 2025 and in the risk factors from Q2 2023 through the FY2025 10-K; "require significantly increased investment in infrastructure" appears in Q3 2025 and the FY2025 10-K, then Q1 2026 moved to "we have significantly increased our infrastructure investments."</p>
+    <p>Management's own description of AI's inputs no longer includes people. The risk-factor version kept "headcount" for two more filings, so the retreat was staged; Q2 2026 then disclosed a reduction of about 8,000 people.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Pay, not hiring, leads the cost explanation: "primarily from an increase in share-based compensation expense"; "supporting our continued investment in... Reality Labs" dropped</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +share-based compensation (+ disclosure); name dropped: Reality Labs (signals score 5.8); hedge: "mainly" &rarr; "primarily"</p>
+    <blockquote>Q2 2025: "The higher employee compensation was mainly from a 10% growth in employee headcount from June 30, 2024 to June 30, 2025 in engineering and other technical functions supporting our continued investment in our family of products and Reality Labs."</blockquote>
+    <blockquote>Q3 2025: "The higher employee compensation was primarily from an increase in share-based compensation expense and an 11% growth in employee headcount from September 30, 2024 to September 30, 2025 in engineering and other technical functions."</blockquote>
+    <p class="history">History (phrase_history): the risk factor's "if we issue significant equity" stood in every filing from Q2 2023 through Q2 2025 (unchanged for 9 periods by the signals count) and becomes "From time to time we issue significant equity" in this same filing (signals score 5.5, hedge added); SBC first leads the R&amp;D explanation in Q1 2026.</p>
+    <p>Quarterly SBC rose to $5.56B from $4.25B a year earlier (+31%, financials.py), faster than technical headcount (+11%). Growth in compensation is now explained first by equity pay per employee rather than by the number of employees.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OBBBA lands: $15.93B one-time charge, valuation allowance on U.S. federal deferred tax assets; benefits "limited by the 15% Corporate Alternative Minimum Tax"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: Q2's "cannot quantify the magnitude at this time" &rarr; $15.93 billion (+ disclosure); named: +CAMT</p>
+    <blockquote>Q2 2025: "While we estimate that the 2025 tax rate will be higher than our tax rate in the second quarter of 2025, we cannot quantify the magnitude at this time."</blockquote>
+    <blockquote>Q3 2025: "As a result, we recorded a $15.93 billion one-time charge related to the implementation as of the enactment date of OBBBA, including recognition of a valuation allowance against our U.S. federal deferred tax assets."</blockquote>
+    <blockquote>Q3 2025: "The benefits from these provisions are limited by the 15% Corporate Alternative Minimum Tax (CAMT)."</blockquote>
+    <p class="history">History (phrase_history): "Corporate Alternative Minimum Tax" first appears in Q3 2025 and is in every filing since; Q1 2026 recognized an $8.03B partial reversal under Treasury Notice 2026-7.</p>
+    <p>The law cuts cash taxes, but CAMT caps the benefit, so Meta wrote down deferred tax assets it no longer expects to use. Net income fell to $2.71B. The risk factor that SBC tax benefits "will impact" the rate was softened to "may impact," consistent with CAMT limiting those benefits.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#b45309;"></span>Capital &amp; Financing</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liquidity sentence loses "and thereafter for the foreseeable future"; MD&amp;A adds "From time to time we may also seek to raise additional capital through debt, equity, or other financing arrangements"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: horizon shortened (&minus;): "for at least the next 12 months and thereafter for the foreseeable future" &rarr; "for at least the next 12 months"; condition added: external financing (&minus;)</p>
+    <blockquote>Q2 2025: "We currently anticipate that our available funds and cash flow from operations and financing activities will be sufficient to meet our operational cash needs and fund our investments in infrastructure and AI initiatives, share repurchases and dividend payments for at least the next 12 months and thereafter for the foreseeable future."</blockquote>
+    <blockquote>Q3 2025: "We currently anticipate that our available funds and cash flow from operations and financing activities will be sufficient to meet our operational cash needs and fund our investments in infrastructure and AI initiatives, share repurchases and dividend payments for at least the next 12 months."</blockquote>
+    <blockquote>Q3 2025: "We have increased investments related to our AI initiatives and expect to continue to do so. From time to time we may also seek to raise additional capital through debt, equity, or other financing arrangements."</blockquote>
+    <p class="history">History (phrase_history): "and thereafter for the foreseeable future" is in every filing from Q2 2023 to Q2 2025 and absent from Q3 2025 only (restored in the FY2025 10-K with buybacks recast as "any return of capital"); the financing sentence first appears here and stands through Q2 2026.</p>
+    <p>The long-horizon assurance was dropped for one quarter, the quarter before a $30B bond issue and the closing of the Blue Owl venture. Buybacks fell to $3.33B from $10.17B in Q2.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commitments $27.95B &rarr; $81.19B, now led by "third-party cloud capacity arrangements"; ~$40B more cloud capacity signed in October</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: figures $27.95B &rarr; $81.19B (+); named: +third-party cloud capacity arrangements (listed first); ADDED subsequent event ~$40 billion</p>
+    <blockquote>Q2 2025: "These commitments are mostly related to our investments in servers and network infrastructure, consumer hardware products in Reality Labs, and data centers, with $18.30 billion due in 2025."</blockquote>
+    <blockquote>Q3 2025: "These commitments are mostly related to third-party cloud capacity arrangements and our continued investments in servers and network infrastructure, consumer hardware products in Reality Labs, and data centers, with $17.79 billion and $8.62 billion due in 2025 and 2026, respectively."</blockquote>
+    <blockquote>Q3 2025: "In October 2025, we entered into multi-year third-party cloud capacity arrangements for an aggregate amount of approximately $40 billion."</blockquote>
+    <p class="history">History (phrase_history): "third-party cloud capacity" first appears in Q3 2025 and is in every filing since; "approximately $40 billion" in Q3 2025 only. Commitments then went to $131.05B (FY2025), $237.67B (Q1 2026) and $349.31B (Q2 2026).</p>
+    <p>Commitments nearly tripled in a quarter, and the largest new category is compute rented from other companies, not Meta's own data centers. Only $26.41B is due in 2025-2026, so most of the obligation lands in 2027 and beyond.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Blue Owl venture (subsequent event): Meta keeps 20%, takes $2.6B back, leases the campus from 2029, and guarantees residual value from a ~$28B threshold</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; named: +Blue Owl Capital, +the Venture; quant added: $4.3B, $7.0B, $2.6B, 20%, $28B</p>
+    <blockquote>Q3 2025: "At closing, we contributed $4.3 billion which included held-for-sale assets, net of liabilities, consisting mostly of construction in progress and land, while the Investor contributed $7.0 billion in cash to the Venture."</blockquote>
+    <blockquote>Q3 2025: "In addition, we provided a residual value guarantee for the first 16 years of operations whereby we would make a capped cash payment to the Venture if certain conditions are met following a non-renewal or termination of a data center lease and the then-current value of the data center falls below an agreed-upon threshold, which effectively begins at $28 billion and decreases over time."</blockquote>
+    <p class="history">History (phrase_history): "Blue Owl" appears in Q3 2025 only (later filings say "the Venture," present in every filing since); the held-for-sale data-center assets first appeared in Q2 2025.</p>
+    <p>The venture "will be an unconsolidated variable interest entity," so the campus and its debt stay off Meta's balance sheet while Meta leases it and guarantees its value. The FY2025 10-K put the maximum exposure at $45.95B; El Paso (Q2 2026) repeats the structure.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#7c3aed;"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI strategy given the Reality Labs failure clause: "our AI strategy and investments may not be successful in the foreseeable future, or at all"; "We are making" &rarr; "We have made"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: condition added (&minus;): failure clause extended from RL to AI; tense: "are making" &rarr; "have made"</p>
+    <blockquote>Q3 2025: "As a result of these or other factors, our AI strategy and investments may not be successful in the foreseeable future, or at all, which could adversely affect our business, reputation, or financial results."</blockquote>
+    <blockquote>Q2 2025: "As a result of these or other factors, our Reality Labs strategy and investments may not be successful in the foreseeable future, or at all, which could adversely affect our business, reputation, or financial results."</blockquote>
+    <p class="history">History (phrase_history): "in the foreseeable future, or at all" is in every filing since Q2 2023, but only for Reality Labs until Q3 2025, when the AI sentence is added (it stands through Q2 2026). "We have made significant investments in AI initiatives" also first appears here, replacing "We are making," which ran from Q3 2023.</p>
+    <p>The strongest failure language in the risk factors, written for the metaverse, now covers the program behind the capex guide, in the same filing that signals "significant" 2026 capex growth.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI risk list adds "products liability"; FTC, members of Congress and state attorneys general named as investigating "AI and AI chatbots"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +products liability (in the AI enumeration), +AI chatbots; realized: "we have been the subject of"</p>
+    <blockquote>Q2 2025: "For example, our AI-related efforts, particularly those related to generative AI and superintelligence, subject us to risks related to harmful or illegal content, accuracy, misinformation and deepfakes (including related to elections), bias, discrimination, toxicity, consumer protection, intellectual property infringement or misappropriation, defamation, data privacy, cybersecurity, and sanctions and export controls, among others."</blockquote>
+    <blockquote>Q3 2025: "For example, we have been the subject of media and government scrutiny relating to AI and AI chatbots, including inquiries and investigations by the FTC, members of Congress and state attorneys general."</blockquote>
+    <p class="history">History (phrase_history): "products liability" was already in the general claims list in every filing since Q2 2023; Q3 2025 is the first time it is listed as an AI risk. The AI-chatbot scrutiny sentence first appears in Q3 2025 and stands through Q2 2026. The summary bullet adds "UK Online Safety Act (OSA)" in the same filing.</p>
+    <p>Products liability is the theory youth plaintiffs used to get around Section 230. Applying it to chatbots extends the youth-litigation risk to Meta's AI products, and the named investigators show it is already being tested.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:#dc2626;"></span>Legal &amp; Regulatory</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First aggregate exposure figure: "up to hundreds of billions of dollars"; youth claims "up to the high tens of billions"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added (+ disclosure, a larger stated exposure)</p>
+    <blockquote>Q3 2025: "The maximum aggregate monetary damages or penalties sought across our various legal proceedings could amount to an aggregate of up to hundreds of billions of dollars and, as a result, could be material to the financial condition of the company."</blockquote>
+    <blockquote>Q3 2025: "Across the cases described above, the damages or penalties that plaintiffs have indicated they intend to seek range widely in amount, including in certain cases up to the high tens of billions of dollars."</blockquote>
+    <p class="history">History (phrase_history): "hundreds of billions" first appears in Q3 2025 and is in every filing since, unchanged; "high tens of billions" runs Q3 2025 to Q1 2026 and becomes "more than a trillion dollars" in Q2 2026.</p>
+    <p>Meta had never put a number on its total legal exposure. The figure is what plaintiffs seek, not an estimate of loss, but the filing itself says it "could be material to the financial condition of the company."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">IRS asserts $15.89B more tax for 2017-2019 on the same transfer-pricing transaction</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added: $15.89 billion; named: +2017-2019 Notice</p>
+    <blockquote>Q3 2025: "In September 2025, we received a Statutory Notice of Deficiency ("2017-2019 Notice") from the IRS, asserting an additional $15.89 billion in tax, plus interest and penalties for our 2017 through 2019 tax years."</blockquote>
+    <p class="history">History (phrase_history): "15.89 billion in tax" first appears in Q3 2025 and stands through Q2 2026; the old "up to approximately $9.0 billion" ceiling for the earlier years was deleted in Q2 2025.</p>
+    <p>One quarter after the old worst-case figure was dropped, a new assessment larger than it arrived. Combined with the Tax Court's partial loss on valuation, the transfer-pricing dispute now carries a stated claim of about a quarter of FY2024 net income.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Flo Health: jury finds Meta liable; plaintiffs seek $5,000 per member for "approximately 1.6 million class members"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: liability verdict (+); quant added: $5,000 per member, 1.6 million members</p>
+    <blockquote>Q3 2025: "In Flo Health, on August 1, 2025, a jury returned a verdict on liability in favor of the plaintiffs and on behalf of a California subclass on the sole claim remaining against Meta under Section 632 of the California Invasion of Privacy Act."</blockquote>
+    <blockquote>Q3 2025: "Plaintiffs are seeking $5,000 in statutory damages per class member and have asserted that there are approximately 1.6 million class members."</blockquote>
+    <p class="history">History (phrase_history): Flo Health is in every filing since the FY2023 10-K; "1.6 million class members" first appears in Q3 2025 and runs through Q1 2026 (Q2 2026: "up to approximately 1.25 million"). The filing says "The amount of potential damages is uncertain at this time."</p>
+    <p>At the plaintiffs' figures the claim is about $8B (computed): a liability verdict with a per-member damages formula, in a privacy case that had been disclosed without a figure for two years.</p>
+  </div>
+</div>
+</div>
 
 <!-- Q3 2025 → FY2025 10-K (annual filing) -->
 <div class="transition-header" id="q3-2025-fy2025">
   <h2>Q3 2025 &rarr; FY2025 10-K</h2>
-  <div class="sub">Annual Filing (Jan 29, 2026) | FY2025 revenue $200.97B (+22%) | Capex: $70-72B (2025) &rarr; $115-135B (2026) | Headcount: 78,450 &rarr; 78,865 | Long-term debt: $29B &rarr; $59B</div>
+  <div class="sub">Annual Filing (Jan 29, 2026) | FY2025 revenue $200.97B (+22%) | Op Income $83.28B (margin 41%) | Net Income $60.46B (ETR 30%; 13% ex-OBBBA) | Capex: $70-72B (2025) &rarr; $115-135B (2026) | Operating cash flow less purchases of property and equipment: $46.11B (FY2024 $54.07B) | Commitments $81.19B &rarr; $131.05B | Long-term debt: $28.83B &rarr; $58.74B | Headcount: 78,450 &rarr; 78,865</div>
 </div>
 
 <div class="finding-group">
@@ -795,41 +1253,56 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025 MDA:</p>
-    <blockquote>"We anticipate making capital expenditures of approximately $70 billion to $72 billion in 2025 to support our <strong>core business and AI efforts</strong>, and expect significant capital expenditures growth in 2026."</blockquote>
-    <p>FY2025 10-K MDA:</p>
-    <blockquote>"We anticipate making capital expenditures of approximately <strong>$115 billion to $135 billion in 2026</strong> to support our <strong>AI efforts and core business</strong>."</blockquote>
-    <p>The midpoint (~$125B) is roughly 1.7x FY2025 actual capex of $72.22B. The attribution word order also flips: AI is listed ahead of the core business for the first time since "generative AI" entered the capex sentence in the FY2024 10-K.</p>
+    <p class="shift">Shift: guidance figures $70-72B (2025) &rarr; $115-135B (2026) (signals score 5.8); range widened $2B &rarr; $20B (&minus;); order: core business first &rarr; AI first</p>
+    <blockquote>Q3 2025: "We anticipate making capital expenditures of approximately $70 billion to $72 billion in 2025 to support our core business and AI efforts, and expect significant capital expenditures growth in 2026."</blockquote>
+    <blockquote>FY2025 10-K: "We anticipate making capital expenditures of approximately $115 billion to $135 billion in 2026 to support our AI efforts and core business."</blockquote>
+    <p class="history">History (phrase_history): "AI efforts and core business" first appears in this 10-K and is kept in Q1 and Q2 2026; "core business and AI efforts" ran Q2-Q3 2025 and "core business and generative AI efforts" FY2024-Q1 2025.</p>
+    <p>The midpoint (~$125B) is roughly 1.7x FY2025 capex of $72.22B. AI is listed ahead of the core business for the first time. Q1 2026 raised the range by $10B at both ends.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">RL loss guidance pivots to "remain similar to 2025" &mdash; first non-increase guidance</span>
+    <span class="title">RL loss guidance pivots to "remain similar to 2025," the first non-increase guidance</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025 MDA:</p>
-    <blockquote>"...we continue to expect our full-year RL operating losses to <strong>increase in 2025</strong>."</blockquote>
-    <p>FY2025 10-K MDA:</p>
-    <blockquote>"In 2025, our RL segment reduced our overall operating profit by approximately $19.19 billion, and we expect our 2026 RL operating losses to <strong>remain similar to 2025</strong>."</blockquote>
-    <p>Every filing since Q1 2023 had guided RL losses upward ("increase," "continue to increase," "increase meaningfully"). This is the first flat guidance in the dataset, issued after a $19.19B FY2025 RL operating loss.</p>
+    <p class="shift">Shift: guidance direction: "increase" &rarr; "remain similar" (+ for margins); figure: $19.19B FY2025 RL loss stated</p>
+    <blockquote>Q3 2025: "During the nine months ended September 30, 2025, our RL segment reduced our overall operating profit by approximately $13.17 billion, and we continue to expect our full-year RL operating losses to increase in 2025."</blockquote>
+    <blockquote>FY2025 10-K: "In 2025, our RL segment reduced our overall operating profit by approximately $19.19 billion, and we expect our 2026 RL operating losses to remain similar to 2025."</blockquote>
+    <p class="history">History (phrase_history): "remain similar to 2025" first appears in this 10-K and holds through Q2 2026; every earlier downloaded filing guided RL losses up ("increase," "increase meaningfully," "continue to expect... to increase").</p>
+    <p>The guide stops growing after a $19.19B loss, up 8%. It came with the RL budget shift to 70% wearables in the business section, so the cap is consistent with cutting VR rather than growing revenue.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">RL reframing: "metaverse and wearables" &rarr; "RL efforts" / "VR, Horizon, and wearables"; "mixed reality" dropped</span>
+    <span class="title">RL reframing: "metaverse and wearables efforts" &rarr; "RL efforts"; "mixed reality" dropped; risk factor names "VR, Horizon, and wearables"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025 MDA:</p>
-    <blockquote>"We are also making significant investments in our <strong>metaverse and wearables efforts</strong>, including developing <strong>virtual, augmented, and mixed reality</strong> devices, software for social platforms..."</blockquote>
-    <p>FY2025 10-K MDA:</p>
-    <blockquote>"We are also making significant investments in our <strong>RL efforts</strong>, including developing <strong>virtual and augmented reality</strong> devices, software for social platforms, neural interfaces, and other foundational technologies."</blockquote>
-    <p>The parallel risk-factor sentence changes from "as part of our metaverse and wearables efforts" to "as part of our <strong>VR, Horizon, and wearables</strong> efforts." "Mixed reality" is dropped from the segment description throughout, after being added in Q1 2024.</p>
+    <p class="shift">Shift: name dropped: metaverse, mixed reality (de-named, &minus;); named: +Horizon in the risk factor</p>
+    <blockquote>Q3 2025: "We are also making significant investments in our metaverse and wearables efforts, including developing virtual, augmented, and mixed reality devices, software for social platforms, neural interfaces, and other foundational technologies."</blockquote>
+    <blockquote>FY2025 10-K: "We are also making significant investments in our RL efforts, including developing virtual and augmented reality devices, software for social platforms, neural interfaces, and other foundational technologies."</blockquote>
+    <p class="history">History (phrase_history): "metaverse and wearables efforts" ran from the FY2024 10-K through Q3 2025; "VR, Horizon, and wearables" first in this 10-K. "virtual, augmented, and mixed reality" entered the MD&amp;A in the FY2023 10-K and appears through Q3 2025; FY2025 reverts to the 2023 wording "virtual and augmented reality."</p>
+    <p>"Metaverse" leaves the MD&amp;A's description of what RL builds. The word survives in the risk factors ("bring the metaverse to life"), but the spending language now names products.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Largest non-U.S. revenue sources: Singapore enters the list; Australia, India and Canada drop out</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +Singapore; name dropped: Australia, India, Canada (annual-only sentence, compared with the FY2024 10-K)</p>
+    <blockquote>FY2024 10-K: "We generated 36%, 37%, and 40% of our revenue for the years ended December 31, 2024, 2023, and 2022, respectively, from marketers and developers based in the United States, with a majority of the revenue outside of the United States in 2024 coming from customers located in western Europe, China, Brazil, Australia, India and Canada."</blockquote>
+    <blockquote>FY2025 10-K: "We generated 37%, 36%, and 37% of our revenue for the years ended December 31, 2025, 2024, and 2023, respectively, from marketers and developers based in the United States, with a majority of the revenue outside of the United States in 2025 coming from customers located in western Europe, China, Singapore, and Brazil."</blockquote>
+    <p class="history">History (phrase_history): "Singapore" appears in no filing before this 10-K; "India and Canada" in the FY2024 10-K only. The Q1 2025 10-Q disclosed changes to "sales arrangements with certain Asia-Pacific advertisers to sell ads to such advertisers through their international subsidiaries" (~$300M in one quarter).</p>
+    <p>A small market becoming one of the largest sources of revenue is consistent with Asia-Pacific advertisers now being billed through Singapore subsidiaries; the filing does not connect the two. The U.S. share also rose to 37%, which fits the Q1 2025 note that some Asia-Pacific revenue is now booked under the United States and Canada.</p>
   </div>
 </div>
 </div>
@@ -840,30 +1313,30 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Long-term debt doubles: $29.0B &rarr; $59.0B</span>
+    <span class="title">Long-term debt doubles: $29.0B &rarr; $59.0B; future interest obligations $28.32B &rarr; $59.72B</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025 (as of September 30, 2025):</p>
-    <blockquote>"...senior unsecured notes for an aggregate principal amount of <strong>$29.0 billion</strong>, which mature from 2027 through 2064."</blockquote>
-    <p>FY2025 10-K (as of December 31, 2025):</p>
-    <blockquote>"...we had outstanding long-term debt in the form of senior unsecured notes for an aggregate principal amount of <strong>$59.0 billion</strong>, which mature from 2027 through 2064."</blockquote>
-    <p>The $30B fixed-rate note issuance occurred in November 2025, between the two filings. Combined short-term and long-term future interest obligations roughly doubled, to $2.98B + $56.74B.</p>
+    <p class="shift">Shift: figures $29.0B &rarr; $59.0B (+); interest obligations $1.38B / $26.94B &rarr; $2.98B / $56.74B</p>
+    <blockquote>Q3 2025: "As of September 30, 2025, we had outstanding long-term debt in the form of senior unsecured notes for an aggregate principal amount of $29.0 billion, which mature from 2027 through 2064."</blockquote>
+    <blockquote>FY2025 10-K: "Short-term and long-term future interest payments obligations as of December 31, 2025 were $2.98 billion and $56.74 billion, respectively."</blockquote>
+    <p class="history">History (phrase_history): "$29.0 billion" of notes from Q3 2024 through Q3 2025; "aggregate principal amount of $59.0 billion" in this 10-K only (Q2 2026: $84.00B). The notes were $18.50B before August 2024.</p>
+    <p>The $30B November 2025 issue ($29.91B of net proceeds) doubled the debt in one quarter, and future interest roughly doubled with it.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Contractual commitments $81.19B &rarr; $131.05B in one quarter</span>
+    <span class="title">Commitments $81.19B &rarr; $131.05B; per-year schedule cut to a single "$30.63 billion due in 2026"; unstarted leases $58.14B &rarr; $103.77B</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025:</p>
-    <blockquote>"We also have <strong>$81.19 billion</strong> of non-cancelable contractual commitments as of September 30, 2025. These commitments are mostly related to third-party cloud capacity arrangements..."</blockquote>
-    <p>FY2025 10-K:</p>
-    <blockquote>"We also have <strong>$131.05 billion</strong> of contractual commitments as of December 31, 2025, mostly related to third-party cloud capacity arrangements and our continued investments in servers and network infrastructure, data centers, and consumer hardware products in Reality Labs with <strong>$30.63 billion due in 2026</strong>."</blockquote>
-    <p>A $49.9B increase in one quarter. The pipeline of leases signed but not yet commenced also grew from ~$58.14B to ~$103.77B, with lease terms of "greater than one year to 30 years."</p>
+    <p class="shift">Shift: figures $81.19B &rarr; $131.05B; quant removed: "$17.79 billion and $8.62 billion due in 2025 and 2026" (signals score 4.8); leases $58.14B &rarr; $103.77B (score 6.0)</p>
+    <blockquote>Q3 2025: "These commitments are mostly related to third-party cloud capacity arrangements and our continued investments in servers and network infrastructure, consumer hardware products in Reality Labs, and data centers, with $17.79 billion and $8.62 billion due in 2025 and 2026, respectively."</blockquote>
+    <blockquote>FY2025 10-K: "We also have $131.05 billion of contractual commitments as of December 31, 2025, mostly related to third-party cloud capacity arrangements and our continued investments in servers and network infrastructure, data centers, and consumer hardware products in Reality Labs with $30.63 billion due in 2026."</blockquote>
+    <p class="history">History (phrase_history): "131.05 billion" and "30.63 billion due in 2026" in this 10-K only; "103.77 billion" in this 10-K only. The leases now "commence between 2026 and 2030 with lease terms of greater than one year to 30 years."</p>
+    <p>A $50B increase in one quarter, of which about $40B is the October cloud deals. Only $30.63B is due in 2026, so about $100B falls in 2027 and later (computed); the MD&amp;A gives no year-by-year breakdown beyond 2026.</p>
   </div>
 </div>
 </div>
@@ -874,43 +1347,45 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Personal superintelligence for everyone" enters the company overview</span>
+    <span class="title">"Personal superintelligence for everyone" enters the company overview, with a definition: "AI that surpasses human intelligence"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K Part I overview:</p>
-    <blockquote>"We are innovating in artificial intelligence (AI) technologies to build transformative experiences and capabilities across our Family of Apps and new platforms, and to advance our vision to deliver <strong>personal superintelligence for everyone</strong>."</blockquote>
-    <p>The business section also adds a definition sentence: "advance our vision to build superintelligence, <strong>which we define as AI that surpasses human intelligence</strong>." "Superintelligence" first appeared in the Q2 2025 risk factors; this is its promotion to the company's stated vision.</p>
+    <p class="shift">Shift: named: +personal superintelligence (+); definition added</p>
+    <blockquote>FY2025 10-K: "We are innovating in artificial intelligence (AI) technologies to build transformative experiences and capabilities across our Family of Apps and new platforms, and to advance our vision to deliver personal superintelligence for everyone."</blockquote>
+    <blockquote>FY2025 10-K: "We are also working to develop the next generation of AI models and advance our vision to build superintelligence, which we define as AI that surpasses human intelligence."</blockquote>
+    <p class="history">History (phrase_history): "superintelligence" first appeared in the Q2 2025 risk factors; "personal superintelligence for everyone" and the definition appear in this 10-K only (the 10-Qs have no business section).</p>
+    <p>A word added to a risk-factor list two quarters earlier is now the company's stated vision, with a definition but no timeline.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Frontier AI models" competition first named</span>
+    <span class="title">Competition widened to "the development of frontier AI models"; "mixed" dropped from the hardware rivals</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025 risk factor:</p>
-    <blockquote>"We also compete with companies that develop and deliver consumer hardware and augmented, mixed, and virtual reality products and services."</blockquote>
-    <p>FY2025 10-K:</p>
-    <blockquote>"We also compete with companies in the development and application of AI, particularly with respect to the development of <strong>frontier AI models</strong>, as well as the development and delivery of consumer hardware and augmented and virtual reality products and services."</blockquote>
-    <p>Related changes: the key-personnel risk changes "senior engineering talent" to "senior engineering <strong>and AI research</strong> talent," and a new computing-needs sentence states "Our increased efforts toward building frontier AI models have driven a significant further expansion in our computing needs."</p>
+    <p class="shift">Shift: named: +frontier AI models (+); scope widened from hardware to AI developers</p>
+    <blockquote>Q3 2025: "We also compete with companies that develop and deliver consumer hardware and augmented, mixed, and virtual reality products and services."</blockquote>
+    <blockquote>FY2025 10-K: "We also compete with companies in the development and application of AI, particularly with respect to the development of frontier AI models, as well as the development and delivery of consumer hardware and augmented and virtual reality products and services."</blockquote>
+    <p class="history">History (phrase_history): "development of frontier AI models" first appears in this 10-K and stands through Q2 2026; "senior engineering and AI research talent" also first appears here, and "building frontier AI models have driven" (compute needs) is in this 10-K only.</p>
+    <p>Meta now places itself in the frontier-model race by name, the race that justifies the capex guide and the AI research pay that leads the 2026 cost explanations.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Violating accounts estimate rises &lt;3% &rarr; &lt;5% of DAP on methodology change</span>
+    <span class="title">Violating accounts estimate rises &lt;3% &rarr; &lt;5% of DAP, attributed to a methodology update</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>FY2024 10-K (the metric is annual-only; not carried in 10-Qs):</p>
-    <blockquote>"In the fourth quarter of 2024, we estimated that <strong>less than 3%</strong> of our worldwide DAP consisted solely of violating accounts."</blockquote>
-    <p>FY2025 10-K:</p>
-    <blockquote>"...in the fourth quarter of 2025, we estimated that <strong>less than 5%</strong> of our worldwide DAP consisted solely of violating accounts. We believe the increase compared to our prior estimation was a result of the <strong>methodology update</strong> described above."</blockquote>
-    <p>The filing attributes the higher estimate to updated data signals incorporated into the estimation methodology in Q4 2025, not to a stated change in underlying behavior.</p>
+    <p class="shift">Shift: figure "less than 3%" &rarr; "less than 5%" (&minus;); attribution added: "methodology update"</p>
+    <blockquote>FY2024 10-K (annual-only metric): "In the fourth quarter of 2024, we estimated that less than 3% of our worldwide DAP consisted solely of violating accounts."</blockquote>
+    <blockquote>FY2025 10-K: "We believe the increase compared to our prior estimation was a result of the methodology update described above."</blockquote>
+    <p class="history">History (phrase_history): "less than 5%" and "methodology update" first appear in this 10-K and are repeated in Q1 and Q2 2026; "less than 3%" of DAP was stated in the FY2024 10-K (FY2023: "approximately 3%" of MAP).</p>
+    <p>The ceiling on violating accounts in the user count rose by two-thirds. The filing attributes it to measurement rather than behavior, which a reader cannot check; Q1 2026 then reported the first disclosed sequential DAP decline.</p>
   </div>
 </div>
 </div>
@@ -921,26 +1396,28 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Model-weights and AI-agent cybersecurity language first appears</span>
+    <span class="title">AI-specific cyber risks named: "prompt injection," "AI agents," and theft of "model weights"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K risk factor:</p>
-    <blockquote>"...our efforts to develop and deploy AI models, internal and third-party AI tools, and other AI applications expose us to increased and novel risks and vulnerabilities, including <strong>prompt injection</strong>, errors, and other issues related to <strong>AI agents</strong>, as well as compromise of valuable intellectual property including source code, <strong>model weights</strong>, and other assets."</blockquote>
-    <p>"Model weights" and "prompt injection" have zero mentions in any prior filing in the dataset. Model weights are framed as compromisable intellectual property alongside source code.</p>
+    <p class="shift">Shift: named: +prompt injection, +AI agents, +model weights (+ disclosure)</p>
+    <blockquote>FY2025 10-K: "In particular, our efforts to develop and deploy AI models, internal and third-party AI tools, and other AI applications expose us to increased and novel risks and vulnerabilities, including prompt injection, errors, and other issues related to AI agents, as well as compromise of valuable intellectual property including source code, model weights, and other assets."</blockquote>
+    <p class="history">History (phrase_history): "prompt injection" and "model weights" appear in no filing before this 10-K and in all three since; Q1 2026 added "AI agent" as an insider-error actor and Q2 2026 "model extraction or theft."</p>
+    <p>Model weights are framed as intellectual property that can be stolen, alongside source code, at the same time as the shift toward "a combination of open and closed models."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Youth litigation bellwether trials scheduled for 2026</span>
+    <span class="title">Youth litigation: "several bellwether trials... scheduled for 2026 and beyond"; mass-arbitration claimants "tens of thousands" &rarr; "over one hundred thousand"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K risk factor:</p>
-    <blockquote>"For example, <strong>several bellwether trials</strong> in our youth-related litigation matters are <strong>scheduled for 2026 and beyond</strong>."</blockquote>
-    <p>Legal proceedings expand the claim list to "age verification, AI and AI chatbots, deceptive advertising, illicit or illegal activity with respect to drugs, fraud, and firearms, and privacy-related matters," and the mass-arbitration count grows from "tens of thousands" of individual claimants (Q3 2025) to "over <strong>one hundred thousand</strong>" (10-K).</p>
+    <p class="shift">Shift: date added: trials scheduled (+); figures "tens of thousands" &rarr; "over one hundred thousand"</p>
+    <blockquote>FY2025 10-K: "For example, several bellwether trials in our youth-related litigation matters are scheduled for 2026 and beyond."</blockquote>
+    <p class="history">History (phrase_history): "several bellwether trials" in this 10-K only (Q1 2026: "juries have returned liability verdicts against us in two trials"); "tens of thousands" in Q2 and Q3 2025, "over one hundred thousand" in FY2025 and Q1 2026, "over two hundred thousand" in Q2 2026.</p>
+    <p>The risk factor now has dates on it. Two months after filing, the first two juries both found liability.</p>
   </div>
 </div>
 </div>
@@ -955,11 +1432,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025:</p>
-    <blockquote>"...the court is <strong>expected to issue a decision</strong> in the fourth quarter of 2025 or later."</blockquote>
-    <p>FY2025 10-K:</p>
-    <blockquote>"On November 18, 2025, the court granted <strong>judgment in our favor</strong>. On January 20, 2026, the FTC filed a <strong>notice of appeal</strong> of that ruling."</blockquote>
-    <p>This resolves (at the trial level) the FTC monopolization case that had been tracked in legal proceedings since the start of the dataset; the appeal keeps the matter open.</p>
+    <p class="shift">Shift: realized: "expected to issue a decision" &rarr; "granted judgment in our favor" (+)</p>
+    <blockquote>Q3 2025: "...the court is expected to issue a decision in the fourth quarter of 2025 or later."</blockquote>
+    <blockquote>FY2025 10-K: "On November 18, 2025, the court granted judgment in our favor. On January 20, 2026, the FTC filed a notice of appeal of that ruling."</blockquote>
+    <p class="history">History (phrase_history): the FTC monopolization case is in every filing in the window; the trial date "April 14, 2025" first appeared in the FY2024 10-K. "judgment in our favor" in this case first appears here (the phrase also appears for an unrelated matter in Q3 2025).</p>
+    <p>The divestiture threat to Instagram and WhatsApp is lifted at trial level; the appeal keeps it open.</p>
   </div>
 </div>
 
@@ -970,63 +1447,48 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K:</p>
-    <blockquote>"On November 19, 2025, the court issued judgment against us, finding that AMI had failed to establish abuse of dominance but upholding its case on unfair competition and awarding damages of approximately <strong>EUR &euro;542 million</strong>. We have appealed the decision."</blockquote>
-    <p>Companion suits are disclosed: a separate Spanish claim by UTECA, and a French claim filed by "67 media companies" (Amaury et al.) with "Trial... expected to take place in 2027."</p>
+    <p class="shift">Shift: realized: judgment against Meta (+ disclosure); quant added: EUR &euro;542 million (signals ADDED)</p>
+    <blockquote>FY2025 10-K: "On November 19, 2025, the court issued judgment against us, finding that AMI had failed to establish abuse of dominance but upholding its case on unfair competition and awarding damages of approximately EUR €542 million."</blockquote>
+    <p class="history">History (phrase_history): "542 million" first appears in this 10-K and stands through Q2 2026.</p>
+    <p>Companion suits are disclosed: a separate Spanish claim by UTECA, and a French claim by 67 media companies with trial expected in 2027. Meta has appealed; the court rejected the abuse-of-dominance claim, so the award rests on unfair competition alone.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI copyright claims broaden; per-work statutory damages framing added</span>
+    <span class="title">AI copyright claims broaden from "books and materials" to "materials and/or other types of data"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025:</p>
-    <blockquote>"...we improperly acquired, distributed, and used various copyrighted <strong>books and materials</strong> to train our artificial intelligence models..."</blockquote>
-    <p>FY2025 10-K:</p>
-    <blockquote>"...we improperly acquired, distributed, and used various copyrighted <strong>materials and/or other types of data</strong> to train our artificial intelligence models..."</blockquote>
-    <p>A new exposure-quantification sentence also appears:</p>
-    <blockquote>"In the United States, statutory damages for copyright liability are calculated on a <strong>per work basis</strong>, which may result in substantial damages, particularly given the large volumes of data required to train AI models."</blockquote>
+    <p class="shift">Shift: scope widened (&minus;): books &rarr; "other types of data"</p>
+    <blockquote>Q3 2025: "...we improperly acquired, distributed, and used various copyrighted books and materials to train our artificial intelligence models..."</blockquote>
+    <blockquote>FY2025 10-K: "...we improperly acquired, distributed, and used various copyrighted materials and/or other types of data to train our artificial intelligence models..."</blockquote>
+    <p class="history">History (phrase_history): "materials and/or other types of data" first appears in this 10-K and stands through Q2 2026. The "per work basis" statutory-damages sentence was already in the risk factors from Q2 2025 and is now also in the legal proceedings.</p>
+    <p>The claims are no longer limited to books. With statutory damages counted per work, a wider set of works means a larger ceiling.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">CFPB paragraph deleted</span>
-    <span class="tag tag-removed">Removed</span>
-  </div>
-  <div class="finding-body">
-    <p>Q3 2025 carried a full paragraph on the CFPB inquiry:</p>
-    <blockquote>"On September 18, 2024, staff of the Consumer Financial Protection Bureau (CFPB or Bureau) initiated a Notice and Opportunity to Respond and Advise (NORA) process related to its investigation of advertising for financial products and services on our platform..."</blockquote>
-    <p>The FY2025 10-K contains zero CFPB mentions. A new catch-all sentence appears instead:</p>
-    <blockquote>"We have received additional requests relating to these and other topics <strong>including in connection with news outlet reporting regarding these issues in the fourth quarter of 2025</strong>."</blockquote>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">DMA language softens: "further fines or" and Q4 2025 timing clause dropped</span>
+    <span class="title">DMA language softens: "further fines or" and the Q4 2025 timing clause dropped</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2025 risk factor:</p>
-    <blockquote>"We have appealed the European Commission's decision but <strong>further fines or modifications</strong> to our model may be imposed during the appeal process..."</blockquote>
-    <p>FY2025 10-K:</p>
-    <blockquote>"We have appealed the European Commission's decision but further <strong>modifications</strong> to our model may be imposed during the appeal process..."</blockquote>
-    <p>The Q3 2025 warning that consequences could come "as early as later in the fourth quarter of 2025" is also deleted, that window having passed without further fines.</p>
+    <p class="shift">Shift: name dropped: "fines" (+ for Meta); date removed: "as early as later in the fourth quarter of 2025"</p>
+    <blockquote>Q3 2025: "We have appealed the European Commission's decision but further fines or modifications to our model may be imposed during the appeal process, which could result in a materially worse user experience for European users and a significant impact to our European business and revenue as early as later in the fourth quarter of 2025."</blockquote>
+    <blockquote>FY2025 10-K: "We have appealed the European Commission's decision but further modifications to our model may be imposed during the appeal process, which could result in a materially worse user experience for European users and a significant impact to our European business and revenue."</blockquote>
+    <p class="history">History (phrase_history): "further fines or modifications" in Q2 and Q3 2025 only; "as early as later in the fourth quarter of 2025" in Q3 2025 only. The deadline had been pushed back each quarter since Q1 2025 ("as early as the third quarter of 2025").</p>
+    <p>The window passed without further fines, and the filing no longer gives a date. The "significant impact to our European business and revenue" clause stays.</p>
   </div>
 </div>
 </div>
-
 
 <!-- FY2025 10-K → Q1 2026 -->
 <div class="transition-header" id="fy2025-q1-2026">
   <h2>FY2025 10-K &rarr; Q1 2026</h2>
-  <div class="sub">Filed Apr 30, 2026 | Revenue: $56.31B (+33%; +29% constant currency) | Op Income: $22.87B (+30%) | Capex guide: $115-135B &rarr; $125-145B (2026) | Commitments: $131.05B &rarr; $237.67B | Headcount: 78,865 &rarr; 77,986 | Buybacks: $0</div>
+  <div class="sub">Filed Apr 30, 2026 | Revenue: $56.31B (+33%; +29% constant currency) | Op Income: $22.87B (+30%) | Net Income $26.77B incl. $8.03B CAMT benefit | Capex guide: $115-135B &rarr; $125-145B (2026) | Purchases of property and equipment $19.00B vs. operating cash flow $32.23B | Commitments: $131.05B &rarr; $237.67B | Unstarted leases $103.77B &rarr; $182.88B | Headcount: 78,865 &rarr; 77,986 | Buybacks: $0</div>
 </div>
 
 <div class="finding-group">
@@ -1039,11 +1501,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K:</p>
-    <blockquote>"We anticipate making capital expenditures of approximately <strong>$115 billion to $135 billion</strong> in 2026 to support our AI efforts and core business."</blockquote>
-    <p>Q1 2026:</p>
-    <blockquote>"We anticipate making capital expenditures of approximately <strong>$125 billion to $145 billion</strong> in 2026 to support our AI efforts and core business."</blockquote>
-    <p>Q1 capex including finance leases was $19.84B. The remaining three quarters would have to average about $38B, nearly double that pace, to reach the new $135B midpoint (computed). Q1 2025 also raised both ends of the 10-K guide ($60-65B to $64-72B), so for two years running the annual guide has served as a floor, not a midpoint.</p>
+    <p class="shift">Shift: guidance figures $115-135B &rarr; $125-145B (+, signals score 4.0); range width unchanged at $20B</p>
+    <blockquote>FY2025 10-K: "We anticipate making capital expenditures of approximately $115 billion to $135 billion in 2026 to support our AI efforts and core business."</blockquote>
+    <blockquote>Q1 2026: "We anticipate making capital expenditures of approximately $125 billion to $145 billion in 2026 to support our AI efforts and core business."</blockquote>
+    <p class="history">History (phrase_history): "$125 billion to $145 billion" appears in Q1 2026 only (Q2 2026: $130-145B). The FY2024 10-K's "$60 billion to $65 billion" was likewise raised at both ends in Q1 2025 ($64-72B).</p>
+    <p>Q1 capex including finance leases was $19.84B. The remaining three quarters would have to average about $38B, nearly double that pace, to reach the new $135B midpoint (computed). For two years running the annual guide has served as a floor, not a midpoint.</p>
   </div>
 </div>
 
@@ -1054,12 +1516,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K:</p>
-    <blockquote>"In particular, we expect our AI initiatives will require significantly increased investment in infrastructure."</blockquote>
-    <p>Q1 2026:</p>
-    <blockquote>"In particular, we <strong>have significantly increased</strong> our infrastructure investments in connection with our AI initiatives, including third-party cloud capacity arrangements and investments in servers, data centers, and network infrastructure, and expect our investments to continue to increase. Further, as we continue to make significant investments, we also <strong>continue to evaluate our workforce</strong> and other needs across our business to optimize for our business and strategic priorities."</blockquote>
-    <p>In the same filing, the risk factor that opened "Our employee headcount and the scale and complexity of our business have increased significantly over time" now reads:</p>
-    <blockquote>"<strong>The scale and complexity of our business</strong> have increased significantly over time."</blockquote>
+    <p class="shift">Shift: tense: "will require" &rarr; "have significantly increased" (realized, +); named: +third-party cloud capacity; added: workforce-evaluation clause (&minus; for headcount)</p>
+    <blockquote>FY2025 10-K: "In particular, we expect our AI initiatives will require significantly increased investment in infrastructure."</blockquote>
+    <blockquote>Q1 2026: "In particular, we have significantly increased our infrastructure investments in connection with our AI initiatives, including third-party cloud capacity arrangements and investments in servers, data centers, and network infrastructure, and expect our investments to continue to increase. Further, as we continue to make significant investments, we also continue to evaluate our workforce and other needs across our business to optimize for our business and strategic priorities."</blockquote>
+    <blockquote>Q1 2026: "The scale and complexity of our business have increased significantly over time."</blockquote>
+    <p class="history">History (phrase_history): "continue to evaluate our workforce" and "have significantly increased our infrastructure investments" first appear in Q1 2026 and repeat in Q2 2026. "Our employee headcount and the scale and complexity" opened the risk factor in all 11 filings from Q2 2023 to the FY2025 10-K and is gone from Q1 2026.</p>
     <p>Headcount was 77,986, up 1% year over year and down 879 from December. The filing ties workforce review to the cost of the infrastructure build in one sentence and removes headcount from its description of the company's growth. Q2 2026 then disclosed an ~8,000-person reduction.</p>
   </div>
 </div>
@@ -1067,31 +1528,31 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Reality Labs' investment rationale deleted from MD&amp;A; RL loss falls 4% YoY on lower employee compensation</span>
+    <span class="title">Reality Labs' investment rationale deleted from MD&amp;A; RL loss falls 4% YoY on lower RL costs</span>
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K MD&amp;A (also in every 2025 10-Q):</p>
-    <blockquote>"We are investing now because we believe this will become the next computing platform and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods."</blockquote>
-    <p>Q1 2026 drops this sentence and the one before it ("We expect this will be a complex, evolving, and long-term initiative"). The RL paragraph is reduced to the loss figure and the guidance. "Next computing platform" no longer appears anywhere in the 10-Q. Results move the same way:</p>
-    <blockquote>"RL loss from operations in the three months ended March 31, 2026 decreased $182 million, or 4%, compared to the same period in 2025, driven by lower RL costs and expenses."</blockquote>
-    <p>RL's share of total costs fell from 18% (FY2025) to 13%, and the risk factor deleted "particularly our significant investments in Reality Labs" from the sentence on limited-revenue investments. The filing no longer argues the case for RL spending. It reports a smaller segment that is still losing money, while FoA costs grew 44%.</p>
+    <p class="shift">Shift: REMOVED: "next computing platform" rationale and "complex, evolving, and long-term initiative" (&minus;); name dropped from the risk factor: "particularly our significant investments in Reality Labs"</p>
+    <blockquote>FY2025 10-K: "We are investing now because we believe this will become the next computing platform and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods."</blockquote>
+    <blockquote>Q1 2026: "RL loss from operations in the three months ended March 31, 2026 decreased $182 million, or 4%, compared to the same period in 2025, driven by lower RL costs and expenses."</blockquote>
+    <p class="history">History (phrase_history): the "will become the next computing platform" sentence ran Q1 2025 to the FY2025 10-K; "We expect this will be a complex, evolving, and long-term initiative" was in the MD&amp;A of every filing from Q2 2023 to FY2025 and now survives only in the risk factors. "particularly our significant investments in Reality Labs" was in all 11 filings through FY2025 and is absent from Q1 2026.</p>
+    <p>RL's share of total costs fell from 18% (FY2025) to 13%. The filing no longer argues the case for RL spending; it reports a smaller segment that is still losing money, while FoA costs grew 44%.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Users dipped, ad load rose: first disclosed sequential DAP decline (Iran, Russia) while impressions grew 19%, now credited partly to "frequency of ads shown"</span>
+    <span class="title">Users dipped, ad load rose: first disclosed sequential Family DAP decline (Iran, Russia) while impressions grew 19%, now credited partly to "frequency of ads shown"</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"For example, in the first quarter of 2026, we experienced a <strong>slight decline on a quarter-over-quarter basis</strong> in the total number of Family daily active people that was driven by internet disruptions in Iran, as well as a restriction on access to WhatsApp in Russia."</blockquote>
-    <p>FY2025 10-K attributed impression growth to "increases in users and their engagement on our products." Q1 2026:</p>
-    <blockquote>"...which was driven by increases in users and their engagement <strong>as well as the frequency of ads shown</strong> on our products."</blockquote>
-    <p>Impressions grew 19% against 5% a year earlier. The price-per-ad explanation also adds a non-operating factor:</p>
-    <blockquote>"...which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools, <strong>and a favorable foreign currency exchange impact</strong>."</blockquote>
-    <p>DAP was 3.56B, against 3.58B in December. Constant-currency growth was 29%, 4 points below reported. Part of the acceleration came from showing more ads per user and from FX, not from more users, so the 33% headline flatters the underlying trend.</p>
+    <p class="shift">Shift: realized: DAP decline disclosed (+ disclosure); named: +frequency of ads shown, +favorable foreign currency exchange impact (non-operating drivers added)</p>
+    <blockquote>Q1 2026: "For example, in the first quarter of 2026, we experienced a slight decline on a quarter-over-quarter basis in the total number of Family daily active people that was driven by internet disruptions in Iran, as well as a restriction on access to WhatsApp in Russia."</blockquote>
+    <blockquote>Q1 2026: "...which was driven by increases in users and their engagement as well as the frequency of ads shown on our products."</blockquote>
+    <blockquote>Q1 2026: "...which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools, and a favorable foreign currency exchange impact."</blockquote>
+    <p class="history">History (phrase_history): "slight decline on a quarter-over-quarter basis" last appeared in the Q2 and Q3 2023 10-Qs, about Facebook DAUs and MAUs in Europe in 2022; Q1 2026 is the first use for Family daily active people. "frequency of ads shown" and "favorable foreign currency exchange impact" first appear in Q1 2026 and repeat in Q2 2026.</p>
+    <p>DAP was 3.56B, against 3.58B in December. Constant-currency growth was 29%, 4 points below reported. Part of the acceleration came from showing more ads per user and from FX, not from more users.</p>
   </div>
 </div>
 
@@ -1102,10 +1563,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K: R&amp;D rose on "higher employee compensation and infrastructure costs." Q1 2026:</p>
-    <blockquote>"The increase was primarily due to increases in employee compensation, <strong>mainly driven by an increase in share-based compensation expense</strong>, as well as higher infrastructure costs for research and development, including our AI initiatives."</blockquote>
-    <blockquote>"In March 2026, we issued nonstatutory stock options to purchase an aggregate of <strong>19 million shares</strong> of our Class A common stock under the 2025 Plan to certain of our executives and employees. These options have a weighted-average exercise price of <strong>$2,788 per share</strong>..."</blockquote>
-    <p>The options vest on "service and market conditions," and the unrecognized expense is only $495M, which is consistent with a strike far above the current price. SBC now leads the R&amp;D explanation, in the same quarter that headcount fell. Cost growth is coming from pay per researcher, not from the number of researchers, which matches the FY2025 10-K's shift from "if we issue significant equity" to "From time to time we issue significant equity."</p>
+    <p class="shift">Shift: named: +share-based compensation leads the R&amp;D explanation (+ disclosure; signals hedge "mostly" &rarr; "primarily"); ADDED: first nonstatutory option grant</p>
+    <blockquote>Q1 2026: "The increase was primarily due to increases in employee compensation, mainly driven by an increase in share-based compensation expense, as well as higher infrastructure costs for research and development, including our AI initiatives."</blockquote>
+    <blockquote>Q1 2026: "In March 2026, we issued nonstatutory stock options to purchase an aggregate of 19 million shares of our Class A common stock under the 2025 Plan to certain of our executives and employees."</blockquote>
+    <p class="history">History (phrase_history): "mainly driven by an increase in share-based compensation expense" appears in Q1 2026 only; "nonstatutory stock options" first appears in Q1 2026 and repeats in Q2 2026. The risk factor's switch from "if we issue significant equity" to "From time to time we issue significant equity" happened in Q3 2025.</p>
+    <p>The options carry a weighted-average exercise price of $2,788 and vest on "service and market conditions," consistent with a strike far above the current price. SBC leads the R&amp;D explanation in the quarter headcount fell, so cost growth is coming from pay per researcher, not the number of researchers.</p>
   </div>
 </div>
 
@@ -1116,8 +1578,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"As a result, we recognized an <strong>$8.03 billion discrete income tax benefit</strong> during the first quarter of 2026, which partially offsets the $15.93 billion discrete charge recognized in the third quarter of 2025 upon enactment of the One Big Beautiful Bill Act. We expect to <strong>remain subject to CAMT</strong> for 2026 and subsequent years."</blockquote>
-    <p>The rate excluding the benefit was 14%. Net income of $26.77B (+61%) was inflated by the item. The OECD "Side-by-Side Safe Harbor" (January 2026) exempts Meta from Pillar Two and leaves CAMT as its binding minimum tax. Guidance for the rest of 2026 is 13-16%.</p>
+    <p class="shift">Shift: named: +Treasury Notice 2026-7, +Side-by-Side Safe Harbor; quant added: $8.03 billion benefit; certainty: "expect to remain subject"</p>
+    <blockquote>Q1 2026: "As a result, we recognized an $8.03 billion discrete income tax benefit during the first quarter of 2026, which partially offsets the $15.93 billion discrete charge recognized in the third quarter of 2025 upon enactment of the One Big Beautiful Bill Act. We expect to remain subject to CAMT for 2026 and subsequent years."</blockquote>
+    <p class="history">History (phrase_history): "8.03 billion discrete income tax benefit" and "remain subject to CAMT" appear in Q1 2026 only (Q2 2026 replaced the expectation with CAMT "being limited" benefits); "Side-by-Side Safe Harbor" first appears in Q1 2026.</p>
+    <p>The rate excluding the benefit was 14%. Net income of $26.77B (+61%) was inflated by the item. The OECD safe harbor exempts Meta from Pillar Two and leaves CAMT as its binding minimum tax. Guidance for the rest of 2026 is 13-16%.</p>
   </div>
 </div>
 </div>
@@ -1128,13 +1592,15 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Commitments $131.05B &rarr; $237.67B in one quarter, +$24B more in April; unstarted leases $103.77B &rarr; $182.88B; new $14.72B contingent cloud obligation; $5.00B cash restricted</span>
+    <span class="title">Commitments $131.05B &rarr; $237.67B in one quarter, +$24B more in April; unstarted leases $103.77B &rarr; $182.88B (to 2036); new $14.72B contingent cloud obligation</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"As of March 31, 2026, we had <strong>$237.67 billion</strong> of non-cancelable contractual commitments, comprising both short-term and long-term arrangements."</blockquote>
-    <blockquote>"In addition, as of March 31, 2026, we have <strong>contingent obligations</strong> to purchase up to $14.72 billion of cloud capacity over a five-year period, which may be reduced if the cloud service provider is able to sell such capacity to other customers. In April 2026, we entered into additional multi-year infrastructure contracts, related to which our non-cancelable contractual commitments increased by approximately <strong>$24 billion</strong>."</blockquote>
-    <p>Amounts due in 2026 rose from $30.63B to $42.25B, and $47.65B is due in 2027. Unstarted leases rose to $182.88B, with commencement now running to 2036 (previously 2030). Cash was ring-fenced for the first time: "$5.00 billion of money market funds as restricted cash equivalents" under "a multi-year purchase agreement." The expense definitions caught up by adding "third-party cloud costs" to cost of revenue and R&amp;D. Commitments and leases together grew about $186B in one quarter (computed), more than 2026 capex guidance. Most of the AI build is being contracted, not purchased, so the capex guide understates the obligations taken on.</p>
+    <p class="shift">Shift: figures $131.05B &rarr; $237.67B; quant added: $42.25B / $47.65B due 2026 / 2027 (signals score 5.9); leases $103.77B &rarr; $182.88B, end date 2030 &rarr; 2036 (score 6.5); ADDED contingent obligation</p>
+    <blockquote>Q1 2026: "As of March 31, 2026, we had $237.67 billion of non-cancelable contractual commitments, comprising both short-term and long-term arrangements."</blockquote>
+    <blockquote>Q1 2026: "In addition, as of March 31, 2026, we have contingent obligations to purchase up to $14.72 billion of cloud capacity over a five-year period, which may be reduced if the cloud service provider is able to sell such capacity to other customers. In April 2026, we entered into additional multi-year infrastructure contracts, related to which our non-cancelable contractual commitments increased by approximately $24 billion."</blockquote>
+    <p class="history">History (phrase_history): "237.67 billion," "approximately $24 billion" and "remainder of 2026 and 2036" appear in Q1 2026 only; "contingent obligations to purchase up to" first appears here and repeats in Q2 2026. "third-party cloud costs" enters the cost-of-revenue and R&amp;D definitions in the same filing.</p>
+    <p>Commitments and unstarted leases together grew about $186B in one quarter (computed), more than the full 2026 capex guide. Most of the AI build is being contracted, not purchased, so the capex guide understates the obligations taken on. $5.00B of money market funds was also reclassified as restricted cash, "to be held in escrow related to a multi-year purchase agreement."</p>
   </div>
 </div>
 
@@ -1145,8 +1611,24 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"We <strong>did not repurchase any shares</strong> of Class A common stock during the three months ended March 31, 2026. As of March 31, 2026, $25.03 billion remained available and authorized for repurchases. Our share repurchase program may be suspended, delayed, discontinued, or accelerated at any time."</blockquote>
-    <p>The "may be suspended" sentence and the "any return of capital" liquidity wording first appeared in the FY2025 10-K. Q1 2026 is when they took effect. The 2025 comparative was $12.75B of repurchases (XBRL). The dividend was not raised in February for the first time since it began in 2024. Financing cash outflow fell to $6.55B from $19.50B, and cash and marketable securities were roughly flat at $81.18B even with no buybacks.</p>
+    <p class="shift">Shift: realized: "may be suspended" (FY2025) &rarr; "did not repurchase any shares" (&minus; for holders)</p>
+    <blockquote>Q1 2026: "We did not repurchase any shares of Class A common stock during the three months ended March 31, 2026. As of March 31, 2026, $25.03 billion remained available and authorized for repurchases. Our share repurchase program may be suspended, delayed, discontinued, or accelerated at any time."</blockquote>
+    <p class="history">History (phrase_history): "did not repurchase any shares" first appears in Q1 2026 and repeats in Q2 2026; "may be suspended, delayed, discontinued, or accelerated" and "any return of capital" first appeared in the FY2025 10-K.</p>
+    <p>The 10-K's new hedges took effect the next quarter. The 2025 comparative was $12.75B of repurchases (XBRL). The dividend was not raised in February, the first year without a raise since it began in 2024.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Another data-center disposal: assets carried at $1.48B approved for sale in March 2026</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: ADDED; quant added: $1.48 billion</p>
+    <blockquote>Q1 2026: "In March 2026, we approved a plan to dispose of certain data center assets with a carrying value of $1.48 billion, consisting mostly of construction in progress and land."</blockquote>
+    <p class="history">History (phrase_history): "carrying value of $1.48 billion" first appears in Q1 2026 and repeats in Q2 2026. The last such plan (June 2025, $2.04B held-for-sale) preceded the Louisiana Venture by one quarter.</p>
+    <p>The same pattern as 2025: construction in progress is set aside for sale shortly before a joint-venture financing. Q2 2026 then announced the El Paso venture, to which Meta expects to contribute about $2.3B of held-for-sale assets.</p>
   </div>
 </div>
 </div>
@@ -1161,23 +1643,27 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Further, any technical infrastructure <strong>in excess of our actual needs</strong> may lead to <strong>impairment of assets</strong> on our balance sheet or otherwise adversely affect our financial condition."</blockquote>
-    <blockquote>"...particularly our investments in our artificial intelligence initiatives as well as Reality Labs, have the effect of reducing our <strong>cash flows</strong>, operating margin and profitability."</blockquote>
-    <p>The commitment total also enters the risk factors, with "we continue to enter into additional significant contractual arrangements." Until now the infrastructure risk was only under-capacity ("fail to... scale"). Excess capacity is now named as a risk alongside it, in the quarter that the guide and the commitments both jumped. The FY2025 10-K had dropped long-lived-asset impairment from its critical accounting estimates, so this warning appears only in risk factors.</p>
+    <p class="shift">Shift: condition added (&minus;): over-capacity named as a risk; scope widened: "operating margin and profitability" &rarr; "cash flows, operating margin and profitability"</p>
+    <blockquote>Q1 2026: "Further, any technical infrastructure in excess of our actual needs may lead to impairment of assets on our balance sheet or otherwise adversely affect our financial condition."</blockquote>
+    <blockquote>Q1 2026: "...particularly our investments in our artificial intelligence initiatives as well as Reality Labs, have the effect of reducing our cash flows, operating margin and profitability."</blockquote>
+    <p class="history">History (phrase_history): "in excess of our actual needs" and "have the effect of reducing our cash flows" first appear in Q1 2026 and repeat in Q2 2026. "impairment of assets" itself is in every filing (in other risk factors); this is its first link to excess infrastructure.</p>
+    <p>Until now the infrastructure risk was under-capacity. Excess capacity is named alongside it in the quarter the guide and the commitments both jumped. The FY2025 10-K had dropped long-lived-asset impairment from its critical accounting estimates, so this warning appears only in risk factors.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI agents added as an insider threat; AI-speed vulnerability discovery "may outpace" remediation</span>
+    <span class="title">AI agents added as an insider threat; AI-speed vulnerability discovery "may outpace" remediation; "may introduce" &rarr; "have introduced"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>FY2025 10-K: "employee, contractor, or vendor error or malfeasance." Q1 2026:</p>
-    <blockquote>"employee, contractor, <strong>AI agent</strong>, or vendor error or malfeasance"</blockquote>
-    <blockquote>"In particular, rapid advances in AI technologies have enabled the discovery of security vulnerabilities at <strong>unprecedented speed and scale</strong> across the industry, which is expected to continue and <strong>may outpace our or other parties' abilities to remediate</strong> any such vulnerabilities."</blockquote>
-    <p>"May introduce" becomes "have introduced" for the risks from Meta's own AI launches, and "AI-generated code" is named as a source of bugs. AI agents now appear in Meta's own threat model both as actors that can err inside its systems and as tools for attackers.</p>
+    <p class="shift">Shift: certainty: may &rarr; have; realized (signals score 6.4); named: +AI agent, +AI-generated code</p>
+    <blockquote>Q1 2026: "employee, contractor, AI agent, or vendor error or malfeasance"</blockquote>
+    <blockquote>Q1 2026: "In particular, rapid advances in AI technologies have enabled the discovery of security vulnerabilities at unprecedented speed and scale across the industry, which is expected to continue and may outpace our or other parties' abilities to remediate any such vulnerabilities."</blockquote>
+    <blockquote>Q1 2026: "Our AI initiatives and other efforts to develop and launch new features, products, and services in a timely manner have introduced additional risks and vulnerabilities that are not fully mitigated."</blockquote>
+    <p class="history">History (phrase_history): the "may introduce" sentence stood in Q3 2025 and FY2025 (unchanged for 2 periods by the signals count); "have introduced," "AI agent" in the insider list, "unprecedented speed and scale" and "AI-generated code" all first appear in Q1 2026 and repeat in Q2 2026.</p>
+    <p>Meta's own AI launches are now said to have already created unmitigated vulnerabilities, and AI agents appear in its threat model both as actors that can err inside its systems and as tools for attackers.</p>
   </div>
 </div>
 </div>
@@ -1192,10 +1678,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"On March 24, 2026, a jury returned a verdict against us and ordered that we pay a civil penalty of <strong>$375 million</strong>. The New Mexico Attorney General has indicated that they intend to seek approximately <strong>$3.7 billion</strong> in abatement costs as well as injunctive relief..."</blockquote>
-    <blockquote>"On March 25, 2026, a jury returned a verdict in the first bellwether trial and awarded $6 million in compensatory and punitive damages between us and YouTube, allocated 70% to us and 30% to YouTube."</blockquote>
-    <blockquote>"The New Mexico Attorney General has indicated that they intend to seek up to <strong>$62.85 billion</strong> in penalties in this case."</blockquote>
-    <p>The $62.85B figure belongs to a separate New Mexico case, which began over platform data practices and has since expanded to content moderation, and is set for trial on September 8, 2026. The remedies sought expand from "damages" to "damages, disgorgement, and/or civil penalties." The risk factor changes "several bellwether trials... are scheduled" to "juries have returned liability verdicts against us in two trials." The first two juries both found liability. The per-plaintiff award was small, but the state-AG cases carry penalty and abatement exposure in the billions.</p>
+    <p class="shift">Shift: realized: "several bellwether trials... are scheduled" &rarr; "juries have returned liability verdicts against us in two trials" (+ disclosure); quant added: $375M, $3.7B, $6M, $62.85B; scope widened: "damages" &rarr; "damages, disgorgement, and/or civil penalties"</p>
+    <blockquote>Q1 2026: "On March 24, 2026, a jury returned a verdict against us and ordered that we pay a civil penalty of $375 million. The New Mexico Attorney General has indicated that they intend to seek approximately $3.7 billion in abatement costs as well as injunctive relief..."</blockquote>
+    <blockquote>Q1 2026: "On March 25, 2026, a jury returned a verdict in the first bellwether trial and awarded $6 million in compensatory and punitive damages between us and YouTube, allocated 70% to us and 30% to YouTube."</blockquote>
+    <blockquote>Q1 2026: "The New Mexico Attorney General has indicated that they intend to seek up to $62.85 billion in penalties in this case."</blockquote>
+    <p class="history">History (phrase_history): "375 million," "62.85 billion," "first bellwether trial," "juries have returned liability verdicts" and "damages, disgorgement, and/or civil penalties" all first appear in Q1 2026 and repeat in Q2 2026; "several bellwether trials" was in the FY2025 10-K only.</p>
+    <p>The $62.85B figure belongs to a separate New Mexico case set for trial on September 8, 2026. The first two juries both found liability. The per-plaintiff award was small, but the state-AG cases carry penalty and abatement exposure in the billions.</p>
   </div>
 </div>
 
@@ -1206,12 +1694,13 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"On April 29, 2026, the Commission issued preliminary findings with respect to some of these topics, reflecting its preliminary view that <strong>users under 13 years of age are present on Facebook and Instagram</strong>, calling into question our compliance with the obligations to diligently assess systemic risks, effectively mitigate such risks, and to overall ensure a high level of protection of minors."</blockquote>
-    <p>Dated the day before filing, this is the regulator's first formal finding on minors under the DSA. Its subject, the presence of underage users, is the same factual premise as the U.S. youth suits, so an EU finding could support claims elsewhere.</p>
+    <p class="shift">Shift: ADDED; named: +preliminary findings on minors (DSA)</p>
+    <blockquote>Q1 2026: "On April 29, 2026, the Commission issued preliminary findings with respect to some of these topics, reflecting its preliminary view that users under 13 years of age are present on Facebook and Instagram, calling into question our compliance with the obligations to diligently assess systemic risks, effectively mitigate such risks, and to overall ensure a high level of protection of minors."</blockquote>
+    <p class="history">History (phrase_history): "users under 13 years of age" first appears in Q1 2026 and repeats in Q2 2026; the Commission's formal DSA proceedings have been disclosed since the Q2 2024 10-Q.</p>
+    <p>Dated the day before filing, this is the regulator's first formal finding on minors under the DSA. Its subject, underage users, is the same factual premise as the U.S. youth suits, so an EU finding could support claims elsewhere.</p>
   </div>
 </div>
 </div>
-
 
 <!-- Q1 → Q2 2026 -->
 <div class="transition-header" id="q1q2-2026">
@@ -1527,8 +2016,8 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2023</td><td>Multi-paragraph with election risks</td><td class="val-new">"misinformation and deepfakes (including related to elections)"</td></tr>
         <tr><td>Q1 2024</td><td>Major rewrite with legal frameworks</td><td class="val-new">EU AI Act, "spear phishing," "data to train our models"</td></tr>
         <tr><td>Q2 2024</td><td>Added downside warning</td><td class="val-new">"If our investments are not successful longer-term"</td></tr>
-        <tr><td>Q3 2024</td><td>Energy and computing added</td><td class="val-new">"computing power, and related energy requirements"</td></tr>
-        <tr><td>Q1 2025</td><td>Carried forward from annual</td><td>Stable</td></tr>
+        <tr><td>Q3 2024</td><td>Energy added to the AI-dependency sentence</td><td class="val-new">"computing power, and related energy requirements" (already in the general infrastructure risk since Q1 2024)</td></tr>
+        <tr><td>Q1 2025</td><td>Competitive concession</td><td class="val-new">Rivals' AI "may be similar or superior to our technologies or more cost-effective to develop and deploy"</td></tr>
         <tr><td>Q2 2025</td><td>Superintelligence added</td><td class="val-new">"generative AI and superintelligence"</td></tr>
         <tr><td>Q3 2025</td><td>Multi-page with named investigations</td><td class="val-new">"products liability," FTC/Congress named, past tense</td></tr>
         <tr><td>FY2025 10-K</td><td>Vision-level framing</td><td class="val-new">"personal superintelligence for everyone," "frontier AI models," "model weights," "prompt injection"</td></tr>
@@ -1551,7 +2040,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2023</td><td>GDPR, DMA, DSA</td><td class="val-new">GDPR, DMA, DSA</td></tr>
         <tr><td>Q1 2024</td><td>Same 3 laws</td><td>&mdash;</td></tr>
         <tr><td>Q2 2024</td><td>GDPR, DMA, DSA, UK DMCC + "data combination"</td><td class="val-new">UK DMCC, "data combination"</td></tr>
-        <tr><td>Q3 2024</td><td>GDPR, DMA, DSA, EU AI Act, UK DMCC</td><td class="val-new">EU AI Act</td></tr>
+        <tr><td>Q3 2024</td><td>GDPR, DMA, DSA, EU AI Act, UK DMCC</td><td class="val-new">EU AI Act; "youth, safety... advertising" categories; Arkansas/Utah/Texas/California/Florida youth laws in the body</td></tr>
         <tr><td>Q1 2025</td><td>Same 5 + "content moderation" category</td><td class="val-new">"content and content moderation"</td></tr>
         <tr><td>Q2 2025</td><td>Same as Q1 2025</td><td>&mdash;</td></tr>
         <tr><td>Q3 2025</td><td>GDPR, DMA, DSA, UK OSA, EU AI Act, UK DMCC</td><td class="val-new">UK OSA</td></tr>
@@ -1584,8 +2073,8 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1 2023</td><td>"expect our RL operating losses to increase in 2023 and beyond"</td></tr>
         <tr><td>Q2 2023</td><td>"expect our RL operating losses to <strong>continue to</strong> increase in 2023 and beyond"</td></tr>
         <tr><td>Q3 2023</td><td>Shifted to 2024-specific: "increase meaningfully in 2024"</td></tr>
-        <tr><td>Q1 2024</td><td>"expect our RL operating losses to increase in 2024"</td></tr>
-        <tr><td>Q2-Q3 2024</td><td>Maintained "increase" without "meaningfully"</td></tr>
+        <tr><td>Q1 2024</td><td>"expect our RL operating losses to increase meaningfully in 2024"</td></tr>
+        <tr><td>Q2-Q3 2024</td><td>"<strong>continue to</strong> expect our RL operating losses to increase meaningfully in 2024" ("meaningfully" kept in every 2024 10-Q; dropped in the FY2024 10-K)</td></tr>
         <tr><td>Q1-Q3 2025</td><td>"expect our full-year RL operating losses to increase in 2025"</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">"expect our 2026 RL operating losses to <strong>remain similar to 2025</strong>" &mdash; first non-increase guidance, after $19.19B FY2025 RL loss</td></tr>
         <tr><td>Q1 2026</td><td>"expect our full-year 2026 RL operating losses to remain similar to 2025"; Q1 RL loss down 4% YoY ($4.03B) on lower employee compensation; the "We are investing now because we believe this will become the next computing platform" rationale deleted from MDA</td></tr>
@@ -1605,7 +2094,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1-Q2 2023</td><td>Not present in risk factors</td></tr>
         <tr><td>Q3 2023</td><td>Generic "international conflicts" context</td></tr>
         <tr><td>Q1-Q2 2024</td><td>Tariffs mentioned as future possibility</td></tr>
-        <tr><td>Q3 2024</td><td class="val-new">"could result in tariffs, sanctions, export or import controls"</td></tr>
+        <tr><td>Q3 2024</td><td>Unchanged from Q2 2024 ("could result in tariffs, sanctions, export or import controls"); hardware sentence adds "or non-state actors"</td></tr>
         <tr><td>Q1 2025</td><td class="val-new">Tariff language massively expanded; U.S./China context</td></tr>
         <tr><td>Q2-Q3 2025</td><td>Tariff language maintained with MDA-level warnings</td></tr>
         <tr><td>FY2025 10-K &ndash; Q1 2026</td><td>Maintained; "tariffs" also appears in the new RL "medical devices" law list</td></tr>
@@ -1642,8 +2131,8 @@ a:hover { text-decoration: underline; }
     <table class="data-table">
       <thead><tr><th>Quarter</th><th>AI Investment Sentence (MDA)</th></tr></thead>
       <tbody>
-        <tr><td>Q1-Q3 2023</td><td>"we expect our AI initiatives will require increased investment in infrastructure and headcount"</td></tr>
-        <tr><td>Q1-Q2 2024</td><td>Same: "infrastructure and headcount"</td></tr>
+        <tr><td>Q1-Q3 2023</td><td>"we expect our AI initiatives will require increased investment in infrastructure and headcount" (risk factors only)</td></tr>
+        <tr><td>Q1-Q2 2024</td><td>Same: "infrastructure and headcount"; sentence enters the MDA in Q2 2024</td></tr>
         <tr><td>Q3 2024</td><td>"infrastructure and headcount" (maintained)</td></tr>
         <tr><td>Q1-Q2 2025</td><td>"infrastructure and headcount" (in risk factors); present in MDA</td></tr>
         <tr><td>Q3 2025</td><td class="val-neg">"significantly increased investment in infrastructure" &mdash; "headcount" removed from MDA</td></tr>
@@ -1679,7 +2168,7 @@ a:hover { text-decoration: underline; }
   </div>
   <div class="signal-card full">
     <h3><span class="num">9b</span> Debt, the Blue Owl JV, and the Liquidity Sentence</h3>
-    <p>Senior unsecured notes outstanding: $18.5B (Sep 2023 &ndash; Jun 2024) &rarr; $29.0B (Sep 2024, August issuance) &rarr; $59.0B (Dec 2025, November issuance) &rarr; <strong>$84.0B</strong> (Jun 2026, May issuance of $25.0B in six series) &mdash; $55B added in nine months. Stated rates on the May 2026 series run 4.55%&ndash;6.45%, above the 4.20%&ndash;5.75% November 2025 range, and the maturity ladder extends from 2065 to 2066. Future interest payment obligations went from $2.98B/$56.27B (short/long-term) to $4.40B/$84.98B. Q2 2026 introduces "the Notes" as a defined term. Commercial paper: zero mentions in any filing in the window.</p>
+    <p>Senior unsecured notes outstanding: $18.5B (Sep 2023 &ndash; Jun 2024) &rarr; $29.0B (Sep 2024, August issuance) &rarr; $59.0B (Dec 2025, November issuance) &rarr; <strong>$84.0B</strong> (Jun 2026, May issuance of $25.0B in six series) &mdash; $55B added in nine months. Stated rates on the May 2026 series run 4.55%&ndash;6.45%, above the 4.20%&ndash;5.75% November 2025 range, and the maturity ladder extends from 2065 to 2066. Future interest payment obligations went from $2.98B/$56.74B (short/long-term) to $4.40B/$84.98B. Q2 2026 introduces "the Notes" as a defined term. Commercial paper: zero mentions in any filing in the window.</p>
     <p>The Blue Owl Louisiana joint venture is the first off-balance-sheet data-center financing vehicle: disclosed as a Q3 2025 subsequent event ($4.3B Meta contribution incl. held-for-sale assets, $7.0B investor cash, $2.6B one-time distribution back to Meta, 20%/80% split), then detailed in the FY2025 10-K as an unconsolidated equity-method VIE &mdash; ~$27B committed development costs, leases commencing 2029 ($12.31B initial commitment), a ~$28B residual value guarantee threshold, and $45.95B disclosed maximum exposure to loss (<strong>$45.99B</strong> against a $2.37B carrying value by Q1 2026).</p>
     <p>The MDA liquidity-sufficiency sentence weakened at exactly the same moment. Q2 2025:</p>
     <blockquote>"...for at least the next 12 months <strong>and thereafter for the foreseeable future</strong>."</blockquote>
@@ -1760,7 +2249,7 @@ a:hover { text-decoration: underline; }
     </div>
     <div class="signal-card">
       <h3>4. Regulatory Names Accumulate Quarterly</h3>
-      <p>DMA/DSA named in the risk-factor summary (Q3 2023), UK DMCC added (Q2 2024), EU AI Act added (Q3 2024), UK OSA added (Q3 2025). By Q3 2025 the summary bullet named 6 specific laws where Q1 2023 named zero, and it has held at 6 through Q2 2026. Accumulation continued in the body instead: the DOJ Bulk Data Rule, "various U.S. state AI laws," and Nebraska were added in Q2 2026, and the EU AI Act moved into a risk-factor heading. Each addition is a new enforcement surface detected 3&ndash;9 months before the annual filing would capture it.</p>
+      <p>DMA/DSA named in the risk-factor summary (Q3 2023), UK DMCC added (Q2 2024), EU AI Act added (Q3 2024), UK OSA added (Q3 2025). By Q3 2025 the summary bullet named 6 specific laws where Q1 2023 named zero, and it has held at 6 through Q2 2026. Accumulation continued in the body instead: the DOJ Bulk Data Rule, "various U.S. state AI laws," and Nebraska were added in Q2 2026, and the EU AI Act moved into a risk-factor heading. Each addition is a new enforcement surface detected 3&ndash;9 months before the annual filing would capture it. The verbs moved too: enforcement failures became "From time to time we are unsuccessful" (Q3 2024), and scam and youth rules went from "may also subject us" and "may restrict" to "we are also, and expect to continue to be, subject" and "that restrict" (Q2 2025).</p>
     </div>
   </div>
 </div>
@@ -1806,43 +2295,43 @@ a:hover { text-decoration: underline; }
         <td><strong>Q1 2024</strong></td>
         <td class="val-pos">69K</td>
         <td class="val-pos">$35-40B</td>
-        <td>"increase in 2024"</td>
+        <td>"increase meaningfully in 2024"</td>
         <td>EU AI Act; "spear phishing"; "mixed reality"</td>
       </tr>
       <tr>
         <td><strong>Q2 2024</strong></td>
         <td>71K</td>
         <td class="val-pos">$37-40B</td>
-        <td>"increase"</td>
+        <td>"increase meaningfully in 2024"</td>
         <td>UK DMCC; "data combination"; 2025 growth signal</td>
       </tr>
       <tr>
         <td><strong>Q3 2024</strong></td>
         <td>72K</td>
         <td>$38-40B</td>
-        <td>"increase"</td>
-        <td>"Energy requirements"; tariffs shift to present tense</td>
+        <td>"increase meaningfully in 2024"</td>
+        <td>Enforcement failures restated as happening; youth-law compliance warning; EU AI Act in summary; first debt since 2023 ($10.50B)</td>
       </tr>
       <tr>
         <td><strong>Q1 2025</strong></td>
         <td class="val-pos">77K</td>
         <td class="val-new">$64-72B</td>
         <td>"increase in 2025"</td>
-        <td>"Reality Labs strategy"; "content moderation"; Meta Verified</td>
+        <td>AI rivals "similar or superior... more cost-effective"; DMA "significant impact" warning; renewable-energy estimate dropped</td>
       </tr>
       <tr>
         <td><strong>Q2 2025</strong></td>
         <td>76K</td>
         <td>$66-72B</td>
         <td>"increase in 2025"</td>
-        <td class="val-new">"Superintelligence"; "paid messaging from WhatsApp"</td>
+        <td class="val-new">"Superintelligence"; scam and youth rules restated as in force; Scale AI; IRS ceilings dropped</td>
       </tr>
       <tr>
         <td><strong>Q3 2025</strong></td>
         <td>78K</td>
         <td class="val-pos">$70-72B + 2026</td>
         <td>"increase in 2025"</td>
-        <td>"Products liability"; FTC/Congress; UK OSA; "headcount" dropped</td>
+        <td>AI "or at all" failure clause; "hundreds of billions" exposure; "foreseeable future" dropped; "headcount" dropped</td>
       </tr>
       <tr>
         <td><strong>FY2025 10-K</strong></td>
