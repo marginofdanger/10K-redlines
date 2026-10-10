@@ -1,0 +1,54 @@
+HCA Q2 2026 10-Q (filed July 28, 2026; quarter ended June 30, 2026)
+Fundamentals answers. Marker = versus the Q1 2026 10-Q. financials.py has no Q2 2026 XBRL column yet,
+so figures are quoted from the filing text.
+
+1. Growth and pricing [BETTER, on one-off]
+   Revenue $20.230B, +8.7% (Q1 +4.3%); revenue per equivalent admission +6.0%, equivalent admissions
+   +2.6% (MD&A). Includes $1.372B Florida directed-payment revenue, $980M of it for pre-2026 periods.
+   Revenue excluding the Florida amount is about $18.86B, +1.4%. Managed care and insurers $9.013B vs
+   $9.124B (-1.2%); Medicaid $2.789B vs $1.440B. Inpatient surgeries -2.3%, outpatient -4.4%.
+
+2. Margins and unit economics [HELD]
+   Pre-tax income $2.494B vs $2.415B (+3.3%). Salaries and benefits 41.0% vs 43.7% of revenue;
+   salaries per equivalent admission -0.7%. Other operating expenses 24.9% vs 20.4% (SDP program
+   expenses, professional fees). Adjusted segment EBITDA: Atlantic $1.827B vs $1.352B, National
+   $1.184B vs $1.271B, American $1.369B vs $1.578B (segment note).
+
+3. Earnings quality [WORSE]
+   About $423M of pre-tax income ($980M revenue less $557M expense) relates to periods before 2026.
+   Without it, pre-tax income would be about $2.07B, -14% year over year (arithmetic on disclosed
+   figures). H1 equity-award tax benefits $107M ($0.48 per share) vs $33M.
+
+4. Cash conversion [WORSE]
+   Operating cash flow $2.335B vs $4.210B; working capital -$1.413B including SDP receivables, plus
+   $594M of Tennessee tax deferral payments. Q2 FCF about $1.10B ($2.335B less $1.231B capex).
+   Days revenue in receivables 55 vs 51 a year earlier (Q1: 53).
+
+5. Capital allocation [WORSE]
+   H1: buybacks $3.635B (7.909M shares at $447.53), dividends $354M, capex $2.350B, nonhospital
+   acquisitions $386M; net debt increase $3.065B. H1 FCF about $2.0B, so buybacks were mostly
+   debt-funded. $7.210B authorization left.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Debt $49.718B (Q1 $48.023B; YE $46.492B). Commercial paper $3.890B, $4.000B on July 24 (program
+   limit); revolver drawn $1.010B; availability $3.086B (Q1 $4.336B). April: $3.0B notes at
+   4.70-5.30%; May: $2.5B 2026 notes redeemed. Working capital -$122M (Q1 -$3.206B). Variable-rate
+   debt $5.200B.
+
+7. Concentration [WORSE]
+   Texas and Florida: 103 hospitals, 55% of revenue (Q1 51%), 58% of admissions, 73% of uninsured
+   admissions. Florida directed payment now a material single-program revenue source.
+
+8. Accounting judgments [WORSE]
+   Uncompensated care table and cost-to-charges ratio removed (prose only). Unrecognized tax
+   benefits $553M (Q1 $535M). No critical-estimate changes disclosed in the 10-Q.
+
+9. Legal, regulatory and governance [WORSE]
+   CMS provider-tax final rule (February 2026) and proposed rule (July 2026): some taxes "must be
+   reduced, or are no longer permissible". CMS proposed SDP caps tied to Medicare, extended to some
+   fee-for-service payments. Legal proceedings: one-line incorporation, unchanged.
+
+10. Guidance and commitments [HELD]
+   2026 capex $5.0-5.5B held, now "excluding acquisitions"; H1 $2.350B on pace for the low end.
+   FY2025 guide that SDP revenue would decline in 2026 is overtaken by the Florida approval.
+   Resiliency savings still unquantified. Construction pipeline $8.6B (Q1 $8.8B).

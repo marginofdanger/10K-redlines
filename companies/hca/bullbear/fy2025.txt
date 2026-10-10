@@ -1,0 +1,56 @@
+HCA FY2025 10-K (filed February 2026; period ended December 31, 2025)
+Fundamentals answers. Marker = versus the FY2024 10-K. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [HELD]
+   Revenue $75.60B, +7.1% (FY2024 +8.7%). Equivalent admissions +2.9% (FY2024 +5.3%), revenue per
+   equivalent admission +4.0% (FY2024 +3.2%): growth shifted from volume to price/mix (MD&A, Revenue/
+   Volume Trends). Medicaid SDP and supplemental revenue about $6.2B vs a restated $5.5B (Business,
+   Medicaid). Same facility revenue +6.6%.
+
+2. Margins and unit economics [BETTER]
+   Pre-tax income $9.83B (13.0% of revenue) vs $8.52B (12.1%). Salaries and benefits 43.5% vs 44.1%;
+   supplies 15.0% vs 15.2%; other operating expenses flat at 21.0% (MD&A, Results of Operations).
+   Device cost per equivalent admission +7.0% (cardiovascular). One segment basis only.
+
+3. Earnings quality [WORSE]
+   EPS $28.33 includes $61M equity-award tax benefits (vs $102M) and $37M facility-sale gains. The
+   lower 2025 effective tax rate (23.2% vs 24.5% ex-NCI) partly reflects a 2024 one-off: the $276M
+   deferred-tax derecognition from an internal restructuring (income taxes note). Professional liability:
+   unfavorable prior-year development rose to $126M from $82M (Critical Accounting Estimates).
+
+4. Cash conversion [BETTER]
+   Operating cash flow $12.64B (+$2.12B); FCF $7.69B = 113% of net income attributable (98% in 2024).
+   DSO 51 days vs 54 (receivables, accounting policies note). Working capital +$524M contribution; inventories down.
+
+5. Capital allocation [HELD]
+   Capex $4.94B (guide was $5.0-5.2B: slightly under). Buybacks $10.07B (26.7M shares at $374.54) +
+   dividends $0.68B = $10.75B, above FCF of $7.69B; net debt issuance +$3.29B funded the gap (MD&A,
+   Liquidity). Acquisitions $397M. New $10B authorization January 2026; dividend raised to $0.78.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Total debt $46.49B vs $43.03B. Secured ABL, cash-flow revolver and term loan replaced by an $8.0B
+   unsecured revolver; $2.207B commercial paper (program up to $4.0B). Restricted-payments covenant
+   removed; one financial ratio remains (Risk Factors). Revolver availability $5.779B vs $7.986B.
+   Working capital -$567M (first negative year-end in the 10-Ks downloaded). Variable-rate debt
+   $2.507B vs $1.238B. No new guarantees disclosed.
+
+7. Concentration [HELD]
+   Florida and Texas: 102 hospitals (from 100), 51% of revenue (52%), 59% of admissions; Texas alone
+   $20.96B. Medicare+Medicaid 45.4% of revenue (44.5%). Frist-affiliated holders 31% of shares (28%).
+
+8. Accounting judgments [WORSE]
+   Professional liability: claims 2,360 vs 2,120; IBNR reserve cut $992M -> $873M, case reserves up
+   (attributed to earlier case reserving); net reserve $1.997B vs $2.051B despite third adverse year.
+   Cost-to-charges ratio 9.6% vs 10.1% lowers the stated cost of uncompensated care. PSU threshold
+   for 2025 grants lowered to 85% of the EPS target from 90% (stock plans note).
+
+9. Legal, regulatory and governance [WORSE]
+   Legal proceedings unchanged (no material new cases). FBA enacted July 4, 2025: SDP caps tied to
+   Medicare from 2028, provider-tax safe harbor cut, Medicaid work requirements by end-2026. EPTCs
+   expired. Inpatient-only list phase-out, WISeR prior-authorization model in Texas, TEAM bundle.
+   February 2026 share exchange with the Frist entity (net -72,047 shares).
+
+10. Guidance and commitments [HELD]
+   2025 capex guide $5.0-5.2B: actual $4.94B (missed low). 2026 capex $5.0-5.5B (ceiling raised).
+   New: SDP revenue expected to decline in 2026 excluding approvals; EPTC expiry and Exchange
+   reforms expected to adversely affect 2026, "offset in part" by resiliency efforts (no size).

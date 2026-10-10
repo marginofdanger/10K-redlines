@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>HCA Healthcare: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed July 28, 2026 | Also covered: FY2025 10-K, filed February 2026 | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Volume and payer mix</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Q2 2026 admissions +2.4% and ER visits +3.5%, after +0.7% and &minus;0.4% in Q1</td><td class="ev-bear">Uninsured admissions +23.4%; managed care and insurer revenue &minus;1.2% in dollars; surgeries down for a second quarter</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P2 Medicaid supplemental / SDP</td><td class="stance s-intact">Intact</td><td class="ev-bull">Florida program approved: $1.372B booked in Q2 2026; approvals lift payments "up to the average commercial rate" through 2027</td><td class="ev-bear">FBA caps at 100%/110% of Medicare from 2028; provider taxes that fund the state share "must be reduced, or are no longer permissible"</td><td>&mdash;</td></tr>
+<tr><td>P3 Margins and cost control</td><td class="stance s-intact">Intact</td><td class="ev-bull">Salaries per equivalent admission &minus;0.7% in Q2 2026; salaries 43.5% of 2025 revenue vs 44.1%</td><td class="ev-bear">Adjusted EBITDA outside Florida down: American Group &minus;13%, National &minus;7% in Q2 2026</td><td>&mdash;</td></tr>
+<tr><td>P4 Earnings quality and reserves</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">No goodwill impairments; facility-sale gains small ($37M in 2025)</td><td class="ev-bear">$980M of Q2 2026 revenue is for pre-2026 periods; malpractice reserves developed adversely by $126M in 2025, the third straight year</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P5 Cash conversion and capital return</td><td class="stance s-intact">Intact</td><td class="ev-bull">2025 free cash flow $7.69B = 113% of net income; diluted shares &minus;8.5%</td><td class="ev-bear">Q2 2026 operating cash flow &minus;$1.875B; H1 buybacks $3.635B vs about $2.0B of free cash flow</td><td>&mdash;</td></tr>
+<tr><td>P6 Balance sheet and liquidity</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">April 2026 notes at 4.70&ndash;5.30% refinanced 2026 maturities; average debt rate 4.9% vs 5.1%</td><td class="ev-bear">Debt $46.49B &rarr; $49.72B in six months; commercial paper at the $4.0B program limit; revolver drawn $1.01B</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P7 Growth investment</td><td class="stance s-intact">Intact</td><td class="ev-bull">Construction pipeline $4.7B &rarr; $7.1B in 2025 (+51%)</td><td class="ev-bear">Pipeline $8.8B &rarr; $8.6B in Q2 2026, first decline; capex guide now "excluding acquisitions"</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. The quarter's headline (+8.7% revenue, +11.6% EPS) rests on a one-time Florida catch-up; the cards below separate what is recurring from what is not.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Medicaid supplemental / SDP" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Medicaid supplemental / SDP</span><span class="chip">Stated</span></div>
+      <div class="title">Florida directed payment approved: $1.372B revenue and $829M expense booked, covering October 2024 to June 2026</div>
+      <blockquote>Q2 2026: "The second quarter of 2026 includes incremental revenues of $1.372 billion and other operating expenses of $829 million related to the Florida directed payment program for the time period October 1, 2024 through June 30, 2026"</blockquote>
+      <blockquote>Q2 2026: "Certain states in which we operate have submitted applications to CMS and received approval to increase payments up to the average commercial rate before the step down begins in 2028."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1.372B = 6.8% of Q2 revenue ($20.230B); net of expense about $543M = 22% of Q2 pre-tax income ($2.494B). The recurring 2026 portion is $392M of revenue.</p>
+      <p>The FY2025 10-K guided SDP revenue to decline in 2026 before approvals; one approval more than reversed that, and grandfathered rates now run at the commercial-rate ceiling until 2028.</p>
+      <p class="next"><b>Next filing:</b> whether Florida revenue continues at the run-rate (about $196M a quarter of 2026-period revenue) and whether other state approvals follow.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Volume and payer mix" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Volume and payer mix</span><span class="chip">Stated</span></div>
+      <div class="title">Volume reaccelerates: admissions +2.4% and equivalent admissions +2.6% (Q1: +0.7% and +1.1%)</div>
+      <blockquote>Q2 2026: "During the quarter ended June 30, 2026, consolidated admissions increased 2.4% and same facility admissions increased 2.5% compared to the quarter ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> about 2.4% more admissions year over year; emergency department visits +3.5%.</p>
+      <p>Demand for hospital care held up after a weak, respiratory-light Q1. The growth came through the emergency department rather than scheduled surgery, so it is volume of lower quality (see bear side).</p>
+      <p class="next"><b>Next filing:</b> admissions growth at or above 2% with surgeries stabilizing.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and cost control" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and cost control</span><span class="chip">Stated</span></div>
+      <div class="title">Labor cost per unit falls: salaries and benefits per equivalent admission &minus;0.7%</div>
+      <blockquote>Q2 2026: "Salaries and benefits, as a percentage of revenues, were 41.0% in the second quarter of 2026 and 43.7% in the second quarter of 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> salaries and benefits $8.3B in the quarter; a 0.7% per-unit decline against 2.5% wage growth per full-time equivalent. The 2.7-point ratio drop is mostly the Florida revenue in the denominator.</p>
+      <p>The per-admission measure is not flattered by the Florida catch-up, and is consistent with the "financial resiliency initiatives" the 10-K introduced (inference; the 10-Q does not credit them).</p>
+      <p class="next"><b>Next filing:</b> salaries per equivalent admission flat or down again in Q3.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and liquidity" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">2026 maturities refinanced at lower coupons: $3.0B issued at 4.70&ndash;5.30%, $2.5B of 5.25&ndash;5.375% notes redeemed</div>
+      <blockquote>Q2 2026: "During April 2026, we issued $3.000 billion aggregate principal amount of senior notes comprised of (i) $1.000 billion aggregate principal amount of 4.700% senior notes due 2031"</blockquote>
+      <blockquote>Q2 2026: "During May 2026, we repaid all $1.500 billion aggregate principal amount of 5.250% senior notes due 2026 and all $1.000 billion aggregate principal amount of 5.375% senior notes due 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> average effective debt rate 4.9% vs 5.1%; 0.2 points on about $48B of average debt is roughly $95M a year of interest (inference from stated rates).</p>
+      <p>Market access remains open at investment-grade terms, and the near-term maturity wall for 2026 is cleared.</p>
+      <p class="next"><b>Next filing:</b> average rate holding near 4.9% as commercial paper is termed out.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Share count &minus;7.9% year over year lifts EPS +11.6% on net income +2.8%</div>
+      <blockquote>Q2 2026: "Shares used for diluted earnings per share were 222.828 million shares for the quarter ended June 30, 2026 and 241.911 million shares for the quarter ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> 19.1M fewer diluted shares; $7.210B of authorization left after $3.635B used in H1.</p>
+      <p>Per-share compounding continues. Whether it is a bull point depends on funding, which this quarter was debt (see the bear card on cash).</p>
+      <p class="next"><b>Next filing:</b> buyback pace relative to free cash flow once SDP receivables are collected.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P1 Volume and payer mix" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Volume and payer mix</span><span class="chip">Stated</span></div>
+      <div class="title">Payer mix deteriorates: uninsured admissions +23.4% same facility; managed care and insurer revenue down 1.2%</div>
+      <blockquote>Q2 2026: "The second quarter increase in uninsured admissions includes the impact of attrition related to Exchange volumes from the first quarter that occurred during the second quarter."</blockquote>
+      <blockquote>Q2 2026: "Managed care and insurers | 9,013 | 44.6 | 9,124 | 49.1"</blockquote>
+      <p class="magnitude"><b>Size:</b> commercial revenue $111M lower year over year; uninsured 8% of admissions (7%); total uncompensated care $15.076B, +30%.</p>
+      <p>The EPTC effect accelerated rather than leveled off, and the filing says Q1 enrollees lapsed in Q2, so the run-rate may still be rising. Inpatient surgeries &minus;2.3% and outpatient &minus;4.4% point the same way.</p>
+      <p class="next"><b>Next filing:</b> uninsured admissions growth below 20% and managed care revenue back to growth would refute; another acceleration confirms.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and cost control" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and cost control</span><span class="chip">Stated</span></div>
+      <div class="title">Outside Florida, segment EBITDA falls: American Group $1.578B &rarr; $1.369B (&minus;13%), National $1.271B &rarr; $1.184B (&minus;7%)</div>
+      <blockquote>Q2 2026: "Adjusted segment EBITDA | 1,184 | 1,827 | 1,369 | 2,442 | 3,266 | 2,783"</blockquote>
+      <blockquote>Q2 2026 (prior year): "Adjusted segment EBITDA | 1,271 | 1,352 | 1,578 | 2,403 | 2,814 | 2,996"</blockquote>
+      <p class="magnitude"><b>Size:</b> $296M less EBITDA from two groups that produce 58% of revenue; the Atlantic Group (Florida) added $475M.</p>
+      <p>The MD&amp;A discusses consolidated results only. Without the segment note, a reader would not see that the two non-Florida groups lost operating leverage on flat revenue.</p>
+      <p class="next"><b>Next filing:</b> American and National EBITDA versus Q3 2025; a third quarter of decline in National would confirm a trend.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality and reserves" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality and reserves</span><span class="chip">Stated</span></div>
+      <div class="title">$980M of revenue and $557M of expense in the quarter belong to periods before 2026</div>
+      <blockquote>Q2 2026: "Of those amounts, approximately $980 million of incremental revenues and $557 million of other operating expenses related to periods prior to 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $423M pre-tax = 17% of Q2 pre-tax income; without it pre-tax income is about $2.07B, &minus;14% year over year (arithmetic on disclosed figures).</p>
+      <p>Reported Q2 growth is a catch-up. The 10-Q gives no adjusted figure, and the "$400 million of incremental net benefit" it cites does not reconcile to the $543M net of the Florida amounts.</p>
+      <p class="next"><b>Next filing:</b> Q3 results with no prior-period SDP items, to show the underlying trend.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow &minus;$1.875B year over year; H1 buybacks $3.635B against about $2.0B of free cash flow</div>
+      <blockquote>Q2 2026: "Cash flows from operating activities declined $1.875 billion, from $4.210 billion for the second quarter of 2025 to $2.335 billion for the second quarter of 2026."</blockquote>
+      <blockquote>Q2 2026: "During the first six months of 2026, net cash flows used in financing activities included a net increase of $3.065 billion in our indebtedness"</blockquote>
+      <p class="magnitude"><b>Size:</b> H1 operating cash flow $4.349B less capex $2.350B = $2.0B FCF; buybacks were 1.8x that. Days revenue in receivables 55 vs 51.</p>
+      <p>Part of the gap is timing (Florida receivables, a $594M deferred Tennessee tax payment), so this can reverse. But buybacks did not slow while cash fell.</p>
+      <p class="next"><b>Next filing:</b> collection of SDP receivables (DSO back near 51) and buybacks within free cash flow.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and liquidity" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial paper at the $4.000B program limit, revolver drawn $1.010B, availability $4.336B &rarr; $3.086B</div>
+      <blockquote>Q2 2026: "the aggregate amount outstanding under the commercial paper program ($3.890 billion and $4.000 billion as of June 30, 2026 and July 24, 2026, respectively))"</blockquote>
+      <blockquote>Q2 2026: "Senior unsecured credit facility (effective interest rate of 4.8 %) | 1,010 | —"</blockquote>
+      <p class="magnitude"><b>Size:</b> total debt $49.718B, up $3.23B since December; variable-rate debt $5.200B; a one-point rate rise now costs $52M pre-tax (was $40M).</p>
+      <p>Short-term funding is now at its stated ceiling, and the revolver is in use for the first time since Q1 2025, after the 10-K removed the covenant on restricted payments.</p>
+      <p class="next"><b>Next filing:</b> commercial paper below the limit and the revolver repaid, or another term issue.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Medicaid supplemental / SDP" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Medicaid supplemental / SDP</span><span class="chip">Stated</span></div>
+      <div class="title">Provider-tax final rule (February 2026) and proposed rule (July 2026) restrict how states fund their SDP share</div>
+      <blockquote>Q2 2026: "As a result of these changes, some taxes on managed care organizations and providers permitted prior to the enactment of the FBA must be reduced, or are no longer permissible, subject to transition periods."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; it bears on SDP and supplemental revenue of about $6.2B in 2025.</p>
+      <p>The Florida and Texas programs rely on local provider taxes; a squeeze on that funding can shrink SDP payments before the 2028 FBA step-down begins (inference).</p>
+      <p class="next"><b>Next filing:</b> any state program reduced or restructured, or HCA quantifying the provider-tax effect.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (Q2 2026 vs Q1 2026; FY2025 vs FY2024).</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>FY2025 10-K</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark better">&#9650;</span> Revenue +8.7% (Q1 +4.3%), but $1.372B is the Florida SDP; ex-Florida +1.4%. Managed care and insurers &minus;1.2%; Medicaid revenue $2.789B vs $1.440B.</td><td><span class="mark held">&#9679;</span> Revenue +7.1% (+8.7% in 2024); price-led: revenue per equivalent admission +4.0%, equivalent admissions +2.9%. SDP revenue $6.2B vs restated $5.5B.</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark held">&#9679;</span> Pre-tax income +3.3%. Salaries 41.0% of revenue (43.7%); other operating expenses 24.9% (20.4%). Segment EBITDA: Atlantic +35%, National &minus;7%, American &minus;13%.</td><td><span class="mark better">&#9650;</span> Pre-tax margin 13.0% vs 12.1%; salaries 43.5% vs 44.1%; supplies 15.0% vs 15.2%; other operating expenses flat at 21.0%.</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark worse">&#9660;</span> About $423M of pre-tax income is for pre-2026 periods; ex that, pre-tax &minus;14%. H1 equity-award tax benefits $107M vs $33M.</td><td><span class="mark worse">&#9660;</span> Adverse prior-year malpractice development $126M (2024: $82M). Lower tax rate partly laps a $276M 2024 charge; equity-award tax benefits $61M.</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark worse">&#9660;</span> Operating cash flow $2.335B vs $4.210B; working capital &minus;$1.413B on SDP receivables plus $594M deferred tax. DSO 55 (Q1 53; Q2 2025 51).</td><td><span class="mark better">&#9650;</span> Operating cash flow $12.64B (+$2.12B); FCF $7.69B = 113% of net income; DSO 51 vs 54.</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark worse">&#9660;</span> H1 buybacks $3.635B + dividends $354M vs FCF about $2.0B; debt +$3.065B. Capex $2.350B; acquisitions $386M.</td><td><span class="mark held">&#9679;</span> Buybacks $10.07B + dividends $0.68B exceeded FCF $7.69B; debt +$3.29B. Capex $4.94B, under the $5.0B floor.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark worse">&#9660;</span> Debt $49.718B (Q1 $48.023B). Commercial paper $3.890B, $4.000B limit hit July 24; revolver drawn $1.010B; availability $3.086B.</td><td><span class="mark worse">&#9660;</span> Debt $46.49B (+$3.46B). Secured facilities replaced by $8.0B unsecured revolver; restricted-payments covenant removed; availability $5.779B (was $7.986B); working capital &minus;$567M.</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark worse">&#9660;</span> Texas and Florida 55% of revenue (Q1 51%) on the Florida payment; 103 hospitals.</td><td><span class="mark held">&#9679;</span> Florida and Texas 51% of revenue (52%), 102 hospitals; Medicare+Medicaid 45.4% (44.5%); Frist-affiliated holders 31% (28%).</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark worse">&#9660;</span> Cost-to-charges ratio and uncompensated care table removed. Unrecognized tax benefits $553M (Q1 $535M).</td><td><span class="mark worse">&#9660;</span> IBNR reserve $992M &rarr; $873M while open claims rose to 2,360; PSU payout floor lowered to 85% of target for 2025 grants.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark worse">&#9660;</span> Provider-tax final and proposed rules; CMS SDP caps proposed, extended to some fee-for-service payments. Legal proceedings unchanged.</td><td><span class="mark worse">&#9660;</span> FBA enacted (SDP caps from 2028, provider-tax limits, work requirements); EPTCs expired; inpatient-only list phase-out; WISeR in Texas. No new material litigation.</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark held">&#9679;</span> Capex $5.0&ndash;5.5B held, now "excluding acquisitions"; SDP-decline guide overtaken by Florida; resiliency savings still unquantified.</td><td><span class="mark held">&#9679;</span> 2025 capex came in at $4.94B vs $5.0&ndash;5.2B; 2026 guide $5.0&ndash;5.5B; SDP revenue to decline and EPTC expiry to hurt 2026.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated, and what later filings said about it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"Planned capital expenditures are expected to approximate between $5.0 billion and $5.2 billion in 2025."</td><td>FY2024 10-K</td><td>FY2025 10-K: missed low, $4.944B spent</td></tr>
+<tr><td>"Planned capital expenditures are expected to approximate between $5.0 billion and $5.5 billion in 2026."</td><td>FY2025 10-K</td><td>Q2 2026: held, scope narrowed to "excluding acquisitions"; H1 $2.350B (on pace for the low end)</td></tr>
+<tr><td>"Excluding the expected impact of any additional approvals, we expect revenues from SDP arrangements to decline in 2026 compared to 2025."</td><td>FY2025 10-K</td><td>Q1 2026: dropped. Q2 2026: overtaken; Florida approval added $1.372B ($392M for 2026 periods)</td></tr>
+<tr><td>"offset in part by our ongoing resiliency efforts"</td><td>FY2025 10-K</td><td>Q1 2026 and Q2 2026: not quantified</td></tr>
+<tr><td>$10 billion share repurchase authorization (January 2026)</td><td>FY2025 10-K</td><td>Q2 2026: $7.210B remaining at June 30, 2026</td></tr>
+<tr><td>Quarterly dividend $0.78 per share (declared January 2026)</td><td>FY2025 10-K</td><td>Q2 2026: dividends paid $354M in H1</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-K FY2025 (filed February 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P5 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +$2.12B to $12.64B; free cash flow $7.69B = 113% of net income</div>
+      <blockquote>FY2025: "Cash provided by operating activities totaled $12.636 billion in 2025 compared to $10.514 billion in 2024 and $9.431 billion in 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF $7.69B vs $5.64B (+36%); FCF/net income 113% vs 98%.</p>
+      <p>Cash ran ahead of earnings, helped by $524M of working capital and lower taxes paid; DSO fell to 51 days from 54.</p>
+      <p class="next"><b>Next filing:</b> conversion above 100% in 2026 despite SDP receivables (Q2 2026 says it fell).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Medicaid supplemental / SDP" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Medicaid supplemental / SDP</span><span class="chip">Stated</span></div>
+      <div class="title">SDP and supplemental revenue $6.2B, up about 13% on the restated $5.5B</div>
+      <blockquote>FY2025: "Revenues from these programs totaled approximately $6.2 billion, $5.5 billion and $4.4 billion in 2025, 2024 and 2023, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> $6.2B = 8.2% of 2025 revenue; the $0.7B increase is 14% of the $5.0B revenue gain.</p>
+      <p>Supplemental payments are still growing and grandfathering protects them until 2028. The prior-year figures were restated upward without explanation.</p>
+      <p class="next"><b>Next filing:</b> grandfathered approvals and the 2026 SDP total.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Growth investment" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Growth investment</span><span class="chip">Stated</span></div>
+      <div class="title">Construction pipeline $4.7B &rarr; $7.1B; capex ceiling raised to $5.5B</div>
+      <blockquote>FY2025: "At December 31, 2025, there were projects under construction which had an estimated additional cost to complete and equip over the next five years of approximately $7.1 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$2.4B (+51%); equal to about 1.4 years of capex.</p>
+      <p>Management is committing capacity in its markets despite policy headwinds, funded "with internally generated and borrowed funds".</p>
+      <p class="next"><b>Next filing:</b> pipeline still rising (Q1 2026 $8.8B; Q2 2026 $8.6B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and cost control" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and cost control</span><span class="chip">Stated</span></div>
+      <div class="title">Pre-tax margin 13.0% vs 12.1%: salaries 43.5% of revenue vs 44.1%, supplies 15.0% vs 15.2%</div>
+      <blockquote>FY2025: "Salaries and benefits, as a percentage of revenues, were 43.5% in 2025 and 44.1% in 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> 0.6 points of revenue = about $450M on $75.6B.</p>
+      <p>Contract and premium labor "declined compared to the prior year period"; pharmacy cost per admission fell 4.0%.</p>
+      <p class="next"><b>Next filing:</b> labor ratio holding as volume growth slows.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Earnings quality and reserves" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality and reserves</span><span class="chip">Stated</span></div>
+      <div class="title">Malpractice reserves develop adversely for the third straight year: $46M &rarr; $82M &rarr; $126M</div>
+      <blockquote>FY2025: "Unfavorable development related to prior years’ claims | 126 | 82 | 46"</blockquote>
+      <p class="magnitude"><b>Size:</b> $126M = 19% of the $651M provision and 1.3% of pre-tax income; net reserves fell to $1.997B while open claims rose to 2,360 from 2,120.</p>
+      <p>Earlier years' reserves keep proving short, yet the balance fell. The company attributes the IBNR cut to faster case reserving.</p>
+      <p class="next"><b>Next filing (FY2026 10-K):</b> a fourth adverse year, or reserves rebuilt.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Medicaid supplemental / SDP" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Medicaid supplemental / SDP</span><span class="chip">Stated</span></div>
+      <div class="title">FBA caps SDP rates at 100% of Medicare (110% in non-expansion states); grandfathered payments step down 10 points a year from 2028</div>
+      <blockquote>FY2025: "Beginning with the rating period on or after January 1, 2028, grandfathered payments will be reduced by 10 percentage points annually until they reach the allowable payment limits."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; exposure is the $6.2B program total, with Texas ($20.96B of revenue) named.</p>
+      <p>The largest source of incremental margin in recent years now has a legislated end-state.</p>
+      <p class="next"><b>Next filing:</b> any HCA estimate of the cap's effect; state approvals before 2028.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and liquidity" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks $10.07B exceed free cash flow; debt +$3.29B net; revolver availability $7.986B &rarr; $5.779B</div>
+      <blockquote>FY2025: "During 2025, we had a net increase of $3.287 billion in our indebtedness, paid dividends of $679 million and paid $10.067 billion for repurchases of common stock."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks + dividends $10.75B = 140% of FCF; total debt $46.49B; year-end working capital &minus;$567M.</p>
+      <p>The new unsecured revolver dropped the covenant on dividends and repurchases, so nothing contractual slows this pace.</p>
+      <p class="next"><b>Next filing:</b> buybacks within FCF, or debt growth slowing.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Volume and payer mix" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Volume and payer mix</span><span class="chip">Stated</span></div>
+      <div class="title">Admissions growth halves to +2.7%; the filing expects EPTC expiry to hurt 2026 results</div>
+      <blockquote>FY2025: "We also expect certain administrative reforms relating to the Exchanges and the expiration of the enhanced premium tax credits at the end of 2025 to adversely affect our results of operations in 2026, offset in part by our ongoing resiliency efforts."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; managed care and insurers were 43% of 2025 inpatient revenue (45% in 2024).</p>
+      <p>Volume growth slowed before the subsidy cliff arrived, and the commercial share of inpatient revenue was already slipping.</p>
+      <p class="next"><b>Next filing:</b> uninsured admissions and managed care revenue in Q1 and Q2 2026 (both moved the wrong way).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
