@@ -1,0 +1,69 @@
+META Q2 2026 10-Q (quarter ended June 30, 2026; filed July 30, 2026)
+Fundamentals answers vs the Q1 2026 10-Q. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [worse: decelerating from a high level]
+   Revenue $60.80B, +28% (Q1 +33%); constant currency +27% (Q1 +29%). Ad impressions +14%
+   (Q1 +19%), price per ad +12% (Q1 +12%). Europe +24% (Q1 +39%), Asia-Pacific +19%
+   (+29%), U.S. & Canada +32% (+29%). DAP 3.60B, +3%; the Q1 Iran disruption "largely
+   restored." Other revenue +73% ($1.01B); "Meta Verified" no longer named. RL revenue
+   +16%, led by AI glasses. Macro "has impacted" results. (MD&A, Revenue; Key metrics)
+
+2. Margins and unit economics [worse]
+   Operating income $18.78B, -8% YoY; margin 31% vs 43% a year earlier and 41% in Q1.
+   Costs +55%: R&D +67% (36% of revenue), G&A +111% ($2.40B legal charges), M&S +15% on
+   "third-party AI token costs and severance expenses." FoA operating income -6%. Excluding
+   $1.18B severance and $2.40B legal charges, about $22.36B, +9% (computed). (MD&A, Costs
+   and Expenses; Segment Results)
+
+3. Earnings quality [better: fewer flattering items]
+   Q1 net income ($26.77B) included an $8.03B CAMT relief benefit; Q2 ($15.85B) has none
+   and instead carries $3.58B of one-off charges (severance, legal). ETR 16%. H1 loss on
+   equity investments $1.05B (unrealized marks). (MD&A, Provision for Income Taxes;
+   Interest and other income)
+
+4. Cash conversion [worse]
+   Q2 OCF $31.86B against purchases of property and equipment of $30.12B, so OCF less
+   capex was $1.75B (Q1 $13.23B); FCF / net income 11%. H1 OCF $64.09B, +29%, helped
+   by "a decrease in cash tax payments." Receivables $21.75B, DSO 33 days (Q1 28): no
+   sentence explains it. SBC $7.66B = 24% of OCF. (MD&A, Liquidity; financials.py)
+
+5. Capital allocation [worse]
+   H1 capex incl. finance leases $50.92B; 2026 guide floor raised to $130B. No share
+   repurchases in H1 ($25.03B authorization unused). Dividends $1.35B per quarter held.
+   $25.00B of notes issued in May (4.55%-6.45%). El Paso venture agreed (contribute ~$2.3B
+   assets, receive ~$1B). 20M stock options granted in H1. (MD&A, Liquidity; Notes 8, 10)
+
+6. Balance sheet and contingent exposure [worse]
+   Notes outstanding $84.00B (Q1 $59.00B); interest expense +225% YoY. Cash and
+   securities $90.26B (+$9.08B QoQ, debt-funded). Commitments $349.31B (Q1 $237.67B), now
+   measured at minimums for variable-term agreements; 2027 payments $81.65B. Unstarted
+   leases $278.99B plus ~$68B signed in July. Escrow cash $10.80B (Q1 $5.00B). Louisiana
+   maximum exposure $46.03B; El Paso RVG up to ~$13B. Risk factor: "We have incurred
+   significant indebtedness." (Notes 4, 6, 8, 9, 13)
+
+7. Concentration [held]
+   No change to the reseller / China-advertiser language. New: EU interim measure forcing
+   free WhatsApp Business API access for general-purpose AI providers. Data-center siting
+   now named as a risk (state and local sentiment and taxes). (Risk Factors; Legal
+   Proceedings)
+
+8. Accounting judgments [worse]
+   Commitments exclude obligations beyond minimum quantities and/or pricing. ~8,000-person
+   cut reported inside employee compensation, no restructuring note. DAP survey caveat
+   added ("may be impacted by product changes"). $1.27B of goodwill reclassified to
+   held-for-sale. Deferred revenue "substantially all" -> "the substantial majority"
+   realized within a year. (Notes 1, 6, 9; Risk Factors)
+
+9. Legal, regulatory and governance [worse]
+   $2.40B of legal charges in the quarter. Youth claims "could seek... more than a trillion
+   dollars" (Q1: "intend to seek... high tens of billions"); arbitration claimants
+   >200,000; 29-state disgorgement claim. Tested claims fell: New Mexico abatement $3.7B ->
+   $953M; Flo Health class 1.6M -> 1.25M; second bellwether dismissed by plaintiff. EU
+   preliminary finding of "potentially addictive design features." Nine new AI-copyright
+   cases. Materiality framing softened. Derivative suit settlement approved. (Note 9;
+   Legal Proceedings)
+
+10. Guidance and commitments [moved]
+   2026 capex $125-145B -> $130-145B. Tax rate for remaining quarters 13-16% -> 15-17%.
+   RL losses "remain similar to 2025" reaffirmed; H1 RL loss $8.65B vs $8.74B. ~8,000
+   headcount reduction disclosed (not previously guided).

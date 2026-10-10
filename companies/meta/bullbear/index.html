@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>META Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Meta Platforms (META): Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed Jul 30, 2026 | Also covered: 10-K for FY2025, filed Jan 2026 | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Core ad engine</td><td class="stance s-intact">Intact</td><td class="ev-bull">Ad revenue +27% in Q2 2026 with price per ad +12% for a second quarter; FY2025 revenue +22% to $200.97B</td><td class="ev-bear">Q2 growth slowed to 28% from 33%; impressions +14% vs +19%; Europe +24% vs +39%; macro "has impacted" results</td><td>Not moved (FY2025 and Q2 2026 point different ways)</td></tr>
+<tr><td>P2 Margins and operating discipline</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">~8,000-person reduction in May 2026; ex-severance and legal, Q2 operating income about +9%</td><td class="ev-bear">Operating margin 42% (FY2024) &rarr; 41% (FY2025) &rarr; 31% (Q2 2026); costs +55% vs revenue +28%; new "third-party AI token costs"</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P3 AI capex return and cash conversion</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">H1 2026 operating cash flow $64.09B, +29%</td><td class="ev-bear">OCF less capex $54.07B (FY2024) &rarr; $46.11B (FY2025) &rarr; $1.75B in Q2 2026; 2026 capex floor raised twice to $130B</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P4 Balance sheet and off-balance-sheet obligations</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Cash and marketable securities $90.26B at June 30, 2026</td><td class="ev-bear">Notes $29B &rarr; $84B in three quarters; commitments $349.31B plus $278.99B unstarted leases; two data-center ventures with guarantees</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P5 Capital return and dilution</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Dividend held at $0.525 per quarter; diluted share count flat</td><td class="ev-bear">Buybacks demoted to "any return of capital" (FY2025), then $0 in H1 2026 vs $22.92B in H1 2025; SBC 24% of Q2 OCF</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P6 Legal, regulatory and tax exposure</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">FTC antitrust judgment for Meta (Nov 2025); New Mexico abatement demand cut to $953M; Flo Health class cut to 1.25M</td><td class="ev-bear">$2.40B of legal charges in Q2 2026; aggregate exposure "up to hundreds of billions"; youth claims up to "more than a trillion dollars"; IRS notice for $15.89B</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P7 Reality Labs path</td><td class="stance s-intact">Intact</td><td class="ev-bull">2026 RL losses guided "similar to 2025" and tracking (H1 $8.65B vs $8.74B); RL revenue +16% led by AI glasses</td><td class="ev-bear">FY2025 RL loss $19.19B (+8%) on $2.21B revenue; losses on RL inventory commitments named</td><td>Not moved</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What this filing adds, for and against. 3-6 of the most material findings per side; a side with nothing material says so.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Core ad engine" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Core ad engine</span><span class="chip">Stated</span></div>
+      <div class="title">Price per ad +12% for a second straight quarter; ad revenue +$12.80B (+27%) YoY</div>
+      <blockquote>Q2 2026: "During the three and six months ended June 30, 2026, the average price per ad increased by 12% in both periods, year-over-year, as compared with increases of 9% and 10%, respectively, in the same periods in 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> ad revenue $59.36B in Q2, 98% of total revenue; constant-currency revenue growth 27%</p>
+      <p>Pricing, not just ad load, is still rising, which the filing attributes to "ongoing improvements to our ad performance from our ad targeting and measurement tools." That is the clearest evidence in the filing that AI spending is reaching the core product.</p>
+      <p class="next"><b>Next filing:</b> price per ad growth holds near 10%+ as impression growth slows; a fall in price with rising impressions would point to ad load doing the work.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 AI capex return and cash conversion" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 AI capex return and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">H1 operating cash flow $64.09B, +29% YoY, outgrowing revenue (+30%) after taxes fell</div>
+      <blockquote>Q2 2026: "The increase in cash flows from operating activities during the six months ended June 30, 2026, compared to the same period in 2025, was due primarily to an increase in cash collections from our customers driven by higher revenue, and a decrease in cash tax payments, partially offset by higher operational spending."</blockquote>
+      <p class="magnitude"><b>Size:</b> H1 OCF $64.09B vs $49.59B (+$14.50B); cash taxes paid $2.00B in H1</p>
+      <p>The engine that funds the build is still compounding, and the OBBBA expensing rules lower cash taxes even while CAMT raises the book rate. Part of the gain is tax timing, not operations.</p>
+      <p class="next"><b>Next filing:</b> OCF growth stays above 20% without a further drop in cash taxes; receivables (DSO up to 33 days from 28) should not keep rising.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Legal, regulatory and tax exposure" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Legal, regulatory and tax exposure</span><span class="chip">Stated</span></div>
+      <div class="title">The one tried youth demand shrank: New Mexico abatement $3.7B &rarr; $953M; Flo Health class 1.6M &rarr; 1.25M</div>
+      <blockquote>Q2 2026: "Following that trial, the New Mexico Attorney General is seeking $953 million in abatement costs and a broad set of injunctive terms, which include requests for extensive changes to the manner in which we provide our services in New Mexico."</blockquote>
+      <blockquote>Q2 2026: "Plaintiffs are seeking $5,000 in statutory damages per class member and have asserted that there are up to approximately 1.25 million class members."</blockquote>
+      <p class="magnitude"><b>Size:</b> NM demand down ~$2.75B (74%); Flo ceiling $8.0B &rarr; $6.25B (computed); together ~$4.5B lower, about 24% of Q2 operating income</p>
+      <p>When claims reach a courtroom, the numbers have come down. The second user bellwether was dismissed by the plaintiff and the first school-district bellwether settled.</p>
+      <p class="next"><b>Next filing:</b> the NM court decision on abatement and the August 2026 MDL state-AG trial; a large award would refute this.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating discipline" data-side="bull" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 Margins and operating discipline</span><span class="chip">Inferred</span></div>
+      <div class="title">~8,000-person reduction (about 11% of reported headcount) should lower run-rate compensation from Q3</div>
+      <blockquote>Q2 2026: "Our reported headcount includes approximately 8,000 employees impacted by the May 2026 headcount reduction, the majority of whom will no longer be reflected in our headcount by the end of the third quarter of 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> savings not quantified in the filing; $1.18B severance in Q2; 8,000 / 75,472 = 11% (computed)</p>
+      <p>Ex-severance and the $2.40B legal charge, Q2 operating income was about $22.36B, up ~9% (computed). The cut is the first concrete response to the cost growth that FY2025 flagged.</p>
+      <p class="next"><b>Next filing:</b> Q3 headcount near 67-68K and R&amp;D growth slowing below revenue growth excluding SBC.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Reality Labs path" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Reality Labs path</span><span class="chip">Stated</span></div>
+      <div class="title">RL revenue +16% with AI glasses now the lead driver; H1 RL loss $8.65B vs $8.74B, on the "similar to 2025" guide</div>
+      <blockquote>Q2 2026: "The increases were driven by higher sales of AI glasses, partially offset by lower Meta Quest sales."</blockquote>
+      <p class="magnitude"><b>Size:</b> RL revenue $431M in Q2 (0.7% of revenue); H1 RL loss down $92M (1%)</p>
+      <p>Q1 described the reverse order (Quest decline offset by glasses). The 70% wearables budget from the FY2025 10-K is showing in revenue mix, and losses have stopped growing.</p>
+      <p class="next"><b>Next filing:</b> full-year RL loss tracking to about $19B; glasses growth continuing in the holiday half.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 AI capex return and cash conversion" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 AI capex return and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">Capex floor raised to $130B while Q2 purchases of property and equipment ($30.12B) used 95% of Q2 operating cash flow</div>
+      <blockquote>Q2 2026: "We anticipate making capital expenditures of approximately $130 billion to $145 billion in 2026 to support our AI efforts and core business."</blockquote>
+      <p class="magnitude"><b>Size:</b> Q2 OCF less capex $1.75B (11% of net income) vs $13.23B in Q1; H2 needs ~$79B of capex to reach the floor, 1.6x H1 (computed)</p>
+      <p>Free cash flow is effectively gone at the current guide, and the filing states no return or utilization measure for the spend. Second-half capex is likely to exceed operating cash flow.</p>
+      <p class="next"><b>Next filing:</b> Q3 OCF less capex; whether the $145B ceiling moves; any stated return metric or utilization disclosure.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and off-balance-sheet obligations" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and off-balance-sheet obligations</span><span class="chip">Stated</span></div>
+      <div class="title">Debt now funds the build: notes $59.00B &rarr; $84.00B; commitments $349.31B; unstarted leases $278.99B plus ~$68B in July</div>
+      <blockquote>Q2 2026: "We have incurred significant indebtedness and other contractual commitments, including lease obligations, to finance these investments and expect to continue to incur additional obligations."</blockquote>
+      <p class="magnitude"><b>Size:</b> commitments plus unstarted leases $628.30B, up ~$208B in one quarter, about 3.1x FY2025 revenue (computed); interest expense +225% YoY</p>
+      <p>Most of the stack is non-cancelable and sits outside debt. The filing also says the commitment total counts variable-term agreements only at minimums, and El Paso adds up to ~$13B of guarantees.</p>
+      <p class="next"><b>Next filing:</b> another notes issue or equity-linked financing; commitments and lease totals; maximum exposure on the ventures.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating discipline" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating discipline</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income &minus;8% on +28% revenue; costs +55%, with "third-party AI token costs" a new named driver</div>
+      <blockquote>Q2 2026: "The increase in costs and expenses was primarily due to increases in employee compensation, including severance expenses; infrastructure expenses related to our data centers, technical infrastructure, and third-party cloud services; legal-related costs; and third-party AI token costs."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating margin 31% vs 43% a year earlier; R&amp;D 36% of revenue vs 27%; token costs not quantified</p>
+      <p>Even ex one-offs, operating income grew ~9% against 28% revenue growth (computed). Depreciation, cloud capacity and token costs are recurring and will rise with the capex already committed.</p>
+      <p class="next"><b>Next filing:</b> Q3 margin without severance; whether token costs are quantified; FoA operating income growth.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Legal, regulatory and tax exposure" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Legal, regulatory and tax exposure</span><span class="chip">Stated</span></div>
+      <div class="title">$2.40B of legal charges in one quarter; youth claims restated to "more than a trillion dollars"</div>
+      <blockquote>Q2 2026: "The increases were primarily due to $2.40 billion of charges related to legal proceedings in the three months ended June 30, 2026."</blockquote>
+      <blockquote>Q2 2026: "Across the cases described above, the damages, disgorgement, or penalties that plaintiffs have indicated they could seek range widely in amount, including in certain cases up to more than a trillion dollars."</blockquote>
+      <p class="magnitude"><b>Size:</b> $2.40B = 13% of Q2 operating income (computed); the trillion-dollar figure is theoretical and not accrued</p>
+      <p>Legal cost has become a recurring line, not a one-off, with 29 state AGs seeking disgorgement, an EU preliminary finding on "potentially addictive design features," and nine new AI-copyright suits.</p>
+      <p class="next"><b>Next filing:</b> Q3 legal charges; the MDL state-AG trial outcome; any EU DSA decision.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Capital return and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">No buybacks for a second quarter while SBC reached 24% of operating cash flow</div>
+      <blockquote>Q2 2026: "We did not repurchase any shares of Class A common stock during the six months ended June 30, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> H1 2026 repurchases $0 vs $22.92B in H1 2025; Q2 SBC $7.66B; $25.03B authorization unused</p>
+      <p>Without repurchases, SBC and the new stock options (20M granted in H1) are no longer offset. Diluted shares have stopped falling (+0.1% QoQ).</p>
+      <p class="next"><b>Next filing:</b> any resumption of repurchases, and the diluted share count trend.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Core ad engine" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Core ad engine</span><span class="chip">Stated</span></div>
+      <div class="title">Growth slowed in every region but North America; macro risk restated as "has impacted"</div>
+      <blockquote>Q2 2026: "In the second quarter of 2026, revenue increased by 32% in United States &amp; Canada, 24% in Europe, 19% in Asia-Pacific, and 36% in Rest of World, in each case relative to the same period in 2025."</blockquote>
+      <blockquote>Q2 2026: "We are currently subject to increased business, macroeconomic, and geopolitical uncertainty, including as a result of the conflict in the Middle East and volatility around international trade, which has impacted and could continue to impact our financial results."</blockquote>
+      <p class="magnitude"><b>Size:</b> total growth 33% &rarr; 28%; Europe 39% &rarr; 24%; Asia-Pacific 29% &rarr; 19%; FX benefit $685M vs $1.75B in Q1</p>
+      <p>Part of Q1's strength was currency; ex-FX the slowdown is smaller (29% to 27%). The macro hit is stated but not quantified.</p>
+      <p class="next"><b>Next filing:</b> constant-currency growth and impression growth; whether Asia-Pacific stabilizes.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (Q2 2026 vs Q1 2026; FY2025 vs FY2024). Full answers: <code>bullbear/fy2026q2.txt</code>, <code>bullbear/fy2025.txt</code>.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>FY2025 10-K</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark worse">&#9660;</span> Revenue +28% (Q1 +33%); impressions +14% (+19%), price +12% (held); Europe +24% (+39%); DAP 3.60B, +3%</td><td><span class="mark held">&#9679;</span> Revenue +22% to $200.97B (same as FY2024); impressions +12%, price +9%; DAP +7%</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark worse">&#9660;</span> Op margin 31% (Q1 41%, yr-ago 43%); costs +55%; R&amp;D 36% of revenue; FoA op income &minus;6%</td><td><span class="mark worse">&#9660;</span> Op margin 41% vs 42%; op income +20% vs +48%; R&amp;D +31%; RL loss $19.19B</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark better">&#9650;</span> No Q1-style $8.03B tax benefit; Q2 depressed by $3.58B of severance and legal one-offs; ETR 16%</td><td><span class="mark worse">&#9660;</span> NI cut by $15.93B OBBBA charge; flattered by unquantified useful-life benefit and $1.37B rise in other income</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark worse">&#9660;</span> OCF less capex $1.75B (Q1 $13.23B), 11% of NI; DSO 33 days (Q1 28), unexplained</td><td><span class="mark worse">&#9660;</span> OCF $115.80B (+27%) but OCF less capex $46.11B vs $54.07B; DSO 36 days</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark worse">&#9660;</span> H1 capex $50.92B; no buybacks; $25B notes; dividend held; second data-center venture</td><td><span class="mark worse">&#9660;</span> Capex $72.22B; buybacks $26.25B + dividends $5.32B still inside FCF; $29.91B notes; $18.33B equity investments</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark worse">&#9660;</span> Notes $84.00B; commitments $349.31B (minimums only); leases not commenced $278.99B + ~$68B; escrow $10.80B; El Paso RVG ~$13B</td><td><span class="mark worse">&#9660;</span> LTD $58.74B (from $28.83B); commitments $131.05B; unstarted leases $103.77B; Louisiana max exposure $45.95B</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark held">&#9679;</span> Reseller / China language unchanged; EU interim order on WhatsApp API access; data-center siting risk added</td><td><span class="mark worse">&#9660;</span> China revenue figure ($18.35B in 2024) no longer disclosed; risk factor unchanged</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark worse">&#9660;</span> Commitments now exclude variable terms beyond minimums; layoff inside compensation, no restructuring note; DAP survey caveat</td><td><span class="mark worse">&#9660;</span> $2.9B depreciation benefit de-quantified; impairment dropped from critical estimates; $14.03B valuation allowance</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark worse">&#9660;</span> $2.40B legal charges; youth claims "more than a trillion"; EU addictive-design finding; offsets: NM $953M, Flo 1.25M</td><td><span class="mark worse">&#9660;</span> Aggregate exposure "hundreds of billions"; IRS $15.89B notice; offsets: FTC win, Kadrey fair use</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark worse">&#9660;</span> Capex $125-145B &rarr; $130-145B; tax 13-16% &rarr; 15-17%; RL "similar" reaffirmed and on track</td><td><span class="mark held">&#9679;</span> 2025 capex ran above the $60-65B guide ($72.22B); RL loss increase as guided; tax 13% ex-OBBBA within 12-15%</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated, and what later filings said about it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"We anticipate making capital expenditures of approximately $60 billion to $65 billion in 2025 to support our core business and generative AI efforts."</td><td>FY2024 10-K</td><td>FY2025 10-K: beaten on the high side (moved up during 2025); actual $72.22B incl. finance leases</td></tr>
+<tr><td>"...we continue to expect our RL operating losses to increase in 2025."</td><td>FY2024 10-K</td><td>FY2025 10-K: met; RL loss $19.19B vs $17.73B (+8%)</td></tr>
+<tr><td>"...we expect our effective tax rate for the full year 2025 to be in the range of 12-15%."</td><td>FY2024 10-K</td><td>FY2025 10-K: missed as reported (30%) because of the $15.93B OBBBA charge; 13% absent the charge</td></tr>
+<tr><td>"We anticipate making capital expenditures of approximately $115 billion to $135 billion in 2026 to support our AI efforts and core business."</td><td>FY2025 10-K</td><td>Q1 2026: moved to $125-145B. Q2 2026: moved to $130-145B</td></tr>
+<tr><td>"...we expect our 2026 RL operating losses to remain similar to 2025."</td><td>FY2025 10-K</td><td>Q1 2026 and Q2 2026: reaffirmed; H1 RL loss $8.65B vs $8.74B (on track)</td></tr>
+<tr><td>"...we expect our effective tax rate for the full year 2026 to be in the range of 13-16%."</td><td>FY2025 10-K</td><td>Q1 2026: 13-16% for the remaining quarters. Q2 2026: moved to 15-17%</td></tr>
+<tr><td>"In 2026, we expect to spend approximately 70% of our Reality Labs operating expenses on our wearables initiatives..."</td><td>FY2025 10-K</td><td>Q1 and Q2 2026: not mentioned (10-Qs carry no split); RL revenue now led by AI glasses</td></tr>
+<tr><td>"...we currently intend to continue to pay a quarterly cash dividend and dividend equivalents on our outstanding common stock."</td><td>FY2025 10-K</td><td>Q1 and Q2 2026: met; $0.525 per share paid each quarter</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-K FY2025 (filed Jan 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Core ad engine" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Core ad engine</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +22% to $200.97B for a second year, on both impressions (+12%) and price (+9%)</div>
+      <blockquote>FY2025: "Total revenue for 2025 was $200.97 billion, an increase of 22% compared to 2024, due to an increase in advertising revenue."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$36.47B of revenue; DAP 3.58B, +7%</p>
+      <p>Growth held at scale with a balanced volume and price mix, the base case for funding the AI build from operations.</p>
+      <p class="next"><b>Next filing:</b> 2026 quarters holding 20%+ (Q1 +33%, Q2 +28%: confirmed so far).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 AI capex return and cash conversion" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 AI capex return and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $115.80B, +27%, ahead of revenue growth</div>
+      <blockquote>FY2025: "The increase in cash flows from operating activities during 2025 compared to 2024, was primarily due to an increase in cash collections from our customers driven by the increase in revenue and lower cash paid for income taxes, partially offset by higher operational spending."</blockquote>
+      <p class="magnitude"><b>Size:</b> OCF +$24.47B; 1.9x net income; cash taxes $7.58B vs $10.55B</p>
+      <p>Cash generation, not reported earnings, is what funds capex, and it grew faster than revenue.</p>
+      <p class="next"><b>Next filing:</b> OCF growth sustained without relying on lower cash taxes.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Legal, regulatory and tax exposure" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Legal, regulatory and tax exposure</span><span class="chip">Stated</span></div>
+      <div class="title">FTC antitrust case won: no forced divestiture of Instagram or WhatsApp</div>
+      <blockquote>FY2025: "On November 18, 2025, the court granted judgment in our favor."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; the case sought divestiture of the two largest acquisitions</p>
+      <p>The most structurally threatening case was decided for Meta; the FTC has appealed.</p>
+      <p class="next"><b>Next filing:</b> the appeal's progress.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Reality Labs path" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Reality Labs path</span><span class="chip">Stated</span></div>
+      <div class="title">First RL guide without an increase: 2026 losses "remain similar to 2025"</div>
+      <blockquote>FY2025: "In 2025, our RL segment reduced our overall operating profit by approximately $19.19 billion, and we expect our 2026 RL operating losses to remain similar to 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> caps the RL drag at about $19B, 23% of FY2025 operating income</p>
+      <p>Paired with the 70% shift to wearables, the RL bet is being narrowed rather than expanded.</p>
+      <p class="next"><b>Next filing:</b> RL loss tracking flat (H1 2026: confirmed).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 AI capex return and cash conversion" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 AI capex return and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">2026 capex guided $115-135B after $72.22B; free cash flow fell</div>
+      <blockquote>FY2025: "We anticipate making capital expenditures of approximately $115 billion to $135 billion in 2026 to support our AI efforts and core business."</blockquote>
+      <p class="magnitude"><b>Size:</b> midpoint ~1.7x 2025 capex; OCF less capex $46.11B vs $54.07B</p>
+      <p>The guide implies capex roughly equal to operating cash flow in 2026, with no stated return.</p>
+      <p class="next"><b>Next filing:</b> quarterly FCF (Q2 2026: $1.75B, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Balance sheet and off-balance-sheet obligations" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Balance sheet and off-balance-sheet obligations</span><span class="chip">Stated</span></div>
+      <div class="title">Debt doubled to $58.74B; commitments $131.05B; Louisiana venture maximum exposure $45.95B</div>
+      <blockquote>FY2025: "Our maximum exposure to loss related to the Venture was $45.95 billion as of December 31, 2025, consisting of $1.83 billion carrying value of our equity investment, the lease commitments, our estimated future fundings, and the maximum RVG threshold."</blockquote>
+      <p class="magnitude"><b>Size:</b> $45.95B = 55% of FY2025 operating income (computed)</p>
+      <p>The build is moving off balance sheet through leases and a 20%-owned venture with guarantees.</p>
+      <p class="next"><b>Next filing:</b> more ventures or guarantees (Q2 2026: El Paso, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Legal, regulatory and tax exposure" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Legal, regulatory and tax exposure</span><span class="chip">Stated</span></div>
+      <div class="title">Aggregate damages sought "up to hundreds of billions"; IRS asserts $15.89B more tax for 2017-2019</div>
+      <blockquote>FY2025: "The maximum aggregate monetary damages or penalties sought across our various legal proceedings could amount to an aggregate of up to hundreds of billions of dollars and, as a result, could be material to the financial condition of the company."</blockquote>
+      <p class="magnitude"><b>Size:</b> IRS notice $15.89B = 26% of FY2025 net income, before interest and offsets (computed)</p>
+      <p>The legal exposure is now quantified by the company itself, and the tax dispute grew after the Tax Court valued the transferred IP above Meta's figure.</p>
+      <p class="next"><b>Next filing:</b> legal charges (Q2 2026: $2.40B, confirmed) and the Tax Court decision.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Capital return and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Capital return and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks demoted from a named use of cash to "any return of capital"</div>
+      <blockquote>FY2025: "We currently anticipate that our available funds and cash flow from operations and financing activities will be sufficient to meet our operational cash needs and fund our cash commitments for investing and financing activities, including investments in infrastructure and AI initiatives, as well as any return of capital to stockholders over the next 12 months and thereafter for the foreseeable future."</blockquote>
+      <p class="magnitude"><b>Size:</b> FY2025 buybacks $26.25B (vs $30.12B); Q4 2025 buybacks already $0</p>
+      <p>The wording prepared readers for buybacks stopping; repurchases fell to $3.33B in Q3 2025 and to zero after.</p>
+      <p class="next"><b>Next filing:</b> repurchases (H1 2026: $0, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Core ad engine" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Core ad engine</span><span class="chip">Stated</span></div>
+      <div class="title">China revenue figure ($18.35B, 11% of 2024 revenue) no longer disclosed</div>
+      <blockquote>FY2024: "(2)China revenue was $18.35 billion, $13.69 billion, and $7.40 billion for the years ended December 31, 2024, 2023, and 2022, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> $18.35B / $164.50B = 11% of FY2024 revenue (computed); FY2025 amount not disclosed</p>
+      <p>The risk factor that the revenue could be reduced or eliminated by government action is unchanged, but investors can no longer size it.</p>
+      <p class="next"><b>Next filing:</b> any return of the figure, or new China or tariff language.</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>

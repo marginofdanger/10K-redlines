@@ -1,0 +1,68 @@
+META INVESTMENT THESIS: PILLARS
+Written October 2026 from the 10-K dashboard themes (Capital Structure Transformation,
+Legal Risk Compounding, Metric Transparency Declining, The Superintelligence Bet), the
+10-Q scanner's tracked signals (capex guidance, commitments, RL loss guidance, legal
+exposure) and the FY2025 10-K / Q2 2026 10-Q. Stances are as of the Q2 2026 10-Q.
+
+P1 Core ad engine
+  Bull assumes: Family of Apps advertising keeps compounding 20%+ on both volume
+    (impressions) and price, helped by AI ranking and new surfaces (Threads, WhatsApp).
+  Bear fears: growth is leaning on ad load and FX; user growth is saturating (first DAP
+    dip Q1 2026); regulation (EU less-personalized ads, youth laws, scam rules) caps
+    targeting.
+  Stance: Intact.
+  Tested by: ad revenue growth, impressions vs price split, DAP, regional growth, the
+    EU ads model, and any change to the China-based advertiser disclosure.
+
+P2 Margins and operating discipline
+  Bull assumes: "operating efficiently" holds; cost growth stays near revenue growth;
+    headcount cuts offset AI and legal costs.
+  Bear fears: AI infrastructure, depreciation, SBC, token costs and legal charges grow
+    faster than revenue; the 2022-23 efficiency era is over.
+  Stance: Weakening (operating margin 42% FY2024 -> 41% FY2025 -> 31% Q2 2026).
+  Tested by: cost growth vs revenue growth by line, FoA operating margin, named cost
+    drivers, severance and legal one-offs.
+
+P3 AI capex return and cash conversion
+  Bull assumes: capex ($72B in 2025, $130-145B guided for 2026) earns a return through
+    better ads and new AI products, and operating cash flow keeps pace.
+  Bear fears: capex outruns cash generation, free cash flow goes to zero or negative,
+    and the spend is sized for frontier models rather than measurable demand.
+  Stance: Weakening.
+  Tested by: OCF less capex each quarter, capex guide moves, any stated return or
+    utilization metric, impairment language.
+
+P4 Balance sheet and off-balance-sheet obligations
+  Bull assumes: ~$80-90B of cash and securities and investment-grade debt make the
+    build easy to fund.
+  Bear fears: debt ($29B -> $84B in three quarters), non-cancelable commitments
+    ($349B), unstarted leases ($279B + $68B) and venture guarantees become a fixed-cost
+    stack that cannot be cut if AI demand disappoints.
+  Stance: Weakening.
+  Tested by: notes outstanding and coupons, commitments and lease totals, escrow, VIE
+    maximum exposure, RVGs, interest expense.
+
+P5 Capital return and dilution
+  Bull assumes: buybacks and the dividend continue from free cash flow and offset SBC.
+  Bear fears: buybacks stop (demoted to "any return of capital" in FY2025, $0 since),
+    SBC rises, stock options appear, share count drifts up.
+  Stance: Weakening.
+  Tested by: repurchases, dividends, SBC / OCF, diluted share count, new equity issuance.
+
+P6 Legal, regulatory and tax exposure
+  Bull assumes: Meta wins the existential cases (FTC antitrust won Nov 2025), and the
+    rest settle for amounts that are small relative to earnings.
+  Bear fears: youth/addiction litigation (state AGs, MDL, mass arbitration), EU DSA/DMA
+    orders, AI copyright, and the IRS transfer-pricing case produce recurring
+    multi-billion charges and product constraints.
+  Stance: Weakening.
+  Tested by: legal charges, verdicts and amounts sought, the aggregate-exposure
+    sentence, EU findings, IRS/Tax Court outcome, uncertain tax positions.
+
+P7 Reality Labs path
+  Bull assumes: losses plateau around $19B and AI glasses become a real product line.
+  Bear fears: RL keeps losing ~$19B a year with revenue near $2B and inventory
+    commitments add losses.
+  Stance: Intact.
+  Tested by: RL operating loss vs "remain similar to 2025," RL revenue and the glasses vs
+    Quest mix, the RL spending split.

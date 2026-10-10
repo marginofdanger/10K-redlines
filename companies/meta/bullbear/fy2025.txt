@@ -1,0 +1,67 @@
+META FY2025 10-K (year ended December 31, 2025; filed January 2026)
+Fundamentals answers vs the FY2024 10-K. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [held]
+   Revenue $200.97B, +22% (FY2024 +22%). Ad impressions +12% (+11%), average price per ad
+   +9% (+10%). FoA other revenue +50% to $2.58B, "mostly driven by paid messaging from
+   WhatsApp and Meta Verified subscriptions." DAP 3.58B, +7%. Meta discloses no backlog or
+   bookings. (MD&A, Executive Overview; Revenue)
+
+2. Margins and unit economics [worse]
+   Operating margin 41% vs 42%. Operating income +20% ($83.28B) vs +48% a year earlier.
+   R&D +31% ($13.50B), "employee compensation and infrastructure costs"; G&A +25% on
+   legal costs lapping the FY2024 $1.55B reversal. RL loss $19.19B, +8%; FoA 82% of costs.
+   (MD&A, Costs and Expenses; Segment Results)
+
+3. Earnings quality [mixed / worse]
+   Net income $60.46B (-3%) includes a $15.93B OBBBA charge ($14.03B valuation
+   allowance), non-cash and non-recurring: depresses reported earnings. In the other
+   direction, the 5.5-year server life lowered depreciation (no longer quantified; FY2024
+   said ~$2.9B) and interest and other income rose $1.37B on unrealized gains on equity
+   investments. (MD&A, Provision for Income Taxes; Cost of revenue; Note 1)
+
+4. Cash conversion [worse]
+   OCF $115.80B, +27%, 1.9x net income (deferred taxes $18.74B and SBC $20.43B added
+   back). OCF less purchases of property and equipment $46.11B vs $54.07B (first decline
+   in the downloaded years); FCF / net income 76% vs 87%. DSO 36 days vs 38. (MD&A,
+   Liquidity and Capital Resources)
+
+5. Capital allocation [worse]
+   Capex incl. finance leases $72.22B (vs $39.23B). Buybacks $26.25B, dividends $5.32B
+   (total returns $31.57B, still covered by OCF less capex). $18.33B of non-marketable
+   equity purchases. $29.91B of notes issued in November 2025. Buybacks demoted to "any
+   return of capital"; program "may be suspended." (MD&A, Liquidity; Note 12)
+
+6. Balance sheet and contingent exposure [worse]
+   Long-term debt $58.74B (vs $28.83B). Cash and securities $81.59B. Non-cancelable
+   commitments $131.05B (vs $32.82B), "mostly related to third-party cloud capacity";
+   unstarted leases $103.77B. Louisiana Venture: 20% stake, ~$28B RVG threshold, maximum
+   exposure to loss $45.95B. New risk factor on raising debt or equity. (Notes 6, 7, 10, 11)
+
+7. Concentration [worse, on disclosure]
+   U.S. 37% of revenue. China revenue footnote ($18.35B, 11% of FY2024 revenue) deleted;
+   China still named among the largest non-U.S. sources, and the risk factor on "a small
+   number of resellers serving advertisers based in China" is unchanged. (Note 1,
+   Concentrations; Risk Factors)
+
+8. Accounting judgments [worse]
+   Useful life of most servers and network assets 5.5 years from Jan 1, 2025, benefit now
+   described only as "decreases in the depreciation growth rate." Long-lived asset
+   impairment removed from Critical Accounting Estimates; non-marketable equity valuation
+   added. $14.03B valuation allowance on U.S. federal DTAs under CAMT. Violating-account
+   estimate methodology changed (<3% -> <5% of DAP). (MD&A, Critical Accounting
+   Estimates; Note 1; Risk Factors)
+
+9. Legal, regulatory and governance [worse]
+   Aggregate damages sought "up to hundreds of billions of dollars"; youth cases "up to the
+   high tens of billions"; >100,000 arbitration claimants; first youth trials Jan-Feb 2026.
+   Wins: FTC antitrust judgment (Nov 18, 2025, appealed), Kadrey fair use. Losses: EUR 542M
+   Spanish judgment, EUR 200M DMA fine, Flo Health verdict. IRS: Tax Court valued IP $1.48B
+   above Meta's figure; new notice asserts $15.89B for 2017-2019. Net uncertain tax
+   positions $11.23B (vs $9.99B). (Legal Proceedings; Note 11; Note 14)
+
+10. Guidance and commitments [moved]
+   2025 capex guided $60-65B in the FY2024 10-K: actual $72.22B (raised during the year).
+   RL losses "to increase in 2025": met (+8%). 2025 tax rate 12-15%: 30% reported, 13%
+   absent the OBBBA charge. New: 2026 capex $115-135B; 2026 RL losses "remain similar to
+   2025"; 2026 tax rate 13-16%; RL spending 70% wearables / 30% VR and Horizon.

@@ -147,6 +147,8 @@ a:hover { text-decoration: underline; }
   font-style: italic; color: var(--text);
 }
 .finding-body strong { color: var(--text); }
+.finding-body p.shift { margin: 4px 0 8px; font-size: 12px; font-weight: 600; color: var(--purple); }
+.finding-body p.history { margin: 6px 0 8px; font-size: 12px; color: var(--text-dim); border-left: 2px solid var(--border); padding-left: 10px; }
 
 /* Section headings */
 .section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
@@ -1214,7 +1216,7 @@ a:hover { text-decoration: underline; }
 <!-- Q1 → Q2 2026 -->
 <div class="transition-header" id="q1q2-2026">
   <h2>Q1 2026 &rarr; Q2 2026</h2>
-  <div class="sub">Filed Jul 30, 2026 | Revenue: $60.80B (+28%) | Op Income: $18.78B (&minus;8% YoY; margin 31% vs 43%) | Capex guide: $125-145B &rarr; $130-145B (2026) | Q2 capex $31.08B vs. Q2 operating cash flow ~$31.86B | Debt: $59.0B &rarr; $84.0B | Headcount: 77,986 &rarr; 75,472 | Buybacks: $0</div>
+  <div class="sub">Filed Jul 30, 2026 | Revenue: $60.80B (+28%) | Op Income: $18.78B (&minus;8% YoY; margin 31% vs 43%) | Capex guide: $125-145B &rarr; $130-145B (2026) | Q2 operating cash flow $31.86B vs. purchases of property and equipment $30.12B | Long-term debt: $58.75B &rarr; $83.66B | Headcount: 77,986 &rarr; 75,472 | Buybacks: $0</div>
 </div>
 
 <div class="finding-group">
@@ -1223,59 +1225,94 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Operating income falls 8% despite 28% revenue growth; four named cost drivers, including a new one ("third-party AI token costs") and $2.40B of legal charges</span>
+    <span class="title">Operating income falls 8% on 28% revenue growth; cost drivers go from two to four, adding "third-party AI token costs" and $2.40B of legal charges</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2026: "The increase in costs and expenses was mainly due to increases in infrastructure costs and employee compensation." Q2 2026:</p>
-    <blockquote>"The increase in costs and expenses was primarily due to increases in employee compensation, including <strong>severance expenses</strong>; infrastructure expenses related to our data centers, technical infrastructure, and third-party cloud services; <strong>legal-related costs</strong>; and <strong>third-party AI token costs</strong>."</blockquote>
-    <blockquote>"The increases were primarily due to <strong>$2.40 billion of charges related to legal proceedings</strong> in the three months ended June 30, 2026."</blockquote>
-    <p>Costs rose 55% and G&amp;A rose 111%. R&amp;D reached 36% of revenue, up from 27%. "Third-party AI token costs" appears five times in the Q2 MD&amp;A and nowhere in earlier filings, and it is named as a driver of both R&amp;D and marketing and sales. Meta is now paying outside model providers by usage while also building its own models. The MD&amp;A does not say which proceedings the $2.40B relates to. Even with the $1.18B of severance and the $2.40B legal charge added back, operating income would have been about $22.36B, up roughly 9% on 28% revenue growth (computed). Margins were contracting before the one-time items.</p>
+    <p class="shift">Shift: named: +third-party AI token costs, +severance, +legal-related costs, +third-party cloud services (+ disclosure); direction: "an increase" &rarr; "a decrease"</p>
+    <blockquote>Q1 2026: "The increase in costs and expenses was mainly due to increases in infrastructure costs and employee compensation."</blockquote>
+    <blockquote>Q2 2026: "The increase in costs and expenses was primarily due to increases in employee compensation, including severance expenses; infrastructure expenses related to our data centers, technical infrastructure, and third-party cloud services; legal-related costs; and third-party AI token costs."</blockquote>
+    <blockquote>Q2 2026: "The increases were primarily due to $2.40 billion of charges related to legal proceedings in the three months ended June 30, 2026."</blockquote>
+    <p class="history">History (phrase_history): "third-party AI token costs" appears five times in the Q2 2026 MD&amp;A and in no earlier filing; the two-driver sentence ("infrastructure costs and employee compensation") ran in Q2 2025 and Q1 2026. "severance expenses" is also first in Q2 2026.</p>
+    <p>Token costs are named as a driver of R&amp;D and of marketing and sales, so Meta is paying outside model providers by usage while it builds its own models. Adding back the $1.18B of severance and the $2.40B legal charge gives about $22.36B of operating income, up roughly 9% on 28% revenue growth (computed): margins were contracting before the one-time items. The filing does not say which proceedings the $2.40B covers.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">~8,000-person reduction disclosed ($1.18B severance), headcount down 1% YoY; restructuring risk factor drops its "2022 and 2023" date</span>
+    <span class="title">~8,000-person reduction disclosed ($1.18B severance); the restructuring risk factor drops its "in 2022 and 2023" example, which had stood since FY2023</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Headcount was 75,472 as of June 30, 2026, a decrease of 1% year-over-year. Our reported headcount includes approximately <strong>8,000 employees impacted by the May 2026 headcount reduction</strong>, the majority of whom will no longer be reflected in our headcount by the end of the third quarter of 2026."</blockquote>
-    <blockquote>"Employee compensation for the three months ended June 30, 2026 also includes <strong>$1.18 billion of severance expenses</strong> related to the May 2026 headcount reduction of approximately 8,000 employees which impacted both FoA and RL segments."</blockquote>
-    <p>Q1 2026 risk factor: "For example, in 2022 and 2023, we announced several initiatives, including restructurings, employee layoffs..." Q2 2026:</p>
-    <blockquote>"In addition, from time to time, we implement organizational changes to pursue greater efficiency and realign our business and strategic priorities, <strong>including restructurings, employee layoffs, and measures to scale down our office facilities</strong>."</blockquote>
-    <p>Most of the ~8,000 are still in the count, so headcount should fall toward 67-68K once they leave (computed, before new hiring). This follows a sequence of wording changes that each pointed toward cuts: the FY2024 10-K recast layoffs as "from time to time," the FY2025 10-K dropped "headcount" from AI investment, and Q1 2026 added "continue to evaluate our workforce." The filing makes no restructuring-plan or "efficiency" disclosure like the 2022-23 one. The cut is reported as ordinary employee compensation.</p>
+    <p class="shift">Shift: realized (+): headcount cut quantified; scope: dated example "in 2022 and 2023" &rarr; standing practice "from time to time"</p>
+    <blockquote>Q2 2026: "Our reported headcount includes approximately 8,000 employees impacted by the May 2026 headcount reduction, the majority of whom will no longer be reflected in our headcount by the end of the third quarter of 2026."</blockquote>
+    <blockquote>Q2 2026: "Employee compensation for the three months ended June 30, 2026 also includes $1.18 billion of severance expenses related to the May 2026 headcount reduction of approximately 8,000 employees which impacted both FoA and RL segments."</blockquote>
+    <blockquote>Q1 2026: "For example, in 2022 and 2023, we announced several initiatives, including restructurings, employee layoffs, and measures to scale down our office facilities."</blockquote>
+    <blockquote>Q2 2026: "In addition, from time to time, we implement organizational changes to pursue greater efficiency and realign our business and strategic priorities, including restructurings, employee layoffs, and measures to scale down our office facilities."</blockquote>
+    <p class="history">History (phrase_history): the "in 2022 and 2023" example was in 7 consecutive filings (FY2023 10-K through Q1 2026); "approximately 8,000 employees" first appears here.</p>
+    <p>Headcount of 75,472 still includes most of the ~8,000, so it should fall toward 67-68K by Q3 before new hiring (computed). The risk factor no longer describes layoffs as a past episode. The 2022-23 restructuring came with a named plan and a restructuring note; this one is reported inside employee compensation.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Capex floor raised again ($125B &rarr; $130B); Q2 capex of $31.08B used essentially all Q2 operating cash flow; buybacks $0 for a second quarter</span>
+    <span class="title">Capex floor raised a second time ($125B &rarr; $130B, ceiling held at $145B); Q2 purchases of property and equipment ($30.12B) absorb nearly all Q2 operating cash flow ($31.86B); no buybacks for a second quarter</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2026: "...approximately $125 billion to $145 billion in 2026..." Q2 2026:</p>
-    <blockquote>"We anticipate making capital expenditures of approximately <strong>$130 billion</strong> to $145 billion in 2026 to support our AI efforts and core business."</blockquote>
-    <p>Operating cash flow was $64.09B for the six months and $32.23B for Q1, so Q2 was about $31.86B. Q2 capex including finance leases was $31.08B, which leaves Q2 free cash flow of roughly $0.8B (computed). Over the first half, cash and securities still rose $8.67B, but only because of the $24.91B note issuance. Financing cash flow turned positive (+$9.41B against &minus;$35.47B a year earlier). The filing states:</p>
-    <blockquote>"We did not repurchase any shares of Class A common stock during the six months ended June 30, 2026."</blockquote>
-    <p>Reaching even the $130B floor requires about $79B of capex in the second half, roughly 1.6x the first half's $50.92B (computed). Capex now uses up operating cash flow, so buybacks are suspended in practice and further growth must be debt-financed.</p>
+    <p class="shift">Shift: guidance figures: floor $125B &rarr; $130B, ceiling unchanged (range narrowed, +)</p>
+    <blockquote>Q1 2026: "We anticipate making capital expenditures of approximately $125 billion to $145 billion in 2026 to support our AI efforts and core business."</blockquote>
+    <blockquote>Q2 2026: "We anticipate making capital expenditures of approximately $130 billion to $145 billion in 2026 to support our AI efforts and core business."</blockquote>
+    <blockquote>Q2 2026: "We did not repurchase any shares of Class A common stock during the six months ended June 30, 2026."</blockquote>
+    <p class="history">History (phrase_history): the 2026 guide was $115-135B (FY2025 10-K), $125-145B (Q1 2026 only), now $130-145B; "did not repurchase any shares" in Q1 and Q2 2026 only.</p>
+    <p>Q2 free cash flow on financials.py's basis was $1.75B, against $13.23B in Q1 and 11% of net income. First-half cash and securities rose $8.67B only because of $24.91B of note proceeds. Reaching the $130B floor needs about $79B of capex in the second half, roughly 1.6x the first half's $50.92B (computed), so the second half must be funded by more borrowing or lower cash.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Tax guide raised from 13-16% to 15-17% as CAMT starts limiting benefits; macro risk moves from "could impact... in future periods" to "has impacted"</span>
+    <span class="title">CAMT moves from expectation to effect: "We expect to remain subject to CAMT" deleted, tax benefits now "being limited"; tax guide raised from 13-16% to 15-17%</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Absent any changes to our tax landscape, we expect our effective tax rate for the remaining quarters of 2026 to be between <strong>15-17%</strong>."</blockquote>
-    <blockquote>"...excess tax benefits from share-based compensation <strong>being limited by the Corporate Alternative Minimum Tax (CAMT) regime in 2026</strong>."</blockquote>
-    <p>The FY2025 10-K said SBC tax benefits "may not be realizable" under CAMT. Q2 says they are now being limited. In the macro paragraph:</p>
-    <blockquote>"...including as a result of the conflict in the Middle East and volatility around international trade, which <strong>has impacted and could continue to impact</strong> our financial results."</blockquote>
-    <p>Q1 2026 read "could impact our financial results in future periods." The tax change comes from Q1's CAMT warning taking effect. The macro change is a realized hit that the MD&amp;A does not quantify. Europe revenue growth slowed from 39% to 24% and Asia-Pacific from 29% to 19%, though FX accounts for part of the Q1 strength.</p>
+    <p class="shift">Shift: realized: "may not be realizable" / "expect to remain subject" &rarr; "being limited" (+); guidance figures 13-16% &rarr; 15-17% (floor and ceiling both up)</p>
+    <blockquote>Q1 2026: "We expect to remain subject to CAMT for 2026 and subsequent years."</blockquote>
+    <blockquote>Q2 2026: "Our effective tax rate increased in the three months ended June 30, 2026 compared to the same period in 2025, primarily due to certain tax benefits such as U.S. tax benefits from foreign-derived deduction eligible income and excess tax benefits from share-based compensation being limited by the Corporate Alternative Minimum Tax (CAMT) regime in 2026."</blockquote>
+    <blockquote>Q2 2026: "Absent any changes to our tax landscape, we expect our effective tax rate for the remaining quarters of 2026 to be between 15-17%."</blockquote>
+    <p class="history">History (phrase_history): "We expect to remain subject to CAMT" appears in Q1 2026 only; "being limited" and "The impact of the CAMT regime limits" first in Q2 2026; the risk-factor line that SBC benefits "may not be realizable" (since Q3 2025) is unchanged.</p>
+    <p>The forward-looking sentence was dropped because it came true: the Q2 effective rate was 16% against 11% a year earlier. The Q1 $8.03B CAMT relief benefit was a one-time offset; the recurring effect is a higher rate on the share-based compensation that is now Meta's main R&amp;D cost driver.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Meta Verified" de-named: other revenue is now "paid messaging from WhatsApp and subscriptions"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named: "Meta Verified subscriptions" &rarr; "subscriptions" (&minus;); hedge added: "mostly" &rarr; "primarily"</p>
+    <blockquote>Q1 2026: "The increase was mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions."</blockquote>
+    <blockquote>Q2 2026: "The increases were primarily driven by paid messaging from WhatsApp and subscriptions."</blockquote>
+    <p class="history">History (phrase_history): "Meta Verified subscriptions" named in 6 consecutive filings (FY2024 10-K through Q1 2026); "Meta Verified" does not appear anywhere in the Q2 2026 10-Q.</p>
+    <p>Other revenue grew 73% to $1.01B. Dropping the product name in all three places it appeared is consistent with a broader set of paid subscriptions now feeding the line, but the filing does not say which. A reader can no longer attribute the growth to one product.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">DAP caveat added one quarter after the first disclosed DAP decline: survey results "may be impacted by product changes," and questions may be updated</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: hedge added (&minus;): new measurement caveat on the only user metric Meta reports</p>
+    <blockquote>Q2 2026: "From time to time, the results of such surveys may be impacted by product changes or other factors, and we may update such survey questions."</blockquote>
+    <p class="history">History (phrase_history): first appears in Q2 2026; the preceding sentence (surveys "inherently subject to error") is unchanged. "slight decline in DAP" first appears in Q1 2026 and is repeated in Q2 2026, now noting the Iran disruptions "were largely restored."</p>
+    <p>DAP calibration depends on user surveys, and Meta now reserves the right to change the questions. DAP grew 3% to 3.60B. Any future change in the survey could move the reported count without a change in usage, and the filing gives no commitment to restate.</p>
   </div>
 </div>
 </div>
@@ -1286,41 +1323,47 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">$25B of notes take debt to $84B, with coupons up to 6.45%; interest expense +225%; risk factors acknowledge "significant indebtedness... to finance these investments" for the first time</span>
+    <span class="title">Risk factors say debt is funding the build: "We have incurred significant indebtedness... to finance these investments"; notes outstanding $59.00B &rarr; $84.00B</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"As of June 30, 2026, we had <strong>$84.00 billion</strong> aggregate principal amount of Notes outstanding, which mature from 2027 through 2066."</blockquote>
-    <blockquote>"We have incurred <strong>significant indebtedness and other contractual commitments, including lease obligations, to finance these investments</strong> and expect to continue to incur additional obligations."</blockquote>
-    <p>The May 2026 series carry 4.55%-6.45% stated rates, against 4.20%-5.75% for November 2025. Interest expense rose $542M (225%) "due to higher long-term debt balances." The notes' fair value was $79.75B against $84.00B face, about 95% of par, compared with 97% at December 2025 ($57.22B on $59.0B). Debt has risen from $29.0B to $84.0B since September 2025. The risk factors now link the debt directly to the AI and RL build, where earlier they had only warned that financing "may not be available on favorable terms."</p>
+    <p class="shift">Shift: realized (+): financing risk restated from "may also seek to raise" to "have incurred"; figures $59.00B &rarr; $84.00B</p>
+    <blockquote>Q2 2026: "We have incurred significant indebtedness and other contractual commitments, including lease obligations, to finance these investments and expect to continue to incur additional obligations."</blockquote>
+    <blockquote>Q1 2026: "As of March 31, 2026, we had outstanding long-term debt in the form of senior unsecured notes for an aggregate principal amount of $59.00 billion, which mature from 2027 through 2065."</blockquote>
+    <blockquote>Q2 2026: "As of June 30, 2026, we had $84.00 billion aggregate principal amount of Notes outstanding, which mature from 2027 through 2066."</blockquote>
+    <p class="history">History (phrase_history): "significant indebtedness" appears in no filing before Q2 2026; the conditional financing paragraph ("may also seek to raise additional capital") has been in the risk factors since Q3 2025.</p>
+    <p>The May notes carry 4.55%-6.45% coupons, and interest expense rose $542M (225%) "due to higher long-term debt balances." Debt has risen from $28.83B to $83.66B (carrying value) in three quarters. The risk factor now ties the borrowing directly to the AI and RL investment program and says more is coming.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Commitments $237.67B &rarr; $349.31B; 2027 payments $47.65B &rarr; $81.65B; unstarted leases $278.99B plus ~$68B in July; totals now exclude variable terms; escrow doubles to $10.80B</span>
+    <span class="title">Commitments $237.67B &rarr; $349.31B, now explicitly a floor: variable-term agreements counted only at "minimum quantities and/or pricing"; 2027 payments $47.65B &rarr; $81.65B</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <blockquote>"As of June 30, 2026, we had <strong>$349.31 billion</strong> of non-cancelable contractual commitments, comprising both short-term and long-term arrangements."</blockquote>
-    <blockquote>"In July 2026, we entered into additional data center leases with lease obligations of approximately <strong>$68 billion</strong>, which are expected to commence in 2027 and 2028, with lease terms of 18 to 20 years."</blockquote>
-    <p>A new sentence qualifies the commitment total:</p>
-    <blockquote>"For agreements with variable terms, we do not estimate the total obligation beyond minimum quantities and/or pricing, as of the reporting date."</blockquote>
-    <p>Restricted cash moved from "certain contractual restrictions under a multi-year purchase agreement" ($5.00B) to "escrow requirements under certain multi-year infrastructure purchase agreements" ($10.80B), with release expected "between 2028 and 2030." Commitments plus unstarted leases rose about $208B in the quarter (computed), and the July leases add another ~$68B. The variable-terms caveat means the $349.31B is a minimum. The plural "agreements" and the escrow suggest counterparties are now asking Meta for collateral.</p>
+    <p class="shift">Shift: condition added (&minus;): totals exclude obligations beyond minimums; quant removed: "approximately $24 billion" April add-on sentence (replaced by the caveat)</p>
+    <blockquote>Q1 2026: "In April 2026, we entered into additional multi-year infrastructure contracts, related to which our non-cancelable contractual commitments increased by approximately $24 billion."</blockquote>
+    <blockquote>Q2 2026: "As of June 30, 2026, we had $349.31 billion of non-cancelable contractual commitments, comprising both short-term and long-term arrangements."</blockquote>
+    <blockquote>Q2 2026: "For agreements with variable terms, we do not estimate the total obligation beyond minimum quantities and/or pricing, as of the reporting date."</blockquote>
+    <p class="history">History (phrase_history): "For agreements with variable terms" and "escrow requirements" first appear in Q2 2026; the April 2026 sentence was in Q1 2026 only.</p>
+    <p>Commitments plus unstarted leases ($278.99B, up from $182.88B) rose about $208B in the quarter (computed), and July leases add about $68B more. The new caveat means the $349.31B understates agreements with usage-based pricing. Restricted cash held "in connection with escrow requirements under certain multi-year infrastructure purchase agreements" rose to $10.80B from $5.00B, now plural and released "between 2028 and 2030."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">El Paso: a second 20%-owned data-center venture, with residual value guarantees up to ~$13B</span>
+    <span class="title">El Paso: a second 20%-owned data-center venture, with residual value guarantees of up to ~$13B</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"In July 2026, we entered into an exclusivity agreement to co-develop a data center campus in El Paso, Texas, through a venture in which we would hold a <strong>20% membership interest</strong>."</blockquote>
-    <blockquote>"We will also provide residual value guarantees with a maximum aggregate exposure of approximately <strong>$13 billion</strong>."</blockquote>
-    <p>Meta expects to contribute ~$2.3B of held-for-sale assets and receive a ~$1B one-time distribution. The structure copies the Louisiana venture: a 20% stake, contributed assets, cash back to Meta, and guarantees, with maximum exposure to loss at Louisiana of $46.03B against a $2.92B carrying value. A second venture means the off-balance-sheet route is now a repeat financing channel, not a one-time arrangement, and each venture adds guarantee exposure that does not appear in debt or commitments.</p>
+    <p class="shift">Shift: named: +El Paso venture; quant added: "maximum aggregate exposure of approximately $13 billion" (+ disclosure)</p>
+    <blockquote>Q2 2026: "In July 2026, we entered into an exclusivity agreement to co-develop a data center campus in El Paso, Texas, through a venture in which we would hold a 20% membership interest."</blockquote>
+    <blockquote>Q2 2026: "We will also provide residual value guarantees with a maximum aggregate exposure of approximately $13 billion."</blockquote>
+    <p class="history">History (phrase_history): "El Paso" first appears in Q2 2026; the Louisiana Venture template (20% stake, contributed assets, cash back, RVG) first appeared in the FY2025 10-K.</p>
+    <p>Meta expects to contribute about $2.3B of held-for-sale assets and receive about $1B back. Louisiana's maximum exposure is now $46.03B on a $2.92B carrying value. A second venture makes this a repeat financing channel, and each adds guarantees that sit outside debt and commitments.</p>
   </div>
 </div>
 </div>
@@ -1331,26 +1374,29 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Data-center siting risk added: "shifting public sentiment," state and local legislation, data-center taxes</span>
+    <span class="title">Data-center siting risk added: "shifting public sentiment toward data center development," state and local legislation, data-center taxes</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <blockquote>"For example, in the United States, our industry has experienced <strong>shifting public sentiment toward data center development</strong>, as well as related legislative developments, particularly at the state and local levels. Any changes in law that <strong>increase taxes related to our data center operations</strong> could also increase our capital expenditures or operating costs."</blockquote>
-    <p>This is the first time local opposition appears as a constraint on the build. It arrives in the quarter Meta signed ~$68B of new data-center leases and disclosed a second Texas venture. Supply constraints (power, components, labor) were already listed. This new risk is about permission to build, not supplies.</p>
+    <p class="shift">Shift: realized (+): "our industry has experienced"; named: +state and local legislation, +data-center taxes</p>
+    <blockquote>Q2 2026: "For example, in the United States, our industry has experienced shifting public sentiment toward data center development, as well as related legislative developments, particularly at the state and local levels."</blockquote>
+    <p class="history">History (phrase_history): "shifting public sentiment" appears in no filing before Q2 2026; the supply-chain example that follows ("like others in our industry, we rely on certain third-party equipment") is unchanged.</p>
+    <p>Earlier constraints were supply: power, components, labor. This one is permission to build, and it arrives in the quarter Meta signed about $68B of new data-center leases and a second Texas venture.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI and data rules widen: "model extraction or theft," regulation of "the release of frontier AI models," agents "acting beyond their intended scope," state AI laws, DOJ Bulk Data Rule</span>
+    <span class="title">Releasing a frontier model treated as regulated: AI rules may restrict "the release of frontier AI models"; ability to "develop and use" widened to "develop, deploy, release to the public, or use"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2026: "...may adversely affect our ability to develop and use AI or subject us to legal liability." Q2 2026:</p>
-    <blockquote>"Changes in laws, rules, directives, and regulations or other regulatory developments regarding the use of AI, including restrictions around the collection and use of data <strong>or the release of frontier AI models</strong>, may adversely affect our ability to <strong>develop, deploy, release to the public, or use</strong> AI or subject us to legal liability."</blockquote>
-    <blockquote>"...including prompt injection, circumvention of AI safety controls to generate harmful or otherwise unauthorized outputs, errors, <strong>agents acting beyond their intended scope</strong>, and other issues related to AI agents..."</blockquote>
-    <p>"Model extraction or theft" joins the AI risk list. AI frameworks change from "considering" to "considering or have enacted," with "various U.S. state AI laws" named. The cyber risk factor adds the DOJ Bulk Data Rule. Youth regulation adds Nebraska and "an increasing number of other countries have passed or are considering youth social media bans," and warns of "limitations of age verification technologies." Releasing a frontier model is now treated as a regulated act, which fits the FY2025 move to "a combination of open and closed models."</p>
+    <p class="shift">Shift: scope widened (&minus;); named: +frontier AI models, +model extraction or theft, +agents acting beyond their intended scope, +U.S. state AI laws</p>
+    <blockquote>Q1 2026: "It is not possible to predict all of the risks related to the use of AI and changes in laws, rules, directives, and regulations or other regulatory developments regarding the use of AI, including restrictions around the collection and use of data, may adversely affect our ability to develop and use AI or subject us to legal liability."</blockquote>
+    <blockquote>Q2 2026: "Changes in laws, rules, directives, and regulations or other regulatory developments regarding the use of AI, including restrictions around the collection and use of data or the release of frontier AI models, may adversely affect our ability to develop, deploy, release to the public, or use AI or subject us to legal liability."</blockquote>
+    <p class="history">History (phrase_history): the Q1 sentence stood unchanged in 7 filings (FY2023 through Q1 2026); "release of frontier AI models," "model extraction or theft" and "agents acting beyond their intended scope" all first appear in Q2 2026.</p>
+    <p>The risk list now covers releasing a model to the public, not just building one, consistent with the FY2025 move to "a combination of open and closed models." Frameworks also change from "considering" to "considering or have enacted," with "various U.S. state AI laws."</p>
   </div>
 </div>
 </div>
@@ -1361,16 +1407,30 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Youth-case exposure restated from "high tens of billions" to "more than a trillion dollars"; arbitration claimants double to 200,000+; New Mexico abatement demand cut from $3.7B to $953M</span>
+    <span class="title">Youth-case exposure: "intend to seek... high tens of billions" &rarr; "could seek... more than a trillion dollars"; company-wide "hundreds of billions" left unchanged</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2026:</p>
-    <blockquote>"Across the cases described above, the damages, disgorgement, or penalties that plaintiffs have indicated they intend to seek range widely in amount, including in certain cases up to the high tens of billions of dollars."</blockquote>
-    <p>Q2 2026:</p>
-    <blockquote>"Across the cases described above, the damages, disgorgement, or penalties that plaintiffs have indicated they <strong>could seek</strong> range widely in amount, including in certain cases up to <strong>more than a trillion dollars</strong>."</blockquote>
-    <blockquote>"Following that trial, the New Mexico Attorney General is seeking <strong>$953 million</strong> in abatement costs and a broad set of injunctive terms..."</blockquote>
-    <p>Arbitration demands went from "over one hundred thousand" to "over two hundred thousand" claimants. The MDL state-AG trial (August 12, 2026) now includes "a federal claim for disgorgement asserted by all 29 state attorneys general." The first school-district bellwether settled, and the second user bellwether was dismissed by the plaintiff. Two changes work together here. "Intend to seek" became "could seek," which lets the filing cite a theoretical maximum. That maximum for youth cases alone is now larger than the company-wide figure for all proceedings, "up to hundreds of billions of dollars," which was left unchanged, so the two figures no longer reconcile. The one demand that was actually tried came down by three quarters.</p>
+    <p class="shift">Shift: certainty: intend &rarr; could (&minus;, signals score 4.3); figure: "high tens of billions" &rarr; "more than a trillion dollars"</p>
+    <blockquote>Q1 2026: "Across the cases described above, the damages, disgorgement, or penalties that plaintiffs have indicated they intend to seek range widely in amount, including in certain cases up to the high tens of billions of dollars."</blockquote>
+    <blockquote>Q2 2026: "Across the cases described above, the damages, disgorgement, or penalties that plaintiffs have indicated they could seek range widely in amount, including in certain cases up to more than a trillion dollars."</blockquote>
+    <p class="history">History (phrase_history): "high tens of billions" in Q3 2025, FY2025 and Q1 2026; "could seek" and "more than a trillion dollars" first in Q2 2026. The aggregate sentence ("up to hundreds of billions of dollars") is unchanged since Q3 2025.</p>
+    <p>The verb changes as the number grows: the trillion is what plaintiffs "could" seek, not what they say they will. The youth figure now exceeds the company-wide aggregate, which was not updated, so the two figures no longer reconcile. Arbitration claimants doubled to "over two hundred thousand."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New Mexico abatement demand cut from "approximately $3.7 billion" to $953 million after the bench trial</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures $3.7B &rarr; $953M (signals rank 1, score 7.0); hedge dropped: "approximately"; realized: "intend to seek" &rarr; "is seeking"</p>
+    <blockquote>Q1 2026: "The New Mexico Attorney General has indicated that they intend to seek approximately $3.7 billion in abatement costs as well as injunctive relief, which includes requests for extensive changes to the manner in which we provide our services in New Mexico."</blockquote>
+    <blockquote>Q2 2026: "Following that trial, the New Mexico Attorney General is seeking $953 million in abatement costs and a broad set of injunctive terms, which include requests for extensive changes to the manner in which we provide our services in New Mexico."</blockquote>
+    <p class="history">History (phrase_history): "$3.7 billion in abatement" stated in Q1 2026 only; "$953 million" first in Q2 2026. The court "has not yet issued a decision."</p>
+    <p>The only youth demand that has gone through a trial fell by about 74% (computed) in the same filing that raised the theoretical maximum to over a trillion dollars. Tested claims are shrinking while untested ones are restated upward.</p>
   </div>
 </div>
 
@@ -1381,51 +1441,29 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <p>Q1 2026:</p>
-    <blockquote>"While we have identified below certain matters that we believe to be material, there can be no assurance that additional material losses or limitations on our activities will not result from claims that have not yet been asserted or are not yet determined to be material."</blockquote>
-    <p>Q2 2026:</p>
-    <blockquote>"We have identified below certain significant matters, some of which may be material."</blockquote>
-    <p>The introduction also adds "Outside of the United States, courts are also limiting the application of intermediary liability protections in certain claims." Meta now presents the listed cases as significant rather than material. This is the same quarter it took $2.40B of legal charges and cited a trillion-dollar figure, so the change narrows what the company concedes is material.</p>
+    <p class="shift">Shift: degree: material &rarr; significant (&minus;); hedge added: "some of which may be"</p>
+    <blockquote>Q1 2026: "While we have identified below certain matters that we believe to be material, there can be no assurance that additional material losses or limitations on our activities will not result from claims that have not yet been asserted or are not yet determined to be material."</blockquote>
+    <blockquote>Q2 2026: "We have identified below certain significant matters, some of which may be material."</blockquote>
+    <p class="history">History (phrase_history): "that we believe to be material" in 7 consecutive filings (FY2023 10-K through Q1 2026); "some of which may be material" first in Q2 2026.</p>
+    <p>Meta no longer concedes that each listed case is material, in the quarter it took $2.40B of legal charges. The same introduction adds that "Outside of the United States, courts are also limiting the application of intermediary liability protections in certain claims."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">EU orders free WhatsApp Business API access for rival AI chatbots (interim measure); probes also in Africa, Brazil, Turkey</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"While its investigation remains ongoing, in June 2026, the European Commission imposed an <strong>interim measure requiring WhatsApp to offer access to the API for free</strong> for such general purpose AI providers. We intend to appeal that interim measure. There are similar competition investigations in Africa, Brazil, and Turkey."</blockquote>
-    <p>This is the first competition case in the dataset about rivals' access to Meta's platform for AI distribution. The EU opened it in December 2025, but it first appears in this filing. A free-access order turns WhatsApp, one of the two new ad surfaces in the FY2025 10-K, into a free channel for competing assistants.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">AI-copyright docket grows to nine new cases, including Elsevier, now in SDNY; Kadrey adds "contributory infringement"</span>
+    <span class="title">Flo Health class shrinks from "up to approximately 1.6 million" to 1.25 million members ($8.0B &rarr; $6.25B at $5,000 each); UK CAT data trial pushed from September 2027 to October 2028</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
-    <blockquote>"Beginning in November 2025, additional cases with similar claims were filed against us in the U.S. District Court for the Northern District of California <strong>and the Southern District of New York</strong> (Entrepreneur Media v. Meta Platforms, Inc., Carreyrou et al. v. Meta Platforms, Inc., TED Entertainment, Inc. v. Meta Platforms, Inc., Chicken Soup for the Soul LLC v. Meta Platforms, Inc., Beaulier v. Meta Platforms, Inc., Cognella, Inc. v. Meta Platforms, Inc., Elsevier Inc. et al. v. Meta Platforms, Inc. et al., Hobbs et al. v. Meta Platforms, Inc. et al., and Sullivan v. Meta Platforms, Inc. et al.)."</blockquote>
-    <p>Q1 listed four, two of them captioned against Anthropic. The remaining Kadrey claim widens from "copyright infringement due to alleged distribution" to "claims of copyright infringement and contributory infringement." The first trial is set for May 24, 2027. The FY2025 10-K introduced per-work statutory damages, so the risk scales with the number of works, and the plaintiffs now include an academic publisher.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">Second EU preliminary finding on minors: Facebook and Instagram "present potentially addictive design features"</span>
-    <span class="tag tag-new">New</span>
-  </div>
-  <div class="finding-body">
-    <blockquote>"On April 29, 2026 and July 10, 2026, respectively, the Commission issued preliminary findings with respect to some of these topics, reflecting its preliminary view that users under 13 years of age are present on Facebook and Instagram <strong>and that both platforms present potentially addictive design features</strong>..."</blockquote>
-    <p>The scope of government inquiries widens to include "compliance with applicable laws." "Addictive design" is the central theory of the U.S. youth MDL. A regulator has now taken a preliminary view in its favor, adding to the under-13 finding from three months earlier.</p>
+    <p class="shift">Shift: figures 1.6 million &rarr; 1.25 million (exposure down, +); date pushed out</p>
+    <blockquote>Q1 2026: "Plaintiffs are seeking $5,000 in statutory damages per class member and have asserted that there are up to approximately 1.6 million class members."</blockquote>
+    <blockquote>Q2 2026: "Plaintiffs are seeking $5,000 in statutory damages per class member and have asserted that there are up to approximately 1.25 million class members."</blockquote>
+    <p class="history">History (phrase_history): "1.6 million class members" in Q3 2025, FY2025 and Q1 2026; "1.25 million" first in Q2 2026. "September 2027" trial date for the UK Lovdahl-Gormsen claim stood in three filings; "October 2028" first in Q2 2026.</p>
+    <p>At the plaintiffs' own figures, the Flo Health ceiling falls by about $1.75B (computed). It is the one quantified per-member claim in the note and it moved in Meta's favor, although related individual and class actions now include Canada as well as Europe. The filing still says "the amount of potential damages is uncertain."</p>
   </div>
 </div>
 </div>
-
 
 <!-- ==================== TRACKED SIGNALS ==================== -->
 
