@@ -1,0 +1,57 @@
+META FY2024 10-K (year ended December 31, 2024; filed January 30, 2025)
+Fundamentals answers vs the FY2023 10-K. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [better]
+   Revenue $164.50B, +22% (FY2023 +16%); constant currency +23%. Ad impressions +11%
+   (+28% in 2023), average price per ad +10% (-9% in 2023). FoA other revenue +63% on
+   WhatsApp Business Platform. RL revenue +13% to $2.15B. DAP 3.35B, +5%. Online commerce
+   the largest contributor. No backlog or bookings disclosed. (MD&A, Revenue)
+
+2. Margins and unit economics [better]
+   Operating income $69.38B, +48%; margin 42% vs 35%. FoA margin 54% vs 47%. Costs +8%:
+   cost of revenue +16% (depreciation), R&D +14%, M&S -8%, G&A -15% "mostly driven by a
+   favorable impact of $1.55 billion in legal-related costs." RL loss $17.73B, +10%.
+   (MD&A, Executive Overview; Segment results)
+
+3. Earnings quality [worse: flattered]
+   Net income $62.36B, +59%. The $1.55B legal reversal (2% of operating income) and a 12%
+   ETR (18% in 2023) from SBC excess tax benefits and research credits both help. 2025
+   gets a further ~$2.9B lower depreciation from the useful-life change (see 8).
+   (MD&A, G&A; Provision for income taxes)
+
+4. Cash conversion [better]
+   OCF $91.33B, +28%; FCF (company definition, incl. finance lease principal) $52.10B vs
+   $43.01B; OCF less purchases of property and equipment $54.07B, 87% of net income.
+   Cash taxes $10.55B, raised by R&D capitalization. DSO 38 days (44). (MD&A, Liquidity;
+   Free Cash Flow)
+
+5. Capital allocation [better]
+   Capex incl. finance leases $39.23B. Buybacks $29.75B; first year of dividends, $5.07B
+   ($2.00 per share); returns 67% of FCF. RSU net-settlement taxes $13.77B. $10.43B of
+   notes (August). $51.28B authorization left. (MD&A, Liquidity; Capital Return Program)
+
+6. Balance sheet and contingent exposure [held]
+   Long-term debt $28.83B. Cash and securities $77.81B. Commitments $32.82B, "primarily
+   related to" servers, network infrastructure and content costs. Leases not yet
+   commenced ~$34.12B, commencing 2025-2030 with terms up to 30 years. (Notes 8, 10, 12)
+
+7. Concentration [worse]
+   China revenue $18.35B, 11% of revenue (10% in 2023, 6% in 2022); risk factor on "a
+   small number of resellers" serving China-based advertisers. (Note 2; Risk Factors)
+
+8. Accounting judgments [worse]
+   Servers and network assets extended to a 5.5-year useful life from 2025, expected to
+   "reduce our full-year 2025 depreciation expense by approximately $2.9 billion" (4% of
+   FY2024 operating income). Violating accounts estimated at less than 3% of DAP.
+   (Note 1; MD&A, Critical Accounting Estimates)
+
+9. Legal, regulatory and governance [worse]
+   EU Marketplace fine ~EUR 798M (Nov 2024), appealed. DMA and DSA proceedings continue;
+   less personalized ads launched in the EU. FTC antitrust trial pending. Legal-related
+   accruals $5.52B ($6.59B). Net uncertain tax positions $9.99B. (Note 12; Legal
+   Proceedings; Note 15)
+
+10. Guidance and commitments [held]
+   2024 capex $39.23B, within the $38-40B guide. RL losses rose, as guided. Q4 tax rate
+   about 12% (computed), "low-teens" as guided. New: 2025 capex $60-65B; RL losses "to
+   increase in 2025"; 2025 tax rate 12-15%; dividend to continue.

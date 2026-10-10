@@ -1,0 +1,61 @@
+META Q3 2024 10-Q (quarter ended September 30, 2024; filed October 31, 2024)
+Fundamentals answers vs the Q2 2024 10-Q. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [worse: slower, still high]
+   Revenue $40.59B, +19% (Q2 +22%); constant currency +20%. Ad impressions +7% (Q2 +10%;
+   +31% a year earlier), average price per ad +11% (Q2 +10%), credited to "ongoing
+   improvements to our ad performance from our ad targeting and measurement tools." DAP
+   3.29B, +5%; ARPP $12.29, +12%. U.S. & Canada +16%, Europe +22%, Asia-Pacific +19%, Rest
+   of World +24%. RL revenue +29% ($270M). (MD&A, Revenue; Family metrics)
+
+2. Margins and unit economics [better]
+   Operating income $17.35B, +26%; margin 43% vs 40% (Q2 38%). FoA margin 54% vs 52%;
+   FoA operating income +25%. Costs +14% vs revenue +19%: cost of revenue +19% on
+   depreciation, R&D +21% on a 12% rise in technical headcount, M&S -2%, G&A -10% on lower
+   legal costs. RL loss $4.43B, +18%. (MD&A, Segment results; Costs and expenses)
+
+3. Earnings quality [held]
+   Net income $15.69B, +35%. ETR 12% vs 17% "mostly due to excess tax benefits recognized
+   from share-based compensation and an increase in research tax credits." Interest and
+   other income +$200M on higher balances and rates. No large one-offs. (MD&A, Provision
+   for income taxes)
+
+4. Cash conversion [better]
+   Q3 OCF $24.72B; OCF less purchases of property and equipment $16.47B vs $13.76B a
+   year earlier (+20%), 105% of net income. Nine-month OCF $63.34B, +22%, despite "higher
+   cash paid for income taxes" (R&D capitalization). DSO 33 days (Q2 34). SBC 17% of OCF.
+   (MD&A, Liquidity; financials.py)
+
+5. Capital allocation [held]
+   Capex incl. finance leases $9.20B. Buybacks $8.86B, dividends $1.26B. Nine-month
+   capital returns $33.93B plus $9.91B of RSU net-settlement taxes ($43.84B) exceeded OCF
+   less capex ($38.95B); $10.43B of notes issued in August. $51.28B authorization left.
+   (MD&A, Liquidity; Capital Return Program)
+
+6. Balance sheet and contingent exposure [worse]
+   Notes $29.0B principal (from $18.5B). Cash and securities $70.90B. Non-cancelable
+   commitments $32.14B (Q2 $19.82B), "mostly related to" servers, network and RL hardware.
+   Operating leases not yet commenced $18.49B (Q2 $6.20B), commencing through 2029.
+   Renewable energy agreements ~$18.01B estimated spend. (Notes 8, 10, 12)
+
+7. Concentration [held]
+   No change to the China reseller disclosure. Risk factors move tariff language to the
+   present tense and add "computing power, and related energy requirements" to AI
+   infrastructure dependencies. (Risk Factors)
+
+8. Accounting judgments [held]
+   "There have been no material changes to our critical accounting estimates" since the
+   FY2023 10-K. Restructuring charges continue to roll off. (MD&A, Critical Accounting
+   Estimates)
+
+9. Legal, regulatory and governance [held]
+   Legal-related accruals $7.48B (Q2 $7.96B). EU Marketplace case: "we have accrued a
+   significant amount." DMA preliminary finding (July 2024) that "subscription for no
+   ads" does not comply. EU DSA proceedings on minors and elections. New Mexico AG trial set
+   for May 2025; Delaware derivative trial April 2025. IRS 2010 transfer-pricing case
+   still in Tax Court; uncertain tax positions $9.17B. (Note 12; Note 14; Legal Proceedings)
+
+10. Guidance and commitments [held / moved]
+   2024 capex $37-40B -> $38-40B, plus "significant capital expenditures growth in 2025."
+   Q4 2024 tax rate "in the low-teens." RL losses "to increase meaningfully in 2024"
+   reaffirmed. Dividend intent restated.

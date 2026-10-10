@@ -1,0 +1,60 @@
+META Q1 2026 10-Q (quarter ended March 31, 2026; filed April 30, 2026)
+Fundamentals answers vs the FY2025 10-K (and the same quarter of 2025). Figures from SEC XBRL
+(financials.py) unless quoted.
+
+1. Growth and pricing [better]
+   Revenue $56.31B, +33% (FY2025 +22%); constant currency +29%. Ad impressions +19% (+5% a
+   year earlier), now driven by users, engagement "as well as the frequency of ads shown";
+   price per ad +12%, helped by "a favorable foreign currency exchange impact." DAP 3.56B,
+   +4%, after "a slight decline" quarter on quarter (Iran, Russia). U.S. & Canada +29%,
+   Europe +39%, Asia-Pacific +29%, Rest of World +40%. FoA other revenue +74%. RL revenue
+   -2%. (MD&A, Revenue; Family metrics)
+
+2. Margins and unit economics [worse]
+   Operating income $22.87B, +30%; margin 41% (41%). FoA margin 48% vs 52%; FoA costs +44%.
+   Costs +35%: cost of revenue +35%, R&D +46% "mainly driven by an increase in
+   share-based compensation expense," G&A +15% on legal costs net of a Canadian DST
+   reversal. RL loss $4.03B, -4%. (MD&A, Costs and expenses; Segment results)
+
+3. Earnings quality [worse: flattered]
+   Net income $26.77B, +61%, includes an $8.03B CAMT transitional relief benefit; ETR
+   (23)%, 14% excluding it. (MD&A, Executive Overview; Provision for income taxes)
+
+4. Cash conversion [better]
+   OCF $32.23B, +34%; OCF less purchases of property and equipment $13.23B vs $11.09B
+   (+19%), 49% of net income. Cash taxes $541M. DSO 28 days. SBC 19% of OCF. (MD&A,
+   Liquidity; financials.py)
+
+5. Capital allocation [worse]
+   Capex incl. finance leases $19.84B; 2026 guide raised to $125-145B. No share
+   repurchases ($25.03B authorization unused); dividend $0.525 not raised in February.
+   19M stock options granted at a $2,788 weighted-average strike. (MD&A, Liquidity;
+   Stockholders' Equity note)
+
+6. Balance sheet and contingent exposure [worse]
+   Notes $59.00B. Commitments $237.67B (FY2025 $131.05B), plus ~$24B in April and $14.72B
+   of contingent cloud capacity; $42.25B due in 2026, $47.65B in 2027. Leases not yet
+   commenced ~$182.88B, commencing through 2036. $5.00B of money market funds held as
+   restricted cash. Louisiana maximum exposure $45.99B. (MD&A, Liquidity; Notes)
+
+7. Concentration [held]
+   China reseller language unchanged. DAP dip attributed to Iran internet disruptions and
+   a WhatsApp restriction in Russia. (MD&A; Risk Factors)
+
+8. Accounting judgments [worse]
+   Risk factors now warn that excess infrastructure "may lead to impairment of assets on
+   our balance sheet," while impairment is no longer a critical accounting estimate
+   (dropped in FY2025). "Third-party cloud costs" added to cost of revenue and R&D
+   definitions. (Risk Factors; MD&A)
+
+9. Legal, regulatory and governance [worse]
+   First youth verdicts: New Mexico jury civil penalty of $375M, with ~$3.7B of abatement
+   sought; first bellwether $6M (70% Meta). A second New Mexico case seeks "up to $62.85
+   billion in penalties" (trial September 8, 2026). EU preliminary DSA finding that users
+   under 13 are present on Facebook and Instagram. IRS 2017-2019 notice unchanged. (Note
+   on Contingencies; Legal Proceedings)
+
+10. Guidance and commitments [moved]
+   2026 capex $115-135B -> $125-145B. RL 2026 losses "remain similar to 2025"
+   reaffirmed. Tax rate for remaining quarters of 2026 13-16%. Headcount 77,986 (-879 from
+   December) and "we also continue to evaluate our workforce."

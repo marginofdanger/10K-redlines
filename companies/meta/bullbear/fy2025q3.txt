@@ -1,0 +1,61 @@
+META Q3 2025 10-Q (quarter ended September 30, 2025; filed October 30, 2025)
+Fundamentals answers vs the Q2 2025 10-Q. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [better]
+   Revenue $51.24B, +26% (Q2 +22%). Ad impressions +14% (Q2 +11%), price per ad +10% (Q2
+   +9%). DAP 3.54B, +8%. U.S. & Canada +24%, Europe +29%, Asia-Pacific +25%, Rest of World
+   +32%. FoA other revenue +59%. RL revenue +74% ($470M) on Quest and AI glasses.
+   (MD&A, Revenue)
+
+2. Margins and unit economics [worse]
+   Operating income $20.54B, +18%; margin 40% vs 43%, the first year-on-year decline in
+   the window. Costs +32%: cost of revenue +25%, R&D +35% "to support our AI initiatives,"
+   G&A +88% "primarily due to higher legal-related costs." Excluding G&A, costs +27%
+   (computed). FoA margin 49% vs 54%. RL loss flat at $4.43B. "Headcount" dropped from
+   the AI investment sentence. (MD&A, Costs and expenses; Segment results)
+
+3. Earnings quality [worse]
+   Net income $2.71B (EPS $1.05) after a $15.93B discrete OBBBA charge, mostly a valuation
+   allowance on U.S. federal deferred tax assets under CAMT: non-cash and non-recurring,
+   so reported earnings understate the run-rate. ETR 87%. Legal costs back up. (MD&A,
+   Provision for income taxes)
+
+4. Cash conversion [worse]
+   OCF $30.00B, +21%; OCF less purchases of property and equipment $11.17B vs $16.47B
+   (-32%), on capex of $18.83B. Nine-month cash taxes $6.29B. DSO 31 days. (MD&A,
+   Liquidity; financials.py)
+
+5. Capital allocation [worse]
+   Capex incl. finance leases $19.37B. Buybacks $3.16B (Q2 $9.76B; Q3 2024 $8.86B),
+   dividends $1.33B. Nine-month non-marketable equity purchases $18.26B. Louisiana
+   data-center venture closed in October (subsequent event): Meta contributed $4.3B,
+   received a $2.6B distribution, holds 20%. (MD&A, Liquidity; Note 13)
+
+6. Balance sheet and contingent exposure [worse]
+   Commitments $81.19B (Q2 $27.95B), "mostly related to third-party cloud capacity
+   arrangements," plus ~$40B of cloud contracts in October. Leases not yet commenced
+   ~$58.14B. Louisiana: $12.3B initial lease commitment from 2029 and a residual value
+   guarantee threshold that "effectively begins at $28 billion." Cash and securities
+   $44.45B. Liquidity sentence drops "thereafter for the foreseeable future" and adds
+   that Meta "may also seek to raise additional capital through debt, equity, or other
+   financing arrangements." (MD&A, Liquidity; Note 13)
+
+7. Concentration [held]
+   No change to China reseller language. Growth broad-based across regions. UK Online
+   Safety Act added to named laws. (Risk Factors)
+
+8. Accounting judgments [held]
+   Valuation allowance policy "incorporates the expected impact of future years' CAMT."
+   Louisiana venture to be an unconsolidated VIE under the equity method. (Notes)
+
+9. Legal, regulatory and governance [worse]
+   New aggregate sentence: damages sought "could amount to an aggregate of up to hundreds
+   of billions of dollars." Youth cases "up to the high tens of billions"; first state-AG
+   trial (New Mexico) set for February 2, 2026; tens of thousands of arbitration
+   claimants. IRS 2017-2019 notice asserts "an additional $15.89 billion in tax." FTC and
+   Congressional AI-chatbot inquiries named. DMA impact window moved to "later in the
+   fourth quarter of 2025." (Note on Contingencies; Note on Income Taxes; Risk Factors)
+
+10. Guidance and commitments [moved]
+   2025 capex $66-72B -> $70-72B, and "significant capital expenditures growth in 2026."
+   RL losses to increase in 2025 reaffirmed. No updated 2025 tax-rate range (87% quarter).

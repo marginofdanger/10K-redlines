@@ -1,0 +1,56 @@
+META Q2 2025 10-Q (quarter ended June 30, 2025; filed July 31, 2025)
+Fundamentals answers vs the Q1 2025 10-Q. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [better]
+   Revenue $47.52B, +22% (Q1 +16%). Ad impressions +11% (Q1 +5%), price per ad +9% (Q1
+   +10%). DAP 3.48B, +6%. U.S. & Canada +21%, Europe +24%, Asia-Pacific +19%, Rest of World
+   +24%. FoA other revenue +50%, "mostly driven by paid messaging from WhatsApp and Meta
+   Verified subscriptions." RL revenue +5% on Ray-Ban Meta AI glasses. "Superintelligence"
+   enters the AI investment sentence. (MD&A, Revenue; Investment Philosophy)
+
+2. Margins and unit economics [better]
+   Operating income $20.44B, +38%; margin 43% vs 38%, the high point of the window. FoA
+   margin 53% vs 50%. Costs +12%: cost of revenue +16%, R&D +23%, M&S +9%, G&A -27% on
+   lower legal costs. RL loss $4.53B, +1%. (MD&A, Segment results)
+
+3. Earnings quality [held]
+   Net income $18.34B, +36%. Lower G&A (-$995M) still helps; ex that, operating income
+   about +31% (computed). Tax Court opinion led to a remeasurement that "increased" the
+   tax provision (amount not given); ETR 11%. (MD&A; Note on Income Taxes)
+
+4. Cash conversion [worse]
+   OCF $25.56B, +32%; OCF less purchases of property and equipment $9.02B vs $11.20B
+   (-19%), 49% of net income. OBBBA (enacted July 4) expected to cut U.S. federal cash
+   taxes "for the remainder of 2025 and future years." H1 cash taxes $5.54B. DSO 32 days.
+   (MD&A, Liquidity; Provision for income taxes)
+
+5. Capital allocation [worse]
+   Capex incl. finance leases $17.01B; 2025 guide floor raised to $66B. Scale AI stake:
+   $13.79B in non-marketable equity (measurement alternative); H1 equity investments
+   $15.21B. Buybacks $9.76B, dividends $1.33B. (MD&A, Liquidity; Notes)
+
+6. Balance sheet and contingent exposure [worse]
+   Cash and securities $47.07B, down $30.74B in H1: uses of $80.48B vs $49.59B of OCF
+   (computed). Leases not yet commenced ~$52.56B (Q1 $35.27B). Commitments $27.95B, now
+   including data centers. Notes $29.0B. Uncertain tax positions $12.05B. (MD&A,
+   Liquidity; Leases and Contractual Commitments)
+
+7. Concentration [held]
+   No change to China reseller language. Europe grew 24% despite less personalized ads
+   modifications made after the DMA decision. (MD&A; Risk Factors)
+
+8. Accounting judgments [held]
+   Scale AI carried at cost under the measurement alternative (no fair-value marks unless
+   an observable price change or impairment). No change to critical estimates. (Notes)
+
+9. Legal, regulatory and governance [worse]
+   Tax Court (May 22, 2025) valued the 2010 IP transfer at $7.79B, "$1.48 billion higher
+   than we reported"; IRS applies the same method to later years. DMA decision appealed
+   July 4, 2025; impact window now "as early as later in the third quarter of 2025."
+   (Note on Income Taxes; Legal Proceedings)
+
+10. Guidance and commitments [moved]
+   2025 capex $64-72B -> $66-72B, now "to support our core business and AI efforts"
+   ("generative" dropped). 2025 tax rate now expected to be "higher than our tax rate in
+   the second quarter of 2025" because of OBBBA (not quantified). RL losses to increase in
+   2025 reaffirmed.

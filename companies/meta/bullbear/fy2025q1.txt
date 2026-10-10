@@ -1,0 +1,60 @@
+META Q1 2025 10-Q (quarter ended March 31, 2025; filed May 1, 2025)
+Fundamentals answers vs the FY2024 10-K (and the same quarter of 2024). Figures from SEC XBRL
+(financials.py) unless quoted.
+
+1. Growth and pricing [worse]
+   Revenue $42.31B, +16% (FY2024 +22%), the slowest quarter in the window; constant
+   currency +19%. Ad impressions +5% (+20% a year earlier), price per ad +10% (+6%). DAP
+   3.43B, +6%. U.S. & Canada +18%, Europe +14%, Asia-Pacific +13%, Rest of World +20%. RL
+   revenue -6% (Quest down, Ray-Ban Meta up). Macro paragraph adds "volatility around
+   international trade." (MD&A, Revenue; Other Business and Macroeconomic Conditions)
+
+2. Margins and unit economics [held]
+   Operating income $17.56B, +27%; margin 41% vs 38%. FoA margin 52% vs 49%. Costs +9%:
+   cost of revenue +14% (with a "decrease in the depreciation growth rate" from longer
+   server lives), R&D +22%, G&A -34% "primarily driven by lower legal-related costs." RL
+   loss $4.21B, +9%. "Discipline and habits" language replaced by "operating
+   efficiently." (MD&A, Costs and expenses; Investment Philosophy)
+
+3. Earnings quality [held: flattered]
+   Net income $16.64B, +35%. G&A down $1.18B on legal costs and ETR 9% on SBC excess tax
+   benefits flatter growth; ex the G&A decline, operating income about +19% (computed).
+   (MD&A, G&A; Provision for income taxes)
+
+4. Cash conversion [worse]
+   OCF $24.03B, +25%. OCF less purchases of property and equipment $11.09B vs $12.85B
+   (-14%), 67% of net income: the first year-on-year decline in the window. Cash taxes
+   $448M, with a $3.72B payment in April. DSO 31 days. (MD&A, Liquidity; financials.py)
+
+5. Capital allocation [held]
+   Capex incl. finance leases $13.69B (vs $6.72B). Buybacks $13.40B; dividend raised to
+   $0.525 from $0.50 ($1.33B paid). Capital returns $14.08B plus RSU taxes $4.88B =
+   $18.96B vs OCF less capex incl. finance leases $10.34B. Authorization $37.95B left.
+   (MD&A, Liquidity; Capital Return Program)
+
+6. Balance sheet and contingent exposure [worse]
+   Cash and securities $70.23B, down $7.58B, the first decline in the window. Notes
+   $29.0B. Leases not yet commenced ~$35.27B (commencing through 2034). Commitments
+   $30.05B, now "primarily related to" servers, network infrastructure and content
+   costs. Uncertain tax positions $10.92B. (MD&A, Liquidity; Notes)
+
+7. Concentration [worse]
+   Europe (by customer address) $9.62B, 23% of revenue, now exposed to DMA ad-model
+   changes. Trade-policy uncertainty named in the MD&A; tariff risk language expanded.
+   China reseller language unchanged. (Note 2; MD&A; Risk Factors)
+
+8. Accounting judgments [worse]
+   Useful-life extension in effect; the 10-Q describes only a "decrease in the
+   depreciation growth rate" and gives no quarterly benefit. No change to critical
+   estimates. (MD&A, Cost of revenue)
+
+9. Legal, regulatory and governance [worse]
+   DMA: April 2025 decision that "subscription for no ads" does not comply, fine EUR 200M;
+   Meta expects modifications that could cause "a significant impact to our European
+   business and revenue as early as the third quarter of 2025." FTC antitrust trial began
+   April 14, 2025. EU Marketplace fine under appeal. (Note on Commitments and
+   Contingencies; Legal Proceedings)
+
+10. Guidance and commitments [moved]
+   2025 capex $60-65B -> $64-72B one quarter after it was set. 2025 tax rate 12-15%
+   reaffirmed. RL losses "to increase in 2025" reaffirmed.
