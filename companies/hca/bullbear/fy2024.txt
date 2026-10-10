@@ -1,0 +1,52 @@
+HCA FY2024 10-K (filed February 14, 2025; period ended December 31, 2024)
+Fundamentals answers. Marker = versus the FY2023 10-K. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [BETTER]
+   Revenue $70.60B, +8.7% (2023 +8.3%); equivalent admissions +5.3%, revenue per equivalent admission
+   +3.2% (MD&A, Operations Summary): volume-led. Admissions +5.0%, ER visits +4.8%, inpatient surgeries
+   +2.2%, outpatient surgeries -1.9%. SDP and supplemental revenue about $4.9B vs $3.9B (later
+   restated to $5.5B and $4.4B in the FY2025 10-K).
+
+2. Margins and unit economics [HELD]
+   Pre-tax income $8.52B (12.1% of revenue) vs $7.71B (11.9%). Salaries 44.1% vs 45.4%; supplies flat at
+   15.2%; other operating expenses 21.0% vs 19.8% (state provider fees, professional fees, Milton
+   remediation). The labor gain was mostly absorbed by provider fees that fund SDP programs.
+
+3. Earnings quality [BETTER]
+   EPS $22.00 is depressed by a $276M deferred-tax derecognition from an internal restructuring (income
+   taxes note) and about $250M ($0.73 per share) of hurricane costs. Offsets: $102M equity-award tax
+   benefits, $61M lower tax interest/penalties, $14M facility-sale gains. Adverse prior-year professional
+   liability development $82M (2023: $46M).
+
+4. Cash conversion [BETTER]
+   Operating cash flow $10.51B (+$1.08B); FCF $5.64B = 98% of net income (89% in 2023). Inventories
+   reduced by a "targeted effort"; receivables +$793M. DSO 53 at Q4.
+
+5. Capital allocation [WORSE]
+   Buybacks $6.04B (17.8M shares) + dividends $0.69B = $6.73B, 119% of FCF; net debt increase $3.21B.
+   Capex $4.875B (guide "approximate $5 billion"). Acquisitions $266M. New $10B authorization (January
+   2025); dividend raised to $0.72 from $0.66.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Debt $43.03B vs $39.59B. Working capital $1.237B vs $2.272B ($2.274B more debt due within a year).
+   Secured facilities with $7.986B available; covenants still restrict dividends and repurchases.
+   Variable-rate debt $1.238B. No guarantees disclosed.
+
+7. Concentration [HELD]
+   Florida (46 hospitals, $16.60B) and Texas (54 hospitals, $19.83B): 52% of revenue (51%), 59% of
+   admissions, 74% of uninsured admissions.
+
+8. Accounting judgments [WORSE]
+   Professional liability: second adverse year ($82M vs $46M); net reserves $2.051B vs $2.047B on about
+   2,100 claims. Captive coverage limit raised to $110M per occurrence from 2025. SDP revenue figure
+   later restated upward without explanation.
+
+9. Legal, regulatory and governance [HELD]
+   Legal proceedings unchanged. EPTCs extended only through 2025; the filing believes expiry "would
+   adversely impact Exchange enrollment and significantly increase the uninsured rate". IRS closed
+   2016-2018 examinations.
+
+10. Guidance and commitments [HELD]
+   2024 capex: $4.875B vs about $5B (slightly under). Q4 hurricane guide $200-300M: full-year $250M
+   including Q3's $50M, so about $200M in Q4 (low end). New: 2025 capex $5.0-5.2B; $10B buyback
+   authorization; dividend $0.72.
