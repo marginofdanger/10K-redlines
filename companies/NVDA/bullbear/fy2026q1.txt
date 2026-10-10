@@ -1,0 +1,47 @@
+NVIDIA FY2026 Q1 10-Q (filed May 28, 2025; quarter ended April 27, 2025)
+Fundamentals answers. Marker = versus the FY2025 10-K.
+
+1. Growth and pricing [HELD]
+   Revenue $44.1B, +69% y/y, +12% q/q; Data Center $39.1B (+73%); compute $34.2B, networking $5.0B
+   (+64% q/q, NVLink in GB200). H20 sales $4.6B before the April 9 license requirement. Blackwell
+   "ramp expand[ed] to all customer categories"; large cloud providers "just under 50%" of DC.
+
+2. Margins and unit economics [WORSE]
+   Gross margin 60.5% (78.4% a year ago, 73.0% in Q4); the $4.5B H20 charge cost about 10.2 points,
+   so about 70.7% without it, still lower on "the initial ramp of more sophisticated systems".
+   Operating income -10% q/q. Opex +44% y/y.
+
+3. Earnings quality [WORSE]
+   One-off negative: $4.5B H20 charge ($2.3B inventory, rest purchase obligations). Other income
+   -$180M on CoreWeave and Arm marks. Tax rate 14.3%.
+
+4. Cash conversion [BETTER]
+   Operating cash flow $27.4B vs net income $18.8B (146%) "due to higher revenue and timing of cash
+   collections"; deferred-revenue additions include $6.2B of customer advances ($157M a year ago).
+   FCF $26.2B. DSO 46 days.
+
+5. Capital allocation [HELD]
+   Buybacks $14.5B (126M shares); dividends $244M; capex $1.2B. Authorization left $24.3B. The
+   buyback "aims to offset dilution" sentence is still present.
+
+6. Balance sheet and contingent exposure [HELD]
+   Cash and securities $53.7B; debt $8.46B. Supply obligations $29.8B plus $13.7B other incl. $10.6B
+   cloud. Warranty liability $2.1B (year-end $1.3B).
+
+7. Concentration [WORSE]
+   Customer A 16%, Customer B 14% (Q1 FY2025: 13%, 11%); two indirect customers 10%+; "an AI research
+   and deployment company contributed to a meaningful amount of our revenue". Receivables 27/18/12%.
+   Singapore 20% of billings, over 99% for U.S.-based customers.
+
+8. Accounting judgments [HELD]
+   No critical-estimate changes. CoreWeave reclassified to marketable securities on listing.
+
+9. Legal, regulatory and governance [WORSE]
+   H20 license requirement (April 9, 2025); AI Diffusion IFR rescinded, replacement "uncertain";
+   China investigating export-control compliance under the Mellanox approval; tariffs added as a
+   demand variable.
+
+10. Guidance and commitments [HELD]
+   New: Blackwell Ultra samples and production units in Q2 FY2026. "The H20 export licensing
+   requirements have impacted our current revenue and will also negatively affect our future
+   revenue." Capex-increase guide not updated (Q1 capex $1.2B vs $0.4B).

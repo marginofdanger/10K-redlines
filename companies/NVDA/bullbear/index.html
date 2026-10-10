@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA Bull / Bear | latest: FY2027 Q2 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>NVIDIA: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended July 26, 2026 (FY2027 Q2), filed August 26, 2026 | Also covered: seven earlier filings back to the FY2025 Q3 10-Q, filed November 20, 2024 | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Stances start at Intact in October 2024 (FY2025 Q3 10-Q) and reflect all eight filings since. NVIDIA's fiscal year ends in late January: FY2027 Q2 is the quarter ended July 26, 2026.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Data Center demand and growth</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Revenue reaccelerated two filings running: +85% (FY2027 Q1) and +106% to $96.2B (FY2027 Q2); ACIE +138%; Rubin shipped inside its guided window</td><td class="ev-bear">FY2027 Q2: AI clouds and model makers "currently lack" investment-grade financing; customers may postpone on "constraints on capital"</td><td>FY2027 Q2 10-Q</td></tr>
+<tr><td>P2 Margins and operating leverage</td><td class="stance s-intact">Intact</td><td class="ev-bull">Gross margin 75.0% and operating margin 66.2% in FY2027 Q2; opex 8.8% of revenue (11.6% a year earlier)</td><td class="ev-bear">FY2026 gross margin 71.1% vs 75.0% on the shift to full-scale systems plus the $4.5B H20 charge</td><td>&mdash;</td></tr>
+<tr><td>P3 Customer concentration</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">FY2027 Q2: one direct customer at 10%+ (16%), down from three at 21/17/16% in Q1</td><td class="ev-bear">Top customer 12% &rarr; 23% (FY2026 Q2); 22% of FY2026 revenue, about $47B; five customers hold 70% of receivables (FY2027 Q2)</td><td>FY2026 Q2 10-Q</td></tr>
+<tr><td>P4 China and export controls</td><td class="stance s-broken">Broken</td><td class="ev-bull">China-headquartered revenue $7.9B in FY2027 Q2 vs $4.6B in Q1 (composition not explained)</td><td class="ev-bear">$4.5B H20 charge (FY2026 Q1); "effectively been foreclosed" (FY2026 Q3); H200 repeats it with a $0.4B charge (FY2027 Q2)</td><td>FY2026 Q3 10-Q</td></tr>
+<tr><td>P5 Earnings quality</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Equity gains fell to 10.9% of pre-tax income in FY2027 Q2 from 22.8% in Q1</td><td class="ev-bear">FY2027 Q1: $15.9B of unrealized gains, net income above operating income; the $99B portfolio includes AI model makers that buy NVIDIA products</td><td>FY2027 Q1 10-Q</td></tr>
+<tr><td>P6 Cash conversion and capital return</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">FY2026 free cash flow $96.7B; H1 FY2027 free cash flow about $70.0B covers $46.1B returned</td><td class="ev-bear">FY2027 Q2 receivables +$22.4B on terms up to one year; FCF 36% of net income; $25.7B returned as $25.0B of notes were issued</td><td>FY2027 Q2 10-Q</td></tr>
+<tr><td>P7 Commitments, guarantees and customer financing</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">No guarantee triggered; fair values "not significant"; supply commitments are what let Rubin ship on schedule</td><td class="ev-bear">Guarantees $860M &rarr; $3.5B &rarr; $108.5B ($105B for OpenAI leases); supply commitments $28.9B &rarr; $279B across the window</td><td>FY2026 10-K</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q FY2027 Q2</h2>
+<p class="note">What the FY2027 Q2 10-Q adds, for and against. The quarter is the strongest operating print in the series and the largest expansion of NVIDIA's own balance-sheet exposure to its customers; both sides are real.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue $96.2B, +106% year over year and +18% sequentially; Data Center $89.0B, +117%; ACIE +138%</div>
+      <blockquote>FY2027 Q2: "Revenue was $96.2 billion, up 106% from a year ago and up 18% sequentially."</blockquote>
+      <blockquote>FY2027 Q2: "ACIE revenue increased 138% from a year ago and 25% sequentially driven by end-demand from AI natives, enterprises, and sovereign customers, as well as hyperscalers utilizing AI clouds."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$49.5B of revenue year over year; one quarter equals 45% of all FY2026 revenue ($215.9B). Growth reaccelerated from +56% a year earlier and +85% in Q1.</p>
+      <p>A second straight filing of acceleration on top of a $200B+ base, with the non-hyperscale half (ACIE, $40.3B) growing faster than Hyperscale (+102%). This is what moves P1 to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> Q3 growth above 100% with Rubin added; ACIE share of Data Center holding near 45%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 75.0% vs 72.4%; operating margin 66.2% vs 60.8%; opex 8.8% of revenue vs 11.6%</div>
+      <blockquote>FY2027 Q2: "Gross margin increased to 75.0% for the second quarter of fiscal year 2027 compared to 72.4% for the second quarter of fiscal year 2026, and 75.0% for the first half of fiscal year 2027 compared to 66.6% for the first half of fiscal year 2026 due to improved mix from Blackwell Ultra."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income $63.7B, +124%, faster than revenue (+106%); net inventory provisions cost 0.8 points (1.1 a year earlier).</p>
+      <p>Margins are back at the FY2025 peak after the FY2026 dip to 71.1% that the systems transition caused, even with rising memory prices named in the same MD&amp;A.</p>
+      <p class="next"><b>Next filing:</b> gross margin near 75% during the Rubin ramp, when new-architecture yields and provisions usually weigh.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Vera Rubin shipped at the start of its guided window; customer advances doubled to $15.6B in the half</div>
+      <blockquote>FY2027 Q2: "Our next-generation Data Center architecture, Vera Rubin, began production shipments in the third quarter of fiscal year 2027."</blockquote>
+      <blockquote>FY2027 Q2: "Included $15.6 billion and $7.5 billion of customer advances for the first half of fiscal years 2027 and 2026, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> the FY2026 10-K guided Rubin to the second half of FY2027; shipments began in its first quarter. Current deferred revenue $4.6B vs $1.4B at year-end.</p>
+      <p>The one-year cadence held for a third architecture in the window, and customers are paying ahead of delivery at twice last year's rate, a demand signal that does not rely on NVIDIA's estimates.</p>
+      <p class="next"><b>Next filing:</b> Rubin revenue quantified or described as ramping; advances continuing.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Only one direct customer above 10% (16%), against three at 21%, 17% and 16% in Q1</div>
+      <blockquote>FY2027 Q2: "For the second quarter of fiscal year 2027, one direct customer represented 16% of total revenue, which was primarily attributable to the Compute &amp; Networking segment."</blockquote>
+      <p class="magnitude"><b>Size:</b> disclosed 10%+ customers 54% of revenue in Q1 &rarr; 16% in Q2. Taiwan-headquartered revenue rose from $12.0B to $27.0B in the same quarter.</p>
+      <p>The first quarter in the series with a single 10% direct customer. Part of the drop may be volume moving to Taiwan-based system builders rather than new end customers (inference), so the end-customer picture may be unchanged.</p>
+      <p class="next"><b>Next filing:</b> a second quarter with one or no 10% customer would start to move P3; watch the indirect AI research company sentence.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">First full quarter of the $0.25 dividend: $6.0B paid, plus $19.7B of buybacks; diluted shares &minus;1.0% year over year</div>
+      <blockquote>FY2027 Q2: "We paid cash dividends to our shareholders of $6.0 billion and $6.3 billion during the second quarter and first half of fiscal year 2027, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> H1 returns $46.1B (buybacks $39.8B + dividends $6.3B) vs H1 free cash flow about $70.0B ($74.4B operating cash flow less $4.4B capex) = 66%. $99.3B of authorization left.</p>
+      <p>On a half-year basis capital return is still funded from free cash flow, and the dividend is now about $24B a year. The quarter alone tells a different story (see the bear card on debt).</p>
+      <p class="next"><b>Next filing:</b> returns within free cash flow in Q3 without new borrowing.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 China and export controls" data-side="bull" data-basis="inferred">
+      <div class="meta"><span class="chip">P4 China and export controls</span><span class="chip">Inferred</span></div>
+      <div class="title">Revenue from China-headquartered customers $7.9B, up from $4.6B in Q1 and $4.0B a year earlier</div>
+      <blockquote>FY2027 Q2: "China (including Hong Kong) | 7,880 | 3,985 | 12,430 | 13,644"</blockquote>
+      <p class="magnitude"><b>Size:</b> 8.2% of Q2 revenue; +98% year over year. Hopper shipments to China were under 1% of Data Center revenue, so most of this is something else.</p>
+      <p>The filing says NVIDIA can still ship "uncontrolled products to China, such as gaming and workstation GPUs" but does not explain a figure larger than all of Edge Computing ($7.2B). China is not zero, though the data center market stays foreclosed. Basis is inferred because the composition is not disclosed.</p>
+      <p class="next"><b>Next filing:</b> an explanation of China-headquartered revenue, or a second quarter at this level.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">Up to $105B of guarantees on OpenAI's 20-year leases at SB Energy's Ohio campus; total guarantee exposure $3.5B &rarr; $108.5B</div>
+      <blockquote>FY2027 Q2: "SB Energy Corp. guarantees – In August 2026, we entered into guarantees, capped at a total of $105 billion, to provide credit support on a land, power, and shell buildout with affiliates of SB Energy Corp."</blockquote>
+      <blockquote>FY2027 Q2: "The guarantees terminate upon certain events, including OpenAI achieving a satisfactory credit rating or after each respective lease term has completed."</blockquote>
+      <p class="magnitude"><b>Size:</b> $108.5B maximum = 83% of FY2026 operating income ($130.4B) and 31x the Q1 exposure. Phases take effect from FY2029; NVIDIA holds an option on about 3.8 more gigawatts.</p>
+      <p>The termination clause says the tenant does not now have a satisfactory credit rating. NVIDIA is underwriting a customer's rent so the campus will host its compute; the new lead risk factor says it "may assume the applicable lease" on default.</p>
+      <p class="next"><b>Next filing:</b> whether the option is exercised, any change in OpenAI's credit standing, and whether more single-customer guarantees follow.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">Supply and capacity commitments $119B &rarr; $279B in one quarter, with $175B due in FY2028&ndash;FY2029</div>
+      <blockquote>FY2027 Q2: "We have significantly increased our supply and capacity commitments from $119 billion last quarter to $279 billion as of July 26, 2026 to meet future demand."</blockquote>
+      <blockquote>FY2027 Q2: "Supply and capacity | 92 | 87 | 88 | 6 | 5 | 1 | 279"</blockquote>
+      <p class="magnitude"><b>Size:</b> $279B = 92% of trailing four-quarter revenue ($303.0B); total commitments table $366B, plus $56B of additional commitments. In Q1, 80% fell inside the fiscal year; now 33% does.</p>
+      <p>NVIDIA has locked in memory and manufacturing capacity for three years. If demand slows, the H20 sequence ($4.5B charge on far smaller commitments) shows how purchase obligations turn into charges. The note now says agreements "may be cancelable", where Q1 said they "are cancellable".</p>
+      <p class="next"><b>Next filing:</b> excess purchase-obligation provisions (Q2: $201M) and whether FY2028 commitments keep rising.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">New AI-cloud model: clouds buy NVIDIA systems and NVIDIA commits $36B to buy back their capacity; $20B of leases signed for third parties</div>
+      <blockquote>FY2027 Q2: "Under these agreements, AI clouds procure our data center infrastructure products and we commit to cloud service agreements, which the AI clouds can unilaterally stop providing to us and sell to third-party customers at more advantageous rates."</blockquote>
+      <blockquote>FY2027 Q2: "Under the agreements, if AI clouds do not successfully sell committed capacity to third-party customers, we have agreed to purchase that capacity."</blockquote>
+      <p class="magnitude"><b>Size:</b> $36B of six-year capacity backstops = 35% of FY2026 operating cash flow ($102.7B); $20B of leases NVIDIA expects to reassign. None of the $36B is payable this fiscal year.</p>
+      <p>Part of ACIE demand now comes with NVIDIA standing behind the buyer's utilization. The clouds keep the upside (they can resell at better rates); NVIDIA keeps the downside. The MD&amp;A says these customers "currently lack" investment-grade financing.</p>
+      <p class="next"><b>Next filing:</b> how much backstopped capacity NVIDIA actually uses or pays for, and how much ACIE revenue is tied to these agreements.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Receivables $40.7B &rarr; $63.1B on new payment terms of up to one year; Q2 free cash flow 36% of net income</div>
+      <blockquote>FY2027 Q2: "In certain cases, for investment-grade customer purchases, we have and may in the future provide longer payment terms ranging from 90 days up to one year to assist customers with large data center builds depending on size."</blockquote>
+      <blockquote>FY2027 Q2: "Cash provided by operating activities increased in the first half of fiscal year 2027 compared to the first half of fiscal year 2026 due to higher revenue, partially offset by an increase in accounts receivable due to extended payment terms on large multi-quarter agreements with certain investment-grade customers."</blockquote>
+      <p class="magnitude"><b>Size:</b> receivables +$22.4B in the quarter = 23% of Q2 revenue; DSO 60 days (Q1 45). Q2 operating cash flow $24.1B vs net income $59.7B; FCF $21.4B.</p>
+      <p>Vendor financing in another form: NVIDIA is carrying its largest buyers' payments for up to a year. The MD&amp;A says these terms "will continue to affect the timing of our operating cash flows".</p>
+      <p class="next"><b>Next filing:</b> DSO back below 50 days, or a further rise that confirms the terms are structural.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Inferred</span></div>
+      <div class="title">$25.0B of notes issued; debt $8.5B &rarr; $33.4B in the quarter NVIDIA returned $25.7B</div>
+      <blockquote>FY2027 Q2: "In June 2026, we issued an aggregate of $25.0 billion of senior unsecured notes across seven tranches for general corporate purposes."</blockquote>
+      <p class="magnitude"><b>Size:</b> Q2 buybacks $19.7B + dividends $6.0B = $25.7B vs Q2 free cash flow $21.4B; interest expense $227M vs $62M a year earlier.</p>
+      <p>The notes are cheap relative to NVIDIA's cash generation, and liquidity is large ($56.6B of cash and debt securities). But the quarter's returns exceeded its free cash flow and matched the borrowing, and the 10-Q added a debt risk factor for the first time since the FY2025 10-K deleted it.</p>
+      <p class="next"><b>Next filing:</b> commercial paper use, further issuance, and returns vs free cash flow.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Equity portfolio reaches $99B; H1 gains $23.7B = 17% of pre-tax income; warrants booked with the benefit deferred</div>
+      <blockquote>FY2027 Q2: "These include equity investments of $99 billion and equity investment commitments of $25 billion as of July 26, 2026."</blockquote>
+      <blockquote>FY2027 Q2: "Gains from equity securities, net, were primarily driven by unrealized gains in equity securities."</blockquote>
+      <p class="magnitude"><b>Size:</b> Q2 gains $7.8B = 10.9% of pre-tax income ($71.5B); H1 $23.7B of $141.4B. $36.9B of public holdings are under lock-up; warrants $4.8B notional, $824M fair value.</p>
+      <p>The holdings include "AI model makers, infrastructure financiers, and other private companies", some of them customers. Marks on these move net income in both directions and are not cash.</p>
+      <p class="next"><b>Next filing:</b> other income as a share of pre-tax income, and any impairments once lock-ups lapse.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing (newest first; scroll right for older filings). <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before. Full answers in the per-filing text files in this folder.</p>
+<div class="scroll"><table style="min-width:2000px">
+<thead><tr><th>Question</th><th>FY2027 Q2 10-Q</th><th>FY2027 Q1 10-Q</th><th>FY2026 10-K</th><th>FY2026 Q3 10-Q</th><th>FY2026 Q2 10-Q</th><th>FY2026 Q1 10-Q</th><th>FY2025 10-K</th><th>FY2025 Q3 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark better">&#9650;</span> Revenue $96.2B, +106% (+18% q/q); Data Center +117%; ACIE +138%, Hyperscale +102%.</td><td><span class="mark better">&#9650;</span> Revenue $81.6B, +85% (+20% q/q); Hyperscale +115%, ACIE +74%; zero China Hopper.</td><td><span class="mark better">&#9650;</span> Revenue $215.9B, +65%; implied Q4 +20% q/q; networking +142%, compute +59%.</td><td><span class="mark better">&#9650;</span> Revenue $57.0B, +62% (+22% q/q); networking +162%; H20 insignificant.</td><td><span class="mark held">&#9679;</span> Revenue $46.7B, +56% (+6% q/q); about +17% q/q excluding H20; networking +46% q/q.</td><td><span class="mark held">&#9679;</span> Revenue $44.1B, +69%; $4.6B of H20 before the license rule; Blackwell in all customer categories.</td><td><span class="mark held">&#9679;</span> Revenue $130.5B, +114%; Data Center +142%; inference and cloud-provider shares no longer disclosed.</td><td><span class="mark held">&#9679;</span> Revenue $35.1B, +94% (+17% q/q); Data Center +112%; networking &minus;15% q/q.</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark held">&#9679;</span> Gross margin 75.0% (74.9% Q1); operating margin 66.2%; opex 8.8% of revenue.</td><td><span class="mark better">&#9650;</span> Gross margin 74.9% vs 60.5%, flat q/q; operating margin 65.6%.</td><td><span class="mark worse">&#9660;</span> Gross margin 71.1% vs 75.0% (systems shift + H20); operating margin 60.4% vs 62.4%.</td><td><span class="mark better">&#9650;</span> Gross margin 73.4% (+1.0 pt q/q) on "improved mix and cost structure"; operating margin 63.1%.</td><td><span class="mark better">&#9650;</span> Gross margin 72.4% (Q1 60.5%), below 75.1% a year ago on full-scale systems.</td><td><span class="mark worse">&#9660;</span> Gross margin 60.5%; about 70.7% without the $4.5B charge; operating income &minus;10% q/q.</td><td><span class="mark held">&#9679;</span> Gross margin 75.0% vs 72.7%; operating margin 62.4%; implied Q4 73.0%.</td><td><span class="mark held">&#9679;</span> Gross margin 74.6% (75.1%) on a shift to "higher cost systems"; provisions 2.2 pts.</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark better">&#9650;</span> Other income $7.8B = 10.9% of pre-tax (Q1 22.8%); warrant benefit deferred; H200 charge $0.4B (H1).</td><td><span class="mark worse">&#9660;</span> Unrealized equity gains $15.9B = 22.8% of pre-tax; net income above operating income.</td><td><span class="mark worse">&#9660;</span> Other income $9.0B incl. Intel gains; $711M valuation-allowance release; $4.5B H20 charge.</td><td><span class="mark held">&#9679;</span> Other income $1.4B = 3.6% of pre-tax; tax rate 15.9%.</td><td><span class="mark held">&#9679;</span> Other income $2.2B = 7.2% of pre-tax; $180M H20 reserve release.</td><td><span class="mark worse">&#9660;</span> $4.5B H20 charge; &minus;$180M marks on CoreWeave and Arm.</td><td><span class="mark held">&#9679;</span> Other, net $1.0B (1.2% of pre-tax); tax rate 13.3%.</td><td><span class="mark held">&#9679;</span> Other, net $36M; tax 13.5%; earnings operating.</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark worse">&#9660;</span> Operating cash flow $24.1B vs net income $59.7B; receivables +$22.4B on terms up to one year; DSO 60.</td><td><span class="mark better">&#9650;</span> Operating cash flow $50.3B; FCF $48.6B; DSO 45.</td><td><span class="mark held">&#9679;</span> FCF $96.7B = 80.5% of net income (83.5%); inventory $21.4B, 2.1x.</td><td><span class="mark better">&#9650;</span> FCF $22.1B = 69% of net income (Q2 51%); inventory +32% q/q.</td><td><span class="mark worse">&#9660;</span> Operating cash flow 58% of net income; DSO 54 (Q1 46); advances fade.</td><td><span class="mark better">&#9650;</span> Operating cash flow 146% of net income on $6.2B of customer advances.</td><td><span class="mark worse">&#9660;</span> FCF $60.9B = 83.5% of net income (90.8%); DSO 65 vs 60.</td><td><span class="mark better">&#9650;</span> Nine-month operating cash flow 93% of net income; Q3 FCF 87% (Q2 81%).</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark worse">&#9660;</span> Returns $25.7B vs FCF $21.4B; $25.0B notes; equity investments $99B.</td><td><span class="mark held">&#9679;</span> Buybacks $20.2B; $18.6B private investments; $80B authorization; dividend $0.01 &rarr; $0.25.</td><td><span class="mark held">&#9679;</span> Buybacks $40.4B + dividends $1.0B = 42% of FCF; Groq $17B; $17.5B private investments.</td><td><span class="mark held">&#9679;</span> Buybacks $12.6B; Intel $5B committed; OpenAI letter of intent; Anthropic up to $10B.</td><td><span class="mark held">&#9679;</span> Buybacks $9.7B; new $60B authorization; "offset dilution" sentence dropped.</td><td><span class="mark held">&#9679;</span> Buybacks $14.5B; capex $1.2B (3x a year ago).</td><td><span class="mark held">&#9679;</span> Buybacks $34.0B + dividends $0.8B = 57% of FCF; capex $3.4B vs $3.5&ndash;4.0B guide.</td><td><span class="mark held">&#9679;</span> Buybacks $11.1B; $46.4B authorization left; capex $0.8B.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark worse">&#9660;</span> Debt $33.4B; guarantees $108.5B; commitments $366B + $56B; VIE max loss $4.7B.</td><td><span class="mark worse">&#9660;</span> Commitments $119B to FY2031; investment commitments $27B; leases $32.4B.</td><td><span class="mark worse">&#9660;</span> Commitments $95.2B; guarantees $3.5B; commercial paper capacity $575M &rarr; $25.0B.</td><td><span class="mark worse">&#9660;</span> Commitments $50.3B + cloud $26B; first guarantee $860M ($470M escrow).</td><td><span class="mark held">&#9679;</span> Total commitments $45.8B; debt $8.47B; leases not commenced $7.1B.</td><td><span class="mark held">&#9679;</span> Supply obligations $29.8B + $13.7B other; warranty $2.1B.</td><td><span class="mark worse">&#9660;</span> Supply obligations $30.8B + $14.3B other; warranty $1.3B (4x); debt risk factor deleted.</td><td><span class="mark worse">&#9660;</span> Supply obligations $28.9B + $13.2B other; warranty $1.0B vs $306M.</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark held">&#9679;</span> One direct customer 16% (Q1 three); five customers 70% of receivables.</td><td><span class="mark worse">&#9660;</span> Three customers 21/17/16% (54%); receivables 30/18/16%.</td><td><span class="mark worse">&#9660;</span> One customer 22% (about $47B), another 14%; letter labels dropped.</td><td><span class="mark worse">&#9660;</span> Four customers 22/15/13/11% (61%).</td><td><span class="mark worse">&#9660;</span> Customer A 23%, B 16%; two indirect 10%+.</td><td><span class="mark worse">&#9660;</span> Customer A 16%, B 14%; "AI research and deployment company" first named as meaningful.</td><td><span class="mark worse">&#9660;</span> Three customers 12/11/11% vs one at 13% in FY2024.</td><td><span class="mark held">&#9679;</span> Three customers at 12% each; one indirect 10%+.</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark worse">&#9660;</span> One customer moved from ACIE to Hyperscale, prior periods recast; guarantees at "not significant" fair value.</td><td><span class="mark held">&#9679;</span> Market platforms recast (Hyperscale, ACIE, Edge); Gaming line gone.</td><td><span class="mark worse">&#9660;</span> Non-marketable equity added as a critical estimate; Groq 85% goodwill; IRS exam FY2023&ndash;24.</td><td><span class="mark worse">&#9660;</span> Geography recast to headquarters basis; Singapore line removed.</td><td><span class="mark held">&#9679;</span> No estimate changes; FDII wording becomes FDDEI.</td><td><span class="mark held">&#9679;</span> No estimate changes; CoreWeave reclassified on listing.</td><td><span class="mark worse">&#9660;</span> China %, inference share and capex range dropped.</td><td><span class="mark held">&#9679;</span> Customer letters "may represent different customers" each period.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark worse">&#9660;</span> Debt risk factor added; PRC blocked licensed H200 sales; OpenAI insolvency named as a guarantee trigger.</td><td><span class="mark worse">&#9660;</span> RASA; French GPU inquiry; diversion assistance; 2018 case certified as a class.</td><td><span class="mark worse">&#9660;</span> "Will be further harmed"; H200 license with 25% tariff; counterparty risk factor.</td><td><span class="mark worse">&#9660;</span> China SAMR preliminary finding; foreclosure now actual; GAIN AI Act.</td><td><span class="mark worse">&#9660;</span> USG 15% revenue-share expectation; China questions H20 "built-in vulnerabilities".</td><td><span class="mark worse">&#9660;</span> H20 license requirement (April 9, 2025); AI Diffusion rule rescinded, replacement uncertain.</td><td><span class="mark worse">&#9660;</span> AI Diffusion IFR worldwide licensing; China investigating export-control compliance.</td><td><span class="mark worse">&#9660;</span> Blackwell systems named into license scope; auto import restrictions.</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark held">&#9679;</span> Rubin shipped in Q3 FY2027 (met); $500B financing MOUs; ecosystem investing now "may continue".</td><td><span class="mark held">&#9679;</span> Rubin 2H FY2027 held; capex-increase sentence not repeated; OpenAI unnamed.</td><td><span class="mark held">&#9679;</span> FY2026 capex increase met ($6.1B); VA release done; FY2027 capex to rise; Rubin 2H FY2027.</td><td><span class="mark held">&#9679;</span> No numeric guidance; OBBBA to cut FY2026 tax payments.</td><td><span class="mark held">&#9679;</span> Blackwell Ultra shipped in Q2 as guided; no H20 China revenue.</td><td><span class="mark held">&#9679;</span> Blackwell Ultra guided to Q2; H20 rule "will also negatively affect our future revenue".</td><td><span class="mark held">&#9679;</span> Blackwell Q4 shipment met; capex just under range; FY2026 capex to rise.</td><td><span class="mark held">&#9679;</span> Blackwell from Q4; demand to exceed supply "for several quarters in fiscal year 2026".</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated in the window (plus the FY2025 capex range carried in from the FY2024 10-K), and what later filings said about it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"During fiscal year 2025, we expect to use our existing cash, cash equivalents, and marketable securities, and the cash generated by our operations to fund our capital investments of approximately $3.5 billion to $4.0 billion related to property and equipment."</td><td>FY2024 10-K</td><td>FY2025 10-K: missed low, "$3.4 billion" spent; range replaced by "expect to increase"</td></tr>
+<tr><td>"Blackwell production shipments are scheduled to begin in the fourth quarter of fiscal year 2025"</td><td>FY2025 Q3 10-Q</td><td>FY2025 10-K: met, production systems shipped in Q4</td></tr>
+<tr><td>"the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026"</td><td>FY2025 Q3 10-Q</td><td>FY2025 10-K: dropped (not repeated). FY2026 filings: not mentioned; FY2026 revenue +65%</td></tr>
+<tr><td>"We plan to continue share repurchases this fiscal year."</td><td>FY2025 Q3 10-Q</td><td>FY2025 10-K: met ($34.0B for the year), sentence dropped</td></tr>
+<tr><td>"Our share repurchase program aims to offset dilution from shares issued to employees while maintaining adequate liquidity to meet our operating requirements."</td><td>FY2025 Q3 10-Q</td><td>FY2025 10-K and FY2026 Q1: repeated. FY2026 Q2: dropped. Diluted shares still fell, 24.77B (FY2025 Q3) &rarr; 24.29B (FY2027 Q2)</td></tr>
+<tr><td>"Given our current and possible future earnings, we believe that we may release the valuation allowance associated with certain state deferred tax assets in the near term"</td><td>FY2025 Q3 10-Q</td><td>Repeated through FY2026 Q3. FY2026 10-K: met, $711M released</td></tr>
+<tr><td>"We expect to increase capital expenditures in fiscal year 2026 relative to fiscal year 2025 to support the future growth of our business."</td><td>FY2025 10-K</td><td>FY2026 Q3: nine-month capex $4.8B, already above FY2025. FY2026 10-K: met, $6.1B vs $3.4B</td></tr>
+<tr><td>"The H20 export licensing requirements have impacted our current revenue and will also negatively affect our future revenue."</td><td>FY2026 Q1 10-Q</td><td>FY2026 Q2: confirmed, no H20 sales to China. FY2026 10-K: about $60M of licensed H20 revenue. FY2027 Q2: H20 inventory unsold</td></tr>
+<tr><td>"We expect to begin shipping samples and production units of our new Blackwell Ultra platforms in the second quarter of fiscal year 2026."</td><td>FY2026 Q1 10-Q</td><td>FY2026 Q2: met. FY2026 Q3: Blackwell Ultra the "leading architecture"</td></tr>
+<tr><td>"Our tax payments in fiscal year 2026 will decrease due to currently effective OBBBA provisions."</td><td>FY2026 Q3 10-Q</td><td>FY2026 10-K: not quantified</td></tr>
+<tr><td>"Investment commitments are $6.5 billion as of October 26, 2025, including $5 billion in Intel Corporation which is subject to regulatory approval."</td><td>FY2026 Q3 10-Q</td><td>FY2026 10-K: Intel appears only as a source of gains (consistent with completion; not stated); commitments $11.4B</td></tr>
+<tr><td>"In November 2025, we entered into an agreement, subject to certain closing conditions, to invest up to $10 billion in Anthropic."</td><td>FY2026 Q3 10-Q</td><td>FY2026 10-K, FY2027 Q1, FY2027 Q2: not mentioned</td></tr>
+<tr><td>"We are finalizing an investment and partnership agreement with OpenAI."</td><td>FY2026 10-K</td><td>FY2027 Q1: not mentioned. FY2027 Q2: moved; OpenAI appears as the tenant under the $105B guarantee, no investment disclosed</td></tr>
+<tr><td>"As of January 25, 2026, these commitments were $95.2 billion, of which substantially all will be paid through fiscal year 2027."</td><td>FY2026 10-K</td><td>FY2027 Q1: moved, $119B with $24B in FY2028&ndash;2031. FY2027 Q2: moved, $279B with $92B in the rest of FY2027</td></tr>
+<tr><td>"Investment commitments are $11.4 billion as of January 25, 2026, subject to certain contingencies, of which we expect substantially all will be made through fiscal year 2027."</td><td>FY2026 10-K</td><td>FY2027 Q1: moved up to $27B. FY2027 Q2: $25B, $18B in the rest of FY2027</td></tr>
+<tr><td>"We expect to increase capital expenditures in fiscal year 2027 relative to fiscal year 2026 to support the future growth of our business."</td><td>FY2026 10-K</td><td>FY2027 Q1: not repeated. FY2027 Q2: on track, H1 capex $4.4B vs $3.1B; $8B of capex commitments</td></tr>
+<tr><td>Rubin "is expected to commence production shipments in the second half of fiscal year 2027"</td><td>FY2026 10-K</td><td>FY2027 Q1: held. FY2027 Q2: met, production shipments began in Q3 FY2027</td></tr>
+<tr><td>"We expect supply constraints to be a headwind to Gaming in the first quarter of fiscal 2027 and beyond."</td><td>FY2026 10-K</td><td>FY2027 Q1 and Q2: not mentioned; Gaming folded into Edge Computing (+29%, +27%), "tempered by elevated memory and systems prices"</td></tr>
+<tr><td>"On May 18, 2026, our Board of Directors approved an additional $80.0 billion in share repurchase authorization, without expiration."</td><td>FY2027 Q1 10-Q</td><td>FY2027 Q2: $99.3B remaining after $19.7B of buybacks</td></tr>
+<tr><td>"On May 18, 2026, we increased our quarterly cash dividend from $0.01 per share to $0.25 per share"</td><td>FY2027 Q1 10-Q</td><td>FY2027 Q2: met, $6.0B paid in the quarter</td></tr>
+<tr><td>Financing platforms "designed to mobilize more than $500 billion of third-party capital over time"</td><td>FY2027 Q2 10-Q</td><td>MOUs only; "may not lead to definitive agreements". Next filing to report</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q FY2027 Q1 (filed May 20, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue $81.6B, +85% and +20% sequentially; Data Center $75.2B, +92%</div>
+      <blockquote>FY2027 Q1: "Revenue was $81.6 billion, up 85% from a year ago and up 20% sequentially."</blockquote>
+      <blockquote>FY2027 Q1: "Hyperscaler revenue increased sequentially and remained at approximately 50% of Data Center revenue, while the remaining 50% came from a continued diversification of customers, including AI Clouds, industrial, enterprise, and sovereign customers."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$37.6B year over year; growth up from +65% for FY2026. Achieved with zero Data Center Hopper sales to China (vs $4.6B a year earlier).</p>
+      <p>First reacceleration since FY2025; the half of Data Center outside the hyperscalers kept pace.</p>
+      <p class="next"><b>Next filing:</b> a second quarter of acceleration (FY2027 Q2: +106%, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 74.9%, flat on Q4; operating margin 65.6% vs 49.0% a year ago</div>
+      <blockquote>FY2027 Q1: "Gross margin was approximately flat sequentially as our Blackwell architecture remains the majority of our revenue."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income $53.5B, +147%; opex 9.3% of revenue (11.5%).</p>
+      <p>The FY2026 margin dip has not reappeared with the Blackwell 300 ramp.</p>
+      <p class="next"><b>Next filing:</b> margin holding near 75% (FY2027 Q2: 75.0%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Dividend raised 25x to $0.25 a quarter; $80B more buyback authorization; Q1 FCF $48.6B</div>
+      <blockquote>FY2027 Q1: "On May 18, 2026, we increased our quarterly cash dividend from $0.01 per share to $0.25 per share to all shareholders of record on June 4, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $24B a year of dividends = 23% of FY2026 operating cash flow; Q1 buybacks $20.2B vs FCF $48.6B. DSO fell to 45 days.</p>
+      <p>A commitment to recurring cash returns, made from a quarter in which cash conversion was strong.</p>
+      <p class="next"><b>Next filing:</b> returns within free cash flow (FY2027 Q2: not in the quarter).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$15.9B of unrealized equity gains; net income $58.3B exceeds operating income $53.5B</div>
+      <blockquote>FY2027 Q1: "The change in Other income (expense), net compared to the first quarter of fiscal year 2026, was primarily driven by unrealized gains on investments in publicly-held equity securities of $13.4 billion and non-marketable equity securities of $2.6 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> $15.9B = 22.8% of pre-tax income ($69.9B); about $0.54 of the $2.39 EPS after tax at 16.6% (estimate). Net income +211% vs operating income +147%.</p>
+      <p>A second filing in which marks drive net income (after FY2026's $9.0B), so P5 moves to Weakening. The gains are unrealized and much of the public stake is locked up.</p>
+      <p class="next"><b>Next filing:</b> other income share of pre-tax (FY2027 Q2: 10.9%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">$18.6B invested in private companies in one quarter, some of them AI model makers that use NVIDIA products</div>
+      <blockquote>FY2027 Q1: "$18.6 billion in private companies and infrastructure funds. Some of these investments include AI model makers that may indirectly purchase or use our products in the cloud."</blockquote>
+      <p class="magnitude"><b>Size:</b> more than all of FY2026 ($17.5B); investment commitments $11.4B &rarr; $27B; equity-method infrastructure funds with $2.3B maximum loss exposure.</p>
+      <p>The 10-K said investees "purchase our products"; now they "may indirectly purchase or use" them. Either way, NVIDIA's cash is funding part of its own demand.</p>
+      <p class="next"><b>Next filing:</b> investment pace and how investees are described (FY2027 Q2: $99B portfolio).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">Supply commitments $95.2B &rarr; $119B and now run to FY2031; $32.4B of leases to come</div>
+      <blockquote>FY2027 Q1: "As of April 26, 2026, these commitments were $119 billion for which $95 billion will be paid in the remainder of fiscal year 2027 and the remaining balance will be paid in fiscal years 2028 through 2031."</blockquote>
+      <p class="magnitude"><b>Size:</b> $119B = 47% of trailing four-quarter revenue ($253.5B); cloud commitments $30B; $32.4B of leases starting FY2027&ndash;FY2033.</p>
+      <p>For the first time about $24B of commitments sits beyond the current fiscal year.</p>
+      <p class="next"><b>Next filing:</b> commitment level and horizon (FY2027 Q2: $279B to FY2029 and beyond).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Three direct customers at 21%, 17% and 16% = 54% of revenue; receivables 30/18/16%</div>
+      <blockquote>FY2027 Q1: "Direct Customers – For the first quarter of fiscal year 2027, three direct customers represented 21%, 17%, and 16% of total revenue, all of which was primarily attributable to the Compute &amp; Networking segment."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $44B of quarterly revenue from three buyers; 64% of receivables from three.</p>
+      <p>The highest combined share in the series, against the MD&amp;A's "continued diversification" message.</p>
+      <p class="next"><b>Next filing:</b> top-three share (FY2027 Q2: one at 16%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2026 (filed February 25, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue $215.9B, +65%; Data Center networking +142% on NVLink</div>
+      <blockquote>FY2026: "Revenue for fiscal year 2026 was $215.9 billion, up 65% from a year ago."</blockquote>
+      <blockquote>FY2026: "Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$85.4B of revenue; implied Q4 $68.1B, +20% sequentially.</p>
+      <p>Growth absorbed the loss of China data center sales; networking attach is rising with full-rack systems.</p>
+      <p class="next"><b>Next filing:</b> Q1 FY2027 growth (+85%, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Rubin due in 2H FY2027 at "up to a 10x reduction in cost per token"</div>
+      <blockquote>FY2026: "Built for agentic AI and reasoning, it excels at processing multi-step problem-solving and massive long-context workflows, delivering up to a 10x reduction in cost per token compared to Blackwell."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in revenue terms; the third architecture in three years on the stated one-year cadence.</p>
+      <p>The roadmap is priced in inference economics, the workload that grows with deployment rather than training budgets.</p>
+      <p class="next"><b>Next filing:</b> Rubin timing held (met: shipments began in Q3 FY2027).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $102.7B; free cash flow $96.7B; buybacks $40.4B</div>
+      <blockquote>FY2026: "In fiscal year 2026, we repurchased 282 million shares of our common stock for $40.4 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> buyback and dividend cash $41.1B = 42% of FCF; diluted shares &minus;1.2%.</p>
+      <p>Returns were comfortably inside free cash flow, with debt unchanged at $8.5B.</p>
+      <p class="next"><b>Next filing:</b> conversion and funding of returns (weakened in FY2027 Q2).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 75.0% &rarr; 71.1% on the move to full-scale systems and the $4.5B H20 charge</div>
+      <blockquote>FY2026: "Gross margins decreased to 71.1% in fiscal year 2026 from 75.0% in fiscal year 2025 as our business model transitioned from offering Hopper HGX systems to Blackwell full-scale datacenter solutions and a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> 3.9 points = about $8.4B of gross profit at FY2026 revenue; provisions $7.2B (2.6 points). Operating margin 60.4% vs 62.4%.</p>
+      <p>Selling racks instead of boards structurally adds cost. Opex leverage offset most of it, so P2 stays Intact.</p>
+      <p class="next"><b>Next filing:</b> gross margin back near 75% (FY2027 Q1: 74.9%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">Commitments $50.3B &rarr; $95.2B in one quarter; lease guarantees $860M &rarr; $3.5B</div>
+      <blockquote>FY2026: "As of January 25, 2026, these commitments were $95.2 billion, of which substantially all will be paid through fiscal year 2027."</blockquote>
+      <blockquote>FY2026: "The maximum gross exposure under all agreements is $3.5 billion, which is reduced as the partners make payments to the lessors over terms ranging from 5 to 7 years."</blockquote>
+      <p class="magnitude"><b>Size:</b> $95.2B = 44% of revenue; plus cloud $27B and investments $11.4B; commercial paper capacity raised 43x to $25.0B.</p>
+      <p>Second filing in a row with guarantees and commitments rising together: P7 moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> commitments vs revenue (FY2027 Q1: $119B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">One direct customer 22% of revenue (12% in FY2025), another 14%</div>
+      <blockquote>FY2026: "For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute &amp; Networking segment."</blockquote>
+      <p class="magnitude"><b>Size:</b> about $47.5B from one buyer; receivables 25/18/13%.</p>
+      <p>Customer letters were dropped, so period-to-period identity can no longer be followed.</p>
+      <p class="next"><b>Next filing:</b> top-customer share (FY2027 Q1: 21/17/16%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Other income $9.0B on equity gains; $711M valuation-allowance release; investees are customers</div>
+      <blockquote>FY2026: "These investments include AI model makers that purchase our products directly or through CSPs."</blockquote>
+      <blockquote>FY2026: "As of January 25, 2026, based on recent jurisdictional taxable income and expected future earnings, we concluded certain state deferred tax assets are more likely than not realizable and released $711 million of valuation allowance."</blockquote>
+      <p class="magnitude"><b>Size:</b> other income $9.0B = 6.4% of pre-tax income ($141.5B), vs $1.0B in FY2025; the release is 3.3% of tax expense.</p>
+      <p>First filing where marks on investments in customers are material to earnings.</p>
+      <p class="next"><b>Next filing:</b> gains share of pre-tax (FY2027 Q1: 22.8%, confirming).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q FY2026 Q3 (filed November 19, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue $57.0B, +22% sequentially; networking $8.2B, +162%</div>
+      <blockquote>FY2026 Q3: "Revenue was $57.0 billion, up 62% from a year ago and up 22% sequentially."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$10.3B on Q2, the largest sequential gain in the series to that point; H20 sales "insignificant".</p>
+      <p>Sequential growth reaccelerated from +6% once the H20 hole was behind it.</p>
+      <p class="next"><b>Next filing:</b> Q4 sequential growth (implied +20%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin up 1.0 point to 73.4% as Blackwell costs improved</div>
+      <blockquote>FY2026 Q3: "Gross margin increased sequentially as Blackwell ramped with an improved mix and cost structure."</blockquote>
+      <p class="magnitude"><b>Size:</b> net provisions only 0.1 point; operating margin 63.1% vs 62.3% a year earlier.</p>
+      <p>Evidence that the systems-transition margin hit was a ramp cost, not permanent.</p>
+      <p class="next"><b>Next filing:</b> margin recovery continuing (implied Q4 75.0%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 China and export controls" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 China and export controls</span><span class="chip">Stated</span></div>
+      <div class="title">Foreclosure from China's data center market goes from conditional to actual</div>
+      <blockquote>FY2026 Q3: "We have effectively been foreclosed from competing in China's data center computing/compute market, and our effective foreclosure from the China market will help our competitors build larger developer and customer ecosystems to challenge us worldwide."</blockquote>
+      <p class="magnitude"><b>Size:</b> China (incl. Hong Kong) revenue $3.0B vs $8.1B a year earlier on the new headquarters basis; about $50M of licensed H20 revenue.</p>
+      <p>Second filing in a row with China worse after licenses failed to produce sales: P4 moves to Broken.</p>
+      <p class="next"><b>Next filing:</b> any licensed product that ships (FY2026 10-K: H200 license, no revenue).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">First lease guarantee ($860M); up to $10B for Anthropic; $5B for Intel</div>
+      <blockquote>FY2026 Q3: "The maximum gross exposure is $860 million, which is reduced as the partner makes payments to the lessor over five years."</blockquote>
+      <blockquote>FY2026 Q3: "In November 2025, we entered into an agreement, subject to certain closing conditions, to invest up to $10 billion in Anthropic."</blockquote>
+      <p class="magnitude"><b>Size:</b> guarantee small (about 1.5% of quarterly revenue) but new; investment commitments $6.5B; manufacturing commitments $50.3B plus $26B cloud.</p>
+      <p>NVIDIA begins putting its credit behind partners' data centers "in exchange for issuing us warrants".</p>
+      <p class="next"><b>Next filing:</b> guarantee totals (FY2026 10-K: $3.5B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Four direct customers at 22%, 15%, 13% and 11% = 61% of revenue</div>
+      <blockquote>FY2026 Q3: "Direct Customers – For the third quarter of fiscal year 2026, four direct customers with sales greater than 10% of total revenue included: Customer A at 22%, Customer B at 15%, Customer C at 13%, and Customer D at 11%"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $35B of the quarter from four buyers (Q2: two at 39%).</p>
+      <p>Concentration widened as well as deepened; a new sentence says the trend "may continue".</p>
+      <p class="next"><b>Next filing:</b> annual concentration (FY2026 10-K: 22% and 14%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q FY2026 Q2 (filed August 27, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="inferred">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Inferred</span></div>
+      <div class="title">Revenue +6% sequentially despite $4.0B less H20; about +17% excluding H20</div>
+      <blockquote>FY2026 Q2: "Sequentially, compute revenue declined 1%, driven by a $4.0 billion reduction in H20 sales."</blockquote>
+      <blockquote>FY2026 Q2: "Networking revenue was $7.3 billion, up 98% from a year ago and up 46% sequentially"</blockquote>
+      <p class="magnitude"><b>Size:</b> revenue ex-H20 about $39.5B (Q1) &rarr; $46.1B (Q2), arithmetic on disclosed H20 figures.</p>
+      <p>Non-China demand replaced the lost H20 revenue within one quarter.</p>
+      <p class="next"><b>Next filing:</b> sequential growth without H20 (FY2026 Q3: +22%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">$60B of new buyback authorization; H1 operating cash flow $42.8B</div>
+      <blockquote>FY2026 Q2: "On August 26, 2025, our Board of Directors approved an additional $60.0 billion in share repurchase authorization, without expiration."</blockquote>
+      <p class="magnitude"><b>Size:</b> $71.2B available after the approval; Q2 buybacks $9.7B were inside Q2 FCF ($13.5B).</p>
+      <p>Capacity to keep shrinking the share count from internal cash.</p>
+      <p class="next"><b>Next filing:</b> buyback pace vs FCF.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Customer A 23% and Customer B 16% of revenue (Q1: 16% and 14%)</div>
+      <blockquote>FY2026 Q2: "For the second quarter of fiscal year 2026, sales to one direct customer, Customer A, represented 23% of total revenue; and sales to a second direct customer, Customer B, represented 16% of total revenue, respectively"</blockquote>
+      <p class="magnitude"><b>Size:</b> about $10.8B from Customer A in one quarter; two indirect customers 10%+ through A and B.</p>
+      <p>Second filing in a row with the top customer up (12% &rarr; 16% &rarr; 23%): P3 moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> top-customer share (FY2026 Q3: 22%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 China and export controls" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 China and export controls</span><span class="chip">Stated</span></div>
+      <div class="title">H20 licenses granted but nothing shipped; USG expects 15% of licensed revenue</div>
+      <blockquote>FY2026 Q2: "In August 2025, the USG granted licenses that would allow us to ship certain H20 products to certain China-based customers, but to date, we have not generated any revenue or shipped any H20 products under those licenses."</blockquote>
+      <blockquote>FY2026 Q2: "There were no H20 sales to China-based customers in the second quarter."</blockquote>
+      <p class="magnitude"><b>Size:</b> H20 was $4.6B in Q1; zero to China in Q2. Not quantified forward.</p>
+      <p>Licenses did not restore sales: Beijing questioned the chips' security, so the problem now runs from both governments.</p>
+      <p class="next"><b>Next filing:</b> licensed H20 revenue (FY2026 Q3: about $50M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Inferred</span></div>
+      <div class="title">Q2 operating cash flow $15.4B = 58% of net income; DSO 54 days vs 46</div>
+      <blockquote>FY2026 Q2: "Net cash provided by operating activities | 42,779 | 29,833"</blockquote>
+      <p class="magnitude"><b>Size:</b> H1 $42.8B less Q1 $27.4B = Q2 $15.4B vs net income $26.4B; FCF $13.5B = 51%; receivables $27.8B.</p>
+      <p>Q1's $6.2B of customer advances did not repeat; Q2 shows the underlying conversion.</p>
+      <p class="next"><b>Next filing:</b> conversion back above 70% (FY2026 Q3: 69%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q FY2026 Q1 (filed May 28, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue $44.1B, +69%, with Blackwell selling to every customer category</div>
+      <blockquote>FY2026 Q1: "Revenue was $44.1 billion, up 69% from a year ago and up 12% sequentially."</blockquote>
+      <blockquote>FY2026 Q1: "We saw our Blackwell architecture ramp expand to all customer categories, while large cloud service providers remained our largest at just under 50% of Data Center revenue."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$18.0B year over year, including $4.6B of H20 shipped before the license rule.</p>
+      <p>The Blackwell transition did not create an air pocket.</p>
+      <p class="next"><b>Next filing:</b> growth without H20 (FY2026 Q2: about +17% sequentially ex-H20).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $27.4B, 146% of net income, helped by $6.2B of customer advances</div>
+      <blockquote>FY2026 Q1: "Deferred revenue additions includes $6.2 billion and $157 million of customer advances for the first quarter of fiscal years 2026 and 2025, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF $26.2B covered $14.5B of buybacks; advances = 23% of operating cash flow.</p>
+      <p>Customers prepaid at scale. The bear twin: advances are lumpy, and Q2 showed it.</p>
+      <p class="next"><b>Next filing:</b> conversion without advances (FY2026 Q2: 58%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 China and export controls" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 China and export controls</span><span class="chip">Stated</span></div>
+      <div class="title">$4.5B H20 charge after the April 9 license requirement; foreclosure warned</div>
+      <blockquote>FY2026 Q1: "As a result of these new requirements, we incurred a $4.5 billion charge in the first quarter of fiscal year 2026 associated with H20 excess inventory and purchase obligations as the demand for H20 products diminished."</blockquote>
+      <blockquote>FY2026 Q1: "In that event, we would effectively be foreclosed from competing in China's data center computing/compute market, with a material and adverse impact on our business, operating results, and financial condition."</blockquote>
+      <p class="magnitude"><b>Size:</b> $4.5B = 10.2% of Q1 revenue and 11.0 points of gross margin; operating income &minus;10% sequentially.</p>
+      <p>With the FY2025 10-K's worldwide AI Diffusion rule, a second filing pointing the same way: P4 moves to Weakening.</p>
+      <p class="next"><b>Next filing:</b> licensed H20 sales (FY2026 Q2: none to China).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 60.5%; about 70.7% before the charge, still below 73.0% in Q4</div>
+      <blockquote>FY2026 Q1: "Gross margins decreased to 60.5% for the first quarter of fiscal year 2026 compared to 78.4% for the first quarter of fiscal year 2025, primarily due to a $4.5 billion charge associated with H20 excess inventory and purchase obligations and the initial ramp of more sophisticated systems within Data Center."</blockquote>
+      <p class="magnitude"><b>Size:</b> about 2.3 points of underlying decline vs Q4 (arithmetic on the disclosed charge).</p>
+      <p>The systems ramp was dilutive on its own, before the charge.</p>
+      <p class="next"><b>Next filing:</b> margin recovery (FY2026 Q2: 72.4%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Customer A 16%, Customer B 14%; an unnamed AI research company is a "meaningful" source of revenue</div>
+      <blockquote>FY2026 Q1: "Sales to one direct customer, Customer A, represented 16% of total revenue and sales to a second direct customer, Customer B, represented 14% of total revenue for the first quarter of fiscal year 2026"</blockquote>
+      <p class="magnitude"><b>Size:</b> top customer 12% &rarr; 16%; two indirect customers 10%+; receivables 27/18/12%.</p>
+      <p>The first time the filing names an end buyer type (an AI research and deployment company) behind the cloud customers.</p>
+      <p class="next"><b>Next filing:</b> top-customer share (FY2026 Q2: 23%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed February 26, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue $130.5B, +114%; Blackwell shipped in Q4 as guided</div>
+      <blockquote>FY2025: "Revenue for fiscal year 2025 was $130.5 billion, up 114% from a year ago."</blockquote>
+      <blockquote>FY2025: "We began shipping production systems of the Blackwell architecture in the fourth quarter of fiscal year 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$69.6B of revenue; Data Center +142%.</p>
+      <p>The Q3 commitment on Blackwell timing was met.</p>
+      <p class="next"><b>Next filing:</b> Blackwell ramp breadth (FY2026 Q1: all customer categories).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 75.0% vs 72.7%; operating margin 62.4% vs 54.1%</div>
+      <blockquote>FY2025: "Gross margins increased to 75.0% in fiscal year 2025 from 72.7% in fiscal year 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income $81.5B, +147%; opex 12.6% of revenue vs 18.6%.</p>
+      <p>Peak profitability on the Hopper cycle.</p>
+      <p class="next"><b>Next filing:</b> margin through the Blackwell ramp (FY2026 Q1: 60.5%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks $34.0B from $60.9B of free cash flow</div>
+      <blockquote>FY2025: "In fiscal year 2025, we repurchased 310 million shares of our common stock for $34.0 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks + dividends = 57% of FCF; debt flat at $8.5B.</p>
+      <p>Returns funded entirely from operations.</p>
+      <p class="next"><b>Next filing:</b> pace vs FCF.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 China and export controls" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 China and export controls</span><span class="chip">Stated</span></div>
+      <div class="title">AI Diffusion rule would require licenses worldwide for A100 through GB200</div>
+      <blockquote>FY2025: "After a 120-day delayed compliance period, the IFR will, unless modified, impose a worldwide licensing requirement on all products classified under Export Control Classification Numbers, or ECCNs, 3A090.a, 4A090.a, or corresponding .z ECCNs, including all related software and technology."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; 53% of revenue billed outside the U.S.</p>
+      <p>Export risk widened from China to every market. The rule was rescinded in May 2025, but the H20 rule followed.</p>
+      <p class="next"><b>Next filing:</b> the replacement rule (FY2026 Q1: H20 license requirement).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Three direct customers at 12%, 11% and 11% vs one at 13% in FY2024</div>
+      <blockquote>FY2025: "For fiscal year 2025, an indirect customer which primarily purchases our products through system integrators and distributors, including through Direct Customer B, is estimated to represent 10% or more of total revenue, attributable to the Compute &amp; Networking segment."</blockquote>
+      <p class="magnitude"><b>Size:</b> 34% of revenue from three direct customers (about $44B).</p>
+      <p>The indirect customer that was "approximately 19%" in FY2024 is now only "10% or more", so the disclosure lost precision as concentration rose.</p>
+      <p class="next"><b>Next filing:</b> top-customer share (FY2026 Q1: 16%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">Supply obligations $16.1B &rarr; $30.8B plus $14.3B other; warranty liability $306M &rarr; $1.3B</div>
+      <blockquote>FY2025: "As of January 26, 2025, we had outstanding inventory purchase and long-term supply and capacity obligations totaling $30.8 billion, an increase from the prior year led by commitments, capacity and components for new product introductions, including our new Blackwell architecture."</blockquote>
+      <p class="magnitude"><b>Size:</b> $45.1B total = 70% of operating cash flow; flat at about 35% of revenue.</p>
+      <p>Obligations grew with revenue, so not yet out of line; the fourfold warranty liability shows the cost of selling systems.</p>
+      <p class="next"><b>Next filing:</b> obligations relative to revenue.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q FY2025 Q3 (filed November 20, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Data Center demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Data Center demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue $35.1B, +94%; Blackwell demand expected to exceed supply through much of FY2026</div>
+      <blockquote>FY2025 Q3: "Both Hopper and Blackwell systems have certain supply constraints, and the demand for Blackwell is expected to exceed supply for several quarters in fiscal year 2026."</blockquote>
+      <blockquote>FY2025 Q3: "Revenue was $35.1 billion, up 94% from a year ago and up 17% sequentially."</blockquote>
+      <p class="magnitude"><b>Size:</b> Data Center +112%; compute $27.6B, +132%.</p>
+      <p>The most specific forward demand statement in the window; the Blackwell mask change was completed.</p>
+      <p class="next"><b>Next filing:</b> Blackwell shipments in Q4 (met).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks $11.1B in the quarter; nine-month cash conversion 93%</div>
+      <blockquote>FY2025 Q3: "We repurchased 92 million and 254 million shares of our common stock for $11.1 billion and $26.2 billion during the third quarter and first nine months of fiscal year 2025, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month operating cash flow $47.5B vs net income $50.8B; $46.4B authorization left.</p>
+      <p>Cash tracks earnings and funds returns.</p>
+      <p class="next"><b>Next filing:</b> full-year conversion (FY2025: 83.5% FCF/net income).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Margins and operating leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin slips to 74.6% on more complex, higher-cost systems</div>
+      <blockquote>FY2025 Q3: "Sequentially, gross margin decreased primarily driven by a mix shift from H100 systems to more complex and higher cost systems within Data Center."</blockquote>
+      <p class="magnitude"><b>Size:</b> 0.5 point sequentially; provisions cost 2.2 points.</p>
+      <p>Small, but the first sign of the systems-cost pressure that took FY2026 to 71.1%.</p>
+      <p class="next"><b>Next filing:</b> Q4 margin (implied 73.0%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Customer concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Customer concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Three direct customers at 12% each, and the letters may change every quarter</div>
+      <blockquote>FY2025 Q3: "The customer references of A-D above may represent different customers than those reported in a previous period."</blockquote>
+      <p class="magnitude"><b>Size:</b> 36% of revenue from three buyers; one indirect customer 10%+.</p>
+      <p>Investors cannot tell whether the same buyers are growing or rotating.</p>
+      <p class="next"><b>Next filing:</b> annual concentration (FY2025: 12/11/11%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Commitments, guarantees and customer financing" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Commitments, guarantees and customer financing</span><span class="chip">Stated</span></div>
+      <div class="title">Supply obligations $28.9B plus $13.2B other, including $11.3B of cloud contracts</div>
+      <blockquote>FY2025 Q3: "As of October 27, 2024, we had outstanding inventory purchase and long-term supply and capacity obligations totaling $28.9 billion, an increase from the prior year primarily due to commitments for Blackwell capacity and components."</blockquote>
+      <p class="magnitude"><b>Size:</b> $42.1B = 89% of nine-month operating cash flow; warranty liability $1.0B vs $306M at the start of the year.</p>
+      <p>The starting point for a commitment base that reaches $279B by FY2027 Q2.</p>
+      <p class="next"><b>Next filing:</b> year-end obligations ($30.8B + $14.3B).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>

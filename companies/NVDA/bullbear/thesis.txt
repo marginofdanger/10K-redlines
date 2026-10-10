@@ -1,0 +1,78 @@
+NVIDIA (NVDA): INVESTMENT THESIS PILLARS
+Written October 2026 from the 10-K dashboard themes and the 10-Q scanner's tracked signals, covering
+the eight filings from the FY2025 Q3 10-Q (filed November 2024) to the FY2027 Q2 10-Q (filed August
+2026). Stances start at Intact in October 2024 and move only when findings in two or more filings
+point the same way; "last moved" names the filing that completed the move.
+
+P1 Data Center demand and growth
+  Bull assumes: AI infrastructure spending keeps Data Center revenue compounding as each yearly
+    architecture (Hopper, Blackwell, Blackwell Ultra, Rubin) ships on time, with demand broadening
+    beyond the largest cloud providers.
+  Bear fears: demand depends on a few buyers' capex and on customers' access to capital and power;
+    growth decelerates when capex budgets or financing tighten.
+  Stance: Strengthening, last moved FY2027 Q2 10-Q. Growth slowed from +114% (FY2025) to +56% (FY2026
+    Q2), then reaccelerated in two straight filings: +85% (FY2027 Q1) and +106% (FY2027 Q2), with ACIE
+    +138%. Blackwell (FY2025 Q4), Blackwell Ultra (FY2026 Q2) and Vera Rubin (FY2027 Q3) all shipped
+    inside the guided windows.
+  Tests: Data Center growth, ACIE vs Hyperscale mix, Rubin ramp, the "lack" of customer financing
+    language and any postponements it predicts.
+
+P2 Margins and operating leverage
+  Bull assumes: gross margin holds in the mid-70s and operating expenses grow slower than revenue.
+  Bear fears: the move from boards to full-scale systems, memory costs, tariffs and inventory charges
+    push gross margin structurally lower.
+  Stance: Intact (never moved). Gross margin fell to 71.1% for FY2026 on the systems transition and
+    the $4.5B H20 charge, but operating margin was held up by operating leverage, and gross margin
+    returned to 74.9% and 75.0% in FY2027 Q1 and Q2; operating margin reached 66.2%.
+  Tests: gross margin vs 75%, net inventory provisions, opex as a share of revenue, memory-cost language.
+
+P3 Customer concentration
+  Bull assumes: concentration falls as AI clouds, enterprises and sovereigns grow ("continued
+    diversification of customers").
+  Bear fears: a handful of hyperscalers and one AI research company drive most revenue and receivables.
+  Stance: Weakening, last moved FY2026 Q2 10-Q. The top direct customer went 12% (FY2025 Q3) -> 16%
+    (FY2026 Q1) -> 23% (FY2026 Q2), then 22% for FY2026 and 21/17/16% in FY2027 Q1. FY2027 Q2 shows only
+    one customer at 16% (bull, one filing), but five customers hold 70% of receivables.
+  Tests: direct-customer percentages, receivables concentration, the indirect AI research company.
+
+P4 China and export controls
+  Bull assumes: NVIDIA keeps serving China's data center market with compliant products, or licenses
+    restore it.
+  Bear fears: U.S. rules and Chinese pushback foreclose China and strand inventory.
+  Stance: Broken, last moved FY2026 Q3 10-Q. Weakening at FY2026 Q1 (after the FY2025 10-K's AI
+    Diffusion rule, the $4.5B H20 charge and conditional foreclosure); Broken when FY2026 Q2 (licensed
+    H20 produced no China sales) was followed by FY2026 Q3 ("We have effectively been foreclosed").
+    FY2027 Q2 repeats the pattern with H200: PRC restriction, a $0.4B charge, tariff absorbed.
+  Tests: China-headquartered revenue (up to $7.9B in FY2027 Q2 from $4.6B in Q1; the filing does not
+    explain what it consists of), licensed shipments, SAMR outcome, RASA and GAIN AI Act.
+
+P5 Earnings quality
+  Bull assumes: reported earnings are operating earnings; other income is minor.
+  Bear fears: marks on a fast-growing equity portfolio, much of it in customers and model makers,
+    inflate net income; tax and warrant items flatter results.
+  Stance: Weakening, last moved FY2027 Q1 10-Q. FY2026 10-K: other income $9.0B incl. Intel gains plus
+    a $711M valuation-allowance release; FY2027 Q1: $15.9B of unrealized gains (22.8% of pre-tax income),
+    net income above operating income. FY2027 Q2 fell back to 10.9% of pre-tax but the portfolio is $99B.
+  Tests: other income as a share of pre-tax income, equity portfolio size, lock-ups, warrant accounting.
+
+P6 Cash conversion and capital return
+  Bull assumes: free cash flow tracks net income and funds buybacks and dividends without debt.
+  Bear fears: receivables, inventory and prepayments absorb cash; returns outrun free cash flow.
+  Stance: Weakening, last moved FY2027 Q2 10-Q. FY2026 10-K: FCF/net income 80.5% (90.8% two years
+    earlier), inventory doubled to $21.4B; FY2027 Q2: receivables +$22.4B on terms up to one year, FCF
+    36% of net income, and $25.7B returned in the quarter as $25.0B of notes were issued. FY2027 Q1
+    was strong (FCF $48.6B, DSO 45), so the trend is uneven.
+  Tests: DSO, operating cash flow vs net income, returns vs FCF, use of the commercial paper program.
+
+P7 Commitments, guarantees and customer financing
+  Bull assumes: supply commitments match visible demand, and NVIDIA sells to customers that can pay
+    without NVIDIA's balance sheet behind them.
+  Bear fears: NVIDIA underwrites demand: multi-year supply commitments, lease guarantees, capacity
+    backstops and equity in buyers that would all bite at once in a downturn.
+  Stance: Weakening, last moved FY2026 10-K. FY2026 Q3: first lease guarantee ($860M), commitments
+    $50.3B, Intel/OpenAI/Anthropic investments; FY2026 10-K: guarantees $3.5B, commitments $95.2B,
+    commercial paper capacity $25.0B. Since then: commitments $119B (FY2027 Q1) and $279B (FY2027 Q2),
+    guarantees $108.5B including $105B for OpenAI's leases, $36B AI-cloud capacity backstops. A
+    triggered guarantee, a forced capacity purchase or a commitment write-down would move it to Broken.
+  Tests: guarantee exposure and triggers, supply commitments vs trailing revenue, AI-cloud capacity
+    purchased, excess purchase-obligation provisions.

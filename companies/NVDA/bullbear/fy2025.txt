@@ -1,0 +1,45 @@
+NVIDIA FY2025 10-K (filed February 26, 2025; fiscal year ended January 26, 2025)
+Fundamentals answers. Marker = versus the FY2025 Q3 10-Q (and FY2024 for annual ratios).
+
+1. Growth and pricing [HELD]
+   Revenue $130.5B, +114%; Data Center +142% (compute +162%, networking +51% on Ethernet/Spectrum-X);
+   Gaming +9%. Implied Q4 revenue $39.3B, +12% q/q. Blackwell production shipments began in Q4.
+   The inference share (~40%) and cloud-provider share (>50%) disclosed in FY2024 are dropped.
+
+2. Margins and unit economics [HELD]
+   Gross margin 75.0% vs 72.7% "driven by a higher mix of Data Center revenue"; implied Q4 73.0%.
+   Operating margin 62.4% vs 54.1%; opex 12.6% of revenue vs 18.6%. Provisions $3.7B, 2.3 points.
+
+3. Earnings quality [HELD]
+   Other, net $1.0B (1.2% of pre-tax income); tax rate 13.3% vs 12.0% (prior-year audit benefit).
+   No material one-offs.
+
+4. Cash conversion [WORSE]
+   Operating cash flow $64.1B; FCF $60.9B = 83.5% of net income (FY2024 90.8%). DSO 65 days vs 60;
+   inventory $10.1B vs $5.3B a year earlier and $7.7B at Q3.
+
+5. Capital allocation [HELD]
+   Buybacks $34.0B (310M shares) + dividends $834M = 57% of FCF. Capex "$3.4 billion" vs the
+   $3.5-4.0B guide. "We plan to continue share repurchases this fiscal year" is dropped.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Cash and securities $43.2B; debt $8.46B; indebtedness risk factor deleted. Supply obligations
+   $30.8B (FY2024 $16.1B) plus $14.3B other incl. $10.9B cloud = $45.1B, 70% of operating cash flow.
+   Warranty liability $1.3B vs $306M.
+
+7. Concentration [WORSE]
+   Three direct customers 12/11/11% (34%) vs one at 13% in FY2024; an indirect customer 10%+ via
+   Customer B ("approximately 19%" in FY2024 now "10% or more"). Receivables 17/16%. Non-U.S. 53%.
+
+8. Accounting judgments [WORSE]
+   No estimate changes, but metrics no longer disclosed: inference share, cloud-provider share, China
+   percentage ("well below" pre-control levels) and the capex range ("expect to increase").
+
+9. Legal, regulatory and governance [WORSE]
+   January 15, 2025 AI Diffusion IFR: worldwide licensing for A100 through GB200 after 120 days.
+   China regulators investigating whether export-control compliance "discriminates unfairly".
+   Supreme Court dismissed NVIDIA's certiorari petition as improvidently granted (December 2024).
+
+10. Guidance and commitments [HELD]
+   Blackwell Q4 shipment: met. FY2025 capex $3.4B vs $3.5-4.0B: just under the low end.
+   New: "We expect to increase capital expenditures in fiscal year 2026 relative to fiscal year 2025".
