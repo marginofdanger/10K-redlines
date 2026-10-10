@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEEV Bull / Bear | latest: Q2 FY2027 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Veeva Systems: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended July 31, 2026 (Q2 FY2027), filed August 27, 2026 | Also covered: seven filings back to the Q3 FY2025 10-Q, filed December 9, 2024 | Veeva's fiscal year ends January 31 (FY2026 = year ended January 31, 2026) | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Subscription growth / R&amp;D and Quality</td><td class="stance s-intact">Intact</td><td class="ev-bull">Q2 FY2027 revenue +17.6%, the fastest in the window; deferred revenue +18.3% and +18.5% in the last two quarters</td><td class="ev-bear">Subscription growth slowed from +20% (FY2025) to +15&ndash;16% in FY2027; R&amp;D subscription growth +24% &rarr; +19%; deferred revenue only +11.2% in Q3 FY2026</td><td>&mdash;</td></tr>
+<tr><td>P2 CRM franchise / Vault CRM migration</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Commercial subscription back to +13.0% in Q2 FY2027 (Q1 +10.6%); risk summary no longer singles out the CRM market</td><td class="ev-bear">Defections escalate: "a large" customer (FY2025 10-K) &rarr; "certain large" customers (Q2 FY2026) &rarr; "a number of our customers" moving to Salesforce (FY2026 10-K); Veeva CRM support end pulled in to December 31, 2029</td><td>Q2 FY2026 10-Q</td></tr>
+<tr><td>P3 Margins and operating leverage</td><td class="stance s-intact">Intact</td><td class="ev-bull">GAAP operating margin 18.2% (FY2024) &rarr; 28.7% (FY2026); non-GAAP 35.6% &rarr; 44.9%</td><td class="ev-bear">Non-GAAP operating margin 44.8% in Q1 and Q2 FY2027 vs 46.1% and 44.7% a year earlier, after headcount +637</td><td>Q2 FY2027 10-Q (from Strengthening)</td></tr>
+<tr><td>P4 Earnings quality and dilution</td><td class="stance s-intact">Intact</td><td class="ev-bull">Stock comp 15.9% &rarr; 14.8% of revenue (FY2025 &rarr; FY2026); diluted shares &minus;1.6% in Q2 FY2027</td><td class="ev-bear">Q2 FY2027 operating income +40% is +21% before lapping a $30.6M charge; tax rate 21.8% vs 24.5%; $893M of unrecognized equity comp after the RSU redesign</td><td>&mdash;</td></tr>
+<tr><td>P5 Cash generation and capital return</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">FY2026 operating cash flow $1,415M, +30% (156% of net income); $2B buyback; H1 FY2027 buybacks $467M = 34% of operating cash flow</td><td class="ev-bear">Q2 FY2027 operating cash flow flat while net income +36%; the OBBBA catch-up deduction is in its final year</td><td>FY2026 10-K</td></tr>
+<tr><td>P6 Balance sheet and legal overhang</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">All IQVIA litigation settled with no damages either way (August 2025); $7.2B cash and investments, no debt</td><td class="ev-bear">$31M success fee to law firms; $46.3M unrealized losses on the bond portfolio at July 31, 2026</td><td>Q2 FY2026 10-Q</td></tr>
+<tr><td>P7 Customer base and end-market</td><td class="stance s-intact">Intact</td><td class="ev-bull">Customers 1,552, +75 in FY2026 (+45 a year earlier); top 10 customers 28% of revenue for three years</td><td class="ev-bear">Customers "have in the past exercised their right to reduce usage or exercise termination rights" (new in Q3 FY2026); EU Data Act no-cause cancellation</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 FY2027</h2>
+<p class="note">What the Q2 FY2027 10-Q (quarter ended July 31, 2026) adds, for and against. The top line is the best in two years and buybacks are now funded from cash flow; the headline earnings growth leans on lapping last year's litigation charge and a lower tax rate, and the CRM defection language has not softened.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Subscription growth / R&amp;D and Quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Subscription growth / R&amp;D and Quality</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +17.6% to $928.0M, the fastest growth in the eight filings; deferred revenue +18.3%</div>
+      <blockquote>Q2 FY2027: "Total revenues | 927,963 | 789,081 | 138,882 | 18% | 1,810,911 | 1,548,124 | 262,787 | 17%"</blockquote>
+      <blockquote>Q2 FY2027: "The increase in subscription revenues attributable to R&amp;D and Quality Solutions and Commercial Solutions for the three and six months ended July 31, 2026 was driven by the expanding use by existing customers and higher prices in connection with our annual inflation adjustment for our products."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$138.9M year over year; subscription +16.3% (Q1 +15.0%); R&amp;D and Quality subscription $419.4M, +19.3%; deferred revenue $1,310.5M vs $1,107.7M (+18.3%).</p>
+      <p>Subscription growth turned back up after Q1's 15.0% low, and deferred revenue, the best lead indicator Veeva discloses (remaining performance obligations beyond a year are "not significant"), has grown faster than subscription revenue for two quarters. Since Q1 FY2027 the filing names price alongside volume as a driver; through FY2026 price was a driver only "to a lesser extent".</p>
+      <p class="next"><b>Next filing:</b> subscription growth at or above 16% and deferred revenue growth above subscription growth in Q3 FY2027 (Q3 FY2026 deferred revenue grew only 11.2%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial subscription reaccelerates: $347.4M, +13.0% (Q1 +10.6%), adding $40M</div>
+      <blockquote>Q2 FY2027: "The increase in subscription revenues for the three months ended July 31, 2026 consisted of $68 million attributable to R&amp;D and Quality Solutions and $40 million attributable to Commercial Solutions."</blockquote>
+      <blockquote>Q2 FY2027: "•We face intense competition in markets in which we operate and if we do not compete effectively, we may lose customers and our business and operating results could be adversely affected."</blockquote>
+      <p class="magnitude"><b>Size:</b> Commercial subscription +$39.9M year over year = 45% of Q2 subscription revenue; growth back to the FY2026 range (+13.8%).</p>
+      <p>Despite announced defections to Salesforce, the Commercial line has not shrunk; Q1's 10.6% now looks like a low rather than a new run-rate. The risk-factor summary dropped the words "particularly in the CRM market as we transition customers" (Q1 FY2027 wording), the first softening of CRM language in the window.</p>
+      <p class="next"><b>Next filing:</b> Commercial subscription growth of 12% or more as Veeva CRM support (to December 31, 2029) draws nearer.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">H1 buybacks $467M (2.66M shares) funded from operating cash flow of $1,366M; diluted shares &minus;1.6%</div>
+      <blockquote>Q2 FY2027: "During the six months ended July 31, 2026, we repurchased and subsequently retired 2,663,443 shares of our common stock for an aggregate amount of approximately $467 million."</blockquote>
+      <blockquote>Q2 FY2027: "The repurchase program is funded using our cash flows from operations."</blockquote>
+      <p class="magnitude"><b>Size:</b> $467M = 34% of H1 operating cash flow; 1.6% of shares outstanding; diluted shares 165.1M vs 167.7M; $1.4B of the $2B authorization left; cash and investments still $7.2B.</p>
+      <p>Buybacks now more than offset dilution from equity awards, and since Q1 FY2027 the filing says they are funded from cash flows from operations (the FY2026 10-K said "working capital"). Average price $175.28 vs the CEO's $236.90 option strike.</p>
+      <p class="next"><b>Next filing:</b> buybacks within operating cash flow in the seasonally weak Q3, and diluted shares below 165M.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margins stop falling and G&amp;A drops to 8% of revenue (12%): the FY2026 promise of lower G&amp;A is being kept</div>
+      <blockquote>Q2 FY2027: "The decrease in general and administrative expenses for the three and six months ended July 31, 2026 was primarily due to $31 million in litigation settlement-related charges that was incurred in the quarter ended July 31, 2025."</blockquote>
+      <blockquote>Q2 FY2027: "Total gross margin percentage | 75 | 75 | 75 | 76"</blockquote>
+      <p class="magnitude"><b>Size:</b> G&amp;A $71.3M vs $95.8M; subscription gross margin 86% (flat), services 22% (flat; Q1 was 20% vs 23%); non-GAAP operating margin 44.8% vs 44.7%.</p>
+      <p>Q1's margin squeeze from hiring did not repeat. The G&amp;A fall is a lapping effect, so this card shows stability, not new leverage (see the stance change on P3).</p>
+      <p class="next"><b>Next filing:</b> non-GAAP operating margin above the prior year's 45.0% in Q3 FY2027 would restart the leverage story.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Earnings quality and dilution" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P4 Earnings quality and dilution</span><span class="chip">Inferred</span></div>
+      <div class="title">Operating income +40% and EPS +39% lean on lapping a $30.6M charge and a tax rate of 21.8% vs 24.5%</div>
+      <blockquote>Q2 FY2027: "During the three and six months ended July 31, 2026, as compared to the same periods in the prior fiscal year, our effective tax rate decreased primarily due to an increase in FDDEI deduction under the OBBBA provisions effective in the current fiscal year, partially offset by discrete tax deficiencies related to equity compensation."</blockquote>
+      <blockquote>Q2 FY2027: "Income before income taxes | 349,530 | 265,364 | 84,166 | 32% | 697,060 | 564,185 | 132,875 | 24%"</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income $275.0M vs $226.5M excluding last year's charge = +21%, not +40%; at last year's 24.5% tax rate net income would be about $9.5M lower (3.5%, about $0.06 a share); other income $74.5M = 21% of pre-tax income.</p>
+      <p>Underlying growth is solid but close to revenue growth; the reported acceleration is mostly comparison and tax. A fifth of pre-tax income is interest on the cash pile, which buybacks and lower rates will shrink.</p>
+      <p class="next"><b>Next filing:</b> Q3 FY2027 operating income growth against a clean prior-year quarter ($240.9M); tax rate drivers.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Inferred</span></div>
+      <div class="title">Q2 operating cash flow flat at $238.7M while net income rose 36%; cash taxes paid +20% and the OBBBA catch-up is ending</div>
+      <blockquote>Q2 FY2027: "Net cash provided by operating activities on a GAAP basis | 238,709 | 238,433 | 1,365,825 | 1,115,591"</blockquote>
+      <blockquote>Q2 FY2027: "The OBBBA modified provisions around FDDEI and we are in the final year of our two-year election to accelerate the deduction of unamortized capitalized domestic research and development expenditures."</blockquote>
+      <blockquote>Q2 FY2027: "Cash paid for income taxes, net of refunds | 151,543 | 126,683"</blockquote>
+      <p class="magnitude"><b>Size:</b> Q2 operating cash flow = 87% of net income vs 119% a year earlier; H1 cash taxes +$24.9M although the MD&amp;A credits OBBBA with a "reduction in income tax payments"; the catch-up deduction is not quantified ("unable to estimate").</p>
+      <p>Part of FY2026&ndash;FY2027 cash growth comes from deducting three years of previously capitalized R&amp;D. From FY2028 that tailwind is gone, so cash conversion should step down unless working capital offsets it.</p>
+      <p class="next"><b>Next filing:</b> Q3 operating cash flow vs $192.8M a year earlier; any quantification of the OBBBA benefit in the FY2027 10-K.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Equity redesign: 3.96M RSUs granted, most cliff-vesting after four years; $893M of compensation still to be expensed</div>
+      <blockquote>Q2 FY2027: "In April 2026, we transitioned our long-term equity incentive for employees (excluding our CEO) from annual stock option grants to RSUs that generally cliff-vest after four years of continuous service"</blockquote>
+      <blockquote>Q2 FY2027: "As of July 31, 2026, there was a total of $581 million in unrecognized compensation cost related to unvested RSUs."</blockquote>
+      <p class="magnitude"><b>Size:</b> 3.96M RSUs = 2.4% of 161.8M shares outstanding; $581M (RSUs) + $312M (options) = $893M unrecognized = 1.9x FY2026 stock comp ($472.7M); Q2 stock comp $136.8M, +12%.</p>
+      <p>RSUs are full-value shares, so each grant dilutes more than an option of the same value at today's price. The filing says Long-Term Grants are "not expected to be annually recurring", which leaves the steady-state cost unclear.</p>
+      <p class="next"><b>Next filing:</b> stock comp as a share of revenue (14.7% in Q2) and whether buybacks keep net share count falling.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Defection sentence unchanged for a third filing; Commercial falls to 46% of subscription revenue</div>
+      <blockquote>Q2 FY2027: "For example, Salesforce, our primary CRM competitor, has announced that certain large Veeva CRM customers have committed to purchasing its CRM solutions and a number of our customers have informed us of their intent to move to Salesforce as their CRM provider."</blockquote>
+      <blockquote>Q2 FY2027: "For the six months ended July 31, 2026, we derived approximately 46% and 54% of our subscription revenues and 44% and 56% of our total revenues from our Commercial Solutions and R&amp;D and Quality Solutions, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> lost seats not quantified; Commercial share of subscription 48% (FY2025) &rarr; 47% (FY2026) &rarr; 46% (H1 FY2027); Commercial grows 13.0% vs 19.3% for R&amp;D and Quality.</p>
+      <p>Announced losses take effect at renewal and migration dates, so revenue lags the notices. The 10-Q gives no Vault CRM customer or seat count to show the other side of the ledger.</p>
+      <p class="next"><b>Next filing:</b> any change to the defection sentence, Commercial customer count in the FY2027 10-K (767 at FY2026), Commercial growth below 10% would confirm.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Services grow 24%, faster than subscription (16%), at a 22% gross margin</div>
+      <blockquote>Q2 FY2027: "Professional services and other | 161,199 | 129,898 | 31,301 | 24% | 313,972 | 254,173 | 59,799 | 24%"</blockquote>
+      <p class="magnitude"><b>Size:</b> services 17.4% of revenue vs 16.5%; services gross profit $34.9M on $161.2M; total gross margin flat at 75% only because subscription margin held at 86%.</p>
+      <p>Services demand (implementation and business consulting) is a sign of activity, but every point of mix shift toward services costs roughly 0.6 points of gross margin.</p>
+      <p class="next"><b>Next filing:</b> services growth back toward subscription growth, or services gross margin above 22%.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing (full answers in the <code>&lt;period&gt;.txt</code> files beside this page). <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before. Fiscal years end January 31.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 FY2027 10-Q</th><th>Q1 FY2027 10-Q</th><th>FY2026 10-K</th><th>Q3 FY2026 10-Q</th><th>Q2 FY2026 10-Q</th><th>Q1 FY2026 10-Q</th><th>FY2025 10-K</th><th>Q3 FY2025 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td>
+<td><span class="mark better">&#9650;</span> Revenue +17.6%; subscription +16.3%; Commercial +13.0%, R&amp;D and Quality +19.3%; deferred revenue +18.3%.</td>
+<td><span class="mark worse">&#9660;</span> Subscription +15.0% (window low); Commercial +10.6%; services +23%; deferred revenue +18.5%.</td>
+<td><span class="mark worse">&#9660;</span> Revenue +16%; subscription +17.5% (was +20%); customers +75 to 1,552; deferred revenue +16.9%.</td>
+<td><span class="mark held">&#9679;</span> Subscription +17.5%; Commercial +14.1%; deferred revenue +11.2%, the slowest in the window.</td>
+<td><span class="mark worse">&#9660;</span> Subscription +17% (Q1 +19%); Commercial +13.1% (Q1 +16.9%); deferred revenue +15.8%.</td>
+<td><span class="mark better">&#9650;</span> Subscription +19%; Commercial +16.9%, R&amp;D +20.8%; deferred revenue +21.1%.</td>
+<td><span class="mark better">&#9650;</span> Revenue +16% (FY2024 +10%); subscription +20%; R&amp;D Solutions +30%, Commercial +11%.</td>
+<td><span class="mark worse">&#9660;</span> Revenue +13%, subscription +17% (Q2 +15%, +19%); services &minus;3%; Commercial +11%.</td></tr>
+<tr><td>2. Margins and unit economics</td>
+<td><span class="mark held">&#9679;</span> Gross margins flat (75%, subscription 86%); non-GAAP operating margin 44.8% vs 44.7%; G&amp;A 8% of revenue.</td>
+<td><span class="mark worse">&#9660;</span> Gross margin 75% vs 77%; services 20% vs 23%; non-GAAP 44.8% vs 46.1%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 28.7% vs 25.2%; non-GAAP 44.9% vs 42.0%; headcount +637.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 29.7% vs 25.9%; services gross margin 18% vs 22%.</td>
+<td><span class="mark worse">&#9660;</span> Operating margin 24.8% after $30.6M legal fees; cost of subscription +19%.</td>
+<td><span class="mark better">&#9650;</span> Cost of revenues flat; gross margin 77% vs 73%; operating margin 30.8%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 25.2% vs 18.2%; gross margin 75% vs 71%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 25.9% vs 20.8%; S&amp;M 14% of revenue (16%).</td></tr>
+<tr><td>3. Earnings quality</td>
+<td><span class="mark worse">&#9660;</span> Tax rate 21.8% vs 24.5% (about $9.5M); operating income +21% before lapping the charge; other income 21% of pre-tax.</td>
+<td><span class="mark worse">&#9660;</span> Tax rate 24.9% vs 23.6% on equity-comp deficiencies; net income +14% vs revenue +16%.</td>
+<td><span class="mark held">&#9679;</span> $30.6M legal charge excluded from non-GAAP; other income 23% of pre-tax; tax rate 23.9%.</td>
+<td><span class="mark held">&#9679;</span> No one-off items; other income 23% of pre-tax; tax rate 24.5%.</td>
+<td><span class="mark worse">&#9660;</span> $30.6M success-fee charge = 16% of operating income, excluded from non-GAAP.</td>
+<td><span class="mark held">&#9679;</span> Tax rate 23.6% vs 21.9%; stock comp +17% on the CEO grant.</td>
+<td><span class="mark held">&#9679;</span> Tax rate 22.3% vs 10.6% (FY2024 flattered by CEO exercises); interest 25% of pre-tax.</td>
+<td><span class="mark held">&#9679;</span> Other income 25% of pre-tax; G&amp;A stock comp doubled on the CEO grant.</td></tr>
+<tr><td>4. Cash conversion</td>
+<td><span class="mark worse">&#9660;</span> Q2 operating cash flow flat ($238.7M) vs net income +36%; cash taxes +20%; H1 +22%.</td>
+<td><span class="mark better">&#9650;</span> Operating cash flow $1,127M, +28.5%, helped by OBBBA.</td>
+<td><span class="mark better">&#9650;</span> Operating cash flow $1,415M, +30% = 156% of net income.</td>
+<td><span class="mark better">&#9650;</span> Nine-month operating cash flow +28% to $1,308M.</td>
+<td><span class="mark better">&#9650;</span> H1 operating cash flow +30%; FY2026 increase guided on OBBBA.</td>
+<td><span class="mark worse">&#9660;</span> Operating cash flow +14.9% vs net income +41%; TCJA cash taxes.</td>
+<td><span class="mark better">&#9650;</span> Operating cash flow $1,090M, +20% = 153% of net income.</td>
+<td><span class="mark better">&#9650;</span> Nine-month operating cash flow +20% despite TCJA taxes.</td></tr>
+<tr><td>5. Capital allocation</td>
+<td><span class="mark better">&#9650;</span> H1 buybacks $467M = 34% of operating cash flow; $1.4B authorization left.</td>
+<td><span class="mark better">&#9650;</span> Buybacks $221M; Ostro bought for $90M ($70M net).</td>
+<td><span class="mark better">&#9650;</span> First buyback: $2B over two years; $180M executed.</td>
+<td><span class="mark held">&#9679;</span> No buybacks or acquisitions; cash into short-term investments.</td>
+<td><span class="mark held">&#9679;</span> No buybacks; option proceeds $182M in H1.</td>
+<td><span class="mark held">&#9679;</span> No buybacks or acquisitions.</td>
+<td><span class="mark held">&#9679;</span> No buybacks, dividends or acquisitions.</td>
+<td><span class="mark held">&#9679;</span> No buybacks; CEO granted 2.65M options ($172M fair value).</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td>
+<td><span class="mark held">&#9679;</span> Cash and investments $7.2B, no debt; new leases $63M; $46.3M unrealized bond losses.</td>
+<td><span class="mark held">&#9679;</span> Cash and investments $7.3B; no debt.</td>
+<td><span class="mark held">&#9679;</span> $6.6B; no debt; $31M success fee paid.</td>
+<td><span class="mark held">&#9679;</span> $6.6B; no debt; litigation note reduced to the closed settlement.</td>
+<td><span class="mark better">&#9650;</span> $6.4B; IQVIA contingency resolved, $31M accrued.</td>
+<td><span class="mark worse">&#9660;</span> $6.1B; contingency fees now "reasonably possible", not estimable.</td>
+<td><span class="mark held">&#9679;</span> $5.2B; no debt; fees unaccrued.</td>
+<td><span class="mark held">&#9679;</span> $5.1B; no debt; fees unaccrued.</td></tr>
+<tr><td>7. Concentration</td>
+<td><span class="mark held">&#9679;</span> Commercial 46% of subscription; Asia and other 11% of subscription (13%); Anthropic named as an LLM supplier.</td>
+<td><span class="mark held">&#9679;</span> Top 10 customers 28%; 60% North America.</td>
+<td><span class="mark held">&#9679;</span> Top 10 customers 28% for FY2024&ndash;FY2026; none above 10%.</td>
+<td><span class="mark worse">&#9660;</span> New: customers have cut usage or terminated; EU Data Act no-cause cancellation.</td>
+<td><span class="mark held">&#9679;</span> Top 10 customers 28%.</td>
+<td><span class="mark held">&#9679;</span> Top 10 customers 28%.</td>
+<td><span class="mark held">&#9679;</span> Top 10 customers 28%; no customer above 10%.</td>
+<td><span class="mark held">&#9679;</span> Top 10 customers 28%; China about 2% of revenue.</td></tr>
+<tr><td>8. Accounting judgments</td>
+<td><span class="mark worse">&#9660;</span> Options replaced by four-year cliff RSUs; $893M unrecognized comp.</td>
+<td><span class="mark held">&#9679;</span> No changes; Ostro purchase accounting.</td>
+<td><span class="mark held">&#9679;</span> Segment labels renamed (R&amp;D and Quality); estimates unchanged.</td>
+<td><span class="mark held">&#9679;</span> No changes to critical estimates.</td>
+<td><span class="mark held">&#9679;</span> No changes to critical estimates.</td>
+<td><span class="mark held">&#9679;</span> No changes; adjusted operating income as segment measure.</td>
+<td><span class="mark held">&#9679;</span> Critical estimates unchanged.</td>
+<td><span class="mark held">&#9679;</span> No changes to critical estimates.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td>
+<td><span class="mark better">&#9650;</span> No material proceedings; CRM no longer singled out in the risk summary; Aspen CRM launched outside life sciences.</td>
+<td><span class="mark held">&#9679;</span> No material proceedings; "timely manner, or at all" migration hedge removed.</td>
+<td><span class="mark worse">&#9660;</span> "a number of our customers" moving to Salesforce; drug pricing and tariff risks added.</td>
+<td><span class="mark worse">&#9660;</span> Salesforce agreement expired: no Veeva CRM sales to new customers.</td>
+<td><span class="mark better">&#9650;</span> All IQVIA litigation settled, no damages; "certain large" CRM customers leaving.</td>
+<td><span class="mark better">&#9650;</span> California non-compete case with IQVIA settled.</td>
+<td><span class="mark worse">&#9660;</span> First named CRM defection to Salesforce.</td>
+<td><span class="mark worse">&#9660;</span> IQVIA trial postponed; Salesforce&ndash;IQVIA joint CRM announced.</td></tr>
+<tr><td>10. Guidance and commitments</td>
+<td><span class="mark better">&#9650;</span> G&amp;A decrease on track (H1 &minus;14%); CRM support date held; R&amp;D and Quality share 54%.</td>
+<td><span class="mark held">&#9679;</span> G&amp;A flat (+1%) vs the promised decrease; buyback under way.</td>
+<td><span class="mark worse">&#9660;</span> Veeva CRM support end moved to December 31, 2029; OBBBA cash-flow guide met.</td>
+<td><span class="mark held">&#9679;</span> OBBBA cash-flow increase on track.</td>
+<td><span class="mark held">&#9679;</span> New: FY2026 cash flow to increase; $200M+ counterclaims dropped.</td>
+<td><span class="mark held">&#9679;</span> June 2025 trial date overtaken by settlement.</td>
+<td><span class="mark held">&#9679;</span> TCJA cash-tax drag met; R&amp;D share rising, met.</td>
+<td><span class="mark held">&#9679;</span> No numeric guidance; CRM supported to September 1, 2030.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, date or expectation management put in a filing during the window, and what later filings said about it. Veeva gives revenue and earnings guidance in press releases, not in its 10-K or 10-Q, so none appears here.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"Revenues associated with our R&amp;D Solutions are expected to increase as a percentage of both subscription services revenues and total revenues in the future."</td><td>Q3 FY2025 10-Q (repeated in every filing)</td><td>FY2025 10-K: met, 52% of subscription (48%). FY2026 10-K: met, 53%. Q2 FY2027: met, 54% of H1 subscription</td></tr>
+<tr><td>"Veeva CRM will be supported until September 1, 2030."</td><td>Q3 FY2025 10-Q</td><td>FY2025 10-K to Q3 FY2026: held. FY2026 10-K: moved earlier, to December 31, 2029. Q1 and Q2 FY2027: held at December 31, 2029</td></tr>
+<tr><td>"In the fiscal year ending January 31, 2025, cash payments for income taxes in relation to the Tax Cuts and Jobs Act of 2017 ... are expected to reduce our cash flows from operating activities."</td><td>Q3 FY2025 10-Q</td><td>FY2025 10-K: met (stated as having reduced cash flow); operating cash flow still +20%</td></tr>
+<tr><td>"On March 25, 2024, the trial court judge set a trial date of June 16, 2025 on the consolidated claims." (California non-compete case)</td><td>Q3 FY2025 10-Q</td><td>Q1 FY2026: dropped; settled with IQVIA on May 30, 2025</td></tr>
+<tr><td>"The counterclaims seek injunctive relief, monetary damages exceeding $200 million, and attorneys’ fees."</td><td>Q3 FY2025 10-Q</td><td>Q2 FY2026: dropped; global settlement with no damages either way; $31M success fee accrued</td></tr>
+<tr><td>CEO option exercisable only if the share price is "sustained at or above $236.90 per share for a period of sixty consecutive trading days"</td><td>Q3 FY2025 10-Q</td><td>FY2026 10-K: met ("the market condition has been achieved"); time vesting from February 2026</td></tr>
+<tr><td>"our cash flows from operating activities are expected to increase for the fiscal year ending January 31, 2026"</td><td>Q2 FY2026 10-Q</td><td>Q3 FY2026: on track (nine months +28%). FY2026 10-K: met, $1,415M (+30%)</td></tr>
+<tr><td>"In January 2026, our board of directors authorized a share repurchase program of up to $2 billion of our outstanding shares of common stock."</td><td>FY2026 10-K</td><td>FY2026 10-K: $180M. Q1 FY2027: $221M more. Q2 FY2027: $467M in H1; $1.4B remaining, term to January 2028</td></tr>
+<tr><td>"We expect general and administrative expenses to decrease in the next fiscal year, due to the litigation settlement-related charges discussed above."</td><td>FY2026 10-K</td><td>Q1 FY2027: not yet (+1%). Q2 FY2027: on track, H1 G&amp;A &minus;14%</td></tr>
+<tr><td>"The OBBBA is expected to continue to reduce our cash tax obligations for the remainder of the fiscal year, the amount of which we are unable to estimate at this time."</td><td>Q1 FY2027 10-Q</td><td>Q2 FY2027: repeated; H1 cash taxes paid $151.5M vs $126.7M, so the reduction is not visible in the cash-flow note</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 FY2027, quarter ended April 30, 2026 (filed June 5, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $1,127M, +28.5%; first full quarter of buybacks, $221M</div>
+      <blockquote>Q1 FY2027: "Net cash provided by operating activities was $1,127 million for the three months ended April 30, 2026 compared to $877 million provided by operating activities for the three months ended April 30, 2025."</blockquote>
+      <blockquote>Q1 FY2027: "During the fiscal quarter ended April 30, 2026, we repurchased and subsequently retired 1,255,029 shares of our common stock for an aggregate amount of approximately $221 million."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks = 20% of operating cash flow; average price $176.17; cash and investments rose to $7.3B anyway.</p>
+      <p>Q1 is the seasonal collection quarter, and it funded the buyback and the $70M Ostro deal with room to spare.</p>
+      <p class="next"><b>Next filing:</b> buybacks within cash flow in Q2 (Q2: $246M, yes).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Subscription growth / R&amp;D and Quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Subscription growth / R&amp;D and Quality</span><span class="chip">Stated</span></div>
+      <div class="title">Deferred revenue +18.5% to $1,476.5M; R&amp;D and Quality subscription +19.1%</div>
+      <blockquote>Q1 FY2027: "Deferred revenue | 1,476,539 | 1,488,819"</blockquote>
+      <blockquote>Q1 FY2027: "R&amp;D and Quality Solutions | 392,309 | 329,357"</blockquote>
+      <p class="magnitude"><b>Size:</b> deferred revenue +$230.3M vs April 30, 2025 ($1,246.2M); growth above subscription revenue growth (15.0%).</p>
+      <p>Billings ran ahead of revenue after Q3 FY2026's 11.2% low, pointing to faster revenue later in the year.</p>
+      <p class="next"><b>Next filing:</b> subscription growth picking up (Q2: +16.3%, yes).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bull" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Inferred</span></div>
+      <div class="title">Migration risk factor drops the hedge that customers may not migrate "in a timely manner, or at all"</div>
+      <blockquote>Q1 FY2027: "If we are unsuccessful migrating our Veeva CRM customers to Vault CRM, or encounter disruptions, delays, or other problems in the migration process, our business, operating results, and brand could be materially and adversely affected."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing.</p>
+      <p>Removing the "or at all" wording suggests management sees migration uptake as less in doubt; it is wording, not data.</p>
+      <p class="next"><b>Next filing:</b> any Vault CRM count; the hedge staying out (Q2: still out).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 75% vs 77%: cost of subscription +27%, services margin 20% vs 23%</div>
+      <blockquote>Q1 FY2027: "Cost of subscription | 99,103 | 78,346 | 20,757 | 27%"</blockquote>
+      <blockquote>Q1 FY2027: "Gross margin for professional services and other was 20% and 23% for the three months ended April 30, 2026 and 2025, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> subscription gross margin 86% vs 88%; operating income +17% on revenue +16%; non-GAAP operating margin 44.8% vs 46.1%.</p>
+      <p>The FY2026 hiring (+637 people) and data and hosting costs arrived before the revenue; the margin expansion of FY2025&ndash;FY2026 paused.</p>
+      <p class="next"><b>Next filing:</b> gross margin back to the prior-year level (Q2: flat at 75%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial subscription +10.6% (+$32M), the slowest in the window</div>
+      <blockquote>Q1 FY2027: "The increase in subscription revenues consisted of $63 million attributable to R&amp;D and Quality Solutions and $32 million attributable to Commercial Solutions."</blockquote>
+      <p class="magnitude"><b>Size:</b> $337.9M vs $305.4M; Commercial = 46% of subscription.</p>
+      <p>The first quarter after the FY2026 10-K said "a number" of customers plan to move to Salesforce showed the weakest Commercial growth in two years.</p>
+      <p class="next"><b>Next filing:</b> Commercial back above 12% would refute (Q2: +13.0%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Subscription growth / R&amp;D and Quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Subscription growth / R&amp;D and Quality</span><span class="chip">Stated</span></div>
+      <div class="title">Subscription growth 15.0%, the slowest in the window; services carry the top line (+23%)</div>
+      <blockquote>Q1 FY2027: "Subscription | 730,175 | 634,768 | 95,407 | 15%"</blockquote>
+      <p class="magnitude"><b>Size:</b> subscription +$95.4M vs +$100.8M a year earlier; services +$28.5M.</p>
+      <p>Total revenue growth (16%) held only because lower-margin services accelerated.</p>
+      <p class="next"><b>Next filing:</b> subscription growth of 16% or more (Q2: 16.3%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2026, year ended January 31, 2026 (filed March 20, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $1,415M, +30%; first buyback program, $2B over two years</div>
+      <blockquote>FY2026: "Net cash provided by operating activities was $1,415 million for the fiscal year ended January 31, 2026 compared to $1,090 million provided by operating activities for the fiscal year ended January 31, 2025."</blockquote>
+      <blockquote>FY2026: "In January 2026, our board of directors authorized a share repurchase program of up to $2 billion of our outstanding shares of common stock."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating cash flow = 156% of net income; stock comp 33% of operating cash flow (40%); $2B = 30% of the $6.6B cash pile; $180M executed.</p>
+      <p>Capital return begins from a debt-free balance sheet; this filing moved P5 to Strengthening after Q2 and Q3 FY2026 showed the same cash acceleration.</p>
+      <p class="next"><b>Next filing:</b> buyback pace vs cash flow (H1 FY2027: $467M, 34%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income +33% to $916.4M; operating margin 28.7% vs 25.2%</div>
+      <blockquote>FY2026: "Operating income | 916,369 | 691,435"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$224.9M on +$448.7M of revenue (50% incremental margin); non-GAAP 44.9% vs 42.0%.</p>
+      <p>Expenses grew 10% against revenue growth of 16% even with $30.6M of legal fees.</p>
+      <p class="next"><b>Next filing:</b> margin holding as the +637 hires ramp (Q1 FY2027: dipped).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Customer base and end-market" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Customer base and end-market</span><span class="chip">Stated</span></div>
+      <div class="title">Customers +75 to 1,552, after +45 the year before; R&amp;D and Quality customers +71</div>
+      <blockquote>FY2026: "As of January 31, 2026, 2025, and 2024, we served 1,552, 1,477, and 1,432 customers, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> +5.1% customers; Commercial 767 (+37), R&amp;D and Quality 1,196 (+71); top 10 customers 28% for a third year.</p>
+      <p>Net customer additions accelerated in the year the CRM defections were disclosed, and concentration did not rise.</p>
+      <p class="next"><b>Next filing (FY2027 10-K):</b> Commercial customer count still rising.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">"A number of our customers" now intend to move to Salesforce, the third escalation in the window</div>
+      <blockquote>FY2026: "For example, Salesforce, our primary CRM competitor, has announced that certain large Veeva CRM customers have committed to purchasing its CRM solutions and a number of our customers have informed us of their intent to move to Salesforce as their CRM provider."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; Commercial subscription $1,257.6M = 47% of subscription revenue.</p>
+      <p>The disclosure moved from Salesforce's announcements to Veeva's own customers telling it they will leave.</p>
+      <p class="next"><b>Next filing:</b> Commercial growth (Q1 FY2027: +10.6%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Veeva CRM support end pulled in eight months, to December 31, 2029 (was September 1, 2030)</div>
+      <blockquote>FY2026: "Veeva CRM will be supported until December 31, 2029."</blockquote>
+      <p class="magnitude"><b>Size:</b> eight months less runway; every Veeva CRM customer must choose Vault CRM or a rival sooner.</p>
+      <p>An earlier deadline forces the decision point, when switching costs are lowest, closer.</p>
+      <p class="next"><b>Next filing:</b> date held (Q2 FY2027: held).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Inferred</span></div>
+      <div class="title">Headcount +637 (+8.7%) after +119 the year before</div>
+      <blockquote>FY2026: "As of January 31, 2026, we had 7,928 employees worldwide, up by 637 from the previous year."</blockquote>
+      <p class="magnitude"><b>Size:</b> five times the prior year's net hiring; compensation is the main cost line in every expense category.</p>
+      <p>Hiring at half the revenue growth rate implies costs grow faster in FY2027 than in FY2026.</p>
+      <p class="next"><b>Next filing:</b> margin effect (Q1 FY2027: gross margin 75% vs 77%; confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Inferred</span></div>
+      <div class="title">Part of the cash surge is a one-time catch-up deduction of three years of capitalized R&amp;D</div>
+      <blockquote>FY2026: "Additionally, the OBBBA provides for an election to accelerate the deduction of unamortized capitalized domestic research and development expenditures from fiscal years ended January 31, 2023 to January 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified ("unable to estimate"); operating cash flow growth (+30%) outran net income growth (+27%).</p>
+      <p>The catch-up runs over two years, so FY2026&ndash;FY2027 cash flow overstates the run-rate.</p>
+      <p class="next"><b>Next filing:</b> cash taxes paid (H1 FY2027: $151.5M vs $126.7M).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 FY2026, quarter ended October 31, 2025 (filed November 21, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income +33% to $240.9M; margin 29.7% vs 25.9%</div>
+      <blockquote>Q3 FY2026: "Operating income | 240,853 | 181,353 | 670,493 | 503,012"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$59.5M on +$112.0M of revenue; non-GAAP 45.0% vs 43.5%.</p>
+      <p>The 2018 CEO grant finished expensing, cutting G&amp;A by $4M, and operating costs grew 8%.</p>
+      <p class="next"><b>Next filing:</b> full-year margin (FY2026: 28.7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month operating cash flow +28% to $1,308M</div>
+      <blockquote>Q3 FY2026: "Net cash provided by operating activities was $1,308 million for the nine months ended October 31, 2025 compared to $1,021 million provided by operating activities for the nine months ended October 31, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$287.9M; cash and investments $6.6B.</p>
+      <p>The second filing in a row with cash growth near 30%, consistent with the OBBBA guide.</p>
+      <p class="next"><b>Next filing:</b> full-year cash flow (FY2026: +30%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial subscription +14.1% to $317.7M, up from +13.1%</div>
+      <blockquote>Q3 FY2026: "The increase in subscription services revenues consisted of $63 million attributable to R&amp;D Solutions and $39 million attributable to Commercial Solutions."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$39.3M year over year.</p>
+      <p>No visible revenue damage yet from the announced defections.</p>
+      <p class="next"><b>Next filing:</b> Commercial growth in FY2026 (13.8%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P7 Customer base and end-market" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Customer base and end-market</span><span class="chip">Stated</span></div>
+      <div class="title">New disclosure: customers have cut usage or terminated; EU customers can now cancel without cause</div>
+      <blockquote>Q3 FY2026: "In addition, certain customers have in the past exercised their right to reduce usage or exercise termination rights, and other customers may also choose to do so in the future."</blockquote>
+      <blockquote>Q3 FY2026: "Furthermore, the newly effective EU Data Act, which came into effect September 12, 2025, allows our EU customers to cancel their subscriptions without cause and switch to another provider upon providing the notice and after the transition period specified by the Act."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; Europe is 28% of subscription revenue.</p>
+      <p>Multi-year orders already carried termination-for-convenience rights; this is the first statement that customers have used them.</p>
+      <p class="next"><b>Next filing:</b> any quantification or customer-count decline.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Subscription growth / R&amp;D and Quality" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P1 Subscription growth / R&amp;D and Quality</span><span class="chip">Inferred</span></div>
+      <div class="title">Deferred revenue +11.2% year over year, the slowest in the window</div>
+      <blockquote>Q3 FY2026: "Deferred revenue | 822,466 | 1,273,978"</blockquote>
+      <p class="magnitude"><b>Size:</b> $822.5M vs $739.7M at October 31, 2024; subscription revenue grew 17.5%.</p>
+      <p>The company warns renewal-date and billing-frequency changes distort deferred revenue, but a six-point gap to revenue growth is the widest in two years.</p>
+      <p class="next"><b>Next filing:</b> year-end deferred revenue (FY2026: +16.9%; recovered).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Salesforce agreement expired: Veeva CRM can no longer be sold to new customers</div>
+      <blockquote>Q3 FY2026: "Our agreement with Salesforce expired on September 1, 2025, and pursuant to the terms of our agreement, during the wind-down period from September 1, 2025 to September 1, 2030, we may not sell applications that utilize the Salesforce platform to new customers"</blockquote>
+      <p class="magnitude"><b>Size:</b> existing customers capped at 150% of September 1, 2025 seats.</p>
+      <p>The legacy product is now in run-off; every new CRM sale must be Vault CRM.</p>
+      <p class="next"><b>Next filing:</b> Vault CRM adoption disclosure.</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 FY2026, quarter ended July 31, 2025 (filed August 29, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P6 Balance sheet and legal overhang" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and legal overhang</span><span class="chip">Stated</span></div>
+      <div class="title">All IQVIA litigation settled on August 13, 2025; neither side pays damages</div>
+      <blockquote>Q2 FY2026: "Under the terms of the settlement agreement, neither party will pay damages to the other party and both parties agreed to dismiss with prejudice all claims and counterclaims currently pending."</blockquote>
+      <p class="magnitude"><b>Size:</b> ends eight years of litigation and IQVIA's trade-secret claims (unspecified damages); Veeva gives up counterclaims "exceeding $200 million".</p>
+      <p>Following the May 2025 California settlement, this is the second filing removing IQVIA risk, which moved P6 to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> no residual costs (FY2026: $31M paid, nothing further).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">H1 operating cash flow +30%; OBBBA guided to lift FY2026 cash flow</div>
+      <blockquote>Q2 FY2026: "Net cash provided by operating activities was $1,116 million for the six months ended July 31, 2025 compared to $856 million provided by operating activities for the six months ended July 31, 2024."</blockquote>
+      <blockquote>Q2 FY2026: "our cash flows from operating activities are expected to increase for the fiscal year ending January 31, 2026"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$259.2M; cash and investments $6.4B.</p>
+      <p>A reversal of the TCJA cash-tax drag that the two previous filings warned about.</p>
+      <p class="next"><b>Next filing:</b> nine-month cash flow (Q3: +28%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Subscription growth / R&amp;D and Quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Subscription growth / R&amp;D and Quality</span><span class="chip">Stated</span></div>
+      <div class="title">R&amp;D Solutions subscription +21.5% to $351.7M</div>
+      <blockquote>Q2 FY2026: "R&amp;D Solutions | 351,660 | 289,467 | 681,017 | 562,106"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$62.2M = 63% of subscription growth.</p>
+      <p>Quality Cloud is now named as a driver alongside Development Cloud.</p>
+      <p class="next"><b>Next filing:</b> R&amp;D growth above 20% (Q3: 20.6%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Defections go plural: "certain large Veeva CRM customers" have committed to Salesforce</div>
+      <blockquote>Q2 FY2026: "For example, Salesforce, our primary CRM competitor, has announced that certain large Veeva CRM customers have committed to purchasing its CRM solutions."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; Commercial subscription growth slowed to +13.1% from +16.9%.</p>
+      <p>The second filing in a row naming CRM losses (FY2025 10-K: one customer), which moved P2 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> more losses disclosed (FY2026 10-K: "a number of our customers").</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">$30.6M success fee to law firms, excluded from non-GAAP as non-recurring</div>
+      <blockquote>Q2 FY2026: "Consequent to the settlement of the IQVIA litigations, as of July 31, 2025, we accrued approximately $31 million due to such law firms in accordance with the terms of such arrangements."</blockquote>
+      <p class="magnitude"><b>Size:</b> $30.6M = 16% of Q2 operating income ($195.9M); GAAP operating income +18% vs non-GAAP +26%.</p>
+      <p>A settlement with no damages still cost a sixth of the quarter's operating income.</p>
+      <p class="next"><b>Next filing:</b> no further legal charges (none through Q2 FY2027).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Cost of subscription +19%, ahead of subscription revenue (+17%), on data costs</div>
+      <blockquote>Q2 FY2026: "Cost of subscription services | 93,830 | 78,791 | 19% | 172,176 | 156,939 | 10%"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$15.0M; subscription gross margin 86% (flat) after 88% in Q1.</p>
+      <p>Data acquisition for Veeva Compass and hosting grow with usage; Q1's 88% was not repeatable.</p>
+      <p class="next"><b>Next filing:</b> subscription margin trend (stuck at 86&ndash;87% since).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 FY2026, quarter ended April 30, 2025 (filed June 2, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Cost of revenues flat on revenue +17%: gross margin 77% vs 73%, operating margin 30.8%</div>
+      <blockquote>Q1 FY2026: "Cost of revenues for the three months ended April 30, 2025 remained flat as compared to the three months ended April 30, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income $233.7M, +51%; non-GAAP 46.1% vs 40.1%.</p>
+      <p>The second filing in a row with step-change margins (FY2025 10-K: 25.2% vs 18.2%), which moved P3 to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> margin above 30% sustained (Q2: 24.8% after legal fees).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Commercial subscription +16.9% to $305.4M, its best in the window</div>
+      <blockquote>Q1 FY2026: "The increase in subscription services revenues consisted of $57 million attributable to R&amp;D Solutions and $44 million attributable to Commercial Solutions."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$44.1M; Commercial nearly matched R&amp;D growth (20.8%).</p>
+      <p>Commercial Cloud and Data Cloud expansion more than offset the first CRM loss.</p>
+      <p class="next"><b>Next filing:</b> Commercial growth held (Q2: +13.1%; it did not).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and legal overhang" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and legal overhang</span><span class="chip">Stated</span></div>
+      <div class="title">California non-compete case with IQVIA settled two weeks before trial</div>
+      <blockquote>Q1 FY2026: "On May 30, 2025, we entered into a confidential settlement agreement with IQVIA and the parties agreed to dismiss their claims against each other."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; removes the June 16, 2025 trial.</p>
+      <p>The first IQVIA case to close; the larger New Jersey cases followed in August.</p>
+      <p class="next"><b>Next filing:</b> New Jersey cases (Q2: settled).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P6 Balance sheet and legal overhang" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and legal overhang</span><span class="chip">Stated</span></div>
+      <div class="title">Success fees to law firms now "reasonably possible"</div>
+      <blockquote>Q1 FY2026: "While it is reasonably possible that we may incur contingent or success fees, the possible range of such liabilities is not estimable."</blockquote>
+      <p class="magnitude"><b>Size:</b> not estimable in this filing; became $31M in Q2.</p>
+      <p>The wording moved from "unable to make an estimate" to "reasonably possible", signalling a cost from any non-monetary outcome.</p>
+      <p class="next"><b>Next filing:</b> accrual (Q2: $31M).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +14.9%, well behind net income (+41%); TCJA cash taxes to weigh on FY2026</div>
+      <blockquote>Q1 FY2026: "Net cash provided by operating activities was $877 million for the three months ended April 30, 2025 compared to $764 million provided by operating activities for the three months ended April 30, 2024."</blockquote>
+      <blockquote>Q1 FY2026: "As a result, in the fiscal year ended January 31, 2026, cash payments for income taxes in relation to the TCJA are expected to reduce our cash..."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$113.6M of cash vs +$66.5M of net income; growth gap 26 points.</p>
+      <p>Cash conversion lagged before OBBBA changed the tax picture in July 2025.</p>
+      <p class="next"><b>Next filing:</b> H1 cash flow (Q2: +30% after OBBBA).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Stock comp +17% to $112.2M, led by the CEO's 2024 option grant</div>
+      <blockquote>Q1 FY2026: "The increase in employee compensation-related costs was primarily driven by stock-based compensation related to the equity grant to our Chief Executive Officer in the quarter ended July 31, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> G&amp;A stock comp $27.5M vs $17.0M; total stock comp 14.8% of revenue.</p>
+      <p>Stock comp grew as fast as revenue in the quarter, so it did not fall as a share.</p>
+      <p class="next"><b>Next filing:</b> stock comp share of revenue (FY2026: 14.8%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025, year ended January 31, 2025 (filed March 24, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">All $383M of revenue growth from subscription; operating income +61%, margin 25.2% vs 18.2%</div>
+      <blockquote>FY2025: "Total revenues for the fiscal year ended January 31, 2025 increased $383 million, all of which was from growth in subscription services revenues."</blockquote>
+      <blockquote>FY2025: "Operating income | 691,435 | 429,334"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$262.1M operating income = 68% incremental margin; gross margin 75% vs 71%; non-GAAP 42.0% vs 35.6%.</p>
+      <p>Mix shift to subscription and lower third-party services costs drove a seven-point margin gain.</p>
+      <p class="next"><b>Next filing:</b> margins held (Q1 FY2026: 30.8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Subscription growth / R&amp;D and Quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Subscription growth / R&amp;D and Quality</span><span class="chip">Stated</span></div>
+      <div class="title">R&amp;D Solutions subscription +$274M (+30%); subscription +20%</div>
+      <blockquote>FY2025: "The increase in subscription services revenues consisted of $274 million of subscription services revenue attributable to R&amp;D Solutions and $109 million of subscription services revenue attributable to Commercial Solutions."</blockquote>
+      <p class="magnitude"><b>Size:</b> R&amp;D Solutions $1,179.8M = 52% of subscription (48%); deferred revenue +21.4%.</p>
+      <p>The R&amp;D engine overtook Commercial as the larger half of the business.</p>
+      <p class="next"><b>Next filing:</b> R&amp;D growth above 20% (Q1 FY2026: 20.8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $1,090M, +20%, 153% of net income despite TCJA taxes</div>
+      <blockquote>FY2025: "Net cash provided by operating activities was $1,090 million for the fiscal year ended January 31, 2025 compared to $911 million provided by operating activities for the fiscal year ended January 31, 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$178.7M; cash and investments $5.2B; no buybacks.</p>
+      <p>Cash kept growing with revenue even with capitalized-R&amp;D taxes.</p>
+      <p class="next"><b>Next filing:</b> use of cash (no buyback until January 2026).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">First named CRM loss: a large Veeva CRM customer commits to Salesforce</div>
+      <blockquote>FY2025: "For example, Salesforce, our primary CRM competitor, recently announced that a large Veeva CRM customer has committed to purchasing its CRM solutions."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; Commercial subscription $1,104.9M = 48% of subscription; top 10 customers 28% of revenue.</p>
+      <p>The migration created a switching point and Salesforce, now with IQVIA's software, used it.</p>
+      <p class="next"><b>Next filing:</b> further defections (Q2 FY2026: "certain large" customers).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">Interest income is a quarter of pre-tax profit: other income $227.9M, +44%</div>
+      <blockquote>FY2025: "Other income, net, for the fiscal year ended January 31, 2025 increased $69 million due to an increase in interest income from higher investment asset balances and higher yields from investments."</blockquote>
+      <p class="magnitude"><b>Size:</b> $227.9M = 25% of pre-tax income ($919.4M); the $69M rise is 21% of the pre-tax increase.</p>
+      <p>A rate-sensitive, non-operating stream that falls with yields or with cash returned to shareholders.</p>
+      <p class="next"><b>Next filing:</b> other income share of pre-tax (FY2026: 23%; Q2 FY2027: 21%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 FY2025, quarter ended October 31, 2024 (filed December 9, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P3 Margins and operating leverage" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins and operating leverage</span><span class="chip">Stated</span></div>
+      <div class="title">Operating income +41% to $181.4M on revenue +13%; margin 25.9% vs 20.8%</div>
+      <blockquote>Q3 FY2025: "Operating income | 181,353 | 128,489 | 503,012 | 294,070"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$52.9M; non-GAAP 43.5% vs 38.1%; sales and marketing 14% of revenue (16%).</p>
+      <p>Expense growth of 7% against subscription growth of 17%.</p>
+      <p class="next"><b>Next filing:</b> full-year margin (FY2025: 25.2%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Subscription growth / R&amp;D and Quality" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Subscription growth / R&amp;D and Quality</span><span class="chip">Stated</span></div>
+      <div class="title">R&amp;D Solutions subscription +24% ($59M of the $86M increase)</div>
+      <blockquote>Q3 FY2025: "The increase in subscription services revenues consisted of $59 million of subscription services revenue attributable to R&amp;D Solutions and $27 million of subscription services revenue attributable to Commercial Solutions."</blockquote>
+      <p class="magnitude"><b>Size:</b> R&amp;D Solutions $302.5M = 52% of subscription.</p>
+      <p>Development Cloud adoption by "both existing and new customers" carried growth.</p>
+      <p class="next"><b>Next filing:</b> R&amp;D share rising (FY2025: 52%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Cash generation and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Cash generation and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Nine-month operating cash flow +20% to $1,021M</div>
+      <blockquote>Q3 FY2025: "Net cash provided by operating activities was $1,021 million for the nine months ended October 31, 2024 compared to $854 million provided by operating activities for the nine months ended October 31, 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$166.9M despite higher cash taxes; cash and investments $5.1B.</p>
+      <p>Cash conversion kept pace with growth.</p>
+      <p class="next"><b>Next filing:</b> full-year cash flow (FY2025: +20%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 CRM franchise / Vault CRM migration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 CRM franchise / Vault CRM migration</span><span class="chip">Stated</span></div>
+      <div class="title">Salesforce and IQVIA team up on a life sciences CRM; Commercial subscription +10.8%</div>
+      <blockquote>Q3 FY2025: "In April 2024, Salesforce, Inc. and IQVIA announced an expanded CRM partnership under which IQVIA will license their CRM software to Salesforce and both parties will jointly market a new life sciences industry-specific CRM solution, which will compete with our offerings."</blockquote>
+      <p class="magnitude"><b>Size:</b> Commercial subscription $278.4M, +10.8% vs +24.1% for R&amp;D.</p>
+      <p>The platform Veeva is leaving becomes its main competitor, with IQVIA's CRM code.</p>
+      <p class="next"><b>Next filing:</b> any customer losses (FY2025 10-K: the first one).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Earnings quality and dilution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Earnings quality and dilution</span><span class="chip">Stated</span></div>
+      <div class="title">CEO granted 2.65M options worth $172M at grant</div>
+      <blockquote>Q3 FY2025: "During the nine months ended October 31, 2024, we granted our Chief Executive Officer options to purchase an aggregate of 2,650,000 shares of our common stock at an exercise price of $236.90 per share, which was equal to the Company’s 52-week high trading price at the time of grant."</blockquote>
+      <p class="magnitude"><b>Size:</b> 1.6% of shares outstanding; $172M = 39% of FY2025 stock comp if it were expensed in one year (it vests through 2030); G&amp;A stock comp $34.0M vs $17.5M.</p>
+      <p>A large single grant, with a price hurdle set at the then 52-week high.</p>
+      <p class="next"><b>Next filing:</b> stock comp share of revenue (FY2025: 15.9%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Balance sheet and legal overhang" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Balance sheet and legal overhang</span><span class="chip">Stated</span></div>
+      <div class="title">IQVIA trade-secret trial delayed with an adverse-inference ruling still pending</div>
+      <blockquote>Q3 FY2025: "At this point, we do not expect trial to begin on February 10, 2025, as previously scheduled."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; IQVIA seeks unspecified damages; Veeva's counterclaims exceed $200M.</p>
+      <p>An eight-year case with a possible adverse-inference instruction kept an open-ended liability on the books.</p>
+      <p class="next"><b>Next filing:</b> summary-judgment ruling or settlement (Q2 FY2026: settled).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
