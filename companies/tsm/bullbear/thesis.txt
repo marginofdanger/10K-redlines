@@ -1,0 +1,101 @@
+TAIWAN SEMICONDUCTOR MANUFACTURING (TSM): INVESTMENT THESIS PILLARS
+Written October 2026 from the 20-F redline dashboard and the two annual reports filed since October 2024:
+the 20-F for FY2024 (filed April 17, 2025) and the 20-F for FY2025 (filed April 16, 2026). TSMC files no
+10-Q; there is no quarterly evidence in this window. SEC XBRL covers FY2024 and earlier only, so FY2025
+figures are taken from the 20-F text and statements (NT$ unless stated). Stances move only when two or
+more filings point the same way; "Last moved" names the filing that completed the run.
+
+P1 AI / HPC demand and growth
+  Bull assumes: AI accelerators and data-center chips (the HPC platform) keep growing faster than the
+    rest of the business, carrying revenue growth well above the semiconductor industry.
+  Bear fears: the AI build-out is lumpy or "not sustainable" (the company's own FY2024 risk wording),
+    and a slowdown at a handful of AI customers hits revenue hard.
+  Stance: Strengthening, moved at the FY2025 20-F.
+  History: FY2024 revenue +33.9%, HPC +58% to 51% of revenue (43%). FY2025 revenue +31.6% to
+    NT$3,809.1B, HPC +48% to 58%. Growth was price/mix-led in 2024 (revenue per wafer +24.5%, wafers
+    +7.6%) and broader in 2025 (wafers +16.4%, revenue per wafer +13.1%).
+  Tests: HPC share and growth, wafer shipments vs capacity, North America revenue, temporary receipts.
+
+P2 Technology lead and pricing
+  Bull assumes: TSMC stays a node ahead (N3 to N2 to A16), so advanced nodes command rising prices and
+    a rising share of wafer revenue.
+  Bear fears: a node slips, a competitor with subsidies closes the gap, or customers dual-source.
+  Stance: Strengthening, moved at the FY2025 20-F.
+  History: 7nm-and-below share 58% (2023) -> 69% (2024) -> 74% (2025). The FY2024 20-F said N2 volume
+    production was "expected in 2025"; the FY2025 20-F says it entered volume production in 2025 and
+    puts 16-angstrom risk production in 2026.
+  Tests: advanced-node share, N2 ramp, A16 risk production timing, R&D intensity.
+
+P3 Margins
+  Bull assumes: utilization, scale and pricing keep gross margin in the high 50s and operating margin
+    near 50% despite N2 ramp costs and overseas fabs.
+  Bear fears: overseas fabs (Arizona, Kumamoto, Dresden), Taiwan electricity prices, a stronger NT
+    dollar and U.S. tariffs dilute margin.
+  Stance: Strengthening, moved at the FY2025 20-F.
+  History: gross margin 54.4% -> 56.1% -> 59.9%; operating margin 42.6% -> 45.7% -> 50.8%. FY2024
+    absorbed Taiwan electricity increases of 25% (April 2024) and 14% (October 2024) and overseas
+    start-up costs (G&A and marketing +35.6%); FY2025 absorbed a 3% NT dollar appreciation (NT$32.13 to
+    NT$31.11 per US$; each 1% costs about 0.3 points of operating margin).
+  Tests: gross and operating margin, FX sensitivity sentence, overseas start-up language.
+
+P4 Capital intensity and cash return
+  Bull assumes: operating cash flow funds capex and a rising dividend, with free cash flow growing in
+    absolute terms.
+  Bear fears: capex steps up faster than cash flow (2026 guide US$52-56B), FCF conversion falls, and
+    purchase commitments lock in spending before demand is proven.
+  Stance: Intact (has not moved in the window).
+  History: FY2024 FCF NT$870B = 75% of net income (34% in 2023), capex US$29.8B inside the US$28-32B
+    guide. FY2025 FCF NT$1,003B but only 59% of net income; capex US$40.9B inside the US$38-42B guide;
+    purchase obligations NT$1,534.6B (+34%); customer temporary receipts fell NT$291.1B -> NT$189.9B.
+    Dividends paid were 42% and 47% of FCF; quarterly dividend NT$4.50 -> NT$6.00. One filing each way.
+  Tests: FCF / net income, capex vs guide, purchase obligations, dividends vs FCF.
+
+P5 Balance sheet and liquidity
+  Bull assumes: a large net cash position and fixed-rate bonds leave room for capex, dividends and
+    downturns without new equity.
+  Bear fears: parent guarantees of overseas subsidiaries' government loans and rising bond maturities.
+  Stance: Strengthening, moved at the FY2025 20-F.
+  History: cash, cash equivalents and current marketable securities NT$1,687.6B (2023) -> NT$2,422.0B
+    (2024) -> NT$3,068.6B (2025) against long-term debt of about NT$1.0T, so net cash about NT$1.40T ->
+    NT$2.04T. No short-term loans. Current portion of long-term debt rose to NT$136.9B (NT$59.9B).
+  Tests: net cash, bond issuance, guarantees (note 36), current debt.
+
+P6 Customer and market concentration
+  Bull assumes: concentration reflects the leading AI and smartphone designers choosing TSMC; their
+    prepayments and long agreements make it sticky.
+  Bear fears: a few customers (and one region, North America) drive most of revenue, so one customer's
+    loss or a single end market's slowdown moves the whole company.
+  Stance: Weakening, moved at the FY2025 20-F.
+  History: ten largest customers 70% -> 76% -> 78% of revenue; North America 68% -> 70% -> 75%. The
+    largest customer's share fell (25% -> 22% -> 19%) but the second rose (11% -> 12% -> 17%); in 2025
+    the two swapped places. Top-two share 36% -> 34% -> 36%.
+  Tests: top-10 and top-2 shares, Customer A/B note, North America share, receivables concentration.
+
+P7 Geopolitics, trade and export controls
+  Bull assumes: TSMC's role in the supply chain earns tariff carve-outs and licences; export rules have
+    "not been materially" affected results.
+  Bear fears: U.S. tariffs on chips, export-control breaches or licence loss (Nanjing), and the
+    cross-Strait risk inherent in a Taiwan-concentrated asset base.
+  Stance: Weakening, moved at the FY2025 20-F.
+  History: FY2024 20-F added the October 2024 notice to U.S. and Taiwan authorities of a possible
+    diversion of a customer's chip to a restricted entity, the January 2025 export-licence rule, and the
+    April 2025 tariffs. FY2025 20-F added a Section 232 25% tariff on certain advanced computing chips,
+    Section 301 investigations naming Taiwan, and the expiry of the Nanjing VEU (replaced by an annual
+    licence). Offsets: a January 2026 U.S.-Taiwan agreement capping reciprocal tariffs at 15% with
+    preferential Section 232 treatment, and the 16nm licence rule narrowed to "specified destinations".
+  Tests: tariff outcomes, the diversion inquiry, Nanjing licence renewal, Taiwan share of assets.
+
+P8 Overseas expansion execution
+  Bull assumes: Arizona, Kumamoto and Dresden ramp on schedule with subsidies, moving capacity closer to
+    customers and lowering political risk.
+  Bear fears: higher cost fabs dilute returns, grants carry clawbacks and milestones, and the parent
+    guarantees subsidiary obligations.
+  Stance: Intact (has not moved in the window).
+  History: FY2024: Arizona fab 1 in volume production end-2024, JASM volume production December 2024,
+    CHIPS Act award up to US$6.6B plus US$5B of loans (parent-guaranteed), ESMC up to EUR5B; overseas
+    start-up costs lifted G&A. FY2025: Arizona fab 3 started, more land bought in 2026, JASM fab 2
+    started October 2025, grants received NT$76.3B; but losses attributed to non-controlling interests
+    nearly tripled (NT$0.86B -> NT$2.48B), consistent with losses at JASM and ESMC. Milestones met on
+    the bull side, costs rising on the bear side; neither has run two filings alone.
+  Tests: overseas start-up language, non-controlling interest losses, grants received, U.S. and
+    Japan noncurrent assets, construction milestones.

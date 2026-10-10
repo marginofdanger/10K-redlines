@@ -1,0 +1,66 @@
+TSMC (TSM) 20-F FOR FY2025 (filed April 16, 2026; period ended December 31, 2025)
+Fundamentals answers. Marker = versus the FY2024 20-F. SEC XBRL has no FY2025 figures for TSM, so every
+FY2025 number here is from the 20-F text or statements (NT$ unless stated); quoted where load-bearing.
+
+1. Growth and pricing [HELD]
+   "Our net revenue in 2025 increased by 31.6% from 2024" to NT$3,809,054 million (US$121,423 million)
+   (2024: +33.9%). Wafer shipments 15,022K vs 12,910K (+16.4%); revenue per wafer +13.1% (arithmetic):
+   more volume-led than 2024. HPC "NT$716,040 million, or a 48% year-over-year increase", now 58% of
+   revenue (51%); North America 75% (70%). Partly offset by the NT dollar's appreciation (NT$32.13 ->
+   NT$31.11 per US$). Annual capacity "exceeded 17 million wafers" (about 17M).
+
+2. Margins and unit economics [BETTER]
+   Gross margin 59.9% vs 56.1%, "mainly attributable to higher capacity utilization and cost
+   improvement, partially offset by unfavorable foreign exchange rate"; operating margin 50.8% vs
+   45.7% (MD&A). R&D +20.7% but 6.5% of revenue (7.1%); G&A -1.7%. FX sensitivity: "every 1%
+   depreciation of the U.S. dollar against the NT dollar" costs about 0.3 points of operating margin.
+
+3. Earnings quality [HELD]
+   Net income attributable NT$1,697,604 million (+46.5%); EPS NT$65.47 (NT$44.67). Effective tax rate
+   17.0% (17.7%). Non-operating income NT$105.6B = 5.2% of pre-tax income (6.0%), mostly interest
+   income NT$105.7B. January 2025 earthquakes NT$5.3B loss net of insurance (note 37). Loss attributed
+   to non-controlling interests NT$2.48B (NT$0.86B). No material one-off gains.
+
+4. Cash conversion [WORSE]
+   Operating cash flow NT$2,274,976 million (+NT$448,799 million). FCF NT$1,002.6B (capex NT$1,272.4B)
+   = 59% of net income (75%). Working capital and tax drag NT$454.8B (NT$242.5B): income taxes paid
+   NT$267.6B, and accrued expenses -NT$103.2B as customer temporary receipts fell NT$291.1B ->
+   NT$189.9B (note 22). DSO about 27 days (34); inventory days 69 (83) (arithmetic).
+
+5. Capital allocation [HELD]
+   Capex US$40.9B, inside the US$38-42B guide. Dividends paid NT$466.8B = 47% of FCF (42%);
+   quarterly dividend NT$5.00 then NT$6.00 (NT$22 declared for 2025 vs NT$17). Bonds issued NT$86.9B,
+   repaid NT$54.3B. 2026 capex guide US$52-56B (+27% to +37%), "funded by our operating cash flow and
+   proceeds from the issuance of corporate bonds". No buyback in 2025.
+
+6. Balance sheet and contingent exposure [BETTER]
+   Cash, cash equivalents and current marketable securities NT$3,068,595 million vs long-term debt
+   NT$1,032,988 million (current NT$136,926 million, was NT$59,858 million); net cash about NT$2.04T
+   (NT$1.40T). Short-term loans nil. Purchase obligations NT$1,534.6B (+34%; NT$1,220.4B due within a
+   year). Performance guarantees NT$23.4B (NT$10.3B), still 0.4% of equity. CHIPS loan guarantee
+   unchanged.
+
+7. Concentration [WORSE]
+   Ten largest customers 78% (76%); largest 19% (22%), second 17% (12%); the two swapped places
+   (Customer A NT$727.0B, 19%; Customer B NT$645.2B, 17%; note 38). North America 75% (70%).
+   Receivables: ten largest 84% (93%). Noncurrent assets: Taiwan NT$3,102.3B (+19%), United States
+   NT$540.1B (flat), China NT$65.0B (NT$82.4B).
+
+8. Accounting judgments [HELD]
+   Critical estimates trimmed (lease-term and incremental-borrowing-rate judgments dropped as
+   non-critical); no change to depreciation commencement, inventory or impairment policies. PP&E
+   impairment NT$0.78B (NT$1.15B). Depreciation +4.0% against capex +33% (timing of EUI/CIP
+   commencement; inference).
+
+9. Legal, regulatory and governance [WORSE]
+   Marlin ITC case: Texas suit stayed; still not estimable. Section 232: 25% tariff on certain
+   advanced computing chips (December 2025 proclamation); Section 301 investigations (March 2026)
+   naming Taiwan; IEEPA tariffs struck down February 2026. Nanjing VEU expired December 2025,
+   replaced by an annual licence. January 2026 U.S.-Taiwan agreement: reciprocal tariffs "no more
+   than 15%" and preferential Section 232 treatment. The October 2024 diversion inquiry: no update.
+
+10. Guidance and commitments [HELD]
+   2025 capex US$38-42B: met (US$40.9B). N2 volume production in 2025: met. Arizona third fab
+   started 2025 and more land acquired 2026; JASM second fab started October 2025. The March 2025
+   "three additional" U.S. fabs sentence is no longer in the 20-F. New: 2026 capex US$52-56B;
+   16-angstrom risk production "expected in 2026".

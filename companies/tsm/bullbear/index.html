@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSM Bull / Bear | latest: FY2025 20-F</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">20-F redlines</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>TSMC: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures for FY2024 and earlier and the 20-F text for FY2025 (XBRL has no FY2025 figures for TSM). Amounts are NT$ unless marked US$. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 20-F for the year ended December 31, 2025, filed April 16, 2026 | Covers two filings since October 2024: 20-Fs for FY2024 and FY2025 (TSMC files no 10-Q) | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Stances judged across both annual reports since October 2024. With two filings in the window, a pillar can move only at the FY2025 20-F, and only when FY2024 and FY2025 point the same way; &mdash; means the two filings disagreed and the pillar has not moved.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 AI / HPC demand and growth</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">HPC revenue +58% (FY2024) then +48% (FY2025), from 43% to 58% of revenue; total revenue +33.9% then +31.6% to NT$3,809.1B</td><td class="ev-bear">Growth rests on a few AI customers; the FY2024 20-F itself warns AI-sector growth may be &ldquo;volatile or not sustainable&rdquo;</td><td>FY2025 20-F</td></tr>
+<tr><td>P2 Technology lead and pricing</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">7nm-and-below 58% &rarr; 69% &rarr; 74% of wafer revenue; N2 entered volume production in 2025, as the FY2024 20-F guided</td><td class="ev-bear">Revenue per wafer growth slowed from +24.5% to +13.1%; R&amp;D +20.7% to stay ahead (A10, A14, A16)</td><td>FY2025 20-F</td></tr>
+<tr><td>P3 Margins</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Gross margin 54.4% &rarr; 56.1% &rarr; 59.9%; operating margin 42.6% &rarr; 45.7% &rarr; 50.8%</td><td class="ev-bear">Taiwan electricity +25% and +14% in 2024; each 1% NT$ appreciation costs about 0.3 points of operating margin; tariffs raised U.S. operating costs</td><td>FY2025 20-F</td></tr>
+<tr><td>P4 Capital intensity and cash return</td><td class="stance s-intact">Intact</td><td class="ev-bull">FCF NT$870B &rarr; NT$1,003B; dividend NT$17 &rarr; NT$22 a share, paid from FCF (42%, then 47%)</td><td class="ev-bear">FCF / net income 75% &rarr; 59%; 2026 capex guide US$52&ndash;56B (+27&ndash;37%); purchase obligations NT$1,534.6B (+34%)</td><td>&mdash;</td></tr>
+<tr><td>P5 Balance sheet and liquidity</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Net cash about NT$1.40T &rarr; NT$2.04T; cash and current securities NT$3,068.6B against NT$1,033.0B of fixed-rate debt; no short-term loans</td><td class="ev-bear">Parent guarantee of TSMC Arizona&rsquo;s CHIPS Act obligations (loans up to US$5B); current debt NT$59.9B &rarr; NT$136.9B</td><td>FY2025 20-F</td></tr>
+<tr><td>P6 Customer and market concentration</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Largest customer 25% &rarr; 22% &rarr; 19% of revenue; ten largest hold 84% of receivables (93%)</td><td class="ev-bear">Ten largest customers 70% &rarr; 76% &rarr; 78%; second largest 11% &rarr; 12% &rarr; 17%; North America 68% &rarr; 70% &rarr; 75%</td><td>FY2025 20-F</td></tr>
+<tr><td>P7 Geopolitics, trade and export controls</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">January 2026 U.S.&ndash;Taiwan agreement: reciprocal tariffs &ldquo;no more than 15%&rdquo; and preferential Section 232 treatment; 16nm licence rule narrowed to &ldquo;specified destinations&rdquo;</td><td class="ev-bear">Possible diversion of a customer&rsquo;s chip to a restricted entity reported October 2024, unresolved; Section 232 25% tariff on certain advanced computing chips; Section 301 probes naming Taiwan; Nanjing VEU expired</td><td>FY2025 20-F</td></tr>
+<tr><td>P8 Overseas expansion execution</td><td class="stance s-intact">Intact</td><td class="ev-bull">Arizona fab 1 and Kumamoto in volume production end-2024; Arizona fab 3 and Kumamoto fab 2 started in 2025; grants received NT$75.2B and NT$76.3B</td><td class="ev-bear">Overseas start-up costs lifted G&amp;A and marketing +35.6% (FY2024); losses attributed to minority holders NT$0.86B &rarr; NT$2.48B (FY2025); grant clawback terms</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 20-F FY2025</h2>
+<p class="note">What the FY2025 20-F adds, for and against. The operating record is the strongest in the window on every margin line; the bear evidence is about what comes next: a capex step-up that outpaces cash flow, more revenue from fewer customers, and U.S. trade measures aimed directly at chips.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 AI / HPC demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AI / HPC demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +31.6% to NT$3,809.1B; HPC +48% to NT$2,192.9B, now 58% of revenue (51%)</div>
+      <blockquote>FY2025: "The increase in our net revenue from 2024 to 2025 mainly came from High Performance Computing of NT$716,040 million, or a 48% year-over-year increase, and from Smartphone of NT$105,686 million, or a 11% year-over-year increase."</blockquote>
+      <blockquote>FY2025: "High Performance Computing | 934,769 | 43% | 1,476,891 | 51% | 2,192,931 | 58%"</blockquote>
+      <p class="magnitude"><b>Size:</b> HPC added NT$716.0B = 78% of the NT$914.7B revenue increase. In US$ at weighted-average rates revenue rose about 36% (US$90.1B to US$122.4B; arithmetic on stated rates).</p>
+      <p>Second year in a row of 30%+ growth led by HPC. Unlike 2024, it came with volume as well as price: wafer shipments +16.4%, revenue per wafer +13.1%.</p>
+      <p class="next"><b>Next filing:</b> HPC share above 58% and wafer shipments rising toward the &ldquo;exceeded 17 million&rdquo; capacity.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 59.9% (56.1%) and operating margin 50.8% (45.7%), despite a stronger NT dollar</div>
+      <blockquote>FY2025: "In 2025, our gross margin increased to 59.9% of net revenue from 56.1% in 2024, mainly attributable to higher capacity utilization and cost improvement, partially offset by unfavorable foreign exchange rate."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income NT$1,936.1B (+46.4%); 3.8 points of gross margin on NT$3,809.1B revenue is about NT$145B of gross profit. The NT$ appreciated about 3% (NT$32.13 &rarr; NT$31.11), roughly 1 point of operating margin at the stated 0.3-point-per-1% sensitivity (inference).</p>
+      <p>Margins rose for a second year while Arizona and Kumamoto were ramping and N2 entered production; electricity and N3 costs named in FY2024 are no longer listed as offsets.</p>
+      <p class="next"><b>Next filing:</b> gross margin held near 60% through the N2 ramp and a full year of overseas fabs.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Technology lead and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Technology lead and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">Advanced nodes 74% of wafer revenue (69%); N2 in volume production on schedule</div>
+      <blockquote>FY2025: "Advanced technologies (7-nanometer and below) accounted for 74% of total wafer revenue, up from 69% in 2024."</blockquote>
+      <blockquote>FY2025: "Our 2-nanometer technology entered volume production in 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> 3nm 24% (18%) and 5nm 36% (34%) of wafer revenue; wafer revenue is about 86% of net revenue. Revenue per 12-inch-equivalent wafer NT$253.6K vs NT$224.2K (+13.1%; arithmetic).</p>
+      <p>The FY2024 20-F said N2 volume production was &ldquo;expected in 2025&rdquo;; it arrived, and the next node (16-angstrom) is guided to risk production in 2026.</p>
+      <p class="next"><b>Next filing:</b> 2nm shown as a line in the wafer-revenue table, and A16 risk production in 2026 as guided.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and liquidity" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and liquidity</span><span class="chip">Stated</span></div>
+      <div class="title">Cash and current securities NT$3,068.6B (+NT$646.6B) against NT$1,033.0B of long-term debt</div>
+      <blockquote>FY2025: "Our cash, cash equivalents and current marketable securities increased to NT$3,068,595 million (US$97,820 million) as of December 31, 2025, compared to NT$2,422,019 million as of December 31, 2024."</blockquote>
+      <blockquote>FY2025: "In 2025, we generated NT$2,274,976 million (US$72,521 million) net cash from operating activities"</blockquote>
+      <p class="magnitude"><b>Size:</b> net cash about NT$2.04T (NT$1.40T) = 38% of equity of NT$5,396.2B; operating cash flow +NT$448.8B (+24.6%). Short-term loans nil; bonds carry fixed rates of 0.41% to 4.63%.</p>
+      <p>Cash and cash equivalents still rose NT$640.2B after capex and dividends, so the 2026 step-up in capex can be met from the balance sheet if cash flow stalls.</p>
+      <p class="next"><b>Next filing:</b> net cash held above NT$2T with 2026 capex at US$52&ndash;56B.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Capital intensity and cash return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Capital intensity and cash return</span><span class="chip">Stated</span></div>
+      <div class="title">Quarterly dividend raised twice in 2025, NT$4.50 &rarr; NT$5.00 &rarr; NT$6.00; NT$22 declared for the year (NT$17)</div>
+      <blockquote>FY2025: "Cash dividends to shareholders | $ 129,663.1 | $ 129,662.9 | $ 155,595.1 | $ 155,595.1 Cash dividends per share (NT$) | $ 5.00 | $ 5.00 | $ 6.00 | $ 6.00"</blockquote>
+      <p class="magnitude"><b>Size:</b> NT$570.5B declared for 2025 = 34% of net income; cash dividends paid NT$466.8B = 47% of FCF of NT$1,002.6B.</p>
+      <p>The dividend grew 29% and was still covered about twice by free cash flow, with no debt-funded return of capital.</p>
+      <p class="next"><b>Next filing:</b> dividends paid still under 60% of FCF as capex rises.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Geopolitics, trade and export controls" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Geopolitics, trade and export controls</span><span class="chip">Stated</span></div>
+      <div class="title">U.S.&ndash;Taiwan deal caps reciprocal tariffs at 15%, with preferential Section 232 treatment for chipmakers investing in the U.S.</div>
+      <blockquote>FY2025: "Further, in January 2026, the U.S. announced it had reached a trade and investment agreement with Taiwan which would reduce U.S. reciprocal tariff rates on Taiwanese goods to no more than 15%."</blockquote>
+      <blockquote>FY2025: "pursuant to which we may need to obtain an export license prior to shipping products using 16- nanometer or below process to specified destinations unless specific conditions are met"</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; it bears on North America revenue of NT$2,875.3B (75%). The 16nm licence rule now reaches &ldquo;specified destinations&rdquo; where the FY2024 20-F said &ldquo;any global destination&rdquo;.</p>
+      <p>TSMC&rsquo;s U.S. investment is the condition for the preferential treatment, so Arizona doubles as a tariff hedge (inference). The filing calls the details &ldquo;still unclear&rdquo;.</p>
+      <p class="next"><b>Next filing:</b> confirmed Section 232 exemption or offset for TSMC, and no tariff named as a cost.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Capital intensity and cash return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Capital intensity and cash return</span><span class="chip">Stated</span></div>
+      <div class="title">2026 capex guided to US$52&ndash;56B (2025: US$40.9B); purchase obligations NT$1,534.6B (+34%)</div>
+      <blockquote>FY2025: "Our capital expenditures in 2026 are expected to be between US$52 billion and US$56 billion, which, depending on market conditions, may be adjusted later."</blockquote>
+      <blockquote>FY2025: "Capital Purchase or Other Purchase Obligations(4) | 1,534,575 | 1,220,393 | 314,181 | 1 | —"</blockquote>
+      <p class="magnitude"><b>Size:</b> +27% to +37% in US$; at NT$31.11 about NT$1.62&ndash;1.74T = 71&ndash;77% of 2025 operating cash flow (capex was 56% in 2025). FCF / net income already fell to 59% from 75%. Purchase obligations = 67% of 2025 operating cash flow, NT$1,220.4B due within a year.</p>
+      <p>Spending is committed ahead of demand: a fall in AI orders would leave depreciation and commitments in place. FCF grew 15% in 2025 while net income grew 47%.</p>
+      <p class="next"><b>Next filing:</b> 2026 capex inside the guide with FCF / net income at or above 59%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Capital intensity and cash return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Capital intensity and cash return</span><span class="chip">Stated</span></div>
+      <div class="title">Customer prepayments for reserved capacity fell from NT$291.1B to NT$189.9B</div>
+      <blockquote>FY2025: "Noncurrent portion (classified under other noncurrent liabilities) | 92,499.2 | 43,298.9 $ 291,101.8 | $ 189,858.2"</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;NT$101.2B (&minus;35%) = 4.4% of 2025 operating cash flow; accrued expenses and other current liabilities were a NT$103.2B working-capital outflow (2024: +NT$74.7B).</p>
+      <p>Temporary receipts are customers&rsquo; payments to retain capacity. They are being offset against receivables faster than new ones arrive, so customers are funding a smaller share of the build-out while capex rises (inference; the filing gives no reason).</p>
+      <p class="next"><b>Next filing:</b> temporary receipts rebuilt, or a further decline alongside higher capex.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Customer and market concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Customer and market concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Ten largest customers 78% of revenue (76%); second largest 17% (12%); North America 75% (70%)</div>
+      <blockquote>FY2025: "our ten largest customers in 2023, 2024 and 2025 accounted for approximately, 70%, 76% and 78% of our net revenue in the respective year."</blockquote>
+      <blockquote>FY2025: "Our second largest customer in 2023, 2024 and 2025 accounted for 11%, 12%, and 17% of our net revenue in the respective year."</blockquote>
+      <blockquote>FY2025: "North America | 1,470,215 | 68% | 2,031,326 | 70% | 2,875,270 | 75%"</blockquote>
+      <p class="magnitude"><b>Size:</b> top two customers NT$1,372.2B = 36% of revenue (34%). The customer that was 12% in 2024 is now the largest: NT$352.3B &rarr; NT$727.0B (+106%; note 38).</p>
+      <p>The fastest-growing customer is now the biggest, and growth comes from one end market and one region. The bull reading (the largest customer&rsquo;s share fell to 19%) is a change of leader, not a broader base.</p>
+      <p class="next"><b>Next filing:</b> ten-largest share at or below 78% and no single customer above 20%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Geopolitics, trade and export controls" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Geopolitics, trade and export controls</span><span class="chip">Stated</span></div>
+      <div class="title">Section 232: 25% U.S. tariff on certain advanced computing chips; Section 301 investigations name Taiwan</div>
+      <blockquote>FY2025: "As a result, the U.S. issues a proclamation imposing a 25% ad valorem tariff on the import of certain advanced computing chips and derivative products meeting specified technical performance thresholds, unless such products are imported for designated use in the U.S."</blockquote>
+      <blockquote>FY2025: "in March 2026, the U.S. Trade Representative, using authority in Section 301 of the Trade Act of 1974, initiated two investigations relating to alleged manufacturing overcapacity and failures to take action on forced labor, targeting various economies, including Taiwan, which could result in trade actions such as the imposition of additional tariffs."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; the tariff targets the AI chips behind HPC revenue of NT$2,192.9B (58%). The Nanjing VEU also expired in December 2025 (now an annual licence; China noncurrent assets NT$65.0B, 1.7% of the total).</p>
+      <p>In the FY2024 20-F semiconductors were excluded from the tariffs; this filing describes a chip-specific tariff in force and new investigations, with the offsets &ldquo;still unclear&rdquo;.</p>
+      <p class="next"><b>Next filing:</b> whether any tariff cost or demand effect is named, and the outcome of the Section 301 probes.</p>
+    </div>
+    <div class="bb-card" data-pillar="P8 Overseas expansion execution" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P8 Overseas expansion execution</span><span class="chip">Inferred</span></div>
+      <div class="title">Losses attributed to minority holders nearly tripled, NT$0.86B &rarr; NT$2.48B, as the overseas joint-venture fabs ramp</div>
+      <blockquote>FY2025: "Non-controlling interests | ( 712.3 ) | ( 856.3 ) | ( 2,479.1 ) | ( 79.0 )"</blockquote>
+      <blockquote>FY2025: "adverse changes relating to government grants or other government incentives, including non-receipt, delay and potential clawbacks of government grants"</blockquote>
+      <p class="magnitude"><b>Size:</b> NT$2.48B is 0.1% of net income. The main minority-owned subsidiaries are JASM (TSMC 72.6%) and ESMC (70.0%), so their combined losses are likely several times that figure (inference; the filing gives no subsidiary results). Grants received NT$76.3B = 6% of capex.</p>
+      <p>Small today, but it is the only line in the statements that tracks the economics of the overseas fabs, and it is moving the wrong way as Kumamoto 2 and Dresden ramp.</p>
+      <p class="next"><b>Next filing:</b> the minority-interest loss narrowing, or any disclosure of overseas fab margins.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing (newest first). <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before it (FY2024 versus the FY2023 20-F). The answers files (fy2024.txt, fy2025.txt) give the sources.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>FY2025 20-F</th><th>FY2024 20-F</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark held">&#9679;</span> Revenue +31.6% to NT$3,809.1B (US$121.4B); wafers +16.4%, revenue per wafer +13.1%; HPC +48% to 58% of revenue; NT$ appreciation a headwind.</td><td><span class="mark better">&#9650;</span> Revenue +33.9% (2023: &minus;4.5%); price/mix-led: revenue per wafer +24.5%, wafers +7.6%; HPC +58% to 51%.</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark better">&#9650;</span> Gross margin 59.9% vs 56.1% (utilization, cost improvement; FX offset); operating margin 50.8% vs 45.7%; R&amp;D 6.5% of revenue (7.1%).</td><td><span class="mark better">&#9650;</span> Gross margin 56.1% vs 54.4%; operating margin 45.7% vs 42.6%; absorbed N3 ramp, electricity +25%/+14%, overseas start-up costs (G&amp;A and marketing +35.6%).</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark held">&#9679;</span> Tax rate 17.0% (17.7%); non-operating income 5.2% of pre-tax (6.0%), mostly interest; earthquake loss NT$5.3B; no material one-off gains.</td><td><span class="mark held">&#9679;</span> Tax rate 17.7% vs 13.1% (higher surtax on retained earnings: a drag); earthquake loss about NT$3B; interest income +44.6%.</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark worse">&#9660;</span> Operating cash flow NT$2,275.0B (+24.6%); FCF NT$1,002.6B = 59% of net income (75%); temporary receipts &minus;NT$101.2B; DSO about 27 days (34).</td><td><span class="mark better">&#9650;</span> Operating cash flow NT$1,826.2B (+47%); FCF NT$870.2B = 75% of net income (34%); DSO steady near 34 days.</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark held">&#9679;</span> Capex US$40.9B (guide US$38&ndash;42B); dividends paid NT$466.8B = 47% of FCF; dividend NT$22 a share declared (NT$17); bonds +NT$86.9B, &minus;NT$54.3B.</td><td><span class="mark held">&#9679;</span> Capex US$29.76B (guide US$28&ndash;32B); dividends paid NT$363.1B = 42% of FCF; NT$3.1B buyback to offset RSAs; bonds +NT$34.3B.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark better">&#9650;</span> Cash and current securities NT$3,068.6B vs debt NT$1,033.0B (net about NT$2.04T); current debt NT$136.9B; purchase obligations NT$1,534.6B (+34%); guarantees NT$23.4B.</td><td><span class="mark better">&#9650;</span> Cash and current securities NT$2,422.0B (NT$1,687.6B) vs debt NT$1,018.3B; new parent guarantee of TSMC Arizona&rsquo;s CHIPS obligations; purchase obligations NT$1,144.1B.</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark worse">&#9660;</span> Top 10 customers 78% (76%); largest 19%, second 17% (swapped places); North America 75%; U.S. noncurrent assets flat at NT$540.1B while Taiwan +19%.</td><td><span class="mark worse">&#9660;</span> Top 10 customers 76% (70%); largest 22% (25%), second 12% (11%); North America 70% (68%); top 10 = 93% of receivables.</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark held">&#9679;</span> Lease judgments dropped from critical estimates; no policy changes; impairment NT$0.78B; depreciation +4.0% against capex +33%.</td><td><span class="mark held">&#9679;</span> Critical estimates unchanged; impairment NT$1.15B; no useful-life changes.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark worse">&#9660;</span> Section 232 25% chip tariff; Section 301 probes naming Taiwan; Nanjing VEU expired (annual licence); U.S.&ndash;Taiwan 15% tariff deal; Marlin suit stayed; diversion inquiry not updated.</td><td><span class="mark worse">&#9660;</span> Possible chip diversion reported to authorities (October 2024); January 2025 licence rule for 16nm and below; April 2025 tariffs (chips excluded); new Marlin ITC complaint.</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark held">&#9679;</span> 2025 capex and N2 targets met; Arizona fab 3 and Kumamoto fab 2 started; 2026 capex US$52&ndash;56B; A16 risk production 2026; &ldquo;three additional&rdquo; U.S. fabs sentence dropped.</td><td><span class="mark held">&#9679;</span> 2024 capex guide met; new 2025 capex US$38&ndash;42B, N2 in 2025, CHIPS award up to US$6.6B plus US$5B loans, ESMC up to EUR5B.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated in the window (plus the 2024 capex guide, stated in the FY2023 20-F and tested by the FY2024 20-F), and what each later filing said about it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"Our capital expenditures for 2024 are expected to be between US$28 billion and US$32 billion, which, depending on market conditions, may be adjusted later."</td><td>FY2023 20-F (before the window)</td><td>FY2024 20-F: met, US$29.76B (NT$956.0B)</td></tr>
+<tr><td>"Our capital expenditures in 2025 are expected to be between US$38 billion and US$42 billion, which, depending on market conditions, may be adjusted later."</td><td>FY2024 20-F</td><td>FY2025 20-F: met in the upper half, US$40.9B (NT$1,272.4B)</td></tr>
+<tr><td>"Also, the development of our 2-nanometer technology is on track, and its volume production is expected in 2025."</td><td>FY2024 20-F</td><td>FY2025 20-F: met; &ldquo;Our 2-nanometer technology entered volume production in 2025.&rdquo;</td></tr>
+<tr><td>CHIPS Act: DOC to award TSMC Arizona &ldquo;up to US$6.6 billion in direct funding&rdquo; and up to US$5 billion in government loans</td><td>FY2024 20-F</td><td>FY2025 20-F: repeated unchanged; grants received from all governments NT$76.3B in 2025 (NT$75.2B in 2024); amount drawn under the loans not disclosed</td></tr>
+<tr><td>ESMC agreement for &ldquo;up to EUR5 billion state aid under the European Chips Act&rdquo;</td><td>FY2024 20-F</td><td>FY2025 20-F: repeated; receipts not broken out</td></tr>
+<tr><td>"In March 2025, we further announced our intention to build three additional semiconductor manufacturing facilities, two advanced packaging facilities and a R&amp;D center in the United States."</td><td>FY2024 20-F</td><td>FY2025 20-F: sentence dropped; third Arizona fab &ldquo;commenced in 2025&rdquo; and additional land acquired in 2026; no update on the further fabs, packaging or R&amp;D center</td></tr>
+<tr><td>JASM second Kumamoto fab (announced February 2024)</td><td>FY2024 20-F</td><td>FY2025 20-F: &ldquo;Construction on the second site commenced in October 2025.&rdquo;</td></tr>
+<tr><td>Quarterly cash dividend NT$4.50 per share (Q4 2024, declared February 2025)</td><td>FY2024 20-F</td><td>FY2025 20-F: beaten; NT$5.00 for Q1&ndash;Q2 2025, NT$6.00 for Q3&ndash;Q4 2025</td></tr>
+<tr><td>"Our capital expenditures for 2026 are expected to be between US$52 billion and US$56 billion, which, depending on market conditions, may be adjusted later."</td><td>FY2025 20-F</td><td>No later filing yet (next: FY2026 20-F)</td></tr>
+<tr><td>"Also, the development of our 16-angstrom technology is on track, and its risk production is expected in 2026."</td><td>FY2025 20-F</td><td>No later filing yet</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>20-F FY2024 (filed April 17, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 AI / HPC demand and growth" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 AI / HPC demand and growth</span><span class="chip">Stated</span></div>
+      <div class="title">Revenue +33.9% to NT$2,894.3B after a 4.5% decline; HPC +58% to 51% of revenue (43%)</div>
+      <blockquote>FY2024: "The increase in our net revenue from 2023 to 2024 mainly came from High Performance Computing of NT$542,122 million, or a 58% year-over-year increase, and from Smartphone of NT$190,216 million, or a 23% year-over-year increase."</blockquote>
+      <p class="magnitude"><b>Size:</b> HPC added NT$542.1B = 74% of the NT$732.6B increase; net income NT$1,158.4B (+36.0%).</p>
+      <p>The recovery from 2023 was led by AI data-center demand rather than a smartphone cycle, and it was mostly price/mix: revenue per wafer +24.5% on shipments +7.6%.</p>
+      <p class="next"><b>Next filing:</b> HPC growth continuing above company growth (FY2025: +48%, 58% of revenue).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins</span><span class="chip">Stated</span></div>
+      <div class="title">Gross margin 56.1% (54.4%) and operating margin 45.7% (42.6%) despite the N3 ramp and power costs</div>
+      <blockquote>FY2024: "In 2024, our gross margin increased to 56.1% of net revenue from 54.4% in 2023, mainly attributable to higher capacity utilization and productivity gains, and partially offset by 3-nanometer ramp-up and higher electricity cost."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income NT$1,322.1B (+43.5%); the NT$ weakened (NT$31.19 &rarr; NT$32.13), a tailwind of about 1 point of operating margin at the stated 0.4-point-per-1% sensitivity (inference).</p>
+      <p>Margins expanded while absorbing two named cost headwinds, which says pricing power was intact; part of the gain was currency.</p>
+      <p class="next"><b>Next filing:</b> margin held without the FX tailwind (FY2025: 59.9% despite NT$ appreciation).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Technology lead and pricing" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Technology lead and pricing</span><span class="chip">Stated</span></div>
+      <div class="title">7nm and below 69% of wafer revenue (58%); 3nm at 18% in its first full year</div>
+      <blockquote>FY2024: "In 2024, the 3-nanometer, 5-nanometer and 7-nanometer revenues represented 18%, 34% and 17% of total wafer revenue, respectively. Advanced technologies (7-nanometer and below) accounted for 69% of total wafer revenue, up from 58% in 2023."</blockquote>
+      <p class="magnitude"><b>Size:</b> an 11-point mix shift in one year; revenue per wafer NT$224.2K vs NT$180.1K (arithmetic).</p>
+      <p>The fastest mix shift in the three years shown, and the main reason revenue grew four times faster than shipments.</p>
+      <p class="next"><b>Next filing:</b> N2 in volume production in 2025 as guided (FY2025: met; advanced share 74%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Capital intensity and cash return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Capital intensity and cash return</span><span class="chip">Stated</span></div>
+      <div class="title">Capex flat at NT$956.0B while operating cash flow rose 47%: FCF NT$870.2B, 75% of net income (34%)</div>
+      <blockquote>FY2024: "Our capital expenditures in 2022, 2023 and 2024 were NT$1,082,672 million, NT$949,817 million and NT$956,007 million (US$29,755 million, translated from a weighted average exchange rate of NT$32.13 to US$1.00), respectively."</blockquote>
+      <blockquote>FY2024: "In 2024, we generated NT$1,826,177 million (US$55,693 million) net cash from operating activities"</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF NT$870.2B vs NT$292.2B (XBRL); dividends paid NT$363.1B = 42% of FCF; capex inside the US$28&ndash;32B guide.</p>
+      <p>The year capex paused let cash conversion reset higher; dividends were raised from NT$3.50 to NT$4.50 a quarter, all from free cash flow.</p>
+      <p class="next"><b>Next filing:</b> FCF conversion held as capex rises to US$38&ndash;42B (FY2025: 59%, lower).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P6 Customer and market concentration" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Customer and market concentration</span><span class="chip">Stated</span></div>
+      <div class="title">Ten largest customers 76% of revenue, up from 70%; second largest 12%</div>
+      <blockquote>FY2024: "our ten largest customers in 2022, 2023 and 2024 accounted for approximately, 68%, 70% and 76% of our net revenue in the respective year."</blockquote>
+      <blockquote>FY2024: "These shifting business models could lead to significant variations in our sales if the growth of their products and services, particularly in the AI sector, is volatile or not sustainable."</blockquote>
+      <p class="magnitude"><b>Size:</b> six points in one year; North America 70% of revenue (68%); ten largest customers 93% of receivables (91%).</p>
+      <p>The new risk-factor sentence ties the concentration to AI specifically: the customers driving growth are the ones whose demand the company calls potentially volatile.</p>
+      <p class="next"><b>Next filing:</b> ten-largest share stable (FY2025: 78%, higher again).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Geopolitics, trade and export controls" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Geopolitics, trade and export controls</span><span class="chip">Stated</span></div>
+      <div class="title">TSMC told U.S. and Taiwan authorities a customer&rsquo;s chip may have reached a restricted entity; new licence rule for 16nm and below</div>
+      <blockquote>FY2024: "In October 2024, we notified relevant U.S. and Taiwan authorities that one type of our customer’s chip manufactured by us might have been diverted to a restricted entity or incorporated into a restricted entity’s product"</blockquote>
+      <blockquote>FY2024: "Under the new rules, we may need to obtain an export license prior to shipping products using 16-nanometer or below process to any global destination unless specific conditions are met."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; no penalty is estimated. The licence rule covers nodes that produced the large majority of wafer revenue.</p>
+      <p>First disclosure of a possible export-control breach; the filing warns of &ldquo;government investigations and penalties&rdquo;. The April 2025 tariffs were added in the same filing, with semiconductors excluded for now.</p>
+      <p class="next"><b>Next filing:</b> resolution of the inquiry (FY2025: still cooperating, no outcome) and the licence rule&rsquo;s reach (FY2025: narrowed to specified destinations).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Margins" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Margins</span><span class="chip">Stated</span></div>
+      <div class="title">Taiwan electricity +25% in April 2024 and +14% in October 2024; tax rate 17.7% (13.1%)</div>
+      <blockquote>FY2024: "For example, effective from April 1, 2024, we became subject to a higher electricity tariff rate in Taiwan, which increased by 25% as compared to the tariff rate applicable to us in 2023. In October 2024, the electricity tariff rate further increased by 14%."</blockquote>
+      <blockquote>FY2024: "In addition, the increase in surtax imposed on unappropriated earnings was a result of higher undistributed earnings in 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> electricity cost not quantified in the filing. Income tax NT$248.3B (+93.6%) against pre-tax income +43.6%; 4.6 points of tax rate = about NT$65B of net income.</p>
+      <p>Two structural costs of a Taiwan base: power that is rising in price, and a tax on retained earnings that grows with the cash pile.</p>
+      <p class="next"><b>Next filing:</b> electricity no longer named as a margin offset (FY2025: not named) and tax rate stable (FY2025: 17.0%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P8 Overseas expansion execution" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P8 Overseas expansion execution</span><span class="chip">Stated</span></div>
+      <div class="title">Overseas start-up costs push G&amp;A and marketing up 35.6%; CHIPS grants repayable on noncompliance and the parent guarantees the loans</div>
+      <blockquote>FY2024: "General and administrative and marketing expenses in 2024 increased by NT$25,425 million, or 35.6%, compared to 2023, mainly reflecting higher start-up expenses of overseas fabs preparation and employee profit sharing expenses due to higher net income."</blockquote>
+      <blockquote>FY2024: "Noncompliance with the terms and conditions of the grants that we may receive could result in a delay or forfeiture of all or a portion of any future amounts to be received, as well as obligate us to repay all or a portion of amounts already received pursuant to the grants."</blockquote>
+      <p class="magnitude"><b>Size:</b> NT$25.4B = 1.9% of operating income (start-up share not separated). The parent gives &ldquo;an irrevocable, absolute and unconditional guarantee&rdquo; of TSMC Arizona&rsquo;s obligations to the DOC, loans up to US$5B.</p>
+      <p>Overseas fabs cost more to start and come with conditions that can claw back subsidies; both sit with the parent.</p>
+      <p class="next"><b>Next filing:</b> start-up costs fading as fabs ramp (FY2025: G&amp;A &minus;1.7%, but minority-interest losses tripled).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>

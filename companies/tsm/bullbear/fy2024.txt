@@ -1,0 +1,59 @@
+TSMC (TSM) 20-F FOR FY2024 (filed April 17, 2025; period ended December 31, 2024)
+Fundamentals answers. Marker = versus the FY2023 20-F. Figures from SEC XBRL (financials.py) where
+tagged, otherwise from the 20-F text and statements; NT$ unless stated.
+
+1. Growth and pricing [BETTER]
+   Revenue NT$2,894.3B, +33.9% (2023: -4.5%). Wafer shipments 12.91M vs 12.00M (+7.6%); revenue per
+   wafer +24.5% (arithmetic), so growth was mostly price/mix (MD&A, Net Revenue: "higher proportion of
+   advanced technology"). HPC +58% to 51% of revenue (43%); North America +38% to 70% (Business,
+   Markets). Capacity about 17M wafers (16M).
+
+2. Margins and unit economics [BETTER]
+   Gross margin 56.1% vs 54.4% ("higher capacity utilization and productivity gains", offset by the N3
+   ramp and higher electricity cost); operating margin 45.7% vs 42.6% (MD&A, Year-to-Year
+   Comparisons). Taiwan electricity tariff +25% from April 2024 and +14% in October 2024 (Risk
+   Factors). G&A and marketing +35.6% on overseas fab start-up costs and profit sharing.
+
+3. Earnings quality [HELD]
+   Effective tax rate 17.7% vs 13.1%: the surtax on unappropriated earnings rose (MD&A, Income Tax
+   Expense), a drag, not a flatterer. Non-operating income NT$83.8B = 6.0% of pre-tax income, mostly
+   interest income (+44.6%). April 2024 earthquake loss about NT$3B net of insurance (note 37).
+   PP&E impairment NT$1.15B. No material one-off gains.
+
+4. Cash conversion [BETTER]
+   Operating cash flow NT$1,826.2B (+NT$584.2B); FCF NT$870.2B = 75% of net income (34% in 2023).
+   Receivables +NT$69.4B but DSO steady at about 34 days; inventory days 83 vs 93 (arithmetic on
+   balance sheet). Customer temporary receipts NT$291.1B vs NT$278.3B (note 22).
+
+5. Capital allocation [HELD]
+   Capex NT$956.0B = US$29.76B, inside the US$28-32B guide (Capacity Management). Dividends paid
+   NT$363.1B = 42% of FCF; quarterly dividend NT$4.00 -> NT$4.50 (NT$17 for the year vs NT$13). Small
+   NT$3.1B buyback to offset RSA dilution. Bonds issued NT$34.3B. All internally funded.
+
+6. Balance sheet and contingent exposure [BETTER]
+   Cash, cash equivalents and current marketable securities NT$2,422.0B (NT$1,687.6B) vs long-term debt
+   NT$1,018.3B; no short-term loans. Purchase obligations NT$1,144.1B (NT$1,121.1B). New: the parent's
+   "irrevocable, absolute and unconditional guarantee" of TSMC Arizona's obligations to the U.S.
+   Commerce Department under the CHIPS Act loan agreements (up to US$5B). Performance guarantees
+   NT$10.3B (NT$8.0B).
+
+7. Concentration [WORSE]
+   Ten largest customers 76% of revenue (70%); largest 22% (25%), second 12% (11%) (Risk Factors).
+   North America 70% (68%). Ten largest customers 93% of receivables (91%) (note 33).
+
+8. Accounting judgments [HELD]
+   Critical estimates unchanged in substance (depreciation commencement, inventory, impairment,
+   deferred tax). No useful-life or policy changes found in the redline.
+
+9. Legal, regulatory and governance [WORSE]
+   Daedalus patent case dropped (settled 2023); new Marlin ITC complaint (February 2025), not
+   estimable. New: October 2024 notice to U.S. and Taiwan authorities of a possible diversion of a
+   customer's chip to a restricted entity. January 2025 U.S. rule may require licences for 16nm-and-
+   below shipments "to any global destination". April 2025 U.S. tariffs (semiconductors excluded).
+   CHIPS Act grants carry repayment on noncompliance.
+
+10. Guidance and commitments [HELD]
+   2024 capex guide US$28-32B: met at US$29.76B. New: 2025 capex US$38-42B; N2 volume production
+   "expected in 2025"; CHIPS Act award up to US$6.6B plus US$5B of loans; ESMC up to EUR5B state aid;
+   March 2025 intention to build three more U.S. fabs, two advanced packaging facilities and an R&D
+   center (not sized in the 20-F).
