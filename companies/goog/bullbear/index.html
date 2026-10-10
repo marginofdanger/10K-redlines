@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOOG Bull / Bear | latest: Q2 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Alphabet: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures where tagged and the filing text otherwise. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for the quarter ended June 30, 2026, filed July 23, 2026 | Also covered: seven earlier filings back to the Q3 2024 10-Q (filed October 30, 2024) | Source: SEC EDGAR | Analysis: October 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Seven pillars, scored over eight filings from October 2024 to July 2026. Every pillar started the window at Intact.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Search and advertising durability</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Search &amp; other growth went from +10% (Q1 2025) to +19% (Q1 2026) and +17% (Q2 2026); paid clicks +13% in both 2026 quarters; TAC rate 20.6% &rarr; 19.8%</td><td class="ev-bear">Google Network revenue fell in all eight filings; Search final judgment imposes distribution limits, data sharing and syndication (under appeal)</td><td>Q1 2026 10-Q</td></tr>
+<tr><td>P2 Google Cloud growth and margin</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Cloud operating margin 17.1% (Q3 2024) &rarr; 35.6% (Q2 2026); revenue growth 35% &rarr; 82%; backlog $86.8B &rarr; $519.5B</td><td class="ev-bear">Cloud is 98.9% of backlog, and the TPU portion comes from "a limited number of agreements" that Alphabet credit-supports; TPU product revenue not split out</td><td>Q2 2025 10-Q</td></tr>
+<tr><td>P3 Capital intensity and commitments</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Operating margin rose to 36% (Q1 2026) and 34% (Q2 2026) while depreciation grew 43% in H1 2026</td><td class="ev-bear">Purchase commitments $50.8B &rarr; $811.0B, above the $519.5B backlog; third-party backstops $0 &rarr; $51.4B, plus $24.1B more agreed</td><td>FY2025 10-K</td></tr>
+<tr><td>P4 Cash conversion and capital return</td><td class="stance s-broken">Broken</td><td class="ev-bull">FY2024 free cash flow $72.8B covered $69.4B of buybacks and dividends; dividend raised 5% in 2025 and 2026</td><td class="ev-bear">Q2 2026 free cash flow &minus;$5.9B; no buybacks in 2026; $49.6B of new equity and a $40B ATM; shares outstanding +1.2% in six months</td><td>Q2 2026 10-Q</td></tr>
+<tr><td>P5 Balance sheet and funding</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">June 2026 equity raise lifted cash and securities to $242.5B; debt is fixed-rate, senior unsecured, laddered to 2126</td><td class="ev-bear">Long-term debt $10.9B (December 2024) &rarr; $98.2B (June 2026); quarterly interest expense $54M &rarr; $1,278M</td><td>FY2025 10-K</td></tr>
+<tr><td>P6 Earnings quality</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Operating income +30% in both Q1 and Q2 2026, with no help from gains</td><td class="ev-bear">Equity-security gains 6% of pre-tax income (Q3 2024) &rarr; 71% (Q2 2026, $99.0B, mainly SpaceX and a private company)</td><td>Q3 2025 10-Q</td></tr>
+<tr><td>P7 Legal and regulatory</td><td class="stance s-intact">Intact</td><td class="ev-bull">Search remedies (September 2025) were behavioral after the DOJ sought structural ones; the &euro;1.5B AdSense fine was annulled</td><td class="ev-bear">$3.0B Shopping, $3.5B ad-tech, $5.2B Android, $1.4B privacy and $2.1B PriceRunner; accruals $17.4B; ad-tech remedies pending</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q2 2026</h2>
+<p class="note">What the Q2 2026 10-Q adds, for and against. Net income of $112.2B is mostly an unrealized gain on SpaceX and a private company; the cards below separate operating results from the marks and from the funding.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Cloud revenue +82% to $24.77B; operating income $2.83B &rarr; $8.81B, a 35.6% margin (20.7% a year earlier)</div>
+      <blockquote>Q2 2026: "Google Cloud revenues increased $11.1 billion and $18.9 billion from the three and six months ended June 30, 2025 to the three and six months ended June 30, 2026 primarily driven by growth in Google Cloud Platform largely from infrastructure and platform services."</blockquote>
+      <blockquote>Q2 2026: "Google Cloud | 2,826 | 8,814 | 5,003 | 15,412"</blockquote>
+      <p class="magnitude"><b>Size:</b> Cloud added $6.0B of the $9.5B increase in operating income (63%); it is now 18% of Services plus Cloud operating income, from 8% a year earlier.</p>
+      <p>The Cloud margin rose year over year in all eight filings in the window, and the MD&amp;A attributes growth mainly to platform services, not only the first TPU system sales.</p>
+      <p class="next"><b>Next filing:</b> Cloud margin at or above 30% as TPU hardware, a lower-margin product, ramps; a split between product and service revenue would confirm the mix.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Search and advertising durability" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Search and advertising durability</span><span class="chip">Stated</span></div>
+      <div class="title">Search &amp; other +17% to $63.27B on paid clicks +13%; TAC rate falls to 19.8% from 20.6%</div>
+      <blockquote>Q2 2026: "Google Search & other | 54,190 | 63,271 | 104,892 | 123,670"</blockquote>
+      <blockquote>Q2 2026: "The TAC rate decreased from 20.6% to 19.8% from the three and six months ended June 30, 2025 to the three and six months ended June 30, 2026, primarily due to a revenue mix shift from Google Network properties to Google Search & other properties."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$9.1B of revenue year over year; 0.8 points of TAC rate on $81.6B of advertising revenue is about $0.65B a quarter (inference).</p>
+      <p>Growth is volume-led (paid clicks +13%, cost-per-click +3%), the opposite of the query loss the AI-disruption case predicts. Q1 2025 had paid clicks +2%.</p>
+      <p class="next"><b>Next filing:</b> Search growth above 12% with paid clicks still growing faster than cost-per-click.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Backlog $519.5B, +$51.9B in the quarter; TPU system revenue began a quarter or two early</div>
+      <blockquote>Q2 2026: "As of June 30, 2026, we had $519.5 billion of remaining performance obligations (“revenue backlog”), of which $513.9 billion related to Google Cloud."</blockquote>
+      <blockquote>Q2 2026: "In the second quarter of 2026, we began recognizing revenues from these agreements, with the significant majority to be recognized in 2027."</blockquote>
+      <p class="magnitude"><b>Size:</b> Cloud backlog = 6.6x trailing-twelve-month Cloud revenue ($77.6B); "just over 50%" in 24 months implies about $130B a year of recognition (inference).</p>
+      <p>Q1 2026 had said TPU revenue would start "later in 2026"; it started in Q2. Contracted demand is far ahead of current revenue.</p>
+      <p class="next"><b>Next filing:</b> backlog still rising after the TPU deliveries begin; the 24-month share holding at 50% or more.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Operating margin 34% vs 32% despite depreciation +43% and a $1.5B damages charge</div>
+      <blockquote>Q2 2026: "Operating margin | 32 | 34 | 2"</blockquote>
+      <blockquote>Q2 2026: "For the six months ended June 30, 2025 and 2026, our depreciation on property and equipment was $9.5 billion and $13.6 billion, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income $40.77B, +30%; about 35.3% margin excluding the $1.5B PriceRunner charge (arithmetic on disclosed figures).</p>
+      <p>So far the build-out is producing revenue faster than it produces depreciation. This is the main evidence against the overbuild case, and it is backward-looking.</p>
+      <p class="next"><b>Next filing:</b> margin holding above 32% as the $122.8B of assets not yet in service starts depreciating.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and funding" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">$49.6B raised in equity, not debt; cash and securities $126.8B &rarr; $242.5B since December</div>
+      <blockquote>Q2 2026: "In June 2026, we issued a combination of Class A stock and Class C stock and mandatory convertible preferred stock for aggregate net proceeds of $49.6 billion, to be used for general corporate purposes, including capital expenditures to scale AI infrastructure and global compute."</blockquote>
+      <blockquote>Q2 2026: "Concurrently on June 4, 2026, the company completed a $10.0 billion private placement of 14 million Class A and 14 million Class C shares to an affiliate of Berkshire Hathaway Inc."</blockquote>
+      <p class="magnitude"><b>Size:</b> $49.6B = 50% of the $98.2B of long-term debt; cash and securities exceed debt by about $140B (about $53B excluding $87.1B of marketable equity, mostly restricted SpaceX shares).</p>
+      <p>Equity funding caps leverage while capex runs ahead of cash flow, and a $10.0B Berkshire Hathaway placement is an outside vote at about $357 a share (arithmetic: 28 million shares for $10.0B). The cost to shareholders is on the bear side.</p>
+      <p class="next"><b>Next filing:</b> no further debt-funded quarter while the equity proceeds last; ATM use limited to the stated tax purpose.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Free cash flow &minus;$5.86B (capex $44.92B vs operating cash flow $39.07B); no buybacks; the share count is rising</div>
+      <blockquote>Q2 2026: "In the three and six months ended June 30, 2026, there were no repurchases of the company's Class A or Class C shares."</blockquote>
+      <blockquote>Q2 2026: "The proceeds of the ATM Program are primarily intended to be used to meet tax obligations associated with employee equity grants."</blockquote>
+      <p class="magnitude"><b>Size:</b> first negative quarter in the window; H1 FCF $4.3B vs H1 net income $174.8B and H1 dividends $5.2B. Shares outstanding 12,088M &rarr; 12,230M (+1.2%) in six months; buybacks were $15.3B a quarter in Q3 2024.</p>
+      <p>Two years ago free cash flow retired about 2% of the shares a year. Now new stock is planned to cover the withholding tax that buybacks used to offset, and the risk factor says repurchases may not happen "in the near term or at all".</p>
+      <p class="next"><b>Next filing:</b> FCF back above dividends, and how much of the $40.0B ATM was sold.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Purchase commitments $332.4B &rarr; $811.0B in one quarter, now above the $519.5B backlog; backstops $51.4B</div>
+      <blockquote>Q2 2026: "As of June 30, 2026, we had material purchase commitments and other contractual obligations totaling $811.0 billion, of which $200.7 billion was short-term."</blockquote>
+      <blockquote>Q2 2026: "As of June 30, 2026, we provided backstops in the form of financial guarantees and credit derivatives with maximum potential amount of future payments of $7.6 billion and $43.8 billion, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> commitments = 5.5x trailing operating income ($147.6B) and 1.56x backlog (0.71x in Q1). Backstops $51.4B = 35% of trailing operating income, plus an estimated $24.1B agreed; unstarted leases $85.2B.</p>
+      <p>The commitments are "fixed or guaranteed" through 2030 for supply and to 2054 for energy, while backlog can still slip with customers. The FY2025 risk factor's "excess capacity that we cannot easily redeploy" is the downside.</p>
+      <p class="next"><b>Next filing:</b> backlog growing faster than commitments; any backstop called or credit-derivative loss above the current $815M liability.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$99.0B of equity-security gains are 71% of pre-tax income; net income $112.19B is 2.8x operating income</div>
+      <blockquote>Q2 2026: "OI&E of $98.0 billion for the three months ended June 30, 2026 included net gains on equity securities of $99.0 billion, primarily related to unrealized gains in our equity securities portfolio from SpaceX and a private company."</blockquote>
+      <blockquote>Q2 2026: "Includes $80.0 billion of Space Exploration Technologies Corp. (SpaceX) shares subject to short-term restrictions on the ability to sell."</blockquote>
+      <p class="magnitude"><b>Size:</b> EPS $9.11; without the gains at the 21% statutory rate, net income would be about $34B, +20% (inference). $87.9B of private stakes were remeasured in the quarter.</p>
+      <p>The gains are unrealized, partly locked up, and taxed through a $22.8B deferred tax liability. They can reverse with the SpaceX share price; operating earnings are the number to track.</p>
+      <p class="next"><b>Next filing:</b> marks on SpaceX after the lock-up and on the unnamed private company; any realized sale.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">Long-term debt $98.2B, doubled since December; interest expense $261M &rarr; $1,278M a quarter</div>
+      <blockquote>Q2 2026: "As of June 30, 2026, we had long-term debt outstanding with a total carrying value of $98.2 billion."</blockquote>
+      <blockquote>Q2 2026: "Furthermore, our current and any future indebtedness, including obligations arising under leases, backstops, guarantees, and potential liabilities from large commercial agreements, combined with the dilutive impact of current or future equity issuances, could harm our financial condition, depress our stock price or reduce our financial and business flexibility."</blockquote>
+      <p class="magnitude"><b>Size:</b> face value $101.1B vs $11.9B of notes in Q3 2024; interest expense now 89% of interest income ($1,430M). Credit facilities drawn $1.3B.</p>
+      <p>The new financing risk factor groups backstops and guarantees with debt, which is the right way to read leverage here. Net interest income, once a cushion, is close to zero.</p>
+      <p class="next"><b>Next filing:</b> net interest turning negative, and whether new notes follow the equity raise.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">PriceRunner damages of about $2.1B accrued, the first quantified follow-on award; Android fine final, $5.2B paid in July</div>
+      <blockquote>Q2 2026: "The Court awarded the plaintiff approximately $2.1 billion (awarded in multiple currencies) in principal damages plus accrued interest and costs, which we recognized in the second quarter of 2026."</blockquote>
+      <blockquote>Q2 2026: "This includes private claims stemming from regulatory proceedings in which Google's liability has been fully determined and the remaining dispute concerns potential damages."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1.5B in operating expenses = 3.7% of Q2 operating income; accrued fines and settlements $17.4B (Q1 $15.6B).</p>
+      <p>Follow-on claims across Europe now have a priced template, and the filing still says it "cannot estimate a possible loss" for "other such matters".</p>
+      <p class="next"><b>Next filing:</b> other Shopping follow-on judgments; the ad-tech remedies decision, where the DOJ seeks structural remedies.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Inferred</span></div>
+      <div class="title">Inventory $2.4B &rarr; $10.0B in six months, mostly TPU hardware; product revenue is not quantified</div>
+      <blockquote>Q2 2026: "Inventory consists primarily of hardware related to TPU systems for sale to enterprise customers and devices, which primarily include the Pixel family of products."</blockquote>
+      <p class="magnitude"><b>Size:</b> inventory build of $7.7B consumed 9% of H1 operating cash flow; Cloud backlog concentration in "a limited number of agreements" is not quantified in the filing.</p>
+      <p>TPU systems are hardware sales to a few buyers, some of them supported by Alphabet backstops. Without a product/service split, the 82% growth and the margin cannot be decomposed.</p>
+      <p class="next"><b>Next filing:</b> inventory turning into revenue, and any disclosure of TPU product revenue or customer concentration.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing, newest first. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (each 10-Q vs the prior quarter's filing; each 10-K vs the prior 10-K). Growth rates are year over year.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q2 2026 10-Q</th><th>Q1 2026 10-Q</th><th>FY2025 10-K</th><th>Q3 2025 10-Q</th><th>Q2 2025 10-Q</th><th>Q1 2025 10-Q</th><th>FY2024 10-K</th><th>Q3 2024 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td>
+<td><span class="mark better">&#9650;</span> Revenue +24%. Search +17% (paid clicks +13%). Cloud +82% incl. first TPU sales. Backlog $519.5B.</td>
+<td><span class="mark better">&#9650;</span> Revenue +22%. Search +19% (paid clicks +13%). Cloud +63%. Backlog $467.6B ($7.3B from a definition change).</td>
+<td><span class="mark held">&#9679;</span> Revenue +15% (+14%). Search +13%. Cloud +36%. Backlog $242.8B vs $93.2B.</td>
+<td><span class="mark better">&#9650;</span> Revenue +16%. Search +15% (paid clicks +7%). Cloud +34%. Backlog +46% in the quarter to $157.7B.</td>
+<td><span class="mark better">&#9650;</span> Revenue +14%. Search +12%. Cloud +32%. Backlog $108.2B (+$15.8B).</td>
+<td><span class="mark worse">&#9660;</span> Revenue +12%. Search +10%, paid clicks +2%. Cloud +28%. Backlog $92.4B, the only dip.</td>
+<td><span class="mark held">&#9679;</span> Revenue +14%. Search +13%. Cloud +31%. Network &minus;3%. Backlog $93.2B.</td>
+<td><span class="mark held">&#9679;</span> Revenue +15%. Search +12%. Cloud +35%. Backlog $86.8B (+$8.0B).</td></tr>
+<tr><td>2. Margins and unit economics</td>
+<td><span class="mark held">&#9679;</span> Operating margin 34% (Q1 36%) after a $1.5B damages charge. Cloud margin 35.6%. H1 depreciation +43%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 36% vs 34%. Cloud margin 32.9%. Canada DST accrual reversed.</td>
+<td><span class="mark held">&#9679;</span> Operating margin 32%, flat, after $7.0B of fine, legal and Waymo charges. Cloud 23.7% vs 14.1%.</td>
+<td><span class="mark held">&#9679;</span> Operating margin 31% (about 34% before the $3.5B EC fine). Cloud 23.7%.</td>
+<td><span class="mark held">&#9679;</span> Operating margin 32%, flat, incl. $1.4B legal charge. Cloud 20.7% vs 11.3%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 34% vs 32%. Cloud 17.8% vs 9.4%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 32% vs 27%; opex +2%. Cloud 14.1% vs 5.2%.</td>
+<td><span class="mark better">&#9650;</span> Operating margin 32% vs 28% despite $607M office charges. Cloud 17.1% vs 3.2%.</td></tr>
+<tr><td>3. Earnings quality</td>
+<td><span class="mark worse">&#9660;</span> Equity gains $99.0B = 71% of pre-tax (SpaceX, a private company). Net income 2.8x operating income.</td>
+<td><span class="mark worse">&#9660;</span> Equity gains $36.9B = 48% of pre-tax. Net income +81% vs operating income +30%.</td>
+<td><span class="mark worse">&#9660;</span> Equity gains $24.1B = 15% of pre-tax (3% in 2024). Net income +32% vs operating income +15%.</td>
+<td><span class="mark worse">&#9660;</span> Equity gains $10.7B = 24% of pre-tax. Tax rate 20.5% on a non-deductible fine.</td>
+<td><span class="mark better">&#9650;</span> Equity gains $1.3B = 4% of pre-tax. Non-deductible $1.4B settlement.</td>
+<td><span class="mark worse">&#9660;</span> $8.0B private-stake mark; equity gains 23% of pre-tax. Net income +46% vs operating income +20%.</td>
+<td><span class="mark held">&#9679;</span> Equity gains $3.7B = 3% of pre-tax. Tax rate 16.4% vs 13.9% (2023 one-off).</td>
+<td><span class="mark held">&#9679;</span> Equity gains $1.8B = 6% of pre-tax. Tax rate 17.0% vs 7.1% (2023 one-off).</td></tr>
+<tr><td>4. Cash conversion</td>
+<td><span class="mark worse">&#9660;</span> FCF &minus;$5.9B (OCF $39.1B, capex $44.9B). Inventory +$7.7B in H1. DSO 53.</td>
+<td><span class="mark worse">&#9660;</span> FCF $10.1B = 16% of net income. DSO 52.</td>
+<td><span class="mark worse">&#9660;</span> FCF $73.3B, flat on net income +32%; FCF/net income 55% vs 73%. OCF helped by OBBBA.</td>
+<td><span class="mark better">&#9650;</span> FCF $24.5B = 70% of net income; OCF $48.4B helped by OBBBA expensing.</td>
+<td><span class="mark worse">&#9660;</span> FCF $5.3B = 19% of net income. DSO 52.</td>
+<td><span class="mark held">&#9679;</span> FCF $19.0B = 55% of net income (about 67% excl. the mark).</td>
+<td><span class="mark worse">&#9660;</span> FCF $72.8B (+5%) on capex +63%; FCF/net income 73% vs 94%.</td>
+<td><span class="mark worse">&#9660;</span> FCF $17.6B vs $22.6B, after the $3.0B Shopping fine; capex +62%.</td></tr>
+<tr><td>5. Capital allocation</td>
+<td><span class="mark worse">&#9660;</span> No buybacks. $49.6B equity raised; $40B ATM. H1 dividends $5.2B exceed H1 FCF.</td>
+<td><span class="mark worse">&#9660;</span> First quarter with no buybacks. Wiz ($29.5B) and Intersect ($5.9B) closed; $40B private-company commitment.</td>
+<td><span class="mark worse">&#9660;</span> Buybacks $45.7B (&minus;27%) + dividends $10.1B = 76% of FCF; $37.3B of notes issued.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $11.6B + dividends $2.5B = 59% of FCF.</td>
+<td><span class="mark worse">&#9660;</span> Buybacks $13.6B + dividends $2.5B = 3x FCF; gap met by the first bond issue.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $15.1B + dividends $2.4B = 92% of FCF. Wiz agreed ($32.0B cash); new $70B authorization.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $62.0B + dividends $7.4B = 95% of FCF; diluted shares &minus;2.2%.</td>
+<td><span class="mark held">&#9679;</span> Buybacks $15.3B + dividends $2.5B = 101% of FCF; Character.ai $2.7B.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td>
+<td><span class="mark worse">&#9660;</span> LT debt $98.2B. Commitments $811.0B. Backstops $51.4B (+$24.1B agreed). Unstarted leases $85.2B.</td>
+<td><span class="mark worse">&#9660;</span> Notes $79.1B; facility drawn $1.2B. Commitments $332.4B. Backstops $37.4B (+$33.3B agreed).</td>
+<td><span class="mark worse">&#9660;</span> LT debt $46.6B vs $10.9B. Commitments $149.1B. Backstops $22.6B. Unstarted leases $58.5B.</td>
+<td><span class="mark worse">&#9660;</span> First backstops: $6.5B. Commitments $93.7B. Unstarted leases $42.6B.</td>
+<td><span class="mark worse">&#9660;</span> First notes, $12.5B net; carrying value $24.6B. CP program $10B &rarr; $25B.</td>
+<td><span class="mark worse">&#9660;</span> Unstarted leases $7.3B &rarr; $17.3B (data centers, to 2031). Commitments $62.1B.</td>
+<td><span class="mark held">&#9679;</span> Notes $11.9B; CP $2.3B. Commitments $55.4B. Unstarted leases $7.3B.</td>
+<td><span class="mark held">&#9679;</span> Notes $11.9B; first CP, $1.0B. Commitments $50.8B. Unstarted leases $6.1B.</td></tr>
+<tr><td>7. Concentration</td>
+<td><span class="mark worse">&#9660;</span> Cloud 98.9% of backlog; TPU sales under "a limited number of agreements". US 51% of revenue.</td>
+<td><span class="mark worse">&#9660;</span> TPU deals tied to credit backstops; Cloud $462.3B of $467.6B backlog. US 49%.</td>
+<td><span class="mark held">&#9679;</span> US 48% (49%). Backlog "primarily related to Google Cloud".</td>
+<td><span class="mark held">&#9679;</span> US 48%. No customer concentration disclosed.</td>
+<td><span class="mark held">&#9679;</span> US 48%. Waymo now leads Other Bets revenue.</td>
+<td><span class="mark held">&#9679;</span> US 49%. No customer concentration disclosed.</td>
+<td><span class="mark held">&#9679;</span> US 49% (47%). No customer above 10%.</td>
+<td><span class="mark held">&#9679;</span> US 49%. Backlog mostly Cloud.</td></tr>
+<tr><td>8. Accounting judgments</td>
+<td><span class="mark worse">&#9660;</span> $87.9B of private stakes remeasured; SpaceX moved to Level 1. Credit-derivative liability $815M ($69M).</td>
+<td><span class="mark worse">&#9660;</span> Backlog redefined to include short contracts ($7.3B). $30B contingent funding booked as an equity derivative.</td>
+<td><span class="mark held">&#9679;</span> Server lives unchanged at six years. Backstop fair values "not material". Waymo charge on estimated valuation.</td>
+<td><span class="mark worse">&#9660;</span> "for future services" dropped from the backlog definition; backstops booked as credit derivatives.</td>
+<td><span class="mark held">&#9679;</span> Euro notes designated as a net investment hedge. No estimate changes.</td>
+<td><span class="mark held">&#9679;</span> $8.0B mark from the measurement alternative. No estimate changes.</td>
+<td><span class="mark held">&#9679;</span> Six-year server lives held; useful-lives risk factor added.</td>
+<td><span class="mark held">&#9679;</span> Character.ai licence booked as a business combination ($2.7B goodwill).</td></tr>
+<tr><td>9. Legal, regulatory and governance</td>
+<td><span class="mark worse">&#9660;</span> PriceRunner $2.1B accrued; Android fine final, $5.2B paid July. Accruals $17.4B. Ad-tech remedies pending.</td>
+<td><span class="mark held">&#9679;</span> Epic settlement (March). Search appeals by both sides. Accruals $15.6B.</td>
+<td><span class="mark worse">&#9660;</span> Search final judgment (December 2025), appealed. Overbuild risk factor added. Accruals $15.6B.</td>
+<td><span class="mark held">&#9679;</span> Search remedies behavioral (bull); EC ad-tech fine $3.5B and Epic appeal lost (bear).</td>
+<td><span class="mark worse">&#9660;</span> $1.4B privacy settlement. DOJ seeks structural ad-tech remedies.</td>
+<td><span class="mark worse">&#9660;</span> Ad-tech: publisher tools "violated antitrust laws". DMA preliminary findings.</td>
+<td><span class="mark worse">&#9660;</span> DOJ Search remedy framework "including structural remedies"; decision expected 2H 2025.</td>
+<td><span class="mark worse">&#9660;</span> DOJ Search ruling; Epic remedies; Shopping fine paid ($3.0B). AdSense fine annulled.</td></tr>
+<tr><td>10. Guidance and commitments</td>
+<td><span class="mark held">&#9679;</span> TPU revenue began early. Capex "significantly increase" held; H1 $80.6B. Buybacks: "no assurances".</td>
+<td><span class="mark held">&#9679;</span> Capex guide held. TPU revenue "later in 2026". $10.0B private funding in Q2.</td>
+<td><span class="mark held">&#9679;</span> 2025 capex above 2024 as guided ($91.4B). Infrastructure costs "expected to significantly increase".</td>
+<td><span class="mark held">&#9679;</span> First 2026 signal: capex to "significantly increase". Final Search judgment late 2025.</td>
+<td><span class="mark held">&#9679;</span> Capex increase vs 2024 restated. OBBBA effects from Q3 2025.</td>
+<td><span class="mark held">&#9679;</span> Wiz to close in 2026. 55% of backlog in 24 months.</td>
+<td><span class="mark held">&#9679;</span> 2024 capex increase delivered; 2025 increase guided; no dollar range.</td>
+<td><span class="mark held">&#9679;</span> Capex increase vs 2023 (already met). Pillar Two tax "could increase".</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated in the window, and what later filings said about it. Alphabet gave no dollar capex guidance in any of the eight filings.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"We expect to increase, relative to 2023, our investment in our technical infrastructure, including servers, network equipment, and data centers"</td><td>Q3 2024 10-Q</td><td>FY2024 10-K: met, capex $52.5B vs $32.3B (+63%)</td></tr>
+<tr><td>"We also expect to increase, relative to 2024, our investment in our technical infrastructure"</td><td>FY2024 10-K</td><td>Q1 and Q2 2025: held. Q3 2025: restated as "We expect full year 2025 capital expenditures to exceed full year 2024". FY2025 10-K: met, $91.4B (+74%)</td></tr>
+<tr><td>"In 2026, we expect to significantly increase, relative to 2025, our investment in our technical infrastructure"</td><td>Q3 2025 10-Q</td><td>FY2025 10-K and Q1 2026: held. Q2 2026: held; H1 $80.6B = 88% of FY2025 (on pace to beat)</td></tr>
+<tr><td>"We expect to recognize approximately half of the revenue backlog as revenues over the next 24 months"</td><td>FY2024 10-K</td><td>Q1 2025: moved to "approximately 55%". Q3 2025: "just over 55%". FY2025 to Q2 2026: moved back to "just over 50%"</td></tr>
+<tr><td>"The acquisition of Wiz is expected to close in 2026"</td><td>Q1 2025 10-Q</td><td>Q2 2025 to FY2025: held. Q1 2026: met, closed March 11, 2026 for $29.5B (agreed price $32.0B)</td></tr>
+<tr><td>"The acquisition of Intersect is expected to close in the first half of 2026"</td><td>FY2025 10-K</td><td>Q1 2026: met, closed March 10, 2026 for $5.9B (agreed $4.8B plus debt)</td></tr>
+<tr><td>"We expect a decision likely in the second half of 2025, after which we intend to appeal." (DOJ Search remedies)</td><td>FY2024 10-K</td><td>Q2 2025: moved to "August 2025". Q3 2025: met, decision September 2025. FY2025 10-K: final judgment December 2025, appealed January 2026</td></tr>
+<tr><td>OBBBA effects "which we expect to begin reflecting in the three month period ended September 30, 2025"</td><td>Q2 2025 10-Q</td><td>Q3 2025: met; R&amp;D expensing and accelerated depreciation included in operating cash flow</td></tr>
+<tr><td>"We expect to begin recognizing revenues from these agreements later in 2026, with the significant majority to be recognized in 2027." (TPU hardware)</td><td>Q1 2026 10-Q</td><td>Q2 2026: beaten, revenue began in Q2 2026; 2027 timing for the majority held</td></tr>
+<tr><td>"We expect to fund $10.0 billion in the second quarter of 2026 in the form of a non-marketable security."</td><td>Q1 2026 10-Q</td><td>Q2 2026: not mentioned directly; contingent funding fell from $30.0B to $20.0B and the cost of non-marketable equity rose from $28.4B to $47.6B</td></tr>
+<tr><td>"agreement to provide up to $33.3 billion of future backstops"</td><td>Q1 2026 10-Q</td><td>Q2 2026: moved to "an estimated $24.1 billion" still to come; signed credit derivatives rose $28.4B &rarr; $43.8B</td></tr>
+<tr><td>$70.0 billion share repurchase authorization (April 2025)</td><td>Q1 2025 10-Q</td><td>FY2025 10-K: $69.5B left. Q1 and Q2 2026: unused, no repurchases; Q2 2026 risk factor gives "no assurances" of repurchases "in the near term or at all"</td></tr>
+<tr><td>Quarterly dividend raised 5% to $0.21 (April 2025)</td><td>Q1 2025 10-Q</td><td>Q1 2026: raised 5% to $0.22. Q2 2026: held, plus $12.15 per preferred share</td></tr>
+<tr><td>GFiber deconsolidation "expected to close in late 2026"</td><td>Q1 2026 10-Q</td><td>Q2 2026: held</td></tr>
+<tr><td>"we expect our effective tax rate and cash tax payments could increase in future years" (Pillar Two)</td><td>Q3 2024 10-Q</td><td>FY2024 10-K: dropped from the MD&amp;A. FY2025 10-K: returned as "could increase". Q1 2026: softened to "could be affected"; Q2 2026 held</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q1 2026 (filed April 30, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Backlog $242.8B &rarr; $467.6B in a quarter, including "multiple gigawatts" of TPU hardware sales</div>
+      <blockquote>Q1 2026: "As of March 31, 2026, we had $467.6 billion of remaining performance obligations (“revenue backlog”), of which $462.3 billion related to Google Cloud."</blockquote>
+      <blockquote>Q1 2026: "Google Cloud has entered into a limited number of agreements to supply multiple gigawatts of TPU hardware to customers who require or provide on-premises infrastructure for specialized, high-scale workloads."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$224.8B, of which $7.3B is a definition change; Cloud backlog about 7x trailing Cloud revenue.</p>
+      <p>Alphabet now sells its custom chips as well as renting them, opening a hardware revenue line that did not exist in the window before.</p>
+      <p class="next"><b>Next filing:</b> TPU revenue starting on schedule (Q2 2026: it started early).</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Cloud revenue +63% to $20.03B; operating income $2.18B &rarr; $6.60B (32.9% margin)</div>
+      <blockquote>Q1 2026: "Google Cloud | 2,177 | 6,598"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$4.4B of operating income = 49% of the company's $9.1B increase.</p>
+      <p>Margin went above the company's 2024 operating margin within two years of breakeven-level results (3.2% in Q3 2023).</p>
+      <p class="next"><b>Next filing:</b> margin holding above 30% as Wiz costs are absorbed.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Search and advertising durability" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Search and advertising durability</span><span class="chip">Stated</span></div>
+      <div class="title">Search &amp; other +19% to $60.40B with paid clicks +13%, the fastest in the window</div>
+      <blockquote>Q1 2026: "Google Search & other revenues increased $9.7 billion from the three months ended March 31, 2025 to the three months ended March 31, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$9.7B; growth rate up from +10% a year earlier; some help from currency.</p>
+      <p>A second filing of accelerating Search growth after Q3 2025's +15%, which moves P1 to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> growth above 15% without the currency tailwind (Q2 2026: +17%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">No buybacks for the first time in the window; FCF $10.1B = 16% of net income</div>
+      <blockquote>Q1 2026: "In the three months ended March 31, 2026, there were no repurchases of the company's Class A or Class C shares."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks $15.1B a year earlier; capex $35.7B = 78% of operating cash flow.</p>
+      <p>The $69.5B authorization sat unused while notes were issued. Weighted diluted shares rose quarter over quarter (+0.3%) for the first time in the window.</p>
+      <p class="next"><b>Next filing:</b> buybacks resumed (Q2 2026: no, and equity was issued).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Purchase commitments $149.1B &rarr; $332.4B; backstops $37.4B plus up to $33.3B more; $40.0B private-company commitment</div>
+      <blockquote>Q1 2026: "As of March 31, 2026, we had material purchase commitments and other contractual obligations totaling $332.4 billion, of which $138.0 billion was short-term."</blockquote>
+      <blockquote>Q1 2026: "In March 2026, we committed to a $40.0 billion investment in a private company consisting of a $10.0 billion capital commitment and $30.0 billion of future capital funding contingent upon the achievement of specified operational and financial milestones."</blockquote>
+      <p class="magnitude"><b>Size:</b> commitments 2.4x trailing operating income ($138.1B); backstop exposure plus pipeline $70.7B = 51% of it.</p>
+      <p>The filing ties part of the TPU backlog to "credit backstops to support third-party data centers and power infrastructure", so revenue and exposure grow together.</p>
+      <p class="next"><b>Next filing:</b> commitments growing no faster than backlog (Q2 2026: they grew faster).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Equity gains $36.9B = 48% of pre-tax income; net income +81% on operating income +30%</div>
+      <blockquote>Q1 2026: "OI&E of $37.7 billion for the three months ended March 31, 2026 included net gains on equity securities of $36.9 billion, primarily related to unrealized gains on our non-marketable equity securities."</blockquote>
+      <p class="magnitude"><b>Size:</b> $36.9B vs $9.8B a year earlier; EPS $5.11 vs $2.81.</p>
+      <p>Mark-ups on private stakes are now as large as a quarter of operating income and are not cash.</p>
+      <p class="next"><b>Next filing:</b> marks shrinking back below 20% of pre-tax income (Q2 2026: 71%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">$31.1B of notes in one quarter, including a 31-year Sterling tranche; credit facilities drawn for the first time</div>
+      <blockquote>Q1 2026: "In the first quarter of 2026, we issued senior unsecured notes for net proceeds of $31.1 billion, to be used for general corporate purposes."</blockquote>
+      <blockquote>Q1 2026: "As of March 31, 2026, we had $11.7 billion of credit facilities expiring at various dates through April 2030, of which $1.2 billion was outstanding."</blockquote>
+      <p class="magnitude"><b>Size:</b> notes carrying value $48.5B &rarr; $79.1B; interest expense $533M vs $34M a year earlier.</p>
+      <p>A second consecutive filing of heavy debt issuance confirms P5's move to Weakening in the 10-K.</p>
+      <p class="next"><b>Next filing:</b> debt growth slowing (Q2 2026: $20.3B more notes, plus equity).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2025 (filed February 5, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Cloud operating income $6.11B &rarr; $13.91B on revenue +36%; backlog $93.2B &rarr; $242.8B</div>
+      <blockquote>FY2025: "Google Cloud | 6,112 | 13,910"</blockquote>
+      <blockquote>FY2025: "As of December 31, 2025, we had $242.8 billion of remaining performance obligations"</blockquote>
+      <p class="magnitude"><b>Size:</b> Cloud margin 23.7% vs 14.1% (Q4 about 30%); +$7.8B of operating income = 47% of the company's increase.</p>
+      <p>Cloud became a profit engine in the year capex nearly doubled, which is the return the build-out has to show.</p>
+      <p class="next"><b>Next filing:</b> margin above 25% in 2026 (Q1: 32.9%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Search and advertising durability" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Search and advertising durability</span><span class="chip">Stated</span></div>
+      <div class="title">Search &amp; other +13% to $224.5B; paid clicks +6%; TAC rate 20.7% &rarr; 20.3%</div>
+      <blockquote>FY2025: "Google Search & other | 198,084 | 224,532"</blockquote>
+      <blockquote>FY2025: "The TAC rate decreased from 20.7% to 20.3% from 2024 to 2025, primarily due to a revenue mix shift from Google Network properties to Google Search & other properties."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$26.4B of revenue, the same growth rate as 2024 (+13%).</p>
+      <p>Search held its growth rate through the year of the remedies decision, with distribution costs falling as a share of revenue.</p>
+      <p class="next"><b>Next filing:</b> growth sustained as Search remedies take effect.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +31% to $164.7B; buybacks and dividends still within FCF</div>
+      <blockquote>FY2025: "Operating cash flow was $164.7 billion for the year ended December 31, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks $45.7B + dividends $10.1B = 76% of $73.3B FCF.</p>
+      <p>Capital return was still cash-funded for the year, although part of the cash gain came from OBBBA tax expensing rather than operations.</p>
+      <p class="next"><b>Next filing:</b> returns within FCF in 2026 (Q1 2026: no buybacks).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Backstops $6.5B &rarr; $22.6B in a quarter; commitments $149.1B; overbuild enters the risk factors</div>
+      <blockquote>FY2025: "As of December 31, 2025, we provided backstops in the form of financial guarantees and credit derivatives with maximum potential amount of future payments of $5.7 billion and $16.9 billion, respectively."</blockquote>
+      <blockquote>FY2025: "In such nonperformance or an industry downturn, we may incur additional liabilities, have excess capacity that we cannot easily redeploy, and not receive payments from our counterparties or customers."</blockquote>
+      <p class="magnitude"><b>Size:</b> backstops = 18% of FY2025 operating income; commitments 1.2x operating income; unstarted leases $58.5B.</p>
+      <p>A second filing of fast-rising off-balance-sheet obligations after Q3 2025, which moves P3 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> backstops and commitments growing no faster than backlog.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">$37.3B of notes issued in 2025; long-term debt $10.9B &rarr; $46.6B; a new financing trend bullet</div>
+      <blockquote>FY2025: "We have raised capital through external financing in the form of debt and we may continue to seek debt or other forms of financing in the future to support our capital and operating needs."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF $73.3B was flat while capex rose $38.9B; notes covered the gap with buybacks and dividends.</p>
+      <p>"Debt or other forms of financing" foreshadowed the June 2026 equity raise. With Q2 2025's first bond issue, this is the second filing pointing to debt-funded growth.</p>
+      <p class="next"><b>Next filing:</b> new issuance (Q1 2026: $31.1B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Infrastructure operating costs "expected to significantly increase"; depreciation +38%</div>
+      <blockquote>FY2025: "The costs associated with operating our technical infrastructure - depreciation, energy, equipment, and network capacity - are expected to significantly increase as developing and serving AI offerings require more compute power than our historical consumer and enterprise offerings."</blockquote>
+      <p class="magnitude"><b>Size:</b> depreciation $21.1B vs $15.3B; not otherwise quantified in the filing.</p>
+      <p>The same filing concedes it may not "drive efficiencies at the rate we have in the past", the main reason margins held through 2025.</p>
+      <p class="next"><b>Next filing:</b> operating margin holding at 32% or better (Q1 2026: 36%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Equity gains $24.1B = 15% of pre-tax income; net income +32% on operating income +15%</div>
+      <blockquote>FY2025: "OI&E of $29.8 billion for the year ended December 31, 2025 included net gains on equity securities of $24.1 billion, primarily related to unrealized gains on our non-marketable equity securities."</blockquote>
+      <p class="magnitude"><b>Size:</b> $24.1B vs $3.7B in 2024; about $1.55 of the $10.81 EPS after tax (inference at 21%).</p>
+      <p>Half the growth in net income came from marks rather than operations.</p>
+      <p class="next"><b>Next filing:</b> marks in Q1 2026 ($36.9B).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2025 (filed October 30, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Backlog +$49.5B (+46%) in a quarter to $157.7B; Cloud margin 23.7%</div>
+      <blockquote>Q3 2025: "As of September 30, 2025, we had $157.7 billion of remaining performance obligations"</blockquote>
+      <blockquote>Q3 2025: "Google Cloud | 1,947 | 3,594 | 4,019 | 8,597"</blockquote>
+      <p class="magnitude"><b>Size:</b> backlog 10x quarterly Cloud revenue ($15.16B); Cloud operating income +85%.</p>
+      <p>The definition dropped "for future services" in the same quarter, so part of the jump may be non-service contracts (inference).</p>
+      <p class="next"><b>Next filing:</b> backlog still rising (FY2025: $242.8B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Search and advertising durability" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Search and advertising durability</span><span class="chip">Stated</span></div>
+      <div class="title">Search &amp; other +15% to $56.57B; paid clicks +7%</div>
+      <blockquote>Q3 2025: "Google Search & other | 49,385 | 56,567 | 144,050 | 161,459"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$7.2B; growth up from +10% (Q1) and +12% (Q2).</p>
+      <p>The first filing of Search acceleration in the window, with volume (paid clicks) doing more of the work.</p>
+      <p class="next"><b>Next filing:</b> a second quarter of acceleration (Q1 2026: +19%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">Search remedies are behavioral: distribution limits, data sharing and syndication, no divestiture</div>
+      <blockquote>Q3 2025: "In September 2025, a decision on remedies was issued, which, among other things, imposes restrictions on how Google distributes its services, and requires Google to share certain search data with and offer syndication services to certain competitors."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; the DOJ had sought "structural remedies".</p>
+      <p>The worst case in the largest case did not happen. Data sharing and syndication still help rivals, so this is a narrowed risk rather than a removed one.</p>
+      <p class="next"><b>Next filing:</b> the final judgment and appeal (FY2025: both sides appealed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow $48.4B; FCF $24.5B covers buybacks and dividends 1.7x</div>
+      <blockquote>Q3 2025: "Operating cash flow was $48.4 billion for the three months ended September 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF/net income 70% (Q2: 19%); returns $14.4B.</p>
+      <p>Partly tax timing: the filing says OBBBA expensing and accelerated depreciation are included in the quarter's cash flow.</p>
+      <p class="next"><b>Next filing:</b> conversion holding once the tax benefit annualizes.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">First credit backstops of third-party data-center leases ($6.5B); 2026 capex to "significantly increase"</div>
+      <blockquote>Q3 2025: "As of September 30, 2025, the maximum exposure to loss is $6.5 billion."</blockquote>
+      <blockquote>Q3 2025: "In 2026, we expect to significantly increase, relative to 2025, our investment in our technical infrastructure"</blockquote>
+      <p class="magnitude"><b>Size:</b> $6.5B = 21% of quarterly operating income; commitments $93.7B (+29% q/q); unstarted leases $42.6B (+78%).</p>
+      <p>Alphabet began guaranteeing other companies' data-center leases while the risk factors reported no material changes.</p>
+      <p class="next"><b>Next filing:</b> backstop growth (FY2025: $22.6B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">EC ad-tech fine of $3.5B accrued; operating margin 31%</div>
+      <blockquote>Q3 2025: "The EC decision imposed a $3.5 billion fine which we accrued in general and administrative expenses in our Google Services segment for the three months ended September 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> 11% of quarterly operating income; non-deductible, lifting the tax rate to 20.5%.</p>
+      <p>The second large legal charge in two quarters after the $1.4B privacy settlement; the DOJ ad-tech remedies trial ran in the same month.</p>
+      <p class="next"><b>Next filing:</b> ad-tech remedies decision (still pending in Q2 2026).</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Equity gains $10.7B = 24% of pre-tax income; net income +33% on operating income +9%</div>
+      <blockquote>Q3 2025: "OI&E of $12.8 billion for the three months ended September 30, 2025 included net gains on equity securities of $10.7 billion, primarily related to unrealized gains on our non-marketable equity securities."</blockquote>
+      <p class="magnitude"><b>Size:</b> $10.7B vs $1.8B a year earlier.</p>
+      <p>The second filing in 2025 (after Q1's $8.0B) in which marks carried a quarter of pre-tax income, which moves P6 to Weakening.</p>
+      <p class="next"><b>Next filing:</b> the share of gains in pre-tax income (FY2025: 15%; Q1 2026: 48%).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q2 2025 (filed July 24, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Cloud operating income $1.17B &rarr; $2.83B (20.7% margin); backlog +$15.8B to $108.2B</div>
+      <blockquote>Q2 2025: "Google Cloud | 1,172 | 2,826 | 2,072 | 5,003"</blockquote>
+      <blockquote>Q2 2025: "As of June 30, 2025, we had $108.2 billion of remaining performance obligations"</blockquote>
+      <p class="magnitude"><b>Size:</b> margin +9.4 points year over year; Cloud revenue +32%.</p>
+      <p>The second consecutive filing with a Cloud margin gain of 8+ points (Q1 2025: 17.8% vs 9.4%), which moves P2 to Strengthening.</p>
+      <p class="next"><b>Next filing:</b> backlog growth above revenue growth (Q3 2025: +46% in a quarter).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Search and advertising durability" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Search and advertising durability</span><span class="chip">Stated</span></div>
+      <div class="title">Search &amp; other +12% to $54.19B, up from +10% in Q1</div>
+      <blockquote>Q2 2025: "Google Search & other revenues increased $5.7 billion and $10.2 billion from the three and six months ended June 30, 2024 to the three and six months ended June 30, 2025."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$5.7B; paid clicks +4%, cost-per-click +8%.</p>
+      <p>Growth recovered from the window's low, though still price-led.</p>
+      <p class="next"><b>Next filing:</b> growth led by paid clicks (Q3 2025: +7%).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">FCF $5.3B against $13.3B of buybacks and $2.5B of dividends</div>
+      <blockquote>Q2 2025: "During the three and six months ended June 30, 2025, we repurchased and subsequently retired 81 million and 164 million shares for $13.3 billion and $28.6 billion, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> returns about 3x FCF; FCF/net income 19%; capex $22.4B = 81% of operating cash flow.</p>
+      <p>The first quarter in the window in which capital return clearly ran ahead of free cash flow.</p>
+      <p class="next"><b>Next filing:</b> FCF covering returns (Q3 2025: yes, with tax help).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Balance sheet and funding" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Balance sheet and funding</span><span class="chip">Stated</span></div>
+      <div class="title">First bond issue in the window ($12.5B net); commercial paper program raised to $25.0B</div>
+      <blockquote>Q2 2025: "In May 2025, Alphabet issued fixed-rate senior unsecured notes for net proceeds of $12.5 billion to be used for general corporate purposes."</blockquote>
+      <blockquote>Q2 2025: "We have a short-term debt financing program of up to $25.0 billion through the issuance of commercial paper."</blockquote>
+      <p class="magnitude"><b>Size:</b> notes carrying value $11.9B &rarr; $24.6B; quarterly interest expense $261M vs $67M.</p>
+      <p>Notes had been unchanged for five filings. The issue funded the quarter's FCF gap.</p>
+      <p class="next"><b>Next filing:</b> further issuance (FY2025: $37.3B for the year).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">$1.4B privacy settlement; operating margin flat at 32%</div>
+      <blockquote>Q2 2025: "General and administrative expenses of $5.2 billion for the three months ended June 30, 2025 included a $1.4 billion charge in our Google Services segment related to a settlement in principle of certain legal matters."</blockquote>
+      <p class="magnitude"><b>Size:</b> 4.5% of quarterly operating income; non-deductible.</p>
+      <p>Legal costs held the margin flat in a quarter when Cloud margin rose 9 points.</p>
+      <p class="next"><b>Next filing:</b> Search remedies decision (Q3 2025: behavioral).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q1 2025 (filed April 25, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Cloud operating income $0.90B &rarr; $2.18B (17.8% margin vs 9.4%)</div>
+      <blockquote>Q1 2025: "Google Cloud | 900 | 2,177"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$1.3B = 25% of the company's operating income increase; Cloud revenue +28%.</p>
+      <p>Margin expansion continued while Cloud growth slowed slightly and the backlog dipped.</p>
+      <p class="next"><b>Next filing:</b> margin above 18% (Q2 2025: 20.7%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Operating margin 34% vs 32% while depreciation rose 32%</div>
+      <blockquote>Q1 2025: "Operating margin | 32 | 34 | 2"</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income +20% on revenue +12%; depreciation $4.5B vs $3.4B.</p>
+      <p>Operating leverage still covered the depreciation step-up.</p>
+      <p class="next"><b>Next filing:</b> margin held (Q2 2025: 32%, flat, after a legal charge).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P6 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">Net income +46% includes an $8.0B unrealized gain on a private-company stake</div>
+      <blockquote>Q1 2025: "OI&E of $11.2 billion for the three months ended March 31, 2025 included an $8.0 billion unrealized gain on our non-marketable equity securities related to our investment in a private company."</blockquote>
+      <p class="magnitude"><b>Size:</b> $8.0B = 19% of pre-tax income; total equity gains $9.8B = 23%.</p>
+      <p>First of the large private-stake marks in the window; net income grew more than twice as fast as operating income.</p>
+      <p class="next"><b>Next filing:</b> whether marks recur (Q3 2025: $10.7B).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Unstarted data-center leases $7.3B &rarr; $17.3B; Wiz agreed for $32.0B in cash</div>
+      <blockquote>Q1 2025: "As of March 31, 2025, we have entered into leases primarily related to data centers that have not yet commenced with future lease payments of $17.3 billion."</blockquote>
+      <blockquote>Q1 2025: "In March 2025, we entered into a definitive agreement to acquire Wiz, a leading cloud security platform, for $32.0 billion, subject to closing adjustments, in an all-cash transaction."</blockquote>
+      <p class="magnitude"><b>Size:</b> leases +137% in a quarter; Wiz = 34% of cash and short-term securities ($95.3B).</p>
+      <p>Capacity commitments started running ahead of the balance sheet, and a large cash acquisition was added on top of capex.</p>
+      <p class="next"><b>Next filing:</b> lease and commitment growth (Q2 2025: $23.9B leases).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">Ad-tech ruling: publisher tools violated antitrust law; EC DMA preliminary findings</div>
+      <blockquote>Q1 2025: "In April 2025, the U.S. District Court for the Eastern District of Virginia issued a mixed decision in the DOJ case against Google, ruling that the DOJ failed to show that Google’s advertiser tools or acquisitions of DoubleClick and AdMeld were anticompetitive, but that Google’s publisher tools violated antitrust laws by excluding rivals."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; Network revenue (the side the publisher tools serve) was $7.3B in the quarter.</p>
+      <p>A second adverse liability finding after Search. The DOJ later sought structural remedies here.</p>
+      <p class="next"><b>Next filing:</b> remedies proposals (Q2 2025: DOJ seeks structural remedies).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-K FY2024 (filed February 5, 2025)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Cloud operating income $1.72B &rarr; $6.11B on revenue +31%</div>
+      <blockquote>FY2024: "Google Cloud operating income increased $4.4 billion from 2023 to 2024."</blockquote>
+      <p class="magnitude"><b>Size:</b> margin 14.1% vs 5.2%; 16% of the company's $28.1B operating income increase.</p>
+      <p>Cloud moved from break-even to a material profit contributor in one year.</p>
+      <p class="next"><b>Next filing:</b> margin expansion continuing (Q1 2025: 17.8%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">$62.0B of buybacks plus $7.4B of first-year dividends, funded from $72.8B of FCF</div>
+      <blockquote>FY2024: "During 2024, we repurchased and subsequently retired 379 million shares for $62.0 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> returns = 95% of FCF; diluted shares &minus;2.2%; no net new debt (notes $11.9B).</p>
+      <p>This is the capital-return model the bull case rested on, at the start of the window.</p>
+      <p class="next"><b>Next filing:</b> buybacks still within FCF as capex rises.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Operating margin 32% vs 27% with operating expenses +2%</div>
+      <blockquote>FY2024: "Operating margin | 27 | 32 | 5"</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income +$28.1B (+33%) on revenue +14%; severance and office charges $2.4B lower.</p>
+      <p>Cost discipline absorbed a 29% rise in depreciation.</p>
+      <p class="next"><b>Next filing:</b> margin holding as capex grows again in 2025.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Capex +63% to $52.5B; FCF/net income falls to 73% from 94%</div>
+      <blockquote>FY2024: "During the years ended December 31, 2023 and 2024, we spent $32.3 billion and $52.5 billion on capital expenditures, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF +5% against net income +36%; the filing guides a further increase in 2025 with no dollar range.</p>
+      <p>Earnings growth stopped turning into free cash flow growth, the first step of the later squeeze.</p>
+      <p class="next"><b>Next filing:</b> capex vs operating cash flow in 2025.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">DOJ Search remedy framework includes structural remedies; decision expected in the second half of 2025</div>
+      <blockquote>FY2024: "The DOJ has proposed a high level remedy framework, which includes alterations to our products and services and our business models and operations, including structural remedies, and/or our distribution arrangements, among other changes, some of which could have a material adverse effect on our business."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; Search &amp; other is $198.1B, 57% of revenue.</p>
+      <p>The core franchise faced possible structural or distribution remedies.</p>
+      <p class="next"><b>Next filing:</b> remedies decision (Q3 2025: behavioral).</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Search and advertising durability" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Search and advertising durability</span><span class="chip">Stated</span></div>
+      <div class="title">Google Network revenue &minus;3%, now attributed to Ad Manager and AdMob</div>
+      <blockquote>FY2024: "Google Network revenues decreased $953 million from 2023 to 2024, primarily driven by a decrease in Google Ad Manager and AdMob revenues."</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$0.95B on $30.4B; Network is 9% of revenue.</p>
+      <p>The third-party ad business is shrinking, the part of the stack later found to violate antitrust law.</p>
+      <p class="next"><b>Next filing:</b> Network trend (down in every later filing).</p>
+    </div>
+  </div>
+</div></details>
+
+<details class="earlier"><summary>10-Q Q3 2024 (filed October 30, 2024)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P2 Google Cloud growth and margin" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Google Cloud growth and margin</span><span class="chip">Stated</span></div>
+      <div class="title">Cloud operating income $266M &rarr; $1.95B (17.1% margin) on revenue +35%</div>
+      <blockquote>Q3 2024: "Google Cloud | 266 | 1,947 | 852 | 4,019"</blockquote>
+      <p class="magnitude"><b>Size:</b> +$1.7B = 23% of the company's $7.2B operating income increase.</p>
+      <p>Cloud growth accelerated (Q2: +29%) while margin rose 14 points.</p>
+      <p class="next"><b>Next filing:</b> margin above 15% for the full year (FY2024: 14.1%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and commitments" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and commitments</span><span class="chip">Stated</span></div>
+      <div class="title">Operating margin 32% vs 28% despite $607M of office space charges</div>
+      <blockquote>Q3 2024: "Operating margin | 28 | 32 | 4"</blockquote>
+      <p class="magnitude"><b>Size:</b> operating income +34% on revenue +15%; operating expenses +5%.</p>
+      <p>Margin expansion came with capex up 62%, so returns on infrastructure were visible early.</p>
+      <p class="next"><b>Next filing:</b> full-year margin (FY2024: 32%).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">General Court annuls the &euro;1.5B AdSense fine</div>
+      <blockquote>Q3 2024: "On September 18, 2024, the EU's General Court overturned the 2019 decision and annulled the €1.5 billion fine."</blockquote>
+      <p class="magnitude"><b>Size:</b> $1.7B charge recognized in 2019 could reverse; the EC can appeal.</p>
+      <p>A rare win on an EC fine. The accrual is still held pending the EC appeal (still pending in Q2 2026).</p>
+      <p class="next"><b>Next filing:</b> EC appeal (filed; pending).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P7 Legal and regulatory" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal and regulatory</span><span class="chip">Stated</span></div>
+      <div class="title">DOJ Search liability ruling, structural remedies proposed; Shopping fine paid ($3.0B)</div>
+      <blockquote>Q3 2024: "The DOJ has proposed a high level remedy framework, which includes alterations to our products and services and our business models and operations, including structural remedies, and/or our distribution arrangements, among other changes, some of which could have a material adverse effect on our financial statements."</blockquote>
+      <blockquote>Q3 2024: "In the third quarter of 2024, we made a cash payment of $3.0 billion for the 2017 shopping fine."</blockquote>
+      <p class="magnitude"><b>Size:</b> $3.0B = 17% of quarterly FCF; Search remedies not quantified. Epic remedies ordered October 2024.</p>
+      <p>The first EC fine paid in cash in the window, and the largest US antitrust case moved to remedies.</p>
+      <p class="next"><b>Next filing:</b> remedies timetable (FY2024: decision expected 2H 2025).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Cash conversion and capital return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Cash conversion and capital return</span><span class="chip">Stated</span></div>
+      <div class="title">Capex +62% cuts FCF to $17.6B from $22.6B; buybacks and dividends take all of it; first commercial paper</div>
+      <blockquote>Q3 2024: "During the nine months ended September 30, 2023 and 2024, we spent $21.2 billion and $38.3 billion on capital expenditures, respectively."</blockquote>
+      <blockquote>Q3 2024: "As of September 30, 2024, we had $1.0 billion of short-term commercial paper outstanding."</blockquote>
+      <p class="magnitude"><b>Size:</b> buybacks $15.3B + dividends $2.5B = 101% of FCF (86% excluding the $3.0B fine).</p>
+      <p>Small in dollars, but the first borrowing in a window that ends with $98.2B of long-term debt.</p>
+      <p class="next"><b>Next filing:</b> FCF vs returns for the full year (FY2024: 95%).</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
