@@ -150,6 +150,8 @@ a:hover { text-decoration: underline; }
   font-style: italic; color: var(--text);
 }
 .finding-body strong { color: var(--text); }
+.finding-body p.shift { font-size: 11.5px; font-weight: 600; color: var(--purple); margin: 2px 0 6px; letter-spacing: .2px; }
+.finding-body p.history { font-size: 12px; color: var(--text-dim); border-left: 2px solid var(--border); padding-left: 10px; margin: 6px 0 8px; }
 
 /* Section headings */
 .section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
@@ -251,7 +253,7 @@ a:hover { text-decoration: underline; }
 <div class="hero" id="hero-section">
   <h1>APP 10-Q Quarterly Scanner</h1>
   <div class="tagline">Quarter-over-quarter textual analysis of ten AppLovin SEC filings (eight 10-Qs from Q1 2024 through Q2 2026, with the FY2024 and FY2025 10-Ks interleaved at year boundaries). Covers the Apps divestiture arc, the Axon rebranding sequence and its partial reversal (AppLovin Ads), the KPI lifecycle, buyback escalation, and the securities litigation timeline at quarterly cadence.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001751008) | 10 Filings | Q1 2024 &ndash; Q2 2026 | MD&amp;A, Risk Factors, and Legal Proceedings diffs read in full | Analysis: Q1 2026 &rarr; Q2 2026 extended October 2026; Q3 2025 &rarr; FY2025 10-K and FY2025 10-K &rarr; Q1 2026 re-analyzed October 2026</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001751008) | 10 Filings | Q1 2024 &ndash; Q2 2026 | MD&amp;A, Risk Factors, and Legal Proceedings diffs read in full | Analysis: Q1 2026 &rarr; Q2 2026 extended October 2026; every transition from Q2 &rarr; Q3 2024 onward re-checked October 2026 with sentence-level shift labels and phrase histories across all 10-Ks and 10-Qs</div>
 </div>
 
 
@@ -353,105 +355,143 @@ a:hover { text-decoration: underline; }
 <!-- Q2 → Q3 2024 -->
 <div class="transition-header" id="q2q3-2024">
   <h2>Q2 2024 &rarr; Q3 2024</h2>
-  <div class="sub">Revenue: ~+39% YoY (Advertising 70% / Apps 30%) | Per-install +22% / volume +39% | Oct 2024 buyback +$2.0B with FCF cap</div>
+  <div class="sub">Filed Nov 6, 2024 | Revenue: $1.20B (+39% YoY; Software Platform 70% / Apps 30%) | Net income $434.4M | Per-install +22% / volume +39% | Cloud commitment $1.26B | Oct 2024 buyback +$2.0B with FCF cap</div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"Over 1.4 billion daily active users" reach claim first appears</span>
+    <span class="title">Cloud commitment re-cut: $550.0M order form through May 2025 replaced by "a minimum of $1.26 billion over a three-year period"</span>
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2024 MD&amp;A inserted the claim twice, with a definitional footnote:</p>
-    <blockquote>"Our Software Platform provides advertisers with access to over 1.4 billion daily active users."</blockquote>
-    <blockquote>"We calculate daily active users as the average number of unique device identities that open a mobile app (whether that mobile app our own or a third party's) which has our software development kit (SDK) on each day in a period... This figure does not include any users who have opted out of allowing apps to track on their mobile phone."</blockquote>
-    <p>The figure was not added to the formal Key Metrics section &mdash; MAPs and ARPMAP remained the only listed key metrics. The claim was deleted one quarter later at the FY2024 10-K.</p>
+    <p class="shift">Shift: quant changed, $550.0M &rarr; $1.26B minimum (+ disclosure, + obligation); old contract figures removed</p>
+    <p>Q2 2024 notes:</p>
+    <blockquote>"In May 2022, the Company entered into a new order form under an existing master agreement that required the Company to purchase a minimum of $550.0 million of cloud services through May 2025."</blockquote>
+    <p>Q3 2024 notes:</p>
+    <blockquote>"In August 2024, the Company amended its agreement with the cloud services provider. Under the amended agreement, the Company committed to spend a minimum of $1.26 billion over a three-year period. As of September 30, 2024, no payment had been made towards this commitment."</blockquote>
+    <p class="history">History: "minimum of $550.0 million" stated in Q1 and Q2 2024 only; "minimum of $1.26 billion" appears in Q3 2024 only (notes and MD&amp;A). The FY2024 10-K restates the obligation as $1.2B of purchase obligations.</p>
+    <p>The old contract had $48.9M left to pay at June 30. The new minimum is more than twice the old one. It follows the Q2 2024 risk-factor sentence about securing computing capacity "at a reasonable cost", so the capacity risk and the commitment arrive one quarter apart.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">October 2024 $2.0B buyback authorization with Free Cash Flow cap</span>
+    <span class="title">Reach metric introduced: "over 1.4 billion daily active users", defined in a footnote that excludes ATT opt-outs</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+); new defined metric outside Key Metrics</p>
+    <p>Q2 2024 MD&amp;A:</p>
+    <blockquote>"We see multiple opportunities to gain new Software Platform clients, and to increase spend from existing clients, as we help them grow their businesses and make them more successful."</blockquote>
+    <p>Q3 2024 MD&amp;A:</p>
+    <blockquote>"Our Software Platform provides advertisers with access to over 1.4 billion daily active users."</blockquote>
+    <blockquote>"This figure does not include any users who have opted out of allowing apps to track on their mobile phone."</blockquote>
+    <p class="history">History: "1.4 billion daily active users" appears in Q3 2024 only (MD&amp;A, twice). The FY2024 10-K MD&amp;A drops it; its Business section carries "approximately 1.6 billion daily active users" instead, and the FY2025 10-K deletes that too.</p>
+    <p>The figure counts device identities running AppLovin's SDK, not people, and an individual using apps in two countries is counted twice. It was placed in the narrative, not in Key Metrics, where MAPs and ARPMAP stayed. It lasted one quarter in the 10-Qs.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">October 2024 +$2.0B buyback, capped each quarter at the prior quarter's Free Cash Flow; the risk factor's authorization history is deleted</span>
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: condition added "subject to a limitation ... of the amount of our Free Cash Flow" (&minus; flexibility); quant removed from risk factor (&minus;)</p>
     <p>Q2 2024 risk factors:</p>
-    <blockquote>"In February 2022, we announced that our board of directors authorized the repurchase of up to $750.0 million of our Class A common stock over time. In May 2023, we authorized an increase to the repurchase program of $296.0 million, in August 2023, we authorized an additional increase to the repurchase program of $447.6 million, and in February 2024, we authorized an additional increase to the repurchase program of $1.25 billion. As of June 30, 2024, $500.0 million of Class A common stock was available for repurchase under our share repurchase program."</blockquote>
+    <blockquote>"In May 2023, we authorized an increase to the repurchase program of $296.0 million, in August 2023, we authorized an additional increase to the repurchase program of $447.6 million, and in February 2024, we authorized an additional increase to the repurchase program of $1.25 billion."</blockquote>
     <p>Q3 2024 risk factors:</p>
-    <blockquote>"As of September 30, 2024, $270.7 million of Class A common stock was available for repurchase under our share repurchase program. In October 2024, our board of directors authorized an increase to our share repurchase program of up to $2.0 billion, which additional amount may be repurchased from time to time subject to a limitation in any fiscal quarter of the amount of our Free Cash Flow in the preceding fiscal quarter and compliance with applicable law and any contractual restrictions under our Credit Agreement or future agreements."</blockquote>
-    <p>Nine-month repurchases: 16,081,408 shares / $981.3M. The FCF cap was removed in October 2025.</p>
+    <blockquote>"In October 2024, our board of directors authorized an increase to our share repurchase program of up to $2.0 billion, which additional amount may be repurchased from time to time subject to a limitation in any fiscal quarter of the amount of our Free Cash Flow in the preceding fiscal quarter and compliance with applicable law and any contractual restrictions under our Credit Agreement or future agreements."</blockquote>
+    <p class="history">History: the February 2022 "$750.0 million" sentence had stood unchanged for five periods (since Q2 2023). "Free Cash Flow in the preceding fiscal quarter" runs from Q3 2024 to Q2 2025; the cap was removed in October 2025 (Q3 2025 10-Q).</p>
+    <p>Earlier authorizations were funded partly by revolver draws ($418.7M in March 2024 "to fund certain repurchases"). The new cap ties repurchases to cash already generated. Nine-month repurchases were 16.1M shares for $981.3M.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">$1.26 billion three-year cloud commitment disclosed</span>
-    <span class="tag tag-new">New</span>
+    <span class="title">PSU vesting complete: 13.5M PSUs vested at stock-price targets of $46.75 to $79.00; R&amp;D falls 6% on "reduced stock-based compensation related to PSUs"</span>
+    <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
-    <p>Q3 2024 MD&amp;A:</p>
-    <blockquote>"As of September 30, 2024, our non-cancelable minimum purchase commitment was primarily related to a multi-year contractual arrangement with a cloud services provider. In August 2024, we amended our agreement with the cloud services provider. Under the amended agreement, we committed to spend a minimum of $1.26 billion over a three-year period. As of September 30, 2024, no payment had been towards this commitment."</blockquote>
-    <p>This follows the compute-capacity dependency language added to the risk factors in Q2 2024.</p>
+    <p class="shift">Shift: realized, all price targets met (+); quant changed, R&amp;D +19% (Q2) &rarr; &minus;6% (Q3)</p>
+    <p>Q2 2024 notes:</p>
+    <blockquote>"In March 2024, 3,416,490 performance-based restricted stock units ("PSUs") under the 2021 Plan vested upon the achievement of the stock price target of $46.75 per share"</blockquote>
+    <p>Q3 2024 notes and MD&amp;A:</p>
+    <blockquote>"During the nine months ended September 30, 2024, 13,493,410 performance-based restricted stock units ("PSUs") vested upon the achievement of stock price targets ranging from $46.75 to $79.00 per share, resulting in a total stock-based compensation expense of $64.5 million."</blockquote>
+    <blockquote>"Research and development expenses in the three months ended September 30, 2024 decreased by $9.3 million, or 6%, compared to the same period in the prior year, due primarily to a decrease in stock-based compensation expense, driven by reduced stock-based compensation related to PSUs."</blockquote>
+    <p class="history">History: "reduced stock-based compensation related to PSUs" appears in Q3 2024 only. Q2 2024 R&amp;D had risen 19% on stock compensation.</p>
+    <p>The March 2023 grant, set to run five years, vested in about eighteen months. Its expense is now behind the company, which lowers reported cost growth (quarterly stock comp $81.6M vs $110.8M a year earlier). A new market-cap PSU grant in October 2025 later reverses this.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AXON upgraded to "advertising recommendation engine"</span>
+    <span class="title">AI investment firms up: "we are investing" becomes "we will continue to invest"; MD&amp;A names AXON the "advertising recommendation engine"</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: certainty, are investing &rarr; will continue to invest (+); scope, "enter" &rarr; "enter into and expand into" (+)</p>
+    <p>Q2 2024 risk factors:</p>
+    <blockquote>"We use AI technologies in our offerings and business, and we are investing in the expansion of our AI capabilities, including our latest AI-powered advertising engine, AXON, as well as developing new product features using AI technologies, including possibly generative AI."</blockquote>
+    <p>Q3 2024 risk factors:</p>
+    <blockquote>"We use AI technologies in connection with the development of our Software Platform, including our latest AI-powered advertising engine, AXON, and other product offerings, as well as in other aspects of our business, and we will continue to invest in the expansion of our AI capabilities, including possibly generative AI."</blockquote>
+    <p class="history">History: the Q2 sentence had stood since the FY2023 10-K (three periods). "we will continue to invest in the expansion of our AI capabilities" runs in every filing from Q3 2024 to Q2 2026. "advertising recommendation engine, AXON" was already in the risk factors from the FY2023 10-K; Q3 2024 is its first use in the MD&amp;A. "enter into and expand into new verticals" first appears in Q3 2024.</p>
+    <p>The MD&amp;A innovation factor now reads "the AI-based, self-learning capabilities of our advertising recommendation engine, AXON", and new verticals are things to "enter into and expand into". Read together, AXON is presented as the platform's core, a quarter before the segment was renamed "Advertising".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">International share of Software Platform and IAA revenue rises 43% &rarr; 47%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant changed, 43% &rarr; 47% (+ outside the U.S.)</p>
     <p>Q2 2024 MD&amp;A:</p>
-    <blockquote>"...the self-learning capabilities of AXON..."</blockquote>
+    <blockquote>"During the three months ended June 30, 2024, 43% of our revenue from Software Platform and IAA Revenue clients was generated from outside of the United States."</blockquote>
     <p>Q3 2024 MD&amp;A:</p>
-    <blockquote>"...the AI-based, self-learning capabilities of our advertising recommendation engine, AXON..."</blockquote>
-    <p>In the same quarter "enter new verticals" became "enter into and expand into new verticals" and "eCommerce" became "e-commerce".</p>
+    <blockquote>"During the three months ended September 30, 2024, 47% of our revenue from Software Platform and IAA Revenue clients was generated from outside of the United States."</blockquote>
+    <p class="history">History: "47% of our revenue" in Q3 2024 only; "43% of our revenue" in Q2 2024 and again in the FY2024 10-K, where the denominator changes to total revenue. The share reached 51% in Q3 2025 and was dropped at the FY2025 10-K.</p>
+    <p>A four-point move in one quarter on the advertising base. It is the first step in a series that ends with the figure deleted once it passed half.</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">"New markets" / "products" language woven through five risk factors</span>
-    <span class="tag tag-changed">Changed</span>
-  </div>
-  <div class="finding-body">
-    <p>Representative insertion (quarterly-fluctuation factor):</p>
-    <blockquote>"changes to our Software Platform, Apps, or other offerings, or the development and introduction of new software or development of new mobile apps by our studios or our competitors;"</blockquote>
-    <blockquote>"changes to our Software Platform, Apps, or other offerings, the development and introduction of new software, entry into new markets, or the development of new mobile apps by our studios or our competitors;"</blockquote>
-    <p>Parallel insertions appeared in the competition, technological-change, and capital risk factors. Blockchain was dropped from the future-growth list, with "or related markets" added after e-commerce/social.</p>
-  </div>
-</div>
-
-<div class="finding">
-  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
-    <span class="arrow">&#9654;</span>
-    <span class="title">SOC 2 / ISO 27001 audit-certification disclosure deleted</span>
+    <span class="title">SOC 2 / ISO 27001 sentence deleted: "which we have not yet achieved"</span>
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
-    <p>Q2 2024 risk factors contained this sentence; Q3 2024 deleted it:</p>
+    <p class="shift">Shift: removed (&minus; disclosure); the filing does not say the certifications were obtained</p>
+    <p>Q2 2024 risk factors (deleted in Q3 2024):</p>
     <blockquote>"We are seeing an increase in inquiries from our partners regarding audit certifications, such as SOC 2, Type II or ISO 27001, which we have not yet achieved."</blockquote>
-    <p>A new internal-controls limitation sentence was added in the same quarter ("faulty human judgment and simple errors, omissions or mistakes, fraudulent action of an individual or collusion of two or more people, and inappropriate management override of controls and procedures").</p>
+    <p class="history">History: "SOC 2" stood unchanged for five periods, Q2 2023 to Q2 2024; absent from Q3 2024 onward.</p>
+    <p>The deletion removes an admitted gap rather than reporting that it was closed. The same section adds a generic controls caveat: "faulty human judgment and simple errors, omissions or mistakes, fraudulent action of an individual or collusion of two or more people, and inappropriate management override of controls and procedures."</p>
   </div>
 </div>
 
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">AI-content risk broadened beyond factual inaccuracy</span>
+    <span class="title">AI-output risk widened from "factually inaccurate" to "biased, offensive, unethical"; U.S. state AI laws named</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: scope widened (+ disclosure); named +state AI laws</p>
     <p>Q2 2024 risk factors:</p>
-    <blockquote>"AI technologies, including generative AI, may create content that appears correct but is factually inaccurate or flawed. Our customers or others may rely on or use this flawed content to their detriment"</blockquote>
+    <blockquote>"AI technologies, including generative AI, may create content that appears correct but is factually inaccurate or flawed."</blockquote>
     <p>Q3 2024 risk factors:</p>
-    <blockquote>"AI technologies, including generative AI, may create content that is, or is perceived to be, deficient, inaccurate, biased, offensive, unethical, or otherwise flawed. Our customers or others may rely on or use this content to their detriment"</blockquote>
-    <p>US state AI laws were added in the same quarter: the EU AI Act sentence gained ", and numerous state laws have been proposed, and in certain cases enacted, regulating aspects of the development and use of AI systems."</p>
+    <blockquote>"AI technologies, including generative AI, may create content that is, or is perceived to be, deficient, inaccurate, biased, offensive, unethical, or otherwise flawed."</blockquote>
+    <blockquote>"For example, in the EU, the EU Artificial Intelligence Act imposes a regulatory framework for the companies' development and use of AI systems, and numerous state laws have been proposed, and in certain cases enacted, regulating aspects of the development and use of AI systems."</blockquote>
+    <p class="history">History: "biased, offensive, unethical" appears in every filing from Q3 2024 to Q2 2026. "numerous state laws have been proposed" in Q3 2024 and the FY2024 10-K only.</p>
+    <p>Routine broadening, but it is the reputational side of AI that grows, well before AppLovin said it had begun to introduce AI-generated ad creatives (Q1 2026).</p>
   </div>
 </div>
 
@@ -469,8 +509,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +term sheet; quant added, $900.0M (+ disclosure); hedge "we cannot provide assurances" (&minus;)</p>
     <p>A new "Recent Developments" section appeared in the MD&amp;A, and a new paragraph under the strategic-review risk factor:</p>
     <blockquote>"On February 12, 2025 we announced that we had entered into a term sheet for the sale of our mobile gaming business to a privately held company for total consideration of $900.0 million, consisting of $400.0 million in shares of the acquirer's common equity and $500.0 million in cash, subject to customary purchase price adjustments. While the term sheet includes a binding agreement by the parties to use commercially reasonable best efforts in good faith to negotiate and finalize definitive agreements for the proposed transaction, we cannot provide assurances that such definitive agreements will be entered into on the terms included in the term sheet or at all."</blockquote>
+    <p class="history">History: "Term Sheet" first appears in the FY2024 10-K (Business, MD&amp;A, risk factors, notes); the Q1 2025 10-Q keeps it only in the notes, beside the signed Tripledot agreement.</p>
     <p>The MD&amp;A version added that the acquirer would borrow up to $250.0 million of the cash portion, with AppLovin agreeing to provide financing through a promissory note if the acquirer could not obtain it. No held-for-sale or discontinued-operations framing; Apps remained a full segment with KPIs.</p>
   </div>
 </div>
@@ -482,9 +524,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, "Software Platform" &rarr; "Advertising"; realized, revenue tied to advertisers' return targets (+)</p>
     <p>A global find-and-replace touched nearly every retained paragraph: "Software Platform" became "Advertising" / "Advertising Revenue", and "Share Repurchase Program" became "Stock Repurchase Program". The business self-description was rewritten:</p>
     <blockquote>"Our scaled business model sits at the nexus of the advertising ecosystem, which creates a durable competitive advantage that has fueled our clients' success and our strong growth."</blockquote>
     <blockquote>"Our scaled business model is intricately linked to the advertising ecosystem, providing a durable competitive advantage. We generate revenue when our advertisers achieve their return on spend targets with our Advertising solutions, ensuring that their success directly fuels our growth."</blockquote>
+    <p class="history">History: "intricately linked to the advertising ecosystem" first appears in the FY2024 10-K and runs in every filing to Q2 2026; "nexus of the advertising ecosystem" does not appear after Q3 2024.</p>
   </div>
 </div>
 
@@ -495,8 +539,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant removed (&minus;); usefulness claim for MAPs dropped (&minus;)</p>
     <p>Both insertions of the reach claim, plus the definitional footnote, were removed at the FY2024 10-K with no replacement metric. The MAPs usefulness sentence was also dropped:</p>
     <blockquote>"...management believes that MAPs is a useful metric to measure the engagement and monetization potential of our games."</blockquote>
+    <p class="history">History: "1.4 billion daily active users" appears in the Q3 2024 10-Q only. "management believes that MAPs is a useful metric" appears in Q2 and Q3 2024 only. The 10-K's Business section (outside the 10-Q comparison) carries "approximately 1.6 billion daily active users" for this one year.</p>
     <p>That sentence does not appear in the 10-K.</p>
   </div>
 </div>
@@ -508,10 +554,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +Senior Notes, unsecured revolver; collateral language removed (+ credit standing)</p>
     <p>Q3 2024 risk factors:</p>
     <blockquote>"We are party to a credit agreement that provides for senior secured credit consisting of term loans and a revolving credit facility... As of September 30, 2024, the aggregate principal amount of our outstanding indebtedness under our credit facilities was $3.54 billion."</blockquote>
     <p>FY2024 10-K risk factors:</p>
     <blockquote>"As of December 31, 2024, we had a total of $3.6 billion in aggregate principal amount of senior unsecured notes outstanding (the "Senior Notes"). We also had $1.0 billion of commitments... under our senior unsecured credit agreement that provides for an unsecured revolving credit facility... As of December 31, 2024, we have no outstanding loans under the Credit Agreement."</blockquote>
+    <p class="history">History: "Senior Notes" first appears in the FY2024 10-K and runs in every filing since; "security interest in a significant portion" last appears in the Q3 2024 10-Q.</p>
     <p>A new ratings paragraph was added ("our Senior Notes are currently rated investment-grade by various rating agencies. A ratings downgrade... could adversely impact our ability to access debt markets in the future..."); foreclosure/collateral language was removed. The MD&amp;A financing activities show the refinancing scale: "$4.2 billion of principal repayments of debt... partially offset by $4.6 billion of proceeds from issuance of debt", with a $28.4 million loss on extinguishment of debt.</p>
   </div>
 </div>
@@ -523,10 +571,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +short seller reports; realized, "have in the past caused" (+)</p>
     <p>Q3 2024 stock-volatility factor:</p>
     <blockquote>"short selling of our Class A common stock or related derivative securities;"</blockquote>
     <p>FY2024 10-K:</p>
     <blockquote>"short selling of our Class A common stock or related derivative securities, and the publication of short seller reports;"</blockquote>
+    <p class="history">History: "short seller" first appears in the FY2024 10-K and is carried verbatim in every filing through Q2 2026.</p>
     <p>In the same factor: "Factors that could cause fluctuations in the market price of our Class A common stock include the following:" became "Factors that have in the past caused and could in the future cause fluctuations...", and third-party data language gained "whether or not such data accurately reflects circumstances". The March 2025 securities complaints were disclosed one quarter later.</p>
   </div>
 </div>
@@ -538,10 +588,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, ~73% &rarr; ~68%; de-named, KKR Denali removed from the parties</p>
     <p>Q3 2024 risk factors:</p>
     <blockquote>"Adam Foroughi...; Herald Chen, our former President and Chief Financial Officer, and a member of our board of directors; and KKR Denali Holdings L.P. ... As of September 30, 2024, the Voting Agreement Parties collectively held approximately 73% of the voting power... will be voted as determined by two of Mr. Foroughi, Mr. Chen, and KKR Denali Holdings L.P. (one of which must be Mr. Foroughi)."</blockquote>
     <p>FY2024 10-K:</p>
     <blockquote>"Adam Foroughi, our co-founder, CEO, and Chairperson and Herald Chen, a member of our board of directors (collectively with certain affiliates, the "Voting Agreement Parties")... As of December 31, 2024, the Voting Agreement Parties collectively held approximately 68% of the voting power... will be voted as determined by Mr. Foroughi and Mr. Chen."</blockquote>
+    <p class="history">History: the voting-power percentage is stated in every filing in the dataset: about 81% (Q1 2024), 73% (Q2&ndash;Q3 2024), 68% (FY2024 10-K to Q2 2025), 67% (Q3 2025 on).</p>
   </div>
 </div>
 
@@ -552,8 +604,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +e-commerce; hedge "still in its early stages" and "no assurance" (&minus;)</p>
     <p>FY2024 10-K risk factors:</p>
     <blockquote>"For example, we have developed and continue to further develop our AXON platform to support e-commerce advertisers. The expansion of our services to this market is still in its early stages. ... Further, there can be no assurance that we will achieve broader adoption among e-commerce advertisers or that we will effectively develop technology for our AXON platform."</blockquote>
+    <p class="history">History: "support e-commerce advertisers" and "still in its early stages" run from the FY2024 10-K through Q2 2025 and are gone from Q3 2025. "timing and efficacy of improvement" runs from the FY2024 10-K through Q2 2026.</p>
     <p>Also added: "our ability to attract and retain clients, including, for example, in new markets such as e-commerce and social;" and a new fluctuation-factor bullet "the timing and efficacy of improvement to our algorithms, models and AI-powered AXON advertising engine generally;".</p>
   </div>
 </div>
@@ -565,8 +619,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, staffing as a disclosed risk (+ disclosure); named, "game development" dropped from the talent list (&minus;)</p>
     <p>FY2024 10-K key-personnel factor:</p>
     <blockquote>"We believe strongly in operating a lean organizational structure, leveraging technology wherever possible... a lean workforce could limit our ability to scale operations quickly in response to increased demand, develop new products or services in a timely manner, or effectively manage multiple initiatives simultaneously. Additionally, key employees often hold multiple responsibilities, making us more vulnerable to disruptions caused by turnover or unexpected absences."</blockquote>
+    <p class="history">History: "AI development, machine learning" first appears in the FY2024 10-K and runs through Q2 2026. "a lean workforce could limit" runs FY2024 10-K through Q3 2025 and is absent from the FY2025 10-K.</p>
     <p>Talent fields reordered: "game development, product management, engineering, AI, machine learning, and data science" became "AI development, machine learning, product management, engineering and data science" &mdash; game development dropped, AI first. The remote-work hiring passage was removed.</p>
   </div>
 </div>
@@ -578,6 +634,8 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: removed (&minus;); quant changed, international share rebased to total revenue</p>
+    <p class="history">History: "Current Economic Conditions", the "cheating" risk factor, "Future sales of our Class A common stock could depress" and "Wordscapes" each stood in every filing from Q2 2023 to Q3 2024 and are absent from the FY2024 10-K on.</p>
     <p>Deleted in full at the FY2024 10-K:</p>
     <ul style="padding-left:18px;">
       <li>The MD&amp;A "Current Economic Conditions" section (Ukraine/Middle East, inflation, rising rates, reduced consumer confidence)</li>
@@ -604,9 +662,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +Tripledot, Purchase Agreement; quant changed, $500M cash &rarr; $400M cash incl. a $250M note; equity $400M &rarr; ~20% stake (no dollar value) (&minus;)</p>
     <p>The Recent Developments section and the strategic-review risk factor were replaced by a pending-sale risk factor ("We have entered into an agreement to sell our Apps portfolio, and we face a number of risks related to such proposed sale."):</p>
     <blockquote>"On May 7, 2025, we, along with our subsidiaries Morocco, Inc. and AppLovin GmbH (collectively, the "Sellers") entered into a Purchase Agreement (the "Agreement") with Tripledot ("Purchaser Parent") and its subsidiaries Eton Games Inc. and Tripledot Group Holdings Limited... for total consideration... consisting of (i) $400.0 million in cash consideration, comprised of (a) $150.0 million to be paid in cash at the closing of the Transactions... and (b) a $250.0 million secured promissory note to be issued by Eton Games Inc. ... and (ii) equity consideration comprised of ordinary shares of Purchaser Parent representing approximately 20% of the fully-diluted equity capitalization of Purchaser Parent at the Closing."</blockquote>
     <blockquote>"The terms of the Promissory Note provide for a maturity of 18 months from the Closing, with no amortization. ... The advance under the Promissory Note bears interest at a rate per annum equal to eleven percent (11%). As of the Closing, the obligations of the Borrowers under the Promissory Note will be guaranteed by all U.S. and U.K. subsidiaries of the Purchaser Parent, subject to certain exceptions, and secured by (i) substantially all assets of the Borrowers and the U.S. guarantors and (ii) a pledge by Tripledot Group Holdings Limited of the equity interests..."</blockquote>
+    <p class="history">History: "secured promissory note" first appears in Q1 2025 and "eleven percent" in Q1 2025 only. The note was never issued (Q2 2025: "No promissory note was issued as part of the transaction").</p>
     <p>Versus the term sheet, the economics changed: $900.0M ($400M acquirer equity + $500M cash) became $400M cash (of which $250M is an 11% secured promissory note) plus ~20% of Tripledot's fully-diluted equity. Closing conditions: shareholder approval, HSR, no MAE; "The Transactions are not subject to any financing condition." Still no held-for-sale or discontinued-operations presentation.</p>
   </div>
 </div>
@@ -618,8 +678,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, impairment recorded (+ disclosure); scope narrowed, Key Metrics now for "the health of our Apps segment"</p>
     <p>Q1 2025 MD&amp;A added a new Components item and comparison section:</p>
     <blockquote>"For the three months ended March 31, 2025, we recorded a non-cash goodwill impairment charge of $188.9 million resulting from an interim quantitative goodwill impairment analysis performed in the first quarter of 2025 for the Apps reporting unit. There was no goodwill impairment expense in the prior year period."</blockquote>
+    <p class="history">History: "goodwill impairment charge of $188.9 million" first appears in Q1 2025 and stays in the notes through Q2 2026. "health of our Apps segment" appears in Q1 2025 only; Key Metrics were deleted in Q2 2025.</p>
     <p>The Key Metrics scope was narrowed in the same quarter: "evaluate the health of our business... our performance" became "evaluate the health of our Apps segment... its performance".</p>
   </div>
 </div>
@@ -631,8 +693,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +TikTok (new counterparty); hedge "preliminary", "no assurance" (&minus;)</p>
     <p>New risk-factor paragraph:</p>
     <blockquote>"In April 2025, we confirmed that we had provided an indication of interest to the President of the United States to explore a purchase of TikTok in all markets outside of China. This indication of interest is preliminary and there can be no assurance that a transaction involving us will proceed. If our proposal to combine with TikTok does not result in a definitive agreement, this may be viewed negatively by investors, securities analysts, customers and other strategic partners and our stock price could decline."</blockquote>
+    <p class="history">History: "TikTok" first appears in Q1 2025 (14 mentions, Q1&ndash;Q3 2025) and falls to one retrospective sentence from the FY2025 10-K on.</p>
     <p>TikTok also entered the strategic-transactions heading, a summary bullet, a stock-volatility bullet, and a dilution-risk example ("a purchase of TikTok in all markets outside of China, if it were to take place, would likely require us to issue a significant amount of equity"). The MD&amp;A strategic-partnerships factor gained a parallel sentence. All forward-looking mentions were removed at the FY2025 10-K.</p>
   </div>
 </div>
@@ -644,11 +708,47 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, litigation filed (+ disclosure); named +Quiero, Brownback, Wayne County, Patel; quant none ("cannot reasonably estimate")</p>
     <p>FY2024 10-K legal proceedings:</p>
     <blockquote>"From time to time, we may be subject to legal proceedings and claims that arise in the ordinary course of business... We are not currently a party to any legal proceedings that, if determined adversely to us, would, in our opinion, have a material adverse effect on our business, financial condition, results of operations, or cash flows."</blockquote>
     <p>Q1 2025 legal proceedings &mdash; new intro plus new Securities Litigation and Shareholder Derivative Litigation sections:</p>
     <blockquote>"Beginning in early March 2025, certain alleged stockholders filed putative class action complaints against the company, Adam Foroughi, Matthew Stumpf, and/or Herald Chen asserting claims for alleged violations of Sections 10(b) and 20(a) of the Securities Exchange Act of 1934... The Securities Complaints allege that the defendants made materially false and misleading statements regarding our Advertising solutions and financial growth. The Securities Complaints allege a putative class period running from May 10, 2023 through March 26, 2025."</blockquote>
+    <p class="history">History: "putative class period" and "not possible to determine the ultimate outcome" first appear in Q1 2025 and run in every filing through Q2 2026. The FY2024 10-K's "not currently a party" boilerplate had stood in every filing from Q2 2023.</p>
     <p>The derivative section covered the Amit Patel complaint (Mar 25 2025, N.D. Cal.) against board members, Foroughi, and Stumpf. The risk factors added the matching disclosure to the public-company-costs factor. A loss-estimate sentence appeared and was retained in every subsequent filing: "While we remain confident in the company's defenses to the asserted allegations in these cases, it is not possible to determine the ultimate outcome at this time, and thus we cannot reasonably estimate the maximum potential exposure or range of possible loss."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Litigation risk restated as having happened: "which we believe may result in" becomes "which has resulted in"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, hypothetical &rarr; actual (+); hedge "we believe" dropped (+)</p>
+    <p>FY2024 10-K risk factors:</p>
+    <blockquote>"As a result of disclosure of information in our public filings with the SEC as required of a public company, our business and financial condition will become more visible, which we believe may result in threatened or actual litigation, including by competitors and other third parties."</blockquote>
+    <p>Q1 2025 risk factors:</p>
+    <blockquote>"As a result of disclosure of information in our public filings with the SEC as required of a public company, our business and financial condition has become more visible, which has resulted in and may in the future result in threatened or actual litigation, including by competitors and other third parties."</blockquote>
+    <p class="history">History: the old sentence stood unchanged for seven periods (Q2 2023 through the FY2024 10-K); "has resulted in and may in the future result in" first appears in Q1 2025 and is carried through Q2 2026.</p>
+    <p>The IPO-era hypothetical is now a description of the March 2025 suits. The sentence attributes the litigation to the visibility that comes with public disclosure; it says nothing about the merits.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">COPPA rule changes move from "proposed ... if implemented" to "finalized", with an April 22, 2026 compliance date</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, proposed &rarr; finalized (+); condition "if implemented" dropped (+); date added</p>
+    <p>FY2024 10-K risk factors:</p>
+    <blockquote>"the FTC has proposed modifications to its rules implementing COPPA that, if implemented, may subject us to additional liability and require us to dedicate additional compliance resources and modify certain policies and practices."</blockquote>
+    <p>Q1 2025 risk factors:</p>
+    <blockquote>"the FTC has finalized modifications to its rules implementing COPPA that become effective June 23, 2025, and for which compliance with most provisions is required as of April 22, 2026."</blockquote>
+    <p class="history">History: "FTC has proposed modifications" appears in the FY2024 10-K only; "April 22, 2026" runs Q1 through Q3 2025 (Q2 2025 adds that the rules relate to "the use of children's data for targeted advertising") and is gone from the FY2025 10-K.</p>
+    <p>A finalized rule with a dated deadline replaces a contingent one. Q2 2025 specifies that the rules concern children's data in targeted advertising, which bears on the ad network as well as on the games sold in June 2025.</p>
   </div>
 </div>
 
@@ -659,8 +759,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, "will retaliate" &rarr; "has retaliated" (+); named +tariffs</p>
     <p>Q1 2025 macro factor:</p>
     <blockquote>"Specifically, the U.S. has imposed significant new and escalated tariffs on products from China since February 2025, significant new tariffs on many products of Canada and Mexico since March 2025, and a global tariff on most products from almost all other U.S. trading partners since April 2025; these policies have been fluid and the full economic impact of these policies is currently uncertain."</blockquote>
+    <p class="history">History: "has retaliated" first appears in Q1 2025 and runs through Q2 2026; "global tariff" appears Q1&ndash;Q3 2025 only.</p>
     <p>A new summary bullet was added ("the impact of tariffs recently imposed by the U.S. government and its trading partners in response, other possible tariffs or trade protection measures..."), and the China paragraph shifted from possibility to fact: "It also is possible that the Chinese government will retaliate in ways that could impact our business." became "...the Chinese government has retaliated, and may continue to retaliate..."</p>
   </div>
 </div>
@@ -672,9 +774,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: condition loosened, $500M immediately available plus an FCF accrual (+ flexibility); realized, revolver drawn "to fund share repurchases"</p>
     <p>Q1 2025 MD&amp;A Liquidity:</p>
     <blockquote>"$500 million was immediately available for repurchase... and such limit shall be increased in future quarters by the amount of free cash flow generated in the preceding fiscal quarter..."</blockquote>
     <blockquote>"As of March 31, 2025, we had $200.0 million in outstanding borrowings under the Credit Agreement. We repaid $100.0 million of the outstanding borrowings in April 2025 and the remaining $100.0 million in May 2025."</blockquote>
+    <p class="history">History: "free cash flow generated in the preceding fiscal quarter" appears Q1&ndash;Q3 2025; "to fund share repurchases" appears Q1 2025 through the FY2025 10-K.</p>
     <p>The March 2025 revolver draw was made "to fund share repurchases". Q1 repurchases: 2,931,609 shares / $1.0B; availability fell from $2.3B (Dec 31) to $1.3B (Mar 31).</p>
   </div>
 </div>
@@ -686,6 +790,8 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, "advertising engine" &rarr; "advertising recommendation engine"; quant/pricing unit "cost-per-install" removed (&minus;)</p>
+    <p class="history">History: "performance-based, cost-per-install basis" stood in every filing from Q2 2023 through the FY2024 10-K (seven periods). "AI-powered advertising recommendation engine AXON" appears in Q1 and Q2 2025 only, before the Axon AI rename.</p>
     <p>In the MD&amp;A, "AI-powered advertising engine AXON" became "AI-powered advertising recommendation engine AXON". In the risk factors, the revenue description dropped its pricing unit: "generated from our advertisers, typically on a performance-based, cost-per-install basis" became "typically on a performance-based basis". The AXON brand was removed from the e-commerce expansion sentences ("our AXON platform to support e-commerce advertisers" became "our Advertising solutions to support e-commerce advertisers"). E-commerce was added to the new-clients factor: "...are relevant to the broader advertising ecosystem, including in areas such as e-commerce."</p>
   </div>
 </div>
@@ -697,6 +803,8 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, installs +50% &rarr; +22%, price +22% &rarr; +49%; order of the two components reversed</p>
+    <p class="history">History: "net revenue per installation increased 49%" in Q1 2025 only. Price led in every period after this one through Q2 2026.</p>
     <p>FY2024 10-K driver sentence: "volume of installations increased 50% and net revenue per installation increased 22%". Q1 2025: "net revenue per installation increased 49% and the volume of installations increased 22%" &mdash; the components swapped order and magnitude. Volume growth declined every subsequent quarter, reaching &minus;18% by Q1 2026.</p>
   </div>
 </div>
@@ -715,9 +823,11 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, pending sale &rarr; completed (+); quant removed, the $250M note "in lieu" replaced by cash (&minus; seller financing)</p>
     <p>Q2 2025 Recent Developments:</p>
     <blockquote>"On June 30, 2025, we and Tripledot entered into an amendment to the Agreement to provide... that in lieu of the issuance of a secured promissory note by Eton... Tripledot may elect to pay such amount in cash."</blockquote>
     <blockquote>"On June 30, 2025, we completed the Closing and sold our Apps Business to Tripledot for $400 million in cash, subject to closing adjustments, and equity consideration representing approximately 20% of Tripledot's fully-diluted equity at the time of closing. No promissory note was issued as part of the transaction. Following the Closing, we operate as a single operating and reportable segment. Results related to our Apps Business are presented as discontinued operations in our condensed consolidated financial statements."</blockquote>
+    <p class="history">History: "No promissory note was issued" appears Q2 2025, Q3 2025 and the FY2025 10-K; the Q1 2026 MD&amp;A drops the Recent Developments section that carried it.</p>
     <p>Liquidity facts: "$424.7 million in proceeds from divestiture, net of cash divested" and "a gain on divestiture, net of transaction costs, of $106.2 million". Cash rose from $551.0M to $1,192.6M.</p>
   </div>
 </div>
@@ -729,6 +839,8 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: removed (&minus;); realized, "we sold our Apps Business" (+)</p>
+    <p class="history">History: "Belarus" stood in every filing from Q2 2023 through Q1 2025 and is absent from Q2 2025 on. "Monthly Active Payers" last appears in Q1 2025.</p>
     <p>Of ~910 diff lines, roughly half is Apps-divestiture content removal. Headings deleted:</p>
     <ul style="padding-left:18px;">
       <li>"We have entered into an agreement to sell our Apps portfolio..." (deleted with all Tripledot consideration mechanics and promissory-note terms; no replacement factor on the retained Tripledot equity stake)</li>
@@ -751,6 +863,8 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant removed, MAPs and ARPMAP (&minus;); no replacement metric</p>
+    <p class="history">History: "Monthly Active Payers" ran in every filing from Q2 2023 through Q1 2025 (eight periods) and never returns.</p>
     <p>The entire "Key Metrics" section (MAPs and ARPMAP definitions and table) was removed from the MD&amp;A, along with the "Advertising Revenue" and "Apps Revenue" business-model subheadings, the "Goodwill impairment" component and comparison sections, and the entire "Comparison of our Segment Results of Operations" section. No replacement KPI was introduced. The installs/per-install decomposition sentence in the revenue comparison became the only quantitative operating driver disclosed.</p>
   </div>
 </div>
@@ -762,11 +876,13 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: scope narrowed to one sentence; quant removed, $4.1B / 33 acquisitions (&minus;)</p>
     <p>Deleted from the self-description:</p>
     <blockquote>"We also operate a portfolio of owned mobile apps and accelerated our market penetration through an active acquisition and partnership strategy."</blockquote>
     <blockquote>"We capitalized on our success and understanding of the mobile app ecosystem by entering into the mobile game apps industry in 2018. Our global diversified portfolio of apps now consist of over 200 free-to-play mobile games across five genres, run by ten studios."</blockquote>
     <p>The replacement business model, in full:</p>
     <blockquote>"We primarily generate revenue from fees paid by advertisers who use our advertising solutions to grow and monetize their content. We are able to grow our revenue by improving our various technologies."</blockquote>
+    <p class="history">History: "We primarily generate revenue from fees paid by advertisers" first appears in Q2 2025 and runs through Q2 2026. "33 strategic acquisitions" stood from Q1 2024 through Q1 2025 (five periods).</p>
     <p>This replaced the two-segment description, the 78%/22% revenue split, and the CODM language. The $4.1B/33-deal strategic-acquisitions sentence was deleted entirely.</p>
   </div>
 </div>
@@ -778,10 +894,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, "new games" dropped; condition added "in the near term" / "over the long term" (&minus; hedge)</p>
     <p>Q1 2025 S&amp;M guidance:</p>
     <blockquote>"We expect sales and marketing expenses to fluctuate period-over-period as we launch new games."</blockquote>
     <p>Q2 2025:</p>
     <blockquote>"We expect sales and marketing expenses to fluctuate period-over-period in absolute dollars and as a percentage of revenue to fluctuate period-over-period in the near term as we invest to grow our customer base and increase brand awareness, and to decrease as a percentage of revenue over the long term as we benefit from greater scale."</blockquote>
+    <p class="history">History: "as we launch new games" stood from the FY2023 10-K through Q1 2025. "decrease as a percentage of revenue over the long term" appears in Q2 and Q3 2025 only; the FY2025 10-K deletes all expense outlooks.</p>
     <p>R&amp;D guidance dropped "and to improve existing games and develop new games"; cost of revenue dropped IAP payment-processing fees; OEM/carrier dropped from the verticals list ("such as e-commerce and CTV"). Adjusted EBITDA was redefined a third time (now anchored on continuing operations); Free Cash Flow gained "Free Cash Flow also reflects cash flows from both continuing and discontinued operations."</p>
   </div>
 </div>
@@ -793,9 +911,28 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +Brownback Action as lead; realized, derivative suits "consolidated and stayed"</p>
     <p>Q2 2025 legal proceedings:</p>
     <blockquote>"In May 2025, Michael Quiero and the Wayne County Employees' Retirement System voluntarily dismissed the complaints they filed in the Northern District of California. The U.S. District Court subsequently appointed lead plaintiffs and lead plaintiffs' counsel in the Brownback Action and entered a scheduling order on the lead plaintiffs' anticipated amended complaint and the defendants' anticipated motion to dismiss. Pursuant to the current scheduling order, the parties will file submissions in support of, and in opposition to, the defendants' anticipated motion to dismiss through early February 2026."</blockquote>
+    <p class="history">History: "Brownback Action" and "consolidated and stayed" first appear in Q2 2025 and run in every filing through Q2 2026.</p>
     <p>The derivative section was recast from one complaint to two (Nathan Smith, filed May 19 2025), then: "The Shareholder Derivative Complaints have been consolidated and stayed pending resolution of the defendants' anticipated motion to dismiss in the Brownback Action." In the risk factors, "several complaints were filed by certain alleged stockholders" became "several securities complaints were filed".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">D&amp;O insurance cost restated as having happened: "We expect ... to make it more expensive" becomes "have made it more expensive"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, expect &rarr; have made (+); hedge "We believe" added (&minus;)</p>
+    <p>Q1 2025 risk factors:</p>
+    <blockquote>"We expect these rules and regulations to make it more expensive for us to obtain director and officer liability insurance, and we may be required to accept reduced policy limits and coverage or incur substantially higher costs to maintain the same or similar coverage."</blockquote>
+    <p>Q2 2025 risk factors:</p>
+    <blockquote>"We believe these rules and regulations have made it more expensive for us to obtain director and officer liability insurance, and we may be required to accept reduced policy limits and coverage or incur substantially higher costs to maintain the same or similar coverage."</blockquote>
+    <p class="history">History: the "expect ... to make it more expensive" sentence stood unchanged for eight periods (Q2 2023 to Q1 2025); "have made it more expensive" first appears in Q2 2025 and runs through Q2 2026.</p>
+    <p>The change comes one quarter after the securities class actions and derivative suits named the CEO, CFO and directors. The sentence still attributes the cost to "rules and regulations", not to the litigation, and gives no figure.</p>
   </div>
 </div>
 
@@ -806,8 +943,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, liabilities retained after the sale (+ disclosure); degree "not expected to be material" (&minus; quant)</p>
     <p>Q2 2025 legal-proceedings risk factor:</p>
     <blockquote>"Further, following our sale of our Apps Business in June 2025, we have retained responsibility for certain legal proceedings related to our former studios. While these proceedings are not expected to be material, we expect to incur additional costs related to the resolution of these matters."</blockquote>
+    <p class="history">History: "retained responsibility for certain legal proceedings" first appears in Q2 2025 and runs through Q2 2026.</p>
   </div>
 </div>
 
@@ -818,8 +957,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +One Big Beautiful Bill Act; TCJA and IRA sentences removed</p>
     <p>Q2 2025 risk factors:</p>
     <blockquote>"Additionally, the One Big Beautiful Bill Act ("OBBBA"), enacted in July 2025, modifies existing U.S. tax laws, including by permitting the deduction of certain U.S. research and development expenditures and changing the calculation and deductibility of certain provisions related to international income for U.S. federal income tax purposes."</blockquote>
+    <p class="history">History: "One Big Beautiful Bill" first appears in Q2 2025 and runs in every filing through Q2 2026.</p>
     <p>The TCJA R&amp;D-capitalization sentence and the IRA buyback-excise-tax sentence were removed in the same quarter. Geography was also scrubbed: Belarus dropped from the conflict-cost sentence, and the named-countries sentence ("such as Belarus, China, Israel and Vietnam and with partners in Russia and Ukraine") was deleted.</p>
   </div>
 </div>
@@ -838,10 +979,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, AppDiscovery &rarr; Axon Advertising; AXON &rarr; Axon AI (brand moves from engine to product)</p>
     <p>Q2 2025 MD&amp;A:</p>
     <blockquote>"Our advertising solutions include AppDiscovery, MAX, Adjust, and Wurl."</blockquote>
     <p>Q3 2025 MD&amp;A:</p>
     <blockquote>"Our advertising solutions include Axon Advertising, MAX, Adjust, and Wurl."</blockquote>
+    <p class="history">History: the product name "Axon Advertising" appears in Q3 2025 only (phrase_history's FY2024 hits are the lower-case "AXON advertising engine"). It becomes Axon Ads Manager one filing later.</p>
     <p>In the risk factors: "the timing and efficacy of improvements to our algorithms, models and AI-powered advertising recommendation engine AXON generally;" became "the timing and efficacy of improvements to our algorithms, models and Axon AI, our advertising recommendation engine, generally;". The revenue-source sentence changed from "Our revenue is mostly from AppDiscovery..." to "Our revenue is mostly from Axon Advertising...". Axon Advertising itself was renamed again, to Axon Ads Manager, at the FY2025 10-K one period later.</p>
   </div>
 </div>
@@ -853,10 +996,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +Axon Ads Manager; quant/date added, "first half of 2026" launch (+ commitment)</p>
     <p>Q3 2025 MD&amp;A and risk factors:</p>
     <blockquote>"For example, in October 2025 we opened a public referral program to onboard customers to Axon Ads Manager, which we expect to launch more broadly in the first half of 2026."</blockquote>
     <p>The brand factor added:</p>
     <blockquote>"In connection with 2025 launch of our self-serve advertising platform (Axon Ads Manager), we publicly launched our Axon product branding. Increasing awareness of the AppLovin corporate brand and of Axon specifically will depend largely upon our marketing efforts..."</blockquote>
+    <p class="history">History: "Axon Ads Manager" runs Q3 2025 through Q1 2026 and is gone in Q2 2026 (renamed AppLovin Ads). "first half of 2026" appears in Q3 2025 only.</p>
     <p>The referral-program sentence, with its H1 2026 launch commitment, was not carried into the FY2025 10-K.</p>
   </div>
 </div>
@@ -868,9 +1013,44 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: condition dropped, FCF limitation removed (+ flexibility); quant up, +$3.2B</p>
     <p>Q3 2025 MD&amp;A:</p>
     <blockquote>"In October 2025, our board of directors authorized an increase to the repurchase program of $3.2 billion and removed the limitations and conditions related to free cash flow. Following the increase, an aggregate amount of approximately $3.3 billion remained available for repurchases as of October 31, 2025."</blockquote>
+    <p class="history">History: "removed the limitations and conditions related to free cash flow" appears in Q3 2025 only; the FCF cap language had run from Q3 2024 through Q2 2025 (risk factors) and Q3 2025 (MD&amp;A).</p>
     <p>Nine-month repurchases: 4.9M shares / $1.8B; $492.2M remained pre-increase. The October 2024 authorization had carried a quarterly Free-Cash-Flow cap; the February 2025 modification kept an FCF-linked accrual; this authorization removed the constraint.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Related-party Humans, Inc. (Flip Shop): $50.0M stake fully impaired on "going concern" doubt; its revenue goes from "$2.5 million" to "an immaterial amount"; the director-COO resigned</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, investment written off (+ disclosure); quant removed, $2.5M &rarr; "an immaterial amount" (&minus;)</p>
+    <p>Q2 2025 notes:</p>
+    <blockquote>"During the six months ended June 30, 2025, the Company recognized $2.5 million in revenue from Humans, Inc. related to their use of the Company’s advertising solutions."</blockquote>
+    <p>Q3 2025 notes:</p>
+    <blockquote>"During the nine months ended September 30, 2025, the Company recognized an immaterial amount in revenue from Humans, Inc. related to their use of the Axon Platform. The transactions were conducted at arm’s-length pricing and under standard contractual terms. During the same period, the Company recorded a full impairment of its $50.0 million investment in Humans, Inc. as a result of its deteriorating financial condition and uncertainty about its ability to continue as a going concern."</blockquote>
+    <blockquote>"Eduardo Vivas, a member of the Company's board of directors, served as the Chief Operating Officer of Humans, Inc., and a member of its board of directors until his resignation from both positions in September 2025."</blockquote>
+    <p class="history">History: "Humans, Inc." appears in the notes from the FY2023 10-K (subsequent event) through the FY2025 10-K; "going concern" appears in Q3 2025 and the FY2025 10-K only. Nine-month revenue for 2025 is described as immaterial although six-month revenue had been given as $2.5 million.</p>
+    <p>A February 2024 related-party investment in an e-commerce app, made while an AppLovin director was its COO, is written to zero 19 months later. The same note still says of the commercial agreement that "No transactions have occurred under this agreement to date", one paragraph above the revenue sentence. The impairment is the $50.0M non-marketable-securities charge in the cash flow statement.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">October 2025 grant of 0.9M PSUs to engineers on "market capitalization milestones", grant-date value $410.5M (subsequent event)</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +market-capitalization metric; quant added, $410.5M grant value (+ disclosure, + future expense)</p>
+    <p>Q3 2025 subsequent events (no Q2 2025 equivalent):</p>
+    <blockquote>"In October 2025, the Company granted 0.9 million performance-based restricted stock units (“PSUs”) under its 2021 Equity Incentive Plan to certain key non-executive engineering employees. The PSUs are eligible to vest upon the achievement of certain market capitalization milestones and continued service through the applicable vesting dates. The estimated grant-date fair value of these awards was $410.5 million."</blockquote>
+    <p class="history">History: "certain key non-executive engineering employees" appears in Q3 2025 and the FY2025 10-K only; the 10-K adds the thresholds ($300.0 billion initial, up to $1.0 trillion, seven years). The earlier PSU grants (March 2023, November 2024) used stock-price targets and had fully vested.</p>
+    <p>Quarterly stock-based compensation had fallen to $33.1M in Q3 2025 from $81.6M a year earlier. A $410.5M grant reverses that: R&amp;D rose 67% in Q1 2026 and 127% in Q2 2026 on stock-based compensation.</p>
   </div>
 </div>
 
@@ -881,6 +1061,8 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, volume +8% &rarr; &minus;1% (first decline); wording, installs become "partially offset"</p>
+    <p class="history">History: "decrease in the volume of installations of 1%" in Q3 2025 only. Every earlier period in the decomposition (Q3 2023 on) showed install growth.</p>
     <p>Q3 2025 MD&amp;A driver sentence: "net revenue per installation increased 75%, partially offset by a decrease in the volume of installations of 1%". Q2 2025 had been +70% per-install / +8% volume. This is the first negative volume print in the series; Q1 2026 reached &minus;18%.</p>
   </div>
 </div>
@@ -892,10 +1074,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +Basil Shikin as defendant; quant changed, class period narrowed</p>
     <p>Q2 2025 legal proceedings:</p>
     <blockquote>"The Securities Complaints allege a putative class period running from May 10, 2023 through March 26, 2025."</blockquote>
     <p>Q3 2025 legal proceedings:</p>
     <blockquote>"...the lead plaintiffs filed an Amended Complaint on September 12, 2025, adding Basil Shikin as a defendant. The Amended Complaint alleges that the defendants made materially false and misleading statements regarding the Company's advertising solutions and financial growth. The Amended Complaint alleges a putative class period running from November 7, 2024 through March 27, 2025."</blockquote>
+    <p class="history">History: "November 7, 2024" first appears in Q3 2025 and runs through Q2 2026. Shikin's name appears in the FY2023 10-K (as CTO) but in legal proceedings only from Q3 2025.</p>
     <p>The operative pleading is now the Amended Complaint; the original allegations sentence was dropped.</p>
   </div>
 </div>
@@ -907,8 +1091,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant removed, authorization amounts and availability (&minus;)</p>
     <p>The October 2024 $2.0B/FCF-cap and February 2025 modification descriptions and all dollar availability figures were removed from the risk factor, replaced by:</p>
     <blockquote>"Our board of directors has authorized a share repurchase program under which we repurchase shares of our Class A common stock from time to time."</blockquote>
+    <p class="history">History: "has authorized a share repurchase program under which" first appears in Q3 2025 and runs through Q2 2026.</p>
     <p>The program detail remained in the MD&amp;A Liquidity section only.</p>
   </div>
 </div>
@@ -920,8 +1106,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, a competitor's privacy program announced for retirement (+); named +Privacy Sandbox retirement</p>
     <p>Q3 2025 (MD&amp;A and risk factors):</p>
     <blockquote>"However, in October 2025, Google announced its plans to retire several Privacy Sandbox technologies for both Chrome and Android."</blockquote>
+    <p class="history">History: "retire several Privacy Sandbox" appears in Q3 2025 only; the FY2025 10-K says it was retired and Q1 2026 deletes the history.</p>
     <p>The FY2025 10-K updated this to "Google retired the Privacy Sandbox initiative"; Q1 2026 deleted the Privacy Sandbox history entirely.</p>
   </div>
 </div>
@@ -933,6 +1121,8 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: removed, e-commerce and Array from the growth list (&minus;); IP-license risk factor removed</p>
+    <p class="history">History: "through our Array product initiative" stood from the FY2023 10-K through Q2 2025; "licenses to intellectual property" stood in every filing from Q2 2023 through Q2 2025 (nine periods); both absent from Q3 2025 on. "51% of our revenue" (international share) appears in Q3 2025 only.</p>
     <p>Q2 2025 future-growth list: "...other mobile app sectors, social, e-commerce or related markets, connected TV markets through Wurl, OEM and carrier-related markets through our Array product initiative, or other opportunities". Q3 2025: "...other mobile app sectors, social, connected TV markets through Wurl, or other opportunities". The early-stage e-commerce expansion sentences ("The expansion of our services to this market is still in its early stages.") were removed. The standalone risk factor "Our ability to acquire and maintain licenses to intellectual property may affect our business..." was deleted with its summary bullet. Other facts this quarter: a $50.0M impairment of non-marketable equity securities appeared in operating non-cash items; Wurl's revenue base expanded to "content companies, streamers, and advertisers, typically on a usage-based and/or CPM model"; divestiture proceeds were restated $424.7M &rarr; $407.3M (nine months).</p>
   </div>
 </div>
@@ -951,12 +1141,14 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: removed, "performance basis" and publisher rev-share (&minus; disclosure); scope, "primarily" &rarr; "substantially all" (+); measurement "either third-party or self-attribution" (&minus;)</p>
     <p>Q3 2025 MD&amp;A:</p>
     <blockquote>"We generate revenue primarily from fees collected from advertisers spending on Axon Advertising, typically on a performance basis, then shared with our advertising publishers, typically on a cost per impression basis."</blockquote>
     <p>FY2025 10-K MD&amp;A:</p>
     <blockquote>"We generate substantially all of our revenue from fees collected from advertisers spending on Axon Ads Manager, which are determined dynamically based on advertisers' campaign goals."</blockquote>
     <p>FY2025 10-K Business (no 10-Q equivalent):</p>
     <blockquote>"Return on advertising spend is measured based on either third-party or self-attribution."</blockquote>
+    <p class="history">History: "shared with our advertising publishers" stood in every filing from Q2 2023 through Q3 2025 (ten periods) and is absent from the FY2025 10-K on. "determined dynamically based on advertisers" runs FY2025 10-K through Q2 2026. "self-attribution" appears in the FY2025 10-K only.</p>
     <p>The performance-basis and publisher rev-share language is gone, as is the line saying MAX and Adjust fees are part of revenue. MAX's users changed from "Advertising clients" to "Advertising networks". The 10-K's business section (the FY2024 10-K said "third-party attribution" only) now allows the advertiser's own measurement. Q1 2026 then spelled out the net presentation ("less consideration paid or payable to publishers").</p>
   </div>
 </div>
@@ -968,10 +1160,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, 9M installs +9% &rarr; FY +3% (implied Q4 decline, by arithmetic)</p>
     <p>Q3 2025 MD&amp;A (nine months):</p>
     <blockquote>"due primarily to improved Axon Advertising performance, where net revenue per installation increased 64% and the volume of installations increased 9%."</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"primarily due to improved Axon Ads Manager performance, where the volume of installations increased 3% and net revenue per installation increased 72% compared to the prior year period."</blockquote>
+    <p class="history">History: "volume of installations increased 3%" appears in the FY2025 10-K only. Q3 2025 alone was &minus;1%; Q1 2026 was &minus;18%.</p>
     <p>Install growth fell from +9% for nine months to +3% for the year. That means fourth-quarter volume was below Q4 2024's; the 10-K does not give the quarter, so this is arithmetic, not a disclosure. Q3 alone was already &minus;1%, and Q1 2026 printed &minus;18%. Implied Q4 revenue is $1,657.9M ($5,480.7M less $3,822.8M for nine months), up 66% from $999.5M. It is the first full year in which price did all the work.</p>
   </div>
 </div>
@@ -983,8 +1177,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant removed (&minus;); factor merged and its heading deleted</p>
     <p>Q3 2025 MD&amp;A:</p>
     <blockquote>"During the three months ended September 30, 2025, 51% of our revenue was generated from outside of the United States."</blockquote>
+    <p class="history">History: "Add new clients globally" stood in every filing from Q2 2023 through Q3 2025 (ten periods); "51% of our revenue" appears in Q3 2025 only. No later filing gives a geographic share.</p>
     <p>FY2025 10-K: no equivalent sentence. The factor was merged into "Attract and retain clients", which carries no geographic figure. Q1 2026 has none either.</p>
     <p>The FY2024 10-K had put the share at 43%. The figure had risen to a majority by Q3 2025 and was then dropped. The filing gives no reason.</p>
   </div>
@@ -997,10 +1193,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant/date removed, "first half of 2026" (&minus; commitment); realized, "since 2024 we have begun" (+)</p>
     <p>Q3 2025 (two risk factors and the MD&amp;A):</p>
     <blockquote>"For example, in October 2025 we opened a public referral program to onboard customers to Axon Ads Manager, which we expect to launch more broadly in the first half of 2026."</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"For example, since 2024 we have begun expanding our customer base to include web-based e-commerce advertisers."</blockquote>
+    <p class="history">History: "first half of 2026" appears in Q3 2025 only; "since 2024 we have begun expanding" first appears in the FY2025 10-K and runs through Q2 2026.</p>
     <p>A dated commitment was replaced by a statement about the past. The MD&amp;A now speaks of onboarding "new clients both inside and outside of mobile gaming" and investing "to enhance awareness of the Axon brand". The broader launch is not mentioned again in this filing.</p>
   </div>
 </div>
@@ -1012,10 +1210,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: removed, four "decrease as a percentage of revenue" outlooks (&minus;); certainty, costs "expect to ... incur" (+ cost pressure)</p>
     <p>Q3 2025 MD&amp;A:</p>
     <blockquote>"We expect sales and marketing expenses to fluctuate period-over-period in absolute dollars and as a percentage of revenue in the near term as we invest to grow our customer base and increase brand awareness, and to decrease as a percentage of revenue over the long term as we benefit from greater scale."</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"We expect to continue to invest in our technology and solutions and to incur related costs, including costs to attract and retain critical engineering talent, such as stock-based compensation, as well as datacenter costs as we continue to launch enhancements to our Axon AI recommendation engine."</blockquote>
+    <p class="history">History: "critical engineering talent" first appears in the FY2025 10-K and runs through Q2 2026; "decrease as a percentage of revenue over the long term" appears in Q2 and Q3 2025 only.</p>
     <p>All four outlooks for cost of revenue, S&amp;M, R&amp;D and G&amp;A were deleted. The only forward cost statement left points up, two months after the October 2025 market-cap PSU grant to engineers ($410.5M grant-date value). Q1 2026 R&amp;D rose 67% on stock-based compensation.</p>
   </div>
 </div>
@@ -1027,10 +1227,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant added, $702.8M remaining (+ disclosure); figure down from $1.2B</p>
     <p>Q3 2025 MD&amp;A:</p>
     <blockquote>"Except for scheduled payments from the ongoing business, there were no other material changes to our commitments under contractual obligations since December 31, 2024."</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"As of December 31, 2025, we had non-cancelable purchase obligations of $702.8 million, primarily related to an agreement for third-party cloud computing services, of which $398.5 million is payable within twelve months."</blockquote>
+    <p class="history">History: "non-cancelable purchase obligations of $702.8 million" appears in the FY2025 10-K only; the 10-Qs of 2025 said only that there were no material changes since December 31, 2024.</p>
     <p>The notes add that AppLovin had paid $579.3M toward its $1.3B three-year minimum, against $107.4M a year earlier. That is about $472M of cloud spend in 2025. Despite revenue up 70%, the commitment was not raised.</p>
   </div>
 </div>
@@ -1042,10 +1244,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, "preliminary" &rarr; "did not enter into a transaction" (+); five forward-looking mentions removed</p>
     <p>Q3 2025 risk factors:</p>
     <blockquote>"This indication of interest is preliminary and there can be no assurance that a transaction involving us will proceed."</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"For example, in April 2025, we confirmed that we had provided an indication of interest to the President of the United States to explore a purchase of TikTok in all markets outside of China, but we ultimately did not enter into a transaction."</blockquote>
+    <p class="history">History: "TikTok" ran 14 times in each 2025 10-Q; "did not enter into a transaction" first appears in the FY2025 10-K and is carried through Q2 2026.</p>
     <p>The forward-looking mentions were removed: the strategic-transactions heading, the summary bullet, the stock-volatility bullet, the equity-dilution example and the MD&amp;A sentence. What remains is an example of a deal the company could not complete.</p>
   </div>
 </div>
@@ -1057,10 +1261,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, equity-method stake elevated to a critical estimate (+ disclosure of judgment)</p>
     <p>Q3 2025 MD&amp;A:</p>
     <blockquote>"There have been no material changes to our critical accounting estimates during the nine months ended September 30, 2025"</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"We record our share of the investee's results and related basis difference amortization one quarter in arrears in other income (expense), net in our consolidated statements of operations."</blockquote>
+    <p class="history">History: "one quarter in arrears" first appeared in the notes of the Q2 2025 10-Q; the FY2025 10-K is the first to put it in MD&amp;A critical estimates.</p>
     <p>The stake was booked at $285.0M using Level 3 inputs. Making it a critical estimate, with a full impairment framework, signals judgment risk in a private-company valuation. The notes call AppLovin's share of Tripledot income "not material" for 2025. The Q1 2026 MD&amp;A then drops Tripledot altogether.</p>
   </div>
 </div>
@@ -1072,9 +1278,28 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, "have, from time to time in the past ... been" a target (+); named, critics' claims called "false"</p>
     <p>FY2025 10-K:</p>
     <blockquote>"Harm to our brands and reputation can arise from many sources, including actions of our business partners, service disruptions or technical issues, or legal or regulatory scrutiny. Even allegations may harm our reputation and brands and cause the market price of our Class A common stock to decline. We have, from time to time in the past, and may in the future be, the target of incomplete, inaccurate, and misleading or false statements about our company and our business that could damage our reputation and brands, divert management attention and resources, and deter clients or potential clients from using our solutions."</blockquote>
+    <p class="history">History: "misleading or false statements" first appears in the FY2025 10-K and runs through Q2 2026.</p>
     <p>Combined with the short-seller bullet (since the FY2024 10-K) and the securities litigation, this is the first text that describes outside criticism as false. Q1 2026 builds on it with a defensive Item 1A preamble.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Lean-workforce risk loses its competitive claim: "our lean culture allows us to move faster than other companies our size" deleted</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: claim removed (&minus;); hedge "we believe" dropped with it; risk wording kept</p>
+    <p>Q3 2025 risk factors:</p>
+    <blockquote>"While we believe our lean culture allows us to move faster than other companies our size, a lean workforce could limit our ability to scale operations quickly in response to increased demand, develop new products or services in a timely manner, or effectively manage multiple initiatives simultaneously."</blockquote>
+    <p>FY2025 10-K risk factors:</p>
+    <blockquote>"While this approach enhances efficiency and cost control, it may also expose us to certain risks, such as limiting our ability to scale operations quickly in response to increased demand, develop new products or services in a timely manner, or effectively manage multiple initiatives simultaneously."</blockquote>
+    <p class="history">History: the old sentence stood unchanged for four periods (FY2024 10-K to Q3 2025); "move faster than other companies our size" is absent from the FY2025 10-K through Q2 2026.</p>
+    <p>The constraints are restated word for word; only the speed advantage is dropped. Headcount at year-end was 898, down from 1,563, mostly from the Apps sale.</p>
   </div>
 </div>
 
@@ -1085,11 +1310,13 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +alcohol, CBD/hemp, financial services, health &amp; wellness; realized, disruptions "we experience from time to time" (+)</p>
     <p>Q3 2025:</p>
     <blockquote>"We also work with advertisers that operate sports gambling apps, apps that involve real money gambling, and apps in other regulated industries and markets, each of which imposes additional regulatory requirements on these advertisers, which they may not comply with."</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"We also work with advertisers that operate sports gambling apps, apps that involve real money gambling, and apps and advertisers in other regulated industries and markets (including alcohol, CBD/hemp, financial services, and health &amp; wellness), each of which imposes additional legal and regulatory requirements on these advertisers, which they may not comply with."</blockquote>
     <blockquote>FY2025 10-K (new): "While not material to our business to date, we experience from time to time disruptions from third parties with whom we do business, including failure to uphold contractual obligations, violations of our policies and terms of use, and other actions described in this risk."</blockquote>
+    <p class="history">History: "CBD/hemp" first appears in the FY2025 10-K and runs through Q2 2026.</p>
     <p>The named verticals are the kinds of web advertisers that an e-commerce push brings in. The publisher-fraud sentence now says such activity "from time to time may cause us to incur losses". Read beside the 10-K's $24.5M bad-debt increase "related to new initiatives", the third-party risk now describes events that have happened.</p>
   </div>
 </div>
@@ -1101,10 +1328,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, "anticipated" motion &rarr; filed (+); date added, hearing "scheduled in March 2026"</p>
     <p>Q3 2025 legal proceedings:</p>
     <blockquote>"Pursuant to the current scheduling order, the parties will file submissions in support of, and in opposition to, the defendants' anticipated motion to dismiss through early February 2026."</blockquote>
     <p>FY2025 10-K:</p>
     <blockquote>"The defendants filed a motion to dismiss the Amended Complaint in November 2025, and a hearing on the defendants' motion is scheduled in March 2026."</blockquote>
+    <p class="history">History: "hearing on the defendants" appears in the FY2025 10-K only; Q1 2026 replaces it with "fully briefed as of February 2026".</p>
     <p>The derivative stay now refers to "the defendants' motion to dismiss", where it had said the "anticipated" motion. The loss-estimate sentence is unchanged.</p>
   </div>
 </div>
@@ -1123,10 +1352,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, installs +3% (FY) &rarr; &minus;18%; price +72% &rarr; +93%</p>
     <p>FY2025 10-K:</p>
     <blockquote>"primarily due to improved Axon Ads Manager performance, where the volume of installations increased 3% and net revenue per installation increased 72% compared to the prior year period."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"compared to the same period in the prior year due primarily to improved Axon Ads Manager, where net revenue per installation increased 93%, partially offset by a decrease in the volume of installations of 18%."</blockquote>
+    <p class="history">History: "decrease in the volume of installations of 18%" in Q1 2026 only; the lowest stated quarterly print before it was &minus;1% (Q3 2025); Q4 2025 is not stated but was negative by arithmetic.</p>
     <p>Volume has been falling since Q3 2025 (&minus;1%) and, by arithmetic, in Q4. Q1 2026 is the first quarter in which the filing calls installs an offset to growth. The series since disclosure began is +77% &rarr; +39% &rarr; +22% &rarr; +8% &rarr; &minus;1% &rarr; &minus;18% for volume, and +7% &rarr; +93% for price. Revenue still grew 59%.</p>
   </div>
 </div>
@@ -1134,14 +1365,16 @@ a:hover { text-decoration: underline; }
 <div class="finding">
   <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
     <span class="arrow">&#9654;</span>
-    <span class="title">Axon Ads Manager redescribed in e-commerce terms ("customer acquisition", "transaction goals"); revenue stated net of publisher consideration</span>
+    <span class="title">Axon Ads Manager redescribed in e-commerce terms ("customer acquisition", "transaction goals"); the MD&amp;A now states revenue net of publisher consideration</span>
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, "user acquisition" &rarr; "customer acquisition", "user growth goals" &rarr; "transaction goals"; certainty, "optimizes" &rarr; "maximizes" (+)</p>
     <p>FY2025 10-K:</p>
     <blockquote>"Clients use Axon Ads Manager to automate, optimize, and manage their user acquisition investments. They set marketing and user growth goals, and Axon Ads Manager optimizes their ad spend in an effort to achieve their return on advertising spend targets... The revenue we generate from Axon Ads Manager is determined dynamically based on advertisers' campaign goals."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"Clients use Axon Ads Manager to automate, optimize, and manage customer acquisition. They set marketing and transaction goals, and Axon Ads Manager maximizes advertising spend at their return on advertising spend targets... Revenue represents the dynamically-priced amount charged to advertisers based on their campaign goals, less consideration paid or payable to publishers."</blockquote>
+    <p class="history">History: "transaction goals" and "payment processing fees related to customer transactions" first appear in Q1 2026 and are carried in Q2 2026. "less consideration paid or payable to publishers" is not new: it has been in the revenue-recognition note of every filing since Q2 2023; Q1 2026 is the first 10-Q to put it in the MD&amp;A business description.</p>
     <p>"User" and "growth" (app-install vocabulary) gave way to "customer" and "transaction". The product now "maximizes advertising spend" where it had "optimizes their ad spend". Cost of revenue adds "third-party payment processing fees related to customer transactions", the first transaction-processing cost since the Apps business (and its IAP fees) was sold.</p>
   </div>
 </div>
@@ -1153,10 +1386,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: direction reversed, R&amp;D &minus;40% (FY) &rarr; +67% (Q1); cause named as stock-based compensation</p>
     <p>FY2025 10-K:</p>
     <blockquote>"Research and development expenses in 2025 decreased by $148.2 million, or 40%, compared to 2024, due primarily to a decrease of $151.1 million in personnel-related expenses related to a decrease in stock-based compensation related payroll costs."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"Research and development expenses in the three months ended March 31, 2026 increased by $37.7 million, or 67%, compared to the same period in the prior year, due primarily to an increase of $36.5 million in personnel-related expenses related to an increase in stock-based compensation-related payroll costs."</blockquote>
+    <p class="history">History: "increase in stock-based compensation-related payroll costs" first appears in Q1 2026 and recurs in Q2 2026 (R&amp;D +127%).</p>
     <p>Total stock-based compensation rose to $83.5M from $59.1M. The filing does not name the cause. The rise is consistent with expensing of the October 2025 engineering PSUs ($410.5M grant-date fair value) that the 10-K's new cost sentence anticipated; that link is an inference. S&amp;M also turned up, led by "an increase of $16.7 million in advertising and marketing program costs".</p>
   </div>
 </div>
@@ -1168,10 +1403,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, customer "Advertising networks" &rarr; "Publishers"; revenue basis "client spend" &rarr; "winning auction spend"</p>
     <p>FY2025 10-K:</p>
     <blockquote>"Advertising networks use MAX to optimize purchases of app advertising inventory... Revenue from MAX is generated based on a percentage of client spend. As more advertising networks move to in-app real-time bidding, we expect growth in the adoption of, and revenue from, MAX."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"Publishers use MAX to optimize the sale of their app advertising inventory to demand-side platforms and ad networks... Revenue from MAX is generated based on a percentage of winning auction spend. As demand-side platforms continue to improve their recommendation systems and more apps adopt in-app advertising, we expect growth in the adoption of, and revenue from, MAX."</blockquote>
+    <p class="history">History: "Advertising networks use MAX" appears in the FY2025 10-K only; "Publishers use MAX" first appears in Q1 2026 and is carried in Q2 2026.</p>
     <p>This is the third description of MAX's customer in three filings ("Advertising clients" in Q3 2025). The new version places outside DSPs as buyers on AppLovin's mediation platform. The risk factors add "SDK bidders" alongside DSPs as parties that receive personal information to bid.</p>
   </div>
 </div>
@@ -1183,10 +1420,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: removed, "acquire and retain viewers" and advertisers as a revenue source (&minus;); de-named, "through Wurl" dropped</p>
     <p>FY2025 10-K:</p>
     <blockquote>"Advertising clients use Wurl's CTV platform to distribute streaming video, maximize revenue, and acquire and retain viewers or subscribers. Revenue from Wurl is primarily generated from content companies, streamers, and advertisers, typically on a usage-based and/or CPM model."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"Advertising clients use Wurl's connected TV ... platform to distribute streaming video and maximize revenue. Revenue from Wurl is primarily generated from content companies and streamers typically on a usage-based and/or CPM model."</blockquote>
+    <p class="history">History: "acquire and retain viewers" stood in every filing from Q2 2023 through the FY2025 10-K (eleven periods); "connected TV markets through Wurl" ran FY2024 10-K through FY2025 10-K. Both are absent from Q1 2026 on.</p>
     <p>The growth risk factor changed from "connected TV markets through Wurl, or other opportunities" to "connected TV markets, or other opportunities". The 10-K had already deleted three named Wurl products. CTV remains a stated vertical, but Wurl is no longer named as the route into it.</p>
   </div>
 </div>
@@ -1198,8 +1437,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-removed">Removed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: removed (&minus; disclosure); de-named, Tripledot absent from the MD&amp;A</p>
     <p>FY2025 10-K MD&amp;A:</p>
     <blockquote>"On June 30, 2025, we consummated the sale of the Apps business to the Purchasers for $400 million in cash, subject to closing adjustments, and equity consideration representing approximately 20% of Tripledot's fully-diluted equity at the time of closing. No promissory note was issued as part of the transaction."</blockquote>
+    <p class="history">History: "Tripledot" appeared in the MD&amp;A of every filing from Q1 2025 through the FY2025 10-K and appears only in the notes from Q1 2026 on.</p>
     <p>Q1 2026: the MD&amp;A contains no mention of Tripledot. The stake and related-party revenue ($24.8M from Tripledot's use of Axon Ads Manager) appear only in the notes. The equity-method stake was a new critical accounting estimate one filing earlier, and the MD&amp;A now gives it no discussion.</p>
   </div>
 </div>
@@ -1211,8 +1452,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: hedge added, "by way of example only" (&minus;) across all risk factors</p>
     <p>Q1 2026 risk factors open with:</p>
     <blockquote>"These risk factor disclosures reflect our beliefs and opinions as to factors that could materially and adversely affect the Company and its securities in the future. References to past events are provided by way of example only and are not intended to be a complete listing or a representation as to whether or not such factors have occurred in the past or their likelihood of occurring in the future."</blockquote>
+    <p class="history">History: "by way of example only" first appears in Q1 2026 and is carried verbatim in Q2 2026; no earlier filing in the dataset has it.</p>
     <p>No prior filing in the dataset has this. Securities plaintiffs often argue that risks described as hypothetical had already occurred. The preamble disclaims that reading for every risk factor, including those the 10-K had just turned into past tense ("from time to time may cause us to incur losses", "the target of ... false statements"). The class action is still pending.</p>
   </div>
 </div>
@@ -1224,10 +1467,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: de-named, title "Chairperson" dropped (two places)</p>
     <p>FY2025 10-K:</p>
     <blockquote>"Our future success depends in significant part on the continued service of our key management and engineering personnel, including our co-founder, CEO, and Chairperson, Adam Foroughi."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"Our future success depends in significant part on the continued service of our key management and engineering personnel, including our co-founder and CEO, Adam Foroughi."</blockquote>
+    <p class="history">History: "co-founder, CEO, and Chairperson" stood in every filing from Q2 2023 through the FY2025 10-K (eleven periods) and is absent from Q1 2026 on.</p>
     <p>The Voting Agreement paragraph drops the title too. Voting power is unchanged at about 67%. The filing does not say who now chairs the board.</p>
   </div>
 </div>
@@ -1239,10 +1484,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, "possibly generative AI" &rarr; "we have begun to introduce" (+); certainty, "may" &rarr; "expect" on new AI laws (+)</p>
     <p>FY2025 10-K:</p>
     <blockquote>"...we will continue to invest in the expansion of our AI capabilities, including possibly generative AI."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"...we will continue to invest in the expansion of our AI capabilities. For example, we have begun to introduce tools that create AI-generated interactive ads and video creatives for advertisers."</blockquote>
+    <p class="history">History: "including possibly generative AI" stood in every filing from Q2 2023 through the FY2025 10-K; "AI-generated interactive ads" and "we expect to become subject to new laws" first appear in Q1 2026 and are carried in Q2 2026.</p>
     <p>"We may also become subject to new laws and regulations in additional jurisdictions" became "we expect to become subject to new laws and regulations in additional jurisdictions". A new sentence was added: "we may face claims and penalties for failure, including inadvertent failure, to comply". The 10-K had deleted SparkLabs, the in-house creative team, so creative production now comes from AI tools.</p>
   </div>
 </div>
@@ -1254,10 +1501,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, "Axon AI recommendation engine" &rarr; "Axon recommendation system"; scope, "inside and outside of mobile gaming" dropped</p>
     <p>FY2025 10-K MD&amp;A:</p>
     <blockquote>"We expect to continue to invest in our technology and solutions and to incur related costs, including costs to attract and retain critical engineering talent, such as stock-based compensation, as well as datacenter costs as we continue to launch enhancements to our Axon AI recommendation engine."</blockquote>
     <p>Q1 2026:</p>
     <blockquote>"We expect to continue to invest in our technology and to incur related costs, including costs to attract and retain critical engineering talent, such as stock-based compensation, as well as datacenter costs as we continue to launch enhancements to our Axon recommendation system."</blockquote>
+    <p class="history">History: "Axon recommendation system" (without "AI") appears in Q1 2026 only; Q2 2026 reads "Axon AI recommendation system".</p>
     <p>Client onboarding now reads "as well as to onboard new clients", having been "both inside and outside of mobile gaming". The Google Privacy Sandbox sentences (the 2022 launch and the October 2025 retirement) were removed from the third-party-platform risk. Q2 2026 restored "AI" and standardized on "Axon AI ... recommendation system".</p>
   </div>
 </div>
@@ -1269,10 +1518,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: date removed, "hearing ... scheduled in March 2026" (&minus;); no outcome given</p>
     <p>FY2025 10-K legal proceedings:</p>
     <blockquote>"The defendants filed a motion to dismiss the Amended Complaint in November 2025, and a hearing on the defendants' motion is scheduled in March 2026."</blockquote>
     <p>Q1 2026 legal proceedings:</p>
     <blockquote>"The defendants filed a motion to dismiss the Amended Complaint in November 2025, and that motion was fully briefed as of February 2026."</blockquote>
+    <p class="history">History: "fully briefed" first appears in Q1 2026 and is carried verbatim in Q2 2026; the hearing sentence appears in the FY2025 10-K only.</p>
     <p>This filing comes after the scheduled hearing date but does not say whether the hearing took place. It reports no ruling. The derivative suits remain consolidated and stayed, and the TikTok, short-seller and retained-Apps-litigation sentences are carried verbatim.</p>
   </div>
 </div>
@@ -1291,6 +1542,7 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, Axon Ads Manager &rarr; AppLovin Ads; removed, Axon brand-awareness sentences (&minus;)</p>
     <p>Q1 2026 MD&amp;A:</p>
     <blockquote>"Our advertising solutions include Axon Ads Manager, MAX, Adjust, and Wurl. Clients use Axon Ads Manager to automate, optimize, and manage customer acquisition."</blockquote>
     <p>Q2 2026 MD&amp;A:</p>
@@ -1299,6 +1551,7 @@ a:hover { text-decoration: underline; }
     <blockquote>"In connection with the 2025 launch of our self-serve advertising platform (Axon Ads Manager), we publicly launched our Axon product branding. Increasing awareness of the AppLovin corporate brand and of Axon specifically will depend largely upon our marketing efforts..."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"...and our ability to attract, new clients and key personnel. Increasing awareness of our brands will depend largely upon our marketing efforts and our ability to successfully differentiate our advertising solutions..."</blockquote>
+    <p class="history">History: "AppLovin Ads" first appears in Q2 2026 (ten mentions). "Axon product branding" ran Q3 2025 through Q1 2026 and "awareness of the Axon brand" ran FY2025 10-K and Q1 2026; both are gone in Q2 2026.</p>
     <p>And the MD&amp;A sales-and-marketing intent went from "We expect to continue to invest in sales and marketing to enhance awareness of the Axon brand and drive new client acquisition" to "We expect to continue to invest in sales and marketing to drive new client acquisition." This is the third name for the core product in four filings (AppDiscovery &rarr; Axon Advertising in Q3 2025 &rarr; Axon Ads Manager at the FY2025 10-K &rarr; AppLovin Ads), and the first time the filing retreats from the Axon brand rather than extending it: the company-wide marketing push behind "Axon" that the Q1 2026 risk factor described is no longer stated. The "Axon AI" engine name survives (see below). The related-party note carries the rename too: Tripledot revenue is now from "use of AppLovin Ads" ($18.0M in Q2 vs $24.8M in Q1 from "use of Axon Ads Manager").</p>
   </div>
 </div>
@@ -1310,10 +1563,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, price +93% &rarr; +58% (first decline), volume &minus;18% &rarr; &minus;2% (first improvement)</p>
     <p>Q1 2026:</p>
     <blockquote>"For the three months ended March 31, 2026, our revenue increased by $683.5 million, or 59%, compared to the same period in the prior year due primarily to improved Axon Ads Manager, where net revenue per installation increased 93%, partially offset by a decrease in the volume of installations of 18%."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"For the three months ended June 30, 2026, our revenue increased by $664.9 million, or 53%, compared to the same period in the prior year due primarily to improved AppLovin Ads performance, where net revenue per installation increased 58%, partially offset by a decrease in the volume of installations of 2%."</blockquote>
+    <p class="history">History: "net revenue per installation increased 58%" in Q2 2026 only. Quarterly price growth had risen in every stated quarter since Q2 2024 (+7%).</p>
     <p>Quarterly per-install growth had risen every quarter since the decomposition began (+7% &rarr; +22% &rarr; +49% &rarr; +70% &rarr; +75% &rarr; +93%); Q2 2026 is its first decline. Volume growth had fallen every quarter (+77% &rarr; &hellip; &rarr; &minus;18%); Q2 2026 is its first improvement. The price-led inversion tracked in signal #3 has stopped widening. Revenue growth decelerated for a second straight quarter (+68% Q3 2025, +59% Q1 2026, +53% Q2 2026) and rose only ~4% sequentially. The driver itself was reworded from "improved Axon Ads Manager" to "improved AppLovin Ads performance". On costs, R&amp;D rose 127% ($99.9M vs $44.0M), again "due primarily to an increase of $54.8 million in personnel-related expenses related to an increase in stock-based compensation-related payroll costs" (R&amp;D stock-based compensation $68.9M vs $17.2M).</p>
   </div>
 </div>
@@ -1325,10 +1580,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, operating-asset drag $14.8M (3M) &rarr; $504.8M (6M); explanation sentence unchanged (&minus;)</p>
     <p>Q1 2026:</p>
     <blockquote>"Net cash provided by operating activities was $1.3 billion for the three months ended March 31, 2026, primarily consisting of $1.2 billion of net income, adjusted for certain non-cash items... which were partially offset by a net decrease in operating assets and liabilities of $14.8 million."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"Net cash provided by operating activities was $2.2 billion for the six months ended June 30, 2026, primarily consisting of $2.5 billion of net income, adjusted for certain non-cash items... which were partially offset by a net decrease in operating assets and liabilities of $504.8 million."</blockquote>
+    <p class="history">History: "net decrease in operating assets and liabilities of $504.8 million" in Q2 2026 only; the explanatory sentence on collections, publisher payments and taxes is carried verbatim from Q1 2026.</p>
     <p>Subtracting Q1 from the six-month figures, Q2 alone generated about $869M of operating cash flow ($2,160.4M &minus; $1,291.4M) and ~$863M of Free Cash Flow ($2,150.1M &minus; $1,286.7M), against Q2 net income of $1,266.5M. The balance sheet shows where: accrued and other current liabilities fell from $796.9M (Mar 31) to $475.0M (Jun 30) while accounts receivable rose from $1,958.0M to $2,171.0M. The MD&amp;A's explanation of operating cash flow ("increased cash collections from customers due to revenue growth, partially offset by increased publisher payments, operational spending, and cash paid for income taxes") was carried word for word and does not address the quarter's swing; the accrued-liability drop is consistent with Q1 accruals (possibly taxes) being paid in Q2, but the filing does not say so.</p>
   </div>
 </div>
@@ -1340,10 +1597,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: quant changed, implied Q2 repurchases ~$0.5B vs $1.0B in Q1</p>
     <p>Q1 2026:</p>
     <blockquote>"During the three months ended March 31, 2026, we repurchased and retired 2.2 million shares of Class A common stock for $1.0 billion. As of March 31, 2026, $2.3 billion remained available for repurchases under the program."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"During the six months ended June 30, 2026, we repurchased and retired 3.3 million shares of Class A common stock for $1.5 billion. As of June 30, 2026, $1.8 billion remained available for repurchases under the program."</blockquote>
+    <p class="history">History: "repurchased and retired 3.3 million shares" in Q2 2026 only; the risk-factor buyback paragraph ("has authorized a share repurchase program under which") is unchanged since Q3 2025.</p>
     <p>Implied Q2 repurchases were about 1.1M shares for ~$0.5B (XBRL repurchase payments: $1.53B six months less $0.98B in Q1 = ~$0.55B). That is a return to the 2025 run-rate (implied ~$0.27B, ~$0.50B and ~$0.42B in Q2, Q3 and Q4 2025) after Q1 2026's $1.0B, which matched the Q1 2025 high. Cash rose from $2.8B to $3.1B over the quarter. At the Q2 rate, the $1.8B remaining would last a little over three quarters. The risk-factor buyback paragraph was unchanged.</p>
   </div>
 </div>
@@ -1355,10 +1614,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-new">New</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named +Liftoff Mobile</p>
     <p>Q1 2026:</p>
     <blockquote>"These companies vary in size and include Meta, Google, Amazon, and Unity Software as well as various private companies, several of which are also our partners and clients."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"These companies vary in size and include Meta, Google, Amazon, Unity Software and Liftoff Mobile as well as various private companies, several of which are also our partners and clients."</blockquote>
+    <p class="history">History: the competitor sentence named Facebook, Google and Unity Software from Q2 2023 through Q3 2024, added Amazon at the FY2024 10-K, and changed Facebook to Meta at the FY2025 10-K. "Liftoff" appears in Q2 2026 only.</p>
     <p>The named list was Facebook, Google, Unity Software in the FY2023 10-K; Amazon was added at the FY2024 10-K. Liftoff Mobile is the first new name in two years. It was added in the same quarter that per-install growth fell from 93% to 58%; the filing gives no reason for the addition, and no other sentence in the competition factor changed.</p>
   </div>
 </div>
@@ -1370,10 +1631,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: named, "engine" &rarr; "system" in all locations; "AI" restored</p>
     <p>Q1 2026 MD&amp;A innovation factor:</p>
     <blockquote>"...as well as datacenter costs as we continue to launch enhancements to our Axon recommendation system."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"...as well as datacenter costs as we continue to launch enhancements to our Axon AI recommendation system."</blockquote>
+    <p class="history">History: "recommendation system" first appears in Q1 2026 (MD&amp;A only, twice) and spreads to the risk factors in Q2 2026 (nine mentions).</p>
     <p>Every risk-factor reference ("Axon AI, our advertising recommendation engine", five places) now reads "Axon AI, our advertising recommendation system", and the MD&amp;A overview changed from "Axon AI recommendation engine" to "Axon AI recommendation system". The Q1 2026 dropping of "AI" (tracked in signal #2) was therefore not a de-emphasis that stuck: the filing now uses one consistent name, "Axon AI ... recommendation system", while the ad-buying product loses the Axon name entirely.</p>
   </div>
 </div>
@@ -1385,10 +1648,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: scope blurred, "our investments in" &rarr; "certain" non-marketable securities (&minus;); quant up, $20.7M &rarr; $31.3M</p>
     <p>Q1 2026:</p>
     <blockquote>"...due primarily to a net fair value remeasurement gain of $20.7 million related to our investments in non-marketable equity securities in the current period and an increase in interest income of $14.1 million driven by an increase in cash and cash equivalents."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"...due primarily to a net fair value remeasurement gain of $31.3 million related to certain non-marketable equity securities in the current period compared to a net fair value remeasurement loss of $20.4 million in the prior period, an increase in interest income of $21.3 million driven by an increase in cash and cash equivalents, and an increase in net foreign currency gains of $12.0 million."</blockquote>
+    <p class="history">History: "private equity funds" appears in the notes of every filing since Q2 2023; the MD&amp;A has not named them since the FY2024 10-K.</p>
     <p>The notes identify the source: "equity interests in certain private equity funds of $173.0 million" (from $139.2M at Mar 31 and $118.7M at Dec 31), with "no significant capital contributions" and "Unrealized gains on these investments were $31.3 million and $50.6 million" for the three and six months. The measurement-alternative stakes ($19.6M) had no adjustment. Unrealized fund gains were half of Q2's $62.4M other income; the MD&amp;A does not say they come from fund NAV marks. The comparison also flatters the year-over-year line: the prior-year quarter carried a $20.4M remeasurement loss.</p>
   </div>
 </div>
@@ -1400,8 +1665,10 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-signal">Signal</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: unchanged (no ruling disclosed); signal is the absence</p>
     <p>Q1 2026 and Q2 2026 (identical):</p>
     <blockquote>"The defendants filed a motion to dismiss the Amended Complaint in November 2025, and that motion was fully briefed as of February 2026."</blockquote>
+    <p class="history">History: "fully briefed" in Q1 and Q2 2026, word for word; the March 2026 hearing sentence appears in the FY2025 10-K only.</p>
     <p>The FY2025 10-K said "a hearing on the defendants' motion is scheduled in March 2026"; neither later 10-Q says whether that hearing took place, and the August filing reports no decision. Item 1 is unchanged character for character, as are the derivative stay and the "cannot reasonably estimate the maximum potential exposure or range of possible loss" sentence. The Item 1A preamble, short-seller bullet and TikTok retrospective sentence were also carried verbatim.</p>
   </div>
 </div>
@@ -1413,10 +1680,12 @@ a:hover { text-decoration: underline; }
     <span class="tag tag-changed">Changed</span>
   </div>
   <div class="finding-body">
+    <p class="shift">Shift: realized, "are being considered" &rarr; "or have been enacted" (+); scope widened on AI-enabled attacks</p>
     <p>Q1 2026:</p>
     <blockquote>"AI technologies may also be used in connection with certain cybersecurity attacks, resulting in heightened risks of security breaches and incidents."</blockquote>
     <p>Q2 2026:</p>
     <blockquote>"AI technologies may also be used to identify and exploit vulnerability and otherwise in connection with certain cybersecurity attacks, resulting in heightened risks of security breaches and incidents and of more impactful security breaches and incidents."</blockquote>
+    <p class="history">History: "identify and exploit vulnerability" and "or have been enacted in other jurisdictions" appear in Q2 2026 only.</p>
     <p>In the children's-privacy factor, frameworks "are being considered in other jurisdictions" became "are being considered or have been enacted in other jurisdictions". The rest of the risk-factor redline is noise: the remove-and-reinsert pairs are paragraph reflows, and the deleted "severe criminal or civil sanctions" in the FCPA list was a duplicate of a phrase later in the same sentence.</p>
   </div>
 </div>
@@ -1437,11 +1706,11 @@ a:hover { text-decoration: underline; }
         <tr><td>Q2 2025</td><td class="val-new">Single segment; Apps in discontinued ops; MAPs/ARPMAP KPIs deleted</td></tr>
         <tr><td>Q3 2025</td><td>AppDiscovery &rarr; Axon Advertising; AXON &rarr; Axon AI</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">"end-to-end AI-powered advertising solutions"; Axon Advertising &rarr; Axon Ads Manager; revenue "determined dynamically"; performance-basis/CPI rev-share sentence deleted; ROAS "either third-party or self-attribution" (Business)</td></tr>
-        <tr><td>Q1 2026</td><td class="val-new">"customer acquisition" / "transaction goals" vocabulary; revenue net of publisher consideration; MAX repositioned sell-side</td></tr>
+        <tr><td>Q1 2026</td><td class="val-new">"customer acquisition" / "transaction goals" vocabulary; MD&amp;A states revenue net of publisher consideration (long stated in the notes); MAX repositioned sell-side</td></tr>
         <tr><td>Q2 2026</td><td class="val-new">Product renamed AppLovin Ads; revenue-model sentence otherwise unchanged; Liftoff Mobile added to named competitors</td></tr>
       </tbody>
     </table>
-    <p>The revenue-model description moved in three steps: gross rev-share ("generated from our advertisers, typically on a performance basis, and shared with our advertising publishers, typically on a cost per impression model" &mdash; through Q3 2025) &rarr; "determined dynamically based on advertisers' campaign goals" (FY2025 10-K) &rarr; "the dynamically-priced amount charged to advertisers based on their campaign goals, less consideration paid or payable to publishers" (Q1 2026).</p>
+    <p>The revenue-model description moved in three steps: gross rev-share ("generated from our advertisers, typically on a performance basis, and shared with our advertising publishers, typically on a cost per impression model" &mdash; through Q3 2025) &rarr; "determined dynamically based on advertisers' campaign goals" (FY2025 10-K) &rarr; "the dynamically-priced amount charged to advertisers based on their campaign goals, less consideration paid or payable to publishers" (Q1 2026 MD&amp;A; the net-of-publisher wording itself has been in the revenue-recognition note of every filing since Q2 2023).</p>
   </div>
 </div>
 
@@ -1552,8 +1821,8 @@ a:hover { text-decoration: underline; }
       <tbody>
         <tr><td>Q1&ndash;Q3 2024</td><td>No short-seller mention; legal proceedings boilerplate byte-identical each quarter</td></tr>
         <tr><td>FY2024 10-K</td><td class="val-new">"and the publication of short seller reports" added to volatility bullet; "Factors that have in the past caused..."</td></tr>
-        <tr><td>Q1 2025</td><td class="val-new">March 2025 stockholder complaints added to public-company-costs factor; Securities Litigation and Shareholder Derivative Litigation sections appear</td></tr>
-        <tr><td>Q2 2025</td><td>"several securities complaints"; retained Apps-litigation sentence added</td></tr>
+        <tr><td>Q1 2025</td><td class="val-new">March 2025 stockholder complaints added to public-company-costs factor; visibility "has resulted in" litigation (was "we believe may result in", unchanged since Q2 2023); Securities Litigation and Shareholder Derivative Litigation sections appear</td></tr>
+        <tr><td>Q2 2025</td><td>"several securities complaints"; retained Apps-litigation sentence added; D&amp;O insurance "have made it more expensive" (was "expect")</td></tr>
         <tr><td>Q3 2025</td><td>Unchanged</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">New false-statements/reputation paragraph in brand factor</td></tr>
         <tr><td>Q1 2026</td><td class="val-new">New litigation-defensive Item 1A preamble ("References to past events are provided by way of example only...")</td></tr>
