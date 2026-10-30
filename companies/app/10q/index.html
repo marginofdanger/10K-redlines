@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APP 10-Q Quarterly Scanner | Q1 2024 - Q1 2026</title>
+<title>APP 10-Q Quarterly Scanner | Q1 2024 - Q2 2026</title>
 <style>
 :root {
   --bg: #ffffff;
@@ -139,6 +139,7 @@ a:hover { text-decoration: underline; }
 .tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
 .tag-changed { background: rgba(255,107,53,0.14); color: var(--orange); }
 .tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.tag-unchanged { background: rgba(89,99,110,0.12); color: var(--text-dim); }
 .finding-body {
   display: none; padding: 0 18px 14px 40px;
   font-size: 13px; color: var(--text-dim); line-height: 1.7;
@@ -211,7 +212,7 @@ a:hover { text-decoration: underline; }
 <nav class="sidebar">
   <div class="sidebar-header">
     <h1>APP 10-Q SCANNER</h1>
-    <div class="sub">Q1 2024 &ndash; Q1 2026 | SEC EDGAR</div>
+    <div class="sub">Q1 2024 &ndash; Q2 2026 | SEC EDGAR</div>
   </div>
   <div class="nav-section">Overview</div>
   <a class="nav-item" href="#hero-section">Executive Summary</a>
@@ -225,6 +226,7 @@ a:hover { text-decoration: underline; }
   <a class="nav-item" href="#q2q3-2025">Q2 &rarr; Q3 2025</a>
   <a class="nav-item" href="#q3-2025-fy2025">Q3 2025 &rarr; FY2025 10-K</a>
   <a class="nav-item" href="#fy2025-q1-2026">FY2025 10-K &rarr; Q1 2026</a>
+  <a class="nav-item" href="#q1q2-2026">Q1 &rarr; Q2 2026</a>
 
   <div class="nav-section">Tracked Signals</div>
   <a class="nav-item" href="#sig-selfdesc">Self-Description Lifecycle</a>
@@ -249,8 +251,8 @@ a:hover { text-decoration: underline; }
 <!-- Hero -->
 <div class="hero" id="hero-section">
   <h1>APP 10-Q Quarterly Scanner</h1>
-  <div class="tagline">Quarter-over-quarter textual analysis of nine AppLovin SEC filings (seven 10-Qs from Q1 2024 through Q1 2026, with the FY2024 and FY2025 10-Ks interleaved at year boundaries). Covers the Apps divestiture arc, the Axon rebranding sequence, the KPI lifecycle, buyback escalation, and the securities litigation timeline at quarterly cadence.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001751008) | 9 Filings | Q1 2024 &ndash; Q1 2026 | MD&amp;A, Risk Factors, and Legal Proceedings diffs read in full</div>
+  <div class="tagline">Quarter-over-quarter textual analysis of ten AppLovin SEC filings (eight 10-Qs from Q1 2024 through Q2 2026, with the FY2024 and FY2025 10-Ks interleaved at year boundaries). Covers the Apps divestiture arc, the Axon rebranding sequence and its Q2 2026 reversal, the KPI lifecycle, buyback escalation, and the securities litigation timeline at quarterly cadence.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001751008) | 10 Filings | Q1 2024 &ndash; Q2 2026 | MD&amp;A, Risk Factors, and Legal Proceedings diffs read in full</div>
 </div>
 
 
@@ -1186,6 +1188,149 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
+<!-- Q1 → Q2 2026 -->
+<div class="transition-header" id="q1q2-2026">
+  <h2>Q1 2026 &rarr; Q2 2026</h2>
+  <div class="sub">Revenue: $1,924M (+53% YoY) | Per-install +58% / volume &minus;2% | Adj. EBITDA margin 83.9% | Cash $3.1B | Buyback: $531.7M repurchased (Q), $1.8B remaining</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Axon Ads Manager renamed AppLovin Ads: the Axon product brand is retired one quarter after the 10-K adopted it</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026 MD&amp;A:</p>
+    <blockquote>"Our advertising solutions include <strong>Axon Ads Manager</strong>, MAX, Adjust, and Wurl. Clients use <strong>Axon Ads Manager</strong> to automate, optimize, and manage customer acquisition. They set marketing and transaction goals, and <strong>Axon Ads Manager</strong> maximizes advertising spend at their return on advertising spend targets and other marketing objectives. <strong>Axon Ads Manager</strong> comprises the vast majority of revenue."</blockquote>
+    <p>Q2 2026 MD&amp;A:</p>
+    <blockquote>"Our advertising solutions include <strong>AppLovin Ads</strong>, MAX, Adjust, and Wurl. Clients use <strong>AppLovin Ads</strong> to automate, optimize, and manage customer acquisition&hellip; <strong>AppLovin Ads</strong> comprises the vast majority of revenue."</blockquote>
+    <p>The substitution is complete and mechanical: "Axon Ads Manager" appears 10 times in Q1 2026 and zero times in Q2 2026; "AppLovin Ads" appears zero times then 10 times. Total "Axon" mentions fell from 21 to 8, all of the survivors being "Axon AI." The rename lands one quarter after the FY2025 10-K first adopted "Axon Ads Manager" as the product name.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The sentence announcing the Axon product brand is deleted from the risk factors</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026 brand risk factor:</p>
+    <blockquote>"&hellip;our ability to attract, new clients and key personnel. <strong>In connection with the 2025 launch of our self-serve advertising platform (Axon Ads Manager), we publicly launched our Axon product branding.</strong> Increasing awareness of <strong>the AppLovin corporate brand and of Axon specifically</strong> will depend largely upon our marketing efforts&hellip;"</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"&hellip;our ability to attract, new clients and key personnel. Increasing awareness of <strong>our brands</strong> will depend largely upon our marketing efforts&hellip;"</blockquote>
+    <p>Both the launch sentence and the Axon-specific object of the marketing effort are gone; the factor reverts to the generic "our brands." This risk factor and the MD&amp;A rename are the only two places the brand change is disclosed &mdash; there is no standalone announcement.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Recommendation engine" becomes "recommendation system" everywhere it appears</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>The engine descriptor changes wherever it appears, in both MD&amp;A and risk factors:</p>
+    <blockquote>"&hellip;improvements to our algorithms, models and Axon AI, our advertising recommendation <strong>engine</strong>, generally"</blockquote>
+    <blockquote>"&hellip;improvements to our algorithms, models and Axon AI, our advertising recommendation <strong>system</strong>, generally"</blockquote>
+    <p>Counted across the full filings, "recommendation engine" went 7 &rarr; 0 and "recommendation system" 2 &rarr; 9. The Q1 2026 filing had already made this substitution in the innovation risk factor alone; Q2 2026 completes it. "Axon AI" itself is retained (8 mentions).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Liftoff Mobile added to the named competitor list</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"These companies vary in size and include Meta, Google, Amazon, and Unity Software as well as various private companies, several of which are also our clients or partners."</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"These companies vary in size and include Meta, Google, Amazon, Unity Software <strong>and Liftoff Mobile</strong> as well as various private companies, several of which are also our clients or partners."</blockquote>
+    <p>The first addition to the named competitor set in the data set; the list had been Meta / Google / Amazon / Unity Software since Q1 2024.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Install volume decline narrows from &minus;18% to &minus;2% as per-install growth halves</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>Q2 2026 driver sentence:</p>
+    <blockquote>"&hellip;our revenue increased by $664.9 million, or 53%, compared to the same period in the prior year due primarily to improved AppLovin Ads performance, where net revenue per installation increased 58%, partially offset by a decrease in the volume of installations of 2%."</blockquote>
+    <p>Both components moved toward the middle after Q1 2026's extreme (+93% price / &minus;18% volume). The six-month figures are +75% price / &minus;10% volume. Revenue split roughly evenly by geography: United States $989.6M, rest of world $934.1M.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI cybersecurity risk escalated on two axes: likelihood and impact</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"AI technologies may also be used in connection with certain cybersecurity attacks, resulting in heightened risks of security breaches and incidents."</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"AI technologies may also be used <strong>to identify and exploit vulnerability and otherwise</strong> in connection with certain cybersecurity attacks, resulting in heightened risks of security breaches and incidents <strong>and of more impactful security breaches and incidents</strong>."</blockquote>
+    <p>Two insertions into one retained sentence: a mechanism (vulnerability discovery and exploitation) and a severity dimension that was not previously claimed.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Children's privacy frameworks move from proposed to enacted</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p>Q1 2026:</p>
+    <blockquote>"&hellip;and similar frameworks are being considered in other jurisdictions."</blockquote>
+    <p>Q2 2026:</p>
+    <blockquote>"&hellip;and similar frameworks are being considered <strong>or have been enacted</strong> in other jurisdictions."</blockquote>
+    <p>Three words converting a pipeline of proposals into live law. The surrounding COPPA / GDPR / CCPA-CPRA / AADC discussion is otherwise verbatim.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Non-marketable equity securities swing $72M year-over-year in other income</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>The line item was renamed "Other income, net" &rarr; "Other income (expense), net," and the attribution gained an explicit prior-period comparison:</p>
+    <blockquote>"&hellip;due primarily to a net fair value remeasurement gain of $52.0 million related to certain non-marketable equity securities in the current period <strong>compared to a net fair value remeasurement loss of $20.4 million in the prior period</strong>, an increase in interest income of $35.4 million driven by an increase in cash and cash equivalents, and an increase in net foreign currency gains of $14.4 million."</blockquote>
+    <p>Q1 2026 attributed the gain to "our investments in non-marketable equity securities"; Q2 2026 narrows it to "certain" securities. Private equity fund interests grew to $173.0 million from $118.7 million at December 31, 2025. Interest expense was flat at $51.2M; the Q1 attribution to lower revolver borrowings was replaced by "Interest expense remained relatively flat."</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">R&amp;D up 93% for the half; G&amp;A down 21% on bad debt</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p>R&amp;D rose $54.8M in the quarter and $93.6M (93%) for the six months, attributed in both periods to "an increase in stock-based compensation-related payroll costs." Sales and marketing rose 17% for the half on advertising and marketing programs, partially offset by an $18.8M decrease in personnel costs &mdash; also stock-based-compensation-driven, in the opposite direction. G&amp;A fell 21% for the half on a $15.7M decrease in bad debt expense and a $7.3M decrease in professional services. Stock-based compensation was $85.8M for the quarter versus $34.6M a year earlier.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Legal proceedings and the securities-litigation disclosure carried verbatim</span>
+    <span class="tag tag-unchanged">Unchanged</span>
+  </div>
+  <div class="finding-body">
+    <p>The Item 1 legal proceedings section is byte-identical to Q1 2026 apart from the page number. The motion-to-dismiss status sentence ("fully briefed as of February 2026") is unchanged, with no ruling disclosed. Voting Agreement Parties still hold approximately 67% of voting power; senior notes remain $3.6B with no borrowings outstanding under the $1.0B revolver.</p>
+  </div>
+</div>
+
 
 <!-- ==================== TRACKED SIGNALS ==================== -->
 
@@ -1212,7 +1357,7 @@ a:hover { text-decoration: underline; }
 <div class="section" id="sig-axon">
   <div class="section-header"><h2>#2: Axon Naming Lifecycle</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">2</span> AXON &rarr; Axon AI &rarr; "Axon Recommendation System"; AppDiscovery &rarr; Axon Advertising &rarr; Axon Ads Manager</h3>
+    <h3><span class="num">2</span> AXON &rarr; Axon AI &rarr; "Axon Recommendation System"; AppDiscovery &rarr; Axon Advertising &rarr; Axon Ads Manager &rarr; AppLovin Ads</h3>
     <table class="data-table">
       <thead><tr><th>Period</th><th>Engine Naming</th><th>Product / Revenue Source</th></tr></thead>
       <tbody>
@@ -1225,8 +1370,10 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2025</td><td class="val-new">AXON &rarr; Axon AI (six locations); "Axon product branding" launched</td><td class="val-new">AppDiscovery &rarr; Axon Advertising; Axon Ads Manager first appears (referral program, H1 2026 launch)</td></tr>
         <tr><td>FY2025 10-K</td><td>"Axon AI recommendation engine" in cost drivers</td><td class="val-new">Axon Advertising &rarr; Axon Ads Manager; MAX/Adjust dropped from revenue components</td></tr>
         <tr><td>Q1 2026</td><td class="val-new">"Axon recommendation system" (innovation factor; "AI" qualifier dropped there)</td><td class="val-new">MAX repositioned sell-side ("Publishers use MAX")</td></tr>
+        <tr><td>Q2 2026</td><td class="val-new">"recommendation engine" &rarr; "recommendation system" everywhere (7 &rarr; 0 vs 2 &rarr; 9); "Axon AI" retained (8 mentions)</td><td class="val-new">Axon Ads Manager &rarr; <strong>AppLovin Ads</strong> (10 &rarr; 0 vs 0 &rarr; 10); the risk-factor sentence announcing "our Axon product branding" is deleted</td></tr>
       </tbody>
     </table>
+    <p>The Axon product brand had a four-quarter life at the product level: introduced as a referral-program name in Q3 2025, adopted as the platform name by the FY2025 10-K, carried through Q1 2026, and replaced by "AppLovin Ads" in Q2 2026. "Axon AI" survives as the name of the underlying recommendation system in every period since Q3 2025 &mdash; the retirement is of the customer-facing brand, not the engine.</p>
   </div>
 </div>
 
@@ -1245,9 +1392,10 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2025</td><td class="val-pos">+75%</td><td class="val-neg">&minus;1%</td></tr>
         <tr><td>FY2025</td><td class="val-pos">+72%</td><td>+3%</td></tr>
         <tr><td>Q1 2026</td><td class="val-pos">+93%</td><td class="val-neg">&minus;18%</td></tr>
+        <tr><td>Q2 2026</td><td class="val-pos">+58%</td><td class="val-neg">&minus;2%</td></tr>
       </tbody>
     </table>
-    <p>The growth driver decomposition inverted over eight periods: volume-led (+77% volume, +7% price) in Q2 2024 to price-led with shrinking volume (+93% price, &minus;18% volume) in Q1 2026.</p>
+    <p>The growth driver decomposition inverted over nine periods: volume-led (+77% volume, +7% price) in Q2 2024 to price-led with shrinking volume (+93% price, &minus;18% volume) in Q1 2026. Q2 2026 partially retraced both components (+58% price, &minus;2% volume), the smallest volume decline since the metric turned negative. The product named in this sentence changed with the brand: "Axon Advertising" (Q3 2025), "Axon Ads Manager" (Q1 2026), "AppLovin Ads" (Q2 2026).</p>
   </div>
   <div class="signal-card full">
     <h3><span class="num">3b</span> KPI Lifecycle: MAPs/ARPMAP &rarr; 1.4B DAU &rarr; Nothing</h3>
@@ -1281,6 +1429,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2025</td><td>4.9M sh / $1.8B (9M)</td><td class="val-new">Oct 2025 +$3.2B, FCF cap REMOVED; ~$3.3B available; risk-factor mechanics stripped</td></tr>
         <tr><td>FY2025 10-K</td><td>5.5M sh / $2.2B (FY)</td><td>$3.3B remaining; "The program has no expiration date..."</td></tr>
         <tr><td>Q1 2026</td><td>2.2M sh / $1.0B (Q)</td><td>$2.3B remaining</td></tr>
+        <tr><td>Q2 2026</td><td>1.105M sh / $531.7M (Q); 3.275M sh / $1.5B (6M)</td><td>$1.8B remaining; no new authorization</td></tr>
       </tbody>
     </table>
   </div>
@@ -1298,7 +1447,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q2 2025</td><td>Carried verbatim (MD&amp;A sentence retained through the divestiture rewrite)</td></tr>
         <tr><td>Q3 2025</td><td>Carried; heading drops "recently"</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-neg">All forward-looking mentions removed; one retrospective sentence: "...but we ultimately did not enter into a transaction." MD&amp;A sentence disappears with the strategic-partnerships factor</td></tr>
-        <tr><td>Q1 2026</td><td>Retrospective sentence carried verbatim</td></tr>
+        <tr><td>Q1&ndash;Q2 2026</td><td>Retrospective sentence carried verbatim</td></tr>
       </tbody>
     </table>
   </div>
@@ -1318,6 +1467,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2025</td><td>Unchanged</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">New false-statements/reputation paragraph in brand factor</td></tr>
         <tr><td>Q1 2026</td><td class="val-new">New litigation-defensive Item 1A preamble ("References to past events are provided by way of example only...")</td></tr>
+        <tr><td>Q2 2026</td><td>Preamble, short-seller bullet, and both litigation sections carried verbatim; the brand factor loses its Axon-branding sentence</td></tr>
       </tbody>
     </table>
   </div>
@@ -1336,6 +1486,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1&ndash;Q2 2025</td><td>68%</td><td>Unchanged</td></tr>
         <tr><td>Q3 2025 &ndash; FY2025 10-K</td><td>~67%</td><td>Unchanged</td></tr>
         <tr><td>Q1 2026</td><td>~67%</td><td class="val-new">Foroughi no longer described as "Chairperson" (two locations)</td></tr>
+        <tr><td>Q2 2026</td><td>~67%</td><td>Unchanged; "Chairperson" still absent</td></tr>
       </tbody>
     </table>
   </div>
@@ -1355,6 +1506,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2025</td><td class="val-new">Amended Complaint filed Sep 12, 2025, adding Basil Shikin as defendant; class period narrowed to November 7, 2024 &ndash; March 27, 2025</td></tr>
         <tr><td>FY2025 10-K</td><td>Motion to dismiss filed November 2025; hearing scheduled March 2026</td></tr>
         <tr><td>Q1 2026</td><td>Motion to dismiss "fully briefed as of February 2026" (hearing-date sentence replaced)</td></tr>
+        <tr><td>Q2 2026</td><td>Byte-identical to Q1 2026 apart from the page number &mdash; no ruling disclosed five months after full briefing</td></tr>
       </tbody>
     </table>
     <p>The loss-estimate sentence introduced in Q1 2025 is retained in every subsequent filing: "...it is not possible to determine the ultimate outcome at this time, and thus we cannot reasonably estimate the maximum potential exposure or range of possible loss."</p>
@@ -1449,6 +1601,14 @@ a:hover { text-decoration: underline; }
         <td class="val-new">+93% / <span class="val-neg">&minus;18%</span></td>
         <td>$1.0B (Q); $2.3B remaining</td>
         <td>Cash $2.8B; R&amp;D +67%; "increased publisher payments" named as cash outflow driver</td>
+      </tr>
+      <tr>
+        <td><strong>Q2 2026</strong></td>
+        <td>$1,923.7M (+53%)</td>
+        <td>&mdash;</td>
+        <td>+58% / <span class="val-neg">&minus;2%</span></td>
+        <td>$531.7M (Q); $1.8B remaining</td>
+        <td class="val-new">Cash $3.1B; net income $1,266.5M (65.8% margin); Adj. EBITDA $1,613.8M (83.9%); Axon Ads Manager renamed AppLovin Ads</td>
       </tr>
     </tbody>
   </table>
