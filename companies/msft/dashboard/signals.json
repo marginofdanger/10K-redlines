@@ -1,0 +1,295 @@
+{
+ "signals": [
+  {
+   "id": "sig-capex",
+   "title": "Capital Expenditures and the Forward-Capex Sentence",
+   "cards": [
+    {
+     "title": "Additions to property and equipment; “Other Planned Uses of Capital” sentence, FY2019–FY2026",
+     "html": "<p>Cash-flow additions to property and equipment, gross and net PP&amp;E (property and equipment note), and the object of the forward-capex sentence in MD&amp;A.</p><table class=\"data-table\"><thead><tr><th>Year</th><th>Additions to P&amp;E ($M)</th><th>Gross PP&amp;E ($M)</th><th>Net PP&amp;E ($M)</th><th>Depreciation ($B)</th><th>Forward sentence</th></tr></thead><tbody><tr><td>FY2019</td><td>13,925</td><td>71,807</td><td>36,477</td><td>9.7</td><td>“expect … to increase” — cloud offerings</td></tr><tr><td>FY2020</td><td>15,441</td><td>87,348</td><td>44,151</td><td>10.7</td><td>same</td></tr><tr><td>FY2021</td><td>20,622</td><td>111,066</td><td>59,715</td><td>9.3</td><td>same</td></tr><tr><td>FY2022</td><td>23,886</td><td>134,058</td><td>74,398</td><td>12.6</td><td>same</td></tr><tr><td>FY2023</td><td>28,107</td><td>163,892</td><td>95,641</td><td>11.0</td><td>+ “AI infrastructure”</td></tr><tr><td>FY2024</td><td>44,477</td><td>212,012</td><td>135,591</td><td>15.2</td><td>+ “AI infrastructure and training”</td></tr><tr><td>FY2025</td><td>64,551</td><td>298,619</td><td>204,966</td><td>22.0</td><td>“will continue to invest”</td></tr><tr><td>FY2026</td><td>115,948</td><td>431,767</td><td>313,076</td><td>34.3</td><td>“AI training and other infrastructure”</td></tr></tbody></table><blockquote>FY2022: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings.\"</blockquote><blockquote>FY2023: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings <strong>and our investments in AI infrastructure</strong>.\"</blockquote><blockquote>FY2024: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings and our investments in AI infrastructure <strong>and training</strong>.\"</blockquote><blockquote>FY2025: \"We <strong>will continue to invest in capital expenditures</strong> to support growth in our cloud offerings and our investments in AI infrastructure and training.\"</blockquote><blockquote>FY2026: \"We will continue to invest in capital expenditures to support growth in our cloud offerings and our investments in <strong>AI training and other infrastructure</strong>.\"</blockquote><p>The FY2019–FY2022 sentence is identical. PP&amp;E purchases recorded in accounts payable: $3.8B (FY2023), $4.3B (FY2024), $6.9B (FY2025), $26.7B (FY2026).</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-leases",
+   "title": "Leases Not Yet Commenced and Contractual Obligations",
+   "cards": [
+    {
+     "title": "“Not yet commenced” lease sentence (Leases note)",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Operating ($B)</th><th>Finance ($B)</th><th>Total ($B)</th><th>Commencement window</th><th>Lease terms</th><th>Finance lease liabilities ($M)</th></tr></thead><tbody><tr><td>FY2019</td><td>2.3</td><td>6.1</td><td>8.4</td><td>FY2020–FY2022</td><td>1–15 yrs</td><td>6,574</td></tr><tr><td>FY2020</td><td>3.4</td><td>3.5</td><td>6.9</td><td>FY2021–FY2023</td><td>1–16 yrs</td><td>9,496</td></tr><tr><td>FY2021</td><td>5.4</td><td>7.3</td><td>12.7</td><td>FY2022–FY2026</td><td>1–15 yrs</td><td>12,541</td></tr><tr><td>FY2022</td><td>7.2</td><td>8.8</td><td>16.0</td><td>FY2023–FY2028</td><td>1–18 yrs</td><td>14,902</td></tr><tr><td>FY2023</td><td>7.7</td><td>34.4</td><td>42.1</td><td>FY2024–FY2030</td><td>1–18 yrs</td><td>17,067</td></tr><tr><td>FY2024</td><td>8.6</td><td>108.4</td><td>117.0</td><td>FY2025–FY2030</td><td>1–20 yrs</td><td>27,145</td></tr><tr><td>FY2025</td><td>not split</td><td>not split</td><td>92.7</td><td>FY2026–FY2031</td><td>1–20 yrs</td><td>46,172</td></tr><tr><td>FY2026</td><td>not split</td><td>not split</td><td>329.1</td><td>FY2027–FY2033</td><td>1–20 yrs</td><td>66,594</td></tr></tbody></table><p>FY2019–FY2024 totals are the sum of the separately stated operating and finance amounts.</p><blockquote>FY2024: \"…we had additional operating and finance leases, primarily for datacenters, that had not yet commenced of $8.6 billion and $108.4 billion, respectively.\"</blockquote><blockquote>FY2025: \"…we had additional <strong>leases</strong>, primarily for datacenters, that had not yet commenced of $92.7 billion.\"</blockquote><blockquote>FY2026: \"…we had additional leases, primarily for datacenters, that had not yet commenced of $329.1 billion<strong>, with some arrangements subject to certain contractual conditions being met</strong>.\"</blockquote><blockquote>FY2025: \"We have operating and finance leases for datacenters, corporate offices, research and development facilities, <strong>Microsoft Experience Centers</strong>, and certain equipment.\"</blockquote><blockquote>FY2026: \"We have operating and finance leases for datacenters <strong>and related infrastructure, servers and network equipment</strong>, corporate offices, and research and development facilities.\"</blockquote>"
+    },
+    {
+     "title": "Contractual obligations table (MD&amp;A)",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Purchase commitments, total ($M)</th><th>Construction commitments, total ($M)</th><th>Leases incl. imputed interest ($M)</th><th>Total contractual obligations ($M)</th></tr></thead><tbody><tr><td>FY2019</td><td>19,161</td><td>3,958</td><td>25,834</td><td>178,371</td></tr><tr><td>FY2020</td><td>27,024</td><td>5,041</td><td>29,266</td><td>178,965</td></tr><tr><td>FY2021</td><td>31,553</td><td>9,456</td><td>40,440</td><td>183,850</td></tr><tr><td>FY2022</td><td>45,654</td><td>8,518</td><td>48,654</td><td>180,944</td></tr><tr><td>FY2023</td><td>67,818</td><td>13,455</td><td>79,840</td><td>235,104</td></tr><tr><td>FY2024</td><td>72,022</td><td>35,391</td><td>172,725</td><td>360,018</td></tr><tr><td>FY2025</td><td>109,953</td><td>32,149</td><td>178,701</td><td>397,045</td></tr><tr><td>FY2026</td><td>194,060</td><td>34,566</td><td>443,506</td><td>743,821</td></tr></tbody></table><blockquote>FY2021: \"Amounts represent purchase commitments, including open purchase orders and take-or-pay contracts that are not presented as construction commitments above.\"</blockquote><blockquote>FY2022: \"Purchase commitments <strong>primarily relate to datacenters and</strong> include open purchase orders and take-or-pay contracts that are not presented as construction commitments above.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-cloud-margin",
+   "title": "Microsoft Cloud Revenue and Gross Margin Driver Wording",
+   "cards": [
+    {
+     "title": "Microsoft Cloud (formerly commercial cloud) gross margin percentage sentence",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Metric name</th><th>Revenue ($B)</th><th>Gross margin % (as stated)</th><th>Stated driver</th></tr></thead><tbody><tr><td>FY2019</td><td>commercial cloud</td><td>38.1</td><td>not stated as a level</td><td>“5 percentage point improvement … primarily from Azure”</td></tr><tr><td>FY2020</td><td>commercial cloud</td><td>51.7</td><td>+4 pts to 67%</td><td>improvement in Azure</td></tr><tr><td>FY2021</td><td>commercial cloud</td><td>69.1</td><td>+4 pts to 71%</td><td>Azure; useful-life change; offset by mix shift to Azure</td></tr><tr><td>FY2022</td><td>Microsoft Cloud</td><td>91.2</td><td>decreased slightly to 70%</td><td>ex-estimate change +3 pts; offset by mix shift</td></tr><tr><td>FY2023</td><td>Microsoft Cloud</td><td>111.6</td><td>+2 pts to 72%</td><td>ex-estimate change decreased slightly; decline in Azure</td></tr><tr><td>FY2024</td><td>Microsoft Cloud</td><td>137.4</td><td>decreased slightly to 71%</td><td>Azure and Office 365, “inclusive of scaling our AI infrastructure”</td></tr><tr><td>FY2025</td><td>Microsoft Cloud</td><td>168.9</td><td>decreased to 69%</td><td>“impact of scaling our AI infrastructure”</td></tr><tr><td>FY2026</td><td>Microsoft Cloud</td><td>214.4</td><td>decreased to 66%</td><td>“continued investments in AI infrastructure and growing AI product usage”</td></tr></tbody></table><p>Revenue as first reported in each year’s 10-K. FY2022 was revised to $91.4B in the FY2023 10-K and FY2024 to $137.7B in the FY2025 10-K.</p><blockquote>FY2020: \"Commercial cloud gross margin percentage increased 4 points to 67%, primarily driven by improvement in Azure.\"</blockquote><blockquote>FY2024: \"Microsoft Cloud gross margin percentage decreased slightly to 71%. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, <strong>inclusive of scaling our AI infrastructure</strong>, offset in part by sales mix shift to Azure.\"</blockquote><blockquote>FY2025: \"Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure.\"</blockquote><blockquote>FY2026: \"Microsoft Cloud gross margin percentage decreased to 66% driven by <strong>continued investments in AI infrastructure and growing AI product usage</strong>, offset in part by efficiency gains in Azure <strong>and Microsoft 365 Commercial cloud</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Segment and metric definition changes",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Change</th></tr></thead><tbody><tr><td>FY2022</td><td>“commercial cloud” renamed “Microsoft Cloud”</td></tr><tr><td>FY2024</td><td>Microsoft Cloud revenue metric revised; Microsoft 365 Consumer subscribers expanded to include Basic</td></tr><tr><td>FY2025</td><td>Segments recast for August 2024 changes (commercial Microsoft 365 moved into Productivity and Business Processes); “other commercial cloud properties” dropped from Microsoft Cloud definition</td></tr><tr><td>FY2026</td><td>“following three segments”; AI infrastructure and training added to allocated operating expenses; Gaming → XBOX; Search and news advertising → Search advertising; Nuance Healthcare cloud services → Health and Life Sciences cloud services</td></tr></tbody></table><blockquote>FY2022: \"Our Microsoft Cloud (formerly commercial cloud) revenue, which includes Azure and other cloud services, Office 365 Commercial, the commercial portion of LinkedIn, Dynamics 365, and other commercial cloud properties, was $91.2 billion, $69.1 billion and $51.7 billion in fiscal years 2022, 2021, and 2020, respectively.\"</blockquote><blockquote>FY2025: \"In August 2024, we announced changes to the composition of our segments.\"</blockquote><blockquote>FY2025: \"Operating expenses that are allocated primarily include those relating to marketing of products and services from which multiple segments benefit and are generally allocated based on relative gross margin.\"</blockquote><blockquote>FY2026: \"Operating expenses that are allocated primarily include those relating to <strong>our investments in AI infrastructure and training, as well as</strong> marketing of products and services, from which multiple segments benefit and are generally allocated based on relative gross margin.\"</blockquote><p>FY2026 segment results: PBP operating income $83,879M; IC operating income $56,972M (IC cost of revenue $57,876M vs. $40,171M in FY2025); MPC operating income $14,386M.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-rpo",
+   "title": "Remaining Performance Obligations",
+   "cards": [
+    {
+     "title": "RPO size, commercial portion and share recognized in the next 12 months",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Total RPO ($B)</th><th>Commercial RPO ($B)</th><th>% in next 12 months</th><th>Unearned revenue ($M)</th></tr></thead><tbody><tr><td>FY2019</td><td>91 (“contracted not recognized”)</td><td>—</td><td>~50%</td><td>37,206</td></tr><tr><td>FY2020</td><td>111</td><td>107</td><td>~50%</td><td>39,180</td></tr><tr><td>FY2021</td><td>146</td><td>141</td><td>~50%</td><td>44,141</td></tr><tr><td>FY2022</td><td>193</td><td>189</td><td>~45%</td><td>48,408</td></tr><tr><td>FY2023</td><td>229</td><td>224</td><td>~45%</td><td>53,813</td></tr><tr><td>FY2024</td><td>275</td><td>269</td><td>~45%</td><td>60,184</td></tr><tr><td>FY2025</td><td>375</td><td>368</td><td>~40%</td><td>67,265</td></tr><tr><td>FY2026</td><td>684</td><td>678</td><td>~30%</td><td>75,712</td></tr></tbody></table><blockquote>FY2025: \"We expect to recognize approximately 40% of our total company remaining performance obligation revenue over the next 12 months and the remainder thereafter.\"</blockquote><blockquote>FY2026: \"Revenue allocated to remaining performance obligations related to the commercial portion of revenue was $678 billion as of June 30, 2026, with a weighted average duration of approximately 2.3 years.\"</blockquote><blockquote>FY2026: \"We expect to recognize approximately <strong>30%</strong> of <strong>both</strong> our total company remaining performance obligation revenue <strong>and commercial remaining performance obligation revenue</strong> over the next 12 months and the remainder thereafter.\"</blockquote><p>FY2026 also adds RPO as a critical accounting estimate in MD&amp;A and a judgment sentence in the Note 1 revenue policy:</p><blockquote>FY2026: \"Estimating revenue that will be allocated to remaining performance obligations can involve significant judgments, including identifying and assessing variable consideration and potential renegotiation of commitments.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-openai",
+   "title": "OpenAI Disclosure Arc",
+   "cards": [
+    {
+     "title": "Where and how OpenAI appears, FY2023–FY2026",
+     "html": "<p>No mention of OpenAI in the FY2019–FY2022 filings.</p><table class=\"data-table\"><thead><tr><th>Item</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr></thead><tbody><tr><td>Lines mentioning OpenAI (full filing)</td><td>3</td><td>5</td><td>7</td><td>20</td></tr><tr><td>Business-section partnership paragraph</td><td>Yes</td><td>Yes</td><td>Removed</td><td>—</td></tr><tr><td>MD&amp;A partnership paragraph</td><td>—</td><td>—</td><td>New</td><td>Rewritten</td></tr><tr><td>Accounting described</td><td>—</td><td>—</td><td>Equity method; $13B commitment</td><td>Equity method; ~25% as-converted; HLBV; related party (ASC 850)</td></tr><tr><td>Net gains (losses) in other income ($M)</td><td>—</td><td>(1,482)*</td><td>(4,763)*</td><td>6,530</td></tr><tr><td>Revenue from OpenAI</td><td>—</td><td>—</td><td>—</td><td>$24.1B</td></tr><tr><td>Accounts receivable from OpenAI</td><td>—</td><td>—</td><td>—</td><td>$6.0B</td></tr><tr><td>Funded of $13.0B commitment</td><td>—</td><td>—</td><td>not stated</td><td>$11.9B</td></tr></tbody></table><p>* FY2024 and FY2025 amounts first disclosed in the FY2026 10-K.</p><blockquote>FY2023: \"We have a long-term partnership with OpenAI, a leading AI research and deployment company. We deploy OpenAI’s models across our consumer and enterprise products. As OpenAI’s exclusive cloud provider, Azure powers all of OpenAI's workloads.\"</blockquote><blockquote>FY2025: \"Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products. The OpenAI API is exclusive to Azure, runs on Azure, and is available through the Azure OpenAI Service. We also have a right of first refusal on OpenAI's new capacity needs.\"</blockquote><blockquote>FY2026: \"Microsoft is a major investor in OpenAI and <strong>will continue to receive revenue-sharing payments</strong>. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products.\"</blockquote><p>The FY2026 MD&amp;A paragraph no longer contains the “exclusive to Azure” or “right of first refusal” sentences.</p>"
+    },
+    {
+     "title": "Risk factors and notes",
+     "html": "<blockquote>FY2025: \"In January 2023 we announced the third phase of our OpenAI strategic partnership.\"</blockquote><blockquote>FY2026: \"Additionally, we have a long-term strategic partnership with OpenAI.\"</blockquote><blockquote>FY2025: \"We have an investment in OpenAI Global, LLC (“OpenAI”) and have made total funding commitments of $13 billion. The investment is accounted for under the equity method of accounting.\"</blockquote><blockquote>FY2026: \"We have an investment accounted for under the equity method that represents an approximate 25% interest on an as-converted basis.\"</blockquote><blockquote>FY2026: \"For fiscal year 2026, we recorded revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments, of $24.1 billion, and accounts receivable from OpenAI as of June 30, 2026 was $6.0 billion.\"</blockquote><blockquote>FY2026: \"Adjusted other income (expense), net, adjusted net income, and adjusted diluted EPS are non-GAAP financial measures which exclude net (gains) losses from investments in OpenAI.\"</blockquote><p>The FY2023–FY2025 risk-factor sentence “This AI may be developed by Microsoft or others, including our strategic partner, OpenAI.” is not present in FY2026.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-ai-language",
+   "title": "AI Language: Mission Statement and Risk Factors",
+   "cards": [
+    {
+     "title": "Count of the word “AI” by section, and the AI risk-factor heading",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Business</th><th>Risk Factors</th><th>MD&amp;A</th><th>Full filing</th><th>AI risk-factor heading</th></tr></thead><tbody><tr><td>FY2019</td><td>16</td><td>11</td><td>3</td><td>30</td><td>Issues in the use of AI in our offerings may result in reputational harm or liability</td></tr><tr><td>FY2020</td><td>19</td><td>11</td><td>2</td><td>32</td><td>same</td></tr><tr><td>FY2021</td><td>21</td><td>11</td><td>0</td><td>33</td><td>same</td></tr><tr><td>FY2022</td><td>18</td><td>14</td><td>1</td><td>34</td><td>Issues in the development and use of AI may result in reputational harm or liability</td></tr><tr><td>FY2023</td><td>47</td><td>33</td><td>3</td><td>84</td><td>…reputational or competitive harm or liability</td></tr><tr><td>FY2024</td><td>66</td><td>47</td><td>6</td><td>122</td><td>same</td></tr><tr><td>FY2025</td><td>36</td><td>50</td><td>13</td><td>104</td><td>Issues in the development, deployment, and use of AI…</td></tr><tr><td>FY2026</td><td>42</td><td>81</td><td>20</td><td>149</td><td>same</td></tr></tbody></table><p>Counts are whole-word matches of “AI” in the extracted section text.</p><blockquote>FY2023: \"Microsoft is a technology company whose mission is to empower every person and every organization on the planet to achieve more.\"</blockquote><blockquote>FY2024: \"Microsoft is a technology company <strong>committed to making digital technology and artificial intelligence (“AI”) available broadly and doing so responsibly</strong>, with a mission to empower every person and every organization on the planet to achieve more.\"</blockquote><blockquote>FY2025: \"Microsoft is a technology company committed to making digital technology and artificial intelligence (“AI”) available broadly and doing so responsibly. <strong>Our mission is</strong> to empower every person and every organization on the planet to achieve more.\"</blockquote>"
+    },
+    {
+     "title": "Cloud risk factor: heading and infrastructure-cost sentence",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Heading</th></tr></thead><tbody><tr><td>FY2019–FY2023</td><td>Our increasing focus on cloud-based services presents execution and competitive risks.</td></tr><tr><td>FY2024–FY2025</td><td>Our focus on cloud-based and AI services presents execution and competitive risks.</td></tr><tr><td>FY2026</td><td>Our success depends on our ability to develop, deliver, and maintain competitive cloud-based and AI products and services that achieve broad customer adoption and sustainable revenue growth.</td></tr></tbody></table><blockquote>FY2023: \"Besides software development costs, we are incurring costs to build and maintain infrastructure to support cloud computing services. These costs will reduce the operating margins we have previously achieved.\"</blockquote><blockquote>FY2024: \"We are incurring <strong>significant</strong> costs to build and maintain infrastructure to support cloud computing <strong>and AI</strong> services. These costs will reduce the operating margins.\"</blockquote><blockquote>FY2025: \"We are incurring significant costs to build and maintain infrastructure to support cloud-based and AI services, <strong>reducing operating margins</strong>.\"</blockquote><blockquote>FY2026: \"These investments are being made at significant scale and on an accelerated timeline, require substantial and increasing capital expenditures and continued access to capital, and are in advance of fully developed revenue streams.\"</blockquote><blockquote>FY2026: \"Overestimation of demand or misalignment of capacity investments may result in underutilization of infrastructure and may lead to impairment of assets on our balance sheet.\"</blockquote><blockquote>FY2026: \"The availability, reliability, and cost of electrical power are critical to the operation and expansion of our datacenters.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-headcount",
+   "title": "Headcount and Human Capital Wording",
+   "cards": [
+    {
+     "title": "Full-time employees by geography and function (Item 1)",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Total</th><th>U.S.</th><th>International</th><th>Operations</th><th>Product R&amp;D</th><th>Sales &amp; marketing</th><th>G&amp;A</th><th>Human Capital text (chars)</th></tr></thead><tbody><tr><td>FY2019</td><td>144,000</td><td>85,000</td><td>59,000</td><td>47,000</td><td>47,000</td><td>38,000</td><td>12,000</td><td>no section</td></tr><tr><td>FY2020</td><td>163,000</td><td>96,000</td><td>67,000</td><td>56,000</td><td>55,000</td><td>40,000</td><td>12,000</td><td>no section</td></tr><tr><td>FY2021</td><td>181,000</td><td>103,000</td><td>78,000</td><td>67,000</td><td>60,000</td><td>40,000</td><td>14,000</td><td>~10,500</td></tr><tr><td>FY2022</td><td>221,000</td><td>122,000</td><td>99,000</td><td>85,000</td><td>73,000</td><td>47,000</td><td>16,000</td><td>~11,500</td></tr><tr><td>FY2023</td><td>221,000</td><td>120,000</td><td>101,000</td><td>89,000</td><td>72,000</td><td>45,000</td><td>15,000</td><td>~7,700</td></tr><tr><td>FY2024</td><td>228,000</td><td>126,000</td><td>102,000</td><td>86,000</td><td>81,000</td><td>45,000</td><td>16,000</td><td>~3,100</td></tr><tr><td>FY2025</td><td>228,000</td><td>125,000</td><td>103,000</td><td>89,000</td><td>80,000</td><td>44,000</td><td>15,000</td><td>~1,500</td></tr><tr><td>FY2026</td><td>223,000</td><td>121,000</td><td>102,000</td><td>89,000</td><td>77,000</td><td>43,000</td><td>14,000</td><td>~1,500</td></tr></tbody></table><p>FY2026 is the first year-over-year decline in total headcount in the series. FY2023 disclosed a $1.2B Q2 charge including $800M of severance and ~10,000 job reductions; no charge is disclosed in FY2025 or FY2026, and FY2026 removes “employee severance expense incurred as part of a corporate program” from the G&amp;A expense definition. “diversity” / “inclusion” appear 0 times in the FY2025 and FY2026 Business sections (FY2022: 9 / 15).</p><blockquote>FY2025: \"As of June 30, 2025, we employed approximately 228,000 people on a full-time basis, 125,000 in the U.S. and 103,000 internationally.\"</blockquote><blockquote>FY2026: \"As of June 30, 2026, we employed approximately <strong>223,000</strong> people on a full-time basis, <strong>121,000</strong> in the U.S. and <strong>102,000</strong> internationally.\"</blockquote><blockquote>FY2023: \"Diversity and inclusion are core to our business model, and we hold ourselves accountable for driving global systemic change in our workforce and creating an inclusive work environment.\"</blockquote><blockquote>FY2024: \"Diversity and inclusion are core to our business.\"</blockquote><blockquote>FY2025: \"Our total compensation offering is both highly differentiated and competitive within the market, and we also monitor pay equity across multiple dimensions.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-competitors",
+   "title": "Competitor Naming",
+   "cards": [
+    {
+     "title": "Named companies in the Business section (whole-word counts)",
+     "html": "<table class=\"data-table\"><thead><tr><th>Name</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr></thead><tbody><tr><td>Amazon</td><td>2</td><td>2</td><td>2</td><td>2</td><td>4</td><td>3</td><td>0</td><td>0</td></tr><tr><td>Google</td><td>6</td><td>6</td><td>6</td><td>6</td><td>6</td><td>6</td><td>0</td><td>0</td></tr><tr><td>Apple</td><td>5</td><td>5</td><td>5</td><td>5</td><td>5</td><td>5</td><td>0</td><td>0</td></tr><tr><td>Meta / Facebook</td><td>0 / 2</td><td>0 / 3</td><td>0 / 3</td><td>3 / 0</td><td>4 / 0</td><td>5 / 0</td><td>0 / 0</td><td>0 / 0</td></tr><tr><td>IBM</td><td>9</td><td>9</td><td>9</td><td>9</td><td>8</td><td>8</td><td>0</td><td>0</td></tr><tr><td>Oracle</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td>0</td><td>0</td></tr><tr><td>Salesforce</td><td>2</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td>VMware</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Broadcom</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td><td>0</td></tr><tr><td>OpenAI</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>4</td><td>0</td><td>0</td></tr></tbody></table><blockquote>FY2024: \"Azure faces diverse competition from companies such as Amazon, Broadcom, Google, IBM, Oracle, and open source offerings.\"</blockquote><blockquote>FY2025: \"Azure faces diverse competition from <strong>cloud service providers</strong> and open source offerings.\"</blockquote><blockquote>FY2023: \"Our Search and news advertising business competes with Google and a wide array of websites, social platforms like Meta, and portals that provide content and online offerings to end users.\"</blockquote><blockquote>FY2024: \"Our Search and news advertising business competes with Google, <strong>OpenAI</strong>, and a wide array of websites, social platforms like Meta, and portals that provide content and online offerings to end users.\"</blockquote><blockquote>FY2025: \"Our Search and news advertising business competes with <strong>search engines</strong>, and a wide array of websites, social platforms, and portals that provide content and online offerings to end users.\"</blockquote><blockquote>FY2024: \"Xbox and our cloud gaming services face competition from various online gaming ecosystems and game streaming services, including those operated by Amazon, Apple, Meta, and Tencent.\"</blockquote><blockquote>FY2025: \"Xbox and our cloud gaming services face competition from various online gaming ecosystems and game streaming services.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-useful-life",
+   "title": "Server and Network Equipment Useful-Life Changes",
+   "cards": [
+    {
+     "title": "Useful-life policy and disclosed estimate changes",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Computer / server equipment life (policy)</th><th>Internal-use software</th><th>Leasehold improvements</th><th>Estimate change disclosed</th></tr></thead><tbody><tr><td>FY2019</td><td>2–3 yrs</td><td>3–7 yrs</td><td>3–20 yrs</td><td>—</td></tr><tr><td>FY2020</td><td>2–3 yrs</td><td>3–7 yrs</td><td>3–20 yrs</td><td>July 2020: servers 3→4 yrs, network 2→4 yrs; est. +$2.7B FY2021 operating income</td></tr><tr><td>FY2021</td><td>2–4 yrs</td><td>3–7 yrs</td><td>3–20 yrs</td><td>Effect: +$2.7B operating income, +$2.3B net income, $0.30/share</td></tr><tr><td>FY2022</td><td>2–4 yrs</td><td>3–7 yrs</td><td>3–20 yrs</td><td>July 2022: both 4→6 yrs; est. +$3.7B FY2023 operating income</td></tr><tr><td>FY2023</td><td>2–6 yrs</td><td>3 yrs</td><td>3–20 yrs</td><td>Effect: +$3.7B operating income, +$3.0B net income, $0.40/share</td></tr><tr><td>FY2024</td><td>2–6 yrs</td><td>3 yrs</td><td>3–20 yrs</td><td>July 2022 paragraph retained (first three sentences)</td></tr><tr><td>FY2025</td><td>2–6 yrs</td><td>3 yrs</td><td>3–15 yrs</td><td>Paragraph removed</td></tr><tr><td>FY2026</td><td>2–6 yrs (“servers and network equipment”)</td><td>3 yrs</td><td>3–15 yrs</td><td>None</td></tr></tbody></table><blockquote>FY2020: \"In July 2020, we completed an assessment of the useful lives of our server and network equipment and determined we should increase the estimated useful life of server equipment from three years to four years and increase the estimated useful life of network equipment from two years to four years.\"</blockquote><blockquote>FY2022: \"Due to investments in software that increased efficiencies in how we operate our server and network equipment, as well as advances in technology, we determined we should increase the estimated useful lives of both server and network equipment from four years to six years.\"</blockquote><blockquote>FY2025: \"…software developed or acquired for internal use, three years; <strong>computer equipment</strong>, two to six years; buildings and improvements, five to 15 years; leasehold improvements, three to 15 years…\"</blockquote><blockquote>FY2026: \"…software developed or acquired for internal use, three years; <strong>servers and network equipment</strong>, two to six years; buildings and improvements, five to 15 years; leasehold improvements, three to 15 years…\"</blockquote><p>The PP&amp;E line item “Computer equipment and software” is renamed “Servers, network equipment, and software” in FY2026 ($132,836M FY2025; $215,874M FY2026).</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-tax",
+   "title": "Income Tax: Effective Rate, Uncertain Positions and the IRS NOPAs",
+   "cards": [
+    {
+     "title": "ETR, unrecognized tax benefits and IRS audit status",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>ETR (MD&amp;A)</th><th>Gross UTB ($B)</th><th>Accrued interest on UTPs ($B)</th><th>IRS audit status (Uncertain Tax Positions note)</th></tr></thead><tbody><tr><td>FY2019</td><td>10%</td><td>13.1</td><td>3.4</td><td>Under audit 2004–2013; 2014–2017 exam expected</td></tr><tr><td>FY2020</td><td>17%</td><td>13.8</td><td>4.0</td><td>2014–2017 audit commenced April 2020</td></tr><tr><td>FY2021</td><td>14%</td><td>14.6</td><td>4.3</td><td>Portion of 2004–2013 settled ($1.7B paid); under audit 2004–2017</td></tr><tr><td>FY2022</td><td>13%</td><td>15.6</td><td>4.3</td><td>same</td></tr><tr><td>FY2023</td><td>19%</td><td>17.1</td><td>5.2</td><td>same</td></tr><tr><td>FY2024</td><td>18%</td><td>22.8</td><td>6.8</td><td>NOPAs received 9/26/2023: $28.9B plus penalties and interest</td></tr><tr><td>FY2025</td><td>18%</td><td>24.7</td><td>8.2</td><td>same</td></tr><tr><td>FY2026</td><td>19%</td><td>25.8</td><td>9.4</td><td>same; two closing sentences removed</td></tr></tbody></table><blockquote>FY2019: \"We have not received a proposed assessment for the unresolved issues and do not expect a final resolution of these issues in the next 12 months.\"</blockquote><blockquote>FY2024: \"In the NOPAs, the IRS is seeking an additional tax payment of $28.9 billion plus penalties and interest.\"</blockquote><blockquote>FY2025: \"We disagree with the proposed adjustments and will vigorously contest the NOPAs through the IRS’s administrative appeals office and, if necessary, judicial proceedings. <strong>We do not expect a final resolution of these issues in the next 12 months. Based on the information currently available, we do not anticipate a significant increase or decrease to our income tax contingencies for these issues within the next 12 months.</strong>\"</blockquote><blockquote>FY2026: \"We disagree with the proposed adjustments and will vigorously contest the NOPAs through the IRS’s administrative appeals office and, if necessary, judicial proceedings.\"</blockquote><p>Pillar Two paragraph in MD&amp;A: added FY2024 (“will apply”), FY2025 (“applies”), absent FY2026. The FY2025 OBBBA paragraph is absent in FY2026. FY2026 is the first rate reconciliation under ASU 2023-09 (19.4%). Deferred tax liability for depreciation: $5,699M (FY2025) → $17,675M (FY2026).</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-contingencies",
+   "title": "Contingencies Note: Matters, Accrual and Reasonably Possible Range",
+   "cards": [
+    {
+     "title": "Matters described and aggregate legal accrual",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Matters described (headings)</th><th>Accrued legal liabilities ($M)</th><th>Reasonably possible beyond accrual</th></tr></thead><tbody><tr><td>FY2019</td><td>Patent claims (44 cases); Canadian antitrust class actions; China SAMR; U.S. cell phone (40 suits); Moussouris</td><td>386</td><td>~$1.0B</td></tr><tr><td>FY2020</td><td>Patent (64); Canadian class actions; China SAMR; U.S. cell phone (40)</td><td>306</td><td>~$500M</td></tr><tr><td>FY2021</td><td>Patent (63); Canadian class actions; China SAMR; U.S. cell phone (46)</td><td>339</td><td>~$500M</td></tr><tr><td>FY2022</td><td>China SAMR; U.S. cell phone (46)</td><td>364</td><td>~$600M</td></tr><tr><td>FY2023</td><td>U.S. cell phone (46); Irish DPC (LinkedIn) — new</td><td>617</td><td>~$600M</td></tr><tr><td>FY2024</td><td>U.S. cell phone (45); Irish DPC</td><td>641</td><td>~$600M</td></tr><tr><td>FY2025</td><td>Irish DPC</td><td>541</td><td>~$600M</td></tr><tr><td>FY2026</td><td>Irish DPC</td><td>553</td><td>~$400M</td></tr></tbody></table><blockquote>FY2024: \"In April 2023, the IDPC provided LinkedIn with a non-public preliminary draft decision alleging GDPR violations and proposing a fine.\"</blockquote><blockquote>FY2025: \"In October 2024, the IDPC provided LinkedIn with a <strong>final decision</strong> alleging GDPR violations and <strong>assessing a fine</strong>. In November 2024, LinkedIn appealed the final decision to the Irish courts, and the next hearing is scheduled for December 2025.\"</blockquote><blockquote>FY2026: \"In November 2024, LinkedIn appealed the final decision. A preliminary hearing was held in December 2025. The court issued a ruling on the standard of appeal, which the IDPC may appeal.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-sustainability",
+   "title": "Sustainability Commitment Wording",
+   "cards": [
+    {
+     "title": "The 2030 carbon / water / waste sentence (Item 1)",
+     "html": "<table class=\"data-table\"><thead><tr><th>Year</th><th>Framing of the 2030 targets</th></tr></thead><tbody><tr><td>FY2019</td><td>No carbon-negative commitment in Item 1</td></tr><tr><td>FY2020</td><td>“By 2030 Microsoft will be carbon negative”</td></tr><tr><td>FY2021–FY2022</td><td>“a bold commitment and detailed plan to be carbon negative by 2030”; water positive and zero waste added</td></tr><tr><td>FY2023–FY2024</td><td>“we committed to being a carbon negative, water positive, and zero waste company by 2030”</td></tr><tr><td>FY2025</td><td>“we announced goals to become”; “made meaningful progress”; “major changes” sentence added</td></tr><tr><td>FY2026</td><td>“made meaningful progress” removed</td></tr></tbody></table><blockquote>FY2020: \"By 2030 Microsoft will be carbon negative, and by 2050 Microsoft will remove from the environment all the carbon the company has emitted directly or by electrical consumption since it was founded in 1975.\"</blockquote><blockquote>FY2021: \"In January 2020, we announced a bold commitment and detailed plan to be carbon negative by 2030, and to remove from the environment by 2050 all the carbon we have emitted since our founding in 1975.\"</blockquote><blockquote>FY2024: \"In 2020, we <strong>committed to being</strong> a carbon negative, water positive, and zero waste company by 2030.\"</blockquote><blockquote>FY2025: \"In 2020, we <strong>announced goals to become</strong> a carbon negative, water positive, and zero waste company by 2030. Since announcing these goals, we have <strong>made meaningful progress while having</strong> seen major changes in both the technology sector and in our understanding of what it will take to meet our goals.\"</blockquote><blockquote>FY2026: \"Since announcing these goals, we have seen major changes in both the technology sector and in our understanding of what it will take to meet our goals.\"</blockquote>"
+    }
+   ]
+  }
+ ],
+ "themes": [
+  {
+   "title": "Infrastructure spending and commitments",
+   "html": "<ul><li>Additions to P&amp;E: $13.9B (FY2019) → $44.5B (FY2024) → $115.9B (FY2026).</li><li>Gross PP&amp;E: $71.8B → $431.8B; depreciation expense $9.7B → $34.3B.</li><li>Leases not yet commenced: $8.4B (FY2019) → $117.0B (FY2024) → $329.1B (FY2026), commencing through FY2033.</li><li>Total contractual obligations: $178.4B (FY2019) → $743.8B (FY2026); purchase commitments $19.2B → $194.1B.</li></ul>"
+  },
+  {
+   "title": "Microsoft Cloud margin and backlog",
+   "html": "<ul><li>Microsoft Cloud revenue: $38.1B (FY2019) → $214.4B (FY2026).</li><li>Stated gross margin: 67% (FY2020), 72% (FY2023), 69% (FY2025), 66% (FY2026); AI infrastructure named as a driver from FY2024.</li><li>Commercial RPO: $107B (FY2020) → $678B (FY2026); share expected within 12 months ~50% → ~30%; weighted-average duration (~2.3 years) first disclosed FY2026.</li></ul>"
+  },
+  {
+   "title": "OpenAI",
+   "html": "<ul><li>First mentioned FY2023 (3 lines); 20 lines in FY2026.</li><li>Accounting first described FY2025 (equity method, $13B commitment); FY2026 adds ~25% as-converted interest, HLBV method, related-party revenue of $24.1B and receivables of $6.0B.</li><li>Other income from OpenAI investments: $(1.5)B FY2024, $(4.8)B FY2025, +$6.5B FY2026; non-GAAP measures excluding OpenAI introduced FY2026.</li></ul>"
+  },
+  {
+   "title": "Workforce",
+   "html": "<ul><li>Headcount: 144,000 (FY2019) → 228,000 (FY2024–FY2025) → 223,000 (FY2026).</li><li>Product R&amp;D headcount: 81,000 (FY2024) → 77,000 (FY2026).</li><li>Human Capital section: ~11,500 characters (FY2022) → ~1,500 (FY2025–FY2026); “diversity” and “inclusion” absent from Item 1 in FY2025–FY2026.</li></ul>"
+  },
+  {
+   "title": "Named entities removed in FY2025",
+   "html": "<ul><li>Business section competitor names (Amazon, Google, Apple, IBM, Oracle, Meta, OpenAI, Broadcom) replaced by generic categories.</li><li>OpenAI partnership paragraph removed from Business and moved to MD&amp;A.</li><li>Lease commitments no longer split between operating and finance.</li></ul>"
+  },
+  {
+   "title": "Tax",
+   "html": "<ul><li>ETR between 10% (FY2019) and 19% (FY2023, FY2026).</li><li>Gross unrecognized tax benefits: $13.1B → $25.8B; accrued interest $3.4B → $9.4B.</li><li>IRS NOPAs of $28.9B plus penalties and interest disclosed from FY2024; FY2026 drops the “no final resolution in the next 12 months” and “no significant increase or decrease” sentences.</li><li>Pillar Two and OBBBA paragraphs present in FY2025, absent in FY2026.</li></ul>"
+  },
+  {
+   "title": "Balance sheet and capital return",
+   "html": "<ul><li>Long-term debt: $66.7B (FY2019) → $31.1B (FY2026); rating AAA in every year.</li><li>Quarterly dividend: $0.46 → $0.91; dividends declared $14.1B → $27.0B.</li><li>SBC: $4.65B → $12.41B; shares authorized for future grant 98M (FY2025) → 292M (FY2026) under the new 2026 Stock Plan.</li></ul>"
+  }
+ ],
+ "ref_table": {
+  "headers": [
+   "Metric",
+   "FY2019",
+   "FY2020",
+   "FY2021",
+   "FY2022",
+   "FY2023",
+   "FY2024",
+   "FY2025",
+   "FY2026"
+  ],
+  "rows": [
+   [
+    "<strong>Revenue</strong>",
+    "$125.8B",
+    "$143.0B",
+    "$168.1B",
+    "$198.3B",
+    "$211.9B",
+    "$245.1B",
+    "$281.7B",
+    "$331.8B"
+   ],
+   [
+    "<strong>Operating income</strong>",
+    "$43.0B",
+    "$53.0B",
+    "$69.9B",
+    "$83.4B",
+    "$88.5B",
+    "$109.4B",
+    "$128.5B",
+    "$155.2B"
+   ],
+   [
+    "<strong>Net income</strong>",
+    "$39.2B",
+    "$44.3B",
+    "$61.3B",
+    "$72.7B",
+    "$72.4B",
+    "$88.1B",
+    "$101.8B",
+    "$133.7B"
+   ],
+   [
+    "<strong>Diluted EPS</strong>",
+    "$5.06",
+    "$5.76",
+    "$8.05",
+    "$9.65",
+    "$9.68",
+    "$11.80",
+    "$13.64",
+    "$17.95"
+   ],
+   [
+    "<strong>Capex (additions to P&amp;E)</strong>",
+    "$13.9B",
+    "$15.4B",
+    "$20.6B",
+    "$23.9B",
+    "$28.1B",
+    "$44.5B",
+    "$64.6B",
+    "$115.9B"
+   ],
+   [
+    "<strong>Headcount</strong>",
+    "144,000",
+    "163,000",
+    "181,000",
+    "221,000",
+    "221,000",
+    "228,000",
+    "228,000",
+    "223,000"
+   ],
+   [
+    "<strong>Commercial RPO</strong>",
+    "—",
+    "$107B",
+    "$141B",
+    "$189B",
+    "$224B",
+    "$269B",
+    "$368B",
+    "$678B"
+   ],
+   [
+    "<strong>Long-term debt</strong>",
+    "$66.7B",
+    "$59.6B",
+    "$50.1B",
+    "$47.0B",
+    "$42.0B",
+    "$42.7B",
+    "$40.2B",
+    "$31.1B"
+   ],
+   [
+    "<strong>SBC</strong>",
+    "$4.65B",
+    "$5.29B",
+    "$6.12B",
+    "$7.50B",
+    "$9.61B",
+    "$10.73B",
+    "$11.97B",
+    "$12.41B"
+   ],
+   [
+    "<strong>Effective tax rate</strong>",
+    "10%",
+    "17%",
+    "14%",
+    "13%",
+    "19%",
+    "18%",
+    "18%",
+    "19%"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,159 @@
+{
+ "from": "FY2023",
+ "to": "FY2024",
+ "title": "AI moved into opening sentence; Activision closed; nation-state breach and $28.9B IRS NOPAs disclosed",
+ "sub": "Filed Jul 2024 | Headcount: 221,000 → 228,000 | Revenue: $211.9B → $245.1B | Microsoft Cloud revenue: $111.6B → $137.4B",
+ "era_summary": "The FY2024 10-K places AI in the company's opening sentence, names Anthropic and OpenAI as AI competitors, and adds Azure Maia and Azure Cobalt custom silicon. Risk factors add the late-2023 nation-state email intrusion, the FTC's continuing challenge to the completed Activision Blizzard acquisition, the IRS NOPAs seeking $28.9 billion, and a new sustainability risk factor. MD&A attributes revenue growth to all three segments and the capex sentence adds \"and training\" to AI infrastructure.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Opening sentence: \"whose mission is\" → \"committed to making digital technology and artificial intelligence (“AI”) available broadly\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"Microsoft is a technology company <strong>whose mission is</strong> to empower every person and every organization on the planet to achieve more.\"</blockquote><blockquote>FY2024: \"Microsoft is a technology company <strong>committed to making digital technology and artificial intelligence (“AI”) available broadly and doing so responsibly, with a mission</strong> to empower every person and every organization on the planet to achieve more.\"</blockquote><p>The same rewrite appears in the MD&amp;A Overview.</p>"
+    },
+    {
+     "title": "AI paragraph: \"has the power to revolutionize\" → \"will fundamentally transform\"; Copilot named",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"In a world of increasing economic complexity, AI <strong>has the power to</strong> revolutionize many types of work.\"</blockquote><blockquote>FY2024: \"We have entered a new age of AI that <strong>will fundamentally transform</strong> productivity for every individual, organization, and industry on earth, while helping us address some of our most pressing challenges. Microsoft's AI offerings, including Copilot and our Copilot stack, are <strong>already</strong> orchestrating a new era of AI transformation, driving better business outcomes across every role and industry.\"</blockquote>"
+    },
+    {
+     "title": "AI competitors: \"Amazon Bedrock … Meta’s LLaMA2\" → \"Anthropic, OpenAI, Meta\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"Our AI offerings compete with AI products from hyperscalers such as <strong>Amazon Bedrock, Amazon CodeWhisperer, and Google AI</strong>, as well as products from other emerging competitors, many of which are also current or potential partners, including <strong>Meta’s LLaMA2 and other open source solutions</strong>.\"</blockquote><blockquote>FY2024: \"Our AI offerings compete with AI products from hyperscalers such as <strong>Amazon and Google</strong>, as well as products from other emerging competitors, including <strong>Anthropic, OpenAI, Meta, and other open source offerings</strong>, many of which are also current or potential partners.\"</blockquote><p>OpenAI is also added to the Search and news advertising competitor sentence (“competes with Google, OpenAI, and a wide array of websites”). The OpenAI partnership paragraph in the Intelligent Cloud narrative is unchanged verbatim.</p>"
+    },
+    {
+     "title": "Custom silicon paragraph added: Azure Maia accelerator and Azure Cobalt CPU",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"We offer supercomputing power for AI at scale to run large workloads, complemented by our rapidly expanding portfolio of AI cloud services and hardware, which includes custom-built silicon and strong partnerships with chip manufacturers. We have introduced purpose-built cloud infrastructure for AI workloads including a custom AI accelerator, Azure Maia, and a custom in-house central processing unit, Azure Cobalt.\"</blockquote>"
+    },
+    {
+     "title": "Headcount 221,000 → 228,000; \"datacenter operations\" added to operations category",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Employees (June 30)</th><th>FY2023</th><th>FY2024</th></tr><tr><td>Total</td><td>221,000</td><td>228,000</td></tr><tr><td>U.S.</td><td>120,000</td><td>126,000</td></tr><tr><td>International</td><td>101,000</td><td>102,000</td></tr><tr><td>Operations</td><td>89,000</td><td>86,000</td></tr><tr><td>Product R&amp;D</td><td>72,000</td><td>81,000</td></tr><tr><td>Sales and marketing</td><td>45,000</td><td>45,000</td></tr><tr><td>General and administration</td><td>15,000</td><td>16,000</td></tr></table><blockquote>FY2023: \"89,000 were in operations, including <strong>manufacturing, distribution, product support, and consulting services</strong>;\"</blockquote><blockquote>FY2024: \"86,000 were in operations, including <strong>product support and consulting services, datacenter operations, and manufacturing and distribution</strong>;\"</blockquote>"
+    },
+    {
+     "title": "Sustainability: AI electricity sentence and \"not yet on track\" areas added; prior-year emissions metrics removed",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"At the same time, the infrastructure and electricity needed for these technologies create new challenges for meeting sustainability commitments across the tech sector.\"</blockquote><blockquote>FY2024: \"At the same time, there are two areas where we’re not yet on track, and in each of these we are intensively engaged in work to identify and pursue additional breakthroughs.\"</blockquote><p>The two areas listed are Scope 3 emissions and water use/replenishment.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "Heading: \"Our increasing focus on cloud-based services\" → \"Our focus on cloud-based and AI services\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"Our <strong>increasing</strong> focus on cloud-based services presents execution and competitive risks.\"</blockquote><blockquote>FY2024: \"Our focus on cloud-based <strong>and AI</strong> services presents execution and competitive risks.\"</blockquote>"
+    },
+    {
+     "title": "Infrastructure costs: \"significant\" and \"and AI\" added; \"we have previously achieved\" removed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"<strong>Besides software development costs, we</strong> are incurring costs to build and maintain infrastructure to support cloud computing services. These costs will reduce the operating margins <strong>we have previously achieved</strong>.\"</blockquote><blockquote>FY2024: \"We are incurring <strong>significant</strong> costs to build and maintain infrastructure to support cloud computing <strong>and AI</strong> services. These costs will reduce the operating margins.\"</blockquote>"
+    },
+    {
+     "title": "Cyberattacks: hypothetical \"may use\" → disclosure that actors \"have gained unauthorized access\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"…continuously undertake attacks that pose threats to our customers and our IT. These actors <strong>may</strong> use a wide variety of methods, which <strong>may</strong> include developing and deploying malicious software…\"</blockquote><blockquote>FY2024: \"…continuously undertake attacks that pose threats to our customers and our IT, <strong>and we have experienced cybersecurity incidents in which such actors have gained unauthorized access to our IT systems and data, including customer systems and data.</strong> These actors use a wide variety of methods, which include developing and deploying malicious software…\"</blockquote>"
+    },
+    {
+     "title": "Nation-state email intrusion (Form 8-K, Jan 2024) described; nation-state attacks \"have and may continue to\" intensify",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"For example, as previously disclosed in our Form 8-K filed with the Securities and Exchange Commission on January 19, 2024 and amended on March 8, 2024, beginning in late November 2023, a nation-state associated threat actor used a password spray attack to compromise a legacy test account and, in turn, gain access to Microsoft email accounts. The threat actor used and may continue to use information it obtained to gain, or attempt to gain, unauthorized access to some of our source code repositories and internal systems…\"</blockquote><blockquote>FY2023: \"Nation-state attacks against us, our customers, or our partners <strong>may</strong> intensify during periods of intense diplomatic or armed conflict, such as the ongoing conflict in Ukraine.\"</blockquote><blockquote>FY2024: \"Nation-state attacks against us, our customers, or our partners <strong>have and may continue to</strong> intensify during periods of intense diplomatic or armed conflict, such as the ongoing conflict in Ukraine.\"</blockquote>"
+    },
+    {
+     "title": "AI risk factor: copyright claims, EU AI Act and U.S. AI Executive Order named",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"…our implementation of AI systems could subject us to competitive harm, regulatory action, legal liability, including under <strong>new proposed legislation regulating AI in jurisdictions such as the European Union (“EU”)</strong>, new applications of existing data protection, privacy, intellectual property, and other laws, and brand or reputational harm.\"</blockquote><blockquote>FY2024: \"Our implementation of AI systems could result in legal liability, regulatory action, brand, reputational, or competitive harm, or other adverse impacts. These risks may arise from <strong>current copyright infringement and other claims related to AI training and output</strong>, new and proposed legislation and regulations, such as the <strong>European Union’s (“EU”) AI Act and the U.S.</strong>…\"</blockquote><p>The same risk factor adds “inaccurate” to “offensive, illegal, or otherwise harmful” AI-generated content.</p>"
+    },
+    {
+     "title": "Acquisitions: FTC challenge to completed Activision Blizzard deal added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"In addition, an acquisition may be subject to challenge even after it has been completed. For example, the Federal Trade Commission continues to challenge our Activision Blizzard acquisition and could, if successful, alter or unwind the transaction.\"</blockquote>"
+    },
+    {
+     "title": "Tax: IRS NOPAs seeking $28.9 billion for 2004–2013 added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"We are currently under Internal Revenue Service audit for prior tax years, <strong>with the primary unresolved issues relating to transfer pricing</strong>.\"</blockquote><blockquote>FY2024: \"We are currently under Internal Revenue Service (“IRS”) audit for prior tax years <strong>and have received Notices of Proposed Adjustment (“NOPAs”) from the IRS for the tax years 2004 to 2013</strong>. The primary issues in the NOPAs relate to intercompany transfer pricing. <strong>In the NOPAs, the IRS is seeking an additional tax payment of $28.9 billion plus penalties and interest.</strong>\"</blockquote>"
+    },
+    {
+     "title": "Heading added: sustainability regulatory requirements (risk-factor count 27 → 28)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"We are subject to evolving sustainability regulatory requirements and expectations, which exposes us to increased costs and legal and reputational risks.\"</blockquote><blockquote>FY2024: \"In addition, we have established and publicly announced goals and commitments to become carbon negative, water positive, zero waste, and protect more land than we use.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "Microsoft Cloud gross margin: Azure moves from \"a decline\" to \"improvements\", \"inclusive of scaling our AI infrastructure\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"Microsoft Cloud gross margin percentage <strong>increased 2 points to 72%</strong>. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage <strong>decreased slightly driven by a decline in Azure and other cloud services</strong> and sales mix shift to Azure and other cloud services, offset in part by improvement in Office 365 Commercial.\"</blockquote><blockquote>FY2024: \"Microsoft Cloud gross margin percentage <strong>decreased slightly to 71%</strong>. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage <strong>increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure</strong>, offset in part by sales mix shift to Azure.\"</blockquote><p>The Intelligent Cloud segment gross margin sentence carries the same “inclusive of scaling our AI infrastructure” phrase.</p>"
+    },
+    {
+     "title": "Headline results: revenue +$33.2B (16%) \"driven by growth across each of our segments\"",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Metric</th><th>FY2023</th><th>FY2024</th></tr><tr><td>Revenue</td><td>$211.9B</td><td>$245.1B</td></tr><tr><td>Microsoft Cloud revenue</td><td>$111.6B (+22%)</td><td>$137.4B (+23%)</td></tr><tr><td>Azure and other cloud services growth</td><td>29%</td><td>30%</td></tr><tr><td>Diluted EPS</td><td>$9.68</td><td>$11.80</td></tr></table><blockquote>FY2023: \"Revenue increased $13.6 billion or 7% driven by growth in Intelligent Cloud and Productivity and Business Processes, offset in part by a decline in More Personal Computing.\"</blockquote><blockquote>FY2024: \"Revenue increased $33.2 billion or 16% driven by <strong>growth across each of our segments</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Activision Blizzard: pending-deal paragraph replaced by completed acquisition at $75.4 billion",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"On October 13, 2023, we completed our acquisition of Activision Blizzard for a total purchase price of $75.4 billion, consisting primarily of cash.\"</blockquote><p>The FY2023 paragraph describing the $68.7 billion agreement and the extension of the merger agreement through October 18, 2023 is removed. Xbox content and services revenue rose 50%, with 44 points of net impact from the acquisition.</p>"
+    },
+    {
+     "title": "Seasonality: \"second and fourth quarters\" → \"fourth quarter\"; \"on-premises\" dropped",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"Our revenue fluctuates quarterly and is generally higher in the <strong>second and fourth quarters</strong> of our fiscal year.\"</blockquote><blockquote>FY2024: \"Our revenue fluctuates quarterly and is generally higher in the <strong>fourth quarter</strong> of our fiscal year. Fourth quarter revenue is driven by <strong>a higher</strong> volume of multi-year contracts executed during the period.\"</blockquote>"
+    },
+    {
+     "title": "FX: \"reduced reported revenue and expenses\" → \"did not have a material impact\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"Fluctuations in the U.S. dollar relative to certain foreign currencies <strong>reduced reported revenue and expenses</strong> from our international operations in fiscal year 2023.\"</blockquote><blockquote>FY2024: \"Fluctuations in the U.S. dollar relative to certain foreign currencies <strong>did not have a material impact on reported revenue and expenses</strong> from our international operations in fiscal year 2024.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Capex sentence: \"investments in AI infrastructure\" → \"investments in AI infrastructure and training\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings and our investments in AI infrastructure.\"</blockquote><blockquote>FY2024: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings and our investments in AI infrastructure <strong>and training</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Contractual obligations: leases $79.8B → $172.7B; construction commitments $13.5B → $35.4B",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Contractual obligations, total ($M)</th><th>FY2023</th><th>FY2024</th></tr><tr><td>Construction commitments</td><td>13,455</td><td>35,391</td></tr><tr><td>Operating and finance leases, including imputed interest</td><td>79,840</td><td>172,725</td></tr><tr><td>Purchase commitments</td><td>67,818</td><td>72,022</td></tr><tr><td>Total</td><td>235,104</td><td>360,018</td></tr></table><p>Footnote retained in both years: purchase commitments “primarily relate to datacenters.”</p>"
+    },
+    {
+     "title": "Pillar Two: \"will apply to Microsoft beginning in fiscal year 2025\" added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"Many countries have implemented or are in the process of implementing the Pillar Two legislation, which will apply to Microsoft beginning in fiscal year 2025. While we do not currently estimate a material impact to our consolidated financial statements, we continue to monitor the impact as countries implement legislation and the OECD provides additional guidance.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "IDPC (LinkedIn GDPR): \"intends to challenge\" → revised draft decision; \"will consider its options to appeal\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"<strong>Microsoft intends to challenge the preliminary draft decision.</strong> There is no set timeline for the IDPC to issue a final decision.\"</blockquote><blockquote>FY2024: \"<strong>In July 2024, the IDPC provided LinkedIn with a revised non-public draft decision.</strong> There is no set timeline for the IDPC to issue a final decision<strong>, at which time Microsoft will consider its options to appeal</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Cell phone litigation: 46 → 45 lawsuits; July 2024 summary judgment in nine stayed cases",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"…is a defendant in <strong>46 lawsuits, including 45 lawsuits</strong> filed in the Superior Court for the District of Columbia…\"</blockquote><blockquote>FY2024: \"…is a defendant in <strong>45 lawsuits</strong> filed in the Superior Court for the District of Columbia…\"</blockquote><blockquote>FY2024: \"In July 2024, the court entered summary judgment in nine of the stayed cases on the grounds that plaintiffs had agreed to be bound by the general causation outcome in the consolidated cases.\"</blockquote>"
+    },
+    {
+     "title": "Accrued legal liabilities $617M → $641M; reasonably possible range unchanged at ~$600M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Contingencies (June 30)</th><th>FY2023</th><th>FY2024</th></tr><tr><td>Accrued aggregate legal liabilities</td><td>$617M</td><td>$641M</td></tr><tr><td>Reasonably possible beyond accrual</td><td>~$600M</td><td>~$600M</td></tr></table><p>Item 3 Legal Proceedings text is unchanged.</p>"
+    }
+   ]
+  }
+ ]
+}

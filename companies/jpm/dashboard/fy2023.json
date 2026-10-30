@@ -1,0 +1,204 @@
+{
+ "from": "FY2022",
+ "to": "FY2023",
+ "title": "First Republic acquisition added; CET1 target withdrawn after U.S. Basel III proposal; Ukraine and LIBOR sections removed",
+ "sub": "Filed Feb 2024 | Headcount: 293,723 → 309,926 | Net revenue: $128.7B → $158.1B | CET1: 13.2% → 15.0%",
+ "era_summary": "The FY2023 10-K adds the May 2023 First Republic acquisition across Business, a new risk factor, MD&A drivers, credit tables and the allowance. The capital section adds the July 2023 U.S. Basel III proposal with an estimated ~30% RWA increase and replaces the 13.5% CET1 target with language that the target is no longer meaningful. The War in Ukraine Business Developments sub-section and the LIBOR transition risk factor are removed, and new legal matters (Trading Venues, Zelle, Russian Litigation, SEC Inquiries) are added.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "First Republic acquisition sentence added to Business segments",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"On May 1, 2023, JPMorgan Chase <strong>acquired certain assets and assumed certain liabilities of First Republic Bank</strong> (the “First Republic acquisition”) from the Federal Deposit Insurance Corporation (“FDIC”). Refer to Note 34 for additional information.\"</blockquote>"
+    },
+    {
+     "title": "Headcount drivers reordered (front office first); First Republic added as a driver",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The increase was primarily attributable to <strong>additional employees in technology and operations, as well as front office</strong>.\"</blockquote><blockquote>FY2023: \"The increase was primarily attributable to <strong>growth in front office, operations and technology, as well as the impact of the First Republic acquisition</strong>.\"</blockquote><p>Employees 293,723 → 309,926. Countries 63 → 65; U.S. share “over 60%” → “60%”.</p>"
+    },
+    {
+     "title": "Basel III: “considering how to appropriately apply” → July 2023 proposal with July 1, 2025 effective date",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"U.S. banking regulators have <strong>announced their support for the issuance of the Basel III reforms and are considering how to appropriately apply such reforms</strong> in the U.S.\"</blockquote><blockquote>FY2023: \"<strong>In July 2023, U.S. banking regulators released a proposal</strong> to amend the U.S. risk-based capital framework to incorporate certain elements of the revised international Basel III capital framework. The proposal would <strong>significantly revise</strong> risk-based capital requirements for banks with assets of $100 billion or more, including the Firm and other U.S. global systemically important banks (\"GSIBs\"). The proposed effective date is <strong>July 1, 2025 with a three-year transition period</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Hiring paragraph: list of targeted diversity groups removed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"<strong>Diversity</strong> is an important area of focus throughout the Firm’s <strong>hiring</strong> process. JPMorgan Chase engages in efforts aimed at <strong>hiring diverse talent, including initiatives focused on gender, underrepresented ethnic groups, LGBTQ+ individuals, people with disabilities, veterans and others</strong>.\"</blockquote><blockquote>FY2023: \"<strong>Attracting talent with diverse backgrounds and perspectives</strong> is an important area of focus throughout the Firm’s <strong>recruitment</strong> process. JPMorgan Chase <strong>sources talent by</strong> engaging in efforts aimed at <strong>building and fostering an inclusive work environment</strong>.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "New risk factor on the First Republic acquisition",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"JPMorgan Chase’s acquisition of certain assets and liabilities of First Republic Bank may not result in all of the benefits anticipated.\"</blockquote><p>Placed in Operational risk after the extraordinary-events risk factor; names integration cost and timing, key-employee loss and the FDIC shared-loss agreements.</p>"
+    },
+    {
+     "title": "LIBOR transition risk factor removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2022: \"The transition to alternative reference rates could expose JPMorgan Chase to operational risks or litigation and other disputes.\"</blockquote><p>The matching clause in the Liquidity summary is also removed.</p>"
+    },
+    {
+     "title": "Operational systems risk factor now discloses failures the Firm has experienced",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"JPMorgan Chase <strong>has experienced and expects that it will continue to experience failures and disruptions</strong> in the stability of its operational systems, including degraded performance of data processing systems, data quality issues, disruptions of network connectivity and malfunctioning software, as well as disruptions in its ability to access and use the operational systems of third parties. These incidents have resulted in various negative effects for customers, including the inability to access account information or to make transactions through ATM, internet or mobile channels, <strong>the exfiltration of customer personal data</strong>, the recording of duplicative transactions and extended delays for customers requiring services from call centers.\"</blockquote><p>The separate FY2022 risk factor on failure of an external operational system was folded into this one.</p>"
+    },
+    {
+     "title": "First artificial-intelligence language in Risk Factors (cyber threats)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"advances in <strong>artificial intelligence</strong>, such as the use of machine learning and <strong>generative artificial intelligence</strong> by malicious actors to develop more advanced social engineering attacks, including targeted phishing attacks\"</blockquote><p>A quantum-computing bullet was added to the same list; the models risk factor adds “machine learning, artificial intelligence or quantum computing”.</p>"
+    },
+    {
+     "title": "CRE paragraph adds “including offices”, “hybrid work models” and foreclosures",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"…dependent on consistent streams of rental income from commercial real estate properties which are owned or being built by those clients. Sustained adverse economic conditions could result in reductions in the rental cash flows that owners or developers receive from their tenants which, in turn, could depress the values of the properties <strong>and</strong> impair the ability of borrowers to service or refinance their commercial real estate loans.\"</blockquote><blockquote>FY2023: \"…dependent on consistent streams of rental income from commercial real estate properties, <strong>including offices,</strong> which are owned or being built by those clients. Sustained adverse economic conditions <strong>or hybrid work models</strong> could result in reductions in the rental cash flows that owners or developers receive from their tenants which, in turn, could depress the values of the properties, impair the ability of borrowers to service or refinance their commercial real estate loans <strong>and lead to an increase in foreclosures</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Capital risk factor: COVID balance-sheet bullet replaced by Basel III proposal paragraph",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"actions taken by the Federal Reserve or the U.S. government in response to the economic effects of systemic events, such as the actions taken in response to the COVID-19 pandemic which led to an expansion of the Federal Reserve balance sheet, growth in deposits held by JPMorgan Chase and other U.S. financial institutions and, consequently, an increase in leverage exposure and the GSIB surcharge\"</blockquote><blockquote>FY2023: \"Banking regulators have released a proposal to amend the Basel III risk-based capital framework which <strong>could significantly revise</strong> the risk-based capital requirements for banks with assets of $100 billion or more, including JPMorgan Chase. Uncertainty remains as to the manner in which these requirements will ultimately apply to JPMorgan Chase, however it is possible that these requirements could impact JPMorgan Chase’s decisions concerning the business activities in which it will engage and <strong>its levels of capital distributions to its shareholders</strong>.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Full-year outlook figures: FY2023 outlook vs FY2024 outlook",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Outlook item</th><th>Full-year 2023 (FY2022 10-K)</th><th>Full-year 2024 (FY2023 10-K)</th></tr><tr><td>Net interest income</td><td>~$73 billion</td><td>~$90 billion</td></tr><tr><td>NII excluding Markets</td><td>~$74 billion</td><td>~$88 billion</td></tr><tr><td>Adjusted expense</td><td>~$81 billion</td><td>~$90 billion</td></tr><tr><td>Card Services net charge-off rate</td><td>approximately 2.6%</td><td>less than 3.50%</td></tr></table><blockquote>FY2022: \"Management expects the net charge-off rate in Card Services to be <strong>approximately 2.6%</strong>.\"</blockquote><blockquote>FY2023: \"Management expects the net charge-off rate in Card Services to be <strong>less than 3.50%</strong>.\"</blockquote>"
+    },
+    {
+     "title": "CET1 target (13.0% → 13.5%) withdrawn as “no longer meaningful”; “may vary” → “will vary”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The Firm’s current target for its Basel III Standardized CET1 capital ratio is 13.0% for the first quarter of 2023, increasing to 13.5% for the first quarter of 2024 with consideration for an increase in the GSIB surcharge in 2024, and assuming no change in the Stress Capital Buffer. The Firm’s quarterly capital ratios <strong>may vary from these targets</strong> dependent on market conditions.\"</blockquote><blockquote>FY2023: \"Pending the finalization of the U.S. Basel III proposal, the Firm expects that it will <strong>continue to build capital above the current levels</strong>, and therefore the CET1 target of 13.5% previously set by the Firm (which was with respect to the current Standardized RWA measure) is <strong>no longer meaningful</strong>. The Firm's quarterly capital ratios <strong>will vary</strong> dependent on market conditions and other factors.\"</blockquote><p>The FY2022 “Risk-based Capital Targets” sub-heading is removed.</p>"
+    },
+    {
+     "title": "New expectation: segment reorganization effective Q2 2024",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"As a result of these organizational changes, the Firm will be reorganizing its business segments to reflect the manner in which the segments will be managed. The reorganization of the business segments <strong>is expected to be effective in the second quarter of 2024</strong>.\"</blockquote><p>Follows the January 25, 2024 leadership changes in Recent events (Co-CEOs of the expanded Commercial &amp; Investment Bank).</p>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "“War in Ukraine” Business Developments sub-section removed; “First Republic acquisition” added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The Firm’s exposure to Russia and Russia-associated clients and counterparties is not material to its financial condition or results of operations.\"</blockquote><blockquote>FY2023: \"The Firm continues to convert certain operations, and to integrate clients, products and services, associated with the First Republic acquisition to align with the Firm’s businesses and operations.\"</blockquote>"
+    },
+    {
+     "title": "NII drivers: “loan growth” → First Republic and Card revolving balances; lower deposits added as offset",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Net interest income of $66.7 billion, up 28%, driven by higher rates <strong>and loan growth</strong>, partially offset by lower Markets net interest income.\"</blockquote><blockquote>FY2023: \"(“NII”) of $89.3 billion, up 34%, driven by higher rates, <strong>the impact of First Republic, and higher revolving balances in Card Services</strong>, partially offset by lower Markets net interest income <strong>and lower average deposit balances</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Expense drivers: “structural expense” dropped; compensation, wage inflation, FDIC special assessment named",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"was $76.1 billion, up 7%, driven by <strong>higher structural expense</strong> and continued investments in the business, including compensation, technology and marketing, partially offset by lower volume- and revenue-related expense.\"</blockquote><blockquote>FY2023: \"was $87.2 billion, up 14%, predominantly driven by <strong>higher compensation expense, reflecting an increase in employees, primarily in technology and front office, as well as wage inflation</strong>. The increase in expense also includes <strong>the $2.9 billion FDIC special assessment</strong> and costs associated with the First Republic acquisition.\"</blockquote>"
+    },
+    {
+     "title": "Average deposits: growth-first list → decline-first; “actions taken to reduce certain deposits” added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"of $2.5 trillion were up 5%, reflecting: – growth in CCB from existing and new accounts, and net inflows in AWM … – reductions in CIB and CB due to attrition driven by the rising interest rate environment.\"</blockquote><blockquote>FY2023: \"of $2.4 trillion were down 4%, driven by – <strong>continued</strong> migration into <strong>higher-yielding</strong> investments in AWM, the impact of higher customer spending in CCB, continued deposit attrition in CB, and a net decline in CIB, <strong>which included actions taken to reduce certain deposits</strong>,\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Capital & Liquidity",
+   "findings": [
+    {
+     "title": "New estimate of U.S. Basel III proposal impact: RWA +~30%, required CET1 capital +~25%",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"Based on the Firm's understanding of the proposal, as applied to its Consolidated balance sheets as of June 30, 2023 (the reference date for a special data collection exercise conducted by the Federal Reserve), the estimated impact at the end of the transition period would <strong>increase RWA by approximately 30%</strong>, which would result in an <strong>approximately 25% increase to CET1 capital</strong> necessary to meet the Firm’s CET1 ratio requirement, all else equal.\"</blockquote><p>New “Other Key Regulatory Developments” sub-section also adds the July 2023 GSIB surcharge proposal and the August 2023 eligible LTD proposal.</p>"
+    },
+    {
+     "title": "Key capital and liquidity metrics; GSIB surcharge “is expected to increase” → “increased”",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Metric</th><th>FY2022</th><th>FY2023</th></tr><tr><td>Standardized CET1 ratio</td><td>13.2%</td><td>15.0%</td></tr><tr><td>SCB requirement</td><td>4.0%</td><td>2.9%</td></tr><tr><td>Standardized CET1 requirement incl. buffers</td><td>12.0%</td><td>11.4%</td></tr><tr><td>SLR</td><td>5.6%</td><td>6.1%</td></tr><tr><td>Firm average LCR (Q4)</td><td>112%</td><td>113%</td></tr><tr><td>Average deposits</td><td>$2,467.9bn</td><td>$2,359.1bn</td></tr><tr><td>Uninsured deposits</td><td>$1,383.7bn</td><td>$1,331.9bn</td></tr></table><blockquote>FY2022: \"Accordingly, based on the GSIB rule currently in effect, the Firm’s effective GSIB surcharge <strong>is expected to increase</strong> to 4.5% on January 1, 2024.\"</blockquote><blockquote>FY2023: \"Accordingly, based on the GSIB rule currently in effect, the Firm’s effective GSIB surcharge <strong>increased</strong> to 4.5% on January 1, 2024.\"</blockquote>"
+    },
+    {
+     "title": "LCR paragraph: Fed actions cited for system-wide deposit reductions; “fluctuates” → “may fluctuate”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The Firm and JPMorgan Chase Bank, N.A.'s average LCR <strong>fluctuates</strong> from period to period due to changes in its eligible HQLA and estimated net cash outflows as a result of ongoing business activity.\"</blockquote><blockquote>FY2023: \"<strong>Actions by the Federal Reserve have impacted depositor behavior, resulting in reductions to system-wide deposits, including those held by the Firm.</strong> Each of the Firm and JPMorgan Chase Bank, N.A.'s average LCR <strong>may fluctuate</strong> from period to period due to changes in their respective eligible HQLA and estimated net cash outflows as a result of ongoing business activity <strong>and from the continued impacts of Federal Reserve actions as well as other factors</strong>.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Credit",
+   "findings": [
+    {
+     "title": "Card: “remain below pre-pandemic levels” and “ongoing financial strength” removed; “normalize” added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"…increased compared to the December 31, 2021 30+ and 90+ day delinquency rates of 1.04% and 0.50%, <strong>but remain below pre-pandemic levels</strong>. Net charge-offs <strong>decreased</strong> for the year ended December 31, 2022 compared to the prior year. <strong>Delinquency and net charge-off rates continue to benefit from the ongoing financial strength of U.S. consumers. However, median deposit balances declined in the second half of 2022, impacted by the growth in consumer spending.</strong>\"</blockquote><blockquote>FY2023: \"Total credit card loans increased from December 31, 2022 reflecting growth from new accounts and revolving balances <strong>which continued to normalize to pre-pandemic levels</strong>. … Net charge-offs <strong>increased</strong> for the year ended December 31, 2023 compared to the prior year <strong>as delinquencies have normalized</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Macro scenario: “mild recession” and “war in Ukraine” dropped; “tightening financial conditions” added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Deterioration in the Firm’s macroeconomic outlook included both updates to the central scenario in the fourth quarter of 2022, <strong>which now reflects a mild recession</strong>, as well as the impact of the increased weight placed on the adverse scenarios beginning in the first quarter of 2022 due to the effects associated with higher inflation, <strong>changes in monetary policy, and geopolitical risks, including the war in Ukraine</strong>.\"</blockquote><blockquote>FY2023: \"The changes in the Firm's weighted average macroeconomic outlook also included updates to the central scenario in the third quarter of 2023 to reflect <strong>a lower forecasted unemployment rate consistent with a higher growth rate in GDP</strong>, and the impact of the additional weight placed on the adverse scenarios in the first quarter of 2023, reflecting <strong>elevated recession risks due to high inflation and tightening financial conditions</strong>.\"</blockquote><p>Weighted average U.S. unemployment peak: 5.6% (2Q24) → 5.5% (4Q24).</p>"
+    },
+    {
+     "title": "Real Estate criticized exposure: decrease → $5.2 billion increase; wholesale NCOs “concentrated in Office”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Real Estate exposure was $170.9 billion as of December 31, 2022. Criticized exposure <strong>decreased</strong> by $1.2 billion from $5.3 billion at December 31, 2021 to $4.0 billion at December 31, 2022, driven by client-specific upgrades and net portfolio activity largely offset by client-specific downgrades.\"</blockquote><blockquote>FY2023: \"Real Estate exposure was $208.3 billion as of December 31, 2023. Criticized exposure <strong>increased</strong> by $5.2 billion from $4.0 billion at December 31, 2022 to $9.2 billion at December 31, 2023, <strong>predominantly driven by client-specific downgrades</strong>, partially offset by client-specific upgrades.\"</blockquote><blockquote>FY2023: \"For the year ended December 31, 2023, wholesale net charge-offs increased $698 million, predominantly driven by the restructuring of a loan, increases in <strong>Real Estate (concentrated in Office)</strong> and Consumer &amp; Retail.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Market & Operational Risk",
+   "findings": [
+    {
+     "title": "Earnings-at-risk: deposit repricing lags “currently evaluating” → model updated in Q2 2023",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"<strong>The Firm is currently evaluating the modeling of repricing lags for deposits</strong> in its earnings-at-risk scenarios. Incorporating repricing lags, in the current environment, would significantly affect the U.S. dollar interest rate scenarios…\"</blockquote><blockquote>FY2023: \"As part of the Firm's continuous evaluation and periodic enhancements to its earnings-at-risk calculations, <strong>the Firm updated its model in the second quarter of 2023 to incorporate deposit repricing lags</strong> impacting both consumer and wholesale deposits.\"</blockquote><blockquote>FY2023: \"In the absence of the model update to incorporate deposit repricing lags in the second quarter of 2023, the Firm's U.S. dollar sensitivities as of December 31, 2023, would have been lower by $4.1 billion to the +100 basis points shift in short-term and parallel rate scenarios and higher by $3.7 billion to the -100 basis points shift in short-term and parallel rate scenarios.\"</blockquote><p>USD +100bp parallel EaR: $(2.0)bn → $2.4bn. A new Economic Value Sensitivity sub-section was added.</p>"
+    },
+    {
+     "title": "Cybersecurity: “no assurance” sentence removed; new materiality statement added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The Firm has implemented precautionary measures and controls reasonably designed to address this increased risk, such as enhanced threat monitoring. <strong>There can be no assurance that the measures taken by the Firm will be successful in defending against cyber attacks.</strong>\"</blockquote><blockquote>FY2023: \"<strong>Risks from cybersecurity threats, including any previous cybersecurity events, have not materially affected the Firm</strong> or its business strategy, results of operations or financial condition. Notwithstanding the comprehensive approach that the Firm takes to address cybersecurity risk, the Firm may not be successful in preventing or mitigating a future cybersecurity incident that could have a material adverse effect on the Firm or its business strategy, results of operations or financial condition.\"</blockquote><p>The cybersecurity sub-section moved from first to last among operational-risk examples and gained Governance and oversight sub-headings, a CISO paragraph and the CTOC/GTOC committees.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Accounting & FLS",
+   "findings": [
+    {
+     "title": "Forward-looking statements: “war in Ukraine” → “geopolitical tensions and hostilities”; FDIC assessments added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Local, regional and global business, economic and political conditions and geopolitical events, including <strong>the war in Ukraine</strong>;\"</blockquote><blockquote>FY2023: \"Local, regional and global business, economic and political conditions and geopolitical events, including  <strong>geopolitical tensions and hostilities</strong>;\"</blockquote><blockquote>FY2023: \"Changes in FDIC assessments;\"</blockquote><blockquote>FY2022: \"Changes in applicable accounting policies, including the introduction of new accounting standards;\"</blockquote><p>The FDIC item is new (7th bullet); the accounting-policies item is removed.</p>"
+    },
+    {
+     "title": "Goodwill cushion: “at least 10%” → “at least 9%”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"For each of the reporting units, fair value exceeded carrying value by at least <strong>10%</strong> and there was no indication of a significant risk of goodwill impairment based on current projections and valuations.\"</blockquote><blockquote>FY2023: \"For each of the reporting units, fair value exceeded carrying value by at least <strong>9%</strong> and there was no indication of a significant risk of goodwill impairment based on current projections and valuations.\"</blockquote><p>ACL relative-adverse sensitivity: residential real estate ~$500 million → ~$850 million; credit card ~$2.2 billion → ~$3.1 billion; wholesale unchanged at ~$3.9 billion.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "New matter: Trading Venues Investigations, with ~$350 million in expected civil penalties",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"The Firm self-identified that certain trading and order data through the CIB was not feeding into its trade surveillance platforms. … The Firm expects to enter into resolutions with two U.S. regulators that will require the Firm to, among other things, complete its remediation, engage an independent consultant, and pay aggregate civil penalties of approximately $350 million. The Firm is also in advanced negotiations with a third U.S. regulator, but there is no assurance that such discussions will result in a resolution.\"</blockquote>"
+    },
+    {
+     "title": "Epstein litigation: “has moved to dismiss” → $290 million settlement with final approval",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"JPMorgan Chase Bank, N.A. <strong>is named</strong> as a defendant in two lawsuits … JPMorgan Chase Bank, N.A. <strong>has moved to dismiss both complaints</strong>.\"</blockquote><blockquote>FY2023: \"JPMorgan Chase Bank, N.A. <strong>was named</strong> as a defendant in lawsuits … In June 2023, the Court granted preliminary approval of a settlement between the victim class and JPMorgan Chase Bank, N.A., pursuant to which JPMorgan Chase Bank, N.A. <strong>paid $290 million</strong> to a fund for Epstein survivors. In November 2023, the Court granted final approval of the settlement, rejecting objections, including those of certain state Attorneys General, regarding the victims’ releases.\"</blockquote><p>The USVI suit is no longer described. A new Epstein-related shareholder derivative suit (filed May 2023, dismissed December 2023) was added under Shareholder Litigation.</p>"
+    },
+    {
+     "title": "New matters: Zelle Network inquiries and Russian Litigation; Nigeria matter removed",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"The Firm is responding to inquiries from civil government authorities regarding the handling of disputes related to transfers of funds through the Zelle Network.\"</blockquote><blockquote>FY2023: \"The Firm has faced actual and threatened litigation in Russia seeking payments on transactions that the Firm cannot make, and is contractually excused from paying, under relevant sanctions laws, with judgment entered against the Firm in one claim in February 2024.\"</blockquote><p>An “SEC Inquiries” matter was also added. Reasonably possible loss range upper end: $1.2 billion → $1.3 billion. Legal expense: $266 million (2022) → $1.4 billion (2023).</p>"
+    }
+   ]
+  }
+ ]
+}

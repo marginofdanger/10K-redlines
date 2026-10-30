@@ -1,0 +1,204 @@
+{
+ "from": "FY2019",
+ "to": "FY2020",
+ "title": "COVID-19 risk category added; CECL adopted; SCB replaces CCAR objection; Human capital section added",
+ "sub": "Filed Feb 2021 | Headcount: 256,981 → 255,351 | Net revenue: $115.6B → $119.5B | CET1: 12.4% → 13.1%",
+ "era_summary": "The FY2020 10-K adds COVID-19 as the first risk category, a new forward-looking-statement item and COVID-19 sub-sections across MD&A, and replaces the incurred-loss allowance language with CECL expected-loss language. Net income fell to $29.1 billion on $12.2 billion of net allowance additions, average deposits rose 25%, and the capital section reports an SCB of 3.3%, a 12% CET1 target and a share repurchase suspension. Item 1 adds a Human capital section and Merchant Services moved into a new Wholesale Payments unit in CIB.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "New \"Human capital\" section with headcount, regional/LOB breakdown and diversity statistics",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"JPMorgan Chase had 255,351 employees in 62 countries as of December 31, 2020, with over 60% of those employees located in the U.S.\"</blockquote><p>Placed between Competition and Supervision and regulation, with sub-headings Global workforce, Firm culture, Attracting and retaining employees, Developing employees, and Compensation and benefits. No headcount or human capital section appeared in the FY2019 Item 1.</p>"
+    },
+    {
+     "title": "Self-description: \"leading global … one of the largest banking institutions in\" → \"leading … based in\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"…is a leading <strong>global</strong> financial services firm <strong>and one of the largest banking institutions in</strong> the United States of America\"</blockquote><blockquote>FY2020: \"…is a leading financial services firm <strong>based in</strong> the United States of America (“U.S.”), <strong>and has</strong> operations worldwide…\"</blockquote>"
+    },
+    {
+     "title": "Competition: \"continues to be intense\" paragraph removed; new-entrants sentence added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Competition in the financial services industry continues to be intense. In some cases, the Firm’s businesses compete with other financial institutions that may have a stronger local presence in certain geographies…\"</blockquote><blockquote>FY2020: \"<strong>New competitors in the financial services industry continue to emerge, including firms that offer products and services solely through the internet and non-financial companies that offer payment or loan products.</strong>\"</blockquote><p>The competitor list is unchanged.</p>"
+    },
+    {
+     "title": "Data regulation paragraph rewritten; \"artificial intelligence\" named for the first time",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"…subject to numerous U.S. federal and state as well as international laws and regulations concerning the collection, use, confidentiality, disclosure, transfer, protection and handling of information…\"</blockquote><blockquote>FY2020: \"These include laws and regulations relating to data protection, privacy, data use, confidentiality, secrecy, cybersecurity, technology, <strong>artificial intelligence</strong>, data localization and storage, data retention and destruction, disclosure, transfer, availability, integrity and other similar matters.\"</blockquote><p>Sub-heading retitled \"Data and cyber regulation:\" → \"Data, privacy and security regulation:\".</p>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "New first risk category \"COVID-19 Pandemic\" and a new Summary block ahead of Regulatory",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"The COVID-19 pandemic has caused and is causing significant harm to the global economy and could further negatively affect certain of JPMorgan Chase’s businesses.\"</blockquote><blockquote>FY2020: \"Certain models used by JPMorgan Chase in connection with the determination of the allowance for credit losses have heightened performance risk in the economic environment precipitated by the effects of the COVID-19 pandemic and government stimulus.\"</blockquote><p>Category order is now COVID-19 Pandemic, Regulatory, Political, Market, Credit, Liquidity, Capital, Operational, Strategic, Conduct, Reputation, Country, People, Legal.</p>"
+    },
+    {
+     "title": "Capital heading: \"appropriate … is critical to support\" → \"required … may impact … ability to support\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Maintaining the <strong>appropriate</strong> level and composition of capital <strong>is critical to support</strong> JPMorgan Chase’s business activities, meet regulatory requirements and distribute capital to shareholders.\"</blockquote><blockquote>FY2020: \"Maintaining the <strong>required</strong> level and composition of capital <strong>may impact</strong> JPMorgan Chase’s <strong>ability to support</strong> business activities, meet <strong>evolving</strong> regulatory requirements and distribute capital to shareholders.\"</blockquote>"
+    },
+    {
+     "title": "New capital paragraph: deposit growth from government actions has increased leverage exposure",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"Actions by the Federal Reserve and the U.S. government in response to the economic effects of the COVID-19 pandemic have led to an expansion of the Federal Reserve's balance sheet, growth in deposit balances held by JPMorgan Chase and other U.S. financial institutions and, consequently, an increase in JPMorgan Chase's leverage exposure. If these trends were to continue, JPMorgan Chase may be required to hold more capital or take other actions in order to satisfy the leverage-based capital requirements applicable to it.\"</blockquote>"
+    },
+    {
+     "title": "Consumer credit driver: \"rapid increase in interest rates\" → \"unemployment or underemployment\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"<strong>A rapid increase in interest rates</strong> could negatively affect consumer credit performance to the extent that consumers are less able to service their debts.\"</blockquote><blockquote>FY2020: \"<strong>Heightened levels of unemployment or underemployment that result in reduced personal and household income</strong> could negatively affect consumer credit performance to the extent that consumers are less able to service their debts.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Full-year NII guidance: ~$57B with drivers → ~$55B with no drivers stated",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Management expects full-year 2020 net interest income, on a managed basis, to be approximately <strong>$57 billion</strong>, market dependent, <strong>reflecting the impact of lower interest rates offset by balance sheet growth and mix</strong>.\"</blockquote><blockquote>FY2020: \"Management expects net interest income, on a managed basis, to be approximately <strong>$55 billion</strong>, market dependent.\"</blockquote><p>First-quarter NII guidance moved from approximately $14.2 billion to approximately $13 billion; a new fourth-quarter 2021 line expects NII \"in excess of $14 billion\".</p>"
+    },
+    {
+     "title": "Adjusted expense guidance: \"disciplined approach\" sentence dropped; ~$67B → ~$69B incl. Foundation",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"<strong>The Firm continues to take a disciplined approach to managing expenses, while investing for growth and innovation. As a result,</strong> management expects Firmwide adjusted expense for the full-year 2020 to be approximately <strong>$67 billion</strong>.\"</blockquote><blockquote>FY2020: \"Management expects adjusted expense to be approximately <strong>$69 billion</strong>, <strong>which includes accelerated contributions to the Firm’s Foundation in the form of equity investments, as well as higher revenue-related expense</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Net charge-off guidance removed; no credit guidance in the 2021 outlook",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2019: \"The Firm continues to experience charge-off rates at very low levels, reflecting favorable credit trends across the consumer and wholesale portfolios. Management expects full-year 2020 net charge-offs to be just over $6 billion, an increase from prior year, driven by Card on growth and mix.\"</blockquote><p>Effective tax rate guidance and first-quarter Markets revenue and adjusted expense guidance were also removed. Outlook backdrop adds \"current\" and \"the COVID-19 pandemic\".</p>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "Firmwide headline: \"strong results\" and \"record\" dropped; ACL additions and legal expense named",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"JPMorgan Chase reported <strong>strong results</strong> for 2019, with <strong>record</strong> revenue, net income and EPS of $115.6 billion, $36.4 billion and $10.72 per share, respectively.\"</blockquote><blockquote>FY2020: \"JPMorgan Chase reported net income of $29.1 billion for 2020, or $8.88 per share, on net revenue of $119.5 billion. The Firm reported ROE of 12% and ROTCE of 14%. <strong>The Firm's results for 2020 included net additions to the allowance for credit losses of $12.2 billion and Firmwide legal expense of $1.1 billion.</strong>\"</blockquote><p>\"Record\" was also removed from every LOB highlight bullet.</p>"
+    },
+    {
+     "title": "Revenue paragraph: noninterest revenue now precedes NII; lower rates become lead NII driver",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2019: \"Net interest income was $57.2 billion, up 4%, driven by <strong>continued balance sheet growth and mix as well as higher average short-term rates, partially offset by higher deposit pay rates</strong>.\"</blockquote><blockquote>FY2020: \"Net interest income was $54.6 billion, down 5%, driven by <strong>the impact of lower rates, predominantly offset by higher net interest income in CIB Markets as well as balance sheet growth</strong>.\"</blockquote><p>In FY2020 the noninterest revenue sentence ($65.0 billion, up 12%) comes before the NII sentence. Net yield on interest-earning assets (FTE): 2.46% → 1.98%.</p>"
+    },
+    {
+     "title": "Expense drivers: investments move from first to third; legal expense and \"structural expense\" added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Noninterest expense was $65.5 billion, up 3%, driven by <strong>continued investments across the businesses including employees, technology, real estate, and marketing, as well as higher volume- and revenue-related expenses</strong>, including depreciation expense on auto lease assets, partially offset by <strong>lower FDIC charges</strong>.\"</blockquote><blockquote>FY2020: \"Noninterest expense was $66.7 billion, up 2%, driven by <strong>higher volume- and revenue-related expense, legal expense and continued investments in the businesses</strong>, partially offset by <strong>lower structural expense</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Segment changes: Wholesale Payments unit formed in CIB; Card & Auto and J.P. Morgan Wealth Management",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"In the first quarter of 2020, the Firm began reporting a Wholesale Payments business unit within CIB following a realignment of the Firm’s wholesale payments businesses.\"</blockquote><blockquote>FY2020: \"In the fourth quarter of 2020, the Firm transferred certain assets, liabilities, revenue, expense and headcount associated with certain wealth management clients from AWM to the J.P. Morgan Wealth Management business unit within CCB.\"</blockquote><p>Merchant Services moved from CCB to CIB; \"Card, Merchant Services &amp; Auto\" became \"Card &amp; Auto\"; CIB \"Treasury Services\" became \"Wholesale Payments\". The \"Core loans\" metric was removed from all LOB tables.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Capital & Liquidity",
+   "findings": [
+    {
+     "title": "CET1 objective: \"between 11.5% and 12% over the medium term\" → \"target … of 12%\" with leverage caveat",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"The Firm believes that it will operate with a Basel III CET1 capital ratio <strong>between 11.5% and 12% over the medium term</strong>.\"</blockquote><blockquote>FY2020: \"The Firm has a <strong>target</strong> Basel III CET1 capital ratio of <strong>12%</strong>. <strong>However, the Firm may remain above that level in order to satisfy leverage-based capital requirements if deposits continue to grow due to actions taken by the Federal Reserve and the U.S. government in response to the COVID-19 pandemic.</strong>\"</blockquote><p>Standardized CET1 ratio: 12.4% → 13.1%.</p>"
+    },
+    {
+     "title": "CCAR outcome sentence replaced by SCB of 3.3% and minimum Standardized CET1 of 11.3%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"On June 27, 2019, the Federal Reserve informed the Firm that it did not object to the Firm’s 2019 capital plan.\"</blockquote><blockquote>FY2020: \"On August 10, 2020, the Federal Reserve affirmed the Firm's <strong>SCB requirement of 3.3%</strong> and the Firm's <strong>minimum Standardized CET1 capital ratio of 11.3% (up from 10.5%)</strong>. The SCB requirement became effective on October 1, 2020.\"</blockquote>"
+    },
+    {
+     "title": "New: estimated Method 2 GSIB surcharge of 4.0%, effective minimum expected to rise to 4.0% in 2023",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"The Firm’s estimated Method 2 surcharge calculated using data as of December 31, 2020 is 4.0%. Accordingly, based on the GSIB rule currently in effect, the Firm’s effective regulatory minimum GSIB surcharge is expected to increase to 4.0% on January 1, 2023 unless the Firm’s Method 2 GSIB surcharge calculation based upon data as of December 31, 2021 is lower.\"</blockquote><p>The surcharge \"remains unchanged at 3.5%\" for 2021 (2020 in FY2019).</p>"
+    },
+    {
+     "title": "Buffer-breach consequence: \"may result\" → \"will result\"; executive bonus payments added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"…and any countercyclical buffer <strong>may result</strong> in limitations to the amount of capital that the Firm may distribute, such as through dividends and common <strong>equity</strong> repurchases.\"</blockquote><blockquote>FY2020: \"…and any countercyclical buffer <strong>will result</strong> in limitations to the amount of capital that the Firm may distribute, such as through dividends and common <strong>share</strong> repurchases<strong>, as well as certain executive discretionary bonus payments</strong>.\"</blockquote><p>The same \"may result\" → \"will result\" change appears in the SLR and TLAC paragraphs.</p>"
+    },
+    {
+     "title": "New: share repurchases suspended March 15, 2020; $30B program authorized for 2021",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"On March 15, 2020, in response to the economic disruptions caused by the COVID-19 pandemic, the Firm temporarily suspended repurchases of its common stock. Subsequently, the Federal Reserve directed all large banks, including the Firm, to discontinue net share repurchases through the end of 2020.\"</blockquote><p>Replaces the FY2019 sentence on the $29.4 billion authorization for July 1, 2019 – June 30, 2020. Credit rating outlooks in the ratings table changed from Stable to Negative (Fitch, April 18, 2020).</p>"
+    }
+   ]
+  },
+  {
+   "section": "Credit",
+   "findings": [
+    {
+     "title": "Allowance: \"decreased … driven by\" releases → \"increased\" on COVID-19; consumer listed first",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"The allowance for credit losses <strong>decreased</strong> compared with December 31, 2018 driven by:\"</blockquote><blockquote>FY2020: \"The allowance for credit losses <strong>increased</strong> compared with December 31, 2019, primarily reflecting the deterioration and uncertainty in the macroeconomic environment, in particular in the first half of 2020, as a result of the impact of the COVID-19 pandemic, consisting of:\"</blockquote><p>Components: \"a net $7.4 billion addition in consumer, predominantly in the credit card portfolio\" and \"a net $4.7 billion addition in wholesale\". Total allowance: $14.3 billion → $30.7 billion.</p>"
+    },
+    {
+     "title": "New macroeconomic scenario disclosure: central-case unemployment and adverse-scenario weighting",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"As of December 31, 2020, the Firm’s central case reflected U.S. unemployment rates of approximately 7% through the second quarter of 2021 and remaining above 5% until the second half of 2022. This compared with relatively low levels of unemployment of approximately 4% throughout 2020 and 2021 in the Firm’s January 1, 2020 central case.\"</blockquote><p>FY2019 contained no scenario, weighting or unemployment-rate assumptions in this section.</p>"
+    },
+    {
+     "title": "Consumer portfolio intro: \"continues to benefit from discipline\" sentence replaced",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"The credit performance of the consumer portfolio continues to benefit from discipline in credit underwriting as well as improvement in the economy driven by low unemployment and increasing home prices.\"</blockquote><blockquote>FY2020: \"In 2020, the allowance for credit losses increased, reflecting the deterioration in and uncertainty around the future macroeconomic environment as a result of the impact of the COVID-19 pandemic. Net charge-offs for the year ended December 31, 2020 decreased when compared to December 31, 2019, benefiting from payment assistance and government stimulus.\"</blockquote><p>The Real Estate table expands from two sub-rows (Multifamily, Other) to seven, including Office ($16.8 billion) for the first time.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Market & Operational Risk",
+   "findings": [
+    {
+     "title": "New earnings-at-risk paragraph on negative interest rates",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"Based upon current and implied market rates as of December 31, 2020, scenarios reflecting lower rates could result in negative interest rates. The U.S. has never experienced an interest rate environment where the Federal Reserve has a negative interest rate policy.\"</blockquote><p>The downward short-term and long-term yield-curve scenarios were removed from the scenario list.</p>"
+    },
+    {
+     "title": "VaR backtesting exceptions: eight → 10, attributed to volatility at onset of COVID-19",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"the Firm observed <strong>eight</strong> VaR back-testing exceptions\"</blockquote><blockquote>FY2020: \"…observed <strong>10</strong> VaR backtesting exceptions, <strong>which were predominantly driven by volatility at the onset of the COVID-19 pandemic that was materially higher than the levels realized in the historical data used for the VaR calculation</strong>.\"</blockquote>"
+    },
+    {
+     "title": "U.S. dollar earnings-at-risk sensitivities (+100bp)",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Scenario ($B)</th><th>Dec 31, 2019</th><th>Dec 31, 2020</th></tr><tr><td>+100bp parallel shift</td><td>0.3</td><td>6.9</td></tr><tr><td>+100bp shift in short-term rates</td><td>(0.9)</td><td>4.5</td></tr><tr><td>+100bp shift in long-term rates</td><td>1.2</td><td>2.4</td></tr></table><p>FY2020 adds that, absent the fourth-quarter 2020 update to consumer deposit betas, U.S. dollar sensitivities to the +100bp short-term and parallel scenarios would have been lower by $2.0 billion.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Accounting & FLS",
+   "findings": [
+    {
+     "title": "ACL estimate: \"probable credit losses inherent\" → \"expected credit losses over the remaining expected life\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"The allowance for loan losses is intended to adjust the carrying value of the Firm’s loans to reflect <strong>probable credit losses inherent</strong> in the loan portfolio as of the balance sheet date.\"</blockquote><blockquote>FY2020: \"The Firm’s allowance for credit losses represents management’s estimate of <strong>expected credit losses over the remaining expected life</strong> of the Firm’s financial assets measured at amortized cost and certain off-balance sheet lending-related commitments.\"</blockquote><p>The isolated-input sensitivity bullets (HPI, unemployment, PD notch, LGD) were replaced by a central-versus-relative-adverse scenario comparison.</p>"
+    },
+    {
+     "title": "Forward-looking statements: COVID-19 item inserted at position 1; capital plan approval clause dropped",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"Economic, financial, reputational and other impacts of the COVID-19 pandemic;\"</blockquote><blockquote>FY2019: \"Ability of the Firm to manage effectively its capital and liquidity<strong>, including approval of its capital plans by banking regulators</strong>;\"</blockquote><blockquote>FY2020: \"Ability of the Firm to manage effectively its capital and liquidity;\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "New: precious metals and U.S. Treasuries resolutions with DOJ, CFTC and SEC totalling ~$920 million",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"Across the three resolutions with the DOJ, CFTC and SEC, JPMorgan Chase &amp; Co., JPMorgan Chase Bank, N.A. and J.P. Morgan Securities LLC agreed to pay a total monetary amount of approximately $920 million.\"</blockquote><p>FY2019 described these as ongoing investigations with \"no assurance that such discussions will result in settlements\". Item 1 now lists the Deferred Prosecution Agreement under a retitled \"Ongoing obligations\" heading.</p>"
+    },
+    {
+     "title": "Reasonably possible loss range and legal expense",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Metric</th><th>FY2019</th><th>FY2020</th></tr><tr><td>Reasonably possible losses above reserves (upper end)</td><td>$1.3B</td><td>$1.5B</td></tr><tr><td>Legal expense</td><td>$239M</td><td>$1.1B</td></tr></table><p>Two headings were added to the litigation note: \"Advisory and Other Activities\" (a $250 million OCC civil money penalty, November 2020) and \"Amrapali\".</p>"
+    }
+   ]
+  }
+ ]
+}

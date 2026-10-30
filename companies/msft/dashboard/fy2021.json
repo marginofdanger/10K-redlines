@@ -1,0 +1,159 @@
+{
+ "from": "FY2020",
+ "to": "FY2021",
+ "title": "Human Capital section added; Item 1A grouped into categories; Solorigate and Exchange attacks named; ZeniMax and Nuance added",
+ "sub": "Filed Jul 2021 | Headcount: 163,000 → 181,000 | Revenue: $143.0B → $168.1B | Commercial cloud revenue: $51.7B → $69.1B",
+ "era_summary": "FY2021 adds a Human Capital Resources section, groups risk factors under seven category headings, and names the Solorigate/Nobelium and Exchange Server attacks. ZeniMax (completed March 2021, $8.1 billion) and Nuance (agreement April 2021, $19.7 billion) appear in Business, Risk Factors and MD&A. MD&A cites the server useful-life change as a driver of margins and operating income, and the capital-expenditure outlook sentence is unchanged.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Cloud position claim: \"one of the two largest providers … we believe\" → \"the most comprehensive and trusted cloud\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"<strong>As one of the two largest providers of cloud computing at scale, we believe we work from a position of strength.</strong>\"</blockquote><blockquote>FY2021: \"<strong>The Microsoft Cloud is the most comprehensive and trusted cloud, providing the best integration across the technology stack while offering openness, improving time to value, reducing costs, and increasing agility.</strong>\"</blockquote>"
+    },
+    {
+     "title": "Opening line: \"continue to transform our business to lead in\" → \"are living in\" the new era",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"We <strong>continue to transform our business to lead in</strong> the new era of the intelligent cloud and intelligent edge.\"</blockquote><blockquote>FY2021: \"We <strong>are living in</strong> the new era of the intelligent cloud and intelligent edge, <strong>which is being sharpened by rapid advances in distributed computing, ambient intelligence, and multidevice experiences.</strong>\"</blockquote>"
+    },
+    {
+     "title": "Supply chain: \"only one qualified supplier\" for \"the majority\" → \"very few qualified suppliers\" for \"some\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"We <strong>generally</strong> have the ability to use other manufacturers if a current vendor becomes unavailable or unable to meet our requirements. <strong>The majority of our hardware products contain components for which there is only one qualified supplier.</strong>\"</blockquote><blockquote>FY2021: \"<strong>For the majority of our products,</strong> we have the ability to use other manufacturers if a current vendor becomes unavailable or unable to meet our requirements. <strong>However, some of our products contain certain components for which there are very few qualified suppliers. For these components, we have limited near-term flexibility</strong> to use other manufacturers if a current vendor becomes unavailable or is unable to meet our requirements.\"</blockquote><p>The same supply-chain paragraph is added to MD&amp;A Economic Conditions in FY2021.</p>"
+    },
+    {
+     "title": "Nuance acquisition agreement and ZeniMax acquisition added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"<strong>In April 2021, we entered into a definitive agreement to acquire Nuance Communications, Inc., a cloud and AI software provider with healthcare and enterprise AI experience. The acquisition will build on our industry-specific cloud offerings.</strong>\"</blockquote><blockquote>FY2021: \"We have a strong position with our large and growing highly engaged community of gamers, <strong>including the March 2021 acquisition of ZeniMax Media Inc., the parent company of Bethesda Softworks LLC, one of the largest, privately held game developers and publishers in the world</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Hybrid consistency list reordered: security moves first; \"data\" and \"compute\" dropped; \"compliance\" added",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2020: \"Our hybrid infrastructure consistency spans <strong>identity, data, compute, management, and security</strong>, helping to support the real-world needs and evolving regulatory requirements of commercial customers and enterprises.\"</blockquote><blockquote>FY2021: \"Our hybrid infrastructure consistency spans <strong>security, compliance, identity, and management</strong>, helping to support the real-world needs and evolving regulatory requirements of commercial customers and enterprises.\"</blockquote>"
+    },
+    {
+     "title": "\"manufacture\" removed from \"design, manufacture, and sell devices\" (twice)",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2020: \"We also design, <strong>manufacture,</strong> and sell devices, including PCs, tablets, gaming and entertainment consoles, other intelligent devices, and related accessories.\"</blockquote><blockquote>FY2021: \"We also design and sell devices, including PCs, tablets, gaming and entertainment consoles, other intelligent devices, and related accessories.\"</blockquote><p>The same edit is made in the Devices subsection and in the Risk Factors quality/supply factor.</p>"
+    },
+    {
+     "title": "Xbox Game Pass member count removed; gaming approach \"are broadening\" → \"have broadened\"",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2020: \"Xbox Game Pass<strong>, with over 10 million members from 41 countries,</strong> is a community with access to a curated library of over 100 first- and third-party console and PC titles.\"</blockquote><blockquote>FY2021: \"Xbox Game Pass is a community with access to a curated library of over 100 first- and third-party console and PC titles.\"</blockquote><blockquote>FY2020: \"We <strong>are broadening</strong> our approach to how we think about gaming end-to-end, from the way games are created and distributed to how they are played <strong>and viewed</strong> across PC, console, and mobile.\"</blockquote><blockquote>FY2021: \"We <strong>have broadened</strong> our approach to how we think about gaming end-to-end, from the way games are created and distributed to how they are played, <strong>including cloud gaming so players can stream</strong> across PC, console, and mobile.\"</blockquote>"
+    },
+    {
+     "title": "EMPLOYEES section replaced by HUMAN CAPITAL RESOURCES; headcount 163,000 → 181,000",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><thead><tr><th>Full-time employees (June 30)</th><th>FY2020</th><th>FY2021</th></tr></thead><tbody><tr><td>Total</td><td>163,000</td><td>181,000</td></tr><tr><td>U.S.</td><td>96,000</td><td>103,000</td></tr><tr><td>International</td><td>67,000</td><td>78,000</td></tr><tr><td>Operations</td><td>56,000</td><td>67,000</td></tr><tr><td>Product R&amp;D</td><td>55,000</td><td>60,000</td></tr><tr><td>Sales and marketing</td><td>40,000</td><td>40,000</td></tr><tr><td>General and administration</td><td>12,000</td><td>14,000</td></tr></tbody></table><p>The new section (Overview, Our Culture, Diversity and Inclusion, Total Rewards, Pay Equity, Wellness and Safety, Learning and Development, New Ways of Working) sits ahead of OPERATING SEGMENTS; FY2020 placed headcount in a short EMPLOYEES section after the executive officers.</p><blockquote>FY2021: \"As part of our effort to promote a One Microsoft and inclusive culture, <strong>we expanded stock eligibility to all Microsoft employees</strong> as part of our annual rewards process.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "Item 1A grouped under seven category sub-headings for the first time",
+     "tag": "Signal",
+     "body_html": "<p>FY2020 is a flat list. FY2021 headings: STRATEGIC AND COMPETITIVE RISKS; RISKS RELATING TO THE EVOLUTION OF OUR BUSINESS; CYBERSECURITY, DATA PRIVACY, AND PLATFORM ABUSE RISKS; OPERATIONAL RISKS; LEGAL, REGULATORY, AND LITIGATION RISKS; INTELLECTUAL PROPERTY RISKS; GENERAL RISKS. The three IP factors, \"Claims and lawsuits\", \"Government customers\" and the global-business factor are relocated; the first seven factors keep their positions.</p>"
+    },
+    {
+     "title": "Solorigate/Nobelium supply-chain attack and nation-state actors added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"<strong>Nation state and state sponsored actors can deploy significant resources to plan and carry out exploits.</strong>\"</blockquote><blockquote>FY2021: \"<strong>The cyberattacks uncovered in late 2020 known as “Solorigate” or “Nobelium” are an example of a supply chain attack where malware was introduced to a software provider’s customers, including us, through software updates.</strong>\"</blockquote><blockquote>FY2021: \"<strong>We may be targets of further attacks similar to Solorigate/Nobelium as both a supplier and consumer of IT.</strong>\"</blockquote>"
+    },
+    {
+     "title": "Exchange Server on-premises zero-day exploitation named; \"Adversaries will continue to attack\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"<strong>In addition, adversaries can attack our customers’ on-premises or cloud environments, sometimes exploiting previously unknown (“zero day”) vulnerabilities, such as occurred in early calendar year 2021 with several of our Exchange Server on-premises products.</strong>\"</blockquote><blockquote>FY2021: \"<strong>Adversaries will continue to attack customers using our cloud services as customers embrace digital transformation.</strong>\"</blockquote>"
+    },
+    {
+     "title": "AI and content-moderation regulation: \"could also emerge\" → \"is emerging\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Legislative <strong>or</strong> regulatory action <strong>could also emerge</strong> in the <strong>area</strong> of AI and content moderation, <strong>increasing costs or restricting opportunity</strong>.\"</blockquote><blockquote>FY2021: \"Legislative <strong>and</strong> regulatory action <strong>is emerging</strong> in the <strong>areas</strong> of AI and content moderation, <strong>which could increase costs or restrict opportunity</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Trade paragraph rewritten: export and import controls added; Sudan dropped from sanctions list",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Operations outside the U.S. may be affected by changes in trade protection laws, policies, sanctions, and other regulatory requirements affecting trade and investment.\"</blockquote><blockquote>FY2021: \"<strong>Increasing</strong> trade laws, policies, sanctions, and other regulatory requirements also affect our operations in and outside the U.S.\"</blockquote><blockquote>FY2021: \"<strong>U.S. export controls restrict Microsoft from offering many of its products and services to, or making investments in, certain entities in specified countries. U.S. import controls restrict us from integrating certain information and communication technologies into our supply chain</strong>\"</blockquote><blockquote>FY2021: \"Economic sanctions in the U.S., the EU, and other countries prohibit most business with restricted entities or countries such as Crimea, Cuba, Iran, North Korea, and Syria.\"</blockquote><p>FY2020 listed \"Crimea, Cuba, Iran, North Korea, Sudan, and Syria\". The factor caption changes \"liability\" → \"consequences\" and \"trade protection\" → \"trade\".</p>"
+    },
+    {
+     "title": "Global business factor: \"geopolitical\" risks, \"protectionist\" trends and human-rights concerns added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"The global nature of our business creates operational and economic risks.\"</blockquote><blockquote>FY2021: \"The global nature of our business creates operational, economic, <strong>and geopolitical</strong> risks.\"</blockquote><blockquote>FY2020: \"Emerging nationalist trends in specific countries may significantly alter the trade environment.\"</blockquote><blockquote>FY2021: \"Emerging nationalist <strong>and protectionist</strong> trends <strong>and concerns about human rights and political expression</strong> in specific countries may significantly alter the trade <strong>and commercial environments</strong>.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "Segment revenue drivers: IC \"server products and cloud services\" → \"Azure\"; MPC \"Windows and Surface\" → \"Gaming\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Intelligent Cloud revenue increased, driven by <strong>server products and cloud services</strong>.\"</blockquote><blockquote>FY2021: \"Intelligent Cloud revenue increased driven by <strong>Azure</strong>.\"</blockquote><blockquote>FY2020: \"More Personal Computing revenue increased, driven by <strong>Windows and Surface</strong>.\"</blockquote><blockquote>FY2021: \"More Personal Computing revenue increased driven by <strong>Gaming</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Server useful-life change: \"it is estimated … will increase\" → \"the effect … was an increase\" with net income and EPS",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"…<strong>it is estimated this change will increase our fiscal year 2021 operating income by $2.7 billion</strong>.\"</blockquote><blockquote>FY2021: \"…<strong>the effect of this change in estimate for fiscal year 2021 was an increase in operating income of $2.7 billion and net income of $2.3 billion, or $0.30 per both basic and diluted share</strong>.\"</blockquote><p>FY2021 cites the useful-life change as a driver of cost of revenue, gross margin, gross margin percentage, commercial cloud gross margin percentage, operating income, and PBP and IC gross margin.</p>"
+    },
+    {
+     "title": "Commercial cloud gross margin: 67% → 71%; \"sales mix shift to Azure\" added as an offset",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Commercial cloud gross margin percentage increased 4 points to 67%, <strong>primarily</strong> driven by improvement in Azure.\"</blockquote><blockquote>FY2021: \"Commercial cloud gross margin percentage increased 4 points to 71% driven by gross margin percentage improvement in Azure <strong>and the change in estimated useful lives of our server and network equipment, offset in part by sales mix shift to Azure</strong>.\"</blockquote><blockquote>FY2021: \"<strong>Excluding this impact, gross margin percentage decreased slightly driven by gross margin percentage reduction in More Personal Computing.</strong>\"</blockquote>"
+    },
+    {
+     "title": "MPC gross margin percentage: \"increased\" → \"decreased\" on Gaming hardware mix",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Gross margin percentage <strong>increased, due to sales mix shift to higher margin businesses and gross margin percentage improvement in Gaming</strong>.\"</blockquote><blockquote>FY2021: \"Gross margin percentage <strong>decreased driven by sales mix shift to Gaming hardware</strong>.\"</blockquote><blockquote>FY2021: \"Xbox hardware revenue increased 92% driven by higher price of consoles sold due to the Xbox Series X|S launches.\"</blockquote>"
+    },
+    {
+     "title": "Key reported figures",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2020</th><th>FY2021</th></tr></thead><tbody><tr><td>Revenue</td><td>$143,015M</td><td>$168,088M (+18%)</td></tr><tr><td>Operating income</td><td>$52,959M</td><td>$69,916M (+32%)</td></tr><tr><td>Net income</td><td>$44,281M</td><td>$61,271M (+38%)</td></tr><tr><td>Commercial cloud revenue</td><td>$51.7B (+36%)</td><td>$69.1B (+34%)</td></tr><tr><td>Azure revenue growth</td><td>56%</td><td>50%</td></tr><tr><td>Commercial cloud gross margin %</td><td>67%</td><td>71%</td></tr><tr><td>Microsoft 365 / Office 365 Consumer subscribers</td><td>42.7M</td><td>51.9M</td></tr><tr><td>Effective tax rate</td><td>17%</td><td>14%</td></tr></tbody></table><p>MD&amp;A moves to a single-year comparison; the FY2019 comparison narratives and table columns are removed.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Capex outlook sentence unchanged; operating-margin sentence unchanged",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2020 and FY2021: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings.\"</blockquote><blockquote>FY2021: \"The investments we are making in infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.\"</blockquote><p>Both sentences appear verbatim in FY2020 and FY2021.</p>"
+    },
+    {
+     "title": "Nuance closing expected \"by the end of calendar year 2021\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"The acquisition has been approved by Nuance’s shareholders, and <strong>we expect it to close by the end of calendar year 2021</strong>, subject to the satisfaction of certain regulatory approvals and other customary closing conditions.\"</blockquote>"
+    },
+    {
+     "title": "Construction commitments $5,041M → $9,456M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><thead><tr><th>Contractual obligations ($M)</th><th>FY2020</th><th>FY2021</th></tr></thead><tbody><tr><td>Construction commitments</td><td>5,041</td><td>9,456</td></tr><tr><td>Finance leases</td><td>15,522</td><td>22,467</td></tr><tr><td>Operating leases</td><td>13,744</td><td>17,973</td></tr><tr><td>Purchase commitments</td><td>27,024</td><td>31,553</td></tr></tbody></table>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "China SAMR: \"has presented its preliminary views … discussions are expected to continue\" → \"In 2019, the SAMR presented\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"<strong>The SAMR has presented its</strong> preliminary views as to certain possible violations of China's Anti-Monopoly Law<strong>, and discussions are expected to continue</strong>.\"</blockquote><blockquote>FY2021: \"<strong>In 2019, the SAMR presented</strong> preliminary views as to certain possible violations of China’s Anti-Monopoly Law.\"</blockquote><p>The sub-heading changes from \"State Administration for Industry and Commerce\" to \"State Administration for Market Regulation\".</p>"
+    },
+    {
+     "title": "Cell phone litigation: 40 → 46 lawsuits; hearing \"expected to occur\" → \"scheduled for January and February of 2022\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"…is a defendant in <strong>40 lawsuits filed</strong> in the Superior Court for the District of Columbia…\"</blockquote><blockquote>FY2021: \"…is a defendant in <strong>46 lawsuits, including 45 lawsuits filed</strong> in the Superior Court for the District of Columbia…\"</blockquote><blockquote>FY2020: \"A hearing is <strong>expected to occur in the second quarter of fiscal year 2021</strong>\"</blockquote><blockquote>FY2021: \"A hearing <strong>on general causation</strong> is <strong>scheduled for January and February of 2022</strong>\"</blockquote>"
+    },
+    {
+     "title": "Accrued legal liabilities $306M → $339M; reasonably possible range unchanged at ~$500M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><thead><tr><th>Contingencies</th><th>FY2020</th><th>FY2021</th></tr></thead><tbody><tr><td>Accrued aggregate legal liabilities</td><td>$306M</td><td>$339M</td></tr><tr><td>Reasonably possible beyond accrual</td><td>~$500M</td><td>~$500M</td></tr><tr><td>Pending patent infringement cases</td><td>64</td><td>63</td></tr></tbody></table>"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,159 @@
+{
+ "from": "FY2025",
+ "to": "FY2026",
+ "title": "Cloud/AI risk factor split; infrastructure risk factor added; OpenAI exclusivity text removed; non-GAAP added",
+ "sub": "Filed Jul 2026 | Headcount: 228,000 → 223,000 | Revenue: $281.7B → $331.8B | Additions to property and equipment: $64.6B → $115.9B",
+ "era_summary": "Risk Factors grew 18%, with the cloud/AI risk factor split into two and new language on capital expenditures, financing, impairment, power and community opposition to datacenters. MD&A removed the OpenAI API exclusivity and right-of-first-refusal sentences, added October 2025 and April 2026 partnership extensions, and introduced non-GAAP measures excluding OpenAI gains and losses. Revenue rose 18% with XBOX and More Personal Computing revenue declining, and the reasonably possible legal loss range fell from $600 million to $400 million.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Two AI bullets added to Future Opportunity investments; security moved from last to first",
+     "tag": "New",
+     "body_html": "<blockquote>FY2026: \"Helping customers drive <strong>frontier transformation</strong> by applying <strong>frontier AI capabilities</strong>, engineering expertise, and trusted platforms to reinvent how their organizations operate, improve decision-making, create new value, and deliver measurable business outcomes from AI.\"</blockquote><blockquote>FY2026: \"Providing a <strong>unified intelligence layer for enterprise AI</strong> to ground AI in a continuously evolving understanding of an organization’s data.\"</blockquote><p>Both are inserted after the Microsoft 365 Copilot and agents bullet (7 → 9 bullets). The unchanged \"Tackling security from all angles…\" bullet moves from 7th to 1st.</p>"
+    },
+    {
+     "title": "Portfolio description: \"tools\" → \"applications\"; \"AI\" added as first solution area",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"focusing on secure, trusted, and innovative platforms and <strong>tools</strong> that meet evolving customer needs across cloud computing, productivity and collaboration, and personal computing\"</blockquote><blockquote>FY2026: \"focusing on secure, trusted, and innovative platforms and <strong>applications</strong> that meet evolving customer needs across <strong>AI,</strong> cloud computing, productivity and collaboration, and personal computing\"</blockquote>"
+    },
+    {
+     "title": "Full-time headcount 228,000 → 223,000; R&D down 3,000",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Employees (June 30)</th><th>FY2025</th><th>FY2026</th><th>Change</th></tr><tr><td>Total</td><td>228,000</td><td>223,000</td><td>−5,000</td></tr><tr><td>U.S.</td><td>125,000</td><td>121,000</td><td>−4,000</td></tr><tr><td>International</td><td>103,000</td><td>102,000</td><td>−1,000</td></tr><tr><td>Operations</td><td>89,000</td><td>89,000</td><td>0</td></tr><tr><td>Product R&amp;D</td><td>80,000</td><td>77,000</td><td>−3,000</td></tr><tr><td>Sales and marketing</td><td>44,000</td><td>43,000</td><td>−1,000</td></tr><tr><td>General and administration</td><td>15,000</td><td>14,000</td><td>−1,000</td></tr></table>"
+    },
+    {
+     "title": "Distribution and Licensing sections condensed; named OEMs and licensing programs removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2025: \"We have distribution agreements covering one or more of our products with virtually all the multinational OEMs, including Dell, Hewlett-Packard, Lenovo, and with many regional and local OEMs.\"</blockquote><blockquote>FY2026: \"Distribution occurs through a combination of direct and indirect channels.\"</blockquote><p>Sub-headings Direct, Distributors and Resellers, OEMs, and the eight licensing-program sub-headings (Enterprise Agreement, Microsoft Customer Agreement, Open Value, Select Plus, etc.) are removed and replaced by short generic paragraphs.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "Cloud/AI risk factor retitled around \"substantial investments\" and split in two",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"Our focus on cloud-based and AI services presents execution and competitive risks.\"</blockquote><blockquote>FY2026: \"Our cloud and AI strategy <strong>requires substantial investments</strong> and depends on evolving customer demand, technological developments, competitive dynamics, and regulatory conditions, any of which could adversely affect our business, financial condition, and results of operations.\"</blockquote><blockquote>FY2026: \"Our success depends on our ability to develop, deliver, and maintain competitive cloud-based and AI products and services that achieve broad customer adoption and sustainable revenue growth.\"</blockquote><p>The second heading is a new standalone risk factor (#3); later risk factors each move down one place.</p>"
+    },
+    {
+     "title": "New capex-funding and impairment language: \"substantial and increasing capital expenditures\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2026: \"These investments are being made at significant scale and on an accelerated timeline, require <strong>substantial and increasing capital expenditures and continued access to capital</strong>, and are <strong>in advance of fully developed revenue streams</strong>. The associated revenue may not be realized in the expected timeframes or at expected levels.\"</blockquote><blockquote>FY2026: \"Our ability to fund these investments depends on our ability to generate sufficient cash flows and obtain financing on acceptable terms.\"</blockquote><blockquote>FY2026: \"Overestimation of demand or misalignment of capacity investments may result in <strong>underutilization of infrastructure</strong> and may lead to <strong>impairment of assets</strong> on our balance sheet.\"</blockquote><p>These replace the FY2025 opening sentence:</p><blockquote>FY2025: \"We are incurring significant costs to build and maintain infrastructure to support cloud-based and AI services, reducing operating margins.\"</blockquote>"
+    },
+    {
+     "title": "New paragraph on strategic partners that are \"significant customers of Azure\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2026: \"In some cases, these parties are <strong>significant customers of Azure</strong> and other cloud services. The economic benefits we expect to derive from these relationships, including through commercial arrangements, technology access, and Azure consumption, <strong>may not be realized or sustained</strong>.\"</blockquote><blockquote>FY2026: \"As we manage infrastructure capacity constraints and evolving customer demand, we may modify capacity allocations, deployment priorities, pricing, or other commercial arrangements.\"</blockquote><p>The paragraph does not name OpenAI.</p>"
+    },
+    {
+     "title": "AI competition bullet names \"hyperscalers … and frontier model providers\"; cost sentence removed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"We are investing in <strong>artificial intelligence (“AI”)</strong> across the entire company and infusing <strong>generative</strong> AI capabilities into our <strong>consumer and commercial</strong> offerings. … We will bear significant development and operational costs to build and support the AI models, services, platforms, and infrastructure necessary to meet the needs of our customers.\"</blockquote><blockquote>FY2026: \"We are investing in AI across the entire company and infusing AI capabilities into our offerings.\"</blockquote><blockquote>FY2026: \"Our AI offerings compete with AI products from <strong>hyperscalers, open-source offerings, and frontier model providers</strong>, some of which are also current or potential partners.\"</blockquote><p>This AI bullet now comes before the cloud bullet in Business model competition (FY2025: cloud first).</p>"
+    },
+    {
+     "title": "New first operational risk factor: \"We may be unable to develop and expand adequate infrastructure\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2026: \"The availability, reliability, and cost of electrical power are critical to the operation and expansion of our datacenters.\"</blockquote><blockquote>FY2026: \"We also face <strong>community opposition, state and local moratoriums</strong>, and hyper-local dissent, as well as increasingly coordinated opposition to infrastructure development across jurisdictions\"</blockquote><p>Operational Risks go from 2 risk factors (outages; supply or quality) to 4 (infrastructure; supply; outages; other quality). The outages risk factor adds reliance on colocation facilities and leased datacenters.</p>"
+    },
+    {
+     "title": "AI risk factor: OpenAI reference removed; conditional \"if\" → \"We have experienced\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"This AI may be developed by Microsoft or others, <strong>including our strategic partner, OpenAI</strong>. <strong>We expect these elements of our business to grow.</strong>\"</blockquote><blockquote>FY2026: \"These capabilities may be developed by Microsoft or third parties <strong>and are becoming an increasing part of our business</strong>.\"</blockquote><blockquote>FY2025: \"Finally, <strong>if we enable or offer AI solutions that have unintended consequences</strong>\"</blockquote><blockquote>FY2026: \"<strong>We have experienced, and expect to continue to experience,</strong> instances in which the AI solutions we enable or offer produce unintended consequences\"</blockquote>"
+    },
+    {
+     "title": "Modal shifts from \"may\"/\"could\" to past-and-present tense across cyber, supply and trade",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2025: \"Threat actors <strong>may</strong> also utilize emerging technologies, such as AI and machine learning.\"</blockquote><blockquote>FY2026: \"Threat actors also utilize emerging technologies such as AI and machine learning <strong>to, among other things, increase the speed and scale of attacks</strong>\"</blockquote><blockquote>FY2026: \"We <strong>have experienced and may continue to experience</strong> supply constraints, including shortages of semiconductors, networking equipment, power systems, cooling equipment, and other key components.\"</blockquote><blockquote>FY2025: \"U.S. tariff and shifting AI export controls policies, like the AI Diffusion Rule, <strong>could</strong> increase operational costs\"</blockquote><blockquote>FY2026: \"U.S. tariffs, shifting AI export controls policies, and disagreements among governments on sanctions policies toward third countries, <strong>has and may continue to</strong> increase operational costs\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "OpenAI paragraph: Azure API exclusivity and right of first refusal sentences removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2025: \"Microsoft is a major investor in OpenAI, and <strong>the companies have reciprocal revenue-sharing arrangements</strong>. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products. <strong>The OpenAI API is exclusive to Azure, runs on Azure, and is available through the Azure OpenAI Service. We also have a right of first refusal on OpenAI's new capacity needs.</strong>\"</blockquote><blockquote>FY2026: \"<strong>In October 2025 and April 2026, we extended this partnership</strong> and continue to build on our shared vision to advance artificial intelligence responsibly and make its benefits broadly accessible. Microsoft is a major investor in OpenAI <strong>and will continue to receive revenue-sharing payments</strong>. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products.\"</blockquote>"
+    },
+    {
+     "title": "Non-GAAP adjusted net income and EPS added, excluding OpenAI gains and losses",
+     "tag": "New",
+     "body_html": "<blockquote>FY2026: \"These non-GAAP financial measures exclude net gains and losses from investments in OpenAI.\"</blockquote><blockquote>FY2026: \"Current year net income and diluted EPS were positively impacted by net gains from investments in OpenAI, which resulted in an increase in net income and diluted EPS of $5.0 billion and $0.67, respectively.\"</blockquote><table class=\"data-table\"><tr><th></th><th>FY2025</th><th>FY2026</th></tr><tr><td>Adjusted net income (non-GAAP)</td><td>$105,452M</td><td>$128,786M</td></tr><tr><td>Adjusted diluted EPS (non-GAAP)</td><td>$14.13</td><td>$17.28</td></tr><tr><td>OpenAI in Other income (expense), net</td><td>$4.8B net losses</td><td>$6.5B net gains</td></tr></table><p>A new top-level \"NON-GAAP FINANCIAL MEASURES\" section is added before Liquidity and Capital Resources.</p>"
+    },
+    {
+     "title": "Highlights: Commercial RPO added as 2nd bullet; XBOX and Windows OEM and Devices now decline",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2026: \"Commercial remaining performance obligation increased 84% to $678 billion.\"</blockquote><table class=\"data-table\"><tr><th>Highlight</th><th>FY2025</th><th>FY2026</th></tr><tr><td>Microsoft Cloud revenue</td><td>+23% to $168.9B</td><td>+27% to $214.4B</td></tr><tr><td>Azure and other cloud services</td><td>+34%</td><td>+41%</td></tr><tr><td>Microsoft 365 Commercial cloud</td><td>+15%</td><td>+17%</td></tr><tr><td>Microsoft 365 Consumer cloud</td><td>+11%</td><td>+28%</td></tr><tr><td>Dynamics 365</td><td>+19%</td><td>+18%</td></tr><tr><td>Windows OEM and Devices</td><td>+3%</td><td>\"decreased slightly\"</td></tr><tr><td>XBOX content and services</td><td>+16%</td><td>−5%</td></tr><tr><td>Search advertising ex TAC</td><td>+20%</td><td>+12%</td></tr></table><p>FY2025 bullets reported \"products and cloud services revenue\" driven by the cloud metric; FY2026 bullets report the cloud metric only.</p>"
+    },
+    {
+     "title": "Gross margin % driver: segment names → \"continued investments in AI infrastructure and growing AI product usage\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"Gross margin percentage decreased slightly driven by <strong>Intelligent Cloud, offset in part by More Personal Computing</strong>.\"</blockquote><blockquote>FY2026: \"Gross margin percentage decreased slightly driven by <strong>continued investments in AI infrastructure and growing AI product usage, offset in part by efficiency gains across the Microsoft Cloud</strong>.\"</blockquote><blockquote>FY2025: \"Microsoft Cloud gross margin percentage decreased to <strong>69%</strong> driven by <strong>the impact of scaling our AI infrastructure</strong>\"</blockquote><blockquote>FY2026: \"Microsoft Cloud gross margin percentage decreased to <strong>66%</strong> driven by <strong>continued investments in AI infrastructure and growing AI product usage</strong>\"</blockquote>"
+    },
+    {
+     "title": "Opex drivers: Activision Blizzard removed; XBOX impairment and Copilot advertising added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"Operating expenses increased $3.8 billion or 6% driven by <strong>investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition</strong>.\"</blockquote><blockquote>FY2026: \"Operating expenses increased $4.9 billion or 7% driven by <strong>continued investments in research and development compute capacity, AI talent, and data</strong> to support product development that benefits the entire portfolio, <strong>impairment and other related expenses in our XBOX business</strong>, investments in commercial sales, and <strong>higher Copilot advertising expenses</strong>.\"</blockquote><p>\"Activision Blizzard\" no longer appears anywhere in FY2026 MD&amp;A (FY2025: cited in six driver sentences).</p>"
+    },
+    {
+     "title": "M365 Commercial cloud growth now led by revenue per user from \"Microsoft 365 Copilot and Microsoft 365 E5\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"Microsoft 365 Commercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and medium businesses and frontline worker offerings, as well as growth in revenue per user.\"</blockquote><blockquote>FY2026: \"Microsoft 365 Commercial cloud revenue grew 17% with <strong>growth in revenue per user driven by Microsoft 365 Copilot and Microsoft 365 E5</strong>.\"</blockquote>"
+    },
+    {
+     "title": "\"Microsoft 365 Consumer subscribers\" removed as a metric; 89.0 million count no longer given",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2026: \"As part of these updates, Microsoft 365 Consumer subscribers was removed as a metric.\"</blockquote><blockquote>FY2025: \"Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% <strong>to 89.0 million</strong>, as well as growth in revenue per user <strong>from the price increase announced in January 2025</strong>.\"</blockquote><blockquote>FY2026: \"Microsoft 365 Consumer cloud revenue grew 28% driven by growth in revenue per user and Microsoft 365 Consumer subscriber growth of 7%.\"</blockquote>"
+    },
+    {
+     "title": "Tax: OBBBA and Pillar Two paragraphs and 12-month NOPA resolution sentence removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2025: \"We do not expect a final resolution of these issues in the next 12 months.\"</blockquote><blockquote>FY2025: \"We are currently assessing the One Big Beautiful Bill Act\"</blockquote><p>The $28.9 billion IRS NOPA sentence is retained. Effective tax rate: 18% → 19%.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Capex sentence: \"AI infrastructure and training\" → \"AI training and other infrastructure\"; lease list adds servers",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"We will continue to invest in capital expenditures to support growth in our cloud offerings and our investments in <strong>AI infrastructure and training</strong>. We have operating and finance leases for datacenters, corporate offices, research and development facilities, <strong>Microsoft Experience Centers, and certain equipment</strong>.\"</blockquote><blockquote>FY2026: \"We will continue to invest in capital expenditures to support growth in our cloud offerings and our investments in <strong>AI training and other infrastructure</strong>. We have operating and finance leases for datacenters <strong>and related infrastructure, servers and network equipment</strong>, corporate offices, and research and development facilities.\"</blockquote><p>Neither year gives a numeric capex outlook in MD&amp;A.</p>"
+    },
+    {
+     "title": "Infrastructure spend: \"We spend\" → \"We have spent and will continue to spend\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"<strong>We spend</strong> substantial amounts to build, purchase, or lease datacenters\"</blockquote><blockquote>FY2026: \"<strong>We have spent and will continue to spend</strong> substantial amounts to build, purchase, or lease datacenters\"</blockquote>"
+    },
+    {
+     "title": "Investing cash outflow $72.6B → $139.5B; additions to property and equipment +$51.4B",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2026: \"Cash used in investing increased $66.9 billion to $139.5 billion for fiscal year 2026, primarily due to a $51.4 billion increase in additions to property and equipment and a $22.2 billion increase in cash used in other investing primarily to facilitate the purchase of components\"</blockquote><table class=\"data-table\"><tr><th>Contractual obligations ($M)</th><th>FY2025</th><th>FY2026</th></tr><tr><td>Operating and finance leases incl. imputed interest</td><td>178,701</td><td>443,506</td></tr><tr><td>Purchase commitments</td><td>109,953</td><td>194,060</td></tr><tr><td>Construction commitments</td><td>32,149</td><td>34,566</td></tr><tr><td>Total</td><td>397,045</td><td>743,821</td></tr></table>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "Reasonably possible loss range beyond accrual: ~$600M → ~$400M; accrual $541M → $553M",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2025: \"As of June 30, 2025, we accrued aggregate legal liabilities of $ 541 million. While we intend to defend these matters vigorously, adverse outcomes that we estimate could reach approximately $ <strong>600</strong> million in aggregate beyond recorded amounts are reasonably possible.\"</blockquote><blockquote>FY2026: \"As of June 30, 2026, we accrued aggregate legal liabilities of $ 553 million. While we intend to defend these matters vigorously, adverse outcomes that we estimate could reach approximately $ <strong>400</strong> million in aggregate beyond recorded amounts are reasonably possible.\"</blockquote><p>First change to the range since FY2022.</p>"
+    },
+    {
+     "title": "LinkedIn IDPC appeal: preliminary hearing held; ruling on standard of appeal",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2025: \"In November 2024, LinkedIn appealed the final decision <strong>to the Irish courts, and the next hearing is scheduled for December 2025.</strong>\"</blockquote><blockquote>FY2026: \"In November 2024, LinkedIn appealed the final decision. <strong>A preliminary hearing was held in December 2025. The court issued a ruling on the standard of appeal, which the IDPC may appeal.</strong>\"</blockquote>"
+    },
+    {
+     "title": "Properties: total 97M → 112M sq ft; owned exceeds leased; Sweden added, Israel removed",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Sq ft (millions)</th><th>FY2025</th><th>FY2026</th></tr><tr><td>Owned</td><td>47</td><td>58</td></tr><tr><td>Leased</td><td>50</td><td>54</td></tr><tr><td>Total</td><td>97</td><td>112</td></tr></table><blockquote>FY2025: \"China, India, Ireland, and the Netherlands.\"</blockquote><blockquote>FY2026: \"China, India, Ireland, the Netherlands, <strong>and Sweden</strong>.\"</blockquote><p>Israel is removed from the list of largest leased international properties. Equity price sensitivity in Item 7A rose from $(1,213)M to $(2,654)M.</p>"
+    }
+   ]
+  }
+ ]
+}

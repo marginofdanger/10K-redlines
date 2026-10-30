@@ -1,0 +1,204 @@
+{
+ "from": "FY2018",
+ "to": "FY2019",
+ "title": "Chase Bank USA merged into JPMorgan Chase Bank; Capital and climate risk factors added; CET1 range raised",
+ "sub": "Filed Feb 2020 | Headcount: 256,105 → 256,981 | Net revenue: $109.0B → $115.6B | CET1: 12.0% → 12.4%",
+ "era_summary": "Chase Bank USA, N.A. merged into JPMorgan Chase Bank, N.A. in May 2019, and references to it were removed throughout the filing. Risk Factors added a Capital category and a climate change risk factor and removed the tax reform factor and the Competition category; CECL language moved from planned to adopted. The 2020 outlook set NII at approximately $57 billion and adjusted expense at approximately $67 billion, and the medium-term CET1 range moved from 11%–12% to 11.5%–12%.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Principal bank subsidiaries → single subsidiary after Chase Bank USA, N.A. merger",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"JPMorgan Chase’s principal bank <strong>subsidiaries are</strong> JPMorgan Chase Bank, National Association (“JPMorgan Chase Bank, N.A.”), a national banking association with U.S. branches in 27 states and the District of Columbia as of December 31, 2018, <strong>and Chase Bank USA, National Association (“Chase Bank USA, N.A.”), a national banking association that is the Firm’s principal credit card-issuing bank.</strong>\"</blockquote><blockquote>FY2019: \"JPMorgan Chase’s principal bank <strong>subsidiary is</strong> JPMorgan Chase Bank, National Association (“JPMorgan Chase Bank, N.A.”), a national banking association with U.S. branches in <strong>38 states and Washington, D.C.</strong> as of December 31, 2019.\"</blockquote><p>The same edit runs through the OCC, stress-test, FDIC, prompt corrective action, dividend and resolution paragraphs of Supervision and regulation.</p>"
+    },
+    {
+     "title": "Consent orders: anti-money laundering and CIO orders dropped from the list",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2018: \"The Firm remains subject to consent orders entered into with its banking regulators between <strong>2013</strong> and 2016 concerning <strong>anti-money laundering, the CIO investigation,</strong> foreign exchange trading and referral hiring practices.\"</blockquote><blockquote>FY2019: \"The Firm remains subject to consent orders entered into with its banking regulators between <strong>2014</strong> and 2016 concerning foreign exchange trading and referral hiring practices.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "New risk category: Capital (6th, between Liquidity and Operational)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"Maintaining the appropriate level and composition of capital is critical to support JPMorgan Chase’s business activities, meet regulatory requirements and distribute capital to shareholders.\"</blockquote><p>The factor covers the annual capital plan and lists constraints on dividends and common stock repurchases. The Competition category (11th in FY2018) was removed; its risk factor moved into Strategic. The tax reform (TCJA) risk factor was also removed.</p>"
+    },
+    {
+     "title": "New Strategic risk factor on climate change",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"Climate change could have a material adverse impact on JPMorgan Chase’s business operations, clients and customers.\"</blockquote><blockquote>FY2019: \"These climate driven changes could have a material adverse impact on asset values and the financial performance of JPMorgan Chase’s businesses, and those of its clients and customers.\"</blockquote><p>Listed physical risks: rainfall distribution, droughts or flooding, wildfires, rising sea levels, rising heat index. \"Climate change\" was also added to the Market events list.</p>"
+    },
+    {
+     "title": "LIBOR discontinuation: \"substantial risk\" → \"highly likely\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"…there is a <strong>substantial risk</strong> that LIBOR will be discontinued <strong>or modified by 2021</strong>.\"</blockquote><blockquote>FY2019: \"These statements indicate that it is <strong>highly likely</strong> that LIBOR will be discontinued <strong>on or about the end of 2021</strong>.\"</blockquote><p>A new paragraph on litigation and disputes arising from the LIBOR transition was added to the same factor.</p>"
+    },
+    {
+     "title": "Regulatory requirements: \"have in the past and could in the future require\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"The regulation of financial services is extensive <strong>and comprehensive</strong>.\"</blockquote><blockquote>FY2019: \"Regulation of financial services is extensive.\"</blockquote><blockquote>FY2018: \"<strong>More specifically</strong>, existing and new laws and regulations could require JPMorgan Chase to:\"</blockquote><blockquote>FY2019: \"<strong>For example</strong>, existing and new laws and regulations <strong>have in the past and</strong> could <strong>in the future</strong> require JPMorgan Chase to:\"</blockquote>"
+    },
+    {
+     "title": "CECL risk factor: \"will be required to implement\" → \"has implemented\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"For example, on January 1, 2020, JPMorgan Chase and other U.S. companies <strong>will be required to implement</strong> a new accounting standard, commonly referred to as the Current Expected Credit Losses (“CECL”) framework…\"</blockquote><blockquote>FY2019: \"As of January 1, 2020, JPMorgan Chase <strong>has implemented</strong> a new accounting standard, commonly referred to as the Current Expected Credit Losses (“CECL”) framework, which requires earlier recognition of expected credit losses on loans and certain other instruments.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Full-year NII guide: \"in excess of $58 billion\" → \"approximately $57 billion, market dependent\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Management expects full-year 2019 net interest income, on a managed basis, to be <strong>in excess of $58 billion</strong>, reflecting <strong>the annualized impact of 2018 interest rate increases, as well as expected loan and deposit growth</strong>.\"</blockquote><blockquote>FY2019: \"Management expects full-year 2020 net interest income, on a managed basis, to be <strong>approximately $57 billion, market dependent</strong>, reflecting <strong>the impact of lower interest rates offset by balance sheet growth and mix</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Adjusted expense guide: \"less than $66 billion\" → \"approximately $67 billion\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"The Firm <strong>takes</strong> a disciplined approach to managing <strong>its</strong> expenses, while investing for growth and innovation. As a result, management expects Firmwide adjusted expense for the full-year 2019 to be <strong>less than $66 billion</strong>.\"</blockquote><blockquote>FY2019: \"The Firm <strong>continues to take</strong> a disciplined approach to managing expenses, while investing for growth and innovation. As a result, management expects Firmwide adjusted expense for the full-year 2020 to be <strong>approximately $67 billion</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Net charge-off guide: \"less than $5.5 billion … driven by growth\" → \"just over $6 billion … driven by Card\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Management expects full-year 2019 net charge-offs to be <strong>less than $5.5 billion, higher than 2018, driven by growth</strong>.\"</blockquote><blockquote>FY2019: \"Management expects full-year 2020 net charge-offs to be <strong>just over $6 billion, an increase from prior year, driven by Card on growth and mix</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Effective tax rate guidance added to the outlook",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"Management expects the full-year 2020 effective tax rate, on a reported basis, to be approximately 20%, and approximately 5 to 7 percentage points higher on a managed basis.\"</blockquote><p>First-quarter NII guidance also moved from a relative statement (\"approximately flat compared with the fourth-quarter of 2018\") to an absolute figure (\"approximately $14.2 billion, market dependent\").</p>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "NII drivers: rates moved behind balance sheet growth; \"higher deposit pay rates\" added as offset",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Net interest income was $55.1 billion, up 10%, driven by <strong>the impact of higher rates, loan growth and Card margin expansion, partially offset by lower CIB Markets net interest income</strong>.\"</blockquote><blockquote>FY2019: \"Net interest income was $57.2 billion, up 4%, driven by <strong>continued balance sheet growth and mix as well as higher average short-term rates, partially offset by higher deposit pay rates</strong>.\"</blockquote><table class=\"data-table\"><tr><th>Metric</th><th>FY2018</th><th>FY2019</th></tr><tr><td>Net yield on interest-earning assets (FTE)</td><td>2.50% (+14 bps)</td><td>2.46% (−6 bps)</td></tr></table>"
+    },
+    {
+     "title": "Expense drivers reordered: employees first, marketing last; FDIC offset added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Noninterest expense was $63.4 billion, up 7%, <strong>predominantly</strong> driven by investments in the business, including <strong>technology, marketing, higher compensation expense on increased headcount, and real estate</strong>, as well as higher revenue-related costs, including auto lease depreciation and volume-related transaction costs.\"</blockquote><blockquote>FY2019: \"Noninterest expense was $65.5 billion, up 3%, driven by <strong>continued</strong> investments across the businesses including <strong>employees, technology, real estate, and marketing</strong>, as well as higher volume- and revenue-related expenses, including depreciation expense on auto lease assets, <strong>partially offset by lower FDIC charges</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Provision explanation: consumer-led decrease → increases in both wholesale and consumer",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"The provision for credit losses was $4.9 billion, down from $5.3 billion in the prior year, reflecting <strong>a decrease in the consumer provision</strong> driven by a lower addition to the credit card allowance for credit losses and lower net charge-offs.\"</blockquote><blockquote>FY2019: \"The provision for credit losses was $5.6 billion, up $714 million, reflecting <strong>increases in both wholesale and consumer</strong>. The increase in the wholesale provision reflects additions to the allowance for credit losses in the current year on select client downgrades.\"</blockquote>"
+    },
+    {
+     "title": "Merchant Services realignment to CIB (Wholesale Payments) disclosed in segment footnote",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"Effective in the first quarter of 2020, the Merchant Services business was realigned from CCB to CIB as part of the Firm’s Wholesale Payments business. The revenue and expenses of the Merchant Services business will be reported across CCB, CIB and CB based primarily on client relationship.\"</blockquote><p>CIB sub-business \"Markets &amp; Investor Services\" was also renamed \"Markets &amp; Securities Services\".</p>"
+    }
+   ]
+  },
+  {
+   "section": "Capital & Liquidity",
+   "findings": [
+    {
+     "title": "Medium-term CET1 range: 11%–12% → 11.5%–12%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"The Firm believes that it will operate with a Basel III CET1 capital ratio between <strong>11%</strong> and 12% over the medium term.\"</blockquote><blockquote>FY2019: \"The Firm believes that it will operate with a Basel III CET1 capital ratio between <strong>11.5%</strong> and 12% over the medium term.\"</blockquote><table class=\"data-table\"><tr><th>Metric</th><th>FY2018</th><th>FY2019</th></tr><tr><td>Standardized CET1</td><td>12.0%</td><td>12.4%</td></tr><tr><td>Advanced CET1</td><td>12.9%</td><td>13.4%</td></tr><tr><td>SLR</td><td>6.4%</td><td>6.3%</td></tr><tr><td>Average LCR (4Q)</td><td>113%</td><td>116%</td></tr><tr><td>Buyback authorization</td><td>$20.7bn</td><td>$29.4bn</td></tr></table>"
+    },
+    {
+     "title": "Key Regulatory Developments: Basel III Reforms, stress buffer and eSLR items replaced by CECL capital phase-in",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"Based on the Firm’s capital as of December 31, 2019, the estimated impact to the Standardized CET1 capital ratio will be a reduction of approximately 4 bps for each transitional year.\"</blockquote><p>The $2.7 billion retained-earnings impact is phased into regulatory capital at 25% per year from 2020 to 2023.</p>"
+    },
+    {
+     "title": "Deposit funding sentence: \"key strength … diversified deposit franchise\" removed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"<strong>A key strength of the Firm is its diversified deposit franchise, through each of its lines of business, which provides</strong> a stable source of funding and <strong>limits</strong> reliance on the wholesale funding markets.\"</blockquote><blockquote>FY2019: \"<strong>Deposits provide</strong> a stable source of funding and <strong>reduce the Firm’s</strong> reliance on the wholesale funding markets.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Credit",
+   "findings": [
+    {
+     "title": "Card NCO explanation: vintage seasoning \"as anticipated\" → \"loan growth, in line with expectations\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Net charge-offs increased for the year ended December 31, 2018 when compared with the prior year, primarily due to <strong>the seasoning of more recent vintages with higher loss rates, as anticipated given underwriting standards at the time of origination</strong>.\"</blockquote><blockquote>FY2019: \"Net charge-offs increased for the year ended December 31, 2019 when compared with the prior year, due to <strong>loan growth, in line with expectations</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Wholesale credit: \"quality … was stable\" → \"performance … remained favorable\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"The credit <strong>quality</strong> of the wholesale portfolio <strong>was stable</strong> for the year ended December 31, 2018, characterized by low levels of criticized exposure, nonaccrual loans and charge-offs.\"</blockquote><blockquote>FY2019: \"The credit <strong>performance</strong> of the wholesale portfolio <strong>remained favorable</strong> for the year ended December 31, 2019, characterized by <strong>continued</strong> low levels of criticized exposure, nonaccrual loans and charge-offs.\"</blockquote>"
+    },
+    {
+     "title": "Wholesale criticized exposure rose $12.1bn → $14.3bn, attributed to client downgrades",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2019: \"The increase was driven by select client downgrades.\"</blockquote><p>FY2018 reported a decrease from $15.6 billion, driven by Oil &amp; Gas. The allowance drivers added a $251 million wholesale build for the same reason.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Market & Operational Risk",
+   "findings": [
+    {
+     "title": "Earnings-at-risk: non-forecast disclaimer added; +100 bp sensitivity $0.9bn → $0.3bn",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"While a relevant measure of the Firm’s interest rate exposure, the earnings at risk analysis does not represent a forecast of the Firm’s net interest income\"</blockquote><table class=\"data-table\"><tr><th>U.S. dollar EaR</th><th>Dec 2018</th><th>Dec 2019</th></tr><tr><td>+100 bps parallel</td><td>$0.9bn</td><td>$0.3bn</td></tr><tr><td>−100 bps parallel</td><td>$(2.1)bn</td><td>$(2.0)bn</td></tr></table>"
+    },
+    {
+     "title": "Operational risk framework renamed CCOR; ORM head role combined with Global CCO",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"To monitor and control operational risk, the Firm has an <strong>Operational Risk Management Framework (“ORMF”)</strong> which is designed to enable the Firm to maintain a sound and well-controlled operational environment.\"</blockquote><blockquote>FY2019: \"The Firm’s <strong>Compliance, Conduct, and Operational Risk (“CCOR”) Management Framework</strong> is designed to enable the Firm to govern, identify, measure, monitor and test, manage and report on the Firm’s operational risk.\"</blockquote><blockquote>FY2018: \"The <strong>Firmwide Risk Executive for Operational Risk Management (“ORM”), a direct report to the CRO,</strong> is responsible for defining the ORMF and establishing minimum standards for its execution.\"</blockquote><blockquote>FY2019: \"The Firm’s <strong>Global Chief Compliance Officer (“CCO”) and FRE for Operational Risk</strong> is responsible for defining the CCOR Management Framework and establishing minimum standards for its execution.\"</blockquote>"
+    },
+    {
+     "title": "Cybersecurity: \"can also be\" → \"are also\"; \"will generally be responsible\" → \"are responsible\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Clients <strong>can also be</strong> sources of cybersecurity risk to the Firm, particularly when their activities and systems are beyond the Firm’s own security and control systems.\"</blockquote><blockquote>FY2019: \"Clients <strong>are also</strong> sources of cybersecurity risk to the Firm, particularly when their activities and systems are beyond the Firm’s own security and control systems.\"</blockquote><blockquote>FY2018: \"However, where cybersecurity incidents <strong>are due to client failure</strong> to maintain the security of their own systems and processes, clients <strong>will generally be</strong> responsible for losses incurred.\"</blockquote><blockquote>FY2019: \"However, where cybersecurity incidents <strong>occur as a result of client failures</strong> to maintain the security of their own systems and processes, clients <strong>are</strong> responsible for losses incurred.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Accounting & FLS",
+   "findings": [
+    {
+     "title": "CECL impact: \"$4-6 billion\" estimate → $4.3 billion actual allowance increase",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"The Firm currently expects the increase in the allowance to be in the range of <strong>$4-6 billion</strong>, primarily driven by Card.\"</blockquote><blockquote>FY2019: \"The adoption of this guidance resulted in a net increase to the allowance for credit losses of <strong>$4.3 billion</strong> and a decrease to retained earnings of <strong>$2.7 billion</strong>, primarily driven by Card.\"</blockquote>"
+    },
+    {
+     "title": "Goodwill cushion: reporting-unit fair values above carrying value \"20% or higher\" → \"15% or higher\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"The fair values of these reporting units exceeded their carrying values by approximately <strong>20%</strong> or higher and did not indicate a significant risk of goodwill impairment based on current projections and valuations.\"</blockquote><blockquote>FY2019: \"The fair values of these reporting units exceeded their carrying values by approximately <strong>15%</strong> or higher and did not indicate a significant risk of goodwill impairment based on current projections and valuations.\"</blockquote>"
+    },
+    {
+     "title": "FLS disaster item adds health emergencies, pandemics and climate change",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Occurrence of natural or man-made disasters or calamities <strong>or conflicts</strong> and the Firm’s ability to deal effectively with disruptions caused by the foregoing;\"</blockquote><blockquote>FY2019: \"Occurrence of natural or man-made disasters or calamities<strong>, including health emergencies, the spread of infectious diseases, pandemics or outbreaks of hostilities, or the effects of climate change,</strong> and the Firm’s ability to deal effectively with disruptions caused by the foregoing;\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "Precious metals matter widened to U.S. Treasuries; resolution discussions disclosed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2018: \"Various authorities, including the Department of Justice’s Criminal Division, are conducting investigations relating to trading practices in the <strong>precious</strong> metals markets and related conduct. The Firm is responding to and cooperating with these investigations.\"</blockquote><blockquote>FY2019: \"Various authorities, including the Department of Justice’s Criminal Division, are conducting investigations relating to trading practices in the metals markets and related conduct. … <strong>The Firm continues to cooperate with these investigations and is currently engaged in discussions with various regulators about resolving their respective investigations.</strong>\"</blockquote><p>Heading retitled \"Precious Metals Investigations and Litigation.\" → \"Metals and U.S. Treasuries Investigations and Litigation and Related Inquiries.\"</p>"
+    },
+    {
+     "title": "New matter: Federal Republic of Nigeria litigation; ADR, General Motors and Municipal Derivatives matters removed",
+     "tag": "New",
+     "body_html": "<blockquote>FY2019: \"In November 2017, the Federal Republic of Nigeria (“FRN”) commenced a claim in the English High Court for approximately $875 million in payments made out of the accounts.\"</blockquote><p>Litigation note headings fell from 8 to 6.</p>"
+    },
+    {
+     "title": "Reasonably possible loss range and legal expense",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Metric</th><th>FY2018</th><th>FY2019</th></tr><tr><td>Reasonably possible losses above reserves (upper end)</td><td>$1.5bn</td><td>$1.3bn</td></tr><tr><td>Legal expense/(benefit)</td><td>$72m</td><td>$239m</td></tr></table>"
+    }
+   ]
+  }
+ ]
+}

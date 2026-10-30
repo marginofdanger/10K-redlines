@@ -1,0 +1,159 @@
+{
+ "from": "FY2021",
+ "to": "FY2022",
+ "title": "Commercial cloud renamed Microsoft Cloud; Nuance closed, Activision announced; useful lives 4 → 6 years",
+ "sub": "Filed Jul 2022 | Headcount: 181,000 → 221,000 | Revenue: $168.1B → $198.3B | Microsoft Cloud revenue: $69.1B → $91.2B",
+ "era_summary": "The FY2022 10-K removes the COVID-19 subsections from Business and MD&A, renames commercial cloud as Microsoft Cloud and Azure as Azure and other cloud services, and records the completed $18.8 billion Nuance acquisition alongside the announced $68.7 billion Activision Blizzard deal. Risk Factors add Ukraine-related cybersecurity and sanctions language, a datacenter energy sentence, a unionization paragraph, and proposed EU AI legislation. MD&A discloses a July 2022 extension of server and network useful lives from four to six years, estimated to add $3.7 billion to FY2023 operating income.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Opening strategy sentence: \"intelligent cloud and intelligent edge\" era → \"distributed computing fabric\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"We are living in the new era of the <strong>intelligent cloud and intelligent edge</strong>, which is being sharpened by rapid advances in distributed computing, ambient intelligence, and multidevice experiences.\"</blockquote><blockquote>FY2022: \"We are building a <strong>distributed computing fabric – across cloud and the edge</strong> – to help every organization build, run, and manage mission-critical workloads anywhere.\"</blockquote>"
+    },
+    {
+     "title": "Metaverse sentence added to Embracing Our Future (first appearance of the term)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"We are enabling <strong>metaverse experiences at all layers of our stack</strong>, so customers can more effectively model, automate, simulate, and predict changes within their industrial environments, feel a greater sense of presence in the new world of hybrid work, and create custom immersive worlds to enable new opportunities for connection and experimentation.\"</blockquote>"
+    },
+    {
+     "title": "Datacenter sentence: \"requires continued investment\" → \"invest in high performance and sustainable computing to meet the growing demand\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Our strategy <strong>requires continued investment in datacenters and other hybrid and edge infrastructure</strong> to support our services.\"</blockquote><blockquote>FY2022: \"We continue to invest in <strong>high performance and sustainable computing</strong> to meet <strong>the growing demand</strong> for fast access to Microsoft services provided by our network of cloud computing infrastructure and datacenters.\"</blockquote>"
+    },
+    {
+     "title": "Scope 3 emissions increase attributed to datacenter expansions",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"While we continued to make progress on several of our goals, with an overall reduction in our combined Scope 1 and Scope 2 emissions, <strong>our Scope 3 emissions increased, due in substantial part to significant global datacenter expansions</strong> and growth in Xbox sales and usage as a result of the COVID-19 pandemic.\"</blockquote><p>Replaces the FY2021 statement that fiscal 2020 carbon emissions were reduced by 586,683 metric tons.</p>"
+    },
+    {
+     "title": "Nuance: definitive agreement → completed acquisition; Activision Blizzard plan first appears",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"In April 2021, we <strong>entered into a definitive agreement to acquire</strong> Nuance Communications, Inc., a cloud and AI software provider with healthcare and enterprise AI experience.\"</blockquote><blockquote>FY2022: \"In March 2022, we <strong>completed our acquisition of</strong> Nuance Communications, Inc. (“Nuance”).\"</blockquote><blockquote>FY2022: \"In January 2022, we announced plans to acquire <strong>Activision Blizzard, Inc.</strong>, a leader in game development and an interactive entertainment content publisher.\"</blockquote>"
+    },
+    {
+     "title": "Headcount 181,000 → 221,000 (+22%)",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><thead><tr><th>Category</th><th>Jun 30, 2021</th><th>Jun 30, 2022</th></tr></thead><tbody><tr><td>Total full-time</td><td>181,000</td><td class=\"val-pos\">221,000</td></tr><tr><td>U.S.</td><td>103,000</td><td>122,000</td></tr><tr><td>International</td><td>78,000</td><td>99,000</td></tr><tr><td>Operations</td><td>67,000</td><td>85,000</td></tr><tr><td>Product R&amp;D</td><td>60,000</td><td>73,000</td></tr><tr><td>Sales and marketing</td><td>40,000</td><td>47,000</td></tr><tr><td>General and administration</td><td>14,000</td><td>16,000</td></tr></tbody></table>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "AI risk factor retitled: \"use of AI in our offerings\" → \"development and use of AI\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Issues in the use of AI <strong>in our offerings</strong> may result in reputational harm or liability\"</blockquote><blockquote>FY2022: \"Issues in the <strong>development and</strong> use of AI may result in reputational harm or liability\"</blockquote>"
+    },
+    {
+     "title": "AI risk body: \"data practices\" → \"AI development or deployment practices\"; EU AI legislation and regulatory action added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"<strong>Inappropriate or controversial data practices</strong> by Microsoft or others could impair the acceptance of AI solutions.\"</blockquote><blockquote>FY2022: \"<strong>Ineffective or inadequate AI development or deployment practices</strong> by Microsoft or others could <strong>result in incidents that</strong> impair the acceptance of AI solutions <strong>or cause harm to individuals or society</strong>.\"</blockquote><blockquote>FY2021: \"These deficiencies could <strong>undermine the decisions, predictions, or analysis AI applications produce, subjecting</strong> us to competitive harm, legal liability, and brand or reputational harm.\"</blockquote><blockquote>FY2022: \"These deficiencies <strong>and other failures of AI systems</strong> could <strong>subject</strong> us to competitive harm, <strong>regulatory action</strong>, legal liability, <strong>including under new proposed legislation regulating AI in jurisdictions such as the European Union (“EU”)</strong>, and brand or reputational harm.\"</blockquote>"
+    },
+    {
+     "title": "Datacenter energy and networking supply sentence added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"Our datacenters depend on <strong>predictable energy and networking supplies</strong>, the cost or availability of which could be adversely affected by a variety of factors, including the transition to a clean energy economy and geopolitical disruptions.\"</blockquote>"
+    },
+    {
+     "title": "Cybersecurity: nation-state attacks tied to the conflict in Ukraine",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"Nation-state attacks against us or our customers may intensify during periods of intense diplomatic or armed conflict, <strong>such as the ongoing conflict in Ukraine</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Acquisitions example list: GitHub dropped, Nuance completed at $18.8B, Activision $68.7B added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"For example, <strong>in October 2018 we completed our acquisition of GitHub, Inc. (“GitHub”) for $7.5 billion</strong>, in March 2021 we completed our acquisition of ZeniMax Media Inc. for $8.1 billion, and <strong>in April 2021 we announced a definitive agreement to acquire Nuance Communications, Inc. for $19.7 billion</strong>.\"</blockquote><blockquote>FY2022: \"For example, in March 2021 we completed our acquisition of ZeniMax Media Inc. for $8.1 billion, and <strong>in March 2022 we completed our acquisition of Nuance Communications, Inc. for $18.8 billion. In January 2022 we announced a definitive agreement to acquire Activision Blizzard, Inc. for $68.7 billion.</strong>\"</blockquote>"
+    },
+    {
+     "title": "Competition-law consequences: acquisitions bullet added (4 → 5 bullets)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"Regulatory scrutiny may inhibit our ability to consummate acquisitions or impose conditions that reduce the ultimate value of such transactions.\"</blockquote>"
+    },
+    {
+     "title": "Employees risk factor: unionization paragraph added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"Our global workforce is primarily non-unionized, but we have several unions and works councils outside of the United States. <strong>In the U.S., there has been a general increase in workers exercising their right to form or join a union.</strong> While Microsoft has not received such petitions in the U.S., the unionization of significant employee populations could result in higher costs and other operational changes necessary to respond to changing conditions and to establish new relationships with worker representatives.\"</blockquote>"
+    },
+    {
+     "title": "Harmful-content regulation: \"are gaining momentum\" → \"have been enacted\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Regulations and other initiatives to make platforms responsible for preventing or eliminating harmful content online <strong>are gaining momentum</strong> and we expect this to continue.\"</blockquote><blockquote>FY2022: \"Regulations and other initiatives to make platforms responsible for preventing or eliminating harmful content online <strong>have been enacted</strong>, and we expect this to continue.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "\"Commercial cloud\" renamed \"Microsoft Cloud\"; revenue $69.1B → $91.2B, growth 34% → 32%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"<strong>Commercial cloud</strong> revenue increased 34% to $69.1 billion.\"</blockquote><blockquote>FY2022: \"<strong>Microsoft Cloud (formerly commercial cloud)</strong> revenue increased 32% to $91.2 billion.\"</blockquote>"
+    },
+    {
+     "title": "Azure metric renamed \"Azure and other cloud services\"; growth 50% → 45%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Server products and cloud services revenue increased 27% driven by <strong>Azure growth of 50%</strong>.\"</blockquote><blockquote>FY2022: \"Server products and cloud services revenue increased 28% driven by <strong>Azure and other cloud services growth of 45%</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Consolidated opex: LinkedIn and Gaming added as drivers; COVID savings and other offsets removed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Operating expenses increased $2.0 billion or 4% driven by investments in cloud engineering and commercial sales<strong>, offset in part by savings related to COVID-19 across each of our segments, prior year charges associated with the closing of our Microsoft Store physical locations, and a reduction in bad debt expense</strong>.\"</blockquote><blockquote>FY2022: \"Operating expenses increased $6.3 billion or 14% driven by investments in cloud engineering<strong>, LinkedIn, Gaming,</strong> and commercial sales.\"</blockquote>"
+    },
+    {
+     "title": "Purchase commitments footnote now states they \"primarily relate to datacenters\"; $31.6B → $45.7B",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"<strong>Amounts represent purchase commitments, including</strong> open purchase orders and take-or-pay contracts that are not presented as construction commitments above.\"</blockquote><blockquote>FY2022: \"Purchase commitments <strong>primarily relate to datacenters and include</strong> open purchase orders and take-or-pay contracts that are not presented as construction commitments above.\"</blockquote><p>Contractual obligations table: purchase commitments $31,553M → $45,654M; columns collapsed to next-year / thereafter.</p>"
+    },
+    {
+     "title": "COVID-19 subsection removed from MD&amp;A",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2021: \"In fiscal year 2021, the COVID-19 pandemic continued to impact our business operations and financial results. Cloud usage and demand benefited as customers accelerate their digital transformation priorities.\"</blockquote><p>The Overview COVID paragraph and the COVID reference in the critical accounting estimates intro were also removed.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Server/network useful lives extended 4 → 6 years; estimated +$3.7B FY2023 operating income",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"In July 2020, we completed an assessment of the useful lives of our server and network equipment and determined we should increase the estimated useful life of server equipment from <strong>three years to four years</strong> and increase the estimated useful life of network equipment from <strong>two years to four years</strong>.\"</blockquote><blockquote>FY2022: \"In July 2022, we completed an assessment of the useful lives of our server and network equipment. <strong>Due to investments in software that increased efficiencies in how we operate our server and network equipment, as well as advances in technology</strong>, we determined we should increase the estimated useful lives of both server and network equipment from <strong>four years to six years</strong>.\"</blockquote><blockquote>FY2022: \"…it is estimated this change will increase our fiscal year 2023 operating income by $3.7 billion.\"</blockquote>"
+    },
+    {
+     "title": "Capex sentence retained verbatim",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2022: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings.\"</blockquote><p>Identical in FY2021 and FY2022 (Liquidity and Capital Resources).</p>"
+    },
+    {
+     "title": "Other Planned Uses of Capital: Nuance ($19.7B, close by end of CY2021) → Activision Blizzard ($68.7B, close in FY2023)",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"On April 11, 2021, we entered into a definitive agreement to acquire Nuance Communications, Inc. (“Nuance”) for $56.00 per share in an all-cash transaction valued at $19.7 billion, inclusive of Nuance’s net debt. The acquisition has been approved by Nuance’s shareholders, and we expect it to close <strong>by the end of calendar year 2021</strong>…\"</blockquote><blockquote>FY2022: \"On January 18, 2022, we entered into a definitive agreement to acquire Activision Blizzard, Inc. (“Activision Blizzard”) for $95.00 per share in an all-cash transaction valued at $68.7 billion, inclusive of Activision Blizzard’s net cash. The acquisition has been approved by Activision Blizzard’s shareholders, and we expect it to close <strong>in fiscal year 2023</strong>…\"</blockquote>"
+    },
+    {
+     "title": "TCJA R&amp;E capitalization: cash taxes expected to increase",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"While these provisions are not expected to have a material impact on our fiscal year 2023 effective tax rate on a net basis, <strong>our cash paid for taxes would increase</strong> unless these provisions are postponed or modified through legislative processes.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "Accrued legal liabilities $339M → $364M; upper range $500M → $600M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><thead><tr><th>Item</th><th>Jun 30, 2021</th><th>Jun 30, 2022</th></tr></thead><tbody><tr><td>Accrued aggregate legal liabilities</td><td>$339M</td><td class=\"val-neg\">$364M</td></tr><tr><td>Adverse outcomes could reach approximately</td><td>$500M</td><td class=\"val-neg\">$600M</td></tr></tbody></table>"
+    },
+    {
+     "title": "Patent and Intellectual Property Claims and Canadian class-action subsections removed from Contingencies",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2021: \"There were 63 patent infringement cases pending against Microsoft as of June 30, 2021, none of which are material individually or in aggregate.\"</blockquote><p>\"Other Antitrust Litigation and Claims\" retitled \"Antitrust Litigation and Claims\". Item 3 (Legal Proceedings) reduced to a cross-reference to Note 15; the Barovic v. Ballmer paragraph was removed.</p>"
+    }
+   ]
+  }
+ ]
+}

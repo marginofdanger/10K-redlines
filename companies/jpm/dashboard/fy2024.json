@@ -1,0 +1,199 @@
+{
+ "from": "FY2023",
+ "to": "FY2024",
+ "title": "CIB and CB combined; CET1-target and Basel III impact sentences removed; \"diverse\" dropped from human-capital text",
+ "sub": "Filed Feb 2025 | Headcount: 309,926 → 317,233 | Net revenue: $158.1B → $177.6B | CET1: 15.0% → 15.7%",
+ "era_summary": "The FY2024 10-K reports three reportable segments after the second-quarter 2024 combination of the Corporate & Investment Bank and Commercial Banking, and uses the \"JPMorganChase\" name style throughout. NII explanations replace \"higher rates\" and \"deposit margin expansion\" with balance sheet actions and \"deposit margin compression\"; the Basel III impact estimate and the CET1-target sentence are removed, and the SCB rises from 2.9% to 3.3%. \"Diverse\" is removed from human-capital, risk-factor and forward-looking-statement text, the First Republic risk factor is replaced by a data-quality risk factor, and the Russian litigation disclosure moves from possible outcomes to judgments entered and executed.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Segment count: four reportable segments plus a Corporate segment → three segments plus Corporate",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"For management reporting purposes, JPMorgan Chase’s activities are organized into <strong>four major</strong> reportable business segments, as well as <strong>a Corporate segment</strong>.\"</blockquote><blockquote>FY2024: \"<strong>Effective in the second quarter of 2024, JPMorganChase reorganized its reportable business segments by combining the former Corporate &amp; Investment Bank and Commercial Banking business segments to form one reportable segment, the Commercial &amp; Investment Bank.</strong> As a result of the reorganization, the Firm has <strong>three</strong> reportable business segments\"</blockquote><p>The LOB headcount table drops the CB row; CIB headcount goes from 74,404 to 93,231.</p>"
+    },
+    {
+     "title": "Human capital opener: \"high-performing and diverse workforce\" → \"talented employees\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"JPMorgan Chase believes that its long-term growth and success depend on its ability to attract, develop and retain <strong>a high-performing and diverse workforce, with inclusion and accessibility as key components of the way the Firm does business</strong>.\"</blockquote><blockquote>FY2024: \"JPMorganChase believes that its long-term growth and success depend on its ability to attract, develop and retain <strong>talented employees and foster an inclusive work environment</strong>.\"</blockquote><p>The \"Diversity, equity and inclusion\" sub-heading is retitled \"Workforce composition\", and the \"Firm culture\" paragraph is removed.</p>"
+    },
+    {
+     "title": "Training topics: DEI and risk and controls removed; artificial intelligence and data literacy added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"In addition, the Firm offers extensive training programs and educational resources to all employees covering a broad variety of topics such as <strong>leadership, change management, analytical thinking, culture and conduct, diversity, equity and inclusion, and risk and controls</strong>.\"</blockquote><blockquote>FY2024: \"In addition, the Firm offers extensive <strong>voluntary</strong> training programs and educational resources to all employees covering a broad variety of topics such as <strong>leadership and management, artificial intelligence, data literacy and operational and professional skills</strong>.\"</blockquote>"
+    },
+    {
+     "title": "CFPB late-fee rule: \"proposed a rule\" → \"released a final rule\", now stayed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"In February 2023, the CFPB <strong>proposed a rule that would significantly reduce and limit</strong> the late payment fees that credit card issuers, including the Firm, <strong>would be</strong> permitted to charge to customers.\"</blockquote><blockquote>FY2024: \"In March 2024, the CFPB <strong>released a final rule which significantly reduces</strong> the late payment fees that <strong>large</strong> credit card issuers, including the Firm, <strong>are</strong> permitted to charge to customers (the “CFPB Late Fee Rule”). <strong>The final rule is currently stayed pending resolution of an industry-led challenge in federal court.</strong>\"</blockquote><p>A new \"Litigation and regulatory challenges\" subsection lists industry lawsuits against the stress-test framework, the Late Fee, Data Sharing and Overdraft rules, and the DOL Fiduciary Rule.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "Risk-management heading: framework \"may not\" → \"will not\" be effective",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"JPMorgan Chase’s risk management framework and control environment <strong>may</strong> not be effective in identifying and mitigating every risk to JPMorgan Chase.\"</blockquote><blockquote>FY2024: \"JPMorganChase’s risk management framework and control environment <strong>will</strong> not be effective in identifying and mitigating every risk to JPMorganChase.\"</blockquote>"
+    },
+    {
+     "title": "First Republic risk factor removed; Data-quality risk factor added in its place",
+     "tag": "New",
+     "body_html": "<p>Removed heading (Operational):</p><blockquote>FY2023: \"JPMorgan Chase’s acquisition of certain assets and liabilities of First Republic Bank may not result in all of the benefits anticipated.\"</blockquote><p>New heading in the same position:</p><blockquote>FY2024: \"Data quality is essential to JPMorganChase’s business and operations, and if JPMorganChase fails to maintain adequate data management processes, this could adversely affect its ability to effectively manage its businesses, comply with applicable laws, rules and regulations, or remain competitive.\"</blockquote><p>\"First Republic\" no longer appears in Item 1A.</p>"
+    },
+    {
+     "title": "New Regulatory risk factor on governmental policies that discourage business with certain industries",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"JPMorganChase's businesses may be negatively impacted by governmental policies that either discourage or penalize business with certain industries or require specific business practices.\"</blockquote><p>The body text was an untitled paragraph under the Political risk factor in FY2023. The heading enters the first seven at #5; the Political heading moves from #7 to #8.</p>"
+    },
+    {
+     "title": "\"and diverse\" removed from the People risk heading",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2023: \"JPMorgan Chase’s ability to attract and retain qualified <strong>and diverse</strong> employees is critical to its success.\"</blockquote><blockquote>FY2024: \"JPMorganChase’s ability to attract and retain qualified employees is critical to its success.\"</blockquote><p>\"and diverse\" is removed from three other People sentences; the Conduct and Reputation lists change \"a diverse and inclusive workplace\" to \"an inclusive workplace\".</p>"
+    },
+    {
+     "title": "Public-policy criticism: \"continue to be criticized\" → \"expects that it will continue\"; DEI named",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"In addition, JPMorgan Chase and other companies have been and continue to be criticized by activists, politicians and other members of the public concerning positions taken with respect to matters of public policy.\"</blockquote><blockquote>FY2024: \"In addition, JPMorganChase has been and <strong>expects that it will</strong> continue to be criticized by activists, politicians and other members of the public concerning <strong>business practices or</strong> positions taken <strong>by JPMorganChase</strong> with respect to matters of public policy <strong>(such as diversity, equity and inclusion initiatives)</strong> or regarding transactions or other business or interactions between JPMorganChase and governmental or regulatory bodies.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Outlook: NII ~$90B → ~$94.0B; adjusted expense ~$90B → ~$95.0B; Card NCO <3.50% → ~3.60%",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Item</th><th>FY2023 10-K (for 2024)</th><th>FY2024 10-K (for 2025)</th></tr><tr><td>Net interest income</td><td>approximately $90 billion, market dependent</td><td>approximately $94.0 billion</td></tr><tr><td>NII excluding Markets</td><td>approximately $88 billion, market dependent</td><td>approximately $90.0 billion, market dependent</td></tr><tr><td>Adjusted expense</td><td>approximately $90 billion, market dependent</td><td>approximately $95.0 billion, market dependent</td></tr><tr><td>Card Services net charge-off rate</td><td>less than 3.50%</td><td>approximately 3.60%</td></tr></table><p>The two NII bullets are merged into one (four bullets → three), figures are stated to one decimal place, and the Card Services qualifier changes from \"less than\" to \"approximately\". Reported 2024 Card Services net charge-off rate: 3.34%.</p>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "NII drivers: \"higher rates\" removed; deposit margin compression added as lead offset",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"(“NII”) of $89.3 billion, up 34%, driven by <strong>higher rates</strong>, the impact of First Republic, and higher revolving balances in Card Services, <strong>partially</strong> offset by <strong>lower Markets net interest income</strong> and lower average deposit balances.\"</blockquote><blockquote>FY2024: \"(“NII”) of $92.6 billion, up 4%, driven by <strong>the impact of balance sheet actions, primarily reinvestments in the investment securities portfolio</strong>, higher revolving balances in Card Services, the <strong>timing</strong> impact of First Republic, <strong>higher wholesale deposit balances, and higher Markets net interest income</strong>, <strong>largely</strong> offset by <strong>deposit margin compression across the lines of business</strong> and lower average deposit balances <strong>in CCB</strong>.\"</blockquote><p>Markets NII moves from an offset to a driver. Net yield on interest-earning assets: 2.70% (up 70 bps) → 2.63% (down 7 bps).</p>"
+    },
+    {
+     "title": "Funds transfer pricing: \"contributed to margin expansion on deposits\" → \"resulting in deposit margin compression\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"As a result of the higher interest rate environment, the cost of funds for assets and the <strong>credits earned</strong> for liabilities have generally increased, impacting the business segments’ net interest income.\"</blockquote><blockquote>FY2024: \"As a result of higher average interest rates, the cost of funds for assets and the <strong>FTP benefit earned</strong> for liabilities have generally increased in the current year, impacting the net interest income of the business segments. During the period ended December 31, 2024, this has resulted in a higher cost of funds for loans and Markets activities. <strong>In addition, rates paid to deposit holders increased more than the FTP benefit increase during the year, resulting in deposit margin compression.</strong>\"</blockquote><p>The FY2023 passage continued: \"…Markets activities, and contributed to margin expansion on deposits.\"</p>"
+    },
+    {
+     "title": "Expense drivers: \"wage inflation\" removed; revenue-related compensation and Visa Foundation contribution added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"was $87.2 billion, up 14%, <strong>predominantly</strong> driven by higher compensation expense, reflecting an increase in employees, primarily in technology and front office, <strong>as well as wage inflation</strong>.\"</blockquote><blockquote>FY2024: \"was $91.8 billion, up 5%, driven by higher compensation expense, including <strong>higher revenue-related compensation</strong> and growth in the number of employees, as well as <strong>a $1.0 billion contribution of Visa shares to the JPMorgan Chase Foundation</strong> recorded in the second quarter of 2024,\"</blockquote>"
+    },
+    {
+     "title": "First Republic integration: \"continues to convert\" → \"had substantially completed\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"The Firm <strong>continues to convert</strong> certain operations, and <strong>to integrate</strong> clients, products and services, associated with the First Republic acquisition to align with the Firm’s businesses and operations.\"</blockquote><blockquote>FY2024: \"As of December 31, 2024, the Firm <strong>had substantially completed the conversion of operations, and the integration of</strong> clients, products and services, associated with the First Republic acquisition to align with the Firm’s businesses and operations.\"</blockquote><p>A new defined term, the \"timing impact\" of First Republic, covers twelve months of First Republic results in 2024 against eight months in 2023.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Capital & Liquidity",
+   "findings": [
+    {
+     "title": "\"Continue to build capital\" and \"CET1 target ... no longer meaningful\" sentence removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2023: \"Pending the finalization of the U.S. Basel III proposal, the Firm expects that it will continue to build capital above the current levels, and therefore the CET1 target of 13.5% previously set by the Firm (which was with respect to the current Standardized RWA measure) is no longer meaningful.\"</blockquote><p>No replacement in FY2024. New sentence in Key Regulatory Developments:</p><blockquote>FY2024: \"Finalization of the above proposals, including the required implementation dates, is uncertain. The Firm continues to monitor developments and potential impacts.\"</blockquote>"
+    },
+    {
+     "title": "Basel III proposal impact estimate (~30% RWA, ~25% CET1 capital) removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2023: \"… the estimated impact at the end of the transition period would increase RWA by approximately 30%, which would result in an approximately 25% increase to CET1 capital necessary to meet the Firm’s CET1 ratio requirement, all else equal.\"</blockquote><p>The July 1, 2025 proposed effective date and the clause that the proposal would not permit internal models for RWA (other than market risk) are also removed.</p>"
+    },
+    {
+     "title": "SCB 2.9% → 3.3%; Standardized CET1 requirement 11.4% → 12.3%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"The Firm's current SCB requirement is <strong>2.9%</strong>, and will remain in effect until <strong>September 30, 2024</strong>. The Firm’s Standardized CET1 capital ratio requirement, including regulatory buffers, was <strong>11.4%</strong> as of December 31, 2023.\"</blockquote><blockquote>FY2024: \"The Firm's current SCB requirement is <strong>3.3%</strong> and will remain in effect until <strong>September 30, 2025</strong>. The Firm’s Standardized CET1 capital ratio requirement, including regulatory buffers, was <strong>12.3%</strong> as of December 31, 2024.\"</blockquote><p>Reported Standardized CET1 ratio: 15.0% → 15.7%. Eligible LTD requirement: 10.0% → 10.5%.</p>"
+    },
+    {
+     "title": "New share-repurchase sentence: amounts \"may be substantially more or less\" than prior periods",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"The amount of common shares that the Firm repurchases in any period may be substantially more or less than the amounts estimated or actually repurchased in prior periods, reflecting the dynamic nature of the decision-making process.\"</blockquote><p>Also new: a $30 billion repurchase program effective July 1, 2024. In the factor list, \"internal capital generation\" → \"organic capital generation\".</p>"
+    },
+    {
+     "title": "Funding sources: \"stable\" removed before \"deposits\"",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2023: \"The Firm funds its global balance sheet through diverse sources of funding including <strong>stable</strong> deposits, secured and unsecured funding in the capital markets and stockholders’ equity.\"</blockquote><blockquote>FY2024: \"The Firm funds its global balance sheet through diverse sources of funding including deposits, secured and unsecured funding in the capital markets and stockholders’ equity.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Credit",
+   "findings": [
+    {
+     "title": "Card NCO driver: \"as delinquencies have normalized\" → seasoning of vintages, normalization, balance growth",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"Net charge-offs increased for the year ended December 31, 2023 compared to the prior year <strong>as delinquencies have normalized</strong>.\"</blockquote><blockquote>FY2024: \"Net charge-offs increased for the year ended December 31, 2024 compared to the prior year <strong>reflecting the seasoning of vintages originated in recent years, credit normalization and balance growth</strong>.\"</blockquote><p>The FY2024 delinquency sentence adds \"in line with the Firm’s expectations\".</p>"
+    },
+    {
+     "title": "Adverse-scenario weighting reframed as a \"qualitative adjustment\" for geopolitical and macroeconomic risks",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"… the impact of the additional weight placed on the adverse scenarios in the first quarter of 2023, reflecting <strong>elevated recession risks due to high inflation and tightening financial conditions</strong>.\"</blockquote><blockquote>FY2024: \"The Firm’s <strong>qualitative adjustments continued to include</strong> additional weight placed on the adverse scenarios to reflect <strong>ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Weighted-average unemployment peak 5.5% moved from 4Q24 to 4Q25; GDP shortfall 1.5% → 1.9%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"… resulting in a weighted average U.S. unemployment rate peaking at 5.5% in the fourth quarter of <strong>2024</strong>, and a weighted average U.S. real GDP level that is <strong>1.5%</strong> lower than the central case at the end of the second quarter of <strong>2025</strong>.\"</blockquote><blockquote>FY2024: \"… a weighted average U.S. unemployment rate peaking at 5.5% in the fourth quarter of <strong>2025</strong>, and … a weighted average U.S. real GDP level that is <strong>1.9%</strong> lower than the central case at the end of the second quarter of <strong>2026</strong>.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Market & Operational Risk",
+   "findings": [
+    {
+     "title": "Russia exposure: \"approximately $350 million\" → \"not material\"; War in Ukraine sub-section removed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"The Firm continues to monitor its exposure to Russia which was <strong>approximately $350 million as of December 31, 2023</strong>.\"</blockquote><blockquote>FY2024: \"The Firm continues to monitor its exposure to Russia, <strong>which corresponds to cash placed with the central bank</strong>, but which excludes deposits placed on behalf of clients at the Deposit Insurance Agency of Russia. <strong>The Firm currently believes that its remaining exposure to Russia is not material.</strong>\"</blockquote><p>The \"War in Ukraine and Sanctions\" sub-section of Operational Risk is removed in full.</p>"
+    },
+    {
+     "title": "Model risk: machine learning and artificial intelligence named for the first time",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"The Firm uses models and other analytical and judgment-based estimations across various businesses and functions.\"</blockquote><blockquote>FY2024: \"The Firm uses models and other analytical and judgment-based estimations, <strong>including those based upon machine learning or artificial intelligence techniques,</strong> across various businesses and functions.\"</blockquote><p>Elsewhere in the section, \"Business and technology resiliency risk\" is retitled \"Firmwide resiliency risk\".</p>"
+    }
+   ]
+  },
+  {
+   "section": "Accounting & FLS",
+   "findings": [
+    {
+     "title": "First Republic wholesale ACL: excluded from modeled estimates → incorporated from 2Q24",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"… the allowance for credit losses for the acquired wholesale portfolio was measured based on other facilities underwritten by the Firm with similar risk characteristics <strong>and not based on modeled estimates. As such, the First Republic wholesale portfolio is excluded from the modeled estimates sensitivity analysis below.</strong>\"</blockquote><blockquote>FY2024: \"… the allowance for credit losses for the acquired wholesale portfolio was <strong>initially</strong> measured based on similar risk characteristics from other facilities underwritten by the Firm. <strong>Starting in the second quarter of 2024, the acquired portfolio was incorporated into the Firm's modeled credit loss estimates and is now reflected in the wholesale sensitivity analysis</strong> …\"</blockquote><p>Relative adverse scenario sensitivity: credit card $3.1B → $3.7B; wholesale $3.9B → $4.1B.</p>"
+    },
+    {
+     "title": "Forward-looking statements: \"and diverse\" removed from the employee item",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2023: \"Ability of the Firm to attract and retain qualified <strong>and diverse</strong> employees;\"</blockquote><blockquote>FY2024: \"Ability of the Firm to attract and retain qualified employees;\"</blockquote><p>No other items added, removed or reordered; the list stays at 30 items.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "Russian litigation: \"may disregard\" → \"have disregarded\"; judgments entered and executed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"The Russian court may … disregard the parties’ contractual agreement on forum selection, and may not recognize foreign sanctions laws as a basis for not making payment.\"</blockquote><blockquote>FY2024: \"In claims involving the Firm and claims filed against other financial institutions, Russian courts <strong>have disregarded</strong> the parties’ contractual agreements concerning forum selection and <strong>did not recognize</strong> foreign sanctions laws as a basis for not making payment.\"</blockquote><p>FY2024 adds that a judgment \"has been executed against assets held onshore by the Firm in Russia\" and that the judgments exceed the Firm's available assets in Russia.</p>"
+    },
+    {
+     "title": "Zelle: government inquiries → CFPB complaint filed December 2024",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2023: \"The Firm is responding to inquiries from civil government authorities regarding the handling of disputes related to transfers of funds through the Zelle Network.\"</blockquote><blockquote>FY2024: \"In December 2024, the Consumer Financial Protection Bureau (“CFPB”) filed a complaint against Early Warning Services, LLC (“EWS”), Bank of America, N.A., Wells Fargo Bank, N.A. and JPMorgan Chase Bank, N.A. in the United States District Court for the District of Arizona.\"</blockquote><p>Heading \"Government Inquiries Related to the Zelle Network\" is replaced by \"Zelle Network Litigation\".</p>"
+    },
+    {
+     "title": "Headed matters 12 → 9; reasonably possible losses $1.3B → $1.4B; legal expense $1.4B → $740M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Item</th><th>FY2023</th><th>FY2024</th></tr><tr><td>Headed matters</td><td>12</td><td>9</td></tr><tr><td>Removed headings</td><td colspan=\"2\">Government Inquiries Related to the Zelle Network; Jeffrey Epstein Litigation; Securities Lending Antitrust Litigation; Trading Venues Investigations</td></tr><tr><td>Added heading</td><td colspan=\"2\">Zelle Network Litigation</td></tr><tr><td>Reasonably possible losses (upper end)</td><td>$1.3 billion</td><td>$1.4 billion</td></tr><tr><td>Legal expense (year)</td><td>$1.4 billion</td><td>$740 million</td></tr></table><p>SEC Inquiries changes from \"is responding to requests\" to October 2024 settlements totalling $151 million.</p>"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,159 @@
+{
+ "from": "FY2022",
+ "to": "FY2023",
+ "title": "AI and OpenAI language added across sections; Q2 charge and workforce reduction; IDPC matter",
+ "sub": "Filed Jul 2023 | Headcount: 221,000 → 221,000 | Revenue: $198.3B → $211.9B | Microsoft Cloud revenue: $91.2B → $111.6B",
+ "era_summary": "The FY2023 filing adds generative AI, copilot and OpenAI language to Business and Risk Factors, names AI competitors, and adds GPUs, land and energy to the datacenter dependency sentence in three sections. MD&A discloses a $1.2 billion Q2 charge with approximately 10,000 job reductions, and the capex sentence adds AI infrastructure. The Contingencies note adds the Irish Data Protection Commission LinkedIn matter and the legal accrual rises from $364 million to $617 million.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "OpenAI paragraph added: \"exclusive cloud provider\", Azure powers \"all\" OpenAI workloads",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"We have a long-term partnership with OpenAI, a leading AI research and deployment company. We deploy OpenAI’s models across our consumer and enterprise products. As OpenAI’s <strong>exclusive cloud provider</strong>, Azure powers <strong>all</strong> of OpenAI's workloads. We have also <strong>increased our investments</strong> in the development and deployment of specialized supercomputing systems to accelerate OpenAI’s research.\"</blockquote><p>Platform (Intelligent Cloud) section. OpenAI is not named in the FY2022 Business section.</p>"
+    },
+    {
+     "title": "Mission paragraph: \"powered by artificial intelligence\" inserted; \"new startups\" dropped",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Our platforms and tools help drive small business productivity, large business competitiveness, and public-sector efficiency.\"</blockquote><blockquote>FY2023: \"We are creating the platforms and tools <strong>, powered by artificial intelligence (“ AI ”),</strong> that deliver better, faster, and more effective solutions to support small and large business competitiveness, improve educational and health outcomes, grow public-sector efficiency, and empower human ingenuity.\"</blockquote>"
+    },
+    {
+     "title": "Generative AI and copilot language added across products",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"Our investment in AI spans the entire company, from Microsoft Teams and Outlook, to Bing and Xbox, and we are infusing <strong>generative AI</strong> capability into our consumer and commercial offerings to deliver <strong>copilot</strong> capability for all services across the Microsoft Cloud.\"</blockquote><blockquote>FY2023: \"Microsoft 365 Copilot combines next-generation AI with business data in the Microsoft Graph and Microsoft 365 applications.\"</blockquote><blockquote>FY2023: \"GitHub Copilot is at the forefront of AI-powered software development, giving developers a new tool to write code easier and faster so they can focus on more creative problem-solving.\"</blockquote>"
+    },
+    {
+     "title": "AI competitors named for the first time: Amazon Bedrock, CodeWhisperer, Google AI, Meta's LLaMA2",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"Our AI offerings compete with AI products from hyperscalers such as <strong>Amazon Bedrock, Amazon CodeWhisperer, and Google AI</strong>, as well as products from other emerging competitors, many of which are also current or potential partners, including <strong>Meta’s LLaMA2</strong> and other open source solutions.\"</blockquote><p>Competition section, Azure paragraph. OpenAI is not listed as a competitor.</p>"
+    },
+    {
+     "title": "Operations: datacenter dependency on land, energy, servers and GPUs added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"We continue to identify and evaluate opportunities to expand our datacenter locations and increase our server capacity to meet the evolving needs of our customers, <strong>particularly given the growing demand for AI services</strong>. Our datacenters depend on the availability of <strong>permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (“GPUs”)</strong> and other components.\"</blockquote><p>First mention of GPUs in Business. The same dependency sentence was added to Risk Factors and MD&amp;A.</p>"
+    },
+    {
+     "title": "Superlative removed: \"the most comprehensive and trusted cloud\"",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2022: \"The Microsoft Cloud <strong>is the most comprehensive and trusted cloud, providing</strong> the best integration across the technology stack while offering openness, improving time to value, reducing costs, and increasing agility.\"</blockquote><blockquote>FY2023: \"The Microsoft Cloud <strong>provides</strong> the best integration across the technology stack while offering openness, improving time to value, reducing costs, and increasing agility.\"</blockquote>"
+    },
+    {
+     "title": "Salary freeze disclosed: base salaries held at fiscal year 2022 levels",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"<strong>In order to manage our costs</strong> in a dynamic, competitive environment, in fiscal year 2023 we announced that <strong>base salaries of salaried employees would remain at fiscal year 2022 levels</strong>.\"</blockquote><p>Total Rewards and Pay Equity. Replaces the FY2022 description of increased merit and stock award investment.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "New AI bullet in business-model competition: \"We will bear significant development and operational costs\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"We are investing in artificial intelligence (“AI”) across the entire company and infusing generative AI capabilities into our consumer and commercial offerings. We expect AI technology and services to be a <strong>highly competitive and rapidly evolving market</strong>. <strong>We will bear significant development and operational costs</strong> to build and support the AI capabilities, products, and services necessary to meet the needs of our customers.\"</blockquote><p>Inserted as the second bullet, between the license-based model and advertising-funded bullets.</p>"
+    },
+    {
+     "title": "OpenAI named twice: third phase of partnership; \"our strategic partner, OpenAI\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"In January 2023 we announced the third phase of our OpenAI strategic partnership.\"</blockquote><blockquote>FY2023: \"This AI may be developed by Microsoft or others, including <strong>our strategic partner, OpenAI</strong>.\"</blockquote><p>Acquisitions risk factor and AI risk factor respectively. The second replaces FY2022 \"first- and third-party AI\".</p>"
+    },
+    {
+     "title": "AI risk heading: \"reputational harm\" → \"reputational or competitive harm\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Issues in the development and use of AI may result in reputational harm or liability\"</blockquote><blockquote>FY2023: \"Issues in the development and use of AI may result in reputational <strong>or competitive</strong> harm or liability\"</blockquote>"
+    },
+    {
+     "title": "Datacenter dependencies expanded to land, servers and GPUs; environmental regulations added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Our datacenters depend on predictable energy and networking supplies, the cost or availability of which could be adversely affected by a variety of factors, including the transition to a clean energy economy and geopolitical disruptions.\"</blockquote><blockquote>FY2023: \"Our datacenters depend on <strong>the availability of permitted and buildable land,</strong> predictable energy, networking supplies, <strong>and servers, including graphics processing units (“GPUs”) and other components</strong>. The cost or availability of these dependencies could be adversely affected by a variety of factors, including the transition to a clean energy economy, <strong>local and regional environmental regulations,</strong> and geopolitical disruptions.\"</blockquote>"
+    },
+    {
+     "title": "Solorigate/Nobelium example removed; generative AI attack-surface sentences added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The cyberattacks uncovered in late 2020 known as “Solorigate” or “Nobelium” are an example of a supply chain attack where malware was introduced to a software provider’s customers, including us, through software updates.\"</blockquote><blockquote>FY2023: \"We are also subject to supply chain cyberattacks where malware can be introduced to a software provider’s customers, including us, through software updates.\"</blockquote><blockquote>FY2023: \"<strong>Increasing use of generative AI models in our internal systems may create new attack methods for adversaries.</strong>\"</blockquote><blockquote>FY2023: \"Because generative AI is a new field, understanding of security risks and protection methods continues to develop; features that rely on generative AI may be susceptible to unanticipated security threats from sophisticated adversaries.\"</blockquote>"
+    },
+    {
+     "title": "New risk factor: \"Existing and increasing legal and regulatory requirements\"; EU AI Act cited",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"Existing and increasing legal and regulatory requirements could adversely affect our results of operations.\"</blockquote><blockquote>FY2023: \"For example, in the EU, an <strong>AI Act is being considered</strong>, and may entail increased costs or decreased opportunities for the operation of our AI services in the European market.\"</blockquote><p>Placed after the personal-data-laws risk factor; absorbs the FY2022 \"Other regulatory areas\" and accessibility text from the anti-corruption risk factor.</p>"
+    },
+    {
+     "title": "GDPR penalty cap \"(of up to 4% of worldwide revenue …)\" → \"significant monetary penalties\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"…which can result in monetary penalties <strong>(of up to 4% of worldwide revenue in the case of GDPR)</strong>, private lawsuits, reputational damage, blockage of international data transfers, and loss of customers.\"</blockquote><blockquote>FY2023: \"…which can result in <strong>significant</strong> monetary penalties, private lawsuits, reputational damage, blockage of international data transfers, and loss of customers.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "Q2 charge and ~10,000-job workforce reduction disclosed",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"On January 18, 2023, we announced decisions we made to align our cost structure with our revenue and customer demand, prioritize our investments in strategic areas, and consolidate office space.\"</blockquote><blockquote>FY2023: \"First, we reduced our overall workforce by approximately 10,000 jobs through the third quarter of fiscal year 2023 related to the Q2 charge, which represents less than 5% of our total employee base.\"</blockquote><p>The Q2 charge was $1.2 billion, including $800 million of employee severance.</p>"
+    },
+    {
+     "title": "Economic Conditions: \"cloud and AI\" inserted before infrastructure",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The investments we are making in infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.\"</blockquote><blockquote>FY2023: \"The investments we are making in <strong>cloud and AI</strong> infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.\"</blockquote>"
+    },
+    {
+     "title": "Microsoft Cloud gross margin ex-accounting change: \"increased 3 points\" → \"decreased slightly\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage <strong>increased 3 points driven by improvement across our cloud services</strong>, offset in part by sales mix shift to Azure and other cloud services.\"</blockquote><blockquote>FY2023: \"Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage <strong>decreased slightly driven by a decline in Azure and other cloud services</strong> and sales mix shift to Azure and other cloud services , offset in part by improvement in Office 365 Commercial.\"</blockquote>"
+    },
+    {
+     "title": "Windows OEM: \"continued strength in the commercial PC market\" → \"elevated channel inventory levels\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"Windows OEM revenue <strong>increased 11%</strong> driven by continued strength in the commercial PC market, which has higher revenue per license.\"</blockquote><blockquote>FY2023: \"Windows OEM revenue <strong>decreased 25%</strong> as elevated channel inventory levels continued to drive additional weakness beyond declining PC demand.\"</blockquote>"
+    },
+    {
+     "title": "Key results FY2022 → FY2023",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Item</th><th>FY2022</th><th>FY2023</th></tr><tr><td>Revenue</td><td>$198.3B (+18%)</td><td>$211.9B (+7%)</td></tr><tr><td>Operating income</td><td>$83.4B</td><td>$88.5B</td></tr><tr><td>Net income</td><td>$72.7B</td><td>$72.4B</td></tr><tr><td>Microsoft Cloud revenue</td><td>$91.2B (+32%)</td><td>$111.6B (+22%)</td></tr><tr><td>Microsoft Cloud gross margin</td><td>70%</td><td>72%</td></tr><tr><td>Effective tax rate</td><td>13%</td><td>19%</td></tr><tr><td>Operating cash flow</td><td>$89.0B</td><td>$87.6B</td></tr><tr><td>Total contractual obligations</td><td>$180.9B</td><td>$235.1B</td></tr></table>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Capex sentence: \"and our investments in AI infrastructure\" added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings.\"</blockquote><blockquote>FY2023: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings <strong>and our investments in AI infrastructure</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Activision: \"we expect it to close in fiscal year 2023\" → merger agreement extended to October 18, 2023",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The acquisition has been approved by Activision Blizzard’s shareholders, <strong>and we expect it to close in fiscal year 2023</strong>, subject to the satisfaction of certain regulatory approvals and other customary closing conditions.\"</blockquote><blockquote>FY2023: \"We continue to work toward closing the transaction subject to obtaining required regulatory approvals and satisfaction of other customary closing conditions. Microsoft and Activision Blizzard have jointly agreed to extend the merger agreement through <strong>October 18, 2023</strong> to allow for additional time to resolve remaining regulatory concerns.\"</blockquote>"
+    },
+    {
+     "title": "Hiring and real-estate statements attached to the Q2 charge",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"While we eliminated roles in some areas, <strong>we will continue to hire in key strategic areas</strong>.\"</blockquote><blockquote>FY2023: \"In fiscal year 2023, we made decisions to consolidate our office leases to create higher density across our workspaces, and <strong>we may make similar decisions in future periods</strong> as we continue to evaluate our real estate needs.\"</blockquote><p>First sentence in MD&amp;A; second in Item 2 Properties.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "Irish Data Protection Commission (LinkedIn/GDPR) matter added to Contingencies note",
+     "tag": "New",
+     "body_html": "<blockquote>FY2023: \"In April 2023, the IDPC provided LinkedIn with a non-public preliminary draft decision alleging GDPR violations and proposing a fine. Microsoft intends to challenge the preliminary draft decision.\"</blockquote><p>No fine amount is stated.</p>"
+    },
+    {
+     "title": "Accrued legal liabilities $364M → $617M; reasonably-possible range unchanged at ~$600M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>As of June 30</th><th>Accrued</th><th>Reasonably possible beyond accrual</th></tr><tr><td>2022</td><td>$364M</td><td>~$600M</td></tr><tr><td>2023</td><td>$617M</td><td>~$600M</td></tr></table><p>First year in the FY2019–FY2026 series in which the accrual exceeds the reasonably-possible range.</p>"
+    },
+    {
+     "title": "China SAMR antitrust investigation removed from Contingencies note",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2022: \"In 2019, the SAMR presented preliminary views as to certain possible violations of China’s Anti-Monopoly Law.\"</blockquote><p>Removed with the \"Antitrust Litigation and Claims\" and \"Product-Related Litigation\" headings.</p>"
+    }
+   ]
+  }
+ ]
+}

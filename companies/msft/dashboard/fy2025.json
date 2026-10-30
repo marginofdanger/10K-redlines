@@ -1,0 +1,159 @@
+{
+ "from": "FY2024",
+ "to": "FY2025",
+ "title": "Segment realignment; OpenAI moved from Item 1 to MD&A; legal risk factors consolidated",
+ "sub": "Filed Jul 2025 | Headcount: 228,000 → 228,000 | Revenue: $245.1B → $281.7B | Microsoft Cloud revenue: $137.4B → $168.9B",
+ "era_summary": "Segments were realigned in August 2024, moving the commercial components of Microsoft 365 into Productivity and Business Processes and replacing the metric set. Item 1 dropped the ambition narratives, the OpenAI paragraph, named competitors and diversity language, while MD&A added an OpenAI partnership paragraph and attributed the Microsoft Cloud gross margin decline to 69% to scaling AI infrastructure. Five legal and regulatory risk factors were merged into one with new AI, trade/tariff and cybersecurity bullets, and the capex sentence changed from \"expect … to increase\" to \"will continue to invest\".",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "AI paragraph: \"will fundamentally transform\" → \"is fundamentally transforming\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"<strong>We have entered a new age of AI that will fundamentally transform</strong> productivity for every individual, organization, and industry <strong>on earth, while helping us address some of our most pressing challenges</strong>.\"</blockquote><blockquote>FY2025: \"<strong>AI is fundamentally transforming</strong> productivity for every individual, organization, and industry.\"</blockquote>"
+    },
+    {
+     "title": "OpenAI partnership paragraph removed from Item 1",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"We have a long-term partnership with OpenAI, a leading AI research and deployment company.\"</blockquote><blockquote>FY2024: \"As OpenAI’s exclusive cloud provider, Azure powers all of OpenAI's workloads.\"</blockquote><p>The word \"OpenAI\" does not appear in FY2025 Item 1. A partnership paragraph appears instead in FY2025 MD&amp;A (Industry Trends and Opportunities).</p>"
+    },
+    {
+     "title": "Named AI competitors removed: \"Amazon and Google\", \"Anthropic, OpenAI, Meta\"",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"Our AI offerings compete with AI products from hyperscalers <strong>such as Amazon and Google</strong>, as well as products from other emerging competitors, <strong>including Anthropic, OpenAI, Meta,</strong> and other open source offerings, many of which are also current or potential partners.\"</blockquote><blockquote>FY2025: \"Our AI offerings compete with AI products from hyperscalers, as well as products from other emerging competitors and other open source offerings, many of which are also current or potential partners.\"</blockquote><p>Named competitors were also removed from the Office, Dynamics, Azure, security, server, database, developer tools, Windows, Xbox and Search competition paragraphs.</p>"
+    },
+    {
+     "title": "Datacenter sentence: \"identify and evaluate opportunities to expand … increase\" → \"align\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"We continue to <strong>identify and evaluate opportunities to expand</strong> our datacenter locations and <strong>increase</strong> our server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services.\"</blockquote><blockquote>FY2025: \"We continue to <strong>align</strong> our datacenter locations and server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services.\"</blockquote>"
+    },
+    {
+     "title": "Supplier-concentration sentences extended to servers and datacenters",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"However, some of our products contain certain components for which there are <strong>very</strong> few qualified suppliers. <strong>Extended disruptions</strong> at these suppliers could impact our ability to manufacture devices on time to meet consumer demand.\"</blockquote><blockquote>FY2025: \"There are few qualified suppliers for certain components of our <strong>servers and</strong> devices. <strong>Extended or unforeseen</strong> disruptions at these suppliers could impact our ability to <strong>operate our datacenters and</strong> manufacture devices on time to meet consumer demand.\"</blockquote>"
+    },
+    {
+     "title": "New segment-realignment paragraph (Microsoft 365 commercial components moved into P&BP)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"In August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment.\"</blockquote><p>EMS, Windows Commercial and per-user Power BI move into P&amp;BP; Windows Commercial, patent licensing, Windows IoT and HoloLens are removed from the More Personal Computing segment description.</p>"
+    },
+    {
+     "title": "Diversity and inclusion sentences removed from Human Capital",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"Diversity and inclusion are core to our business.\"</blockquote><blockquote>FY2024: \"We encourage every person at Microsoft to play an active role in creating an inclusive environment.\"</blockquote><p>The words \"diversity\" and \"inclusion\" no longer appear in FY2025 Item 1. Human Capital Resources moved from before Operating Segments to after the segment competition sections.</p>"
+    },
+    {
+     "title": "Headcount flat at 228,000; operations +3,000, other functions −1,000 each",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Employees (June 30)</th><th>FY2024</th><th>FY2025</th></tr><tr><td>Total</td><td>228,000</td><td>228,000</td></tr><tr><td>U.S.</td><td>126,000</td><td>125,000</td></tr><tr><td>International</td><td>102,000</td><td>103,000</td></tr><tr><td>Operations</td><td>86,000</td><td>89,000</td></tr><tr><td>Product R&amp;D</td><td>81,000</td><td>80,000</td></tr><tr><td>Sales and marketing</td><td>45,000</td><td>44,000</td></tr><tr><td>General and administration</td><td>16,000</td><td>15,000</td></tr></table>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "Five legal/regulatory risk-factor headings collapsed into one consolidated risk factor",
+     "tag": "Signal",
+     "body_html": "<p>FY2024 headings removed:</p><blockquote>FY2024: \"Government enforcement under competition laws and new market regulation may limit how we design and market our products.\"</blockquote><blockquote>FY2024: \"Laws and regulations relating to anti-corruption and trade could result in increased costs, fines, criminal penalties, or reputational damage.\"</blockquote><blockquote>FY2024: \"Laws and regulations relating to the handling of personal data may impede the adoption of our services or result in increased costs, legal claims, fines against us, or reputational damage.\"</blockquote><blockquote>FY2024: \"We are subject to evolving sustainability regulatory requirements and expectations, which exposes us to increased costs and legal and reputational risks.\"</blockquote><blockquote>FY2024: \"Existing and increasing legal and regulatory requirements could adversely affect our results of operations.\"</blockquote><blockquote>FY2025: \"We are subject to a variety of <strong>new, existing, and evolving</strong> legal and regulatory requirements that could adversely affect our results of operations.\"</blockquote><p>The FY2025 risk factor has seven bullets: Competition laws and new market regulation; AI; Anti-corruption; Trade; Cybersecurity; Handling of personal data; Environmental, Social, and Governance. The goodwill-impairment heading was also removed (text folded into the acquisitions risk factor). Heading count: 28 → 23.</p>"
+    },
+    {
+     "title": "Trade bullet adds U.S. tariffs and the AI Diffusion Rule",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"Increased geopolitical instabilities and changing U.S. Administration priorities create an unpredictable trade landscape.\"</blockquote><blockquote>FY2025: \"U.S. tariff and shifting AI export controls policies, like the AI Diffusion Rule, could increase operational costs, create uncertainty in the continuity of our products, and accelerate sovereignty initiatives among international partners and customers.\"</blockquote><blockquote>FY2025: \"The volatility of U.S. tariffs has triggered economic uncertainty and could impact cloud and devices supply chain cost competitiveness.\"</blockquote>"
+    },
+    {
+     "title": "AI risk factor: human review extended to \"inputs\" and \"agentic AI systems\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Human review of certain outputs may be required.\"</blockquote><blockquote>FY2025: \"Human review of certain <strong>inputs and</strong> outputs may be required<strong>, including for agentic AI systems that can take actions autonomously</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Software quality: \"may experience\" → \"have and may in the future experience\"; processes \"imperfect\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Our software products and services also <strong>may</strong> experience quality or reliability problems.\"</blockquote><blockquote>FY2025: \"Our software products and services also <strong>have and may in the future</strong> experience quality or reliability problems.\"</blockquote><blockquote>FY2025: \"The processes we use to develop our software are imperfect.\"</blockquote>"
+    },
+    {
+     "title": "AI market sentence: \"We expect AI technology and services to be\" → \"AI technology and services are\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"<strong>We expect</strong> AI technology and services <strong>to be</strong> a highly competitive and rapidly evolving market, and new competitors continue to enter the market.\"</blockquote><blockquote>FY2025: \"AI technology and services <strong>are</strong> a highly competitive and rapidly evolving market, and new competitors continue to enter the market.\"</blockquote>"
+    },
+    {
+     "title": "Global business risk adds U.S.–Europe tension, tariffs and sanctions non-compliance",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Global, regional, and local economic developments, monetary policy, inflation, and recession, as well as political and military disputes, <strong>may</strong> adversely affect our results of operations.\"</blockquote><blockquote>FY2025: \"Global, regional, and local economic developments, monetary policy, <strong>geopolitical tension, particularly between the U.S. and Europe, restrictions on international trade, such as tariffs and other controls on imports or exports,</strong> inflation, and recession, as well as political and military disputes, <strong>could</strong> adversely affect our results of operations.\"</blockquote>"
+    },
+    {
+     "title": "Systematic \"may\" → \"could\" in risk-factor headings and consequence clauses",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2024: \"We face intense competition across all markets for our products and services, which <strong>may</strong> adversely affect our results of operations.\"</blockquote><blockquote>FY2025: \"We face intense competition across all markets for our products and services, which <strong>could</strong> adversely affect our results of operations.\"</blockquote><blockquote>FY2024: \"Adverse economic or market conditions <strong>may</strong> harm our business.\"</blockquote><blockquote>FY2025: \"Adverse economic or market conditions <strong>could</strong> harm our business.\"</blockquote><p>The same shift appears in the acquisitions and catastrophic-events headings and in about 30 closing clauses.</p>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "New OpenAI partnership paragraph in Industry Trends and Opportunities",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"Microsoft and OpenAI maintain a long-term strategic partnership originally established in 2019. Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products. The OpenAI API is exclusive to Azure, runs on Azure, and is available through the Azure OpenAI Service. We also have a right of first refusal on OpenAI's new capacity needs.\"</blockquote><p>Heading retitled \"Industry Trends\" → \"Industry Trends and Opportunities\". No OpenAI paragraph in FY2024 MD&amp;A.</p>"
+    },
+    {
+     "title": "Microsoft Cloud gross margin: AI infrastructure scaling becomes the stated cause of decline to 69%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Microsoft Cloud gross margin percentage <strong>decreased slightly to 71%</strong>. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, <strong>inclusive of scaling our AI infrastructure</strong>, offset in part by sales mix shift to Azure.\"</blockquote><blockquote>FY2025: \"Microsoft Cloud gross margin percentage <strong>decreased to 69% driven by the impact of scaling our AI infrastructure</strong>, offset in part by efficiency gains in Azure.\"</blockquote>"
+    },
+    {
+     "title": "Operating expense drivers reordered: \"cloud and AI engineering\" now ahead of Gaming",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Operating expenses increased $4.0 billion or 7% <strong>driven by Gaming, with 7 points of growth from the Activision Blizzard acquisition, and investments in cloud engineering</strong>, offset in part by the prior year Q2 charge.\"</blockquote><blockquote>FY2025: \"Operating expenses increased $3.8 billion or 6% <strong>driven by investments in cloud and AI engineering and Gaming, including the impact of</strong> the Activision Blizzard acquisition.\"</blockquote><p>The same reordering appears in the R&amp;D driver sentence; S&amp;M now lists \"investments in commercial sales\" ahead of Gaming.</p>"
+    },
+    {
+     "title": "R&D expense definition adds \"AI training and other infrastructure costs\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Research and development expenses also include third-party development and programming costs and the amortization of purchased software code and services content.\"</blockquote><blockquote>FY2025: \"Research and development expenses also include <strong>technology development costs, including AI training and other infrastructure costs,</strong> third-party development and programming costs, and the amortization of purchased software code and services content.\"</blockquote>"
+    },
+    {
+     "title": "Economic Conditions adds tariffs and trade-policy sentence",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"Further, global, regional, and local economic developments and changes in global trade policies such as restrictions on international trade, including tariffs and other controls on imports or exports, could result in increased supply chain challenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations.\"</blockquote>"
+    },
+    {
+     "title": "Other, net: \"including OpenAI\" added to equity-method losses",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Other, net primarily reflects net recognized losses on equity method investments.\"</blockquote><blockquote>FY2025: \"Other, net primarily reflects net recognized losses on equity method investments<strong>, including OpenAI</strong>.\"</blockquote><p>Other, net: $(1,319)M → $(4,725)M. The FY2025 MD&amp;A also removes the Non-GAAP Financial Measures section and the Change in Accounting Estimate (server useful lives) section.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Capex sentence: \"We expect capital expenditures to increase\" → \"We will continue to invest\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"<strong>We expect capital expenditures to increase in coming years</strong> to support growth in our cloud offerings and our investments in AI infrastructure and training.\"</blockquote><blockquote>FY2025: \"<strong>We will continue to invest in capital expenditures</strong> to support growth in our cloud offerings and our investments in AI infrastructure and training.\"</blockquote><p>Additions to property and equipment rose $20.1 billion year over year.</p>"
+    },
+    {
+     "title": "New One Big Beautiful Bill Act paragraph; Pillar Two \"will apply\" → \"applies\"",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"We are currently assessing the One Big Beautiful Bill Act (“OBBBA”) which was enacted on July 4, 2025. The OBBBA provides a U.S. global intangible low-taxed income effective tax rate of 14% effective fiscal year 2027 for Microsoft. It also provides bonus depreciation for certain assets placed into service after January 19, 2025 and an election to expense U.S. incurred research or experimental expenditures.\"</blockquote><blockquote>FY2024: \"Many countries have implemented or are in the process of implementing the Pillar Two legislation, which <strong>will apply</strong> to Microsoft beginning in fiscal year 2025.\"</blockquote><blockquote>FY2025: \"Many countries have implemented or are in the process of implementing the Pillar Two legislation, which <strong>applies</strong> to Microsoft beginning in fiscal year 2025.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "U.S. Cell Phone Litigation removed from Contingencies note",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"In July 2024, the court entered summary judgment in nine of the stayed cases on the grounds that plaintiffs had agreed to be bound by the general causation outcome in the consolidated cases.\"</blockquote><p>No disposition statement appears in FY2025. The Irish Data Protection Commission matter is the only named matter left; the note (Note 15 → Note 14) is about 65% shorter.</p>"
+    },
+    {
+     "title": "IDPC: draft decision \"proposing a fine\" → final decision \"assessing a fine\", appealed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"In April 2023, the IDPC provided LinkedIn with a <strong>non-public preliminary draft decision</strong> alleging GDPR violations and <strong>proposing</strong> a fine. In July 2024, the IDPC provided LinkedIn with a revised non-public draft decision. There is no set timeline for the IDPC to issue a final decision, at which time Microsoft will consider its options to appeal.\"</blockquote><blockquote>FY2025: \"In October 2024, the IDPC provided LinkedIn with a <strong>final decision</strong> alleging GDPR violations and <strong>assessing</strong> a fine. <strong>In November 2024, LinkedIn appealed the final decision to the Irish courts</strong>, and the next hearing is scheduled for December 2025.\"</blockquote><table class=\"data-table\"><tr><th></th><th>FY2024</th><th>FY2025</th></tr><tr><td>Accrued aggregate legal liabilities</td><td>$641M</td><td>$541M</td></tr><tr><td>Reasonably possible beyond accrual</td><td>~$600M</td><td>~$600M</td></tr></table>"
+    }
+   ]
+  }
+ ]
+}

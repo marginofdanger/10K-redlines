@@ -1,0 +1,349 @@
+{
+ "signals": [
+  {
+   "id": "sig-cet1",
+   "title": "CET1 Ratio, Requirements and Targets",
+   "cards": [
+    {
+     "title": "Standardized CET1 ratio vs. SCB, GSIB surcharge and stated targets",
+     "html": "<p>Ratios as reported in each filing (Executive Overview and Capital Risk Management). SCB = stress capital buffer, first applied October 1, 2020. GSIB row is the Method 2 surcharge stated for the following calendar year.</p><table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>CET1 ratio, Standardized</td><td>12.0%</td><td>12.4%</td><td>13.1%</td><td>13.1%</td><td>13.2%</td><td>15.0%</td><td>15.7%</td><td>14.6%</td></tr><tr><td>Standardized CET1 requirement incl. buffers</td><td>—</td><td>10.5%</td><td>11.3%</td><td>11.2%</td><td>12.0%</td><td>11.4%</td><td>12.3%</td><td>11.5%</td></tr><tr><td>SCB requirement</td><td>—</td><td>—</td><td>3.3%</td><td>3.2%</td><td>4.0%</td><td>2.9%</td><td>3.3%</td><td>2.5%</td></tr><tr><td>GSIB surcharge, Method 2 (for next year)</td><td>3.5% (2019)</td><td>3.5% (2020)</td><td>3.5% (2021)</td><td>3.5% (2022)</td><td>4.0% (2023)</td><td>4.5% (2024)</td><td>4.5% (2025)</td><td>4.5% (2026)</td></tr><tr><td>Stated CET1 target</td><td>—</td><td>—</td><td>12%</td><td>—</td><td>13.0% (1Q23) → 13.5% (1Q24)</td><td>\"no longer meaningful\"</td><td>—</td><td>—</td></tr></tbody></table><blockquote>FY2020: \"The Firm has a target Basel III CET1 capital ratio of 12%. However, the Firm may remain above that level in order to satisfy leverage-based capital requirements if deposits continue to grow due to actions taken by the Federal Reserve and the U.S. government in response to the COVID-19 pandemic.\"</blockquote><blockquote>FY2022: \"The Firm’s current target for its Basel III Standardized CET1 capital ratio is 13.0% for the first quarter of 2023, increasing to 13.5% for the first quarter of 2024 with consideration for an increase in the GSIB surcharge in 2024, and assuming no change in the Stress Capital Buffer.\"</blockquote><blockquote>FY2023: \"Pending the finalization of the U.S. Basel III proposal, the Firm expects that it will continue to build capital above the current levels, and therefore the CET1 target of 13.5% previously set by the Firm (which was with respect to the current Standardized RWA measure) is <strong>no longer meaningful</strong>.\"</blockquote><p>No CET1 target sentence appears in FY2024 or FY2025.</p>"
+    },
+    {
+     "title": "SCB sentence: \"will remain in effect until\" → \"through September 30, 2027, based on the current rules\"",
+     "html": "<blockquote>FY2024: \"The Firm's current SCB requirement is 3.3% and will remain in effect <strong>until September 30, 2025</strong>.\"</blockquote><blockquote>FY2025: \"The Firm's current SCB requirement is 2.5% and will remain in effect <strong>through September 30, 2027, based on the current rules</strong>.\"</blockquote><blockquote>FY2025: \"As of December 31, 2025, the Advanced risk-based ratios became more binding on the Firm than the Standardized risk-based ratios, primarily reflecting the increase in Advanced RWA related to the Apple Card transaction and a reduction in the Firm’s SCB requirement which only applies to the Standardized risk-based ratios.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-basel",
+   "title": "Basel III Endgame Language",
+   "cards": [
+    {
+     "title": "From \"considering how to appropriately apply\" to \"would have significantly revised\"",
+     "html": "<table class=\"data-table\"><thead><tr><th>Filing</th><th>Status wording</th><th>Quantified impact disclosed</th></tr></thead><tbody><tr><td>FY2018–FY2022</td><td>Regulators \"considering how to appropriately apply such reforms\"</td><td>—</td></tr><tr><td>FY2023</td><td>July 2023 proposal \"would significantly revise\"; proposed effective date July 1, 2025</td><td>RWA +~30%; CET1 capital needed +~25% (as of June 30, 2023)</td></tr><tr><td>FY2024</td><td>\"would significantly revise\"; \"Finalization … is uncertain\"</td><td>RWA estimate removed</td></tr><tr><td>FY2025</td><td>\"would have significantly revised\"; re-proposal expected early 2026</td><td>—</td></tr></tbody></table><blockquote>FY2022: \"U.S. banking regulators have announced their support for the issuance of the Basel III reforms and are considering how to appropriately apply such reforms in the U.S.\"</blockquote><blockquote>FY2023: \"The proposal would significantly revise risk-based capital requirements for banks with assets of $100 billion or more, including the Firm and other U.S. global systemically important banks (\"GSIBs\"). The proposed effective date is July 1, 2025 with a three-year transition period.\"</blockquote><blockquote>FY2023: \"…the estimated impact at the end of the transition period would increase RWA by approximately 30%, which would result in an approximately 25% increase to CET1 capital necessary to meet the Firm’s CET1 ratio requirement, all else equal.\"</blockquote><blockquote>FY2024: \"The proposal would significantly revise risk-based capital requirements for banks with assets of $100 billion or more, including the Firm and other U.S. global systemically important banks (\"GSIBs\"). <strong>Finalization of the proposal, including the required implementation date, is uncertain.</strong>\"</blockquote><blockquote>FY2025: \"<strong>That proposal, which has not been finalized, would have significantly revised</strong> risk-based capital requirements for banks with assets of $100 billion or more, including the Firm and other U.S. global systemically important banks (\"GSIBs\"). <strong>In September 2025, the Federal Reserve’s Vice Chair for Supervision indicated that U.S. banking regulators may issue an updated proposal to amend the U.S. risk-based capital framework in early 2026, replacing the July 2023 proposal.</strong>\"</blockquote><p>The ~30% RWA estimate appears only in the FY2023 Capital Risk Management section.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-outlook",
+   "title": "NII and Expense Outlook; NII Driver Order",
+   "cards": [
+    {
+     "title": "Full-year outlook figures in each 10-K",
+     "html": "<p>Outlook sentences in the Executive Overview, for the year following the filing year. FY2018–FY2021 NII guidance is on a managed basis; FY2021 guidance excludes CIB Markets.</p><table class=\"data-table\"><thead><tr><th>Filing</th><th>Year guided</th><th>NII guidance</th><th>NII outcome (next 10-K)</th><th>Adjusted expense guidance</th><th>Credit guidance</th></tr></thead><tbody><tr><td>FY2018</td><td>2019</td><td>in excess of $58 billion (managed)</td><td>$57.8bn (managed)</td><td>less than $66 billion</td><td>NCOs less than $5.5 billion</td></tr><tr><td>FY2019</td><td>2020</td><td>approximately $57 billion (managed)</td><td>$55.0bn (managed)</td><td>approximately $67 billion</td><td>NCOs just over $6 billion</td></tr><tr><td>FY2020</td><td>2021</td><td>approximately $55 billion (managed)</td><td>$52.7bn (managed)</td><td>approximately $69 billion</td><td>—</td></tr><tr><td>FY2021</td><td>2022</td><td>in excess of $53 billion (managed, ex-CIB Markets)</td><td>$62.4bn (ex-Markets)</td><td>approximately $77 billion</td><td>—</td></tr><tr><td>FY2022</td><td>2023</td><td>approximately $73 billion; ex-Markets ~$74 billion</td><td>$89.3bn; ex-Markets $90.0bn</td><td>approximately $81 billion</td><td>Card NCO rate ~2.6%</td></tr><tr><td>FY2023</td><td>2024</td><td>approximately $90 billion; ex-Markets ~$88 billion</td><td>$92.6bn; ex-Markets $92.4bn</td><td>approximately $90 billion</td><td>Card NCO rate less than 3.50%</td></tr><tr><td>FY2024</td><td>2025</td><td>approximately $94.0 billion; ex-Markets ~$90.0 billion</td><td>$95.4bn; ex-Markets $92.6bn</td><td>approximately $95.0 billion</td><td>Card NCO rate ~3.60%</td></tr><tr><td>FY2025</td><td>2026</td><td>approximately $103 billion; ex-Markets ~$95 billion</td><td>—</td><td>approximately $105 billion</td><td>Card NCO rate ~3.4%</td></tr></tbody></table><blockquote>FY2018: \"Management expects full-year 2019 net interest income, on a managed basis, to be in excess of $58 billion, <strong>reflecting the annualized impact of 2018 interest rate increases, as well as expected loan and deposit growth</strong>.\"</blockquote><blockquote>FY2019: \"Management expects full-year 2020 net interest income, on a managed basis, to be approximately $57 billion, market dependent, <strong>reflecting the impact of lower interest rates offset by balance sheet growth and mix</strong>.\"</blockquote><blockquote>FY2021: \"Management expects adjusted expense to be approximately $77 billion, <strong>which includes increased investments in technology, distribution and marketing, and higher structural expense</strong>.\"</blockquote><blockquote>FY2022: \"Management expects adjusted expense to be approximately $81 billion, <strong>market dependent</strong>.\"</blockquote><blockquote>FY2025: \"<strong>The Firm provided the following outlook information on January 13, 2026 in connection with announcing its results for the year and quarter ended December 31, 2025:</strong>\"</blockquote>"
+    },
+    {
+     "title": "Firmwide NII explanation: drivers listed first and offsets",
+     "html": "<table class=\"data-table\"><thead><tr><th>Filing</th><th>NII</th><th>Drivers (in order)</th><th>Offsets</th></tr></thead><tbody><tr><td>FY2018</td><td>$55.1bn, up 10%</td><td>higher rates; loan growth; Card margin expansion</td><td>lower CIB Markets NII</td></tr><tr><td>FY2019</td><td>$57.2bn, up 4%</td><td>balance sheet growth and mix; higher average short-term rates</td><td>higher deposit pay rates</td></tr><tr><td>FY2020</td><td>$54.6bn, down 5%</td><td>lower rates</td><td>higher CIB Markets NII; balance sheet growth</td></tr><tr><td>FY2021</td><td>$52.3bn, down 4%</td><td>lower market rates; balance sheet mix</td><td>balance sheet growth</td></tr><tr><td>FY2022</td><td>$66.7bn, up 28%</td><td>higher rates; loan growth</td><td>lower Markets NII</td></tr><tr><td>FY2023</td><td>$89.3bn, up 34%</td><td>higher rates; First Republic; Card revolving balances</td><td>lower Markets NII; lower average deposit balances</td></tr><tr><td>FY2024</td><td>$92.6bn, up 4%</td><td>balance sheet actions (securities reinvestment); Card revolving balances; First Republic timing; wholesale deposits; Markets NII</td><td>deposit margin compression; lower CCB deposit balances</td></tr><tr><td>FY2025</td><td>$95.4bn, up 3%</td><td>Markets NII; Card revolving balances; wholesale deposit balances; investment securities activity</td><td>deposit margin compression; lower rates</td></tr></tbody></table><blockquote>FY2022: \"Net interest income of $66.7 billion, up 28%, driven by higher rates and loan growth, partially offset by lower Markets net interest income.\"</blockquote><blockquote>FY2024: \"…driven by the impact of balance sheet actions, primarily reinvestments in the investment securities portfolio, higher revolving balances in Card Services, the timing impact of First Republic, higher wholesale deposit balances, and higher Markets net interest income, largely offset by <strong>deposit margin compression</strong> across the lines of business and lower average deposit balances in CCB.\"</blockquote><blockquote>FY2025: \"…driven by <strong>higher Markets net interest income</strong>, higher revolving balances in Card Services, higher wholesale deposit balances, and the impact of investment securities activity. These factors were largely offset by deposit margin compression and the impact of lower rates.\"</blockquote><p>Rates are the first-listed driver in FY2018, FY2020, FY2021, FY2022 and FY2023; Markets NII moves from an offset (FY2018, FY2022, FY2023) to the first-listed driver in FY2025.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-card",
+   "title": "Card Net Charge-offs: Guidance and Explanation",
+   "cards": [
+    {
+     "title": "Card Services NCO rate, prior-year guidance, delinquency and stated driver",
+     "html": "<table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>Card NCO rate (actual)</td><td>3.10%</td><td>3.10%</td><td>2.93%</td><td>1.94%</td><td>1.47%</td><td>2.45%</td><td>3.34%</td><td>3.31%</td></tr><tr><td>Guidance in prior 10-K</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>~2.6%</td><td>&lt;3.50%</td><td>~3.60%</td></tr><tr><td>30+ day delinquency, year-end</td><td>1.83%</td><td>1.87%</td><td>1.68%</td><td>1.04%</td><td>1.45%</td><td>2.14%</td><td>2.17%</td><td>2.16%</td></tr><tr><td>NCO explanation</td><td>seasoning of more recent vintages</td><td>loan growth</td><td>payment assistance and government stimulus</td><td>consumer cash balances remained elevated</td><td>financial strength of U.S. consumers</td><td>delinquencies have normalized</td><td>seasoning of vintages; credit normalization; balance growth</td><td>loan growth</td></tr></tbody></table><p>FY2026 guidance in the FY2025 10-K: approximately 3.4%.</p><blockquote>FY2022: \"Delinquency and net charge-off rates continue to benefit from the ongoing financial strength of U.S. consumers. However, median deposit balances declined in the second half of 2022, impacted by the growth in consumer spending.\"</blockquote><blockquote>FY2023: \"Net charge-offs increased for the year ended December 31, 2023 compared to the prior year <strong>as delinquencies have normalized</strong>.\"</blockquote><blockquote>FY2024: \"Net charge-offs increased for the year ended December 31, 2024 compared to the prior year <strong>reflecting the seasoning of vintages originated in recent years, credit normalization and balance growth</strong>.\"</blockquote><blockquote>FY2025: \"Net charge-offs increased for the year ended December 31, 2025 compared to the prior year, <strong>reflecting loan growth</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Apple Card forward purchase commitment (FY2025 only)",
+     "html": "<blockquote>FY2025: \"The Firm entered into a forward purchase commitment on December 30, 2025 to acquire the Apple credit card portfolio, with an expected closing in approximately 24 months (the “Apple Card transaction”).\"</blockquote><blockquote>FY2025: \"Includes a provision for lending-related commitments of $2.2 billion related to the Apple Card transaction.\"</blockquote><p>FY2025 Note 28 gives estimated total credit exposure at closing of approximately $104 billion, including approximately $23 billion of estimated drawn loans.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-allowance",
+   "title": "Allowance: Scenario Weighting and Unemployment Assumptions",
+   "cards": [
+    {
+     "title": "Allowance level, scenario-weighting language and weighted-average unemployment peak",
+     "html": "<p>CECL adopted January 1, 2020. Allowance = loans plus lending-related commitments (credit portfolio table, $m). Central-case unemployment = first forecast quarter in each year's table.</p><table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>Total allowance for credit losses ($m)</td><td>14,500</td><td>14,314</td><td>30,737</td><td>18,689</td><td>22,204</td><td>24,522</td><td>26,598</td><td>30,942</td></tr><tr><td>Weighting language</td><td>—</td><td>—</td><td>\"significant weighting on its adverse scenarios\"</td><td>\"more balanced weightings\"</td><td>five scenarios; adverse more punitive</td><td>same</td><td>same</td><td>same</td></tr><tr><td>Weighted-average U.S. unemployment</td><td>—</td><td>—</td><td>~6% at 4Q22</td><td>—</td><td>peak 5.6% (2Q24)</td><td>peak 5.5% (4Q24)</td><td>peak 5.5% (4Q25)</td><td>peak 5.8% (4Q26)</td></tr><tr><td>Central-case U.S. unemployment</td><td>—</td><td>—</td><td>6.8% (2Q21)</td><td>4.2% (2Q22)</td><td>3.8% (2Q23)</td><td>4.1% (2Q24)</td><td>4.5% (2Q25)</td><td>4.6% (2Q26)</td></tr></tbody></table><blockquote>FY2020: \"…the Firm has placed <strong>significant weighting on its adverse scenarios</strong>. These scenarios incorporate more punitive macroeconomic factors than the central case assumptions, resulting in weighted average U.S. unemployment rates remaining elevated throughout 2021 and 2022, ending the fourth quarter of 2022 at approximately 6%…\"</blockquote><blockquote>FY2021: \"As of December 31, 2021, the Firm assigned <strong>more balanced weightings</strong> to both its adverse and upside scenarios compared to the significant weighting that the Firm placed on its adverse scenarios as of December 31, 2020…\"</blockquote><blockquote>FY2022: \"The adverse scenarios incorporate more punitive macroeconomic factors than the central case assumptions provided in the table below, resulting in a weighted average U.S. unemployment rate peaking at 5.6% in the second quarter of 2024…\"</blockquote><blockquote>FY2025: \"a weighted average U.S. unemployment rate peaking at 5.8% in the fourth quarter of 2026, and\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-deposits",
+   "title": "Deposits: Inflows, Attrition, Margin Compression; Uninsured Deposits",
+   "cards": [
+    {
+     "title": "Deposit balances, uninsured estimate and average-deposit explanation",
+     "html": "<table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>Total deposits, year-end ($m)</td><td>1,470,666</td><td>1,562,431</td><td>2,144,257</td><td>2,462,303</td><td>2,340,179</td><td>2,400,688</td><td>2,406,032</td><td>2,559,320</td></tr><tr><td>Estimated uninsured deposits ($bn)</td><td>—</td><td>—</td><td>—</td><td>1,489.6</td><td>1,383.7</td><td>1,331.9</td><td>1,414.0</td><td>1,558.6</td></tr><tr><td>\"deposit margin compression\" (count)</td><td>0</td><td>4</td><td>6</td><td>2</td><td>0</td><td>0</td><td>6</td><td>6</td></tr><tr><td>\"deposit attrition\" (count)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>7</td><td>1</td><td>0</td></tr></tbody></table><p>Counts are for the full filing text. FY2024 revised the FY2023 uninsured figure to $1,347.8 billion.</p><blockquote>FY2020: \"Firmwide average deposits of $1.9 trillion were up 25%, reflecting significant inflows across the Firm, primarily driven by the impact of the COVID-19 pandemic and the related effect of certain government actions.\"</blockquote><blockquote>FY2022: \"reductions in CIB and CB due to attrition driven by the rising interest rate environment.\"</blockquote><blockquote>FY2023: \"continued migration into higher-yielding investments in AWM, the impact of higher customer spending in CCB, continued deposit attrition in CB, and a net decline in CIB, which included actions taken to reduce certain deposits,\"</blockquote><blockquote>FY2025: \"a decrease in CCB primarily driven by increased customer spending.\"</blockquote><blockquote>FY2024: \"Prior-period amounts have been revised to include cash collateral for certain derivatives to align with a change in the methodology for calculating uninsured U.S. time deposits.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-cre",
+   "title": "Commercial Real Estate and Office",
+   "cards": [
+    {
+     "title": "Real Estate exposure, criticized exposure and Office line",
+     "html": "<table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>Real Estate exposure ($bn)</td><td>148.5</td><td>155.1</td><td>170.9</td><td>208.3</td><td>207.1</td><td>224.9</td></tr><tr><td>Real Estate criticized exposure ($bn)</td><td>4.8</td><td>5.3</td><td>4.0</td><td>9.2</td><td>12.4</td><td>11.7</td></tr><tr><td>Office credit exposure ($m)</td><td>16,847</td><td>16,643</td><td>14,942</td><td>16,494</td><td>16,360</td><td>15,055</td></tr><tr><td>Office % investment-grade</td><td>76%</td><td>75%</td><td>74%</td><td>51%</td><td>47%</td><td>47%</td></tr></tbody></table><blockquote>FY2023: \"For the year ended December 31, 2023, wholesale net charge-offs increased $698 million, predominantly driven by the restructuring of a loan, increases in Real Estate <strong>(concentrated in Office)</strong> and Consumer &amp; Retail.\"</blockquote><blockquote>FY2024: \"For the year ended December 31, 2024, wholesale net charge-offs were $822 million, largely driven by Real Estate, <strong>concentrated in Office</strong>, and client-specific charge-offs across multiple industries including Consumer &amp; Retail and Individuals.\"</blockquote><blockquote>FY2024: \"Criticized exposure increased by $3.2 billion from $9.2 billion at December 31, 2023 to $12.4 billion at December 31, 2024, predominantly driven by downgrades, <strong>primarily in Multifamily and Office</strong>.\"</blockquote><blockquote>FY2025: \"Criticized exposure decreased by $714 million from $12.4 billion at December 31, 2024 to $11.7 billion at December 31, 2025, driven by net portfolio activity, predominantly offset by net downgrades.\"</blockquote><p>Office is not named in the FY2025 wholesale net charge-off or criticized-exposure sentences.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-frc",
+   "title": "First Republic Acquisition Arc",
+   "cards": [
+    {
+     "title": "Bargain purchase gain and FDIC settlement: \"estimated\" → \"final\" → \"resolved\"",
+     "html": "<table class=\"data-table\"><thead><tr><th>Item</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>\"First Republic\" occurrences</td><td>234</td><td>112</td><td>53</td></tr><tr><td>Bargain purchase gain</td><td>estimated $2.8bn</td><td>final $2.9bn</td><td>final $2.9bn</td></tr><tr><td>FDIC settlement</td><td>not yet completed</td><td>$609m payment Jan 2025; ~$600m gain expected</td><td>$588m gain recorded; all matters resolved as of June 30, 2025</td></tr><tr><td>Purchase Money Note carrying value ($m)</td><td>48,989</td><td>49,207</td><td>49,435</td></tr><tr><td>Shared-loss risk-factor sentence</td><td>present</td><td>removed</td><td>—</td></tr></tbody></table><blockquote>FY2023: \"The Firm and the FDIC have not yet completed the settlement process under which the purchase price, and the identification of the assets acquired and liabilities assumed, will be finalized.\"</blockquote><blockquote>FY2024: \"…the Firm made a payment of $ 609 million to the FDIC on January 31, 2025 and reduced its additional payable to the FDIC, which <strong>will result in a gain of approximately $ 600 million to be recorded</strong> in other income in the first quarter of 2025.\"</blockquote><blockquote>FY2025: \"…which <strong>resulted in a gain of $ 588 million recorded</strong> in other income in the first quarter of 2025. In addition, as of June 30, 2025, all outstanding matters between the Firm and the FDIC related to the final settlement of the purchase price for the First Republic acquisition had been resolved.\"</blockquote><blockquote>FY2023: \"JPMorgan Chase could also incur unanticipated costs or losses in connection with the First Republic acquisition, including if JPMorgan Chase fails to comply with the conditions of the shared-loss agreements with the FDIC related to certain loans and lending-related commitments, which could diminish the coverage of the credit losses these agreements are designed to provide.\"</blockquote><p>The shared-loss terms (80% coverage; 5-year commercial and 7-year single-family agreements) and the five-year, $50 billion, 3.4% Purchase Money Note description are unchanged in all three filings.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-capital-return",
+   "title": "Capital Return: Buybacks, Authorizations, Dividends",
+   "cards": [
+    {
+     "title": "Repurchases, authorization and dividends per share",
+     "html": "<table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>Shares repurchased (m)</td><td>181.5</td><td>213.0</td><td>50.0</td><td>119.7</td><td>23.1</td><td>69.5</td><td>91.7</td><td>114.4</td></tr><tr><td>Aggregate purchase price ($m)</td><td>19,983</td><td>24,121</td><td>6,397</td><td>18,448</td><td>3,122</td><td>9,898</td><td>18,841</td><td>31,640</td></tr><tr><td>Authorization at year-end</td><td>$20.7bn</td><td>$29.4bn</td><td>$30bn</td><td>$30bn</td><td>$30bn (eff. May 1, 2022)</td><td>$30bn</td><td>$30bn (eff. July 1, 2024)</td><td>$50bn (eff. July 1, 2025)</td></tr><tr><td>Cash dividends declared per share</td><td>$2.72</td><td>$3.40</td><td>$3.60</td><td>$3.80</td><td>$4.00</td><td>$4.10</td><td>$4.80</td><td>$5.80</td></tr></tbody></table><p>FY2023–FY2025 purchase prices exclude excise tax.</p><blockquote>FY2020: \"On March 15, 2020, in response to the economic disruptions caused by the COVID-19 pandemic, the Firm temporarily suspended repurchases of its common stock. Subsequently, the Federal Reserve directed all large banks, including the Firm, to discontinue net share repurchases through the end of 2020.\"</blockquote><blockquote>FY2022: \"On July 14, 2022, the Firm announced that it had temporarily suspended share repurchases in anticipation of the increase in the Firm's regulatory capital requirements. The Firm had set a target for achieving CET1 capital of 13.0% by the first quarter of 2023.\"</blockquote><blockquote>FY2024: \"On June 28, 2024, the Firm announced that its Board of Directors had authorized a new $30 billion common share repurchase program, effective July 1, 2024.\"</blockquote><blockquote>FY2025: \"On July 1, 2025, the Firm announced that its Board of Directors had authorized a new <strong>$50 billion</strong> common share repurchase program, effective July 1, 2025.\"</blockquote><blockquote>FY2024: \"The amount of common shares that the Firm repurchases in any period may be substantially more or less than the amounts estimated or actually repurchased in prior periods, reflecting the dynamic nature of the decision-making process.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "id": "sig-structure",
+   "title": "Risk-Factor Categories and Segment Reorganisation",
+   "cards": [
+    {
+     "title": "Item 1A category list: added, removed and merged categories",
+     "html": "<table class=\"data-table\"><thead><tr><th>Filing</th><th>Categories</th><th>Change</th></tr></thead><tbody><tr><td>FY2018</td><td>13</td><td>Regulatory first; Competition 11th; Legal last</td></tr><tr><td>FY2019</td><td>13</td><td>Capital added (6th, after Liquidity); Competition removed</td></tr><tr><td>FY2020</td><td>14</td><td>Summary block added; COVID-19 Pandemic added as 1st category</td></tr><tr><td>FY2021</td><td>14</td><td>unchanged</td></tr><tr><td>FY2022</td><td>13</td><td>COVID-19 Pandemic removed</td></tr><tr><td>FY2023–FY2024</td><td>13</td><td>unchanged</td></tr><tr><td>FY2025</td><td>12</td><td>Legal merged into renamed 1st category \"Legal and Regulatory\"; defined-terms block added</td></tr></tbody></table><p>In FY2025 the legal-proceedings risk factor moves from the last risk in the section to the 3rd.</p><blockquote>FY2024: \"JPMorganChase faces significant legal risks from litigation and formal and informal regulatory and government investigations.\"</blockquote><blockquote>FY2025: \"JPMorganChase faces significant legal risks from <strong>civil and governmental proceedings, including litigation, investigations and enforcement actions</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Segments: four reportable segments → three (2Q24)",
+     "html": "<blockquote>FY2023: \"For management reporting purposes, JPMorgan Chase’s activities are organized into four major reportable business segments, as well as a Corporate segment.\"</blockquote><blockquote>FY2024: \"Effective in the second quarter of 2024, JPMorganChase reorganized its reportable business segments by combining the former Corporate &amp; Investment Bank and Commercial Banking business segments to form one reportable segment, the Commercial &amp; Investment Bank.\"</blockquote><p>FY2018–FY2023 segments: CCB, CIB (Corporate &amp; Investment Bank), CB, AWM, plus Corporate. FY2024–FY2025: CCB, CIB (Commercial &amp; Investment Bank), AWM, plus Corporate. The FY2024 filing also adopts the single-word name \"JPMorganChase\" (717 occurrences vs. 3 in FY2023).</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-climate",
+   "title": "Climate and ESG Language",
+   "cards": [
+    {
+     "title": "Term counts and climate risk-factor heading",
+     "html": "<table class=\"data-table\"><thead><tr><th>Count (full filing)</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>\"climate\"</td><td>1</td><td>9</td><td>18</td><td>18</td><td>49</td><td>50</td><td>45</td><td>31</td></tr><tr><td>\"Climate Risk Management\"</td><td>0</td><td>0</td><td>0</td><td>0</td><td>5</td><td>5</td><td>3</td><td>0</td></tr><tr><td>\"ESG\"</td><td>0</td><td>0</td><td>0</td><td>2</td><td>11</td><td>8</td><td>6</td><td>2</td></tr><tr><td>\"sustainab-\"</td><td>3</td><td>7</td><td>7</td><td>7</td><td>8</td><td>7</td><td>7</td><td>7</td></tr></tbody></table><p>FY2018's single \"climate\" is \"business climate\" in the goodwill policy. A Climate Risk Management section is added to MD&amp;A in FY2022.</p><blockquote>FY2019: \"Climate change could have a material adverse impact on JPMorgan Chase’s business operations, clients and customers.\"</blockquote><blockquote>FY2020: \"Climate change <strong>manifesting as physical or transition risks</strong> could have a material adverse impact on JPMorgan Chase’s business operations, clients and customers.\"</blockquote><blockquote>FY2021: \"The effects of climate change could adversely impact JPMorgan Chase and its clients.\"</blockquote><blockquote>FY2025: \"Both physical risks and transition risks associated with climate change could negatively impact JPMorganChase and its clients and customers.\"</blockquote>"
+    },
+    {
+     "title": "Function renamed: \"Climate Risk Management\" → \"Climate, Nature and Social Risk Management\"",
+     "html": "<blockquote>FY2024: \"The Firm has a <strong>Climate Risk Management function</strong> that is responsible for establishing and maintaining the Firmwide framework and strategy for managing climate risks that may impact the Firm.\"</blockquote><blockquote>FY2025: \"The Firm’s <strong>Climate, Nature and Social Risk Management function</strong> is responsible for establishing and maintaining the Firmwide framework and strategy for managing climate risk.\"</blockquote><p>ESG commitment wording in the reputation risk factor: FY2020 \"failure to fully discharge publicly-announced commitments to support social and sustainability initiatives\" → FY2022 \"failure to meet publicly-announced commitments to support ESG initiatives\" → FY2024 \"deficiencies or perceived failures in managing ESG-related initiatives, including modifying or failing to meet publicly-announced targets\" → FY2025 removed.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-human-capital",
+   "title": "Human Capital, DEI Wording and Headcount",
+   "cards": [
+    {
+     "title": "Employees, footprint and workforce-composition data",
+     "html": "<table class=\"data-table\"><thead><tr><th>Metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>Employees, year-end</td><td>256,105</td><td>256,981</td><td>255,351</td><td>271,025</td><td>293,723</td><td>309,926</td><td>317,233</td><td>318,512</td></tr><tr><td>Countries</td><td>—</td><td>—</td><td>62</td><td>62</td><td>63</td><td>65</td><td>66</td><td>66</td></tr><tr><td>Share in U.S.</td><td>—</td><td>—</td><td>over 60%</td><td>over 60%</td><td>over 60%</td><td>60%</td><td>59%</td><td>58%</td></tr><tr><td>Women, Operating Committee</td><td>—</td><td>—</td><td>—</td><td>37%</td><td>39%</td><td>41%</td><td>47%</td><td>54%</td></tr><tr><td>Women, Board</td><td>—</td><td>—</td><td>—</td><td>40%</td><td>36%</td><td>45%</td><td>50%</td><td>55%</td></tr><tr><td>Sub-heading</td><td>—</td><td>—</td><td>Human capital (first year)</td><td>Diversity, equity and inclusion</td><td>Diversity, equity and inclusion</td><td>Diversity, equity and inclusion</td><td>Workforce composition</td><td>Workforce composition</td></tr><tr><td>\"diversity\" (count)</td><td>1</td><td>0</td><td>3</td><td>9</td><td>9</td><td>6</td><td>1</td><td>0</td></tr><tr><td>\"inclusion\" (count)</td><td>2</td><td>3</td><td>7</td><td>10</td><td>10</td><td>11</td><td>5</td><td>2</td></tr></tbody></table><p>The metric label \"Headcount\" was renamed \"Employees\" in FY2023. FY2025 drops the year-over-year increase sentence that FY2021–FY2024 included.</p>"
+    },
+    {
+     "title": "Opening sentence and recruitment wording",
+     "html": "<blockquote>FY2023: \"JPMorgan Chase believes that its long-term growth and success depend on its ability to attract, develop and retain a <strong>high-performing and diverse workforce, with inclusion and accessibility as key components of the way the Firm does business</strong>.\"</blockquote><blockquote>FY2024: \"JPMorganChase believes that its long-term growth and success depend on its ability to attract, develop and retain <strong>talented employees and foster an inclusive work environment</strong>.\"</blockquote><blockquote>FY2025: \"JPMorganChase believes that its long-term growth and success depend on its ability to <strong>identify,</strong> attract, develop, retain <strong>and engage</strong> talented employees and foster an inclusive work environment.\"</blockquote><blockquote>FY2023: \"The goal of JPMorgan Chase’s recruitment efforts is to attract and hire <strong>talented individuals</strong> in all roles and at all career levels.\"</blockquote><blockquote>FY2024: \"The goal of JPMorganChase’s recruitment efforts is to attract and hire <strong>highly qualified candidates</strong> in all roles and at all career levels. <strong>The Firm’s hiring practices focus on the skills and qualifications of a candidate relative to the job requirements.</strong>\"</blockquote><blockquote>FY2024: \"…concerning business practices or positions taken by JPMorganChase with respect to matters of public policy <strong>(such as diversity, equity and inclusion initiatives)</strong>…\"</blockquote><p>The FY2024 public-policy criticism sentence is not present in FY2025.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-ai",
+   "title": "Artificial Intelligence Language",
+   "cards": [
+    {
+     "title": "AI term counts and first appearances",
+     "html": "<table class=\"data-table\"><thead><tr><th>Count (full filing)</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>\"artificial intelligence\"</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>3</td><td>14</td><td>6</td></tr><tr><td>\"AI\" (word)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>23</td></tr><tr><td>\"machine learning\"</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>4</td><td>1</td></tr><tr><td>\"generative AI\" / \"generative artificial intelligence\"</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td></tr><tr><td>\"agentic\"</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td></tr></tbody></table><blockquote>FY2020: \"These include laws and regulations relating to data protection, privacy, data use, confidentiality, secrecy, cybersecurity, technology, <strong>artificial intelligence</strong>, data localization and storage…\"</blockquote><blockquote>FY2023: \"advances in artificial intelligence, such as the use of machine learning and generative artificial intelligence by malicious actors to develop more advanced social engineering attacks, including targeted phishing attacks\"</blockquote><blockquote>FY2024: \"In addition, the EU Artificial Intelligence Act regulates the development and deployment of artificial intelligence systems within the EU, with phased-in requirements that began in February 2025.\"</blockquote><blockquote>FY2024: \"In addition, advances in technology, such as automation and artificial intelligence, may lead to workforce displacement.\"</blockquote>"
+    },
+    {
+     "title": "FY2025: stand-alone AI risk factor added",
+     "html": "<blockquote>FY2025: \"JPMorganChase’s operations, results, and competitive standing could be adversely affected by the development of advanced technologies such as AI.\"</blockquote><blockquote>FY2025: \"The rapid development and deployment of advanced technologies, including generative and agentic AI systems, present a range of risks…\"</blockquote><blockquote>FY2025: \"replacement or disintermediation of direct customer relationships if AI agents autonomously manage or intermediate financial decisions and product selection or other services for customers.\"</blockquote><p>FY2025 removes the FY2024 identity-fraud paragraph and the \"discrimination in lending practices\" bullet.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sig-litigation",
+   "title": "Litigation Note: Matters, Loss Range, Legal Expense",
+   "cards": [
+    {
+     "title": "Headed matters by year and reasonably-possible-loss range",
+     "html": "<table class=\"data-table\"><thead><tr><th>Matter / metric</th><th>FY2018</th><th>FY2019</th><th>FY2020</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead><tbody><tr><td>Reasonably possible losses, upper end</td><td>$1.5bn</td><td>$1.3bn</td><td>$1.5bn</td><td>$1.5bn</td><td>$1.2bn</td><td>$1.3bn</td><td>$1.4bn</td><td>$1.2bn</td></tr><tr><td>Legal expense for the year</td><td>$72m</td><td>$239m</td><td>$1.1bn</td><td>$426m</td><td>$266m</td><td>$1.4bn</td><td>$740m</td><td>$361m</td></tr><tr><td>1MDB Litigation</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr><tr><td>Advisory and Other Activities</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>American Depositary Receipts Pre-Release Inquiry</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Amrapali</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Fair Access to Banking</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr><tr><td>Federal Republic of Nigeria Litigation</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Foreign Exchange Investigations and Litigation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>General Motors Litigation</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Inquiries Concerning Preservation Requirements</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Interchange Litigation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Jeffrey Epstein Litigation</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr><tr><td>LIBOR and Other Benchmark Rate Investigations and Litigation</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Municipal Derivatives Litigation</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Precious Metals / Metals and U.S. Treasuries</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Russian Litigation</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>SEC Inquiries</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr><tr><td>Securities Lending Antitrust Litigation</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr><tr><td>Shareholder Litigation</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Trading Venues Investigations</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr><tr><td>Wendel</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Zelle (Government Inquiries / Network Litigation)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr><tr><td><strong>Headed matters</strong></td><td>8</td><td>6</td><td>8</td><td>8</td><td>9</td><td>12</td><td>9</td><td>7</td></tr></tbody></table><blockquote>FY2024: \"The Firm <strong>believes the estimate of the</strong> aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.4 billion at December 31, 2024.\"</blockquote><blockquote>FY2025: \"The Firm <strong>estimates the</strong> aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.2 billion at December 31, 2025.\"</blockquote><blockquote>FY2025: \"Certain of these matters are at various stages, including reviews, investigations, and legal proceedings, including a civil lawsuit filed in January 2026 in Florida state court by President Donald J. Trump, in his personal capacity, and several affiliated corporate entities, against JPMorgan Chase Bank, N.A. and its CEO.\"</blockquote>"
+    }
+   ]
+  }
+ ],
+ "themes": [
+  {
+   "title": "Capital requirements and ratios",
+   "html": "<ul><li>Standardized CET1 ratio: 12.0% (FY2018) → 15.7% (FY2024) → 14.6% (FY2025).</li><li>SCB: 3.3% (2020) → 4.0% (2022) → 2.9% (2023) → 3.3% (2024) → 2.5% (2025, held through September 30, 2027).</li><li>GSIB Method 2 surcharge: 3.5% through 2022 → 4.0% (2023) → 4.5% (2024–2026).</li><li>Stated CET1 target: 12% (FY2020), 13.0%/13.5% (FY2022), \"no longer meaningful\" (FY2023), none after.</li><li>Advanced ratios became binding at December 31, 2025.</li></ul>"
+  },
+  {
+   "title": "Guidance figures by filing",
+   "html": "<ul><li>NII guidance: in excess of $58bn (for 2019) → approximately $103bn (for 2026).</li><li>Adjusted expense guidance: less than $66bn (for 2019) → approximately $105bn (for 2026).</li><li>Card NCO rate guidance first appears in FY2022 (~2.6%); FY2025 guides ~3.4%.</li><li>\"market dependent\" attached to expense guidance from FY2022.</li></ul>"
+  },
+  {
+   "title": "Credit metrics",
+   "html": "<ul><li>Firmwide NCO rate: 0.52% (2018), 0.27% (2022), 0.74% (2025).</li><li>Card NCO rate: 3.10% (2018) → 1.47% (2022) → 3.34% (2024) → 3.31% (2025).</li><li>Allowance (loans and commitments): $14.5bn (2018) → $30.7bn (2020) → $18.7bn (2021) → $30.9bn (2025).</li><li>Office exposure investment-grade share: 76% (2020) → 47% (2024, 2025).</li></ul>"
+  },
+  {
+   "title": "Balance sheet and acquisitions",
+   "html": "<ul><li>Total assets: $2.62tn (2018) → $4.42tn (2025).</li><li>Deposits: $1.47tn (2018) → $2.56tn (2025); uninsured estimate first disclosed FY2021 ($1,489.6bn), $1,558.6bn in FY2025.</li><li>First Republic (May 2023): final bargain purchase gain $2.9bn; FDIC settlement gain $588m (1Q25).</li><li>Apple Card forward purchase commitment (December 30, 2025): ~$104bn estimated credit exposure at closing.</li></ul>"
+  },
+  {
+   "title": "Structural and naming changes",
+   "html": "<ul><li>Risk-factor categories: 13 → 14 (COVID-19, FY2020) → 13 (FY2022) → 12 (Legal merged into \"Legal and Regulatory\", FY2025).</li><li>Segments: CIB and CB combined into the Commercial &amp; Investment Bank, effective 2Q24.</li><li>\"JPMorganChase\" as one word: 3 occurrences (FY2023) → 717 (FY2024).</li><li>\"Headcount\" metric renamed \"Employees\" (FY2023).</li></ul>"
+  },
+  {
+   "title": "Terms reduced in FY2024–FY2025",
+   "html": "<ul><li>\"diversity\": 9 (FY2021–FY2022) → 0 (FY2025); \"Diversity, equity and inclusion\" sub-heading replaced by \"Workforce composition\" (FY2024).</li><li>\"climate\": 50 (FY2023) → 31 (FY2025); \"Climate Risk Management\" 5 → 0.</li><li>\"ESG\": 11 (FY2022) → 2 (FY2025).</li><li>Litigation headed matters: 12 (FY2023) → 7 (FY2025).</li></ul>"
+  },
+  {
+   "title": "Terms added in FY2023–FY2025",
+   "html": "<ul><li>\"AI\" as a word: 0 through FY2024 → 23 (FY2025); stand-alone AI risk factor added FY2025.</li><li>\"agentic\", \"stablecoin\", \"tokeniz-\": first appear FY2025.</li><li>\"Fair Access to Banking\" litigation heading added FY2025.</li><li>Buyback authorization raised to $50bn (July 1, 2025).</li></ul>"
+  }
+ ],
+ "ref_table": {
+  "headers": [
+   "Metric",
+   "FY2018",
+   "FY2019",
+   "FY2020",
+   "FY2021",
+   "FY2022",
+   "FY2023",
+   "FY2024",
+   "FY2025"
+  ],
+  "rows": [
+   [
+    "<strong>Net revenue (managed, $m)</strong>",
+    "111,534",
+    "118,692",
+    "122,929",
+    "125,304",
+    "132,277",
+    "162,366",
+    "180,593",
+    "185,581"
+   ],
+   [
+    "<strong>Net income ($m)</strong>",
+    "32,474",
+    "36,431",
+    "29,131",
+    "48,334",
+    "37,676",
+    "49,552",
+    "58,471",
+    "57,048"
+   ],
+   [
+    "<strong>Diluted EPS</strong>",
+    "$9.00",
+    "$10.72",
+    "$8.88",
+    "$15.36",
+    "$12.09",
+    "$16.23",
+    "$19.75",
+    "$20.02"
+   ],
+   [
+    "<strong>ROTCE</strong>",
+    "17%",
+    "19%",
+    "14%",
+    "23%",
+    "18%",
+    "21%",
+    "22%",
+    "20%"
+   ],
+   [
+    "<strong>CET1 (Standardized)</strong>",
+    "12.0%",
+    "12.4%",
+    "13.1%",
+    "13.1%",
+    "13.2%",
+    "15.0%",
+    "15.7%",
+    "14.6%"
+   ],
+   [
+    "<strong>Total assets ($m)</strong>",
+    "2,622,532",
+    "2,687,379",
+    "3,386,071",
+    "3,743,567",
+    "3,665,743",
+    "3,875,393",
+    "4,002,814",
+    "4,424,900"
+   ],
+   [
+    "<strong>Deposits ($m)</strong>",
+    "1,470,666",
+    "1,562,431",
+    "2,144,257",
+    "2,462,303",
+    "2,340,179",
+    "2,400,688",
+    "2,406,032",
+    "2,559,320"
+   ],
+   [
+    "<strong>Loans ($m)</strong>",
+    "984,554",
+    "959,769",
+    "1,012,853",
+    "1,077,714",
+    "1,135,647",
+    "1,323,706",
+    "1,347,988",
+    "1,493,429"
+   ],
+   [
+    "<strong>Headcount / Employees</strong>",
+    "256,105",
+    "256,981",
+    "255,351",
+    "271,025",
+    "293,723",
+    "309,926",
+    "317,233",
+    "318,512"
+   ],
+   [
+    "<strong>Net charge-off rate</strong>",
+    "0.52%",
+    "0.60%",
+    "0.55%",
+    "0.30%",
+    "0.27%",
+    "0.52%",
+    "0.68%",
+    "0.74%"
+   ],
+   [
+    "<strong>Allowance for credit losses ($m)</strong>",
+    "14,500",
+    "14,314",
+    "30,737",
+    "18,689",
+    "22,204",
+    "24,522",
+    "26,598",
+    "30,942"
+   ],
+   [
+    "<strong>Buybacks ($m)</strong>",
+    "19,983",
+    "24,121",
+    "6,397",
+    "18,448",
+    "3,122",
+    "9,898",
+    "18,841",
+    "31,640"
+   ]
+  ]
+ }
+}

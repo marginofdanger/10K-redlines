@@ -1,0 +1,204 @@
+{
+ "from": "FY2020",
+ "to": "FY2021",
+ "title": "COVID language moved to past/conditional tense; NII guidance ex-CIB Markets; DEI sub-section added",
+ "sub": "Filed Feb 2022 | Headcount: 255,351 → 271,025 | Net revenue: $119.5B → $121.6B | CET1: 13.1% → 13.1%",
+ "era_summary": "The FY2021 10-K removes the Brexit and accounting-standards risk factors, the COVID-19 regulatory-developments section and the quarterly outlook items, and restates COVID-19 risk language in conditional or past tense. Full-year 2022 guidance is given as NII excluding CIB Markets in excess of $53 billion and adjusted expense of approximately $77 billion, and the 12% CET1 target is replaced by a 12.0%–13.0% operating range. New disclosures include a Diversity, equity and inclusion sub-section, estimated uninsured deposits, and an expected 4.5% GSIB surcharge from January 1, 2024.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "New “Diversity, equity and inclusion” sub-section with self-identification table",
+     "tag": "New",
+     "body_html": "<p>Inserted after the Global workforce tables; the FY2020 inline diversity percentages were removed from the workforce paragraph and replaced by a table (Total employees / Senior level employees / Operating Committee / Board of Directors).</p><blockquote>FY2021: \"In connection with its diversity initiatives, the Firm periodically requests that its employees and Board members self-identify based on specified diversity categories\"</blockquote><blockquote>FY2021: \"The Firm has global Diversity, Equity &amp; Inclusion centers of excellence, several of which were launched in 2021, that lead the Firm’s strategy in supporting its commitments to create more equity and lasting impact in communities, and strengthen its inclusive culture.\"</blockquote>"
+    },
+    {
+     "title": "Hiring: diversity “a critical area of focus” → “an important area of focus”",
+     "tag": "Changed",
+     "body_html": "<p>In the same paragraph, the Advancing Black Pathways sentence was replaced by a sentence on the DEI centers of excellence.</p><blockquote>FY2020: \"Diversity is a <strong>critical</strong> area of focus throughout the Firm’s hiring process.\"</blockquote><blockquote>FY2021: \"Diversity is an <strong>important</strong> area of focus throughout the Firm’s hiring process.\"</blockquote>"
+    },
+    {
+     "title": "New paragraph: U.K. retail bank (JPMEL) launch and Nutmeg acquisition; U.K. Payment Systems Regulator named",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"In September 2021, the Firm launched a retail bank in the U.K. operating through J.P. Morgan Europe Limited (“JPMEL”) and acquired Nutmeg Saving and Investment Limited, a U.K. online digital investment manager (“Nutmeg”).\"</blockquote><blockquote>FY2021: \"JPMEL is also regulated by the U.K. Payment Systems Regulator with respect to its operation and use of payment systems.\"</blockquote>"
+    },
+    {
+     "title": "SEC security-based swap dealer: “may be required to register” → “registered … effective November 2021”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"JPMorgan Chase Bank, N.A., J.P. Morgan Securities LLC and J.P. Morgan Securities plc are registered with the CFTC as “swap dealers” and <strong>may be required to register</strong> with the SEC as “security-based swap dealers.”\"</blockquote><blockquote>FY2021: \"In addition, JPMorgan Chase Bank, N.A. and J.P. Morgan Securities LLC <strong>registered</strong> with the SEC as “security-based swap dealers” <strong>effective November 2021</strong>.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "COVID-19 heading: “has caused and is causing significant harm” → “Ongoing effects … could harm”",
+     "tag": "Changed",
+     "body_html": "<p>The COVID-19 category remains first of 14 categories.</p><blockquote>FY2020: \"The COVID-19 pandemic <strong>has caused and is causing significant</strong> harm to the global economy and <strong>could further</strong> negatively affect <strong>certain of</strong> JPMorgan Chase’s businesses.\"</blockquote><blockquote>FY2021: \"<strong>Ongoing effects of the</strong> COVID-19 pandemic <strong>could</strong> harm the global economy and negatively affect JPMorgan Chase’s businesses.\"</blockquote>"
+    },
+    {
+     "title": "Brexit risk factor removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2020: \"Regulatory uncertainties associated with the U.K.’s departure from the EU could negatively affect JPMorgan Chase’s business, results of operations and operating model.\"</blockquote><p>The Brexit clause was also removed from the Regulatory bullet in the Summary.</p>"
+    },
+    {
+     "title": "Heading 4: “Heightened regulatory scrutiny” → “Resolving regulatory investigations … significant penalties”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"<strong>Heightened regulatory scrutiny of JPMorgan Chase’s businesses</strong> could result in higher compliance costs <strong>and restrictions</strong> on its operations.\"</blockquote><blockquote>FY2021: \"<strong>Resolving regulatory investigations can subject JPMorgan Chase to significant penalties and collateral consequences, and</strong> could result in higher compliance costs <strong>or restrictions</strong> on its operations.\"</blockquote>"
+    },
+    {
+     "title": "New regulatory bullet naming ESG requirements (first “ESG” in the section)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"impose new requirements relating to the impact of business activities on environmental, social and governance (“ESG”) concerns, the management of risks associated with those concerns and the offering of products intended to achieve ESG-related objectives, or\"</blockquote>"
+    },
+    {
+     "title": "Conduct risk: new bullet on unapproved electronic communications channels",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"using electronic communications channels that have not been approved by JPMorgan Chase\"</blockquote><p>Added to the list of employee conduct examples; a records-preservation resolution with the SEC and CFTC appears in the FY2021 Litigation note.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "NII guidance: managed NII “approximately $55 billion” → NII ex-CIB Markets “in excess of $53 billion”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Management expects net interest income, on a managed basis, to be <strong>approximately $55 billion</strong>, market dependent.\"</blockquote><blockquote>FY2021: \"Management expects net interest income on a managed basis, <strong>excluding CIB Markets</strong>, to be <strong>in excess of $53 billion</strong>, market dependent.\"</blockquote>"
+    },
+    {
+     "title": "Adjusted expense guidance: ~$69 billion → ~$77 billion; drivers now technology, distribution, marketing",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Management expects adjusted expense to be approximately <strong>$69 billion</strong>, which includes <strong>accelerated contributions to the Firm’s Foundation in the form of equity investments, as well as higher revenue-related expense</strong>.\"</blockquote><blockquote>FY2021: \"Management expects adjusted expense to be approximately <strong>$77 billion</strong>, which includes <strong>increased investments in technology, distribution and marketing, and higher structural expense</strong>.\"</blockquote>"
+    },
+    {
+     "title": "First-quarter and fourth-quarter outlook sub-headings removed; only full-year 2022 guidance given",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2020: \"Investment banking fees are expected to be flat when compared with the fourth quarter of 2020, depending on market conditions.\"</blockquote><blockquote>FY2020: \"Management expects net interest income, on a managed basis, to be in excess of $14 billion, market dependent.\"</blockquote><p>FY2020 also gave first-quarter 2021 managed NII of approximately $13 billion. FY2021 has no quarterly guidance.</p>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "NII drivers: “lower rates” → “lower market rates and changes in the balance sheet mix”; offset “partially”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Net interest income was $54.6 billion, down 5%, driven by the impact of lower rates, <strong>predominantly offset by higher net interest income in CIB Markets as well as</strong> balance sheet growth.\"</blockquote><blockquote>FY2021: \"Net interest income was $52.3 billion, down 4%, driven by the impact of lower <strong>market</strong> rates <strong>and changes in the balance sheet mix</strong>, <strong>partially offset by</strong> balance sheet growth.\"</blockquote>"
+    },
+    {
+     "title": "Expense drivers: volume/revenue and legal expense → “predominantly” compensation and technology",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Noninterest expense was $66.7 billion, up 2%, driven by <strong>higher volume- and revenue-related expense, legal expense</strong> and continued investments in the businesses, <strong>partially offset by lower structural expense</strong>.\"</blockquote><blockquote>FY2021: \"Noninterest expense was $71.3 billion, up 7%, <strong>predominantly</strong> driven by <strong>higher compensation expense</strong> and continued investments in the business, <strong>including technology</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Average deposits driver: “impact of the COVID-19 pandemic” → “government actions”; CCB account growth added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Firmwide average deposits of $1.9 trillion were up 25%, reflecting significant inflows <strong>across the Firm</strong>, primarily driven by <strong>the impact of the COVID-19 pandemic and the related effect of certain government actions</strong>.\"</blockquote><blockquote>FY2021: \"Firmwide average deposits of $2.3 trillion were up 23%, reflecting significant inflows <strong>across the LOBs</strong>, primarily driven by <strong>the effect of certain government actions in response to the COVID-19 pandemic</strong>, as well as <strong>growth from existing and new accounts in CCB</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Segment renames: Wholesale Payments → Payments; Wealth Management → Global Private Bank",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"In the fourth quarter of 2021, the Wholesale Payments business was renamed Payments.\"</blockquote><blockquote>FY2021: \"In the first quarter of 2021, the Wealth Management business was renamed Global Private Bank.\"</blockquote><p>AWM client segments Institutional and Retail were also renamed Global Institutional and Global Funds.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Capital & Liquidity",
+   "findings": [
+    {
+     "title": "CET1: “target … of 12%” → “believes that it will operate … between 12.0% and 13.0% in the near term”",
+     "tag": "Changed",
+     "body_html": "<p>The FY2020 follow-on sentence on remaining above 12% to satisfy leverage-based requirements was removed.</p><blockquote>FY2020: \"The Firm <strong>has a target</strong> Basel III CET1 capital ratio <strong>of 12%</strong>.\"</blockquote><blockquote>FY2021: \"The Firm <strong>believes that it will operate with</strong> a Basel III <strong>Standardized</strong> CET1 capital ratio <strong>between 12.0% and 13.0% in the near term</strong>, based on the Basel III capital rules currently in effect, and <strong>with consideration for an increase in the GSIB surcharge in 2023</strong>.\"</blockquote>"
+    },
+    {
+     "title": "GSIB Method 2 estimate: 4.0% (Jan 1, 2023) → 4.5% expected Jan 1, 2024",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"Accordingly, based on the GSIB rule currently in effect, the Firm’s effective <strong>regulatory minimum</strong> GSIB surcharge is expected to increase to <strong>4.0% on January 1, 2023</strong> unless the Firm’s Method 2 GSIB surcharge calculation based upon data as of December 31, 2021 is lower.\"</blockquote><blockquote>FY2021: \"The Firm’s estimated Method 2 surcharge calculated using data as of December 31, 2021 <strong>is 4.5%</strong>. Accordingly, based on the GSIB rule currently in effect, the Firm’s effective GSIB surcharge is expected to increase to <strong>4.5% on January 1, 2024</strong> unless the Firm’s Method 2 GSIB surcharge calculation based upon data as of December 31, 2022 is lower.\"</blockquote>"
+    },
+    {
+     "title": "SCB requirement 3.3% → 3.2%; Standardized CET1 requirement 11.3% → 11.2%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"On August 10, 2020, the Federal Reserve affirmed the Firm's SCB requirement of <strong>3.3%</strong> and the Firm's minimum Standardized CET1 capital ratio of <strong>11.3% (up from 10.5%)</strong>.\"</blockquote><blockquote>FY2021: \"On August 5, 2021, the Federal Reserve affirmed the Firm's 2021 SCB requirement of <strong>3.2% (down from 3.3%)</strong> and the Firm's Standardized CET1 capital ratio requirement including regulatory buffers, of <strong>11.2% (down from 11.3%)</strong>.\"</blockquote>"
+    },
+    {
+     "title": "New disclosure: estimated uninsured deposits of $1,489.6 billion (2021) and $1,275.9 billion (2020)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"At December 31, 2021 and 2020, the Firmwide estimated uninsured deposits were $1,489.6 billion and $1,275.9 billion, respectively, primarily reflecting wholesale operating deposits.\"</blockquote><p>Accompanied by new tables of uninsured time deposits by remaining maturity and of average deposit balances and rates.</p>"
+    },
+    {
+     "title": "Stress testing: “actual events can be worse” sentence removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2020: \"However, when defining a broad range of scenarios, <strong>actual events can be worse</strong>. Accordingly, management considers additional stresses outside these scenarios, as necessary.\"</blockquote><blockquote>FY2021: \"In addition to CCAR and other periodic stress testing, management also considers <strong>tailored stress scenarios and sensitivity analyses</strong>, as necessary.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Credit",
+   "findings": [
+    {
+     "title": "Scenario weighting: “more balanced” vs prior “significant weighting” on adverse scenarios",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"As of December 31, 2021, the Firm assigned <strong>more balanced weightings</strong> to both its adverse and upside scenarios compared to the significant weighting that the Firm placed on its adverse scenarios as of December 31, 2020, reflecting the sustained improvement and resilience of the macroeconomic environment, despite the ongoing impact of the COVID-19 pandemic.\"</blockquote><blockquote>FY2021: \"In addition, because the impact of the COVID-19 pandemic and governmental actions taken in response to the pandemic caused a dislocation in certain historical relationships used for modeling credit loss estimates, the Firm continues to place reliance on management judgment and make adjustments specific to that dislocation, <strong>although to a lesser extent than in 2020</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Weighted-average unemployment rate disclosure (~6% at 4Q22) removed; no replacement figure",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2020: \"These scenarios incorporate more punitive macroeconomic factors than the central case assumptions, resulting in weighted average U.S. unemployment rates remaining elevated throughout 2021 and 2022, ending the fourth quarter of 2022 at approximately 6%, and in U.S. GDP ending 2022 approximately 0.9% higher than fourth quarter 2019 actual pre-pandemic levels.\"</blockquote><p>The central-case GDP metric also changed from cumulative change from 12/31/2019 to year-over-year growth.</p>"
+    },
+    {
+     "title": "Allowance $30.8 billion → $18.7 billion; consumer and wholesale allowance changes reverse sign",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th></th><th>FY2020</th><th>FY2021</th></tr><tr><td>Allowance for credit losses</td><td>$30.8bn</td><td>$18.7bn</td></tr><tr><td>Consumer allowance change</td><td>+$7.4bn</td><td>−$9.5bn</td></tr><tr><td>Wholesale allowance change</td><td>+$4.7bn</td><td>−$2.6bn</td></tr><tr><td>Card net charge-off rate</td><td>2.93%</td><td>1.94%</td></tr></table>"
+    }
+   ]
+  },
+  {
+   "section": "Market & Operational Risk",
+   "findings": [
+    {
+     "title": "VaR backtesting exceptions 10 → 20; twelve in 4Q21 tied to interest-rate volatility",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"For the year ended December 31, 2020, the Firm posted backtesting gains on 162 of the 260 days, and observed <strong>10 VaR backtesting exceptions</strong>, which were predominantly driven by volatility at the onset of the COVID-19 pandemic that was materially higher than the levels realized in the historical data used for the VaR calculation.\"</blockquote><blockquote>FY2021: \"For the 12 months ended December 31, 2021, the Firm posted backtesting gains on 145 of the 260 days, and observed <strong>20 VaR backtesting exceptions</strong>. <strong>Twelve of the backtesting exceptions were in the three months ended December 31, 2021</strong> as market volatility, <strong>particularly related to interest rates</strong>, was materially higher than the market volatility in the 12 months of historical data used for the VaR calculation.\"</blockquote>"
+    },
+    {
+     "title": "Payment fraud: “remains at a heightened level” → “normalized in 2021”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"The risk of payment fraud <strong>remains at a heightened level</strong> across the industry, particularly during the current COVID-19 pandemic due to the use of contingent forms of payment authentication methods, scams involving the pandemic being perpetrated including an increase in the level of fraud attempts against consumers.\"</blockquote><blockquote>FY2021: \"The risk of payment fraud <strong>normalized in 2021</strong> since the heightened levels experienced during earlier stages of the COVID-19 pandemic.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Accounting & FLS",
+   "findings": [
+    {
+     "title": "Goodwill cushion: fair value exceeded carrying value “by at least 15%” → “by at least 10%”",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2020: \"The fair values of these reporting units exceeded their carrying values by <strong>at least 15%</strong> and did not indicate a significant risk of goodwill impairment based on current projections and valuations.\"</blockquote><blockquote>FY2021: \"For each of the reporting units, fair value exceeded carrying value by <strong>at least 10%</strong> and there was no indication of a significant risk of goodwill impairment based on current projections and valuations.\"</blockquote>"
+    },
+    {
+     "title": "Forward-looking statements: new risk item “Changes in the level of inflation”",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"Changes in the level of inflation;\"</blockquote><p>Inserted after “Changes in trade, monetary and fiscal policies and laws”; the list grows from 30 to 31 items.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "New matter: “Inquiries Concerning Preservation Requirements” (SEC $125 million, CFTC $75 million penalties)",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"In December 2021 certain of the Firm’s subsidiaries entered into resolutions with the U.S. Securities and Exchange Commission (“SEC”) and the U.S. Commodity Futures Trading Commission (“CFTC”) to resolve their respective civil investigations of compliance with records preservation requirements applicable to broker-dealer firms, swap dealers and futures commission merchants.\"</blockquote>"
+    },
+    {
+     "title": "New matter: Securities Lending Antitrust Litigation; Wendel and Advisory and Other Activities removed",
+     "tag": "New",
+     "body_html": "<blockquote>FY2021: \"The complaint asserts violations of federal antitrust law and New York State common law in connection with an alleged conspiracy to prevent the emergence of anonymous exchange trading for securities lending transactions.\"</blockquote><p>Reasonably possible loss range unchanged at $0 to approximately $1.5 billion. Legal expense: $1.1 billion (2020) → $426 million (2021).</p>"
+    }
+   ]
+  }
+ ]
+}

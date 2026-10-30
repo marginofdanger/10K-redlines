@@ -1,0 +1,159 @@
+{
+ "from": "FY2019",
+ "to": "FY2020",
+ "title": "COVID-19 sections added; government-customer risk factor added; server useful life extended",
+ "sub": "Filed Jul 2020 | Headcount: 144,000 → 163,000 | Revenue: $125.8B → $143.0B | Commercial cloud revenue: $38.1B → $51.7B",
+ "era_summary": "The FY2020 10-K adds COVID-19 text to Business, Risk Factors and MD&A, and four new Business sub-sections including the carbon-negative-by-2030 commitment. Item 1A adds one risk factor (government customers) and records the July 2020 Privacy Shield invalidation. MD&A adds a Metrics subsection and a change in accounting estimate extending server and network equipment useful lives to four years.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Four new GENERAL sub-sections: COVID-19, Commitment to Sustainability, Addressing Racial Injustice, Investing in Digital Skills",
+     "tag": "New",
+     "body_html": "<p>Inserted after \"Our Future Opportunity\" and before OPERATING SEGMENTS.</p><blockquote>FY2020: \"By 2030 Microsoft <strong>will be carbon negative</strong>, and by 2050 Microsoft will remove from the environment all the carbon the company has emitted directly or by electrical consumption since it was founded in 1975.\"</blockquote>"
+    },
+    {
+     "title": "Teams: \"core to our vision for the modern workplace\" → \"enabling rapid digital transformation\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Microsoft Teams is <strong>core to our vision for the modern workplace as the digital hub that creates a single canvas for teamwork, conversations, meetings, and content</strong>.\"</blockquote><blockquote>FY2020: \"Microsoft Teams is <strong>enabling rapid digital transformation by giving people a single tool to chat, call, meet, and collaborate</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Platform paragraph: \"are looking to use\" → \"have accelerated\"; \"optimize\" and \"engage\" swap order",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"<strong>Companies are looking to use digital technology to fundamentally reimagine how they</strong> empower their employees, engage customers, optimize their operations, and change the very core of their products and services.\"</blockquote><blockquote>FY2020: \"<strong>In the new remote world, companies have accelerated their own digital transformation to</strong> empower their employees, optimize their operations, engage customers, and <strong>in some cases,</strong> change the very core of their products and services.\"</blockquote>"
+    },
+    {
+     "title": "Intelligent Cloud bullet: Azure moves from last item to first",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2019: \"Server products and cloud services, including SQL Server, Windows Server, Visual Studio, System Center, and related CALs, GitHub, and <strong>Azure</strong>.\"</blockquote><blockquote>FY2020: \"Server products and cloud services, including <strong>Azure</strong>; SQL Server, Windows Server, Visual Studio, System Center, and related CALs; and GitHub.\"</blockquote><p>The Azure description paragraph and the Azure competition paragraph also move to the front of their sub-sections.</p>"
+    },
+    {
+     "title": "Gaming: Xbox One console and Windows 10 PC-gamer claim removed; Game Pass member count added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"We have a strong position with <strong>our Xbox One console</strong>, our large and growing highly engaged community of gamers <strong>on Xbox Live, and with Windows 10, the most popular operating system for PC gamers</strong>.\"</blockquote><blockquote>FY2020: \"We have a strong position with our large and growing highly engaged community of gamers. <strong>Xbox Game Pass, with over 10 million members from 41 countries</strong>, is a community with access to a curated library of over 100 first- and third-party console and PC titles.\"</blockquote>"
+    },
+    {
+     "title": "LinkedIn: \"world's largest professional network\" claim removed; 700 million members disclosed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"LinkedIn connects the world's professionals to make them more productive and successful, <strong>and is the world's largest professional network on the Internet</strong>.\"</blockquote><blockquote>FY2020: \"<strong>LinkedIn has over 700 million members</strong> and has offices around the globe.\"</blockquote><p>Monetized solutions go from \"three categories\" (Talent, Marketing, Premium Subscriptions) to five (Talent, Learning, Marketing, Sales, Premium Subscriptions).</p>"
+    },
+    {
+     "title": "Competitor lists cut: Salesforce.com dropped from Azure; Infor, NetSuite, The Sage Group dropped from Dynamics",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2019: \"Azure faces diverse competition from companies such as Amazon, Google, IBM, Oracle, <strong>Salesforce.com,</strong> VMware, and open source offerings.\"</blockquote><blockquote>FY2020: \"Azure faces diverse competition from companies such as Amazon, Google, IBM, Oracle, VMware, and open source offerings.\"</blockquote><blockquote>FY2019: \"Dynamics competes with vendors such as <strong>Infor, NetSuite,</strong> Oracle, Salesforce.com, SAP, <strong>and The Sage Group</strong> to provide cloud-based\"</blockquote><blockquote>FY2020: \"Dynamics competes with vendors such as Oracle, Salesforce.com, and SAP to provide cloud-based\"</blockquote>"
+    },
+    {
+     "title": "Operations: single-qualified-supplier disclosure added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"The majority of our hardware products contain components for which there is <strong>only one qualified supplier</strong>. Extended disruptions at these suppliers could lead to a similar disruption in our ability to manufacture devices.\"</blockquote>"
+    },
+    {
+     "title": "Distribution: \"and retail stores\" removed; Microsoft Store closures sentence added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"through our digital marketplaces, online stores, <strong>and retail stores</strong>.\"</blockquote><blockquote>FY2020: \"through our digital marketplaces and online stores. <strong>In June 2020, we announced a strategic change in our retail operations, including closing our Microsoft Store physical locations.</strong>\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "New risk factor: \"Our business with government customers may present additional uncertainties.\"",
+     "tag": "New",
+     "body_html": "<p>Inserted after \"Our global business exposes us to operational and economic risks.\" The U.S. shutdown sentence is removed from the adverse-economic-conditions factor.</p><blockquote>FY2019: \"<strong>Substantial revenue comes from our U.S. government contracts.</strong> An extended federal government shutdown\"</blockquote><blockquote>FY2020: \"<strong>We derive substantial revenue from government contracts.</strong> Government contracts generally can present risks and challenges not present in private commercial agreements.\"</blockquote>"
+    },
+    {
+     "title": "Catastrophic events factor: COVID-19 text added with dated Q3/Q4 FY2020 impacts",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"In the third and fourth quarters of fiscal year 2020, we have experienced adverse impacts to our supply chain, a slowdown in transactional licensing, and lower demand for our advertising services.\"</blockquote><p>\"pandemic\" is also inserted into the economic-conditions list (\"inflation, recession, pandemic\") and the catastrophic-event list.</p>"
+    },
+    {
+     "title": "Privacy Shield: \"currently subject to challenges … may lead\" → \"invalidated … has led\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"The Privacy Shield and other mechanisms are <strong>currently subject to challenges in European courts, which may lead</strong> to uncertainty about the legal basis for data transfers\"</blockquote><blockquote>FY2020: \"For example, in July 2020 the Court of Justice of the EU <strong>invalidated</strong> a framework called Privacy Shield for companies to transfer data from EU member states to the United States. This ruling <strong>has led</strong> to uncertainty\"</blockquote>"
+    },
+    {
+     "title": "Competition: sentence on competitors' app-marketplace rules added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"Competitors’ rules governing their content and applications marketplaces may restrict our ability to distribute products and services through them in accordance with our technical and business model objectives.\"</blockquote>"
+    },
+    {
+     "title": "Infrastructure: datacenter builds in \"higher safety risks\" geographies and \"storage and compute capacity\" added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Maintaining, securing, and expanding this infrastructure is expensive and complex. It requires that we maintain an Internet connectivity infrastructure that is robust and reliable\"</blockquote><blockquote>FY2020: \"Maintaining, securing, and expanding this infrastructure is expensive and complex<strong>, and requires development of principles for datacenter builds in geographies with higher safety risks</strong>. It requires that we maintain an Internet connectivity infrastructure <strong>and storage and compute capacity</strong> that is robust and reliable\"</blockquote>"
+    },
+    {
+     "title": "Content moderation liability: \"substantial liability\" → \"civil or criminal liability\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"We may be subject to enhanced regulatory oversight, <strong>substantial</strong> liability, or reputational damage if we fail to comply with content moderation regulations\"</blockquote><blockquote>FY2020: \"We may be subject to enhanced regulatory oversight, <strong>civil or criminal</strong> liability, or reputational damage if we fail to comply with content moderation regulations\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "New COVID-19 subsection describes segment-level effects",
+     "tag": "New",
+     "body_html": "<blockquote>FY2020: \"In the Productivity and Business Processes and Intelligent Cloud segments, cloud usage and demand increased as customers shifted to work and learn from home. We also experienced a slowdown in transactional licensing, particularly in small and medium businesses, and LinkedIn was negatively impacted by the weak job market and reductions in advertising spend.\"</blockquote>"
+    },
+    {
+     "title": "Server and network equipment useful life extended; FY2021 operating income +$2.7B estimate",
+     "tag": "New",
+     "body_html": "<p>New CHANGE IN ACCOUNTING ESTIMATE section at the end of Critical Accounting Policies.</p><blockquote>FY2020: \"increase the estimated useful life of server equipment from three years to four years and increase the estimated useful life of network equipment from two years to four years. This change in accounting estimate will be effective beginning fiscal year 2021.\"</blockquote>"
+    },
+    {
+     "title": "Commercial cloud highlight: definition removed; growth 43% → 36%; gross margin level (67%) stated",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Commercial cloud revenue<strong>, which includes Microsoft Office 365 Commercial, Microsoft Azure, the commercial portion of LinkedIn, Microsoft Dynamics 365, and other commercial cloud properties,</strong> increased 43% to $38.1 billion.\"</blockquote><blockquote>FY2020: \"Commercial cloud revenue increased 36% to $51.7 billion.\"</blockquote><blockquote>FY2020: \"Commercial cloud gross margin percentage increased 4 points <strong>to 67%</strong>, primarily driven by improvement in Azure.\"</blockquote><p>The definition moves to a new Metrics subsection.</p>"
+    },
+    {
+     "title": "R&D driver: \"cloud and artificial intelligence (“AI”) engineering\" → \"cloud engineering\"; Devices added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"driven by investments in cloud <strong>and artificial intelligence (“AI”)</strong> engineering, Gaming, LinkedIn, and GitHub.\"</blockquote><blockquote>FY2020: \"driven by investments in cloud engineering, LinkedIn, <strong>Devices</strong>, and Gaming.\"</blockquote>"
+    },
+    {
+     "title": "Azure driver: IaaS/PaaS and per-user language → \"consumption-based services\"; 72% → 56%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"Azure revenue growth was 72%, due to <strong>higher infrastructure-as-a-service and platform-as-a-service consumption-based and per user-based services</strong>.\"</blockquote><blockquote>FY2020: \"Azure revenue grew 56%, due to <strong>growth in our consumption-based services</strong>.\"</blockquote>"
+    },
+    {
+     "title": "IRS 2014-2017 examination: \"expect … to begin\" → \"commenced\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"We <strong>expect the IRS to begin</strong> an examination of tax years 2014 to 2017 <strong>within the next 12 months</strong>.\"</blockquote><blockquote>FY2020: \"<strong>In April 2020, the IRS commenced</strong> the audit for tax years 2014 to 2017.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Capex outlook sentence retained verbatim",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2020: \"We expect capital expenditures to increase in coming years to support growth in our cloud offerings.\"</blockquote><p>Same wording in FY2019. Construction commitments $3,958M → $5,041M.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "Moussouris v. Microsoft (Employment-Related Litigation) removed from Contingencies note",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2019: \"Current and former female Microsoft employees in certain engineering and information technology roles brought this class action in federal court in Seattle in 2015, alleging systemic gender discrimination in pay and promotions.\"</blockquote>"
+    },
+    {
+     "title": "Accrued legal liabilities $386M → $306M; reasonably-possible range ~$1.0B → ~$500M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th></th><th>Jun 30, 2019</th><th>Jun 30, 2020</th></tr><tr><td>Accrued aggregate legal liabilities</td><td>$386M</td><td>$306M</td></tr><tr><td>Reasonably possible beyond accrual</td><td>~$1.0B</td><td>~$500M</td></tr><tr><td>Pending patent infringement cases</td><td>44</td><td>64</td></tr></table>"
+    },
+    {
+     "title": "Antitrust Compliance Office report: \"will continue through 2020\" → \"last annual report\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2019: \"<strong>These annual reports will continue through 2020.</strong>\"</blockquote><blockquote>FY2020: \"<strong>This will be the last annual report under the Final Order.</strong>\"</blockquote>"
+    }
+   ]
+  }
+ ]
+}

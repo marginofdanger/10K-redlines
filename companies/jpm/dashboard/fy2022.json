@@ -1,0 +1,204 @@
+{
+ "from": "FY2021",
+ "to": "FY2022",
+ "title": "COVID-19 risk category removed; War in Ukraine and Climate Risk Management sections added; CET1 target raised",
+ "sub": "Filed Feb 2023 | Headcount: 271,025 → 293,723 | Net revenue: $121.6B → $128.7B | CET1: 13.1% → 13.2%",
+ "era_summary": "The FY2022 10-K removes the COVID-19 Pandemic risk category and Business Developments sub-section, adds War in Ukraine disclosures in MD&A, country risk and operational risk, and adds a Climate Risk Management section. The CET1 target changes from a 12.0%–13.0% range to 13.0% for 1Q23 rising to 13.5% for 1Q24, with the SCB at 4.0% and share repurchases disclosed as suspended in July 2022 and resumed in 1Q23. NII guidance changes to approximately $73 billion total and approximately $74 billion excluding Markets, and the deposit discussion adds attrition and migration-into-investments language.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "New-competitor sentence: \"payment or loan products\" → products that \"disintermediate traditional banking\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"New competitors in the financial services industry continue to emerge, including firms that offer products and services solely through the internet and non-financial companies that offer <strong>payment or loan products</strong>.\"</blockquote><blockquote>FY2022: \"New competitors in the financial services industry continue to emerge, including firms that offer products and services solely through the internet and non-financial companies that offer <strong>products and services that disintermediate traditional banking products and services offered by financial services firms such as JPMorgan Chase</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Data regulation paragraph condensed; \"artificial intelligence\" removed, \"consumer protection\" added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"These include laws, rules and regulations relating to data protection, privacy, data use, confidentiality, secrecy, cybersecurity, technology, <strong>artificial intelligence</strong>, data localization and storage, data retention and destruction, disclosure, transfer, availability, integrity and other similar matters.\"</blockquote><blockquote>FY2022: \"The Firm and its subsidiaries are subject to laws, rules and regulations globally concerning data, including data protection, <strong>consumer protection</strong>, privacy, cybersecurity and related matters.\"</blockquote><p>Sub-heading retitled \"Data, privacy and security regulation\" → \"Data, privacy and cybersecurity regulation\".</p>"
+    },
+    {
+     "title": "CFPB credit card late-fee proposal named in consumer supervision paragraph",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"In February 2023, the CFPB proposed a rule that would significantly reduce and limit the late payment fees that credit card issuers, including the Firm, would be permitted to charge to customers.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "COVID-19 Pandemic risk category and its risk factor removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2021: \"Ongoing effects of the COVID-19 pandemic could harm the global economy and negatively affect JPMorgan Chase’s businesses.\"</blockquote><p>In FY2021 COVID-19 Pandemic was the first of 14 risk categories; FY2022 opens with Regulatory. The workforce-unavailability bullet moves to Operational, now referring to \"health emergencies, the spread of infectious diseases, epidemics or pandemics\".</p>"
+    },
+    {
+     "title": "Stand-alone AML / sanctions / anti-corruption risk factor removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2021: \"JPMorgan Chase can face greater risks of non-compliance and incur higher operational and compliance costs under laws, rules and regulations relating to anti-money laundering, economic sanctions, embargo programs and anti-corruption.\"</blockquote><p>Its conflict-of-law sentence moves into the retitled \"Differences and inconsistencies in financial services regulation…\" factor, with \"may\" added before \"conflict with\".</p>"
+    },
+    {
+     "title": "Political risk: new paragraphs on governmental actions that discourage or penalize doing business with certain industries",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"JPMorgan Chase's business and results of operations may also be adversely affected by actions or initiatives by national, state or local governmental authorities that:\"</blockquote><blockquote>FY2022: \"seek to discourage financial institutions from doing business with companies engaged in certain industries, or conversely, to penalize financial institutions that elect not to do business with such companies, or\"</blockquote>"
+    },
+    {
+     "title": "Cyber risk: \"attempted\" dropped; new bullet on attacks amid geopolitical tensions",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"JPMorgan Chase experiences numerous <strong>attempted</strong> cyber attacks on its computer systems, software, networks and other technology assets on a daily basis…\"</blockquote><blockquote>FY2022: \"JPMorgan Chase experiences numerous cyber attacks on its computer systems, software, networks and other technology assets on a daily basis…\"</blockquote><blockquote>FY2022: \"a higher volume and complexity of cyber attacks against the backdrop of heightened geopolitical tensions.\"</blockquote>"
+    },
+    {
+     "title": "People risk: new hybrid work model sentence",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"JPMorgan Chase’s increased use of hybrid work models could result in deterioration in employee performance or degradation of JPMorgan Chase's control environment which may have a material and adverse effect on its business and operations. Alternatively, discontinuing hybrid work models could harm JPMorgan Chase’s ability to attract and retain employees.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "NII guidance: ex-CIB Markets \"in excess of $53 billion\" → total ~$73B and ex-Markets ~$74B",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Management expects net interest income <strong>on a managed basis, excluding CIB Markets</strong>, to be <strong>in excess of $53 billion</strong>, market dependent.\"</blockquote><blockquote>FY2022: \"Management expects net interest income to be <strong>approximately $73 billion</strong>, market dependent.\"</blockquote><blockquote>FY2022: \"Management expects net interest income excluding Markets to be <strong>approximately $74 billion</strong>, market dependent.\"</blockquote>"
+    },
+    {
+     "title": "Adjusted expense guidance: driver clause replaced by \"market dependent\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Management expects adjusted expense to be approximately $77 billion, <strong>which includes increased investments in technology, distribution and marketing, and higher structural expense</strong>.\"</blockquote><blockquote>FY2022: \"Management expects adjusted expense to be approximately $81 billion, <strong>market dependent</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Card Services net charge-off rate guidance added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"Management expects the net charge-off rate in Card Services to be approximately 2.6%.\"</blockquote><p>Outlook heading changes from \"2022 outlook\" to \"Outlook\"; FY2021 outlook had two items (NII, adjusted expense), FY2022 has four.</p>"
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "Firmwide NII drivers: \"lower market rates\" → \"higher rates and loan growth\"; NII ex-Markets added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Net interest income was $52.3 billion, down 4%, driven by the impact of <strong>lower market rates and changes in the balance sheet mix, partially offset by balance sheet growth</strong>.\"</blockquote><blockquote>FY2022: \"Net interest income of $66.7 billion, up 28%, driven by <strong>higher rates and loan growth, partially offset by lower Markets net interest income</strong>. <strong>Net interest income excluding Markets was $62.4 billion, up 40%.</strong>\"</blockquote><p>In the revenue bullets NII now precedes noninterest revenue (FY2021 listed noninterest revenue first).</p>"
+    },
+    {
+     "title": "Average deposits: \"attrition\" and \"migration into investments\" language added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Firmwide average deposits of $2.3 trillion were up 23%, reflecting <strong>significant inflows across the LOBs, primarily driven by the effect of certain government actions in response to the COVID-19 pandemic</strong>, as well as growth from existing and new accounts in CCB.\"</blockquote><blockquote>FY2022: \"growth in CCB from existing and new accounts, and net inflows in AWM resulting from the <strong>residual effects</strong> of certain government actions, partially offset by the impact of growth in customer spending in CCB and <strong>migration into investments in AWM</strong>, and\"</blockquote><blockquote>FY2022: \"reductions in CIB and CB due to <strong>attrition driven by the rising interest rate environment</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Business Developments: COVID-19 Pandemic sub-section removed; War in Ukraine sub-section added first",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"The duration and potential outcomes of the war in Ukraine remain uncertain. The Firm has taken and continues to take steps to close positions and reduce certain of its business activities and exposures connected with the war, and to assist clients with fulfilling any pre-existing obligations and managing their Russia-related risks.\"</blockquote><blockquote>FY2022: \"The Firm’s exposure to Russia and Russia-associated clients and counterparties is not material to its financial condition or results of operations.\"</blockquote>"
+    },
+    {
+     "title": "Funds transfer pricing paragraph: \"declined … margin compression\" → \"increased … margin expansion\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"As a result of the <strong>current</strong> interest rate environment and the excess liquidity stemming from government and central bank actions since the onset of the COVID-19 pandemic, the cost of funds for assets and the credits earned for liabilities have generally <strong>declined</strong>, impacting the business segments net interest income. As such, during the period ended December 31, 2021, this has resulted in <strong>lower</strong> cost of funds for loans and <strong>margin compression</strong> on deposits across the LOBs.\"</blockquote><blockquote>FY2022: \"As a result of the <strong>rising</strong> interest rate environment, the cost of funds for assets and the credits earned for liabilities have generally <strong>increased</strong>, impacting the business segments’ net interest income. During the period ended December 31, 2022, this has resulted in <strong>higher</strong> cost of funds for loans and contributed to <strong>margin expansion</strong> on deposits.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Capital & Liquidity",
+   "findings": [
+    {
+     "title": "CET1 target: \"between 12.0% and 13.0% in the near term\" → 13.0% for 1Q23 rising to 13.5% for 1Q24",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"<strong>The Firm believes that it will operate with</strong> a Basel III Standardized CET1 capital ratio <strong>between 12.0% and 13.0% in the near term</strong>, based on the Basel III capital rules currently in effect, and with consideration for an increase in the GSIB surcharge in 2023.\"</blockquote><blockquote>FY2022: \"<strong>The Firm’s current target for</strong> its Basel III Standardized CET1 capital ratio is <strong>13.0% for the first quarter of 2023, increasing to 13.5% for the first quarter of 2024</strong> with consideration for an increase in the GSIB surcharge in 2024, <strong>and assuming no change in the Stress Capital Buffer. The Firm’s quarterly capital ratios may vary from these targets dependent on market conditions.</strong>\"</blockquote><p>Placed under a new \"Risk-based Capital Targets\" sub-heading.</p>"
+    },
+    {
+     "title": "SCB 3.2% → 4.0%; Standardized CET1 requirement 11.2% → 12.0%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"On August 5, 2021, the Federal Reserve affirmed the Firm's 2021 SCB requirement of <strong>3.2% (down from 3.3%)</strong> and the Firm's Standardized CET1 capital ratio requirement including regulatory buffers, of <strong>11.2% (down from 11.3%)</strong>.\"</blockquote><blockquote>FY2022: \"On August 4, 2022, the Federal Reserve affirmed the Firm's 2022 SCB requirement of <strong>4.0% (up from 3.2%)</strong>, and the Firm’s Standardized CET1 capital ratio requirement, including regulatory buffers, of <strong>12.0% (up from 11.2%)</strong>.\"</blockquote><p>Effective GSIB surcharge for 2023 under Method 1 / Method 2: 2.5% / 4.0% (2022: 2.0% / 3.5%); TLAC and LTD requirements rise 50 bps to 23.0% and 10.0% of RWA as of January 1, 2023.</p>"
+    },
+    {
+     "title": "Share repurchase suspension (July 2022) and resumption (1Q23) disclosed",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"On July 14, 2022, the Firm announced that it had temporarily suspended share repurchases in anticipation of the increase in the Firm's regulatory capital requirements. The Firm had set a target for achieving CET1 capital of 13.0% by the first quarter of 2023. The Firm met and exceeded that target in the fourth quarter of 2022, and resumed repurchasing shares under its common share repurchase program in the first quarter of 2023.\"</blockquote><p>Common share repurchases: $18,448 million (2021) → $3,122 million (2022).</p>"
+    }
+   ]
+  },
+  {
+   "section": "Credit",
+   "findings": [
+    {
+     "title": "Allowance build: central scenario \"now reflects a mild recession\"; adverse weighting increased from 1Q22",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"Deterioration in the Firm’s macroeconomic outlook included both updates to the central scenario in the fourth quarter of 2022, which now reflects a mild recession, as well as the impact of the increased weight placed on the adverse scenarios beginning in the first quarter of 2022 due to the effects associated with higher inflation, changes in monetary policy, and geopolitical risks, including the war in Ukraine.\"</blockquote><p>Allowance for credit losses $18.7B → $22.2B (net addition of $3.5B: $2.3B wholesale, $1.2B consumer); wholesale now listed before consumer.</p>"
+    },
+    {
+     "title": "Scenario paragraph: \"more balanced weightings\" and COVID overlay removed; weighted-average unemployment peak disclosed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"As of December 31, 2021, the Firm assigned more balanced weightings to both its adverse and upside scenarios compared to the significant weighting that the Firm placed on its adverse scenarios as of December 31, 2020, reflecting the sustained improvement and resilience of the macroeconomic environment, despite the ongoing impact of the COVID-19 pandemic.\"</blockquote><blockquote>FY2022: \"The adverse scenarios incorporate more punitive macroeconomic factors than the central case assumptions provided in the table below, resulting in a weighted average U.S. unemployment rate peaking at 5.6% in the second quarter of 2024, and a 1.2% lower U.S. real GDP exiting the second quarter of 2024.\"</blockquote>"
+    },
+    {
+     "title": "Card delinquencies: \"decreased\" → \"increased … but remain below pre-pandemic levels\"; deposit-balance caveat added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"The December 31, 2021 30+ and 90+ day delinquency rates of 1.04% and 0.50%, respectively, <strong>decreased</strong> compared to the December 31, 2020 30+ and 90+ day delinquency rates of 1.68% and 0.92%, respectively. The delinquency rates continue to benefit from the ongoing impact of government stimulus and support provided to borrowers who participated in payment assistance programs.\"</blockquote><blockquote>FY2022: \"The December 31, 2022 30+ and 90+ day delinquency rates of 1.45% and 0.68%, respectively, <strong>increased</strong> compared to the December 31, 2021 30+ and 90+ day delinquency rates of 1.04% and 0.50%, <strong>but remain below pre-pandemic levels</strong>. Net charge-offs decreased for the year ended December 31, 2022 compared to the prior year. Delinquency and net charge-off rates continue to benefit from the ongoing financial strength of U.S. consumers. <strong>However, median deposit balances declined in the second half of 2022, impacted by the growth in consumer spending.</strong>\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Market & Operational Risk",
+   "findings": [
+    {
+     "title": "New CLIMATE RISK MANAGEMENT section between Country and Operational risk",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"Climate risk is the risk associated with the impacts of climate change on the Firm’s clients, customers, operations and business strategy. Climate change is viewed as a driver of risk that may impact existing types of risks managed by the Firm. Climate risk is categorized into physical risk and transition risk.\"</blockquote><blockquote>FY2022: \"The Firm has a Climate Risk Management function that is responsible for establishing the Firmwide framework and strategy for managing climate risk.\"</blockquote><p>Climate Risk is also added to the risk governance functions table in the Firmwide risk management section.</p>"
+    },
+    {
+     "title": "Earnings-at-risk: rate sensitivity source flips from assets repricing to liabilities repricing; repricing-lag review disclosed",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"The Firm’s sensitivity to rates is primarily a result of <strong>assets repricing at a faster pace than deposits</strong>.\"</blockquote><blockquote>FY2022: \"As of December 31, 2022, the Firm’s sensitivity to the +/-100 basis points parallel and short-term shift in rates is primarily the result of a greater impact from <strong>liabilities repricing compared to the impact of assets repricing</strong>, while a +/-100 basis points shift in long-term rates is primarily the result of a greater impact from assets repricing compared to the impact of liabilities repricing.\"</blockquote><blockquote>FY2022: \"The Firm is currently evaluating the modeling of repricing lags for deposits in its earnings-at-risk scenarios.\"</blockquote><table class=\"data-table\"><tr><th>U.S. dollar EaR ($B)</th><th>FY2021</th><th>FY2022</th></tr><tr><td>+100 bps parallel</td><td>5.0</td><td>(2.0)</td></tr><tr><td>+100 bps short-term</td><td>3.2</td><td>(2.8)</td></tr><tr><td>-100 bps parallel</td><td>NM</td><td>2.4</td></tr></table>"
+    },
+    {
+     "title": "Cybersecurity: new geopolitical-tension paragraph; updates provided to \"Board of Directors\" instead of \"Audit Committee\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2022: \"The Firm has experienced, and expects that it will continue to experience, a higher volume and complexity of cyber attacks against the backdrop of heightened geopolitical tensions. The Firm has implemented precautionary measures and controls reasonably designed to address this increased risk, such as enhanced threat monitoring. There can be no assurance that the measures taken by the Firm will be successful in defending against cyber attacks.\"</blockquote><blockquote>FY2021: \"The <strong>Audit Committee</strong> is periodically provided with updates on the Firm’s Information Security Program…\"</blockquote><blockquote>FY2022: \"The <strong>Board of Directors</strong> is periodically provided with updates on the Firm’s Information Security Program…\"</blockquote>"
+    },
+    {
+     "title": "War in Ukraine and Sanctions sub-section added; Russia exposure of ~$500 million disclosed in Country risk",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"In response to the war in Ukraine, numerous financial and economic sanctions have been imposed on Russia and Russia-associated entities and individuals by various governments around the world, including the authorities in the U.S., U.K. and EU. These sanctions are complex and continue to evolve.\"</blockquote><blockquote>FY2022: \"As of December 31, 2022, exposure to Russia was approximately $500 million.\"</blockquote><p>Top-20 country list: Germany ($93.2B) replaces the U.K. ($70.1B) as largest exposure; Italy drops out.</p>"
+    }
+   ]
+  },
+  {
+   "section": "Accounting & FLS",
+   "findings": [
+    {
+     "title": "Forward-looking statements: COVID-19 item removed; \"including the war in Ukraine\" added to geopolitical item",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Economic, financial, reputational and other impacts of the COVID-19 pandemic;\"</blockquote><blockquote>FY2021: \"Local, regional and global business, economic and political conditions and geopolitical events;\"</blockquote><blockquote>FY2022: \"Local, regional and global business, economic and political conditions and geopolitical events<strong>, including the war in Ukraine</strong>;\"</blockquote>"
+    },
+    {
+     "title": "ACL sensitivity: relative adverse scenario \"significantly elevated\" → \"elevated\" unemployment; weighting caveat added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"…the Firm’s relative adverse scenario assumes a <strong>significantly</strong> elevated U.S. unemployment rate, averaging approximately 2.8% higher over the eight-quarter forecast, with a peak difference of approximately 4.4% in the second quarter of 2022…\"</blockquote><blockquote>FY2022: \"…the Firm’s relative adverse scenario assumes an elevated U.S. unemployment rate, averaging approximately 1.9% higher over the eight-quarter forecast, with a peak difference of approximately 2.8% in the fourth quarter of 2023…\"</blockquote><blockquote>FY2022: \"The allowance as of December 31, 2022, reflects credit losses beyond those estimated under the central scenario due to the weight placed on the adverse scenarios.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "Reasonably possible loss range upper bound $1.5B → $1.2B; legal expense $426M → $266M",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Metric</th><th>FY2021</th><th>FY2022</th></tr><tr><td>Reasonably possible losses in excess of reserves</td><td>$0 to ~$1.5B</td><td>$0 to ~$1.2B</td></tr><tr><td>Legal expense</td><td>$426M</td><td>$266M</td></tr></table>"
+    },
+    {
+     "title": "Jeffrey Epstein Litigation and 1MDB Litigation headings added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2022: \"…allege that JPMorgan Chase Bank, N.A. knowingly facilitated Jeffrey Epstein’s sex trafficking and other unlawful conduct by providing banking services to Epstein until 2013.\"</blockquote><p>Two suits in S.D.N.Y. (November and December 2022, the latter on behalf of the U.S. Virgin Islands). The 1MDB matter is a civil claim in Malaysia against J.P. Morgan (Suisse) SA, served August 2022.</p>"
+    },
+    {
+     "title": "Metals/Treasuries and Preservation Requirements headings removed; Shareholder Litigation heading added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2021: \"Metals and U.S. Treasuries Investigations and Litigation and Related Inquiries.\"</blockquote><blockquote>FY2022: \"Several shareholder putative class actions, as well as shareholder derivative actions purporting to act on behalf of the Firm, have been filed against the Firm, its Board of Directors and certain of its current and former officers.\"</blockquote><p>The Shareholder Litigation entry references the September 2020 precious metals / U.S. Treasuries resolutions and the records-preservation resolutions with the SEC and CFTC.</p>"
+    }
+   ]
+  }
+ ]
+}

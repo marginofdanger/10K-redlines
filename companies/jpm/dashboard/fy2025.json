@@ -1,0 +1,229 @@
+{
+ "from": "FY2024",
+ "to": "FY2025",
+ "title": "Apple Card commitment; Advanced ratios binding; risk factors rewritten with AI risk added",
+ "sub": "Filed Feb 2026 | Headcount: 317,233 → 318,512 | Net revenue: $177.6B → $182.4B | CET1: 15.7% → 14.6%",
+ "era_summary": "Net income fell 2% to $57.0 billion and the provision rose to $14.2 billion, including $2.2 billion for the Apple Card forward purchase commitment entered into December 30, 2025. Advanced risk-based ratios became binding, the SCB fell to 2.5% and is held through September 30, 2027, and the buyback authorization rose to $50 billion. Item 1A was redrafted with a merged Legal and Regulatory category, a new AI risk factor, and the removal of ESG, activist and consumer-fee rule references.",
+ "groups": [
+  {
+   "section": "Business",
+   "findings": [
+    {
+     "title": "Basel III proposal: \"would significantly revise\" → \"would have significantly revised\"; re-proposal flagged",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"<strong>The proposal would significantly revise</strong> risk-based capital requirements for banks with assets of $100 billion or more, including the Firm and other U.S. global systemically important banks (\"GSIBs\"). <strong>Finalization of the proposal, including the required implementation date, is uncertain.</strong>\"</blockquote><blockquote>FY2025: \"<strong>That proposal, which has not been finalized, would have significantly revised</strong> risk-based capital requirements for banks with assets of $100 billion or more, including the Firm and other U.S. global systemically important banks (\"GSIBs\"). <strong>In September 2025, the Federal Reserve</strong>’s Vice Chair for Supervision indicated that U.S. banking regulators may issue an updated proposal to amend the U.S. risk-based capital framework <strong>in early 2026, replacing the July 2023 proposal</strong>. The timing and content of that revised proposal, including any required implementation date, are uncertain.\"</blockquote>"
+    },
+    {
+     "title": "CFPB Late Fee Rule and Overdraft Rule paragraphs and “Litigation and regulatory challenges” subsection removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"In March 2024, the CFPB released a final rule which <strong>significantly reduces the late payment fees</strong> that large credit card issuers, including the Firm, are permitted to charge to customers (the “CFPB Late Fee Rule”). The final rule is currently stayed pending resolution of an industry-led challenge in federal court.\"</blockquote><blockquote>FY2024: \"Separately, in December 2024, the CFPB announced a final rule that would <strong>significantly restrict overdraft fees</strong> for certain insured depository institutions, including the Firm…\"</blockquote>Neither rule is named in FY2025. The subsection lead-in was replaced by a shorter sentence in the Supervision and regulation introduction:<blockquote>FY2024: \"Trade organizations representing the financial services industry and others have filed lawsuits challenging various laws, rules and regulations that, if enacted, adopted or implemented, <strong>could have significant adverse impacts on the results of operations or compliance costs</strong> of financial institutions, including the Firm.\"</blockquote><blockquote>FY2025: \"From time to time, trade organizations representing the financial services industry and others have filed or may file lawsuits challenging various laws, rules and regulations. Such regulatory challenges <strong>may affect the scope, requirements or effective dates</strong> of the regulations applicable to the Firm.\"</blockquote>"
+    },
+    {
+     "title": "Competition list: \"digital asset and other\" added before \"financial technology companies\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"…leasing companies, e-commerce and other internet-based companies, financial technology companies, and other companies engaged…\"</blockquote><blockquote>FY2025: \"…leasing companies, e-commerce and other internet-based companies, <strong>digital asset and other</strong> financial technology companies, and other companies engaged…\"</blockquote>"
+    },
+    {
+     "title": "Headcount 317,233 → 318,512; year-over-year increase and its explanation no longer stated",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"…JPMorganChase had 317,233 employees globally, <strong>an increase of 7,307 employees from the prior year. The increase was primarily attributable to growth in the number of front office and technology employees.</strong>\"</blockquote><blockquote>FY2025: \"…JPMorganChase had 318,512 employees globally.\"</blockquote>U.S. share of employees: 59% → 58%."
+    }
+   ]
+  },
+  {
+   "section": "Risk Factors",
+   "findings": [
+    {
+     "title": "\"Legal\" category merged into \"Legal and Regulatory\"; legal-proceedings risk moved from last (#42) to #3",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2024 (#42, Legal category): \"JPMorganChase faces significant legal risks from <strong>litigation and formal and informal regulatory and government investigations</strong>.\"</blockquote><blockquote>FY2025 (#3, Legal and Regulatory category): \"JPMorganChase faces significant legal risks from <strong>civil and governmental proceedings, including litigation, investigations and enforcement actions</strong>.\"</blockquote>Categories go from 13 to 12; FY2024 #3–#6 each move down one place. FY2025 also adds a defined-terms block (“applicable law”, “extraordinary events”, “governmental authorities”, “penalties”) after the Summary."
+    },
+    {
+     "title": "New standalone AI risk factor (generative and agentic AI) in the Strategic category",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025 (heading): \"JPMorganChase’s operations, results, and competitive standing could be adversely affected by the development of advanced technologies such as AI.\"</blockquote><blockquote>FY2025: \"The rapid development and deployment of advanced technologies, including <strong>generative and agentic AI systems</strong>, present a range of risks to JPMorganChase’s businesses and operations, including:\"</blockquote><blockquote>FY2025 (last bullet): \"replacement or disintermediation of direct customer relationships if AI agents autonomously manage or intermediate financial decisions and product selection or other services for customers.\"</blockquote>Inserted between the Competition and Climate risk factors."
+    },
+    {
+     "title": "Credit risk: private credit expansion and collateral-fraud paragraphs added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"Furthermore, the interconnectivity across credit markets increases the risk that the <strong>significant expansion of private credit</strong> could worsen losses among non-bank lenders and their borrowers, particularly if stress or defaults spread to broader funding and credit markets.\"</blockquote><blockquote>FY2025: \"In addition, JPMorganChase <strong>has in the past, and could in the future</strong>, experience instances in which borrowers or other counterparties engage in <strong>fraudulent activity</strong> related to the accounting, reporting or representation of collateral.\"</blockquote>"
+    },
+    {
+     "title": "Consumer-fee sentence removed: \"limitations on late payment, overdraft and interchange fees\"",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"Additionally, JPMorganChase’s ability to execute certain business initiatives could become more challenging due to increased regulation in the financial services industry, such as <strong>limitations on late payment, overdraft and interchange fees</strong>.\"</blockquote>The same phrase is also removed from the consumer-business risk factor; “late payment” and “overdraft” do not appear in the FY2025 section."
+    },
+    {
+     "title": "Capital risk: Basel III endgame / GSIB surcharge proposal paragraph removed; buffer-usage sentence added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"In 2023, U.S. banking regulators released a proposal to implement the final Basel III reforms which would have significantly revised the risk-based capital requirements for banks with assets of $100 billion or more, including JPMorganChase. In addition, in 2023 the Federal Reserve released a proposal to amend the calculation of the GSIB surcharge. <strong>Uncertainty remains regarding the content of the final versions of these rule proposals</strong> and how they might ultimately apply to JPMorganChase.…\"</blockquote><blockquote>FY2025: \"Although more likely in times of stress, JPMorganChase <strong>may use its regulatory capital buffers</strong> allowing capital ratios to decline below regulatory requirements, subjecting it to restrictions on capital distributions and discretionary bonus payments to its executive officers.\"</blockquote>The FY2024 sentence describing the GSIB surcharge, SCB and countercyclical buffer is also removed."
+    },
+    {
+     "title": "Term counts across Item 1A: ESG and activist references removed; AI added; “can” replaced by “could”",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Term</th><th>FY2024</th><th>FY2025</th></tr><tr><td>“ESG”</td><td>4</td><td>0</td></tr><tr><td>“activist(s)”</td><td>5</td><td>0</td></tr><tr><td>“climate” (any case)</td><td>16</td><td>5</td></tr><tr><td>“AI”</td><td>0</td><td>22</td></tr><tr><td>“machine learning”</td><td>3</td><td>0</td></tr><tr><td>“private credit”</td><td>0</td><td>1</td></tr><tr><td>“can”</td><td>84</td><td>14</td></tr><tr><td>“could”</td><td>217</td><td>331</td></tr></table>Section length falls about 17% (pages 10–37 → 9–31)."
+    }
+   ]
+  },
+  {
+   "section": "Forward Guidance",
+   "findings": [
+    {
+     "title": "Full-year outlook: NII ~$94.0B → ~$103B; adjusted expense ~$95.0B → ~$105B; Card NCO ~3.60% → ~3.4%",
+     "tag": "Changed",
+     "body_html": "<table class=\"data-table\"><tr><th>Outlook item</th><th>FY2024 10-K (for 2025)</th><th>FY2025 10-K (for 2026)</th></tr><tr><td>Net interest income</td><td>~$94.0B</td><td>~$103B</td></tr><tr><td>NII excluding Markets</td><td>~$90.0B</td><td>~$95B</td></tr><tr><td>Adjusted expense</td><td>~$95.0B</td><td>~$105B</td></tr><tr><td>Card Services net charge-off rate</td><td>~3.60%</td><td>~3.4%</td></tr></table><blockquote>FY2025: \"Management expects net interest income to be approximately $103 billion and net interest income excluding Markets to be approximately $95 billion, market dependent.\"</blockquote>Figures move from one decimal place to whole billions."
+    },
+    {
+     "title": "Outlook framing: \"current\" dropped twice; attributed to the January 13, 2026 earnings release",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"<strong>These current expectations</strong> are forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. Such forward-looking statements are based on <strong>the current beliefs</strong> and expectations of JPMorganChase’s management, speak only as of <strong>the date of this Form 10-K</strong>…\"</blockquote><blockquote>FY2025: \"<strong>The statements set forth below</strong> are forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. Such forward-looking statements are based on <strong>the beliefs</strong> and expectations of JPMorganChase’s management, speak only as of <strong>the date on which they were made</strong>…\"</blockquote><blockquote>FY2025 (new sentence): \"The Firm provided the following outlook information on January 13, 2026 in connection with announcing its results for the year and quarter ended December 31, 2025:\"</blockquote>"
+    },
+    {
+     "title": "Apple Card RWA: Advanced RWA “expected to reduce” from ~$110B to ~$30B “in the near term”",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"Includes approximately $23 billion under the Standardized approach and approximately $110 billion under the Advanced approach related to the Apple Card transaction. Advanced RWA <strong>is expected to reduce to approximately $30 billion</strong> once the necessary modeling steps are completed, <strong>which is expected in the near term</strong>.\"</blockquote><blockquote>FY2025: \"Includes decreases of approximately 25 basis points under the Standardized approach and <strong>approximately 90 basis points</strong> under the Advanced approach related to the Apple Card transaction. The impact under the Advanced approach is expected to reduce to <strong>approximately 30 basis points</strong> once the necessary modeling steps are completed, which is expected in the near term.\"</blockquote>Footnotes to the Selected capital and RWA data table."
+    }
+   ]
+  },
+  {
+   "section": "MD&A",
+   "findings": [
+    {
+     "title": "Apple Card transaction paragraph added to the Executive Overview",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"On January 7, 2026, JPMorganChase announced that Chase will become the new issuer of Apple Card. The Firm entered into a forward purchase commitment on December 30, 2025 to acquire the Apple credit card portfolio, with an expected closing in approximately 24 months (the “Apple Card transaction”).\"</blockquote>Occupies the slot previously used by the “Visa shares” and “First Republic” sub-headings; the transaction then recurs in the provision, allowance and capital discussions."
+    },
+    {
+     "title": "NII drivers reordered: Markets NII moves from last to first; NII ex-Markets “up 3%” → “flat”",
+     "tag": "Signal",
+     "body_html": "<blockquote>FY2024: \"…of $92.6 billion, up 4%, driven by <strong>the impact of balance sheet actions, primarily reinvestments in the investment securities portfolio</strong>, higher revolving balances in Card Services, <strong>the timing impact of First Republic</strong>, higher wholesale deposit balances, <strong>and higher Markets net interest income</strong>, largely offset by deposit margin compression across the lines of business and lower average deposit balances in CCB. NII excluding Markets was $92.4 billion, <strong>up 3%</strong>.\"</blockquote><blockquote>FY2025: \"…of $95.4 billion, up 3%, <strong>driven by higher Markets net interest income</strong>, higher revolving balances in Card Services, higher wholesale deposit balances, and <strong>the impact of investment securities activity</strong>. These factors were largely offset by deposit margin compression and <strong>the impact of lower rates</strong>. NII excluding Markets was $92.6 billion, <strong>flat when compared with the prior year</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Provision drivers: \"seasoning of vintages\" → \"Wholesale and Card Services\"; Apple Card $2.2B named",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Net charge-offs increased by $2.4 billion, <strong>driven by Card Services, reflecting the seasoning of vintages originated in recent years, credit normalization, and balance growth</strong>.\"</blockquote><blockquote>FY2025: \"Net charge-offs were $9.8 billion, up $1.2 billion, <strong>predominantly driven by Wholesale and Card Services</strong>. The net addition to the allowance for credit losses was $4.4 billion and consisted of $3.3 billion in consumer, <strong>which included $2.2 billion related to the Apple Card transaction</strong>, and $1.1 billion in wholesale.\"</blockquote>Provision $10.7B → $14.2B; wholesale reserve moves from a $19 million net reduction to a $1.1 billion net addition."
+    },
+    {
+     "title": "Card income: “increased” → “decreased”; higher rewards costs and partner payments named",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"<strong>increased, reflecting higher net interchange</strong> on increased debit and credit card sales volume, as well as higher annual fees in CCB, partially offset by an increase in amortization related to new account origination costs.\"</blockquote><blockquote>FY2025: \"lower income in CCB, reflecting <strong>lower net interchange income</strong>, as well as an increase in amortization related to new account origination costs, partially offset by higher annual fees. Net interchange income decreased as the impact of increased debit and credit card sales volume was <strong>more than offset by higher rewards costs and partner payments</strong>…\"</blockquote>"
+    },
+    {
+     "title": "First Republic “timing impact” definition and integration-completion paragraphs removed",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"As a result, the year-to-date results include the twelve-month impact of First Republic compared with eight months in the prior-year period. Where meaningful to the results, this is referred to in this Form 10-K as the \"timing impact\" of First Republic.\"</blockquote><blockquote>FY2024: \"As of December 31, 2024, the Firm had substantially completed the conversion of operations, and the integration of clients, products and services, associated with the First Republic acquisition to align with the Firm’s businesses and operations.\"</blockquote>The “Business Developments” heading is also removed. In FY2025, First Republic appears as a $588 million gain recorded in 1Q25 and as prior-year restructuring and integration costs."
+    }
+   ]
+  },
+  {
+   "section": "Capital & Liquidity",
+   "findings": [
+    {
+     "title": "SCB 3.3% → 2.5%, \"until September 30, 2025\" → \"through September 30, 2027, based on the current rules\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"The Firm's current SCB requirement is <strong>3.3%</strong> and will remain in effect <strong>until September 30, 2025</strong>. The Firm’s Standardized CET1 capital ratio requirement, including regulatory buffers, was <strong>12.3%</strong> as of December 31, 2024.\"</blockquote><blockquote>FY2025: \"The Firm's current SCB requirement is <strong>2.5%</strong> and will remain in effect <strong>through September 30, 2027, based on the current rules</strong>. The Firm’s Standardized CET1 capital ratio requirement, including regulatory buffers, was <strong>11.5%</strong> as of December 31, 2025.\"</blockquote><blockquote>FY2025 (Key Regulatory Developments): \"In February 2026, the Federal Reserve released the final 2026 supervisory stress test scenarios, while announcing that SCB requirements for large banks, including the Firm, <strong>will remain at current levels through September 30, 2027</strong> with new requirements to be calculated in 2027 based on revised models that incorporate public feedback.\"</blockquote>"
+    },
+    {
+     "title": "Binding capital approach flips from Standardized to Advanced, attributed to Apple Card RWA and the lower SCB",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"As of December 31, 2024, the Firm’s <strong>Basel III Standardized ratios risk-based ratios were more binding</strong> than the Basel III Advanced risk-based ratios.\"</blockquote><blockquote>FY2025: \"As of December 31, 2025, the <strong>Advanced risk-based ratios became more binding</strong> on the Firm than the Standardized risk-based ratios, primarily reflecting <strong>the increase in Advanced RWA related to the Apple Card transaction</strong> and <strong>a reduction in the Firm’s SCB requirement</strong> which only applies to the Standardized risk-based ratios.\"</blockquote><table class=\"data-table\"><tr><th>Dec 31</th><th>2024</th><th>2025</th></tr><tr><td>CET1, Standardized [requirement]</td><td>15.7% [12.3%]</td><td>14.6% [11.5%]</td></tr><tr><td>CET1, Advanced [requirement]</td><td>15.8% [11.5%]</td><td>14.1% [11.5%]</td></tr><tr><td>SLR</td><td>6.1%</td><td>5.8%</td></tr></table>"
+    },
+    {
+     "title": "New Key Regulatory Developments item: eSLR final rule, early adopted effective January 1, 2026",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"In November 2025, the Federal Reserve, the OCC and the FDIC issued the final rule amending the enhanced Supplementary Leverage Ratio (“eSLR”) requirements for Global Systemically Important Banks (“GSIB”) BHCs and their IDI subsidiaries by revising the current static leverage buffers at the BHC and IDI levels to 50% of the BHC’s U.S. Method 1 GSIB Surcharge…\"</blockquote><blockquote>FY2025: \"The final rule, with an effective date of April 1, 2026, allows for early adoption, <strong>which the Firm has elected</strong>, effective January 1, 2026.\"</blockquote>Placed with two other new sub-headings (“Enhanced Transparency and Public Accountability of the Supervisory Stress Test”, “SCB Volatility Reduction”) ahead of the retained U.S. Basel III Finalization text, which is unchanged."
+    },
+    {
+     "title": "Share repurchase authorization $30 billion → $50 billion",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"On June 28, 2024, the Firm announced that its Board of Directors had authorized a new <strong>$30 billion</strong> common share repurchase program, effective July 1, 2024.\"</blockquote><blockquote>FY2025: \"On July 1, 2025, the Firm announced that its Board of Directors had authorized a new <strong>$50 billion</strong> common share repurchase program, effective July 1, 2025.\"</blockquote>Repurchases: $18.84B (2024) → $31.64B (2025). Quarterly dividend declared in December: $1.25 → $1.50."
+    },
+    {
+     "title": "Reputation risk definition rewritten; named stakeholders cut from seven to three",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Reputation risk is the risk that an action or inaction may <strong>negatively impact perception of the Firm’s integrity</strong> and reduce confidence in the Firm’s competence by various stakeholders, including <strong>clients, counterparties, customers, communities, investors, regulators, or employees</strong>.\"</blockquote><blockquote>FY2025: \"Reputation risk is the risk of damage to the <strong>trust, affinity or goodwill for the Firm held by clients, employees and investors</strong> that can result from the Firm’s <strong>decisions to engage or not engage with a client or in a business activity</strong> and which may lead to <strong>negative commercial impacts</strong>.\"</blockquote><blockquote>FY2024 (removed): \"Environmental impacts and social concerns are important considerations in assessing the Firm’s reputation risk, and are a component of the Firm’s reputation risk governance.\"</blockquote>The “Organization and management” and “Governance and oversight” sub-headings are also removed."
+    }
+   ]
+  },
+  {
+   "section": "Credit",
+   "findings": [
+    {
+     "title": "Allowance: \"During 2025, the Firm further increased the weight placed on the adverse scenarios\" added",
+     "tag": "New",
+     "body_html": "<blockquote>FY2024: \"The Firm’s qualitative adjustments continued to include additional weight placed on the adverse scenarios to reflect ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment.\"</blockquote><blockquote>FY2025: \"The Firm's qualitative adjustments <strong>and its weighted-average macroeconomic outlook</strong> continued to include additional weight placed on the adverse scenarios to reflect ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment. <strong>During 2025, the Firm further increased the weight placed on the adverse scenarios.</strong>\"</blockquote>ACL $26.9B → $31.2B; “weighted-average macroeconomic outlook” does not appear in FY2024."
+    },
+    {
+     "title": "Weighted-average unemployment peak 5.5% (4Q25) → 5.8% (4Q26); GDP gap 1.9% → 2.1%",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"a weighted average U.S. unemployment rate peaking at <strong>5.5%</strong> in the fourth quarter of <strong>2025</strong>\"</blockquote><blockquote>FY2025: \"a weighted average U.S. unemployment rate peaking at <strong>5.8%</strong> in the fourth quarter of <strong>2026</strong>\"</blockquote>Real GDP level vs central case: 1.9% lower at end-2Q26 → 2.1% lower at end-2Q27."
+    },
+    {
+     "title": "Wholesale NCOs: \"Real Estate, concentrated in Office\" → \"borrower fraud in certain secured lending facilities\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"For the year ended December 31, 2024, wholesale net charge-offs were $822 million, largely driven by <strong>Real Estate, concentrated in Office</strong>, and client-specific charge-offs across multiple industries including Consumer &amp; Retail and Individuals.\"</blockquote><blockquote>FY2025: \"Wholesale net charge-offs increased for the year ended December 31, 2025 compared to the prior year, primarily due to increases in Commercial and industrial, including in Technology, Media &amp; Telecommunications and Healthcare, as well as <strong>estimated losses related to borrower fraud in certain secured lending facilities</strong>.\"</blockquote>First appearance of “borrower fraud”. Wholesale NCO rate 0.12% → 0.22%."
+    },
+    {
+     "title": "Real Estate criticized exposure: increase driven by Multifamily and Office → decrease",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Criticized exposure <strong>increased by $3.2 billion</strong> from $9.2 billion at December 31, 2023 to $12.4 billion at December 31, 2024, predominantly driven by downgrades, <strong>primarily in Multifamily and Office</strong>.\"</blockquote><blockquote>FY2025: \"Criticized exposure <strong>decreased by $714 million</strong> from $12.4 billion at December 31, 2024 to $11.7 billion at December 31, 2025, driven by <strong>net portfolio activity</strong>, predominantly offset by net downgrades.\"</blockquote>In the criticized-exposure driver list, Real Estate moves from first driver to first offset. The Oil & Gas industry-detail sub-section is removed."
+    }
+   ]
+  },
+  {
+   "section": "Market & Operational Risk",
+   "findings": [
+    {
+     "title": "Cyber attacks: \"emerging technologies that can be leveraged by attackers, including artificial intelligence\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"The Firm has experienced, and expects that it will continue to experience, a higher volume and complexity of cyber attacks against the backdrop of heightened geopolitical tensions.\"</blockquote><blockquote>FY2025: \"The Firm has experienced, and expects that it will continue to experience, a higher volume and complexity of cyber attacks against the backdrop of heightened geopolitical tensions <strong>and emerging technologies that can be leveraged by attackers, including artificial intelligence</strong>.\"</blockquote>"
+    },
+    {
+     "title": "Climate function renamed \"Climate, Nature and Social Risk Management\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"The Firm has a <strong>Climate Risk Management function</strong> that is responsible for establishing and maintaining the Firmwide framework and strategy for managing <strong>climate risks that may impact the Firm</strong>.\"</blockquote><blockquote>FY2025: \"The Firm’s <strong>Climate, Nature and Social Risk Management function</strong> is responsible for establishing and maintaining the Firmwide framework and strategy for managing <strong>climate risk</strong>.\"</blockquote>The CLIMATE RISK MANAGEMENT section heading is retained; a sentence on indirect physical risk drivers is added."
+    },
+    {
+     "title": "Resiliency list: \"pandemics\" → \"health emergencies\"; \"civil or political unrest\" → \"civil unrest\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Disruptions of the Firm’s business and operations can occur due to forces beyond the Firm’s control such as <strong>the spread of infectious diseases or pandemics</strong>, severe weather, natural disasters, the effects of climate change, <strong>power or telecommunications loss</strong>, failure of a third party to provide expected services, cyberattacks, <strong>civil or political unrest</strong> or terrorism.\"</blockquote><blockquote>FY2025: \"Disruptions of the Firm’s business and operations can occur due to forces beyond the Firm’s control such as <strong>health emergencies</strong>, severe weather, natural disasters, the effects of climate change, <strong>utility or telecommunications failures</strong>, interruption of service from third-party service providers, cyberattacks, <strong>civil unrest</strong> or terrorism.\"</blockquote>"
+    }
+   ]
+  },
+  {
+   "section": "Accounting & FLS",
+   "findings": [
+    {
+     "title": "FLS list: \"social, environmental and sustainability concerns\" → \"public criticism\"; \"including AI\" added",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"Ability of the Firm to appropriately address <strong>social, environmental and sustainability concerns that may arise, including from</strong> its business activities;\"</blockquote><blockquote>FY2025: \"Ability of the Firm to appropriately address <strong>public criticism of</strong> its business activities;\"</blockquote><blockquote>FY2024: \"Technology changes instituted by the Firm, its counterparties or competitors;\"</blockquote><blockquote>FY2025: \"Technology changes instituted by the Firm, its counterparties or competitors, <strong>including AI</strong>;\"</blockquote>“Changes in FDIC assessments” is also removed from the list (30 → 29 items)."
+    },
+    {
+     "title": "ACL adverse-scenario sensitivity rises in all three portfolios; Apple Card excluded",
+     "tag": "Signal",
+     "body_html": "<table class=\"data-table\"><tr><th>Increase in ACL under relative adverse scenario</th><th>FY2024</th><th>FY2025</th></tr><tr><td>Residential real estate</td><td>~$850M</td><td>~$1.2B</td></tr><tr><td>Credit card</td><td>~$3.7B</td><td>~$4.4B</td></tr><tr><td>Wholesale</td><td>~$4.1B</td><td>~$5.1B</td></tr></table><blockquote>FY2025: \"The forecasted Apple credit card portfolio is excluded from the modeled estimates sensitivity analysis above while the Firm integrates the Apple Card transaction into its allowance model.\"</blockquote>Scenario unemployment peak difference: ~3.0% (4Q25) → ~2.8% (4Q26)."
+    }
+   ]
+  },
+  {
+   "section": "Legal",
+   "findings": [
+    {
+     "title": "New \"Fair Access to Banking\" matter: Executive Order and January 2026 lawsuit by President Trump",
+     "tag": "New",
+     "body_html": "<blockquote>FY2025: \"In August 2025, the President of the United States issued an Executive Order entitled “Guaranteeing Fair Banking for All Americans”…\"</blockquote><blockquote>FY2025: \"Certain of these matters are at various stages, including reviews, investigations, and legal proceedings, including <strong>a civil lawsuit filed in January 2026 in Florida state court by President Donald J. Trump</strong>, in his personal capacity, and several affiliated corporate entities, against JPMorgan Chase Bank, N.A. and its CEO.\"</blockquote>"
+    },
+    {
+     "title": "Russian litigation: \"judgments may not be executed while on appeal\" → \"certain judgments are now enforceable\"",
+     "tag": "Changed",
+     "body_html": "<blockquote>FY2024: \"The Firm continues to appeal the Russian courts' decisions, <strong>and judgments may not be executed while on appeal</strong>.\"</blockquote><blockquote>FY2025: \"The Firm continues to appeal the Russian courts' decisions, <strong>but certain judgments are now enforceable against Firm assets in Russia</strong>.\"</blockquote><blockquote>FY2025 (new): \"Russian courts have allowed plaintiffs to withhold dividends due to the Firm’s clients for the purpose of satisfying judgments, which the Firm is opposing as unlawful.\"</blockquote>"
+    },
+    {
+     "title": "1MDB, SEC Inquiries and Zelle Network matters removed; reasonably possible loss range $1.4B → $1.2B",
+     "tag": "Removed",
+     "body_html": "<blockquote>FY2024: \"The Firm <strong>believes the estimate of the</strong> aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $<strong>1.4</strong> billion at December 31, 2024.\"</blockquote><blockquote>FY2025: \"The Firm <strong>estimates the</strong> aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $<strong>1.2</strong> billion at December 31, 2025.\"</blockquote>FY2024 had stated for Zelle that “The defendants will file a response to the complaint” and for 1MDB that an appeals court was scheduled to hear appeals in November 2025; FY2025 gives no outcome for either. Legal expense: $740M (2024) → $361M (2025)."
+    }
+   ]
+  }
+ ]
+}
