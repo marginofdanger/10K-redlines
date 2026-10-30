@@ -6,204 +6,174 @@
 <title>10-K / 20-F Redline Analysis</title>
 <style>
   :root {
-    --dark: #0D1B2A;
+    --navy: #0D1B2A;
     --accent: #1B365D;
     --gold: #C8952E;
-    --light-bg: #f8f9fa;
-    --border: #dee2e6;
-    --text: #2c3e50;
-    --text-muted: #6c757d;
-    --blue: #2980b9;
+    --ground: #f4f5f7;
+    --panel: #ffffff;
+    --line: #e1e5ea;
+    --text: #1f2d3b;
+    --text-muted: #5f6b78;
+    --blue: #2469a6;
+    --ok: #1b7a4a;
+    --ok-bg: #e5f3eb;
+    --warn: #9a5800;
+    --warn-bg: #fbefd9;
+    --soft: #eef1f5;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text);
-    background: #fff;
-    line-height: 1.6;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
+    background: var(--ground);
+    line-height: 1.45;
+    font-size: 14px;
   }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 20px 40px; }
   .header {
-    background: linear-gradient(135deg, var(--dark), var(--accent));
+    background: linear-gradient(135deg, var(--navy), var(--accent));
     color: #fff;
-    padding: 48px 40px 40px;
-    margin: 0 -24px 40px;
-    border-bottom: 4px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
   }
-  .header h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
-  }
-  .header p {
-    font-size: 1rem;
-    opacity: 0.8;
-    font-weight: 300;
-    max-width: 600px;
-  }
-  table.portfolio {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    margin-bottom: 40px;
-    table-layout: auto;
-  }
+  .header .wrap { padding-top: 18px; padding-bottom: 16px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+  .header h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; }
+  .header p { font-size: 0.86rem; opacity: 0.82; }
+  .takeaway { margin: 16px 0 12px; font-size: 0.95rem; color: var(--text-muted); }
+  .takeaway b { color: var(--text); }
+
+  .tiles { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); margin-bottom: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; min-width: 0; }
+  .tile h3 { font-size: 0.74rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .tile .big { font-size: 1.9rem; font-weight: 700; line-height: 1.15; margin: 2px 0; font-variant-numeric: tabular-nums; }
+  .tile .big small { font-size: 1rem; font-weight: 600; color: var(--text-muted); }
+  .tile p { font-size: 0.8rem; color: var(--text-muted); }
+  .tile.alert .big { color: var(--warn); }
+
+  .pair { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); margin-bottom: 12px; }
+  .card h2 { font-size: 0.95rem; font-weight: 700; }
+  .card .note { font-size: 0.78rem; color: var(--text-muted); margin: 2px 0 8px; }
+  table.mini { width: 100%; border-collapse: collapse; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+  table.mini td { padding: 5px 8px 5px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  table.mini td.date { white-space: nowrap; color: var(--text-muted); width: 1%; }
+  table.mini td.tk { font-weight: 700; width: 1%; padding-right: 12px; }
+  table.mini td.tk a { color: inherit; text-decoration: none; }
+  table.mini td.tk a:hover { text-decoration: underline; }
+  table.mini td.right { text-align: right; white-space: nowrap; padding-right: 0; }
+  table.mini td.what { white-space: nowrap; }
+  table.mini tr.more td { color: var(--text-muted); font-size: 0.8rem; }
+  .empty { font-size: 0.84rem; color: var(--text-muted); padding: 6px 0; }
+
+  .table-scroll { overflow-x: auto; }
+  table.portfolio { width: 100%; border-collapse: collapse; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
   table.portfolio thead th {
-    text-align: left;
-    padding: 12px 14px;
-    background: var(--light-bg);
-    border-bottom: 2px solid var(--border);
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--text-muted);
-    font-weight: 700;
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap;
+    text-align: left; padding: 8px 10px; background: var(--soft); border-bottom: 1px solid var(--line);
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+    font-weight: 700; cursor: pointer; user-select: none; white-space: nowrap;
   }
-  table.portfolio thead th.grip-col {
-    width: 28px;
-    padding: 12px 0 12px 8px;
-    cursor: default;
-  }
-  table.portfolio thead th.grip-col:hover {
-    background: var(--light-bg);
-  }
-  table.portfolio thead th:hover {
-    color: var(--text);
-    background: #eef1f4;
-  }
-  table.portfolio thead th .arrow {
-    display: inline-block;
-    width: 10px;
-    margin-left: 4px;
-    color: var(--blue);
-    font-size: 0.7rem;
-  }
-  table.portfolio thead th.num,
-  table.portfolio tbody td.num {
-    text-align: right;
-  }
-  table.portfolio tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.12s;
-  }
-  table.portfolio tbody tr:hover {
-    background: #f4f8fc;
-  }
-  table.portfolio tbody tr.dragging {
-    opacity: 0.4;
-  }
-  table.portfolio tbody tr.drop-above td {
-    box-shadow: inset 0 3px 0 0 var(--blue);
-  }
-  table.portfolio tbody tr.drop-below td {
-    box-shadow: inset 0 -3px 0 0 var(--blue);
-  }
-  table.portfolio tbody td {
-    padding: 12px 14px;
-    vertical-align: middle;
-  }
-  table.portfolio tbody td.grip-cell {
-    padding: 12px 0 12px 8px;
-    width: 28px;
-    color: #bbb;
-    cursor: grab;
-    user-select: none;
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1;
-  }
-  table.portfolio tbody td.grip-cell:hover {
-    color: var(--text-muted);
-  }
-  table.portfolio tbody tr.dragging .grip-cell {
-    cursor: grabbing;
-  }
-  table.portfolio tbody td.click-cell {
-    cursor: pointer;
-  }
+  table.portfolio thead th:hover { color: var(--text); }
+  table.portfolio thead th.grip-col { width: 22px; padding: 8px 0 8px 6px; cursor: default; }
+  table.portfolio thead th .arrow { display: inline-block; width: 10px; margin-left: 3px; color: var(--blue); font-size: 0.66rem; }
+  table.portfolio .num { text-align: right; }
+  table.portfolio tbody tr { border-bottom: 1px solid var(--line); transition: background 0.12s; }
+  table.portfolio tbody tr:last-child { border-bottom: 0; }
+  table.portfolio tbody tr:hover { background: #f6f9fc; }
+  table.portfolio tbody tr.dragging { opacity: 0.4; }
+  table.portfolio tbody tr.drop-above td { box-shadow: inset 0 3px 0 0 var(--blue); }
+  table.portfolio tbody tr.drop-below td { box-shadow: inset 0 -3px 0 0 var(--blue); }
+  table.portfolio tbody td { padding: 7px 10px; vertical-align: middle; }
+  table.portfolio td.click-cell { cursor: pointer; }
+  table.portfolio td.grip-cell { padding: 7px 0 7px 6px; width: 22px; color: #bbb; cursor: grab; user-select: none; text-align: center; font-size: 1rem; line-height: 1; }
+  table.portfolio td.grip-cell:hover { color: var(--text-muted); }
+  .nowrap { white-space: nowrap; }
+  .co { font-weight: 600; white-space: nowrap; }
+  .sector { display: block; font-size: 0.74rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px; }
+  .sub { display: block; font-size: 0.74rem; color: var(--text-muted); }
   .ticker-pill {
-    display: inline-block;
-    width: 72px;
-    padding: 5px 0;
-    border-radius: 4px;
-    font-weight: 800;
-    font-size: 0.82rem;
-    letter-spacing: 0.8px;
-    color: #fff;
-    text-align: center;
-    border-bottom: 2px solid transparent;
-    box-sizing: border-box;
+    display: inline-block; width: 58px; padding: 3px 0; border-radius: 4px; font-weight: 800; font-size: 0.74rem;
+    letter-spacing: 0.6px; color: #fff; text-align: center; border-bottom: 2px solid transparent;
   }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.74rem; font-weight: 600; white-space: nowrap; }
+  .chip.ok { background: var(--ok-bg); color: var(--ok); }
+  .chip.warn { background: var(--warn-bg); color: var(--warn); }
+  .chip.muted { background: var(--soft); color: var(--text-muted); }
+  .links { white-space: nowrap; }
   .q-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 0.72rem;
-    letter-spacing: 0.6px;
-    color: var(--blue);
-    border: 1px solid var(--blue);
-    text-decoration: none;
-    white-space: nowrap;
+    display: inline-block; padding: 1px 7px; border-radius: 4px; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.4px;
+    color: var(--blue); border: 1px solid var(--blue); text-decoration: none; white-space: nowrap;
   }
+  .q-badge + .q-badge { margin-left: 4px; }
   .q-badge:hover { background: var(--blue); color: #fff; }
   .bb-badge { color: #6b4e16; border-color: #b8892e; }
   .bb-badge:hover { background: #b8892e; color: #fff; }
-  .col-name { font-weight: 600; color: var(--text); }
-  .col-sector { color: var(--text-muted); font-size: 0.82rem; }
-  .col-fy { color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .col-count { font-variant-numeric: tabular-nums; color: var(--text-muted); }
-  .footer {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 2px solid var(--border);
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    text-align: center;
-  }
+  .footer { padding: 16px 0 0; font-size: 0.78rem; color: var(--text-muted); }
   .footer a { color: var(--blue); text-decoration: none; }
   .footer a:hover { text-decoration: underline; }
+  @media (max-width: 820px) { .col-wide { display: none; } }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>10-K / 20-F Redline Analysis</h1>
-  <p>Year-over-year textual analysis of SEC filings. Each dashboard tracks wording changes, ordering shifts, additions, and deletions across 6-8 years of 10-K/20-F filings, surfacing strategic pivots and disclosure signals. Companies with a <strong>10-Q</strong> badge also have a quarterly scanner that catches the same signals 3-9 months earlier.</p>
+  <div class="wrap">
+    <h1>10-K / 20-F Redline Analysis</h1>
+    <p>Year-over-year wording changes in each company's annual report, with quarterly 10-Q scanners and Bull / Bear pages.</p>
+  </div>
 </div>
 
-<table class="portfolio" id="portfolio">
-  <thead>
-    <tr>
-      <th class="grip-col" aria-label="Drag handle"></th>
-      <th data-key="ticker">Ticker<span class="arrow"></span></th>
-      <th data-key="name">Company<span class="arrow"></span></th>
-      <th data-key="sector">Sector<span class="arrow"></span></th>
-      <th data-key="years" class="num">#&nbsp;Years<span class="arrow"></span></th>
-      <th data-key="startKey">Start FY<span class="arrow"></span></th>
-      <th data-key="endKey">End FY<span class="arrow"></span></th>
-      <th data-key="signals" class="num">Signals<span class="arrow"></span></th>
-      <th data-key="qKey">10-Q<span class="arrow"></span></th>
-      <th data-key="bbKey">Bull / Bear<span class="arrow"></span></th>
-      <th data-key="updated">Last 10-Q<span class="arrow"></span></th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+<div class="wrap">
+  <p class="takeaway" id="takeaway"></p>
 
-<div class="footer">
-  <p>Data sourced from <a href="https://www.sec.gov/edgar">SEC EDGAR</a>. Analysis generated with Claude.</p>
+  <section class="tiles" aria-label="Status">
+    <div class="card tile" id="tile-waiting"><h3>Waiting to be added</h3><div class="big"></div><p>Filed on EDGAR, not on the site yet</p></div>
+    <div class="card tile" id="tile-due"><h3>Due in the next 30 days</h3><div class="big"></div><p></p></div>
+    <div class="card tile" id="tile-current"><h3>Up to date</h3><div class="big"></div><p>Companies whose latest filing is on the site</p></div>
+    <div class="card tile" id="tile-last"><h3>Latest filing added</h3><div class="big"></div><p></p></div>
+  </section>
+
+  <section class="pair">
+    <div class="card">
+      <h2>Waiting to be added</h2>
+      <p class="note">On EDGAR but not yet redlined here, oldest first.</p>
+      <table class="mini" id="waiting"><tbody></tbody></table>
+    </div>
+    <div class="card">
+      <h2>Coming up</h2>
+      <p class="note">Filings expected in the next 60 days, soonest first. Expected dates are last year's filing date for the same period, one year on.</p>
+      <table class="mini" id="coming"><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="table-scroll">
+      <table class="portfolio" id="portfolio">
+        <thead>
+          <tr>
+            <th class="grip-col" aria-label="Drag handle"></th>
+            <th data-key="ticker">Ticker<span class="arrow"></span></th>
+            <th data-key="name">Company<span class="arrow"></span></th>
+            <th data-key="endKey" class="col-wide">10-K years<span class="arrow"></span></th>
+            <th data-key="qKey" class="col-wide">Latest 10-Q<span class="arrow"></span></th>
+            <th data-key="signals" class="num col-wide">Signals<span class="arrow"></span></th>
+            <th data-key="statusKey">Status<span class="arrow"></span></th>
+            <th data-key="nextKey">Next filing<span class="arrow"></span></th>
+            <th data-key="bbKey">Open<span class="arrow"></span></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>Data sourced from <a href="https://www.sec.gov/edgar">SEC EDGAR</a>, checked <span id="checked"></span>. Click a row to open its 10-K dashboard; drag rows to set your own order. Analysis generated with Claude.</p>
+  </div>
 </div>
 
 <script>
-// Filled in at deploy by scripts/stamp_updated.py: ticker -> filing date of the latest 10-Q covered.
-const UPDATED = {};
+// Filled in at deploy by scripts/stamp_updated.py from automation/tracked.json (what the site covers)
+// and automation/schedule.json (recent EDGAR filings and the next expected one; scripts/build_schedule.py).
+const LEDGER = {};
+const SCHEDULE = {};
 
 const companies = [
   {ticker:'META', name:'Meta Platforms',           sector:'Technology / Social Media',                startFY:'FY2020', endFY:'FY2025', signals:22, url:'companies/meta/', bb:'companies/meta/bullbear/',  tenQ:'companies/meta/10q/', qLabel:'2023Q1–2026Q2', c1:'#0668E1', c2:'#0080FB', c3:'#00C2FF'},
@@ -222,32 +192,132 @@ const companies = [
   {ticker:'CVNA', name:'Carvana',                  sector:'Automotive / Digital Retail',              startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/cvna/', bb:'companies/cvna/bullbear/', tenQ:'companies/cvna/10q/', qLabel:'2024Q1–2026Q2',  c1:'#1a1a2e', c2:'#006D9E', c3:'#00AFF0'},
 ];
 
-function fmtDate(iso) {
-  if (!iso) return '\u2014';
-  const [y, m, d] = iso.split('-').map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
-}
+const TODAY = new Date().toISOString().slice(0, 10);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[ch]);
 
-// Parse "FY2018" -> 2018 (numeric, sortable)
+function fmtDate(iso, withYear) {
+  if (!iso) return '—';
+  const [y, m, d] = iso.slice(0, 10).split('-').map(Number);
+  const opts = {month: 'short', day: 'numeric'};
+  if (withYear || String(y) !== TODAY.slice(0, 4)) opts.year = 'numeric';
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', opts);
+}
+function ago(d) {
+  return d <= 0 ? 'today' : d === 1 ? '1 day' : `${d} days`;
+}
+function daysBetween(a, b) {
+  return Math.round((Date.parse(b) - Date.parse(a)) / 86400000);
+}
+// fy2026q3 -> "Q3 2026" for a December year end, "Q3 FY2026" otherwise; fy2026 -> "FY2026"
+function periodName(label, fyeMonth) {
+  const m = /^fy(\d{4})(?:q(\d))?$/.exec(label || '');
+  if (!m) return label || '';
+  if (!m[2]) return 'FY' + m[1];
+  return fyeMonth === 12 ? `Q${m[2]} ${m[1]}` : `Q${m[2]} FY${m[1]}`;
+}
 function fyKey(fy) {
   const m = String(fy).match(/(\d{4})/);
   return m ? parseInt(m[1], 10) : 0;
 }
+
 companies.forEach(c => {
+  const led = LEDGER[c.ticker] || {};
+  const sch = SCHEDULE.companies && SCHEDULE.companies[c.ticker];
+  const fye = sch ? sch.fye_month : 12;
+  const filings = sch ? sch.filings : [];
+  const annualForm = led.annual_form || '10-K';
   c.startKey = fyKey(c.startFY);
   c.endKey = fyKey(c.endFY);
   c.years = c.endKey - c.startKey + 1;
-  c.qKey = c.tenQ ? 1 : 0;
   c.bbKey = c.bb ? 1 : 0;
-  c.updated = UPDATED[c.ticker] || '';
+  // What is on EDGAR but not covered by the dashboards yet
+  c.waiting = filings.filter(f =>
+    (f.form === annualForm && led.annual_covered_through && f.period > led.annual_covered_through) ||
+    (f.form === '10-Q' && c.tenQ && led.quarterly_covered_through && f.period > led.quarterly_covered_through)
+  ).reverse().map(f => Object.assign({ticker: c.ticker, name: periodName(f.label, fye)}, f));
+  // Latest covered 10-Q, by the ledger
+  const q = filings.find(f => f.form === '10-Q' && led.quarterly_covered_through && f.period <= led.quarterly_covered_through);
+  c.latestQ = q ? periodName(q.label, fye) : (c.qLabel ? c.qLabel.split('–').pop() : '');
+  c.latestQFiled = q ? q.filed : (led.quarterly_filed || '');
+  c.qKey = c.tenQ ? (q ? q.period : (led.quarterly_covered_through || '0')) : '';
+  // Latest covered filing of either kind, for "Latest filing added"
+  c.lastAdded = [led.annual_filed, led.quarterly_filed].filter(Boolean).sort().pop() || '';
+  c.lastAddedForm = c.lastAdded && c.lastAdded === led.quarterly_filed ? '10-Q ' + c.latestQ : annualForm + ' ' + c.endFY;
+  c.statusKey = c.waiting.length;
+  c.next = sch && sch.next ? Object.assign({name: periodName(sch.next.label, fye)}, sch.next) : null;
+  // A next filing already on EDGAR is in the waiting list, not "coming up"
+  if (c.next && filings.some(f => f.label === c.next.label && f.form === c.next.form)) c.next = null;
+  c.nextKey = c.next ? c.next.expected : '9999';
 });
+
+function statusChip(c) {
+  if (!c.waiting.length) return '<span class="chip ok">Up to date</span>';
+  const f = c.waiting[c.waiting.length - 1];
+  const more = c.waiting.length > 1 ? ` +${c.waiting.length - 1}` : '';
+  return `<span class="chip warn" title="Filed ${esc(fmtDate(f.filed, true))}, not on the site yet">New ${esc(f.form)}${more}</span>`;
+}
+function nextCell(c) {
+  if (!c.next) return '—';
+  const due = c.next.expected < TODAY;
+  const when = due ? '<span class="chip warn">Due</span>' : `~${esc(fmtDate(c.next.expected))}`;
+  return `<span class="nowrap">${esc(c.next.form)} ${esc(c.next.name)}</span><span class="sub">${when}</span>`;
+}
+
+function renderSummary() {
+  const waiting = companies.flatMap(c => c.waiting).sort((a, b) => a.filed.localeCompare(b.filed));
+  const coming = companies.filter(c => c.next).map(c => Object.assign({ticker: c.ticker}, c.next))
+    .sort((a, b) => a.expected.localeCompare(b.expected));
+  const in30 = coming.filter(n => daysBetween(TODAY, n.expected) <= 30);
+  const current = companies.filter(c => !c.waiting.length).length;
+  const last = companies.slice().sort((a, b) => b.lastAdded.localeCompare(a.lastAdded))[0];
+
+  const tw = document.querySelector('#tile-waiting');
+  tw.querySelector('.big').textContent = waiting.length;
+  tw.classList.toggle('alert', waiting.length > 0);
+  const td = document.querySelector('#tile-due');
+  td.querySelector('.big').textContent = in30.length;
+  td.querySelector('p').textContent = in30.length ? `Next: ${in30[0].ticker} ${in30[0].form}, ${in30[0].expected < TODAY ? 'due now' : '~' + fmtDate(in30[0].expected)}` : 'Nothing expected this month';
+  document.querySelector('#tile-current .big').innerHTML = `${current} <small>of ${companies.length}</small>`;
+  const tl = document.querySelector('#tile-last');
+  tl.querySelector('.big').textContent = last && last.lastAdded ? fmtDate(last.lastAdded) : '—';
+  tl.querySelector('p').textContent = last && last.lastAdded ? `${last.ticker} ${last.lastAddedForm} (filing date)` : '';
+
+  const take = document.querySelector('#takeaway');
+  const waitTickers = [...new Set(waiting.map(w => w.ticker))];
+  take.innerHTML = waiting.length
+    ? `<b>${waiting.length} filing${waiting.length > 1 ? 's' : ''}</b> on EDGAR ${waiting.length > 1 ? 'are' : 'is'} not on the site yet (${esc(waitTickers.join(', '))}), the oldest filed ${esc(fmtDate(waiting[0].filed))}. ` +
+      (coming.length ? `Next expected: <b>${esc(coming[0].ticker)} ${esc(coming[0].form)}</b>, ${coming[0].expected < TODAY ? 'due now' : '~' + esc(fmtDate(coming[0].expected))}.` : '')
+    : `Every company is up to date. ` + (coming.length ? `Next expected: <b>${esc(coming[0].ticker)} ${esc(coming[0].form)}</b>, ~${esc(fmtDate(coming[0].expected))}.` : '');
+
+  document.querySelector('#waiting tbody').innerHTML = waiting.length ? waiting.map(w => `
+    <tr><td class="date">${esc(fmtDate(w.filed))}</td>
+      <td class="tk"><a href="${esc(w.index)}" title="Filing on EDGAR">${esc(w.ticker)}</a></td>
+      <td class="what">${esc(w.form)} ${esc(w.name)}</td>
+      <td class="right"><span class="chip warn">${ago(daysBetween(w.filed, TODAY))}</span></td></tr>`).join('')
+    : '<tr><td class="empty">Nothing waiting: every filing on EDGAR is on the site.</td></tr>';
+
+  const soon = coming.filter(n => daysBetween(TODAY, n.expected) <= 60);
+  const later = coming.length - soon.length;
+  document.querySelector('#coming tbody').innerHTML = soon.map(n => {
+    const d = daysBetween(TODAY, n.expected);
+    const chip = d < 0 ? '<span class="chip warn">Due</span>' : d <= 14 ? `<span class="chip muted">${d === 0 ? 'today' : `in ${d} day${d === 1 ? '' : 's'}`}</span>` : '';
+    return `<tr><td class="date">~${esc(fmtDate(n.expected))}</td><td class="tk">${esc(n.ticker)}</td>
+      <td class="what">${esc(n.form)} ${esc(n.name)}</td><td class="right">${chip}</td></tr>`;
+  }).join('') + (later ? `<tr class="more"><td colspan="4">${later} more later (${esc(fmtDate(coming[soon.length].expected))} on): see Next filing below.</td></tr>` : '')
+    + (soon.length || later ? '' : '<tr><td class="empty">No filings expected.</td></tr>');
+
+  const checked = SCHEDULE.checked;
+  document.querySelector('#checked').textContent = checked ? fmtDate(checked, true) : 'not yet';
+}
 
 const STATE_KEY = 'redline-sort-v1';
 const defaultState = {mode: 'sort', key: 'ticker', dir: 'asc', customOrder: null};
-const STATE = Object.assign({}, defaultState, JSON.parse(localStorage.getItem(STATE_KEY) || '{}'));
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(STATE_KEY) || '{}'); } catch (e) { saved = {}; }
+const STATE = Object.assign({}, defaultState, saved);
 
 function saveState() {
-  localStorage.setItem(STATE_KEY, JSON.stringify(STATE));
+  try { localStorage.setItem(STATE_KEY, JSON.stringify(STATE)); } catch (e) { /* private window */ }
 }
 
 function cmp(a, b, key) {
@@ -278,18 +348,16 @@ function render() {
   const rows = orderedRows();
   const tbody = document.querySelector('#portfolio tbody');
   tbody.innerHTML = rows.map(c => `
-    <tr draggable="true" data-ticker="${c.ticker}" data-url="${c.url}">
+    <tr draggable="true" data-ticker="${esc(c.ticker)}" data-url="${esc(c.url)}">
       <td class="grip-cell" aria-hidden="true">⋮⋮</td>
-      <td class="click-cell"><span class="ticker-pill" style="background:linear-gradient(135deg,${c.c1},${c.c2});border-bottom-color:${c.c3};">${c.ticker}</span></td>
-      <td class="click-cell col-name">${c.name}</td>
-      <td class="click-cell col-sector">${c.sector}</td>
-      <td class="click-cell col-count num">${c.years}</td>
-      <td class="click-cell col-fy">${c.startFY}</td>
-      <td class="click-cell col-fy">${c.endFY}</td>
-      <td class="click-cell col-count num">${c.signals}</td>
-      <td>${c.tenQ ? `<a class="q-badge" href="${c.tenQ}" title="Quarterly 10-Q scanner ${c.qLabel || ''}">10-Q</a>` : ''}</td>
-      <td>${c.bb ? `<a class="q-badge bb-badge" href="${c.bb}" title="Fundamentals: bull and bear evidence from the latest filings">Bull / Bear</a>` : ''}</td>
-      <td class="click-cell col-fy"${c.updated ? '' : ' title="Files 20-F annual reports, no 10-Qs"'}>${fmtDate(c.updated)}</td>
+      <td class="click-cell"><span class="ticker-pill" style="background:linear-gradient(135deg,${c.c1},${c.c2});border-bottom-color:${c.c3};">${esc(c.ticker)}</span></td>
+      <td class="click-cell"><span class="co">${esc(c.name)}</span><span class="sector">${esc(c.sector)}</span></td>
+      <td class="click-cell col-wide nowrap">${esc(c.startFY)}–${esc(c.endFY.replace('FY', ''))}<span class="sub">${c.years} years</span></td>
+      <td class="click-cell col-wide nowrap">${c.tenQ ? esc(c.latestQ) + `<span class="sub">filed ${esc(fmtDate(c.latestQFiled))}</span>` : '<span class="sub">20-F filer</span>'}</td>
+      <td class="click-cell col-wide num">${c.signals}</td>
+      <td class="click-cell">${statusChip(c)}</td>
+      <td class="click-cell">${nextCell(c)}</td>
+      <td class="links"><a class="q-badge" href="${esc(c.url)}" title="Annual report redlines">10-K</a>${c.tenQ ? `<a class="q-badge" href="${esc(c.tenQ)}" title="Quarterly 10-Q scanner ${esc(c.qLabel || '')}">10-Q</a>` : ''}${c.bb ? `<a class="q-badge bb-badge" href="${esc(c.bb)}" title="Fundamentals: bull and bear evidence from the latest filings">Bull / Bear</a>` : ''}</td>
     </tr>
   `).join('');
 
@@ -312,14 +380,14 @@ document.querySelectorAll('#portfolio thead th[data-key]').forEach(th => {
     } else {
       STATE.mode = 'sort';
       STATE.key = key;
-      STATE.dir = 'asc';
+      STATE.dir = key === 'statusKey' ? 'desc' : 'asc';
     }
     saveState();
     render();
   });
 });
 
-// Row click -> navigate. Only the click-cell cells trigger navigation (not the grip).
+// Row click -> navigate. Only the click-cell cells trigger navigation (not the grip or the links).
 document.querySelector('#portfolio tbody').addEventListener('click', e => {
   const cell = e.target.closest('td.click-cell');
   if (!cell) return;
@@ -383,6 +451,7 @@ tbody.addEventListener('drop', e => {
   render();
 });
 
+renderSummary();
 render();
 </script>
 

@@ -202,7 +202,10 @@ page's tokens, if the page has none). Add:
   - themes: revise each so none is stale; a theme that the new period
     contradicts must say so
 Root index.html `companies` entry: endFY and signals for annual updates,
-qLabel for quarterly ones, tenQ + qLabel for a new scanner.
+qLabel for quarterly ones, tenQ + qLabel for a new scanner. The landing page's
+status, "Waiting to be added" and "Coming up" come from the ledger and
+automation/schedule.json (scripts/build_schedule.py, run at publish below),
+stamped in at deploy; never edit its LEDGER or SCHEDULE lines by hand.
 
 
 5. VERIFY
@@ -221,7 +224,8 @@ quote from the section file, never loosen the check.
 6. PUBLISH
 ----------
     python scripts/check_new_filings.py mark <TICKER> annual|quarterly <report_date> [--dashboard companies/<t>/10q/]
-    git add companies/<t>/index.html companies/<t>/10q/index.html index.html automation/tracked.json scripts/
+    python scripts/build_schedule.py
+    git add companies/<t>/index.html companies/<t>/10q/index.html index.html automation/tracked.json automation/schedule.json scripts/
     git commit
     git pull --rebase origin main && git push origin HEAD:main
 
