@@ -24,7 +24,9 @@ def get_changed_files():
     )
     if result.stdout.strip():
         files.update(result.stdout.strip().split("\n"))
-    return sorted(f for f in files if f)
+    # Exclude ephemeral build artifacts from the change list
+    exclude = {"rich-changes.json", "run-summary.json"}
+    return sorted(f for f in files if f and f not in exclude)
 
 
 def get_diff_stats():
@@ -79,6 +81,7 @@ def build_generic_changes(files, categories):
 
 def main():
     files = get_changed_files()
+    structured_changes = None
     if not files:
         summary = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -96,6 +99,8 @@ def main():
             with open(rich_path) as f:
                 rich = json.load(f)
             changes = rich.get("changes", []) + changes
+            # Structured payload flows through to automation-hub for rich rendering
+            structured_changes = rich.get("structured")
         summary = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "files_changed": len(files),
@@ -103,12 +108,16 @@ def main():
             "deletions": deletions,
             "changes": changes,
         }
+        if structured_changes is not None:
+            summary["structured_changes"] = structured_changes
 
     with open("run-summary.json", "w") as f:
         json.dump(summary, f, indent=2)
     print(f"Run summary: {len(files)} files changed, {len(summary['changes'])} change entries")
     for c in summary["changes"]:
         print(f"  - {c}")
+    if structured_changes:
+        print(f"Structured changes payload present ({len(str(structured_changes))} bytes)")
 
 
 if __name__ == "__main__":
