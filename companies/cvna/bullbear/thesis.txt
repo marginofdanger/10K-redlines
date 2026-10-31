@@ -1,6 +1,6 @@
 CARVANA (CVNA): INVESTMENT THESIS PILLARS
 Written October 2026 from the 10-K dashboard themes and tracked signals, the 10-Q scanner, and the
-eight filings from the Q3 2024 10-Q to the Q2 2026 10-Q. Stances move only when two or more filings
+nine filings from the Q3 2024 10-Q to the Q3 2026 10-Q (updated for Q3 2026, October 2026). Stances move only when two or more filings
 point the same way; "Last moved" names the filing that completed the run. Net income is consolidated
 (including non-controlling interests) unless marked XBRL. Share data before May 2026 are pre-split.
 
@@ -11,11 +11,12 @@ P1 Unit growth and demand
     headline units are flattered by partner "marketplace" cars booked net.
   Stance: Intact (never moved in the window).
   History: units +34.2% (Q3 2024), +33.1% (FY2024), +45.7% (Q1 2025), +41.2%, +43.5% (Q3 2025),
-    +43.3% (FY2025), +40.0% (Q1 2026), +37.7% (Q2 2026). Growth is decelerating from the Q3 2025 peak but
-    is still near 40% on a base of about 790,000 annualized units. Bear notes: stated reconditioning
+    +43.3% (FY2025), +40.0% (Q1 2026), +37.7% (Q2 2026), +39.4% (Q3 2026). Growth eased from the Q3 2025
+    peak and edged back up in Q3 2026, near 40% on a base of about 870,000 annualized units. Bear notes: stated reconditioning
     capacity cut (Q3 2024), restored to 1.5 million (FY2025), then dropped (Q1 2026); marketplace
     units never quantified; Q2 2026 revenue per unit +17.4% partly on used-price appreciation, and
-    gasoline prices "have pressured" consumers.
+    gasoline prices "have pressured" consumers; Q3 2026 names interest rates as an affordability risk
+    and lists price appreciation first among revenue-per-unit drivers.
   Tests: retail unit growth, average monthly unique visitors, website units, revenue per unit vs units.
 
 P2 Unit economics
@@ -30,7 +31,9 @@ P2 Unit economics
     gave retail GPU "approximately flat" with no cause and an implied Q4 decline (derived: total GPU
     about $6,427 vs $6,671); Q1 2026 ($6,783 vs $6,938, margin 10.4% vs 11.5%) completed the run, and
     Q2 2026 confirmed it ($7,014 vs $7,426, margin 10.4% vs 12.4%, no cause for retail or wholesale).
-    SG&A per unit fell in every filing ($4,317 Q3 2024 to $3,568 Q2 2026), so operating income still grew.
+    Q3 2026 held it: retail GPU rose $100 (no cause), but total GPU fell a fourth time ($6,997 vs
+    $7,362), margin 10.0% vs 11.3%, and non-GAAP SG&A per unit was flat ($3,413 vs $3,418).
+    SG&A per unit fell in every filing ($4,317 Q3 2024 to $3,703 Q3 2026), so operating income still grew.
   Tests: total and retail GPU vs prior year, Adj. EBITDA margin, SG&A per unit, whether causes return.
 
 P3 Loan sales and finance profit
@@ -45,7 +48,9 @@ P3 Loan sales and finance profit
     Ally line to Ally $6.0B (Q3 2025) and $8.0B (July 2026) plus $12B of fixed-pool agreements (FY2025).
     Q1 2026 first named "lower loan sale spreads" and deleted the loan-monetization goal; Q2 2026
     repeated it (other GPU $2,666 vs $2,869; gain about 7.4% of principal sold vs about 8.8%), with
-    Ally at about 45% of Q2 loan sales and its headroom at $1.2B before the renewal.
+    Ally at about 45% of Q2 loan sales and its headroom at $1.2B before the renewal. Q3 2026: spreads
+    lower a third time, now explained as rate and ABS-demand moves "in the short term"; other GPU $2,733
+    vs $3,040; gain about 7.4% of principal vs about 10.0%. Ally share fell to 39%, headroom $6.0B.
   Tests: gain on loan sales per principal sold, other GPU, Ally share of sales, spread wording.
 
 P4 Earnings quality
@@ -59,18 +64,22 @@ P4 Earnings quality
     run to Weakening. Q2-Q3 2025 warrant losses ($35M, $120M) swung the other way; FY2025 net income
     $1,895M rested on a $2.8B tax benefit less $2.2B of TRA expense. Q1 2026 (no PIK, no TRA expense,
     8.1% tax) and Q2 2026 (other expense zero, 11.4% tax, pre-tax +88%) are the first clean quarters.
+    Q3 2026: pre-tax +113% but operating income +29%; the gap is the $168M of Q3 2025 warrant, TRA and
+    debt charges lapped, against $64M of identified one-offs in Q3 2026 ($53M extinguishment, $11M Root).
   Tests: other expense (income), TRA expense, effective tax rate, PIK (none since 2025).
 
 P5 Cash conversion and inventory
   Bull assumes: operating cash flow tracks earnings and funds growth without equity.
   Bear fears: inventory and receivables growth absorb the cash; earlier cash flow was flattered by
     interest paid in kind.
-  Stance: Intact (never moved in the window).
-  History: mixed in every year. Bear: Q3 2024 nine-month operating cash flow down $184M with $388M of
+  Stance: Strengthening, moved at the Q3 2026 10-Q.
+  History: mixed in every year through Q1 2026. Bear: Q3 2024 nine-month operating cash flow down $184M with $388M of
     PIK; FY2024 $918M of which $274M came from PIK timing; Q2 and Q3 2025 down on inventory; Q1 2026
     $107M vs $232M. Bull: Q1 2025 up with cash interest; FY2025 $1.036B with cash interest; H1 2026
     $345M vs $261M although H1 2025 had $146M of PIK. Inventory rose from $1.61B (Dec 2024) to $3.26B
-    (June 2026), faster than units.
+    (June 2026), faster than units. Q3 2026 completed a two-filing run: nine-month operating cash flow
+    $900M vs $606M (which had $182M of PIK), Q3 alone $555M vs $345M, 40% of Adjusted EBITDA (H1: 24%);
+    inventory $3.46B, +6% in the quarter but still +49% year over year vs units +39%.
   Tests: operating cash flow vs Adjusted EBITDA, inventory vs units, equity issuance.
 
 P6 Balance sheet and funding
@@ -81,7 +90,9 @@ P6 Balance sheet and funding
   History: debt $6.03B (Dec 2023) -> $5.53B (Q3 2024) -> $5.47B (FY2024) -> $5.57B (Q2 2025) -> $5.06B
     (Q3 2025, $559M redeemed) -> $4.98B (FY2025) -> $5.13B (Q2 2026). Liquidity resources $4.42B ->
     $7.02B; PIK ended in 2025. Bear: $1.3B ATM in 2024 and $539M in Q3 2025, two quarters after the
-    self-funding pledge; TRA liability $2.2B (current $99M at Q2 2026).
+    self-funding pledge; TRA liability $2.2B (current $99M at Q2 2026). Q3 2026: $1.66B of 9% 2030 notes
+    refinanced with a Term Loan B at SOFR + 2.25% (swapped at 4.055% to July 2028, maturity 2033, no
+    maintenance covenants), about $45M a year cheaper; debt $5.16B; liquidity $7.50B; cash $3.05B.
   Tests: total debt, liquidity resources, ATM use, TRA payments.
 
 P7 Governance, legal and related parties
@@ -89,11 +100,14 @@ P7 Governance, legal and related parties
     align with shareholders.
   Bear fears: regulatory action (SEC, state AGs), late disclosure, and value transfer to related
     parties through the TRA and DriveTime agreements.
-  Stance: Weakening, moved at the Q2 2025 10-Q.
+  Stance: Intact, moved at the Q3 2026 10-Q (back from Weakening, reached at the Q2 2025 10-Q).
   History: FY2024 accrual $3M -> $10M and AG claims "have resulted"; Q1 2025 dropped the "without
     merit" reassurance and the Item 1A "no material changes" line without mentioning the January 2025
     short report; Q2 2025 disclosed the June 2025 SEC subpoena. FY2025 added "lending practices" to AG
     inquiries and recorded a $2.3B TRA liability, $1.7B of it to related parties. 2026 eased: IBM and
-    Erakat settled for immaterial amounts, accrual back to $10M; the SEC matter and the 2022 class
-    action remain open without estimates.
-  Tests: SEC matter outcome, class certification ruling, legal accrual, TRA payments to related parties.
+    Erakat settled for immaterial amounts, accrual back to $10M (Q2 2026). Q3 2026 completed the run:
+    the SEC "concluded its investigation and did not intend to recommend an enforcement action".
+    Still open: the 2022 class action (no estimate), patent-dispute wording restored with no case
+    named, the COO's plan to sell up to 1.44M shares, and the TRA's $1.7B to related parties.
+  Tests: class certification ruling, any named patent case, legal accrual, TRA payments to related
+    parties, insider sales.
