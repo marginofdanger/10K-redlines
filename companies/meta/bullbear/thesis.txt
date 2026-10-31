@@ -2,8 +2,8 @@ META INVESTMENT THESIS: PILLARS
 Written October 2026 from the 10-K dashboard themes (Capital Structure Transformation,
 Legal Risk Compounding, Metric Transparency Declining, The Superintelligence Bet), the
 10-Q scanner's tracked signals (capex guidance, commitments, RL loss guidance, legal
-exposure) and the eight filings from the Q3 2024 10-Q (filed Oct 31, 2024) through the
-Q2 2026 10-Q (filed Jul 30, 2026). Stances are as of the Q2 2026 10-Q. Every pillar
+exposure) and the nine filings from the Q3 2024 10-Q (filed Oct 31, 2024) through the
+Q3 2026 10-Q (filed Oct 22, 2026). Stances are as of the Q3 2026 10-Q. Every pillar
 started the window at Intact; a stance moves one step only when findings in two or more
 filings point the same way, and "Path" records each move and the filing that made it.
 
@@ -13,10 +13,12 @@ P1 Core ad engine
   Bear fears: growth is leaning on ad load and FX; user growth is saturating (first DAP
     dip Q1 2026); regulation (EU less-personalized ads, youth laws, scam rules) caps
     targeting.
-  Stance: Strengthening.
+  Stance: Intact.
   Path: Intact -> Strengthening at the Q3 2025 10-Q (revenue growth 16% in Q1 2025, then
-    22% and 26%, with impressions and price both rising). Q1 2026 (+33%) confirmed; Q2
-    2026 (+28%, impressions +14%) is one filing the other way and does not move it.
+    22% and 26%, with impressions and price both rising). Q1 2026 (+33%) confirmed.
+    -> Intact at the Q3 2026 10-Q: Q2 2026 (+28%, impressions +14%, Europe +24%) and Q3
+    2026 (+26%, impressions +10%, Europe +18%) both decelerated. Price per ad accelerated
+    to +14% in Q3, so growth is slowing, not breaking.
   Tested by: ad revenue growth, impressions vs price split, DAP, regional growth, the
     EU ads model, ad frequency language, and any change to the China-based advertiser
     disclosure.
@@ -27,48 +29,55 @@ P2 Margins and operating discipline
   Bear fears: AI infrastructure, depreciation, SBC, token costs and legal charges grow
     faster than revenue; the 2022-23 efficiency era is over.
   Stance: Weakening (operating margin 43% Q3 2024, 42% FY2024, 43% Q2 2025 peak, 40% Q3
-    2025, 41% FY2025, 41% Q1 2026 with FoA margin 52% -> 48%, 31% Q2 2026).
+    2025, 41% FY2025, 41% Q1 2026 with FoA margin 52% -> 48%, 31% Q2 2026, 20% Q3 2026;
+    about 35% in Q3 2026 excluding the $9.89B attorneys-general charge).
   Path: Intact -> Strengthening at the FY2024 10-K (Q3 2024 and FY2024 margin expansion);
     -> Intact at the FY2025 10-K (Q3 2025 first YoY margin decline, FY2025 41% vs 42%);
     -> Weakening at the Q2 2026 10-Q (Q1 2026 FoA margin down 4 points, Q2 2026 31%).
+    Q3 2026 confirmed (ex-charge margin 35% vs 40%); headcount -15% is the offset. Broken
+    would need operating income ex one-offs to fall year on year.
   Tested by: cost growth vs revenue growth by line, FoA operating margin, named cost
     drivers, severance and legal one-offs, the depreciation effect of longer server lives.
 
 P3 AI capex return and cash conversion
-  Bull assumes: capex ($39B in 2024, $72B in 2025, $130-145B guided for 2026) earns a
+  Bull assumes: capex ($39B in 2024, $72B in 2025, $135-145B guided for 2026) earns a
     return through better ads and new AI products, and operating cash flow keeps pace.
   Bear fears: capex outruns cash generation, free cash flow goes to zero or negative,
     and the spend is sized for frontier models rather than measurable demand.
   Stance: Weakening.
   Path: Intact -> Weakening at the Q2 2025 10-Q (OCF less capex down year on year in Q1
-    and Q2 2025 while the 2025 guide was raised twice). Q3 2025, FY2025 and Q2 2026
-    ($1.75B) confirmed; the annual guide was raised six times in the window after being
-    set. Broken would need OCF less capex negative for a full half-year.
+    and Q2 2025 while the 2025 guide was raised twice). Q3 2025, FY2025, Q2 2026
+    ($1.75B) and Q3 2026 (-$1.16B, first negative quarter) confirmed; the annual guide
+    was raised seven times in the window after being set. Broken would need OCF less
+    capex negative for a full half-year (Q2 + Q3 2026 together: +$0.59B; Q4 2026 decides).
   Tested by: OCF less capex each quarter, capex guide moves, any stated return or
     utilization metric, impairment language, cash taxes.
 
 P4 Balance sheet and off-balance-sheet obligations
   Bull assumes: cash and securities ($70-90B) and investment-grade debt make the build
     easy to fund.
-  Bear fears: debt ($29B -> $84B), non-cancelable commitments ($32B Sep 2024 -> $349B),
-    unstarted leases ($18B -> $279B + $68B) and venture guarantees become a fixed-cost
-    stack that cannot be cut if AI demand disappoints.
+  Bear fears: debt ($29B -> $84B), non-cancelable commitments ($32B Sep 2024 -> $455B),
+    unstarted leases ($18B -> $356B) and venture guarantees ($68.40B maximum exposure)
+    become a fixed-cost stack that cannot be cut if AI demand disappoints.
   Stance: Weakening.
   Path: Intact -> Weakening at the Q3 2025 10-Q (Q2 2025 cash and securities down $30.74B
     in six months; Q3 2025 commitments tripled to $81.19B plus $40B, and the liquidity
-    sentence added outside financing). FY2025, Q1 2026 and Q2 2026 confirmed.
+    sentence added outside financing). FY2025, Q1 2026, Q2 2026 and Q3 2026 ("expect to
+    seek" new capital; credit-rating risk named; notes fair value 87% of face) confirmed.
   Tested by: notes outstanding and coupons, commitments and lease totals, escrow, VIE
     maximum exposure, RVGs, interest expense.
 
 P5 Capital return and dilution
   Bull assumes: buybacks and the dividend continue from free cash flow and offset SBC.
   Bear fears: buybacks stop (demoted to "any return of capital" in FY2025, $0 since),
-    SBC rises, stock options appear, share count drifts up.
+    SBC rises, stock options appear, share count drifts up, and equity is issued to fund
+    the build (non-voting Class C stock created in Q3 2026 for "equity offerings").
   Stance: Weakening.
   Path: Intact through Q2 2025 (dividend started 2024 and raised Feb 2025; FY2024 returns
     inside FCF, but Q1 2025 returns exceeded FCF); -> Weakening at the FY2025 10-K (Q3
-    2025 buybacks -64% to $3.16B; FY2025 "any return of capital" and ~$0 in Q4). Q1 and
-    Q2 2026 ($0) confirmed.
+    2025 buybacks -64% to $3.16B; FY2025 "any return of capital" and ~$0 in Q4). Q1, Q2
+    and Q3 2026 ($0) confirmed; Q3 adds a stated intent to issue Class C equity. Broken
+    would be an actual equity offering or a dividend cut.
   Tested by: repurchases, dividends, SBC / OCF, diluted share count, new equity issuance.
 
 P6 Legal, regulatory and tax exposure
@@ -80,8 +89,10 @@ P6 Legal, regulatory and tax exposure
   Stance: Weakening.
   Path: Intact -> Weakening at the Q3 2025 10-Q (Q2 2025 Tax Court opinion against Meta's
     IP value; Q3 2025 $15.89B IRS notice, "hundreds of billions" aggregate exposure, G&A
-    +88% on legal). FY2025 FTC win is the main offset; Q1 2026 verdicts and Q2 2026
-    $2.40B of charges confirmed.
+    +88% on legal). FY2025 FTC win is the main offset; Q1 2026 verdicts, Q2 2026 $2.40B
+    of charges and Q3 2026 ($9.89B charge, $25B New Mexico penalty) confirmed. The Q3 2026
+    $18.59B settlement with 52 attorneys general caps the largest group of youth claims,
+    which is the first bullish evidence of resolution rather than smaller demands.
   Tested by: legal charges, verdicts and amounts sought, the aggregate-exposure
     sentence, EU findings and fines, IRS/Tax Court outcome, uncertain tax positions.
 
@@ -92,6 +103,8 @@ P7 Reality Labs path
   Stance: Strengthening.
   Path: Intact -> Strengthening at the Q1 2026 10-Q (Q3 2025 RL loss flat, FY2025 guide
     "remain similar to 2025," Q1 2026 RL loss -4%). Q2 2026 (H1 loss -1%, AI glasses now
-    the lead revenue driver) confirmed.
+    the lead revenue driver) and Q3 2026 (Q3 loss -7%; 2026 guide quantified at $18-19B,
+    below FY2025's $19.19B) confirmed. Q3 RL revenue -6% on lower Quest sales is the
+    counterweight.
   Tested by: RL operating loss vs "remain similar to 2025," RL revenue and the glasses vs
     Quest mix, the RL spending split.

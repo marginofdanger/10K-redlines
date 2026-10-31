@@ -1,0 +1,76 @@
+META Q3 2026 10-Q (quarter ended September 30, 2026; filed October 22, 2026; accession 0001628280-26-066773)
+Fundamentals answers vs the Q2 2026 10-Q. Figures from SEC XBRL (financials.py) unless quoted.
+
+1. Growth and pricing [worse: second straight deceleration]
+   Revenue $64.60B, +26% (Q2 +28%); FX now a $113M headwind, so constant currency about
+   +26% (Q2 +27%) (computed). Ad impressions +10% (Q2 +14%), price per ad +14% (Q2 +12%):
+   price is doing more of the work. U.S. & Canada +33% (Q2 +32%), Europe +18% (+24%),
+   Asia-Pacific +16% (+19%), Rest of World +34% (+36%). DAP 3.64B, +3%; ARPP $17.72, +23%.
+   Other revenue +59% ($1.10B). RL revenue -6% on "lower Meta Quest sales." (MD&A, Revenue;
+   Key metrics)
+
+2. Margins and unit economics [worse as reported; held ex-charge]
+   Operating income $12.99B, -37% YoY; margin 20% vs 40%. Costs +68%; G&A +323% ($14.86B)
+   on the $9.89B attorneys-general charge. Ex-charge, about $22.88B, +11%, margin 35% vs
+   40% (computed; Q2 ex-items was +9%). R&D +32% (Q2 +67%) as engineering headcount fell
+   16%. FoA operating income -31% (about +8% if the charge sits in FoA, computed). RL loss -7% to $4.13B.
+   (MD&A, Costs and Expenses; Segment Results)
+
+3. Earnings quality [worse: large one-off in the period, partly non-deductible]
+   Net income $9.86B ($3.83 EPS) carries the $9.89B charge; ETR 24% vs the 15-17% guide
+   because part of the charge is "not expected to be tax-deductible." Unrealized losses on
+   marketable equity securities $384M in Q3, $2.68B for nine months. The year-ago quarter
+   ($2.71B) carried the $15.93B OBBBA charge, so YoY EPS growth is not meaningful. (MD&A,
+   Provision for Income Taxes; Note 4)
+
+4. Cash conversion [worse]
+   Q3 OCF $32.78B (+9% YoY) against purchases of property and equipment of $33.94B: OCF
+   less capex -$1.16B, the first negative quarter in the window (Q2 +$1.75B). Nine-month
+   OCF $96.87B, +22%. DSO 32 days (Q2 33). SBC $7.36B = 22% of OCF. Cash taxes $2.93B for
+   nine months. (MD&A, Liquidity; financials.py)
+
+5. Capital allocation [worse]
+   Nine-month capex incl. finance leases $85.82B; 2026 floor raised to $135B, implying
+   $49-59B in Q4 (computed). No repurchases for nine months; dividend $0.525 held ($1.36B).
+   Texas Venture closed: $2.26B of assets contributed, $1.04B distributed back. Non-voting
+   Class C stock created, which Meta "expect[s] to use... to conduct equity offerings."
+   Cash and securities $82.45B (-$7.81B QoQ). (MD&A, Liquidity; Notes 5, 6, 14)
+
+6. Balance sheet and contingent exposure [worse]
+   Notes $84.00B face ($2.75B due August 2027), fair value $73.31B (Q2 $79.75B). Q3
+   interest expense $977M, +330%. Commitments $454.52B (Q2 $349.31B), now incl. "energy
+   service agreements"; 2027 payments $121.41B (Q2 $81.65B). Unstarted leases $355.73B
+   (Q2 $278.99B), now incl. "energy-related infrastructure." Ventures' maximum exposure to
+   loss $68.40B (Q2 Louisiana only $46.03B), incl. $41.49B of RVGs. $1.53B letters of
+   credit. Legal accruals $19.88B (Dec 2025 $7.32B). "We expect to seek" to raise capital;
+   credit-rating downgrade named. (Notes 4, 5, 8, 9, 10; MD&A, Liquidity)
+
+7. Concentration [worse: new dependency risks]
+   New risk: platform owners "may also restrict or prohibit access to or integration with
+   our AI features." The $5.3B contingent settlement tranche depends on YouTube and TikTok;
+   if peers do not adopt teen protections Meta may see "disproportionate adverse user
+   engagement impacts." China's NDRC forced the Manus unwind. Reseller / China-advertiser
+   language unchanged. (Risk Factors; Note 10)
+
+8. Accounting judgments [held]
+   New Note 8 (Liabilities) breaks out legal-related accruals, current $11.58B and
+   non-current $8.30B (better disclosure). $5.3B contingent payments not accrued (conditions
+   unmet). New Mexico $25B penalty: an amount accrued, not disclosed. New held-for-sale plan
+   ($1.89B of data-center assets). Ventures' maximum exposure now in a table instead of the
+   "$28 billion" RVG sentence. Critical estimates unchanged. (Notes 5, 6, 8, 10)
+
+9. Legal, regulatory and governance [mixed: worse on amounts, better on resolution]
+   $18.59B settlement with 52 attorneys general ($12.7B fixed over 10 years, $5.3B
+   contingent, $500M privacy, $75M costs); $9.89B Q3 charge, $11.89B nine months. New
+   Mexico: jury found >43 million UPA violations, $25B civil penalty at 15% post-judgment
+   interest (appeal planned); abatement $567M awarded vs $953M sought, judgment stayed. DC
+   AG seeks up to $1.7B. Tax Court supplemental opinion (Sept 29); gross unrecognized tax
+   benefits $20.82B (Q2 $18.74B). Governance: Class C non-voting stock prolongs Mr.
+   Zuckerberg's control; Delaware anti-takeover clause deleted from risk factors; Accord on
+   Super Intelligence signed. (Note 10; Legal Proceedings; Risk Factors; Note 14)
+
+10. Guidance and commitments [moved]
+   2026 capex $130-145B -> $135-145B. RL losses "remain similar to 2025" -> "approximately
+   $18 billion to $19 billion" (nine months $12.78B; Q4 implied $5.2-6.2B). Tax: Q3 24% vs
+   15-17% guided (missed, AG charge); 15-17% now for Q4 only. Q2's "majority" of ~8,000
+   leavers out of headcount by Q3: met (headcount -8,697). Dividend intent met ($0.525).
