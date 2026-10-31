@@ -1,0 +1,63 @@
+AMAZON Q3 2026 10-Q (filed October 30, 2026; quarter ended September 30, 2026)
+Fundamentals answers. Marker = versus the Q2 2026 10-Q.
+
+1. Growth and pricing [HELD]
+   Sales $201.9B, +12% (Q2 +20%); Prime Day fell in Q2 2026 but Q3 2025, and FX cut Q3 sales by $896M. North
+   America +6%, International +5%, AWS +39% (Q2 +37%), driver sentence unchanged ("increased customer usage,
+   partially offset by pricing changes"). Advertising +10.9% reported, 12% excluding FX (Q2 +26%), put down to
+   "timing anomalies". Backlog $578B (Q2 $496B), now "estimated to be approximately", life 6.1 years (6.4).
+   AWS better, advertising worse.
+
+2. Margins and unit economics [BETTER]
+   Operating income $28.1B vs $17.4B (Q3 2025 included the $2.5B FTC charge and severance); margin 13.9%
+   (Q2 13.7%). North America 7.7% (Q3 2025 4.5%, 6.9% before the FTC charge; Q2 7.9% with ~$640M of tariff
+   refunds); International 3.7% (2.9%); AWS 38.7% (34.6%; Q2 39.4%). Energy-contract gains only $91M (Q2
+   $551M), and no tariff refunds, so the quarter has fewer one-offs than Q2 (MD&A, Note 8).
+
+3. Earnings quality [BETTER]
+   Other income $(703)M (Q2 $53.4B), mainly marketable equity and warrant losses; pre-tax $26.9B, net income
+   $20.7B below operating income for the first time in 2026; tax rate 23.0%. Nine-month discrete tax $15.2B
+   (H1 $15.9B). But the Anthropic notes rose $48.3B to $146.2B through other comprehensive income (Note 3),
+   so Level 3 marks moved out of earnings rather than stopping.
+
+4. Cash conversion [WORSE]
+   Q3 operating cash flow $42.4B (Q3 2025 $35.5B); trailing $168.3B. Trailing free cash flow -$42.4B (Q2
+   -$7.6B); Q3 free cash flow -$34.8B (XBRL). Equipment acquired but not yet paid added $21.5B in nine months
+   on top of cash capex (Note 1). DSO 44 days (Q2 40). Accounts payable $158.7B (YE $121.9B).
+
+5. Capital allocation [WORSE]
+   Cash capex $75.9B in Q3 (purchases $77.3B), $172.2B in nine months; 2026 "approximately $220 billion"
+   (implies about $47.8B in Q4); 2027 to "meaningfully increase". OpenAI's remaining $21.3B paid ($50.0B in
+   total); Anthropic $10.0B in 2026. No buybacks or dividends; Globalstar still "expected to close in 2027".
+
+6. Balance sheet and contingent exposure [WORSE]
+   Notes $162.5B (Q2 $132.1B) plus the $17.5B term loan, drawn in September; face value of long-term debt
+   $180.9B (YE $68.8B). Interest expense $1.69B vs $538M. Cash and marketable securities $114.2B (Q2 $123.0B)
+   despite $53.4B of Q3 debt proceeds. Commitments $883.6B (Q2 $650.0B), including a new $159.6B property
+   and equipment row counted at "minimum pricing". New $80.0B secured supplier Loan Facility (Q1 2027-Q3
+   2028). Standby letters of credit $21.6B (Q2 $13.4B), now "primarily related to our purchase commitments".
+   Revolvers renewed in October at $20.0B (to 2027 and 2031).
+
+7. Concentration [HELD]
+   Backlog rose $82B with no new named commitment, so OpenAI ($138B) and Anthropic (more than $100B added)
+   are about 41% of $578B if fully counted (inferred; about 48% in Q2). Against that, Anthropic carrying
+   values are $238.7B ($92.5B preferred, $146.2B notes), and the 12% ownership cap can be waived. AWS 63% of
+   operating income (Q2 61%).
+
+8. Accounting judgments [WORSE]
+   Backlog is now "estimated"; energy contracts under derivative accounting 270M -> 690M MWh and 15 -> 18
+   years; equipment obligations at minimum pricing only; Level 3 private holdings $143.7B plus Anthropic notes
+   $146.2B. Free cash flow caveat now excludes "non-marketable investments", and Loan Facility repayments
+   will be financing outflows (Note 5, MD&A).
+
+9. Legal, regulatory and governance [WORSE]
+   FTC and 22 state Attorneys General (and Texas separately) sued in August 2026 over reserve prices in
+   sponsored-ad auctions, seeking civil penalties, restitution and disgorgement. Xockets added GB300 servers
+   to the ITC case. Audible credit-expiration suits; AWS Rekognition added to BIPA suits; a third U.K.
+   antitrust class certified. The India cloud-services tax claim is no longer disclosed (outcome not stated).
+
+10. Guidance and commitments [BETTER]
+   Q3 guide: sales $201.9B vs $197.0-202.0B (top of range); operating income $28.1B vs $22.5-26.5B (beaten by
+   $1.6B, no refunds). Q4 guide: sales $240.0-247.0B (+12-16%), operating income $28.5-33.5B vs $25.0B,
+   advertising growth "in the high teens". 2026 cash capex about $220B; 2027 higher. "Additional financing
+   activities in 2026" repeated and again delivered ($25.0B and GBP 4.3B notes, term loan drawn).
