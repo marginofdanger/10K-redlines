@@ -1,0 +1,72 @@
+ALPHABET Q3 2026 10-Q (filed October 29, 2026; quarter ended September 30, 2026)
+Fundamentals answers. Marker = versus the Q2 2026 10-Q. Figures from the filing text and SEC XBRL
+(quarterly cash-flow values derived from year-to-date).
+
+1. Growth and pricing [HELD]
+   Revenue $127.58B, +25% (Q2 +24%). Cloud $30.71B, +103% (Q2 +82%), now the larger growth driver
+   (+$15.6B vs Services +$9.3B); MD&A names "TPU system sales" but gives no product/service split.
+   Search & other $63.35B, +12% (Q2 +17%), flat on Q2; paid clicks +8% (Q2 +13%), CPC +4%. YouTube ads
+   +9%. Network +1%, the first increase in the window (impressions -14%, CPI +14%). Backlog $567.7B
+   (+$48.2B), "just over 55%" in 24 months (was "just over 50%"), including $16.8B from Crux AI, a
+   related party. Mixed: Cloud better, Search worse.
+
+2. Margins and unit economics [WORSE]
+   Operating margin 32% vs 31% a year earlier, but down from 36% (Q1) and 34% (Q2); Q3 2025 carried a
+   $3.5B EC fine, about 34% before it. Cloud operating income $11.12B, margin 36.2% (Q2 35.6%; 23.7% a
+   year earlier). Services margin 40.7% vs 38.5%. Alphabet-level AI costs $7.66B vs $4.47B (+71%).
+   Q3 depreciation about $8.4B vs $5.6B (+49%). Cost of revenues led by "inventory and related costs,
+   primarily associated with the sale of TPU systems". TAC rate 20.0% vs 20.1%.
+
+3. Earnings quality [HELD]
+   Equity securities lost $8.66B (Q2 gain $99.0B): "net unrealized losses in our marketable equity
+   securities largely from SpaceX" after its IPO. Net income $26.47B (-24%) vs operating income +30%;
+   EPS $2.12. The loss is 27% of pre-tax income ($32.35B). SpaceX shares disclosed as restricted fell
+   from $94.1B to $75.2B. Only $8.8B of private stakes remeasured (Q2 $87.9B), mostly Level 3. The
+   non-operating swing is smaller (-27% of pre-tax vs +71% in Q2), but the reversal confirms the marks
+   are volatile; the pillar's risk is unchanged.
+
+4. Cash conversion [WORSE]
+   Operating cash flow $42.29B (-13% vs $48.41B); capex $51.35B; FCF -$9.06B, the second negative
+   quarter running. Nine-month FCF -$4.8B against $8.2B of dividends paid. Inventory +$3.3B in the
+   quarter (nine months +$11.0B). Accrued capex $21.4B (December $8.9B). DSO 52.
+
+5. Capital allocation [WORSE]
+   No buybacks for a third quarter ($69.5B authorization unused). ATM: $12.4B sold (36M shares), $27.6B
+   left; the "if any" hedge is gone. Q3 net payments for stock-based award taxes were $5.4B, so the
+   ATM ran ahead of its stated purpose in the quarter. Common dividend $0.22 held; preferred $15.63 per
+   share. Cover-page shares 12,230M -> 12,294M (+0.5%) since July. Crux AI JV with Blackstone formed.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Long-term debt $125.1B (+$26.9B; $28.7B of Q3 notes incl. AUD and floating-rate). Credit facilities
+   repaid ("No amounts were outstanding"), cut to $10.0B. Waymo $5.0B secured term loan at SOFR + 5.25%,
+   not guaranteed by Alphabet. Purchase commitments $924.4B ($213.4B within 12 months), now "at the
+   maximum contractual limits" (Q2's minimum basis deleted). Contingent commitments $98.5B: data-center
+   backstops $75.7B ($48.0B signed, $27.7B to come, $10.0B for Crux AI) and $22.8B of guarantees
+   ($16.2B power equipment to January 2049; $6.6B TPU repurchase). Unstarted leases $130.5B (+53%).
+   Cash and securities $265.1B incl. $90.4B of marketable equity.
+
+7. Concentration [WORSE]
+   Cloud 98.8% of backlog; $16.8B (3%) from a related-party JV Alphabet will backstop. TPU systems still
+   sold under "a limited number of agreements" with repurchase options. US 53% of revenue (48% a year
+   earlier, 51% in Q2).
+
+8. Accounting judgments [WORSE]
+   Commitments measured at maximums instead of minimums; June not restated. TPU repurchase options
+   "generally accounted for as rights of return", or as financial guarantees when the hardware is
+   assigned; management judges no "economic incentive" to exercise. Fair-value hedges added (swaps
+   from fixed to floating). Credit-derivative liability $606M (Q2 $815M).
+
+9. Legal, regulatory and governance [BETTER]
+   Ad-tech remedies decision (September 2026) denied the DOJ's structural divestitures; behavioral
+   remedies ordered, liability appeal planned. Play state settlement approved. First DMA non-compliance
+   fines (EUR430M Play, EUR460M Search), $1.0B charge, appealed. Accruals $13.8B (Q2 $17.4B) after the
+   $5.2B Android payment. Risk factors: remedies "have resulted"; "trials involving youth-related
+   issues"; AI agents "taking actions outside of their intended scope" in testing. Crux AI is a related
+   party.
+
+10. Guidance and commitments [HELD]
+   2026 capex "significantly increase" held; nine-month $132.0B = 144% of FY2025. TPU revenue
+   "significant majority to be recognized in 2027" held. Backlog 24-month share moved up to "just
+   over 55%". Supply commitments: "generally be fulfilled through 2030" moved to "significant majority
+   of the commitment payments through 2031". Future backstops estimate $24.1B -> $27.7B. GFiber close
+   "late 2026" held. Pillar Two "could be affected" held.

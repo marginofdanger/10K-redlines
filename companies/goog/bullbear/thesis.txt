@@ -1,6 +1,7 @@
 ALPHABET (GOOG): INVESTMENT THESIS PILLARS
 Written October 2026 from the 10-K dashboard themes and tracked signals, the 10-Q scanner,
-and the eight filings from the Q3 2024 10-Q to the Q2 2026 10-Q. Every pillar started the window
+and the eight filings from the Q3 2024 10-Q to the Q2 2026 10-Q; updated for the Q3 2026 10-Q
+(filed October 29, 2026). Every pillar started the window
 at Intact; a stance moves only when two or more filings point the same way.
 
 P1 Search and advertising durability
@@ -9,8 +10,9 @@ P1 Search and advertising durability
   Bear fears: AI assistants take queries and ad budgets; distribution remedies from the DOJ case
     raise TAC or cost default placements; Google Network keeps shrinking.
   Stance: Strengthening (Search growth +10% in Q1 2025, then +15% in Q3 2025, +19% in Q1 2026 and
-    +17% in Q2 2026; paid clicks +13% in both 2026 quarters; TAC rate 20.6% -> 19.8%. Network revenue
-    down in every filing in the window).
+    +17% in Q2 2026; paid clicks +13% in both 2026 quarters; TAC rate 20.6% -> 19.8%. Q3 2026 is the
+    first bear filing: Search +12%, flat on Q2, paid clicks +8%. Network revenue fell in every filing
+    until Q3 2026, +1%).
   Last moved: Q1 2026 10-Q.
   Tests: Search & other growth, paid clicks vs cost-per-click, TAC rate, Network revenue.
 
@@ -19,11 +21,13 @@ P2 Google Cloud growth and margin
     infrastructure and TPU demand is monetized; backlog converts on schedule.
   Bear fears: AI infrastructure is sold at low margins to a few large buyers; backlog depends on a
     handful of TPU and capacity contracts that Alphabet itself credit-supports.
-  Stance: Strengthening (operating margin 17.1% in Q3 2024 -> 35.6% in Q2 2026; revenue growth 35% ->
-    82%; backlog $86.8B -> $519.5B, of which $513.9B is Cloud).
+  Stance: Strengthening (operating margin 17.1% in Q3 2024 -> 35.6% in Q2 2026 -> 36.2% in Q3 2026;
+    revenue growth 35% -> 82% -> 103%; backlog $86.8B -> $567.7B, of which $560.8B is Cloud. Q3 2026
+    bear items: $16.8B of backlog from Crux AI, a related-party JV Alphabet will backstop, and $6.6B of
+    TPU repurchase guarantees).
   Last moved: Q2 2025 10-Q (Q1 and Q2 2025 both lifted the Cloud margin 8+ points year over year).
   Tests: Cloud revenue growth and operating margin, backlog and the share recognized in 24 months,
-    TPU system revenue once disclosed.
+    TPU system revenue once disclosed, related-party backlog, TPU repurchase exposure.
 
 P3 Capital intensity and commitments
   Bull assumes: capex is matched by contracted demand; depreciation growth is absorbed by revenue so
@@ -32,7 +36,9 @@ P3 Capital intensity and commitments
     faster than contracted revenue, leaving "excess capacity that we cannot easily redeploy".
   Stance: Weakening (Q3 2025 first data-center backstops, $6.5B; FY2025 commitments $149.1B and
     backstops $22.6B with an overbuild risk factor; Q2 2026 commitments $811.0B against $519.5B of
-    backlog and backstops $51.4B, plus $24.1B more agreed. Operating margin still rose to 34-36%).
+    backlog and backstops $51.4B, plus $24.1B more agreed. Q3 2026: commitments $924.4B, now measured
+    at maximum contractual limits; contingent commitments $98.5B; guarantees to 2049; operating margin
+    36% -> 34% -> 32% through 2026 as depreciation rose 49%).
   Last moved: FY2025 10-K.
   Tests: capex vs operating cash flow, purchase commitments vs backlog, backstop exposure,
     depreciation growth vs revenue growth, operating margin.
@@ -42,7 +48,8 @@ P4 Cash conversion and capital return
   Bear fears: capex absorbs free cash flow; buybacks stop and the share count rises.
   Stance: Broken (FY2024 FCF $72.8B covered $69.4B of buybacks and dividends; FY2025 FCF flat at $73.3B
     on net income +32%, buybacks -27%; Q1 2026 no buybacks and FCF $10.1B; Q2 2026 FCF negative
-    ($-5.9B), $49.6B of new equity, a $40B ATM, and shares outstanding +1.2% in six months).
+    ($-5.9B), $49.6B of new equity, a $40B ATM, and shares outstanding +1.2% in six months; Q3 2026
+    FCF -$9.1B, $12.4B sold under the ATM, no buybacks for a third quarter).
   Moved: Weakening at the FY2025 10-K (Q2 2025 and FY2025); Broken at the Q2 2026 10-Q (Q1 and Q2 2026).
   Last moved: Q2 2026 10-Q.
   Tests: FCF vs net income, buybacks resumed or not, ATM usage, diluted share count.
@@ -53,7 +60,8 @@ P5 Balance sheet and funding
     leases, backstops and commitments add leverage that is not on the debt line.
   Stance: Weakening (notes $11.9B unchanged to Q1 2025; first bond issue Q2 2025; $37.3B of notes in
     2025; long-term debt $98.2B by June 2026; quarterly interest expense $54M -> $1,278M. The June 2026
-    equity raise lifted cash and securities to $242.5B).
+    equity raise lifted cash and securities to $242.5B; Q3 2026 long-term debt $125.1B, credit
+    facilities repaid, Waymo borrows $5.0B secured at SOFR + 5.25% without a parent guarantee).
   Last moved: FY2025 10-K.
   Tests: long-term debt, net interest income, credit-facility drawings, cash excluding restricted
     equity stakes.
@@ -63,7 +71,8 @@ P6 Earnings quality
   Bear fears: unrealized mark-ups on private stakes (SpaceX and an unnamed private company) and other
     one-offs drive EPS; they are not cash and can reverse.
   Stance: Weakening (equity-security gains 6% of pre-tax income in Q3 2024, 23% in Q1 2025, 24% in
-    Q3 2025, 48% in Q1 2026 and 71% in Q2 2026. Operating income itself grew 30% in both 2026 quarters).
+    Q3 2025, 48% in Q1 2026 and 71% in Q2 2026; Q3 2026 reversed to an $8.66B loss, -27% of pre-tax
+    income, as SpaceX fell after its IPO. Operating income itself grew 30% in all three 2026 quarters).
   Last moved: Q3 2025 10-Q.
   Tests: equity-security gains as a share of pre-tax income, operating income growth, effective tax rate.
 
@@ -73,6 +82,8 @@ P7 Legal and regulatory
     damages turn rulings into recurring cash costs.
   Stance: Intact (bull: Q3 2025 Search remedies were behavioral after the DOJ sought structural ones;
     AdSense fine annulled. Bear: $3.0B, $1.4B, $3.5B, $2.1B and $5.2B of fines, settlements and
-    damages; accruals $17.4B; ad-tech remedies, where the DOJ seeks structural changes, still pending).
+    damages; accruals $17.4B; ad-tech remedies, where the DOJ seeks structural changes, still pending.
+    Q3 2026: ad-tech divestiture denied, behavioral remedies ordered (bull); first DMA fines, $1.0B
+    (bear); accruals $13.8B. Not moved: Q2 2026 pointed the other way).
   Last moved: none in the window.
   Tests: ad-tech remedies judgment, Search appeal, accrued fines, follow-on damages awards.
