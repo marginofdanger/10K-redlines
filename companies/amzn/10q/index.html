@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMZN 10-Q Quarterly Scanner | Q1 2023 - Q2 2026</title>
+<title>AMZN 10-Q Quarterly Scanner | Q1 2023 - Q3 2026</title>
 <style>
 :root {
   --bg: #ffffff;
@@ -205,7 +205,7 @@ a:hover { text-decoration: underline; }
 <nav class="sidebar">
   <div class="sidebar-header">
     <h1>AMZN 10-Q SCANNER</h1>
-    <div class="sub">Q1 2023 &ndash; Q2 2026 | SEC EDGAR</div>
+    <div class="sub">Q1 2023 &ndash; Q3 2026 | SEC EDGAR</div>
   </div>
   <div class="nav-section">Overview</div>
   <a class="nav-item" href="#hero-section">Executive Summary</a>
@@ -225,6 +225,7 @@ a:hover { text-decoration: underline; }
   <a class="nav-item" href="#q3-2025-fy2025">Q3 2025 &rarr; FY2025 10-K</a>
   <a class="nav-item" href="#fy2025-q1-2026">FY2025 10-K &rarr; Q1 2026</a>
   <a class="nav-item" href="#q1q2-2026">Q1 &rarr; Q2 2026</a>
+  <a class="nav-item" href="#q2q3-2026">Q2 &rarr; Q3 2026</a>
 
   <div class="nav-section">Tracked Signals</div>
   <a class="nav-item" href="#sig-backlog">AWS Backlog &amp; Contract Life</a>
@@ -253,8 +254,8 @@ a:hover { text-decoration: underline; }
 <!-- Hero -->
 <div class="hero" id="hero-section">
   <h1>AMZN 10-Q Quarterly Scanner</h1>
-  <div class="tagline">Quarter-over-quarter textual analysis of 14 SEC filings (eleven 10-Qs plus the FY2023, FY2024, and FY2025 10-Ks). The value is speed: catching language changes at quarterly cadence that annual 10-K comparisons would miss by 3&ndash;9 months.</div>
-  <div class="source">Source: SEC EDGAR (CIK 0001018724) | 14 Filings | Q1 2023 &ndash; Q2 2026 | Analysis: July 2026; transitions from Q3 2024 on re-analyzed October 2026 (sentence-level shift and history checks)</div>
+  <div class="tagline">Quarter-over-quarter textual analysis of 15 SEC filings (twelve 10-Qs plus the FY2023, FY2024, and FY2025 10-Ks). The value is speed: catching language changes at quarterly cadence that annual 10-K comparisons would miss by 3&ndash;9 months.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0001018724) | 15 Filings | Q1 2023 &ndash; Q3 2026 | Analysis: July 2026; transitions from Q3 2024 on re-analyzed October 2026 (sentence-level shift and history checks); extended October 2026 (Q3 2026 10-Q)</div>
 </div>
 
 <!-- Method note -->
@@ -262,11 +263,11 @@ a:hover { text-decoration: underline; }
   <div class="section-header"><h2>Reading This Filer</h2></div>
   <div class="signal-card full">
     <h3>Three structural facts that determine where AMZN's quarterly signal lives</h3>
-    <p><strong>1. Legal Proceedings is a pointer, not a section.</strong> Part II Item 1 reads, in all eleven 10-Qs, exactly:</p>
+    <p><strong>1. Legal Proceedings is a pointer, not a section.</strong> Part II Item 1 reads, in all twelve 10-Qs, exactly:</p>
     <blockquote>"See Item 1 of Part I, &ldquo;Financial Statements &mdash; Note 4 &mdash; Commitments and Contingencies &mdash; Legal Proceedings.&rdquo;"</blockquote>
     <p>Every quarter-over-quarter legal-proceedings diff in this dataset is <strong>zero lines</strong>. The legal signal is in the contingencies note, which this scanner diffs separately.</p>
     <p><strong>2. Note 4 restates only new or updated matters.</strong> Each quarter incorporates prior filings by reference and supplements them. A matter disappearing from one quarter to the next is a restatement roll-off, <strong>not</strong> a resolution or dismissal. Matters rotate in when there is a development and out when there is not.</p>
-    <p><strong>3. Risk factors are near-frozen intra-year.</strong> Across seven intra-year quarterly transitions spanning four years, there are five substantive risk-factor edits in total; three transitions (Q2&rarr;Q3 2024, Q1&rarr;Q2 2025, Q2&rarr;Q3 2025) contain no substantive change whatsoever &mdash; only repagination. All meaningful risk-factor movement occurs at the annual 10-K boundary, which is why those four boundaries are included as transitions here.</p>
+    <p><strong>3. Risk factors are near-frozen intra-year.</strong> Across eight intra-year quarterly transitions spanning four years, there are six substantive risk-factor edits in total (the latest, in Q3 2026, a deletion); three transitions (Q2&rarr;Q3 2024, Q1&rarr;Q2 2025, Q2&rarr;Q3 2025) contain no substantive change whatsoever &mdash; only repagination. All meaningful risk-factor movement occurs at the annual 10-K boundary, which is why those four boundaries are included as transitions here.</p>
     <p>Consequently the fastest-moving quarterly signals for this filer are MD&amp;A driver sentences, the AWS remaining-performance-obligation disclosure, and the commitments table &mdash; not the risk factors.</p>
   </div>
 </div>
@@ -306,7 +307,7 @@ a:hover { text-decoration: underline; }
     <blockquote>"AWS sales increased <strong>16%</strong> in Q1 2023 compared to the comparable prior year period. The sales growth primarily reflects increased customer usage, partially offset by pricing changes, primarily driven by long-term customer contracts."</blockquote>
     <p>Q2 2023:</p>
     <blockquote>"AWS sales increased <strong>12%</strong> in Q2 2023, and 14% for the six months ended June 30, 2023 compared to the comparable prior year periods. The sales growth primarily reflects increased customer usage, partially offset by pricing changes, primarily driven by long-term customer contracts."</blockquote>
-    <p>The explanatory clause is unchanged character for character. It remains unchanged in all eleven quarters of this dataset, across a growth range of 12% to 37%.</p>
+    <p>The explanatory clause is unchanged character for character. It remains unchanged in all twelve quarters of this dataset, across a growth range of 12% to 39%.</p>
   </div>
 </div>
 
@@ -1531,13 +1532,223 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
+<!-- Q2 → Q3 2026 -->
+<div class="transition-header" id="q2q3-2026">
+  <h2>Q2 2026 &rarr; Q3 2026</h2>
+  <div class="sub">Filed Oct 30, 2026 | Revenue: $201.94B (+12%; Prime Day fell in Q2) | Op income: $28.08B (guide $22.5&ndash;26.5B) | Net income: $20.69B | Q3 operating cash flow $42.42B vs. purchases of property and equipment $77.26B | AWS growth: 37% &rarr; 39% | Backlog: $496B &rarr; $578B | Long-term debt: $128.89B &rarr; $173.13B | Risk factors: one edit, a deletion</div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New $80.0B secured "Loan Facility" among "supplier financing arrangements" for technology infrastructure, drawable Q1 2027&ndash;Q3 2028 against "a security interest in certain purchased assets"; every other 2026 borrowing is unsecured</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: + Loan Facility, + supplier financing arrangements (+ disclosure); quant added: up to $80.0B; condition added: amount "subject to variability" with purchase orders and pricing</p>
+    <blockquote>Q3 2026: "We enter into supplier financing arrangements that provide for certain purchases of technology infrastructure assets, including a secured loan facility (the &ldquo;Loan Facility&rdquo;) providing for borrowings at our discretion, from Q1 2027 through Q3 2028 and subject to variability based on the extent and timing of purchase orders and pricing terms, of up to approximately $80.0 billion, which accrue interest at variable rates and mature five years from the date of each borrowing."</blockquote>
+    <blockquote>Q3 2026: "We will grant a security interest in certain purchased assets in connection with the Loan Facility. Amounts outstanding for assets purchased under the Loan Facility will be classified as &ldquo;Long-term debt&rdquo; on our consolidated balance sheets, and principal payments made will be reported as &ldquo;Repayments of long-term debt&rdquo; on our consolidated statements of cash flows."</blockquote>
+    <p class="history">History (phrase_history): "supplier financing", "secured loan", "Loan Facility" and "security interest" appear in no earlier filing. The last secured borrowing was the seller-receivables Credit Facility, "secured by certain seller receivables" and terminated by September 30, 2024; every 2026 note, the term loan, the revolvers and commercial paper are described as "unsecured".</p>
+    <p>$80.0B is 46% of the $173.1B of long-term debt now on the balance sheet. Repayments will be financing outflows, and free cash flow by Amazon's definition excludes "principal reductions of debt", so equipment bought through the facility may never pass through the capex line that free cash flow deducts. That is an inference: the filing does not say how the purchases themselves will be presented. The facility appears only in the debt note; MD&amp;A's liquidity section does not mention it.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Commitments $650.0B &rarr; $883.6B in one quarter; equipment obligations broken out as a new $159.6B row, counted only at "minimum pricing" where prices vary</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+): property and equipment obligations shown as their own line; condition added (&minus;): variable-price agreements counted at minimum pricing only; named: + extended payment terms of up to one year</p>
+    <blockquote>Q2 2026: "Includes unconditional purchase obligations related to long-term agreements to procure energy, acquire and license digital media content, acquire property and equipment, and license software that are not reflected on the consolidated balance sheets."</blockquote>
+    <blockquote>Q3 2026: "Property and equipment (2) | 13,955 | 63,900 | 25,220 | 25,400 | 28,941 | 2,224 | 159,640"</blockquote>
+    <blockquote>Q3 2026: "Includes unconditional purchase obligations related to long-term agreements to acquire property and equipment that are not reflected on the consolidated balance sheets. For agreements with variable pricing terms, we do not estimate the total obligation beyond any minimum pricing as of the reporting date. For certain arrangements that provide us with extended payment terms for up to one year for purchase orders of technology infrastructure assets, amounts outstanding under such purchase orders for assets received are classified as &ldquo;Accounts payable&rdquo; on our consolidated balance sheets..."</blockquote>
+    <p class="history">History (phrase_history): "acquire property and equipment" entered the purchase-obligation footnote in Q1 2025 and stood there through Q2 2026; the separate "Property and equipment" row, "minimum pricing" and "extended payment terms" first appear in Q3 2026. Table totals: $650,034M &rarr; $883,581M; purchase obligations including equipment $130,065M &rarr; $254,399M ($159,640M equipment + $94,759M other); leases not yet commenced $137,214M &rarr; $164,922M.</p>
+    <p>On a like-for-like basis purchase obligations nearly doubled in a quarter, and $63.9B of the equipment row falls in 2027, the year capex is now guided to "meaningfully increase". Because variable-price agreements count only their minimum, the $159.6B is a floor. The extended payment terms mean up to a year of received equipment can sit in accounts payable before it reaches "Purchases of property and equipment".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Meaningfully increase in 2027": the capex qualifier removed in the FY2024 10-K returns, in a restored standalone sentence about next year</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree (+ firmer): "expect to increase" &rarr; "expect ... to meaningfully increase"; horizon extended to 2027; standalone forward sentence restored</p>
+    <blockquote>Q3 2024: "We expect cash capital expenditures to meaningfully increase in 2024, primarily driven by investments in technology infrastructure."</blockquote>
+    <blockquote>Q2 2026: "...in additional capacity to support our fulfillment network, both of which we expect to increase in 2026."</blockquote>
+    <blockquote>Q3 2026: "We expect cash capital expenditures to meaningfully increase in 2027, primarily driven by investments in technology infrastructure."</blockquote>
+    <p class="history">History (phrase_history): "meaningfully increase" appears in Q1&ndash;Q3 2024 and then not again until Q3 2026. The FY2024 10-K dropped the qualifier and Q2 2025 deleted the standalone sentence, leaving the trailing clause "both of which we expect to increase in ...", which Q3 2026 still repeats for 2026 (tracked signal #3).</p>
+    <p>The last time Amazon used this sentence, cash capex went from $48.1B (2023) to $77.7B (2024). This time it follows $172.2B in nine months. With the Loan Facility opening in Q1 2027 and $63.9B of 2027 equipment obligations already in the commitments table, 2027 spending is being contracted and financed before it is guided in dollars.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First dollar capex figure in any filing: "approximately $220 billion" for 2026, which leaves about $47.8B for Q4 after $75.9B in Q3</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+): a point estimate beside the directional "expect to increase"; "continue to expect" refers to a figure no earlier filing contains</p>
+    <blockquote>Q3 2026: "We continue to expect 2026 cash capital expenditures to be approximately $220 billion."</blockquote>
+    <blockquote>Q3 2026: "Cash capital expenditures were $34.2 billion and $75.9 billion during Q3 2025 and Q3 2026, and $89.9 billion and $172.2 billion for the nine months ended September 30, 2025 and 2026..."</blockquote>
+    <p class="history">History (phrase_history): "$220 billion" and "cash capital expenditures to be approximately" appear in no earlier filing; every guidance section from Q1 2023 to Q2 2026 covered sales and operating income only. "Continue to expect" implies the figure was given outside the filings, which the filing does not identify.</p>
+    <p>$220B less $172.2B implies about $47.8B of cash capex in Q4, 37% below Q3 (arithmetic, not stated). The filing gives no reason for a fourth-quarter drop. The new extended payment terms, which keep received equipment in accounts payable for up to a year, are one way cash capex could fall while asset additions do not (an inference).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Free cash flow caveat adds "non-marketable investments" to what it leaves out, in the quarter $21.3B went to OpenAI; trailing free cash flow $(7.6)B &rarr; $(42.4)B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope widened (+ disclosure): exclusions "business acquisitions" &rarr; "non-marketable investments and business acquisitions"; quant: trailing free cash flow down $34.8B</p>
+    <blockquote>Q2 2026: "For example, free cash flow does not incorporate the portion of payments representing principal reductions of debt or cash payments for business acquisitions."</blockquote>
+    <blockquote>Q3 2026: "For example, free cash flow does not incorporate the portion of payments representing principal reductions of debt or cash payments for non-marketable investments and business acquisitions."</blockquote>
+    <blockquote>Q3 2026: "Free cash flow | 14,788 | (42,357)"</blockquote>
+    <p class="history">History (phrase_history --sentence): the clause ended "or cash payments for business acquisitions" in every filing from the FY2022 10-K to Q2 2026 (as "these measures of free cash flows" through the FY2024 10-K); "non-marketable investments" enters MD&amp;A for the first time in Q3 2026. Trailing free cash flow: $1,232M (Q1 2026), $(7,604)M (Q2), $(42,357)M (Q3).</p>
+    <p>The $60.0B put into OpenAI and Anthropic over nine months is outside free cash flow, and the caveat now says so. Even without those payments, trailing free cash flow is $(42.4)B: $168.3B of operating cash flow against $210.7B of net capex. On financials.py's basis Q3 alone was $(34.84)B. With the Loan Facility, two of the largest uses of cash in 2026 and 2027 sit outside the measure Amazon calls its "financial focus".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AWS backlog $496B &rarr; $578B gains a hedge, "were estimated to be approximately"; contract life shortens 6.4 &rarr; 6.1 years with no new named commitment</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: hedge added (&minus;): "were approximately" &rarr; "were estimated to be approximately"; quant: backlog +$82B, contract life &minus;0.3 years</p>
+    <blockquote>Q2 2026: "For contracts with original terms that exceed one year, those commitments not yet recognized were approximately $496 billion as of June 30, 2026. The weighted-average remaining life of our long-term contracts is 6.4 years."</blockquote>
+    <blockquote>Q3 2026: "For contracts with original terms that exceed one year, those commitments not yet recognized were estimated to be approximately $578 billion as of September 30, 2026. The weighted-average remaining life of our long-term contracts is 6.1 years."</blockquote>
+    <blockquote>Q3 2026: "AWS sales increased 39% in Q3 2026, and 35% for the nine months ended September 30, 2026 compared to the comparable prior year periods."</blockquote>
+    <p class="history">History (phrase_history --sentence): the sentence read "were $X billion" from the FY2022 10-K to Q2 2024 and "were approximately" from Q3 2024 to Q2 2026; "estimated to be" first appears in Q3 2026. The OpenAI ($100.0B over 8.0 years) and Anthropic (more than $100.0B over 10.0 years) expansion sentences are unchanged from Q2 2026, and the AWS driver sentence is unchanged in every 10-Q.</p>
+    <p>The first 2026 quarter without a named expansion still added $82B, more than all of 2025 ($177B &rarr; $244B). The shorter average life suggests the new contracts run shorter than the two AI-lab deals (an inference). The new word "estimated" says the figure rests on assumptions the filing does not describe. AWS operating margin was 38.7% ($17.77B on $45.98B), against 39.4% in Q2.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">India's tax claim on AWS cloud fees, carried in every filing since the FY2022 10-K, is deleted from both the tax note and the risk factors with no outcome stated</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: deletion (&minus; disclosure): the matter and its "could be significant" payment warning removed; no settlement, ruling or reserve change described</p>
+    <blockquote>Q2 2026: "The Indian tax authority (&ldquo;ITA&rdquo;) has asserted that tax applies to cloud services fees paid to Amazon in the U.S. We will need to remit taxes related to this matter until it is resolved, which payments could be significant in the aggregate. We believe the ITA's position is without merit, we are defending our position vigorously, and we expect to recoup taxes paid."</blockquote>
+    <blockquote>Q2 2026: "For example, the Indian tax authority has asserted that tax applies to cloud services fees paid to Amazon in the U.S. We are contesting this position; however, if this matter is adversely resolved, we may be required to pay additional amounts with respect to current and prior periods and our taxes in the future could increase."</blockquote>
+    <blockquote>Q3 2026: "We are also subject to taxation in various states and foreign jurisdictions including Germany, India, Italy, Japan, Luxembourg, and the United Kingdom."</blockquote>
+    <p class="history">History (phrase_history): "Indian tax authority" appears in the tax note and the risk factors of all 14 filings from the FY2022 10-K (which dated the determination to February 2023) to Q2 2026, and nowhere in Q3 2026; the note's current wording dates from Q3 2023. "Germany, India, Italy" first appears in Q3 2026. Income tax contingencies: $7.1B &rarr; $7.3B.</p>
+    <p>Amazon does not say whether the claim was won, settled or dropped, and the tax-controversy risk factor loses its only named example. Unlike Note 4's legal matters, which rotate in and out, this paragraph was restated every quarter for three and a half years, so its removal points to a development the filing does not describe (an inference). The Luxembourg paragraph, with the same "we expect to recoup taxes paid" wording, stays. This is the quarter's only risk-factor edit.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Anthropic: ownership cap quantified at "12%", share counts disclosed (164M preferred held; notes convertible to ~184M); notes' fair value $97.9B &rarr; $146.2B through other comprehensive income</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+): cap percentage, share counts and the ten-for-one conversion ratio disclosed for the first time</p>
+    <blockquote>Q2 2026: "The convertible notes are subject to our ownership cap, which may be waived at our election."</blockquote>
+    <blockquote>Q3 2026: "The convertible notes are subject to our 12% ownership cap, which may be waived at our election."</blockquote>
+    <blockquote>Q3 2026: "As of September 30, 2026, we held 164 million shares of Anthropic nonvoting preferred stock." ... "Without giving effect to the ownership cap, the convertible notes we held at September 30, 2026 would convert to approximately 184 million shares of nonvoting preferred stock."</blockquote>
+    <blockquote>Q3 2026: "...the estimated fair value of our convertible notes recorded on our consolidated balance sheets was approximately $45.8 billion and $146.2 billion, and the associated unrealized gain included in &ldquo;Accumulated other comprehensive income (loss)&rdquo; was $39.5 billion and $140.3 billion."</blockquote>
+    <p class="history">History (phrase_history): "subject to our ownership cap" first appears in Q2 2026; "12% ownership cap", "164 million shares" and "ten shares of nonvoting common stock" first appear in Q3 2026. Notes' fair value: $45.8B (FY2025 10-K), $97.9B (Q2 2026), $146.2B (Q3 2026); preferred stock unchanged at $92.5B.</p>
+    <p>The notes would convert into more preferred shares than Amazon already holds, so the cap, which Amazon can waive, is what limits the stake. The $48.3B rise in the notes went to other comprehensive income while reported other income was $(703)M, the first negative quarter of 2026. On the two carrying values the notes imply about $795 per underlying preferred share and the preferred about $564 (arithmetic; the filing does not reconcile the two Level 3 bases). Anthropic positions now total $238.7B, 3.0 times 2025 operating income.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">FTC and 22 states sue over "reserve prices" in sponsored-ad auctions, and Texas sues Amazon Advertising LLC separately: the first government case aimed at the ads business</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: + Amazon Advertising LLC, + 22 state Attorneys General, + FTC Act advertiser claims; no accrual or range (unchanged practice)</p>
+    <blockquote>Q3 2026: "In August 2026, the Federal Trade Commission and 22 state Attorneys General filed a complaint against Amazon.com, Inc., in the United States District Court for the Western District of Washington and the State of Texas filed a complaint against Amazon.com, Inc., Amazon.com Services LLC, and Amazon Advertising LLC..."</blockquote>
+    <blockquote>Q3 2026: "The complaints allege that Amazon harmed advertisers through, among other things, misrepresentations, omissions, and unfair business practices involving the use of reserve prices in Amazon's sponsored ad auctions, in violation of the FTC Act and/or state laws. The complaints seek injunctive relief and unspecified amounts of civil penalties, restitution, forfeiture, disgorgement, attorneys' fees, costs, expenses, and interest."</blockquote>
+    <p class="history">History (phrase_history): "reserve prices" and "Amazon Advertising LLC" first appear in Q3 2026. The FTC's earlier cases in Note 4 were the September 2023 monopolization suit (antitrust omnibus) and the Prime case settled for $2.5B in Q3 2025. Audible's credit-expiration suits also enter Note 4 this quarter.</p>
+    <p>Earlier government cases targeted the marketplace and Prime; this one targets how Amazon prices ad auctions. Advertising services were $56.7B for the nine months, and the suit seeks restitution and disgorgement in unspecified amounts. It is disclosed in the same filing that introduces guidance for advertising growth; the filing does not connect the two.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Advertising gets its own guidance for the first time: Q3 "12%" excluding FX (26% reported in Q2), put down to "timing anomalies"; Q4 "high teens"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+): revenue-line guidance; condition: the slowdown attributed to timing "primarily related to Prime Day (and a couple other timing factors)", unquantified</p>
+    <blockquote>Q3 2026: "Advertising revenue grew 12% year-over-year excluding changes in foreign exchange rates in the third quarter 2026 impacted by timing anomalies primarily related to Prime Day (and a couple other timing factors). We expect year-over-year advertising revenue to grow in the high teens in fourth quarter 2026."</blockquote>
+    <blockquote>Q3 2026: "Advertising services (4) | 17,703 | 19,637 | 47,318 | 56,689"</blockquote>
+    <p class="history">History (phrase_history): "advertising revenue" appears in MD&amp;A for the first time in Q3 2026 (before that, only in one risk factor from the FY2023 10-K on); "timing anomalies" is new. From the revenue-disaggregation tables, advertising grew about 23% in Q4 2025 (derived from the FY2025 10-K), 24% in Q1 2026 and 26% in Q2 2026.</p>
+    <p>Reported advertising revenue fell from $19.81B in Q2 to $19.64B and grew 10.9% year over year. "High teens" for Q4 is still below the 23% of a year earlier, so the guided recovery is itself a slowdown (arithmetic). The Q2 10-Q sized Prime Day's effect on total sales at "nearly 400 basis points" but gives no figure for advertising, and this filing gives none either.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$17.5B term loan drawn in September, its last eligible month; notes $132.1B &rarr; $162.5B; "additional financing activities in 2026" still promised with one quarter left</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized (+): undrawn standby line &rarr; fully drawn; forward financing statement retained</p>
+    <blockquote>Q2 2026: "We may draw up to $17.5 billion in a single draw on any business day on or prior to September 30, 2026, after which any undrawn commitments will automatically terminate."</blockquote>
+    <blockquote>Q3 2026: "In June 2026, we entered into a $17.5 billion unsecured delayed single draw term loan with a syndicate of lenders (the &ldquo;Term Loan&rdquo;), which we drew on in September 2026."</blockquote>
+    <blockquote>Q3 2026: "We expect to undertake additional financing activities in 2026."</blockquote>
+    <p class="history">History (phrase_history): "additional financing activities in 2026" appears in Q1, Q2 and Q3 2026. Notes outstanding: $68.0B (FY2025 10-K), $121.8B (Q1 2026), $132.1B (Q2), $162.5B (Q3), after $25.0B of dollar notes in July and &pound;4.3B of sterling notes in September.</p>
+    <p>Total face value of long-term debt is $180.9B against $68.8B at year-end. Q3 debt proceeds of $53.4B were close to the $21.3B OpenAI payment plus the quarter's free cash flow shortfall. Interest expense was $1.7B against $538M a year earlier; operating income covers it about 17 times. The October replacement revolvers ($15.0B to 2031 and a $5.0B 364-day line) keep backup capacity at $20.0B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Standby letters of credit $13.4B &rarr; $21.6B, now "primarily related to our purchase commitments"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: + purchase commitments, listed first among the purposes; quant: +$8.2B in a quarter</p>
+    <blockquote>Q2 2026: "As of June 30, 2026, our total standby letter of credit facilities assigned to specific beneficiaries was $13.4 billion, primarily related to our payment-related services, and workers' compensation and insurance programs."</blockquote>
+    <blockquote>Q3 2026: "As of September 30, 2026, our total standby letter of credit facilities assigned to specific beneficiaries was $21.6 billion, primarily related to our purchase commitments, payment-related services, and workers' compensation and insurance programs."</blockquote>
+    <p class="history">History (phrase_history): the standby letter of credit disclosure first appears in Q2 2026; "purchase commitments" joins its purposes in Q3 2026.</p>
+    <p>Counterparties to Amazon's purchase commitments now hold bank guarantees that "can only be drawn in the event we fail to perform under the underlying obligation". That suppliers ask for them fits the size of the new equipment obligations (an inference). The guarantees are contingent and do not reduce borrowing capacity, but they are a third form of supplier-side financing disclosed this quarter, after the Loan Facility and the extended payment terms.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Energy contracts under derivative accounting 270M &rarr; 690M megawatt-hours and 15 &rarr; 18 years; MD&amp;A now says "gains and losses"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant (volume 2.6x, duration +3 years); scope widened: "net unrealized gains" &rarr; "net unrealized gains and losses"</p>
+    <blockquote>Q2 2026: "As of June 30, 2026, the energy contract quantities subject to derivative accounting fair value measurements were approximately 270 million megawatt-hours and the weighted-average remaining duration of these contracts is approximately 15 years..."</blockquote>
+    <blockquote>Q3 2026: "As of September 30, 2026, the energy contract quantities subject to derivative accounting fair value measurements were approximately 690 million megawatt-hours and the weighted-average remaining duration of these contracts is approximately 18 years, with the majority of these megawatt-hours to be delivered beyond the next ten years."</blockquote>
+    <blockquote>Q3 2026: "Technology and infrastructure costs include net unrealized gains and losses for energy contracts that are subject to derivative accounting, primarily related to AWS."</blockquote>
+    <p class="history">History: contracted volume 200M MWh (FY2025 10-K, 16 years), 200M (Q1 2026, 15 years), 270M (Q2), 690M (Q3, 18 years); "megawatt-hours" first appears in the FY2025 10-K. Net unrealized gains: $551M (Q2 2026), $91M (Q3).</p>
+    <p>The power volume marked to market through AWS costs rose 2.6 times in a quarter, so a given move in long-dated power prices now moves AWS operating income about 2.6 times as much as in June (an inference from proportionality). Guidance still assumes "no impact from energy derivative contract remeasurements".</p>
+  </div>
+</div>
+
 
 <!-- ==================== TRACKED SIGNALS ==================== -->
 
 <div class="section" id="sig-backlog">
   <div class="section-header"><h2>#1: AWS Backlog &amp; Contract Life</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">1</span> $122B to $244B in Three Years, Then $244B to $496B in Two Quarters</h3>
+    <h3><span class="num">1</span> $122B to $244B in Three Years, Then $244B to $578B in Three Quarters</h3>
     <p>Remaining performance obligations on contracts with original terms exceeding one year, disclosed in the revenue note every quarter:</p>
     <table class="data-table">
       <thead><tr><th>Quarter</th><th>Backlog</th><th>Wtd. avg. remaining life</th><th>Note</th></tr></thead>
@@ -1554,16 +1765,17 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2025 10-K</td><td>~$244B</td><td>4.1 years</td><td>Recognition now "driven by customer usage and our performance in accordance with contractual obligations"</td></tr>
         <tr><td>Q1 2026</td><td class="val-neg">$364B</td><td class="val-neg">5.5 years</td><td class="val-new">OpenAI +$100.0B over 8.0 years on an "existing $38.0 billion" never named in the 10-K</td></tr>
         <tr><td>Q2 2026</td><td class="val-neg">$496B</td><td class="val-neg">6.4 years</td><td class="val-new">Anthropic expansion "more than $100.0 billion over 10.0 years"</td></tr>
+        <tr><td>Q3 2026</td><td class="val-neg">$578B</td><td>6.1 years</td><td class="val-new">Hedge added: "were estimated to be approximately"; no new named commitment</td></tr>
       </tbody>
     </table>
-    <p>Contract life held in a 3.5&ndash;4.1 year band across ten consecutive filings through the FY2025 10-K, then moved to 6.4 years in two quarters. Neither the backlog figure nor the counterparty commitments appear anywhere in MD&amp;A &mdash; the words "backlog" and "remaining performance obligation" occur zero times in every quarter's MD&amp;A in this dataset. This signal is visible only in the revenue note.</p>
+    <p>Contract life held in a 3.5&ndash;4.1 year band across ten consecutive filings through the FY2025 10-K, then moved to 6.4 years in two quarters and eased to 6.1 years in Q3 2026, the first quarter the figure is called an estimate. Q3 added $82B with no counterparty named, more than all of 2025. Neither the backlog figure nor the counterparty commitments appear anywhere in MD&amp;A &mdash; the words "backlog" and "remaining performance obligation" occur zero times in every quarter's MD&amp;A in this dataset. This signal is visible only in the revenue note.</p>
   </div>
 </div>
 
 <div class="section" id="sig-aws">
   <div class="section-header"><h2>#2: AWS Growth vs. Frozen Language</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">2</span> 12% to 37% With One Unedited Sentence</h3>
+    <h3><span class="num">2</span> 12% to 39% With One Unedited Sentence</h3>
     <table class="data-table">
       <thead><tr><th>Quarter</th><th>AWS growth</th><th>AWS sales</th><th>AWS op. income</th><th>Driver sentence</th></tr></thead>
       <tbody>
@@ -1578,18 +1790,19 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2025</td><td class="val-pos">20%</td><td>$33,006M</td><td>$11,434M</td><td>Unchanged</td></tr>
         <tr><td>Q1 2026</td><td class="val-pos">28%</td><td>$37,587M</td><td>$14,161M</td><td>Unchanged</td></tr>
         <tr><td>Q2 2026</td><td class="val-pos">37%</td><td>$42,232M</td><td>$16,621M</td><td>Unchanged</td></tr>
+        <tr><td>Q3 2026</td><td class="val-pos">39%</td><td>$45,984M</td><td>$17,773M</td><td>Unchanged</td></tr>
       </tbody>
     </table>
-    <p>The explanation is identical in all eleven filings:</p>
+    <p>The explanation is identical in all twelve filings:</p>
     <blockquote>"The sales growth primarily reflects increased customer usage, partially offset by pricing changes primarily driven by long-term customer contracts."</blockquote>
-    <p>(2023 filings carry one additional comma, after "changes".) Across a 25-point swing in growth rate and a tripling of segment operating income, the stated cause never changes and no AI, capacity, or backlog attribution is ever added. The one adjacent sentence that did move was the AWS enterprise cost-optimization warning, deleted in Q1 2024 and never restored.</p>
+    <p>(2023 filings carry one additional comma, after "changes".) Across a 27-point swing in growth rate and a more than tripling of segment operating income, the stated cause never changes and no AI, capacity, or backlog attribution is ever added. The one adjacent sentence that did move was the AWS enterprise cost-optimization warning, deleted in Q1 2024 and never restored.</p>
   </div>
 </div>
 
 <div class="section" id="sig-capex">
   <div class="section-header"><h2>#3: The Capex Forward Statement</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">3</span> Decrease &rarr; Meaningfully Increase &rarr; Increase &rarr; Deleted</h3>
+    <h3><span class="num">3</span> Decrease &rarr; Meaningfully Increase &rarr; Increase &rarr; Deleted &rarr; Meaningfully Increase, With a Number</h3>
     <table class="data-table">
       <thead><tr><th>Filing</th><th>Forward statement</th><th>Form</th></tr></thead>
       <tbody>
@@ -1601,16 +1814,17 @@ a:hover { text-decoration: underline; }
         <tr><td>Q2 2025</td><td class="val-neg">"both of which we expect to increase in 2025" &mdash; <strong>standalone sentence deleted</strong>; technology-infrastructure attribution removed</td><td class="val-neg">Trailing clause</td></tr>
         <tr><td>Q3 2025</td><td class="val-new">"both of which we expect to increase in <strong>2025 and 2026</strong>" &mdash; first extension past the current year</td><td>Trailing clause</td></tr>
         <tr><td>FY2025 10-K &ndash; Q2 2026</td><td>"both of which we expect to increase in <strong>2026</strong>"</td><td>Trailing clause</td></tr>
+        <tr><td>Q3 2026</td><td class="val-pos">2026 clause kept; adds "expect cash capital expenditures to <strong>meaningfully increase in 2027</strong>, primarily driven by investments in technology infrastructure"; guidance adds "2026 cash capital expenditures to be approximately <strong>$220 billion</strong>"</td><td class="val-new">Standalone restored; first dollar figure</td></tr>
       </tbody>
     </table>
-    <p>Quarterly cash capex over the same window: $13.1B, $10.4B, $11.3B, $13.9B, $17.6B, $22.6B, $25.0B, $32.2B, $35.1B, $44.2B, $54.2B. The qualifier "meaningfully" was removed in the filing reporting FY2024 capex of $77.7B, and the standalone sentence was removed entirely in the quarter capex first exceeded $30B. At no point in fourteen filings is capex attributed to AI &mdash; the attribution has read "(the majority of which is to support AWS business growth)" without amendment since Q1 2023.</p>
+    <p>Quarterly cash capex over the same window: $13.1B, $10.4B, $11.3B, $13.9B, $17.6B, $22.6B, $25.0B, $32.2B, $35.1B, $44.2B, $54.2B, $77.3B. The qualifier "meaningfully" was removed in the filing reporting FY2024 capex of $77.7B, and the standalone sentence was removed entirely in the quarter capex first exceeded $30B. Both came back in Q3 2026, the quarter capex reached $77.3B, together with the first dollar outlook ($220B for 2026, implying about $47.8B of Q4 cash capex against $75.9B in Q3). At no point in fifteen filings is capex attributed to AI &mdash; the attribution has read "(the majority of which is to support AWS business growth)" without amendment since Q1 2023.</p>
   </div>
 </div>
 
 <div class="section" id="sig-commitments">
   <div class="section-header"><h2>#4: Commitments &amp; Unstarted Leases</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">4</span> $287B to $650B</h3>
+    <h3><span class="num">4</span> $287B to $884B</h3>
     <table class="data-table">
       <thead><tr><th>As of</th><th>Leases not yet commenced</th><th>Unconditional purchase obligations</th><th>Total commitments</th></tr></thead>
       <tbody>
@@ -1626,16 +1840,17 @@ a:hover { text-decoration: underline; }
         <tr><td>Dec 31, 2025 (10-K)</td><td>$96,373M</td><td>$84,772M</td><td>$439,661M</td></tr>
         <tr><td>Mar 31, 2026</td><td class="val-neg">$106,347M</td><td class="val-neg">$103,768M</td><td class="val-neg">$569,280M</td></tr>
         <tr><td>Jun 30, 2026</td><td class="val-neg">$137,214M</td><td class="val-neg">$130,065M</td><td class="val-neg">$650,034M</td></tr>
+        <tr><td>Sep 30, 2026</td><td class="val-neg">$164,922M</td><td class="val-neg">$254,399M ($159,640M property and equipment, a new row, + $94,759M other)</td><td class="val-neg">$883,581M</td></tr>
       </tbody>
     </table>
-    <p>The purchase-obligation attribution footnote changed twice, and neither change coincided with the largest jumps. Q1 2024 added a renewable-energy carve-out; Q1 2025 added "<strong>acquire property and equipment</strong>" to the enumerated categories and generalized "renewable energy" to "energy"; Q3 2025 added termination penalties; the FY2025 10-K promoted energy to the head of the list and added a regulatory-approval carve-out. The $19.1B (+59%) jump in Q3 2024 and the $26.3B jump in Q2 2026 both occurred with the scope language <em>unchanged</em>, so those increases are contract volume rather than definitional.</p>
+    <p>The purchase-obligation attribution footnote changed twice, and neither change coincided with the largest jumps. Q1 2024 added a renewable-energy carve-out; Q1 2025 added "<strong>acquire property and equipment</strong>" to the enumerated categories and generalized "renewable energy" to "energy"; Q3 2025 added termination penalties; the FY2025 10-K promoted energy to the head of the list and added a regulatory-approval carve-out. The $19.1B (+59%) jump in Q3 2024 and the $26.3B jump in Q2 2026 both occurred with the scope language <em>unchanged</em>, so those increases are contract volume rather than definitional. Q3 2026 split equipment out of the footnote into its own row and added that variable-price agreements are counted only at "minimum pricing", so the $159.6B is a floor; the combined $124.3B quarterly increase is still like-for-like with the old definition.</p>
   </div>
 </div>
 
 <div class="section" id="sig-ai-invest">
   <div class="section-header"><h2>#5: AI Counterparty Investments</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">5</span> $1.25B Note to a $50B Equity Position in Eleven Quarters</h3>
+    <h3><span class="num">5</span> $1.25B Note to $50B in OpenAI and $239B Carried in Anthropic in Twelve Quarters</h3>
     <table class="data-table">
       <thead><tr><th>Quarter</th><th>Disclosure</th><th>Related income statement effect</th></tr></thead>
       <tbody>
@@ -1648,16 +1863,17 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2025 10-K</td><td>$2.7B final Anthropic note (total $8.0B in notes); OpenAI not mentioned</td><td class="val-pos">$7.7B upward adjustment + $5.6B reclassification within $15.2B FY other income; ~$3B + ~$12B of Q1 2026 gains pre-announced</td></tr>
         <tr><td>Q1 2026</td><td class="val-new">$15.0B OpenAI Series C + $35.0B equity commitment letter (mandatory on milestones or IPO; lapses Dec 31, 2028); AWS/OpenAI +$100.0B over 8.0 years on an "existing $38.0 billion"; post-quarter: $5.0B Anthropic + $20.0B facility released on compute-delivery milestones; both AI contracts now carry "contractual obligations related to the performance of AWS chips"</td><td class="val-pos">$15.6B other income (~$12.3B upward adjustment + $4.5B reclassification); $4.1B discrete tax charge</td></tr>
         <tr><td>Q2 2026</td><td class="val-new">$13.7B further OpenAI ($28.7B 6M); $21.3B "Commitment Amount" funded post-quarter; $10.0B Anthropic preferred (Series G + Series H, the latter via the facility, now $15.0B); AWS/Anthropic +"more than $100.0 billion over 10.0 years"</td><td class="val-neg">$53.4B other income; $50.5B upward adjustment; $15.9B discrete tax charge (6M)</td></tr>
+        <tr><td>Q3 2026</td><td class="val-new">Remaining $21.3B OpenAI Commitment Amount funded ($50.0B in total); Anthropic "12% ownership cap" quantified; 164M preferred shares held, notes convertible to ~184M without the cap; notes fair value $97.9B &rarr; $146.2B</td><td class="val-neg">Other income $(703)M; the $48.3B notes increase goes to other comprehensive income; $15.2B discrete tax (9M)</td></tr>
       </tbody>
     </table>
-    <p>Q2 2026 net income of $62.6B exceeds operating income of $27.5B; the difference is predominantly the Anthropic revaluation. Part of the new Anthropic money is tied to AWS: a $20.0B facility, disclosed as a Q1 2026 subsequent event, becomes available to Anthropic as AWS hits compute-delivery milestones, and $5.0B of it was used for Series H in Q2. The Q1 2026 funding-intent sentence &mdash; "We expect to fund this investment with cash on hand" &mdash; was deleted in Q2 2026 with no replacement, in the same filing that reported $82.4B of six-month debt proceeds.</p>
+    <p>Q2 2026 net income of $62.6B exceeds operating income of $27.5B; the difference is predominantly the Anthropic revaluation. Q3 2026 reverses the pattern on the income statement (net income $20.7B, operating income $28.1B) only because the quarter's Anthropic gain, $48.3B on the notes, was recorded in other comprehensive income; Anthropic carrying values total $238.7B ($92.5B preferred, $146.2B notes). Part of the new Anthropic money is tied to AWS: a $20.0B facility, disclosed as a Q1 2026 subsequent event, becomes available to Anthropic as AWS hits compute-delivery milestones, and $5.0B of it was used for Series H in Q2. The Q1 2026 funding-intent sentence &mdash; "We expect to fund this investment with cash on hand" &mdash; was deleted in Q2 2026 with no replacement, in the same filing that reported $82.4B of six-month debt proceeds.</p>
   </div>
 </div>
 
 <div class="section" id="sig-debt">
   <div class="section-header"><h2>#6: Debt &amp; Financing Posture</h2></div>
   <div class="signal-card full">
-    <h3><span class="num">6</span> A Nine-Quarter Paydown, Then a $78B Build in Three</h3>
+    <h3><span class="num">6</span> A Nine-Quarter Paydown, Then a $126B Build in Four</h3>
     <table class="data-table">
       <thead><tr><th>Quarter</th><th>Notes outstanding</th><th>Face value of long-term debt</th><th>Financing language</th></tr></thead>
       <tbody>
@@ -1671,9 +1887,10 @@ a:hover { text-decoration: underline; }
         <tr><td>FY2025 10-K</td><td>$68.0B</td><td>$68,836M</td><td class="val-new">FY2025 debt proceeds $25.0B; "access capital through other financing arrangements" added</td></tr>
         <tr><td>Q1 2026</td><td class="val-neg">$121.8B</td><td class="val-neg">$122,632M</td><td class="val-new">$59.5B quarterly proceeds; "We expect to undertake additional financing activities in 2026"</td></tr>
         <tr><td>Q2 2026</td><td class="val-neg">$132.1B</td><td class="val-neg">$132,995M</td><td class="val-new">CHF and C$ tranches added; $17.5B undrawn term loan; $25.0B issued post-quarter</td></tr>
+        <tr><td>Q3 2026</td><td class="val-neg">$162.5B</td><td class="val-neg">$180,887M</td><td class="val-new">$25.0B dollar and &pound;4.3B sterling notes; $17.5B term loan drawn in September; $80.0B <strong>secured</strong> supplier "Loan Facility" (Q1 2027&ndash;Q3 2028); revolvers replaced in October (to 2031)</td></tr>
       </tbody>
     </table>
-    <p>Notes outstanding fell to a $54.3B trough at Q3 2025, rose to $68.0B with the November 2025 issuance, and then nearly doubled to $132.1B in the two quarters after the 10-K. The Q1 2026 euro notes were designated a net investment hedge. The FX risk factor was amended in Q2 2026 to cover liability-side currency exposure for the first time &mdash; "<strong>and issue notes in foreign currencies</strong>" &mdash; matching the Swiss franc and Canadian dollar issuances. Share repurchases were zero in all eleven quarters, with the remaining authorization static at $6.1 billion throughout.</p>
+    <p>Notes outstanding fell to a $54.3B trough at Q3 2025, rose to $68.0B with the November 2025 issuance, and then nearly doubled to $132.1B in the two quarters after the 10-K, reaching $162.5B plus a $17.5B term loan at Q3 2026. The Q3 2026 Loan Facility is the first secured borrowing since the seller-receivables Credit Facility was terminated in 2024. The Q1 2026 euro notes were designated a net investment hedge. The FX risk factor was amended in Q2 2026 to cover liability-side currency exposure for the first time &mdash; "<strong>and issue notes in foreign currencies</strong>" &mdash; matching the Swiss franc and Canadian dollar issuances. Share repurchases were zero in all twelve quarters, with the remaining authorization static at $6.1 billion throughout.</p>
   </div>
 </div>
 
@@ -1689,10 +1906,10 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1 2024 &ndash; Q2 2025</td><td>No severance, layoff, restructuring, or headcount term in any filing</td></tr>
         <tr><td>Q3 2025</td><td class="val-neg">"$1.8 billion of estimated severance costs primarily related to <strong>planned role eliminations</strong>" &mdash; seven mentions, threaded into six driver sentences</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-neg">Full-year estimate raised to <strong>$2.7 billion</strong> ($730M in Q4); severance simultaneously removed from three expense drivers</td></tr>
-        <tr><td>Q1 2026 &ndash; Q2 2026</td><td>Severance absent from MD&amp;A again; no reference back to the $2.7B estimate. Q2 2026 G&amp;A decline attributed to "a decrease in payroll and related expenses"</td></tr>
+        <tr><td>Q1 2026 &ndash; Q3 2026</td><td>Severance absent from MD&amp;A again; no reference back to the $2.7B estimate. Q2 and Q3 2026 G&amp;A declines attributed to "a decrease in payroll and related expenses"</td></tr>
       </tbody>
     </table>
-    <p>The table tracks MD&amp;A. The notes did record severance outside MD&amp;A in the 2022&ndash;23 round ($720M for 2022, $510M in the first half of 2023), and the Q3 2025 note's nine-month figure ($2.0B against $1.8B for the quarter) shows about $0.2B booked in the first half of 2025 that neither 10-Q mentioned. Headcount is never disclosed in any of the eleven 10-Qs &mdash; Amazon reports employee totals only in the 10-K. The single quarter in which severance appears is also the only quarter in the dataset where both North America and International segment operating income declined year over year.</p>
+    <p>The table tracks MD&amp;A. The notes did record severance outside MD&amp;A in the 2022&ndash;23 round ($720M for 2022, $510M in the first half of 2023), and the Q3 2025 note's nine-month figure ($2.0B against $1.8B for the quarter) shows about $0.2B booked in the first half of 2025 that neither 10-Q mentioned. Headcount is never disclosed in any of the twelve 10-Qs &mdash; Amazon reports employee totals only in the 10-K. The single quarter in which severance appears is also the only quarter in the dataset where both North America and International segment operating income declined year over year.</p>
   </div>
 </div>
 
@@ -1710,7 +1927,7 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1 2025</td><td>&mdash;</td><td>+$217M D&amp;A, &minus;$162M net income, $0.02 per share</td><td class="val-neg">Removed from MD&amp;A entirely</td></tr>
         <tr><td>Q2 2025 &ndash; Q3 2025</td><td>None disclosed</td><td>&mdash;</td><td>Absent; Critical Accounting Estimates covers only Inventories and Income Taxes</td></tr>
         <tr><td>FY2025 10-K</td><td>&mdash;</td><td class="val-neg">FY2025 effect of 6 &rarr; 5 years: +$1.4B D&amp;A, &minus;$1.0B net income, $0.10 per share (vs ~$0.7B estimated a year earlier); reason restated as AI/ML pace</td><td>Absent from MD&amp;A; Note 1 only</td></tr>
-        <tr><td>Q1 2026 &ndash; Q2 2026</td><td>None disclosed</td><td>&mdash;</td><td>Absent</td></tr>
+        <tr><td>Q1 2026 &ndash; Q3 2026</td><td>None disclosed</td><td>&mdash;</td><td>Absent</td></tr>
       </tbody>
     </table>
     <p>The FY2024 10-K states the reason for both revisions: "These two changes above are due to an <strong>increased pace of technology development, particularly in the area of artificial intelligence and machine learning</strong>." The MD&amp;A prominence of the useful-life clause is inverse to its earnings effect &mdash; it led the expense discussion when it was a tailwind and disappeared in the quarter it became a headwind. Every quantification lives in Note 1, never in MD&amp;A.</p>
@@ -1728,10 +1945,10 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2024 &ndash; FY2024 10-K</td><td class="val-neg">Shortened &mdash; capital market and supply chain volatility and the fuel/utility/food list deleted; "consumer" dropped from spending patterns. The 10-K adds AI as a named driver</td></tr>
         <tr><td>Q1 2025 &ndash; Q3 2025</td><td class="val-new">Adds "unpredictable shifts in global tariff and trade policies"; "difficult to <strong>predict</strong>, isolate, and quantify"</td></tr>
         <tr><td>FY2025 10-K</td><td class="val-new">Adds "resource and supply volatility" and an AI-investment sentence; forward-looking list adds "energy prices" and "memory chips"</td></tr>
-        <tr><td>Q1 2026 &ndash; Q2 2026</td><td>Unchanged except the rolling quarter reference</td></tr>
+        <tr><td>Q1 2026 &ndash; Q3 2026</td><td>Unchanged except the rolling quarter reference</td></tr>
       </tbody>
     </table>
-    <p>Risk-factor tariff language followed a separate path: "tariff policy changes" first appeared in one bullet of the FY2024 10-K, then propagated to six locations in Q1 2025 with retaliatory-action language attached. From Q2 2025 through Q2 2026 the tariff disclosure did not change one word beyond the rolling quarter reference. The first and only quantified tariff effect is the Q2 2026 IEEPA refund of approximately $640 million, disclosed in the financial statements rather than MD&amp;A.</p>
+    <p>Risk-factor tariff language followed a separate path: "tariff policy changes" first appeared in one bullet of the FY2024 10-K, then propagated to six locations in Q1 2025 with retaliatory-action language attached. From Q2 2025 through Q3 2026 the tariff disclosure did not change one word beyond the rolling quarter reference. The first and only quantified tariff effect is the Q2 2026 IEEPA refund of approximately $640 million, disclosed in the financial statements rather than MD&amp;A; Q3 2026 drops the refund paragraph and reports no further refunds.</p>
   </div>
 </div>
 
@@ -1749,10 +1966,11 @@ a:hover { text-decoration: underline; }
         <tr><td>Q1 &rarr; Q2 2025</td><td class="val-neg">0</td><td class="val-neg">Byte-identical; page renumbering only</td></tr>
         <tr><td>Q2 &rarr; Q3 2025</td><td class="val-neg">0</td><td class="val-neg">Byte-identical; page renumbering only</td></tr>
         <tr><td>Q1 &rarr; Q2 2026</td><td>1</td><td class="val-new">FX risk extended to foreign-currency note issuance</td></tr>
+        <tr><td>Q2 &rarr; Q3 2026</td><td>1</td><td class="val-neg">Indian tax authority example deleted from the tax-controversy risk factor (in every filing since the FY2022 10-K)</td></tr>
       </tbody>
     </table>
-    <p>Five substantive edits across seven intra-year transitions in four years. Section length grows only at 10-K boundaries: 56.5K (2023) &rarr; 59.5K (2024) &rarr; 60.3K (2025) &rarr; 61.6K (2026) characters. The 24 risk-factor headings and their order are identical in all six versions, with one exception &mdash; "Security <strong>Breaches</strong>" became "Security <strong>Incidents</strong>" in the FY2024 10-K.</p>
-    <p>Named authorities are remarkably few for a filer of this size. Across the entire window Amazon names only the FCPA, the Federal Trade Commission, the European Union, the PRC, India and its tax authority, state attorneys general, and (from Q1 2026) Italy. The Digital Markets Act, Digital Services Act, GDPR, EU AI Act, and Section 230 are never named &mdash; the DMA is referenced only obliquely, through the phrase "companies they have characterized to be online &lsquo;gatekeepers&rsquo;".</p>
+    <p>Six substantive edits across eight intra-year transitions in four years. None of Q3 2026's new exposures (the secured Loan Facility, $159.6B of equipment obligations, the FTC advertising suit) produced a risk-factor edit. Section length grows only at 10-K boundaries: 56.5K (2023) &rarr; 59.5K (2024) &rarr; 60.3K (2025) &rarr; 61.6K (2026) characters. The 24 risk-factor headings and their order are identical in all six versions, with one exception &mdash; "Security <strong>Breaches</strong>" became "Security <strong>Incidents</strong>" in the FY2024 10-K.</p>
+    <p>Named authorities are remarkably few for a filer of this size. Across the entire window Amazon names only the FCPA, the Federal Trade Commission, the European Union, the PRC, India and (through Q2 2026) its tax authority, state attorneys general, and (from Q1 2026) Italy. The Digital Markets Act, Digital Services Act, GDPR, EU AI Act, and Section 230 are never named &mdash; the DMA is referenced only obliquely, through the phrase "companies they have characterized to be online &lsquo;gatekeepers&rsquo;".</p>
   </div>
 </div>
 
@@ -1774,9 +1992,10 @@ a:hover { text-decoration: underline; }
         <tr><td>Q3 2025</td><td>Antitrust omnibus; Italian Competition Authority</td><td class="val-pos">ICA fine reduced &euro;1.13B &rarr; &euro;752M; certification scoreboard added</td></tr>
         <tr><td>Q1 2026</td><td>Rensselaer only</td><td class="val-pos">Federal Circuit affirmed in Amazon's favor</td></tr>
         <tr><td>Q2 2026</td><td class="val-new">BIPA; antitrust omnibus; Xockets/ITC</td><td class="val-new">ITC investigation instituted; voice-based AI added to BIPA scope</td></tr>
+        <tr><td>Q3 2026</td><td class="val-new">FTC + 22 state AGs and Texas (sponsored-ad reserve prices); Audible credit expiration; Xockets/ITC; BIPA; antitrust omnibus</td><td class="val-new">First government suit on advertising (Aug 2026); GB300 servers added to the ITC case; AWS Rekognition added to BIPA; third U.K. class certified</td></tr>
       </tbody>
     </table>
-    <p>The $2.5 billion FTC settlement charge recorded in Q3 2025 never appears in Note 4 at all &mdash; it is disclosed only in MD&amp;A and the other-operating-expense line. Amazon discloses no aggregate reasonably-possible-loss range and no accrual figure for any legal matter in any quarter. Income tax contingencies excluded from the commitments table ran $4.2B &rarr; $5.0B &rarr; $5.5B &rarr; $5.6B &rarr; $6.3B &rarr; $5.8B &rarr; $5.9B &rarr; $6.7B &rarr; $7.1B, and were relabelled from "accrued tax contingencies" to "income tax contingencies" in Q1 2024.</p>
+    <p>The $2.5 billion FTC settlement charge recorded in Q3 2025 never appears in Note 4 at all &mdash; it is disclosed only in MD&amp;A and the other-operating-expense line. Amazon discloses no aggregate reasonably-possible-loss range and no accrual figure for any legal matter in any quarter. Income tax contingencies excluded from the commitments table ran $4.2B &rarr; $5.0B &rarr; $5.5B &rarr; $5.6B &rarr; $6.3B &rarr; $5.8B &rarr; $5.9B &rarr; $6.7B &rarr; $7.1B &rarr; $7.3B, and were relabelled from "accrued tax contingencies" to "income tax contingencies" in Q1 2024.</p>
   </div>
 </div>
 
@@ -1788,19 +2007,19 @@ a:hover { text-decoration: underline; }
   <div class="signal-grid">
     <div class="signal-card">
       <h3>1. The Numbers Moved Before the Words</h3>
-      <p>AWS growth went from 12% to 37% and quarterly capex from $10.4B to $54.2B while the sentences explaining both stayed fixed. The AWS driver sentence is unedited across all eleven quarters; the capex attribution parenthetical is unedited across all fourteen filings. Where language did move, it moved by subtraction: "meaningfully" removed from the capex outlook, the standalone forward capex sentence deleted, the AWS cost-optimization warning deleted, two of three free cash flow measures deleted, and the server useful-life reference deleted in the quarter the estimate turned against earnings. The end of seller lending in 2024 was recorded only by a change of tense ("provides" &rarr; "provided"). Q2 2026 follows the same pattern: sales growth accelerated to 20% with MD&amp;A citing unit sales, and the Prime Day timing shift that explains part of it appears only in the next quarter&rsquo;s guidance.</p>
+      <p>AWS growth went from 12% to 39% and quarterly capex from $10.4B to $77.3B while the sentences explaining both stayed fixed. The AWS driver sentence is unedited across all twelve quarters; the capex attribution parenthetical is unedited across all fifteen filings. Until Q3 2026, where language did move, it moved by subtraction: "meaningfully" removed from the capex outlook, the standalone forward capex sentence deleted, the AWS cost-optimization warning deleted, two of three free cash flow measures deleted, and the server useful-life reference deleted in the quarter the estimate turned against earnings. The end of seller lending in 2024 was recorded only by a change of tense ("provides" &rarr; "provided"). Q3 2026 breaks the pattern for capex: "meaningfully increase" returns for 2027 and the first dollar figure ($220 billion for 2026) appears, so the words have finally caught up with the spending. Elsewhere the old habit holds: the advertising slowdown from 26% to 11% is put down to "timing anomalies" without a figure, and the backlog figure gains the word "estimated".</p>
     </div>
     <div class="signal-card">
       <h3>2. The Signal Migrated to the Notes</h3>
-      <p>For this filer the fastest-moving disclosures are not in MD&amp;A or the risk factors. AWS backlog ($122.0B to $496B) and contract life (3.5 to 6.4 years) appear only in the revenue note. The OpenAI ($100.0 billion) and Anthropic ("more than $100.0 billion") commitment expansions, and the new "contractual obligations related to the performance of AWS chips" in both, appear only in the revenue note. Every useful-life quantification appears only in Note 1. The commitments table ($287B to $650B) and the entire legal docket sit in Note 4. Reading MD&amp;A alone would miss all of it.</p>
+      <p>For this filer the fastest-moving disclosures are not in MD&amp;A or the risk factors. AWS backlog ($122.0B to $578B) and contract life (3.5 to 6.4, now 6.1 years) appear only in the revenue note. The OpenAI ($100.0 billion) and Anthropic ("more than $100.0 billion") commitment expansions, and the new "contractual obligations related to the performance of AWS chips" in both, appear only in the revenue note. Every useful-life quantification appears only in Note 1. The commitments table ($287B to $884B, now with a $159.6B equipment row) and the entire legal docket sit in Note 4. Q3 2026 adds the clearest case: an $80.0B secured supplier Loan Facility, extended payment terms on equipment, and $21.6B of letters of credit backing purchase commitments are all in the notes, and MD&amp;A's liquidity section mentions none of them. Reading MD&amp;A alone would miss all of it.</p>
     </div>
     <div class="signal-card">
       <h3>3. Two Balance Sheets Growing at Once</h3>
-      <p>Contractual commitments rose from $287B to $650B and senior notes from a $54.3B trough to $132.1B plus a $25.0B post-quarter issuance and a $17.5B undrawn term loan. On the asset side, strategic investments went from a $1.25B convertible note to a $50.0B OpenAI position (funded in full by July 2026, against a 2028 deadline) and Anthropic preferred stock carried at $92.5B, generating $53.4B of other income in a single quarter and a $15.9B discrete tax charge. The two sides are linked: both AI investees also signed AWS commitments of $100B or more, and Anthropic&rsquo;s $20.0B funding facility is released as AWS delivers compute. Q2 2026 net income of $62.6B exceeds operating income of $27.5B, and trailing-twelve-month free cash flow turned negative at $(7.6)B.</p>
+      <p>Contractual commitments rose from $287B to $884B and the face value of long-term debt from a $55.1B trough to $180.9B, with an $80.0B secured Loan Facility to come from Q1 2027, the first secured borrowing since 2024. On the asset side, strategic investments went from a $1.25B convertible note to a $50.0B OpenAI position (funded in full by July 2026, against a 2028 deadline) and Anthropic holdings carried at $238.7B. The Anthropic gains ran through the income statement in Q2 2026 ($53.4B of other income) but through other comprehensive income in Q3 ($48.3B on the notes), which is why Q3 net income ($20.7B) fell back below operating income ($28.1B) without the stake losing value. The two sides are linked: both AI investees also signed AWS commitments of $100B or more, and Anthropic&rsquo;s $20.0B funding facility is released as AWS delivers compute. Trailing-twelve-month free cash flow went from $(7.6)B to $(42.4)B, and the free cash flow caveat now says it excludes "non-marketable investments" as well as debt repayments, the two channels through which the AI-lab stakes and the Loan Facility equipment are paid for.</p>
     </div>
     <div class="signal-card">
       <h3>4. Risk Factors Are an Annual Document</h3>
-      <p>Three of seven intra-year quarterly transitions contain zero substantive risk-factor change, and the other four contain one or two edits each. Everything material &mdash; four AI risk categories in the FY2023 10-K, "tariff policy changes" in the FY2024 10-K, seven AI escalations in the FY2025 10-K &mdash; arrives at the annual boundary. The lone exception to the annual pattern is Q1 2025, where tariff language propagated to six locations in a quarterly filing. That is what a genuine intra-year risk shift looks like in this filer, and it has happened once in four years.</p>
+      <p>Three of eight intra-year quarterly transitions contain zero substantive risk-factor change, and the other five contain one or two edits each. Everything material &mdash; four AI risk categories in the FY2023 10-K, "tariff policy changes" in the FY2024 10-K, seven AI escalations in the FY2025 10-K &mdash; arrives at the annual boundary. The lone exception to the annual pattern is Q1 2025, where tariff language propagated to six locations in a quarterly filing. Q3 2026 confirms the rule from the other side: the quarter brought secured financing, $159.6B of newly broken-out equipment obligations and a government suit against the ads business, and the only risk-factor edit was a deletion (the Indian tax example). Readers should expect the FY2026 10-K, not the 10-Qs, to say whether any of it is a new risk.</p>
     </div>
   </div>
 </div>
@@ -1810,7 +2029,7 @@ a:hover { text-decoration: underline; }
 
 <div class="section" id="ref-table">
   <div class="section-header"><h2>Financial Reference Table</h2></div>
-  <h3 style="font-size:15px; font-weight:700; margin:0 0 4px;">Consolidated and Segment Results (Q1 2023 &ndash; Q2 2026, $ millions)</h3>
+  <h3 style="font-size:15px; font-weight:700; margin:0 0 4px;">Consolidated and Segment Results (Q1 2023 &ndash; Q3 2026, $ millions)</h3>
   <table class="data-table">
     <thead>
       <tr>
@@ -1837,6 +2056,7 @@ a:hover { text-decoration: underline; }
       <tr><td><strong>Q3 2025</strong></td><td>180,169</td><td>13%</td><td class="val-neg">17,422</td><td>21,187</td><td class="val-neg">4,789</td><td class="val-neg">1,199</td><td>33,006</td><td>11,434</td></tr>
       <tr><td><strong>Q1 2026</strong></td><td>181,519</td><td class="val-pos">17%</td><td>23,852</td><td>30,255</td><td>8,267</td><td>1,424</td><td>37,587</td><td>14,161</td></tr>
       <tr><td><strong>Q2 2026</strong></td><td>200,606</td><td class="val-pos">20%</td><td>27,461</td><td class="val-pos">62,647</td><td>9,123</td><td>1,717</td><td>42,232</td><td class="val-pos">16,621</td></tr>
+      <tr><td><strong>Q3 2026</strong></td><td>201,944</td><td>12%</td><td class="val-pos">28,076</td><td>20,685</td><td>8,723</td><td>1,580</td><td>45,984</td><td class="val-pos">17,773</td></tr>
     </tbody>
   </table>
 
@@ -1866,9 +2086,10 @@ a:hover { text-decoration: underline; }
       <tr><td><strong>Q3 2025</strong></td><td>35,095</td><td>120,131</td><td>~$200B</td><td>3.8y</td><td>376,002</td><td class="val-neg">55,097</td><td>6,910</td></tr>
       <tr><td><strong>Q1 2026</strong></td><td class="val-neg">44,203</td><td class="val-neg">151,003</td><td class="val-neg">$364B</td><td class="val-neg">5.5y</td><td class="val-neg">569,280</td><td class="val-neg">122,632</td><td>9,560</td></tr>
       <tr><td><strong>Q2 2026</strong></td><td class="val-neg">54,208</td><td class="val-neg">173,028</td><td class="val-neg">$496B</td><td class="val-neg">6.4y</td><td class="val-neg">650,034</td><td class="val-neg">132,995</td><td class="val-neg">18,199</td></tr>
+      <tr><td><strong>Q3 2026</strong></td><td class="val-neg">77,259</td><td class="val-neg">215,192</td><td class="val-neg">$578B</td><td>6.1y</td><td class="val-neg">883,581</td><td class="val-neg">180,887</td><td>6,180</td></tr>
     </tbody>
   </table>
-  <p style="font-size:12px; color:var(--text-dim); margin-top:10px;">Capex is "Purchases of property and equipment" from the cash flow statement; the discrete-quarter column is the three-month figure each filing presents alongside its year-to-date and trailing-twelve-month columns. Amazon discloses no numeric effective tax rate and no headcount in any 10-Q &mdash; both appear only in the 10-K. Share repurchases were zero in all eleven quarters, with $6.1 billion remaining authorized throughout. Long-term debt face value is the debt-note gross figure, which differs from the balance-sheet line (net of discount and current portion).</p>
+  <p style="font-size:12px; color:var(--text-dim); margin-top:10px;">Capex is "Purchases of property and equipment" from the cash flow statement; the discrete-quarter column is the three-month figure each filing presents alongside its year-to-date and trailing-twelve-month columns. Amazon discloses no numeric effective tax rate and no headcount in any 10-Q &mdash; both appear only in the 10-K. Share repurchases were zero in all twelve quarters, with $6.1 billion remaining authorized throughout. Long-term debt face value is the debt-note gross figure, which differs from the balance-sheet line (net of discount and current portion).</p>
 </div>
 
 </div><!-- /main -->
