@@ -21,9 +21,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/goog/10q/",
-      "quarterly_covered_through": "2026-06-30",
+      "quarterly_covered_through": "2026-09-30",
       "annual_filed": "2026-02-05",
-      "quarterly_filed": "2026-07-23"
+      "quarterly_filed": "2026-10-29"
     },
     "AMZN": {
       "cik": "0001018724",

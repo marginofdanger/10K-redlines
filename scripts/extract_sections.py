@@ -54,6 +54,8 @@ CONTINGENCY_HEADINGS = ["COMMITMENTS AND CONTINGENCIES", "Commitments and Contin
 # calls that a long results discussion buries. Each runs to the next top-level MD&A heading.
 MDA_SUBSECTIONS = {"mda_liquidity": r"liquidity(, financial condition)? and capital resources",
                    "mda_critical_estimates": r"critical accounting (policies and )?(estimates|policies)"}
+# Filers whose MD&A names a sub-section differently (GOOG: liquidity sits under "Financial Condition").
+MDA_SUBSECTION_OVERRIDES = {"goog": {"mda_liquidity": r"financial condition\s*$"}}
 MDA_TOP = re.compile(r"(overview|executive (overview|summary)|results of operations|liquidity(, financial condition)? and capital resources|"
                      r"critical accounting|recent(ly)? (issued |adopted )?accounting|non-gaap|contractual obligations|"
                      r"off-balance sheet|segment (results|information|operating)|business outlook|forward-looking|"
@@ -306,11 +308,11 @@ def notes(lines):
 OUTLINE = re.compile(r"(?:[IVX]{1,4}|[A-H])\.\s+")
 
 
-def mda_subsections(mda):
+def mda_subsections(mda, ticker=""):
     raw = [l for l in mda.split("\n") if "(continued)" not in l.lower()]  # running page headers
     lines = [OUTLINE.sub("", l, count=1) if OUTLINE.match(l) else l for l in raw]
     out = {}
-    for name, rx in MDA_SUBSECTIONS.items():
+    for name, rx in {**MDA_SUBSECTIONS, **MDA_SUBSECTION_OVERRIDES.get(ticker, {})}.items():
         starts = [i for i, l in enumerate(lines) if len(l) < 90 and re.match(rx, l, re.I)]
         best = ""
         for i in starts:  # the body heading has the longest run; earlier hits are in-text overviews
@@ -369,7 +371,7 @@ def main(folder):
                     if secs["contingencies"]:
                         break
         if secs.get("mda"):
-            secs.update(mda_subsections(secs["mda"]))
+            secs.update(mda_subsections(secs["mda"], ticker))
         for name, text in secs.items():
             with open(os.path.join(out_dir, f"{period}_{name}.txt"), "w", encoding="utf-8") as f:
                 f.write(text)
