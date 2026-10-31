@@ -201,6 +201,9 @@ page's tokens, if the page has none). Add:
     one per period, and in the financial reference table
   - themes: revise each so none is stale; a theme that the new period
     contradicts must say so
+Keep transitions in date order in the source, the newest at the end, as
+now: each page's page-tools block (scripts/page_tools.py) shows them newest
+first and adds Expand all / Collapse all. Don't edit that block by hand.
 Root index.html `companies` entry: endFY and signals for annual updates,
 qLabel for quarterly ones, tenQ + qLabel for a new scanner. The landing page's
 status, "Waiting to be added" and "Coming up" come from the ledger and
@@ -248,7 +251,8 @@ all content new. Download the 8 listed 10-Qs (--quarterly 8) and the 10-Ks
 they interleave with (--annual 3), extract, make_diffs for all transitions.
 Write every transition, 6-12 tracked signals chosen for what moves in this
 company's quarterly language (each a per-quarter table), a financial
-reference table from financials.py, and themes. Add tenQ and qLabel to the
+reference table from financials.py, and themes. Run python scripts/page_tools.py
+companies/<t>/10q/index.html to add the page tools. Add tenQ and qLabel to the
 root index.html entry. Verify (all quotes are new, so drop --since), mark
 with --dashboard companies/<t>/10q/, commit "feat: add 10-Q quarterly scanner
 for <TICKER>", push.
