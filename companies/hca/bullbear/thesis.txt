@@ -1,7 +1,8 @@
 HCA HEALTHCARE (HCA): INVESTMENT THESIS PILLARS
 Written October 2026 from the 10-K dashboard themes and tracked signals, the 10-Q scanner, and the
-eight filings from the Q3 2024 10-Q to the Q2 2026 10-Q. Stances move only when two or more filings
-point the same way; "Last moved" names the filing that completed the run.
+filings from the Q3 2024 10-Q to the Q2 2026 10-Q; updated October 2026 for the Q3 2026 10-Q (nine
+filings). Stances move only when two or more filings point the same way; "Last moved" names the
+filing that completed the run.
 
 P1 Volume and payer mix
   Bull assumes: admissions and outpatient volume keep growing 2-3% a year in Florida/Texas growth
@@ -13,7 +14,9 @@ P1 Volume and payer mix
     +2-3% (Q2 2025 +2.1%), with the OBBBA (Q2 2025) and the FY2025 10-K both expecting coverage
     losses. Q1 2026 made it concrete: uninsured admissions +15.6%, managed care revenue +0.5%,
     admissions +0.7%. Q2 2026 confirmed it (uninsured +23.4%, managed care -1.2%, surgeries down)
-    despite admissions recovering to +2.4%.
+    despite admissions recovering to +2.4%. Q3 2026 split: uninsured +27.4% (third acceleration;
+    8% of admissions vs 6%), but managed care revenue +3.3% and equivalent admissions +2.8%. Stance
+    held at Weakening.
   Tests: uninsured admissions growth, managed care revenue in the payer table, surgical volumes,
     Florida/Texas share of admissions.
 
@@ -28,7 +31,9 @@ P2 Medicaid supplemental and state directed payments (SDP)
     preliminary grandfathering approvals; Q2 2026 Florida $1.372B. Bear: Q1 2025 "reduced or
     eliminated" wording; Q2 2025 OBBBA enacted; Q3 2025 DSH cuts and up-to-4% sequestration; FY2025
     caps legislated and 2026 decline guided; Q2 2026 provider-tax final and proposed rules. The
-    near term improved, the 2028+ end-state worsened; net Intact.
+    near term improved, the 2028+ end-state worsened; net Intact. Q3 2026 leaned bear without moving
+    the stance: the $400M Q2 net benefit became "modest increases", approvals "(if any)", and Q3
+    Medicaid revenue fell 1.0%; no rule outcome changed.
   Tests: SDP revenue disclosed, new approvals, provider-tax rule outcomes, step-down start in 2028.
 
 P3 Margins and cost control
@@ -41,7 +46,9 @@ P3 Margins and cost control
     operating expenses rose with provider fees (FY2024 +1.2 points) and unit costs accelerated in 2025
     (Q2 2025 salaries per equivalent admission +3.5%, devices +10.2%), so the stance held at Intact.
     Q1 2026 (pre-tax margin 12.0% vs 12.7%, pre-tax income -1.7%) and Q2 2026 (12.3% vs 13.0% even with
-    the Florida catch-up; American and National segment EBITDA down) point the same way.
+    the Florida catch-up; American and National segment EBITDA down) point the same way. Q3 2026
+    (11.9% vs 12.6%; Atlantic EBITDA -3.8% as its other operating expenses rose 15%, American -1.6%)
+    confirms, though unit labor and supply costs fell.
   Tests: segment adjusted EBITDA, pre-tax margin, salaries per equivalent admission, other operating
     expense ratio.
 
@@ -54,7 +61,9 @@ P4 Earnings quality and reserves
     depressed EPS; Q1 2025 growth came despite lapping a $201M gain). Then: Q3 2025 growth leaned on
     unquantified newly approved supplemental revenue; FY2025 third straight year of adverse
     malpractice development ($126M); Q1 2026 EPS +10.9% on net income +0.6% with $103M of equity-award
-    tax benefits; Q2 2026 $980M of revenue for periods before 2026.
+    tax benefits; Q2 2026 $980M of revenue for periods before 2026. Q3 2026 was the first clean
+    quarter after the catch-up and showed net income attributable -3.9%; nine-month pre-tax is about
+    -6% without the pre-2026 Florida profit.
   Tests: prior-period components in each quarter, reserve development table in the 10-K, tax benefits.
 
 P5 Cash conversion and capital return
@@ -65,7 +74,9 @@ P5 Cash conversion and capital return
   History: annual conversion improved (FCF/net income 98% in 2024, 113% in 2025) and diluted shares
     fell 5.3% then 8.5%. But shareholder returns exceeded FCF in every period covered (FY2024 119%,
     FY2025 140%, H1 2026 about 2x), Q2-Q3 2025 cash was flattered by $1.259B of deferred taxes, and
-    Q2 2026 operating cash fell $1.875B on SDP receivables. The funding gap is scored under P6.
+    Q2 2026 operating cash fell $1.875B on SDP receivables. Q3 2026 recovered ($4.461B, receivables
+    down about $782M) but nine-month buybacks plus dividends were 140% of FCF and Q3 buybacks
+    ($2.970B) were the largest of the window. The funding gap is scored under P6.
   Tests: operating cash flow vs net income, DSO, buybacks vs FCF.
 
 P6 Balance sheet and liquidity
@@ -76,17 +87,23 @@ P6 Balance sheet and liquidity
   History: debt $42.97B (Q3 2024) -> $43.03B (FY2024) -> $44.58B (Q1 2025, unsecured refinancing; the
     restricted-payments covenant dropped) -> flat through Q3 2025 while a $4.0B commercial paper
     program was added and working capital turned negative -> $46.49B (FY2025) -> $48.02B (Q1 2026,
-    CP $3.65B, availability $4.34B) -> $49.72B (Q2 2026, CP at the $4.0B limit, revolver drawn).
-  Tests: total debt, CP outstanding vs $4.0B limit, revolver availability, ratings language.
+    CP $3.65B, availability $4.34B) -> $49.72B (Q2 2026, CP at the $4.0B limit, revolver drawn) ->
+    $50.49B (Q3 2026: CP program doubled to $8.0B, equal to the revolver; $6.245B outstanding on
+    October 26; availability $1.709B; the revolver draw repaid).
+  Tests: total debt, CP outstanding vs the $8.0B program and revolver, revolver availability, ratings
+    language.
 
 P7 Growth investment
   Bull assumes: a rising construction pipeline (beds, outpatient, freestanding EDs) sustains volume
     growth; capex stays near $5B, funded internally.
   Bear fears: capex underspends guidance or is cut to protect buybacks; acquisitions creep outside
     the guided number.
-  Stance: Strengthening, moved at the FY2025 10-K.
+  Stance: Intact, moved at the Q3 2026 10-Q (was Strengthening from the FY2025 10-K).
   History: pipeline $4.7B (Q3 2024, FY2024) -> $5.6B -> $5.9B -> $6.0B (2025 10-Qs) -> $7.1B (FY2025)
-    -> $8.8B (Q1 2026) -> $8.6B (Q2 2026). Q2 2025 trimmed the 2025 capex guide to about $5.0B and
-    capex undershot guidance in both 2024 and 2025, so the stance waited until Q3 2025 and FY2025
-    (pipeline up again, 2026 ceiling raised to $5.5B). Q2 2026's first pipeline dip is one filing.
+    -> $8.8B (Q1 2026) -> $8.6B (Q2 2026) -> $8.6B (Q3 2026). Q2 2025 trimmed the 2025 capex guide to
+    about $5.0B and capex undershot guidance in both 2024 and 2025, so the stance waited until Q3
+    2025 and FY2025 (pipeline up again, 2026 ceiling raised to $5.5B). Q2 2026 (first pipeline dip,
+    guide narrowed to exclude acquisitions) and Q3 2026 (pipeline flat, $942M of nine-month
+    acquisitions outside the guide) end the run of increases; the firmer Q3 guide ("approximately"
+    dropped, nine-month capex +7.3%) keeps it from Weakening.
   Tests: construction pipeline, capex vs guidance, acquisition spend.

@@ -1,0 +1,69 @@
+HCA Q3 2026 10-Q (filed October 29, 2026; quarter ended September 30, 2026)
+Fundamentals answers. Marker = versus the Q2 2026 10-Q. Quarterly figures from financials.py (XBRL,
+quarter derived from year-to-date) and the filing text; "arithmetic" marks figures computed here.
+
+1. Growth and pricing [BETTER, underlying]
+   Revenue $19.849B, +3.6% on both consolidated and same facility bases (Q2 +8.7% with the Florida
+   catch-up, about +1.4% without it). Revenue per equivalent admission +0.7%; equivalent admissions
+   +2.8% (same facility +3.0%); ER visits +5.3% (MD&A, Revenue/Volume Trends). Managed care and
+   insurers $9.574B vs $9.267B (+3.3%; Q2 -1.2%). Medicaid $1.765B vs $1.783B (-1.0%). Inpatient
+   surgeries -1.3%, outpatient -4.2%. Nine months: revenue +5.5%, Medicaid $5.998B vs $4.413B.
+
+2. Margins and unit economics [WORSE]
+   Income before income taxes $2.370B vs $2.418B (-2.0%); margin 11.9% vs 12.6%, the third 2026
+   quarter below the prior year. Salaries and benefits 43.2% vs 43.6% (per equivalent admission
+   -0.2%); supplies 14.2% vs 14.5% (per equivalent admission -1.4%); other operating expenses 23.0%
+   vs 21.8%, no cause given for the quarter (nine months: SDP program expenses, professional fees).
+   Adjusted segment EBITDA (segment note): National $1.480B vs $1.348B (+9.8%), Atlantic $1.288B vs
+   $1.339B (-3.8%; its other operating expenses +15%), American $1.555B vs $1.580B (-1.6%).
+
+3. Earnings quality [BETTER]
+   No prior-period SDP amounts disclosed for the quarter. Gains on facility sales $13M ($0.05).
+   Equity-award tax benefits about $3M in the quarter (nine months $110M less six months $107M) vs
+   $12M; tax rate 24.8% vs 23.9% (excluding noncontrolling interests). Net income attributable
+   $1.579B, -3.9%; EPS $7.27, +4.5%, all from 8.0% fewer diluted shares. Nine-month pre-tax income
+   $7.151B vs $7.160B; about $6.73B (-6%) without the $423M of pre-2026 Florida profit booked in Q2
+   (arithmetic on Q2-disclosed $980M / $557M). Cleaner quarter, weaker underlying trend.
+
+4. Cash conversion [BETTER]
+   Operating cash flow $4.461B vs $4.416B (+$45M) despite about $611M more tax paid year over year
+   (nine-month $1.190B less six-month $579M, both tied to the 2025 Tennessee deferral). Receivables
+   fell about $782M in the quarter (cash flow statement: -$1.417B at six months, -$635M at nine);
+   the SDP receivable clause is gone from the MD&A. FCF $3.104B = 197% of net income. DSO 53
+   (Q2 55; Q3 2025 50).
+
+5. Capital allocation [HELD]
+   Q3 buybacks $2.970B (7,229,310 shares at $410.85), the largest quarter in the window; dividends
+   $165M; nonhospital acquisitions $556M; Q3 buybacks plus dividends = 101% of FCF. Nine months:
+   buybacks $6.605B + dividends $519M = $7.124B vs FCF $5.103B (140%); acquisitions $942M;
+   distributions to noncontrolling interests $574M; debt +$3.788B. Authorization left $4.240B.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Debt $50.493B (Q2 $49.718B; YE $46.492B). Commercial paper program raised from $4.000B to
+   $8.000B in July, equal to the revolver; paper $5.727B at September 30, $6.245B on October 26.
+   Revolver draw ($1.010B at June 30) repaid, but stated availability $2.226B and $1.709B
+   (Q2: $3.086B and $3.816B). Working capital -$3.560B (ex-paper $2.167B; Q2 $3.768B). Variable-rate
+   debt $6.027B; one-point rate rise $60M (Q2 $52M). Stockholders' deficit attributable $8.077B
+   (YE $6.027B).
+
+7. Concentration [HELD]
+   Texas and Florida: 103 hospitals, 51% of revenue (Q2 55% on the Florida catch-up), 58% of
+   admissions, 73% of uninsured admissions. Atlantic Group (Florida) EBITDA fell after its Q2 jump.
+
+8. Accounting judgments [WORSE]
+   Gross uncompensated care and gross charity care no longer disclosed (Q2 dropped the
+   cost-to-charges ratio); only estimated cost: $1.477B vs $1.188B, charity care cost $562M vs
+   $408M. Self-insured professional liability reserves $1.965B (Q2 $1.892B; YE $1.906B).
+   Unrecognized tax benefits $557M (Q2 $553M). No critical-estimate changes disclosed.
+
+9. Legal, regulatory and governance [HELD]
+   Legal proceedings and Note 8 unchanged; Item 1A stub unchanged. Provider-tax and SDP-cap
+   paragraphs unchanged except "future approvals (if any)". MD&A drops "engaged in advocacy
+   efforts" for "continuing impacts from policy changes". COO Jon M. Foster adopted a Rule 10b5-1
+   plan on August 11, 2026 (sale of up to 10,000 shares, December 11, 2026 to June 9, 2028).
+
+10. Guidance and commitments [HELD]
+   2026 capex $5.0-5.5B "excluding acquisitions", "approximately" dropped; nine months $3.707B,
+   so Q4 needs $1.29-1.79B (Q4 2025: $1.489B). Pipeline $8.6B (Q2 $8.6B). Q2's "approximately $400
+   million" SDP net benefit becomes "modest increases". Resiliency still unquantified, now "subject
+   to known and unknown risks and uncertainties". $0.78 dividend declared October 26, 2026.
