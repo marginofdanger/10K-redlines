@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-02T02:24Z",
+ "checked": "2026-11-03T02:57Z",
  "companies": {
   "META": {
    "fye_month": 12,
@@ -676,6 +676,13 @@
    "filings": [
     {
      "form": "10-Q",
+     "label": "fy2026q3",
+     "period": "2026-09-30",
+     "filed": "2026-11-02",
+     "index": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000379/0000080661-26-000379-index.htm"
+    },
+    {
+     "form": "10-Q",
      "label": "fy2026q2",
      "period": "2026-06-30",
      "filed": "2026-08-03",
@@ -722,20 +729,13 @@
      "period": "2024-12-31",
      "filed": "2025-03-03",
      "index": "https://www.sec.gov/Archives/edgar/data/80661/000008066125000007/0000080661-25-000007-index.htm"
-    },
-    {
-     "form": "10-Q",
-     "label": "fy2024q3",
-     "period": "2024-09-30",
-     "filed": "2024-11-04",
-     "index": "https://www.sec.gov/Archives/edgar/data/80661/000008066124000045/0000080661-24-000045-index.htm"
     }
    ],
    "next": {
-    "form": "10-Q",
-    "label": "fy2026q3",
-    "period": "2026-09-30",
-    "expected": "2026-11-02"
+    "form": "10-K",
+    "label": "fy2026",
+    "period": "2026-12-31",
+    "expected": "2027-03-01"
    }
   },
   "APO": {
