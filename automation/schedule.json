@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-04T02:53Z",
+ "checked": "2026-11-05T02:54Z",
  "companies": {
   "META": {
    "fye_month": 12,
@@ -207,6 +207,13 @@
    "filings": [
     {
      "form": "10-Q",
+     "label": "fy2026q3",
+     "period": "2026-09-30",
+     "filed": "2026-11-04",
+     "index": "https://www.sec.gov/Archives/edgar/data/1751008/000175100826000069/0001751008-26-000069-index.htm"
+    },
+    {
+     "form": "10-Q",
      "label": "fy2026q2",
      "period": "2026-06-30",
      "filed": "2026-08-05",
@@ -253,20 +260,13 @@
      "period": "2024-12-31",
      "filed": "2025-02-27",
      "index": "https://www.sec.gov/Archives/edgar/data/1751008/000175100825000018/0001751008-25-000018-index.htm"
-    },
-    {
-     "form": "10-Q",
-     "label": "fy2024q3",
-     "period": "2024-09-30",
-     "filed": "2024-11-06",
-     "index": "https://www.sec.gov/Archives/edgar/data/1751008/000175100824000062/0001751008-24-000062-index.htm"
     }
    ],
    "next": {
-    "form": "10-Q",
-    "label": "fy2026q3",
-    "period": "2026-09-30",
-    "expected": "2026-11-04"
+    "form": "10-K",
+    "label": "fy2026",
+    "period": "2026-12-31",
+    "expected": "2027-02-18"
    }
   },
   "VEEV": {
