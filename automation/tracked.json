@@ -168,6 +168,30 @@
       "quarterly_covered_through": "2026-09-30",
       "annual_filed": "2026-02-18",
       "quarterly_filed": "2026-10-28"
+    },
+    "JPM": {
+      "cik": "0000019617",
+      "name": "JPMorgan Chase",
+      "annual_form": "10-K",
+      "annual_dashboard": "companies/jpm/",
+      "annual_covered_through": "2025-12-31",
+      "quarterly": true,
+      "quarterly_dashboard": null,
+      "quarterly_covered_through": null,
+      "annual_filed": "2026-02-13",
+      "quarterly_filed": null
+    },
+    "MSFT": {
+      "cik": "0000789019",
+      "name": "Microsoft",
+      "annual_form": "10-K",
+      "annual_dashboard": "companies/msft/",
+      "annual_covered_through": "2026-06-30",
+      "quarterly": true,
+      "quarterly_dashboard": null,
+      "quarterly_covered_through": null,
+      "annual_filed": "2026-07-29",
+      "quarterly_filed": null
     }
   }
 }
