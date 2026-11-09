@@ -190,6 +190,8 @@ const companies = [
   {ticker:'APO',  name:'Apollo Global Management', sector:'Alternative Asset Management',             startFY:'FY2018', endFY:'FY2025', signals:14, url:'companies/apo/', bb:'companies/apo/bullbear/',   tenQ:'companies/apo/10q/', qLabel:'2024Q1–2026Q2', c1:'#1a1a2e', c2:'#003A70', c3:'#0066B3'},
   {ticker:'FICO', name:'Fair Isaac Corporation',   sector:'Analytics / Decision Management Software', startFY:'FY2018', endFY:'FY2025', signals:18, url:'companies/fico/', bb:'companies/fico/bullbear/',  tenQ:'companies/fico/10q/', qLabel:'FY24Q1–FY26Q3', c1:'#001a4d', c2:'#0033A0', c3:'#00A3E0'},
   {ticker:'CVNA', name:'Carvana',                  sector:'Automotive / Digital Retail',              startFY:'FY2018', endFY:'FY2025', signals:15, url:'companies/cvna/', bb:'companies/cvna/bullbear/', tenQ:'companies/cvna/10q/', qLabel:'2024Q1–2026Q3',  c1:'#1a1a2e', c2:'#006D9E', c3:'#00AFF0'},
+  {ticker:'JPM',  name:'JPMorgan Chase',           sector:'Banks / Universal Banking',                startFY:'FY2018', endFY:'FY2025', signals:11, url:'companies/jpm/',  c1:'#1a1a2e', c2:'#117ACA', c3:'#8A6D3B'},
+  {ticker:'MSFT', name:'Microsoft',                sector:'Technology / Cloud & Software',            startFY:'FY2019', endFY:'FY2026', signals:12, url:'companies/msft/', c1:'#1a1a2e', c2:'#0078D4', c3:'#7FBA00'},
 ];
 
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -230,6 +232,7 @@ companies.forEach(c => {
   c.endKey = fyKey(c.endFY);
   c.years = c.endKey - c.startKey + 1;
   c.bbKey = c.bb ? 1 : 0;
+  c.quarterly = led.quarterly !== false;  // a 10-Q filer whose scanner is not built yet shows as pending
   // What is on EDGAR but not covered by the dashboards yet
   c.waiting = filings.filter(f =>
     (f.form === annualForm && led.annual_covered_through && f.period > led.annual_covered_through) ||
@@ -353,7 +356,7 @@ function render() {
       <td class="click-cell"><span class="ticker-pill" style="background:linear-gradient(135deg,${c.c1},${c.c2});border-bottom-color:${c.c3};">${esc(c.ticker)}</span></td>
       <td class="click-cell"><span class="co">${esc(c.name)}</span><span class="sector">${esc(c.sector)}</span></td>
       <td class="click-cell col-wide nowrap">${esc(c.startFY)}–${esc(c.endFY.replace('FY', ''))}<span class="sub">${c.years} years</span></td>
-      <td class="click-cell col-wide nowrap">${c.tenQ ? esc(c.latestQ) + `<span class="sub">filed ${esc(fmtDate(c.latestQFiled))}</span>` : '<span class="sub">20-F filer</span>'}</td>
+      <td class="click-cell col-wide nowrap">${c.tenQ ? esc(c.latestQ) + `<span class="sub">filed ${esc(fmtDate(c.latestQFiled))}</span>` : (c.quarterly ? '<span class="sub">10-Q scanner pending</span>' : '<span class="sub">20-F filer</span>')}</td>
       <td class="click-cell col-wide num">${c.signals}</td>
       <td class="click-cell">${statusChip(c)}</td>
       <td class="click-cell">${nextCell(c)}</td>

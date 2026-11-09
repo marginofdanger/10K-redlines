@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-09T02:25Z",
+ "checked": "2026-11-09T05:06Z",
  "companies": {
   "META": {
    "fye_month": 12,
@@ -937,6 +937,107 @@
     "label": "fy2026",
     "period": "2026-12-31",
     "expected": "2027-02-17"
+   }
+  },
+  "JPM": {
+   "fye_month": 12,
+   "filings": [
+    {
+     "form": "10-Q",
+     "label": "fy2026q3",
+     "period": "2026-09-30",
+     "filed": "2026-11-03",
+     "index": "https://www.sec.gov/Archives/edgar/data/19617/000162828026069523/0001628280-26-069523-index.htm"
+    },
+    {
+     "form": "10-Q",
+     "label": "fy2026q2",
+     "period": "2026-06-30",
+     "filed": "2026-08-06",
+     "index": "https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/0001628280-26-054343-index.htm"
+    },
+    {
+     "form": "10-Q",
+     "label": "fy2026q1",
+     "period": "2026-03-31",
+     "filed": "2026-05-01",
+     "index": "https://www.sec.gov/Archives/edgar/data/19617/000162828026029344/0001628280-26-029344-index.htm"
+    },
+    {
+     "form": "10-K",
+     "label": "fy2025",
+     "period": "2025-12-31",
+     "filed": "2026-02-13",
+     "index": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/0001628280-26-008131-index.htm"
+    }
+   ],
+   "next": null
+  },
+  "MSFT": {
+   "fye_month": 6,
+   "filings": [
+    {
+     "form": "10-Q",
+     "label": "fy2027q1",
+     "period": "2026-09-30",
+     "filed": "2026-10-28",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/0001193125-26-436133-index.htm"
+    },
+    {
+     "form": "10-K",
+     "label": "fy2026",
+     "period": "2026-06-30",
+     "filed": "2026-07-29",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/0001193125-26-323660-index.htm"
+    },
+    {
+     "form": "10-Q",
+     "label": "fy2026q3",
+     "period": "2026-03-31",
+     "filed": "2026-04-29",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/0001193125-26-191507-index.htm"
+    },
+    {
+     "form": "10-Q",
+     "label": "fy2026q2",
+     "period": "2025-12-31",
+     "filed": "2026-01-28",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/0001193125-26-027207-index.htm"
+    },
+    {
+     "form": "10-Q",
+     "label": "fy2026q1",
+     "period": "2025-09-30",
+     "filed": "2025-10-29",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/0001193125-25-256321-index.htm"
+    },
+    {
+     "form": "10-K",
+     "label": "fy2025",
+     "period": "2025-06-30",
+     "filed": "2025-07-30",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/0000950170-25-100235-index.htm"
+    },
+    {
+     "form": "10-Q",
+     "label": "fy2025q3",
+     "period": "2025-03-31",
+     "filed": "2025-04-30",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/0000950170-25-061046-index.htm"
+    },
+    {
+     "form": "10-Q",
+     "label": "fy2025q2",
+     "period": "2024-12-31",
+     "filed": "2025-01-29",
+     "index": "https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/0000950170-25-010491-index.htm"
+    }
+   ],
+   "next": {
+    "form": "10-Q",
+    "label": "fy2027q2",
+    "period": "2026-12-31",
+    "expected": "2027-01-27"
    }
   }
  }

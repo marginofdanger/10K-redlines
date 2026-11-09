@@ -55,7 +55,15 @@ CONTINGENCY_HEADINGS = ["COMMITMENTS AND CONTINGENCIES", "Commitments and Contin
 MDA_SUBSECTIONS = {"mda_liquidity": r"liquidity(, financial condition)? and capital resources",
                    "mda_critical_estimates": r"critical accounting (policies and )?(estimates|policies)"}
 # Filers whose MD&A names a sub-section differently (GOOG: liquidity sits under "Financial Condition").
-MDA_SUBSECTION_OVERRIDES = {"goog": {"mda_liquidity": r"financial condition\s*$"}}
+# A tuple value is (start, end): JPM's MD&A runs its risk sections back to back, so liquidity
+# ends at the next risk heading rather than at a generic top-level MD&A heading.
+MDA_SUBSECTION_OVERRIDES = {"goog": {"mda_liquidity": r"financial condition\s*$"},
+                            "jpm": {"mda_liquidity": (r"LIQUIDITY RISK MANAGEMENT$", r"[A-Z ]+ RISK MANAGEMENT$"),
+                                    "mda_critical_estimates": (r"CRITICAL ACCOUNTING ESTIMATES USED BY THE FIRM$",
+                                                               r"ACCOUNTING AND REPORTING DEVELOPMENTS$")},
+                            # MSFT FY2019-21: "FINANCIAL CONDITION" and "APPLICATION OF CRITICAL ACCOUNTING POLICIES"
+                            "msft": {"mda_liquidity": r"(liquidity and capital resources|financial condition)\s*$",
+                                     "mda_critical_estimates": r"(application of )?critical accounting (policies|estimates)\s*$"}}
 MDA_TOP = re.compile(r"(overview|executive (overview|summary)|results of operations|liquidity(, financial condition)? and capital resources|"
                      r"critical accounting|recent(ly)? (issued |adopted )?accounting|non-gaap|contractual obligations|"
                      r"off-balance sheet|segment (results|information|operating)|business outlook|forward-looking|"
@@ -67,6 +75,16 @@ EXHIBIT_SECTIONS = {
                     r"Supplemental Information"),
             "market_risk": (r"Quantitative Market Risk Disclosures", r"Online Annual Report")},
 }
+# Sections whose Item is only a cross-reference to the annual report printed later in the
+# same document (JPM: Items 7, 7A and 8 point into the integrated annual report). Each is
+# taken from its first whole-line start heading to its end heading.
+INLINE_SECTIONS = {
+    "jpm": {"mda": (r"EXECUTIVE OVERVIEW", r"Management.s report on internal control over financial reporting"),
+            "market_risk": (r"MARKET RISK MANAGEMENT", r"COUNTRY RISK MANAGEMENT")},
+}
+# Filers whose contingencies note is not the first "contingenc"/"commitments" note (JPM's
+# litigation disclosures sit in their own note, after the off-balance-sheet commitments note).
+CONTINGENCIES_PICK = {"jpm": r"litigation"}
 MAX_SPAN = 400_000
 OPTIONAL = {"subsequent_events", "mda_critical_estimates", "mda_liquidity", "contingencies"}
 
@@ -151,6 +169,8 @@ def headings(lines, titles):
         if len(rest) < 2:
             continue
         title, after = rest[0], rest[1]
+        if not m.group(2).strip() and len(title) > 150:
+            continue  # bare running header ("Item 1" atop a page, MSFT) followed by body text
         if item not in titles or not re.search(titles[item], title[:120], re.I):
             continue
         if re.fullmatch(r"(page\s*)?[\divxl\-\u2013 ]{1,8}", after, re.I) or re.search(r"\s\d{1,3}$", title):
@@ -214,6 +234,11 @@ def extract(lines, form):
         if start is None:
             results[name] = ""
             continue
+        # a bare running header ("PART II / Item 7" atop every page, MSFT) directly followed by the
+        # real heading reads as a near-empty section: take the heading after it instead
+        nxt = next(((j, it) for j, it, _ in hs if j > start), None)
+        if end_of(start) - off[start] < 200 and nxt and nxt[1] == item and nxt[0] - start <= 2:
+            start = nxt[0]
         s, e = off[start], end_of(start)
         results[name] = tidy("\n".join(lines)[s:e].strip(), lines[start])
         cursor = s + 1 if form != "10-Q" else e  # 10-Q Part II items follow the MD&A
@@ -258,6 +283,12 @@ def note_head(l):
     return None if TOC_ROW.fullmatch(l or "") else NOTE_HEAD.fullmatch(l or "")
 
 
+def notes_end(lines, j):
+    """A heading that follows the notes, unless a note heading comes straight after it: JPM's
+    FY2019 10-K prints a stray "Management's discussion and analysis" running header on a notes page."""
+    return bool(NOTES_END.match(lines[j])) and not any(note_head(x) for x in lines[j + 1:j + 3])
+
+
 def notes(lines):
     """The notes to the financial statements, wherever they sit (Item 8, Part I Item 1, or F-pages
     at the back), split on sequentially numbered note headings. Returns (all notes, {n: (title, text)})."""
@@ -277,13 +308,30 @@ def notes(lines):
                 n, k = 1, i + 1
                 for j in range(i + 1, len(lines)):
                     h = note_head(lines[j])
-                    if h and int(h.group(1)) == n + 1 and "continued" not in lines[j].lower():
-                        n += 1
-                    if (ITEM_LINE.match(lines[j]) or NOTES_END.match(lines[j])) and j > i + 50:
+                    if h and int(h.group(1)) in (n + 1, n + 2) and "continued" not in lines[j].lower():
+                        n = int(h.group(1))  # tolerate one unparsed heading (JPM FY2019 Note 8)
+                    bare_header = re.fullmatch(r"items?\s*[18]\.?", lines[j], re.I)  # running page header
+                    if ((ITEM_LINE.match(lines[j]) and not bare_header) or notes_end(lines, j)) and j > i + 50:
                         break
                     k = j
                 if n > best[0]:
                     best = (n, (i, k))
+    if not best[1]:
+        # no "Notes to ..." line before Note 1 (JPM FY2018): start at the Note 1 heading itself
+        for i, l in enumerate(lines):
+            h = note_head(l)
+            if h and h.group(1) == "1" and l.lower().startswith("note") and len(l) < 120:
+                n, k = 1, i
+                for j in range(i + 1, len(lines)):
+                    hj = note_head(lines[j])
+                    if hj and int(hj.group(1)) == n + 1 and "continued" not in lines[j].lower():
+                        n += 1
+                    if ((ITEM_LINE.match(lines[j]) and not re.fullmatch(r"items?\s*[18]\.?", lines[j], re.I))
+                            or notes_end(lines, j)) and j > i + 50:
+                        break
+                    k = j
+                if n > best[0]:
+                    best = (n, (i - 1, k))
     if not best[1]:
         return "", {}
     i, k = best[1]
@@ -293,7 +341,7 @@ def notes(lines):
         low = l.lower()
         if "(continued)" in low or (NOTES_START.match(l) and len(l) < 120 and body):
             continue  # running page headers
-        if h and int(h.group(1)) == (cur or 0) + 1:
+        if h and int(h.group(1)) in ((cur or 0) + 1, (cur or 0) + 2):
             cur = int(h.group(1))
             parts[cur] = [h.group(2).strip(), []]
         if FURNITURE.fullmatch(l):
@@ -313,11 +361,13 @@ def mda_subsections(mda, ticker=""):
     lines = [OUTLINE.sub("", l, count=1) if OUTLINE.match(l) else l for l in raw]
     out = {}
     for name, rx in {**MDA_SUBSECTIONS, **MDA_SUBSECTION_OVERRIDES.get(ticker, {})}.items():
+        rx, end_rx = rx if isinstance(rx, tuple) else (rx, None)
         starts = [i for i, l in enumerate(lines) if len(l) < 90 and re.match(rx, l, re.I)]
         best = ""
         for i in starts:  # the body heading has the longest run; earlier hits are in-text overviews
             # start at i + 2: a top-level word straight after the heading ("Overview") is its sub-heading
-            j = next((k for k in range(i + 2, len(lines)) if len(lines[k]) < 90 and MDA_TOP.match(lines[k])
+            j = next((k for k in range(i + 2, len(lines)) if len(lines[k]) < 90
+                      and (re.match(end_rx, lines[k]) if end_rx else MDA_TOP.match(lines[k]))
                       and not re.match(rx, lines[k], re.I)), len(lines))
             if j - i > best.count("\n") + 1:
                 best = "\n".join(raw[i:j])
@@ -355,6 +405,9 @@ def main(folder):
             # the exhibit is part of the filing's text: keep it in _full.txt so quotes
             # taken from the incorporated sections can be verified against the corpus
             full += ex_lines
+        if form == "10-K":
+            for name, (srx, erx) in INLINE_SECTIONS.get(ticker, {}).items():
+                secs[name] = from_exhibit(lines, srx, erx) or secs[name]
         with open(os.path.join(out_dir, f"{period}_full.txt"), "w", encoding="utf-8") as f:
             f.write("\n".join(full))
         if form in ("10-K", "10-Q"):
@@ -363,7 +416,8 @@ def main(folder):
                 all_notes, by_num = notes(ex_lines)  # notes incorporated from the annual-report exhibit
             secs["notes"] = all_notes
             pick = lambda rx: next((t for n, (title, t) in sorted(by_num.items()) if re.search(rx, title, re.I)), "")
-            secs["contingencies"] = pick(r"contingenc") or pick(r"commitments") or pick(r"legal") or pick(r"litigation")
+            secs["contingencies"] = ((pick(CONTINGENCIES_PICK[ticker]) if ticker in CONTINGENCIES_PICK else "")
+                                     or pick(r"contingenc") or pick(r"commitments") or pick(r"legal") or pick(r"litigation"))
             secs["subsequent_events"] = pick(r"subsequent event")
             if not secs["contingencies"]:
                 for h in CONTINGENCIES_NOTE.get(ticker, CONTINGENCY_HEADINGS):
