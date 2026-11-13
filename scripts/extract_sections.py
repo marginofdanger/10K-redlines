@@ -81,11 +81,14 @@ EXHIBIT_SECTIONS = {
             "market_risk": (r"Quantitative Market Risk Disclosures", r"Online Annual Report")},
 }
 # Sections whose Item is only a cross-reference to the annual report printed later in the
-# same document (JPM: Items 7, 7A and 8 point into the integrated annual report). Each is
-# taken from its first whole-line start heading to its end heading.
+# same document (JPM: Items 7, 7A and 8 point into the integrated annual report; its 10-Q
+# names Item 2 only in the table of contents and prints the MD&A ahead of the statements).
+# Keyed by ticker, then form; each is taken from its first whole-line start heading to its
+# end heading.
 INLINE_SECTIONS = {
-    "jpm": {"mda": (r"EXECUTIVE OVERVIEW", r"Management.s report on internal control over financial reporting"),
-            "market_risk": (r"MARKET RISK MANAGEMENT", r"COUNTRY RISK MANAGEMENT")},
+    "jpm": {"10-K": {"mda": (r"EXECUTIVE OVERVIEW", r"Management.s report on internal control over financial reporting"),
+                     "market_risk": (r"MARKET RISK MANAGEMENT", r"COUNTRY RISK MANAGEMENT")},
+            "10-Q": {"mda": (r"EXECUTIVE OVERVIEW", r"Consolidated statements of income \(unaudited\)")}},
 }
 # Filers whose contingencies note is not the first "contingenc"/"commitments" note (JPM's
 # litigation disclosures sit in their own note, after the off-balance-sheet commitments note).
@@ -410,9 +413,10 @@ def main(folder):
             # the exhibit is part of the filing's text: keep it in _full.txt so quotes
             # taken from the incorporated sections can be verified against the corpus
             full += ex_lines
-        if form == "10-K":
-            for name, (srx, erx) in INLINE_SECTIONS.get(ticker, {}).items():
-                secs[name] = from_exhibit(lines, srx, erx) or secs[name]
+        for name, (srx, erx) in INLINE_SECTIONS.get(ticker, {}).get(form, {}).items():
+            # drop bare page numbers (JPM's 10-Q) and rejoin a sentence a page break split
+            inline = join_split([l for l in from_exhibit(lines, srx, erx).split("\n") if l and not FURNITURE.fullmatch(l)])
+            secs[name] = "\n".join(inline) or secs[name]
         with open(os.path.join(out_dir, f"{period}_full.txt"), "w", encoding="utf-8") as f:
             f.write("\n".join(full))
         if form in ("10-K", "10-Q"):

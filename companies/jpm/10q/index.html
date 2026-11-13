@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPM 10-Q Quarterly Scanner | Q2 2024 - Q3 2026</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0B5394;
+  --accent-deep: #1a1a2e;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --gold: #8A6D3B;
+  --gold-dark: #6b5228;
+  --purple: #8250df;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(11,83,148,0.08);
+  border-left-color: var(--gold);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; color: var(--accent); }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(138,109,59,0.14); color: var(--gold-dark); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(11,83,148,0.05); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+.finding-body p.shift { font-size: 11.5px; font-weight: 600; color: var(--purple); margin: 2px 0 6px; letter-spacing: .2px; }
+.finding-body p.history { font-size: 12px; color: var(--text-dim); border-left: 2px solid var(--border); padding-left: 10px; margin: 6px 0 8px; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; color: var(--accent); }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--gold-dark); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--gold); color: #ffffff; font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+.signal-card blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(11,83,148,0.05); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text); font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>JPM 10-Q SCANNER</h1>
+    <div class="sub">Q2 2024 &ndash; Q3 2026 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#q2q3-2024">Q2 &rarr; Q3 2024</a>
+  <a class="nav-item" href="#q3-2024-fy2024">Q3 2024 &rarr; FY2024 10-K</a>
+  <a class="nav-item" href="#fy2024-q1-2025">FY2024 10-K &rarr; Q1 2025</a>
+  <a class="nav-item" href="#q1q2-2025">Q1 &rarr; Q2 2025</a>
+  <a class="nav-item" href="#q2q3-2025">Q2 &rarr; Q3 2025</a>
+  <a class="nav-item" href="#q3-2025-fy2025">Q3 2025 &rarr; FY2025 10-K</a>
+  <a class="nav-item" href="#fy2025-q1-2026">FY2025 10-K &rarr; Q1 2026</a>
+  <a class="nav-item" href="#q1q2-2026">Q1 &rarr; Q2 2026</a>
+  <a class="nav-item" href="#q2q3-2026">Q2 &rarr; Q3 2026</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-outlook">Outlook vs. Actual</a>
+  <a class="nav-item" href="#sig-capital">CET1 Cushion &amp; Buybacks</a>
+  <a class="nav-item" href="#sig-rules">Capital Rules Arc</a>
+  <a class="nav-item" href="#sig-allowance">Allowance &amp; Adverse Weight</a>
+  <a class="nav-item" href="#sig-litigation">Litigation Note</a>
+  <a class="nav-item" href="#sig-fls">Forward-Looking Factors</a>
+  <a class="nav-item" href="#sig-oneoffs">One-Off Items</a>
+  <a class="nav-item" href="#sig-corporate">Corporate Bets</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+
+  <div class="nav-section">Links</div>
+  <a class="nav-item" href="../index.html">JPM 10-K dashboard</a>
+  <a class="nav-item" href="../../index.html">All companies</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>JPMorgan Chase 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of ten SEC filings &mdash; eight 10-Qs from Q2 2024 (quarter ended June 30, 2024) through Q3 2026 (September 30, 2026), with the FY2024 and FY2025 10-Ks interleaved at the year boundaries. Nine consecutive transitions covering the MD&amp;A (outlook, capital, liquidity, credit and the allowance), the notes, the litigation note, and the forward-looking factor list that stands in for Item 1A, which every JPM 10-Q leaves to the 10-K.</div>
+  <div class="source">Source: SEC EDGAR | JPMorgan Chase &amp; Co. (NYSE: JPM, CIK 0000019617) | 10 filings, 9 transitions | Q2 2024 &ndash; Q3 2026 | Analysis: November 2026</div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+
+<!-- Q2 → Q3 2024 -->
+<div class="transition-header" id="q2q3-2024">
+  <h2>Q2 2024 &rarr; Q3 2024</h2>
+  <div class="sub">Filed Oct 30, 2024 | Net revenue $42.7B (+7%); NII $23.4B (+3%) | Net income $12.9B (&minus;2%); diluted EPS $4.37; ROTCE 19% | Provision $3.1B (+125%); allowance $26.5B | Card net charge-off rate 3.24% | CET1 15.3% | Buybacks $6.4B | NII guide ~$91B &rarr; ~$92.5B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Russian courts "may rule similarly" becomes judgments in five claims, one for $439M, which together exceed JPM&rsquo;s assets in Russia</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, certainty: may &rarr; have (&minus; for the firm); quant added $439M and $14M</p>
+    <blockquote>Q2 2024: "Russian courts may rule similarly in other cases, including ordering freezes and seizure of assets."</blockquote>
+    <blockquote>Q3 2024: "Russian courts have entered judgment against the Firm in five claims, including one for $439 million."</blockquote>
+    <blockquote>Q3 2024: "One judgment in the amount of $14 million was executed in July 2024 against assets held onshore by the Firm in Russia."</blockquote>
+    <blockquote>Q3 2024: "The total amount of the judgments exceeds the total amount of available assets that the Firm holds in Russia."</blockquote>
+    <p class="history">History: &ldquo;exceeds the total amount of available assets&rdquo; first appears in Q3 2024 and is in every filing since; Q3 2024&ndash;Q2 2025 add that judgments &ldquo;may not be executed while on appeal&rdquo;, which Q3 2025 replaces with &ldquo;now enforceable&rdquo;.</p>
+    <p>A sanctions-related risk became a set of court losses in one quarter. The note says the judgments already exceed what JPM holds in Russia, so the onshore assets are effectively spoken for; the open question is enforcement abroad, which the firm is contesting. The filing does not quantify the total.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Outlook &amp; Allowance</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">NII guide split into total and ex-Markets: "approximately $91 billion" for both becomes $92.5B and $91.5B; expense guide trimmed $92B &rarr; $91.5B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures, NII raised and Markets NII separated (+ disclosure); expense lowered (+)</p>
+    <blockquote>Q2 2024: "Management expects net interest income, and net interest income excluding Markets, to be approximately $91 billion, market dependent."</blockquote>
+    <blockquote>Q3 2024: "Management expects net interest income to be approximately $92.5 billion and net interest income excluding Markets to be approximately $91.5 billion, market dependent."</blockquote>
+    <blockquote>Q3 2024: "Management expects adjusted expense to be approximately $91.5 billion, market dependent."</blockquote>
+    <p class="history">History: Q2 2024 is the only filing in the set that gives one NII figure for both measures; every later guide separates them. The card charge-off guide stayed at 3.40%. 2024 NII came in at $92.6B (FY2024 10-K).</p>
+    <p>The split shows about $1B of Markets NII inside the total, and the core ex-Markets figure rose $0.5B. The year landed on the raised guide.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Card reserve build reaches $1.7B for the year to date ($753M at six months) on revolving balances; weighted peak unemployment 5.3% &rarr; 5.6%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant, card build more than doubles; scenario severity up (&minus;); &ldquo;seasoning of newer vintages&rdquo; moves from first driver to a sub-clause</p>
+    <blockquote>Q2 2024: "$653 million in consumer, reflecting a $753 million net addition in Card Services, predominantly driven by the seasoning of newer vintages, loan growth, and updates to certain macroeconomic variables"</blockquote>
+    <blockquote>Q3 2024: "a $1.7 billion net addition in Card Services, due to loan growth, reflecting higher revolving balances, including the seasoning of newer vintages, and changes in certain macroeconomic variables"</blockquote>
+    <blockquote>Q2 2024: "resulting in a weighted average U.S. unemployment rate peaking at 5.3% in the second quarter of 2025"</blockquote>
+    <blockquote>Q3 2024: "resulting in a weighted average U.S. unemployment rate peaking at 5.6% in the third quarter of 2025"</blockquote>
+    <p class="history">History: weighted peak unemployment in the set: 5.3% (Q2 2024), 5.6% (Q3 2024), 5.5% (FY2024), 5.8% (Q1 2025), 5.9% (Q2&ndash;Q3 2025), 5.8% (FY2025), 5.6% (2026 10-Qs). &ldquo;maintained the additional weight placed on the adverse scenarios in the first quarter of 2023&rdquo; is unchanged in both filings.</p>
+    <p>The quarter&rsquo;s provision more than doubled ($3.1B vs $1.4B a year earlier), and card accounted for most of the build. The wording now puts loan growth first, which reads as a volume story rather than a credit-quality one; card charge-offs fell to 3.24% from 3.50% in Q2.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Regulation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The resolution-plan "shortcoming" paragraph is dropped one quarter after it appeared</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: removed, a supervisory finding no longer stated (&minus; disclosure)</p>
+    <blockquote>Q2 2024: "On June 21, 2024, the Federal Reserve and the FDIC announced joint determinations on the Firm&rsquo;s 2023 resolution plan, which identified no deficiencies and one shortcoming that must be satisfactorily addressed in the Firm&rsquo;s next resolution plan due on July 1, 2025."</blockquote>
+    <p class="history">History: &ldquo;resolution plan&rdquo; appears in the MD&amp;A of Q2 2024 only; no later filing in the set says whether the shortcoming was addressed in the July 2025 plan.</p>
+    <p>A regulator-identified weakness was disclosed once and not followed up. Its removal is routine for a quarterly &ldquo;Regulatory developments&rdquo; note, but the set never records the outcome.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2024 → FY2024 10-K -->
+<div class="transition-header" id="q3-2024-fy2024">
+  <h2>Q3 2024 &rarr; FY2024 10-K</h2>
+  <div class="sub">Filed Feb 14, 2025 | FY2024 net revenue $177.6B (+12%); NII $92.6B (+4%) | Net income $58.5B (+18%), including the $7.9B Visa gain; diluted EPS $19.75; ROTCE 22% | Provision $10.7B; allowance $26.9B | Card net charge-off rate 3.34% | CET1 15.7% against 12.3% (SCB 3.3%) | Buybacks $18.8B | 2025 guide: NII ~$94.0B, adjusted expense ~$95.0B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Outlook</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2025 guide: ex-Markets NII about $90.0B, below the $91.5B guided for 2024; expense $95.0B above NII; card charge-off guide up to 3.60%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures, core NII guided down year on year, expense and card losses up (&minus;)</p>
+    <blockquote>Q3 2024: "Management expects net interest income to be approximately $92.5 billion and net interest income excluding Markets to be approximately $91.5 billion, market dependent."</blockquote>
+    <blockquote>FY2024 10-K: "Management expects net interest income to be approximately $94.0 billion and net interest income excluding Markets to be approximately $90.0 billion, market dependent."</blockquote>
+    <blockquote>FY2024 10-K: "Management expects adjusted expense to be approximately $95.0 billion, market dependent."</blockquote>
+    <blockquote>FY2024 10-K: "Management expects the net charge-off rate in Card Services to be approximately 3.60%."</blockquote>
+    <p class="history">History: the 2025 ex-Markets guide stayed at $90.0B in Q1 2025 and rose to $92.0B in Q2 2025; the card guide stayed at 3.60% until Q3 2025 cut it to 3.3%. Actual 2025 card charge-offs were 3.31%.</p>
+    <p>The guide implied core NII would shrink in 2025, with Markets making up the difference. The firm then beat its own guide: ex-Markets was raised to $92.0B and card losses came in nearly 30 basis points under the opening 3.60%. Both opening NII guides in the set (2025, 2026) were raised during the year.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Zelle inquiry becomes a CFPB lawsuit; two matters dropped; loss range cut from $1.7B to $1.4B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, &ldquo;authorized to pursue ... an enforcement action&rdquo; &rarr; a filed complaint (&minus;); quant, range &minus;$0.3B (+); de-named, Securities Lending Antitrust and Trading Venues headings removed</p>
+    <blockquote>Q3 2024: "In connection with this, the CFPB Staff has informed the Firm that it is authorized to pursue a resolution of the inquiries or file an enforcement action. The Firm is evaluating next steps, including litigation."</blockquote>
+    <blockquote>FY2024 10-K: "The CFPB alleges that EWS and the defendant banks have failed to take sufficient efforts to prevent fraud on the Zelle network."</blockquote>
+    <blockquote>Q3 2024: "The Firm believes the estimate of the aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.7 billion at September 30, 2024."</blockquote>
+    <blockquote>FY2024 10-K: "The Firm believes the estimate of the aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.4 billion at December 31, 2024."</blockquote>
+    <p class="history">History: the Zelle matter was &ldquo;Government Inquiries Related to the Zelle Network&rdquo; in Q2&ndash;Q3 2024 and &ldquo;Zelle Network Litigation&rdquo; in the FY2024 10-K and Q1 2025, when the court dismissed it at the CFPB&rsquo;s request. Securities Lending Antitrust and Trading Venues Investigations ran from Q2 2024 to Q3 2024.</p>
+    <p>The range fell even as the Zelle threat turned into a suit, so the reduction came from matters that were resolved or dropped. The Zelle suit itself lasted one filing before the CFPB withdrew it.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Integration, Allowance &amp; Wording</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First Republic integration: "expects ... substantially complete by the end of 2024" becomes "had substantially completed"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, expects &rarr; had completed (+); a stated target met on time</p>
+    <blockquote>Q3 2024: "The Firm expects that these actions will be substantially complete by the end of 2024."</blockquote>
+    <blockquote>FY2024 10-K: "As of December 31, 2024, the Firm had substantially completed the conversion of operations, and the integration of clients, products and services, associated with the First Republic acquisition to align with the Firm&rsquo;s businesses and operations."</blockquote>
+    <p class="history">History: &ldquo;substantially complete by the end of 2024&rdquo; appears in Q2 and Q3 2024; mentions of &ldquo;First Republic&rdquo; in the MD&amp;A fall from 107 (Q2 2024) to 76 (FY2024) to 9 (Q3 2026).</p>
+    <p>The acquisition&rsquo;s integration target was met on the date given. From 2025 First Republic shows up mainly as one-off items (the $588M FDIC-related gain in Q1 2025) and in capital transition provisions.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The extra adverse-scenario weight, held since Q1 2023, is renamed a "qualitative adjustment"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree, a dated management action (&ldquo;placed ... in the first quarter of 2023&rdquo;) becomes a standing qualitative overlay</p>
+    <blockquote>Q3 2024: "The Firm has maintained the additional weight placed on the adverse scenarios in the first quarter of 2023 to reflect ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment."</blockquote>
+    <blockquote>FY2024 10-K: "The Firm&rsquo;s qualitative adjustments continued to include additional weight placed on the adverse scenarios to reflect ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment."</blockquote>
+    <p class="history">History: the &ldquo;first quarter of 2023&rdquo; wording ran Q2&ndash;Q3 2024; &ldquo;qualitative adjustments continued to include additional weight&rdquo; appears in the FY2024 10-K and, with &ldquo;weighted-average macroeconomic outlook&rdquo; added, in every filing from the FY2025 10-K through Q3 2026.</p>
+    <p>The overlay lost its start date and became part of how the allowance is described, not a temporary response. That makes later changes to it (raised in Q1 2025, partly reversed in Q2 2025) management judgments inside a standing adjustment.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Forward-looking factor drops "diverse": "qualified and diverse employees" becomes "qualified employees"</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: removed, one word in the people factor</p>
+    <blockquote>Q3 2024: "Ability of the Firm to attract and retain qualified and diverse employees;"</blockquote>
+    <blockquote>FY2024 10-K: "Ability of the Firm to attract and retain qualified employees;"</blockquote>
+    <p class="history">History: &ldquo;qualified and diverse employees&rdquo; appears in Q2 and Q3 2024; &ldquo;qualified employees&rdquo; from the FY2024 10-K through Q3 2026.</p>
+    <p>The same 10-K cut DEI wording from the human-capital section (see the 10-K dashboard). The edit is one word, but it is the first of the factor-list changes that end, in the FY2025 10-K, with &ldquo;social, environmental and sustainability concerns&rdquo; replaced by &ldquo;public criticism&rdquo;.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2024 10-K → Q1 2025 -->
+<div class="transition-header" id="fy2024-q1-2025">
+  <h2>FY2024 10-K &rarr; Q1 2025</h2>
+  <div class="sub">Filed May 1, 2025 | Net revenue $45.3B (+8%), including a $588M First Republic-related gain; NII $23.3B (+1%) | Net income $14.6B (+9%); diluted EPS $5.07 (+14%); ROTCE 21% | Provision $3.3B (+75%), allowance up $1.0B to $27.8B | Card net charge-off rate 3.58% | CET1 15.4% | Buybacks $7.6B | NII guide $94.0B &rarr; $94.5B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Macro &amp; Allowance</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs get their own forward-looking factor: "Changes in trade policies, including the imposition of tariffs and retaliatory responses"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +tariffs, +retaliatory responses (+ disclosure); trade split out of a combined factor</p>
+    <blockquote>FY2024 10-K: "Changes in trade, monetary and fiscal policies and laws;"</blockquote>
+    <blockquote>Q1 2025: "Changes in monetary and fiscal policies and laws;"</blockquote>
+    <blockquote>Q1 2025: "Changes in trade policies, including the imposition of tariffs and retaliatory responses;"</blockquote>
+    <p class="history">History: the tariff factor appears in Q1, Q2 and Q3 2025 and is folded back into &ldquo;Changes in trade, monetary and fiscal policies and laws&rdquo; in the FY2025 10-K. &ldquo;tariff&rdquo; appears nowhere else in the MD&amp;A of any filing in the set.</p>
+    <p>Since JPM&rsquo;s 10-Qs carry no risk-factor text of their own, this list is where a new quarterly risk shows up. Tariffs were named in the same filing in which the firm raised the weight on its adverse scenarios (next finding). The firm did not discuss tariffs anywhere else in the MD&amp;A.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">$1.0B allowance build "largely driven" by the macro outlook and more adverse weight for "elevated risks and uncertainties"; weighted peak unemployment 5.5% &rarr; 5.8%, GDP gap 1.9% &rarr; 2.6%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree, &ldquo;ongoing uncertainties&rdquo; &rarr; &ldquo;elevated risks and uncertainties&rdquo; (&minus;); quant, scenario severity up</p>
+    <blockquote>FY2024 10-K: "The Firm&rsquo;s qualitative adjustments continued to include additional weight placed on the adverse scenarios to reflect ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment."</blockquote>
+    <blockquote>Q1 2025: "The net addition to the allowance for credit losses was largely driven by changes in the weighted-average macroeconomic outlook, including the qualitative adjustment to reflect additional weight placed on the adverse scenarios due to elevated risks and uncertainties related to the geopolitical and macroeconomic environment."</blockquote>
+    <blockquote>FY2024 10-K: "a weighted average U.S. unemployment rate peaking at 5.5% in the fourth quarter of 2025"</blockquote>
+    <blockquote>Q1 2025: "a weighted average U.S. real GDP level that is 2.6% lower than the central case at the end of the second quarter of 2026."</blockquote>
+    <p class="history">History: &ldquo;elevated risks and uncertainties&rdquo; appears in Q1 2025 only. The 2.6% GDP gap is the widest in the set (range 1.9%&ndash;2.6%); Q2 2025 partly reversed the added weight. Allowance: $26.9B (FY2024) &rarr; $27.8B.</p>
+    <p>This is the only quarter in the set in which the allowance build is attributed mainly to the outlook rather than to loan growth or Apple Card. The build ($1.0B) was split about evenly between wholesale and consumer, so it was a firmwide judgment, not a portfolio problem.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Regulation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">CFPB Late Fee Rule vacated and Overdraft Rule overturned; Fed proposes averaging two stress tests to set the SCB</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, two consumer rules removed (+ for revenue); named +SCB volatility proposal</p>
+    <blockquote>Q1 2025: "In April 2025, a Texas federal district court granted a joint request by the Consumer Financial Protection Bureau ... and trade organizations to vacate the CFPB Late Fee Rule. Also in April 2025, Congress passed a resolution of disapproval overturning the CFPB Overdraft Rule that is expected to be signed into law by the President."</blockquote>
+    <blockquote>Q1 2025: "In April 2025, the Federal Reserve proposed changes to the calculation of the Stress Capital Buffer ... for large bank holding companies, including the Firm. The proposal aims to reduce SCB volatility by using the average of supervisory stress results from the previous two annual stress tests to calculate the SCB."</blockquote>
+    <p class="history">History: &ldquo;Late Fee Rule&rdquo; appears in Q1 2025 only. The SCB averaging proposal is carried in every filing from Q1 2025 and finalized in Q3 2026, with averaging deferred to January 1, 2029.</p>
+    <p>Q1 2025 records the removal of two CFPB rules aimed at card late fees and overdraft charges, both fee lines in CCB, and opens the capital-relief path the later filings track (eSLR, SCB, the Basel re-proposal). The CFPB also asked the court to dismiss its Zelle suit against JPM in March 2025 (next finding).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Reasonably possible loss range cut from $1.4B to $1.1B; the CFPB&rsquo;s Zelle suit is dismissed at its own request and SEC Inquiries drops out</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant, range upper bound &minus;$0.3B (+ for the firm); tense: &ldquo;alleges&rdquo; &rarr; &ldquo;alleged&rdquo;; de-named, SEC Inquiries heading removed</p>
+    <blockquote>FY2024 10-K: "The Firm believes the estimate of the aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.4 billion at December 31, 2024."</blockquote>
+    <blockquote>Q1 2025: "The Firm believes the estimate of the aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.1 billion at March 31, 2025."</blockquote>
+    <blockquote>FY2024 10-K: "The CFPB alleges that EWS and the defendant banks have failed to take sufficient efforts to prevent fraud on the Zelle network."</blockquote>
+    <blockquote>Q1 2025: "The CFPB alleged that EWS and the defendant banks failed to take sufficient efforts to prevent fraud on the Zelle network. In March 2025, the Court dismissed the complaint with prejudice at the request of the CFPB."</blockquote>
+    <p class="history">History: the range ran $1.7B (Q2&ndash;Q3 2024) &rarr; $1.4B (FY2024) &rarr; $1.1B (Q1&ndash;Q2 2025), the low of the set, then rose to $1.2B and $1.3B. &ldquo;SEC Inquiries&rdquo; ran from Q2 2024 to the FY2024 10-K, after the October 2024 settlements.</p>
+    <p>Two consecutive cuts took $0.6B off the range in two filings, as federal enforcement matters (SEC, CFPB) resolved or were withdrawn. That trend reversed from Q3 2025, when the politically driven matters arrived.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2025 -->
+<div class="transition-header" id="q1q2-2025">
+  <h2>Q1 2025 &rarr; Q2 2025</h2>
+  <div class="sub">Filed Aug 5, 2025 | Net revenue $44.9B (&minus;11%, lapping the $7.9B Visa gain); NII $23.2B (+2%) | Net income $15.0B (&minus;17%), including a $774M tax benefit; diluted EPS $5.24; ROTCE 21% | Provision $2.8B; card net charge-off rate 3.40% | CET1 15.1% | Buybacks $7.5B | NII guide $94.5B &rarr; $95.5B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Allowance &amp; Outlook</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">One quarter after raising the adverse-scenario weight, the firm "partially reduced the increase"; the allowance is held flat by card loan growth</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree, adverse weight raised in Q1 then &ldquo;partially reduced&rdquo; (+ less severe); quant, weighted GDP gap 2.6% &rarr; 2.0%</p>
+    <blockquote>Q1 2025: "The net addition to the allowance for credit losses was largely driven by changes in the weighted-average macroeconomic outlook, including the qualitative adjustment to reflect additional weight placed on the adverse scenarios due to elevated risks and uncertainties related to the geopolitical and macroeconomic environment."</blockquote>
+    <blockquote>Q2 2025: "In the first quarter of 2025, the Firm further increased the weight placed on the adverse scenarios, and in the second quarter, the Firm partially reduced the increase in weight implemented in the first quarter."</blockquote>
+    <blockquote>Q2 2025: "The allowance for credit losses was relatively flat, as the impact of changes in the Firm's weighted-average macroeconomic outlook, including a decrease in the weight placed on the adverse scenarios, was offset by loan growth in Card Services."</blockquote>
+    <p class="history">History: &ldquo;elevated risks and uncertainties&rdquo; appears in Q1 2025 only; &ldquo;partially reduced the increase in weight&rdquo; in Q2 and Q3 2025; the FY2025 10-K summarizes the year as &ldquo;further increased&rdquo;. Weighted GDP gap below the central case: 1.9% (FY2024) &rarr; 2.6% (Q1 2025) &rarr; 2.0% (Q2 2025); peak unemployment 5.5% &rarr; 5.8% &rarr; 5.9%.</p>
+    <p>The Q1 2025 increase came in the quarter the tariff factor entered the forward-looking list. The weight is a management judgment, so the allowance can move a quarter in either direction on wording alone. Peak unemployment still edged up (5.8% to 5.9%) while the GDP gap narrowed, so the scenarios did not get milder on every measure.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">NII guide $94.5B &rarr; $95.5B, with ex-Markets NII up $2.0B to $92.0B; expense guide $95.0B &rarr; $95.5B</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures raised (+)</p>
+    <blockquote>Q1 2025: "Management expects net interest income to be approximately $94.5 billion and net interest income excluding Markets to be approximately $90.0 billion, market dependent."</blockquote>
+    <blockquote>Q2 2025: "Management expects net interest income to be approximately $95.5 billion and net interest income excluding Markets to be approximately $92.0 billion, market dependent."</blockquote>
+    <blockquote>Q2 2025: "Management expects adjusted expense to be approximately $95.5 billion, market dependent."</blockquote>
+    <p class="history">History: the ex-Markets guide had stood at $90.0B for two filings (FY2024 10-K, Q1 2025); the total NII guide rose $0.5B in Q1. Actual 2025 NII was $95.4B.</p>
+    <p>The ex-Markets raise ($2.0B) is larger than the total raise ($1.0B), so the guide now assumes less Markets NII and more from the core balance sheet. Actual 2025 NII ($95.4B) landed on this guide.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Capital &amp; Earnings</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Enhanced SLR proposal (June 2025) enters the regulatory section; the SCB sentence firms from "expects to disclose its indicative" requirement to "will provide the Firm with its final" one</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +eSLR proposal (+ disclosure); certainty: expects &rarr; will (+); quant removed, &ldquo;The Firm's SCB is currently 3.3%&rdquo;</p>
+    <blockquote>Q2 2025: "In June 2025, the Federal Reserve, the Office of the Comptroller of the Currency ... and the FDIC released a proposal to amend the enhanced Supplementary Leverage Ratio"</blockquote>
+    <blockquote>Q1 2025: "Following the Federal Reserve's disclosure, the Firm expects to disclose its indicative SCB requirement, which will become effective October 1, 2025 under the current rules."</blockquote>
+    <blockquote>Q2 2025: "The Federal Reserve will provide the Firm with its final SCB requirement by August 31, 2025 and that requirement will become effective October 1, 2025 based on the current rules"</blockquote>
+    <p class="history">History: the eSLR proposal appears in Q2 and Q3 2025; the final rule in the FY2025 10-K; early adoption on January 1, 2026 in the 2026 10-Qs. &ldquo;The Firm's SCB is currently 3.3%&rdquo; appears in Q1 2025 and not after. The Standardized CET1 requirement fell from 12.3% to 11.5% at the FY2025 10-K, when the SCB reached the 2.5% floor.</p>
+    <p>The two items are the first steps of the 2025&ndash;2026 relief: leverage buffers tied to the GSIB surcharge (the SLR requirement later fell from 5.0% to 4.3%) and a lower SCB. CET1 fell to 15.1% in the quarter while repurchases ran at $7.5B, so the firm was spending capital ahead of the relief.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">A $774M income tax benefit in Corporate supports the quarter, following Q1&rsquo;s $588M First Republic gain</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added, a one-off tax item (+ disclosure)</p>
+    <blockquote>Q2 2025: "The Firm's results included a $774 million income tax benefit in Corporate."</blockquote>
+    <blockquote>Q1 2025: "As a result of the agreement, the Firm made a payment of $609 million to the FDIC on January 31, 2025 and reduced its additional payable to the FDIC, which resulted in a gain of $588 million recorded"</blockquote>
+    <p class="history">History: the $774M benefit is cited as the prior-year base through Q3 2026 (&ldquo;the absence of a $774 million income tax benefit recorded in the prior year&rdquo;); the $588M First Republic-related gain appears in Q1 2025 and is lapped in Q1 2026.</p>
+    <p>The effective tax rate was 18.0% in Q2 2025, the lowest quarterly rate in the set (19.5% to 24.0% in the other 10-Qs, XBRL). The benefit is about 5% of the quarter&rsquo;s $15.0B net income. With Q1&rsquo;s $588M gain, the first half of 2025 carried about $1.4B of one-off items, small against JPM&rsquo;s earnings but enough to flatter year-on-year comparisons in each quarter.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation &amp; Leadership</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Zelle litigation removed after the CFPB asked the court to dismiss its own suit; head of international consumer initiatives to leave</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named, Zelle Network Litigation heading dropped (+ for the firm); named +leadership change</p>
+    <blockquote>Q1 2025: "In March 2025, the Court dismissed the complaint with prejudice at the request of the CFPB."</blockquote>
+    <blockquote>Q2 2025: "Sanoke Viswanathan, head of the Firm&rsquo;s international consumer initiatives, will be leaving the Firm in the third quarter of 2025."</blockquote>
+    <blockquote>Q2 2025: "Marianne Lake, CEO of Consumer &amp; Community Banking, has assumed oversight of international consumer initiatives."</blockquote>
+    <p class="history">History: Zelle appeared as &ldquo;Government Inquiries Related to the Zelle Network&rdquo; (Q2&ndash;Q3 2024), &ldquo;Zelle Network Litigation&rdquo; (FY2024 10-K, Q1 2025) and is gone from Q2 2025. The leadership sentences appear in Q2 2025 only. The loss range stayed at $0 to about $1.1B.</p>
+    <p>The CFPB&rsquo;s retreat removed a consumer-protection suit filed only in December 2024; Q1 2025 also reported the CFPB Late Fee Rule vacated and the Overdraft Rule overturned. The international consumer business moved under the head of U.S. consumer banking about a year before Chase Europe launched in Germany.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2025 -->
+<div class="transition-header" id="q2q3-2025">
+  <h2>Q2 2025 &rarr; Q3 2025</h2>
+  <div class="sub">Filed Nov 4, 2025 | Net revenue $46.4B (+9%); NII $24.0B (+2%) | Net income $14.4B (+12%); diluted EPS $5.07 (+16%); ROTCE 20% | Provision $3.4B; wholesale charge-offs up, including apparent borrower fraud | Card net charge-off rate 3.15% | CET1 14.8% against a 12.3% requirement | Buybacks $8.3B | Full-year NII and expense guides replaced by a fourth-quarter guide</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Russian judgments: "may not be executed while on appeal" becomes "now enforceable against Firm assets in Russia"</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, hypothetical &rarr; actual; certainty: may &rarr; are (&minus; for the firm)</p>
+    <blockquote>Q2 2025: "The Firm continues to appeal the Russian courts' decisions, and judgments may not be executed while on appeal."</blockquote>
+    <blockquote>Q3 2025: "The Firm continues to appeal the Russian courts' decisions, but certain judgments are now enforceable against Firm assets in Russia."</blockquote>
+    <blockquote>Q3 2025: "The total amount of the judgments exceeds the total amount of available assets that the Firm holds in Russia."</blockquote>
+    <p class="history">History: &ldquo;may not be executed while on appeal&rdquo; stood in four filings (Q3 2024 to Q2 2025); &ldquo;now enforceable&rdquo; appears from Q3 2025 to Q3 2026. The sentence that the judgments exceed JPM&rsquo;s available Russian assets has been present since Q3 2024.</p>
+    <p>The protection the note relied on, that nothing could be collected during appeal, is gone. Since the judgments already exceed what JPM holds in Russia, the Russian assets can be treated as lost; any excess depends on enforcement outside Russia, which the firm is contesting under its forum-selection clauses. The 10-K dashboard records the same move in the FY2025 risk factors.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New "Fair Access to Banking" matter after the August 2025 Executive Order, with a new warning that "additional legal proceedings may be initiated"; loss range $1.1B &rarr; $1.2B</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +Fair Access to Banking, +Executive Order (+ disclosure); hedge added &ldquo;may be initiated&rdquo;; quant, range upper bound +$0.1B (&minus;)</p>
+    <blockquote>Q3 2025: "JPMorganChase is responding to requests from government authorities and other external parties regarding, among other things, the Firm&rsquo;s policies and processes and the provision of services to customers and potential customers. Certain of these matters are at various stages, including reviews, investigations, and legal proceedings."</blockquote>
+    <blockquote>Q3 2025: "Additional legal proceedings may be initiated from time to time in the future."</blockquote>
+    <blockquote>Q2 2025: "The Firm believes the estimate of the aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.1 billion at June 30, 2025."</blockquote>
+    <blockquote>Q3 2025: "The Firm believes the estimate of the aggregate range of reasonably possible losses, in excess of reserves established, for its legal proceedings is from $0 to approximately $1.2 billion at September 30, 2025."</blockquote>
+    <p class="history">History: &ldquo;Fair Access&rdquo; appears in every filing from Q3 2025; the &ldquo;additional legal proceedings&rdquo; sentence appears in Q3 2025 only, and the FY2025 10-K replaces it with the named Trump lawsuit. The range had fallen from $1.7B (Q2 2024) to $1.1B (Q1&ndash;Q2 2025) before this first increase.</p>
+    <p>A political matter enters the litigation note with no defendant named yet, but with a sentence anticipating suits. It is the first increase in the loss range in the set, after four transitions of declines or no change.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Credit</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Apparent borrower fraud in certain secured lending facilities" enters the provision and charge-off explanations</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +borrower fraud (+ disclosure); hedge &ldquo;apparent&rdquo;; not quantified</p>
+    <blockquote>Q3 2025: "The provision for credit losses was $809 million, driven by net increases in the loan and lending-related commitment portfolios, estimated losses related to apparent borrower fraud in certain secured lending facilities, and changes in credit quality of client-specific exposures, partially offset by changes in certain macroeconomic variables."</blockquote>
+    <blockquote>Q3 2025: "Wholesale net charge-offs increased for the three and nine months ended September 30, 2025, compared to the same periods in the prior year, primarily due to increases in Commercial and industrial, including in the Healthcare and Technology, Media, and Telecommunications industries, as well as estimated losses related to apparent borrower fraud in certain secured lending facilities."</blockquote>
+    <p class="history">History: &ldquo;apparent borrower fraud&rdquo; appears five times in Q3 2025 and in no other filing; the FY2025 10-K drops &ldquo;apparent&rdquo;. No provision or charge-off explanation in the set before Q3 2025 cites borrower fraud.</p>
+    <p>The firm names a loss type, not a borrower, and gives no amount. Net charge-offs were $2.6B, up $506M, &ldquo;predominantly driven by Wholesale and Card Services&rdquo;. With firmwide average loans up 10% year on year by Q3 2026, collateral checks in secured facilities become a line item to watch.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Outlook, Regulation &amp; Corporate</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Full-year NII and expense guides replaced by fourth-quarter figures; card charge-off guide cut from 3.60% to 3.3%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope narrowed, full year &rarr; one quarter (&minus; comparability); quant, card guide lowered (+)</p>
+    <blockquote>Q2 2025: "Management expects net interest income to be approximately $95.5 billion and net interest income excluding Markets to be approximately $92.0 billion, market dependent."</blockquote>
+    <blockquote>Q3 2025: "Management expects net interest income to be approximately $25 billion and net interest income excluding Markets to be approximately $23.5 billion, market dependent."</blockquote>
+    <blockquote>Q2 2025: "Management expects the net charge-off rate in Card Services to be approximately 3.60%."</blockquote>
+    <blockquote>Q3 2025: "Management expects the net charge-off rate in Card Services to be approximately 3.3%."</blockquote>
+    <p class="history">History: Q2 2024, Q3 2024, Q1 2025 and Q2 2025 all gave full-year NII and expense guides; Q3 2025 is the only filing in the set with a fourth-quarter guide alone; Q3 2026 gives both. The card guide had stood at 3.60% for three filings (FY2024 10-K to Q2 2025).</p>
+    <p>The fourth-quarter NII guide plus nine-month NII ($70.4B) implies about $95.4B for the year, the same as the old full-year figure, so nothing was hidden by the format; FY2025 NII came in at $95.4B. The card cut followed a 3.15% quarter.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Stress-test transparency proposals: the Fed's analysis says they are "not expected to materially change the SCB"; Security and Resiliency Initiative announced at $1.5T over ten years</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +stress-test transparency proposals, +Security and Resiliency Initiative; quant added $1.5T, &ldquo;up to $500 billion&rdquo; incremental</p>
+    <blockquote>Q3 2025: "Based on the Federal Reserve&rsquo;s analysis, the proposed changes to the stress test models and scenarios are not expected to materially change the SCB for firms, such as JPMorganChase, that are subject to the supervisory stress test."</blockquote>
+    <blockquote>Q3 2025: "On October 13, 2025, JPMorganChase announced the Security and Resiliency Initiative, a $1.5 trillion, 10-year plan to facilitate, finance and invest in industries critical to national economic security and resiliency"</blockquote>
+    <blockquote>Q3 2025: "This target reflects an increase of up to $500 billion over the amount that the Firm may have otherwise facilitated or financed over the next decade in support of clients in these industries."</blockquote>
+    <p class="history">History: the stress-test reassurance appears from Q3 2025 to Q2 2026 and is not repeated in Q3 2026&rsquo;s final-rule text; the &ldquo;$1.5 trillion, 10-year&rdquo; sentence appears in Q3 2025 only, while the initiative&rsquo;s Strategic Investment Group is named from the FY2025 10-K on.</p>
+    <p>The initiative is mostly financing the firm would do anyway, by its own count ($500B of $1.5T is incremental). Its equity arm grew to $3.7B by Q2 2026 and $5.7B by Q3 2026, when the filing stopped describing those investments as within the initiative.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q3 2025 → FY2025 10-K -->
+<div class="transition-header" id="q3-2025-fy2025">
+  <h2>Q3 2025 &rarr; FY2025 10-K</h2>
+  <div class="sub">Filed Feb 13, 2026 | FY2025 net revenue $182.4B (+3%); NII $95.4B (+3%) | Net income $57.0B (&minus;2%); diluted EPS $20.02; ROTCE 20% | Provision $14.2B, including $2.2B for the Apple Card commitment | CET1 14.6% Standardized, 14.1% Advanced (binding) | Buybacks $31.6B for the year | 2026 guide: NII ~$103B, adjusted expense ~$105B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Outlook &amp; Capital</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2026 guide: adjusted expense about $105B against NII of about $103B, a $2B gap, the widest in the set to that point</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures, a full-year guide restored after Q3 2025&rsquo;s fourth-quarter-only outlook; expense +$9.5B on the prior year&rsquo;s guide</p>
+    <blockquote>Q3 2025: "Management expects adjusted expense to be approximately $24.5 billion, market dependent."</blockquote>
+    <blockquote>FY2025 10-K: "Management expects net interest income to be approximately $103 billion and net interest income excluding Markets to be approximately $95 billion, market dependent."</blockquote>
+    <blockquote>FY2025 10-K: "Management expects adjusted expense to be approximately $105 billion, market dependent."</blockquote>
+    <p class="history">History: full-year NII and expense guides in the set: 2024 $91B / $92B (Q2 2024), $92.5B / $91.5B (Q3 2024); 2025 $94.0B / $95.0B (FY2024 10-K) rising to $95.5B / $95.5B (Q2 2025); 2026 $103B / $105B. Expense had exceeded NII in the guide before (Q2 2024: $92B vs $91B; FY2024 10-K: $95.0B vs $94.0B), never by more than $1B; the gap widened again to $2.4B by Q3 2026.</p>
+    <p>Reported 2025 noninterest expense was $95.6B, so the 2026 guide is about 10% higher, against NII guided up 8% from $95.4B. JPM is guiding to negative operating leverage on the two lines it guides, before any fee revenue. The 2026 10-Qs later raised both guides by similar amounts (to $106.2B and $108.6B by Q3 2026).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Apple Card forward purchase arrives: $2.2B allowance two years before closing, and a 90-basis-point hit to Advanced CET1 that makes the Advanced ratio binding</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +Apple Card transaction (+ disclosure); quant added, allowance, RWA and CET1 effects</p>
+    <blockquote>FY2025 10-K: "The Firm entered into a forward purchase commitment on December 30, 2025 to acquire the Apple credit card portfolio, with an expected closing in approximately 24 months"</blockquote>
+    <blockquote>FY2025 10-K: "$3.3 billion in consumer, driven by $2.2 billion related to the Apple Card transaction, loan growth in Card Services and the impact of changes in the Firm's weighted-average macroeconomic outlook, partially offset by reduced borrower uncertainty"</blockquote>
+    <blockquote>FY2025 10-K: "Includes decreases of approximately 25 basis points under the Standardized approach and approximately 90 basis points under the Advanced approach related to the Apple Card transaction."</blockquote>
+    <p class="history">History: &ldquo;Apple&rdquo; does not appear in the MD&amp;A of any filing before the FY2025 10-K. The FY2025 table shows Advanced CET1 at 14.1% against Standardized 14.6%; in every earlier filing in the set the Standardized ratio was the lower one or equal.</p>
+    <p>CECL requires a reserve on the commitment, so JPM took $2.2B of provision in 2025 for loans it will not own until about the end of 2027. That is 15% of the year&rsquo;s $14.2B provision; after tax it is larger than the $1.4B fall in net income (our estimate). The 10-K also said Advanced RWA would fall to about $30B &ldquo;in the near term&rdquo;, which Q1 2026 confirmed.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">The 10-K sums up 2025 as "further increased the weight placed on the adverse scenarios"; the Q2 2025 partial reversal is no longer mentioned</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: condition dropped, &ldquo;partially reduced the increase&rdquo; (+ firmer severity wording)</p>
+    <blockquote>Q3 2025: "In the first quarter of 2025, the Firm further increased the weight placed on the adverse scenarios, and in the second quarter, the Firm partially reduced the increase in weight implemented in the first quarter."</blockquote>
+    <blockquote>FY2025 10-K: "During 2025, the Firm further increased the weight placed on the adverse scenarios."</blockquote>
+    <p class="history">History: the Q1/Q2 sentence appears in Q2 and Q3 2025; &ldquo;During 2025, the Firm further increased&rdquo; appears in the FY2025 10-K only and is dropped in Q1 2026. Weighted peak unemployment: 5.9% (Q3 2025) &rarr; 5.8% (FY2025).</p>
+    <p>Both statements can be true: the net change for the year was an increase. The annual version keeps the direction and drops the reversal, which reads as more conservative than the quarterly record. The year&rsquo;s $4.4B allowance build was mostly Apple Card ($2.2B) and loan growth.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Credit</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Apparent borrower fraud" becomes "borrower fraud" in the wholesale charge-off explanation</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: hedge dropped &ldquo;apparent&rdquo; (+ certainty); realized</p>
+    <blockquote>Q3 2025: "Wholesale net charge-offs increased for the three and nine months ended September 30, 2025, compared to the same periods in the prior year, primarily due to increases in Commercial and industrial, including in the Healthcare and Technology, Media, and Telecommunications industries, as well as estimated losses related to apparent borrower fraud in certain secured lending facilities."</blockquote>
+    <blockquote>FY2025 10-K: "Wholesale net charge-offs increased for the year ended December 31, 2025 compared to the prior year, primarily due to increases in Commercial and industrial, including in Technology, Media &amp; Telecommunications and Healthcare, as well as estimated losses related to borrower fraud in certain secured lending facilities."</blockquote>
+    <p class="history">History: &ldquo;apparent borrower fraud&rdquo; appears in Q3 2025 only; &ldquo;borrower fraud&rdquo; in the FY2025 10-K; neither appears in the 2026 10-Qs&rsquo; credit discussion. Q3 2026 attributes a $390M year-on-year fall in wholesale charge-offs to &ldquo;certain exposures in SPEs and Real Estate&rdquo;.</p>
+    <p>One quarter after the loss was booked, the firm treats the fraud as established. The 10-K dashboard records a new risk-factor paragraph saying collateral fraud losses have happened. The secured-lending losses were never sized separately in the MD&amp;A.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation &amp; Forward-Looking Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Fair Access matter now includes a January 2026 lawsuit by President Trump against the bank and its CEO; 1MDB and the "additional legal proceedings" warning are dropped</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +President Donald J. Trump (+ disclosure); realized, &ldquo;legal proceedings&rdquo; in general &rarr; a named suit; hedge dropped &ldquo;Additional legal proceedings may be initiated&rdquo;</p>
+    <blockquote>Q3 2025: "JPMorganChase is responding to requests from government authorities and other external parties regarding, among other things, the Firm&rsquo;s policies and processes and the provision of services to customers and potential customers. Certain of these matters are at various stages, including reviews, investigations, and legal proceedings."</blockquote>
+    <blockquote>Q3 2025: "Additional legal proceedings may be initiated from time to time in the future."</blockquote>
+    <blockquote>FY2025 10-K: "Certain of these matters are at various stages, including reviews, investigations, and legal proceedings, including a civil lawsuit filed in January 2026 in Florida state court by President Donald J. Trump, in his personal capacity, and several affiliated corporate entities, against JPMorgan Chase Bank, N.A. and its CEO."</blockquote>
+    <p class="history">History: Fair Access to Banking first appears in Q3 2025; &ldquo;Additional legal proceedings may be initiated from time to time in the future&rdquo; appears in Q3 2025 only. 1MDB Litigation appears from Q2 2024 to Q3 2025 and is gone from the FY2025 10-K. The loss range held at $0 to about $1.2B.</p>
+    <p>The warning that more proceedings might come was replaced by one. The suit names the CEO personally. The filing gives no amount and the aggregate range did not change; the note&rsquo;s politics now sit in a named lawsuit rather than in reputation language.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Forward-looking factors rewritten: "social, environmental and sustainability concerns" becomes "public criticism", AI is named, the tariff factor and FDIC assessments go</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named, sustainability &rarr; &ldquo;public criticism&rdquo;; named +AI; factors removed (tariffs as a standalone item, FDIC assessments); 31 &rarr; 29 factors</p>
+    <blockquote>Q3 2025: "Ability of the Firm to appropriately address social, environmental and sustainability concerns that may arise, including from its business activities;"</blockquote>
+    <blockquote>FY2025 10-K: "Ability of the Firm to appropriately address public criticism of its business activities;"</blockquote>
+    <blockquote>FY2025 10-K: "Technology changes instituted by the Firm, its counterparties or competitors, including AI;"</blockquote>
+    <blockquote>Q3 2025: "Changes in trade policies, including the imposition of tariffs and retaliatory responses;"</blockquote>
+    <p class="history">History: the tariff factor was added in Q1 2025 and ran three 10-Qs; &ldquo;Changes in FDIC assessments&rdquo; and the sustainability factor stood from Q2 2024 to Q3 2025; &ldquo;including AI&rdquo; and &ldquo;public criticism&rdquo; first appear in the FY2025 10-K and are unchanged through Q3 2026.</p>
+    <p>Because every JPM 10-Q leaves Item 1A to the 10-K, this list is the only risk language that changes inside the year. The 2026 version keeps the firm&rsquo;s exposure to criticism but no longer says what the criticism is about, matching the 10-K risk factors&rsquo; move away from ESG and DEI wording. Trade policy folds back into &ldquo;Changes in trade, monetary and fiscal policies and laws&rdquo;.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- FY2025 10-K → Q1 2026 -->
+<div class="transition-header" id="fy2025-q1-2026">
+  <h2>FY2025 10-K &rarr; Q1 2026</h2>
+  <div class="sub">Filed May 1, 2026 | Net revenue $49.8B (+10%); NII $25.4B (+9%) | Net income $16.5B (+13%); diluted EPS $5.94 (+17%); ROTCE 23% | Provision $2.5B (&minus;24%); card net charge-off rate 3.47% | CET1 14.3% Standardized, Advanced now binding | SLR 5.6% against a 4.3% requirement (was 5.0%) | Buybacks $8.3B | 2026 guidance unchanged</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Capital Rules</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Basel III re-proposal sized: about 6% more required CET1, about 4% net of a lower GSIB surcharge &mdash; the first estimate since the FY2023 10-K&rsquo;s "approximately 25%"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added, &ldquo;is uncertain&rdquo; &rarr; &ldquo;approximately 6%&rdquo; and &ldquo;approximately 4%&rdquo; (+ disclosure); condition added &ldquo;do not reflect any actions that the Firm could take to mitigate&rdquo;</p>
+    <blockquote>FY2025 10-K: "Finalization of the above proposals, including the required implementation dates, is uncertain. The Firm continues to monitor developments and potential impacts."</blockquote>
+    <blockquote>Q1 2026: "Based on the Firm's understanding of the U.S. Basel III Re-Proposal, as applied to its positions as of December 31, 2025, the estimated impact would be an increase to the Firm's required CET1 capital of approximately 6%."</blockquote>
+    <blockquote>Q1 2026: "The Firm expects that the changes in requirements reflected in the U.S. Basel III Re-Proposal and the GSIB Surcharge Re-Proposal, taken together, would result in an increase in the Firm&rsquo;s required CET1 capital of approximately 4% as compared to the CET1 capital requirement that, under current rules, would become effective on January 1, 2028. The estimates do not reflect any actions that the Firm could take to mitigate these impacts."</blockquote>
+    <p class="history">History: the FY2023 10-K sized the 2023 proposal at about 30% more RWA and &ldquo;an approximately 25% increase to CET1 capital&rdquo;; the FY2024 10-K deleted the estimate; the FY2024 and FY2025 10-Ks said finalization &ldquo;is uncertain&rdquo;. &ldquo;Re-Proposal&rdquo;, &ldquo;approximately 6%&rdquo; and &ldquo;approximately 4%&rdquo; first appear in Q1 2026 and are repeated unchanged in Q2 and Q3 2026.</p>
+    <p>The estimated capital cost of the U.S. Basel rewrite fell from about 25% more required CET1 (the 2023 proposal) to about 6%, or about 4% after the GSIB changes. The single expanded-risk-based calculation would end the Advanced/Standardized dual track that let the Apple Card deal bind JPM on the Advanced ratio. The 4% is measured against a 2028 requirement that already includes a higher GSIB surcharge (next finding), so it is not 4% above today&rsquo;s.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">GSIB surcharge would rise from 4.5% to 5.5% on January 1, 2028 under current rules; the re-proposal would make it 5.2%</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added, a dated future requirement (&minus; for capital return); condition &ldquo;If the GSIB Surcharge Re-Proposal were to be adopted as proposed&rdquo;</p>
+    <blockquote>FY2025 10-K: "For 2026, the Firm&rsquo;s effective regulatory minimum GSIB surcharge calculated under both Method 1 and Method 2 remains unchanged at 2.5% and 4.5%, respectively."</blockquote>
+    <blockquote>Q1 2026: "Under the rules currently in effect, the Firm's GSIB surcharge, calculated as of December 31, 2025, would be 5.5% with an effective date of January 1, 2028."</blockquote>
+    <blockquote>Q1 2026: "If the GSIB Surcharge Re-Proposal were to be adopted as proposed, the Firm estimates that the 5.5% GSIB surcharge would be reduced to 5.2%."</blockquote>
+    <p class="history">History: &ldquo;would be 5.5%&rdquo; appears in Q1, Q2 and Q3 2026 only; &ldquo;remains unchanged at 2.5% and 4.5%&rdquo; appears in the FY2024 and FY2025 10-Ks.</p>
+    <p>With the SCB at 2.5%, a 5.5% surcharge would lift the Standardized CET1 requirement from 11.5% to 12.5% (our arithmetic). At the Q3 2026 ratio of 14.0%, that would leave 1.5 points of cushion, the thinnest in the set. This is the requirement against which the &ldquo;approximately 4%&rdquo; Basel figure is measured, and it is a reason a reader should not treat the current 2.5-point cushion as distributable.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Apple Card Advanced RWA falls from about $110B to about $30B, as the 10-K said it would "in the near term"; eSLR early adopted, SLR requirement 5.0% &rarr; 4.3%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, expected &rarr; done (+); quant, a leverage requirement lowered (+)</p>
+    <blockquote>FY2025 10-K: "Advanced RWA is expected to reduce to approximately $30 billion once the necessary modeling steps are completed, which is expected in the near term."</blockquote>
+    <blockquote>Q1 2026: "As of March 31, 2026, the impact to the RWA for the Apple Card transaction was approximately $30 billion, which reflects the completion of the necessary modeling steps, as compared to the impact of approximately $110 billion as of December 31, 2025."</blockquote>
+    <blockquote>Q1 2026: "On January 1, 2026, the Firm early adopted the enhanced Supplementary Leverage Ratio (&ldquo;eSLR&rdquo;) final rule."</blockquote>
+    <blockquote>Q1 2026: "SLR | 5.6 | 5.8 | 4.3"</blockquote>
+    <p class="history">History: the Apple Card forward purchase (December 30, 2025) first appears in the FY2025 10-K, which put the Advanced CET1 hit at about 90 basis points; &ldquo;early adopted&rdquo; appears in Q1&ndash;Q3 2026. The SLR requirement was 5.0% in every filing from Q2 2024 to the FY2025 10-K.</p>
+    <p>Both changes freed capacity the 10-K had already flagged. The Advanced CET1 ratio held at 14.1% through the quarter while $8.3B was repurchased, and the leverage constraint loosened by 0.7 points against a ratio of 5.6%. The firm met a stated expectation on time.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Credit &amp; Allowance</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"During 2025, the Firm further increased the weight placed on the adverse scenarios" dropped; weighted peak unemployment eases from 5.8% to 5.6%</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: degree, the &ldquo;further increased&rdquo; sentence deleted, leaving &ldquo;continued to include&rdquo; (&minus; severity); quant 5.8% &rarr; 5.6%</p>
+    <blockquote>FY2025 10-K: "The Firm's qualitative adjustments and its weighted-average macroeconomic outlook continued to include additional weight placed on the adverse scenarios to reflect ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment. During 2025, the Firm further increased the weight placed on the adverse scenarios."</blockquote>
+    <blockquote>Q1 2026: "The Firm's qualitative adjustments and its weighted-average macroeconomic outlook continued to include additional weight placed on the adverse scenarios to reflect ongoing uncertainties and downside risks related to the geopolitical and macroeconomic environment."</blockquote>
+    <blockquote>FY2025 10-K: "a weighted average U.S. unemployment rate peaking at 5.8% in the fourth quarter of 2026"</blockquote>
+    <blockquote>Q1 2026: "a weighted average U.S. unemployment rate peaking at 5.6% in the first quarter of 2027"</blockquote>
+    <p class="history">History: the adverse weight has been described in every filing since Q2 2024 (&ldquo;placed on the adverse scenarios in the first quarter of 2023&rdquo;); it was increased in Q1 2025, partly reversed in Q2 2025, and summarized as &ldquo;further increased&rdquo; in the FY2025 10-K. Q1 2026 is the first filing since the FY2024 10-K whose allowance text describes no change to it. Weighted peak unemployment: 5.9% (Q2&ndash;Q3 2025) &rarr; 5.8% &rarr; 5.6%.</p>
+    <p>The allowance rose only $154M in the quarter: wholesale built $321M on &ldquo;changes in the credit quality of certain exposures&rdquo; and consumer released $139M on home prices. The scenario mix held still and softened slightly at the peak, so the reserve now grows mainly with loans.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cash Sweep Related Matters added as a new heading; the Trump lawsuit is removed to federal court; the loss range rises from $1.2B to $1.3B</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +Cash Sweep Related Matters (+ disclosure); quant, upper bound of reasonably possible losses +$0.1B (&minus;)</p>
+    <blockquote>Q1 2026: "Putative class actions have been filed against the Firm relating to interest rates paid to non-managed brokerage clients in the Firm&rsquo;s cash sweep program. The matters have been consolidated in the United States District Court for the Southern District of New York."</blockquote>
+    <blockquote>FY2025 10-K: "Certain of these matters are at various stages, including reviews, investigations, and legal proceedings, including a civil lawsuit filed in January 2026 in Florida state court by President Donald J. Trump, in his personal capacity, and several affiliated corporate entities, against JPMorgan Chase Bank, N.A. and its CEO."</blockquote>
+    <blockquote>Q1 2026: "These include a civil lawsuit filed in January 2026 in Florida state court by President Donald J. Trump, in his personal capacity, and several affiliated corporate entities, against JPMorgan Chase Bank, N.A. and its CEO, which defendants have removed to federal court and plaintiffs are challenging."</blockquote>
+    <p class="history">History: &ldquo;cash sweep&rdquo; first appears in Q1 2026. The upper end of the reasonably possible loss range ran $1.7B (Q2&ndash;Q3 2024), $1.4B (FY2024), $1.1B (Q1&ndash;Q2 2025), $1.2B (Q3 2025, FY2025) and $1.3B (Q1&ndash;Q3 2026).</p>
+    <p>The range rose $0.1B in Q3 2025, when Fair Access to Banking entered the note, and another $0.1B here, when cash sweep entered; the filing attributes neither increase to a matter. The Trump suit is now in procedural fighting over venue, which the Q3 2026 filing resolves in favor of federal court in New York.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q1 → Q2 2026 -->
+<div class="transition-header" id="q1q2-2026">
+  <h2>Q1 2026 &rarr; Q2 2026</h2>
+  <div class="sub">Filed Aug 6, 2026 | Net revenue $57.3B (+28%), including a $4.6B Visa gain and $1.0B of equity-investment gains | Net income $21.2B (+41%); diluted EPS $7.70 (+47%); ROTCE 29% | NII $25.5B (+10%) | Card net charge-off rate 3.34% | CET1 14.2% | Buybacks $6.7B; second $50B authorization from July 1; dividend $1.50 &rarr; $1.65</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Earnings &amp; Outlook</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Visa gain goes from "may be recorded as early as the second quarter" to a booked $4.6B; with $1.0B of equity-investment gains, one-offs are about a fifth of pre-tax income</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, an expected gain becomes a recorded one (certainty: may &rarr; was); quant added $4.6B and $1.0B (+)</p>
+    <blockquote>Q1 2026: "The Firm has tendered its 18.6 million Visa B-2 shares, and that tender is pending Visa&rsquo;s acceptance. Upon acceptance by Visa of the Firm&rsquo;s tender, the Visa C shares received by the Firm would be recognized at fair value, which is expected to result in a gain that may be recorded as early as the second quarter of 2026."</blockquote>
+    <blockquote>Q2 2026: "The Firm's results included a $4.6 billion net gain related to Visa shares in Corporate and $1.0 billion of gains on certain equity investments in Corporate and CIB."</blockquote>
+    <blockquote>Q2 2026: "Gains on certain equity investments: The second quarter of 2026 included $1.0 billion of gains on certain equity investments, consisting of $763 million in Corporate and $263 million in CIB."</blockquote>
+    <p class="history">History: &ldquo;may be recorded as early as&rdquo; appears in Q1 2026 only; &ldquo;gains on certain equity investments&rdquo; first appears in Q2 2026. The Q2 2024 10-Q carried the earlier Visa exchange, a $7.9B net gain.</p>
+    <p>The two items total $5.6B of $27.5B pre-tax income. Net income of $21.2B (+41%) and ROTCE of 29% are not run-rate figures; Q3 2026 net income was $15.3B. The equity gains were a &ldquo;measurement alternative markup&rdquo; and gains on moving positions to fair value, so they come from accounting remeasurement rather than realized sales. All Visa C shares were sold by September 30.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">First 2026 guidance change: NII $103B &rarr; $105.5B, adjusted expense $105B &rarr; $107.5B, card charge-off rate 3.4% &rarr; 3.2%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures, NII and expense raised, credit-loss guide lowered (+)</p>
+    <blockquote>Q1 2026: "Management expects net interest income to be approximately $103 billion and net interest income excluding Markets to be approximately $95 billion, market dependent."</blockquote>
+    <blockquote>Q2 2026: "Management expects net interest income to be approximately $105.5 billion and net interest income excluding Markets to be approximately $96.5 billion, market dependent."</blockquote>
+    <blockquote>Q2 2026: "Management expects adjusted expense to be approximately $107.5 billion, market dependent."</blockquote>
+    <blockquote>Q2 2026: "Management expects the net charge-off rate in Card Services to be approximately 3.2%."</blockquote>
+    <p class="history">History: the three 2026 guides stood unchanged from the FY2025 10-K through Q1 2026 (two filings). The card guide is the lowest in the set: 3.40% (2024), 3.60% (2025, cut to 3.3% in Q3 2025), 3.4% (2026, cut to 3.2% here).</p>
+    <p>Of the $2.5B NII raise, $1.5B is ex-Markets, so most of it is the core balance sheet, not trading. The expense guide rose by the same $2.5B. The lower card guide followed charge-off rates of 3.47% (Q1) and 3.34% (Q2), and the firm released consumer reserves on home prices rather than building them.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Capital &amp; Credit</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Apple Card portfolio to stay out of the allowance sensitivity analysis "until after the completion of the acquisition", not just while the model is integrated</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: condition changed, a modeling-step limit becomes a closing-date limit (&minus; disclosure for about 18 more months)</p>
+    <blockquote>Q1 2026: "The forecasted Apple credit card portfolio is excluded from the modeled estimates sensitivity analysis above as the Firm integrates the Apple Card transaction into its allowance model."</blockquote>
+    <blockquote>Q2 2026: "The forecasted Apple credit card portfolio will be excluded from the modeled estimates sensitivity analysis above until after the completion of the acquisition of the portfolio."</blockquote>
+    <blockquote>Q2 2026: "The Firm entered into a forward purchase commitment on December 30, 2025 to acquire the Apple credit card portfolio (the &ldquo;Apple Card transaction&rdquo;), with an expected closing date approximately 24 months thereafter."</blockquote>
+    <p class="history">History: the FY2025 10-K and Q1 2026 used &ldquo;integrates the Apple Card transaction into its allowance model&rdquo;; Q2 and Q3 2026 use &ldquo;until after the completion of the acquisition&rdquo;. Q1 2026 also reported that finishing the modeling cut the transaction&rsquo;s RWA from about $110B to about $30B, so the model work is done.</p>
+    <p>With the modeling finished, the reason for leaving the portfolio out of the sensitivity table changed from &ldquo;not ready&rdquo; to &ldquo;not ours yet&rdquo;, which pushes it to the expected closing around the end of 2027. The allowance already holds $2.2B for the transaction and its credit exposure is about $106B, but readers cannot see how that reserve would move under the adverse scenario the table describes.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">A second $50B buyback authorization and a 10% dividend increase are announced in the same quarter repurchases slow to $6.7B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant, capital-return capacity reset (+); quarterly repurchases down from $8.3B (&minus;)</p>
+    <blockquote>Q2 2026: "On June 24, 2026, the Firm announced that its Board of Directors had authorized a new $50 billion common share repurchase program, effective July 1, 2026."</blockquote>
+    <blockquote>Q2 2026: "On June 24, 2026, the Firm announced that its Board of Directors intends to increase the quarterly common stock dividend to $1.65 per share for the third quarter of 2026."</blockquote>
+    <blockquote>Q2 2026: "Aggregate purchase price of common stock repurchases (a) | 6,703 | 7,500 | 15,031 | 15,063"</blockquote>
+    <p class="history">History: a &ldquo;new $50 billion common share repurchase&rdquo; program was also announced in Q2 2025 (effective July 1, 2025); dividend-increase intentions appear in every second-quarter 10-Q in the set (2024, 2025, 2026). The prior program&rsquo;s unused $18.4B was canceled when the new one took effect (Q3 2026 Part II).</p>
+    <p>The authorization is the same size as last year&rsquo;s, but the prior one finished with $18.4B unspent, and the first quarter under the new one bought $1.1B (Q2 2026 &rarr; Q3 2026). The size of an authorization says little about JPM&rsquo;s pace; the quarterly table does.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation &amp; Corporate</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Shareholder Litigation heading removed after a dismissal with prejudice; cash-sweep plaintiffs move to certify a class</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named, a matter heading dropped (+ for the firm); new procedural step in a 2026 matter (&minus;)</p>
+    <blockquote>Q1 2026: "A shareholder derivative action purporting to act on behalf of the Firm was filed in the United States District Court for the Eastern District of New York against the Firm, its Board of Directors and certain of its current and former officers relating to historical trading practices by former employees in the precious metals and U.S. treasuries markets"</blockquote>
+    <blockquote>Q2 2026: "In June 2026, the plaintiffs filed a motion to certify the consolidated matter as a class action."</blockquote>
+    <p class="history">History: &ldquo;Shareholder Litigation&rdquo; ran from Q2 2024 to Q1 2026 (eight filings) and is absent from Q2 2026 on; &ldquo;Cash Sweep Related Matters&rdquo; first appears in Q1 2026, the class-certification motion in Q2 2026.</p>
+    <p>The litigation note now carries seven headings (Amrapali, Cash Sweep, Fair Access to Banking, Foreign Exchange, Interchange, LIBOR, Russian Litigation) against eleven in Q2 2024. The newest, cash sweep, concerns rates paid to brokerage clients, an issue several brokers face; class certification would set its size.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Chase Europe named for the first time: launched in Germany in May 2026 inside Corporate&rsquo;s international consumer initiatives</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +Chase Europe (+ disclosure); the initiative list goes from two businesses plus a stake to three plus a stake</p>
+    <blockquote>Q1 2026: "Other Corporate includes the Strategic Investment Group within the Firm&rsquo;s Security and Resiliency Initiative, as well as the Firm's international consumer initiatives, which primarily consist of Chase U.K., J.P. Morgan Personal Investing and an ownership stake in C6 Bank."</blockquote>
+    <blockquote>Q2 2026: "Chase Europe (which was launched in Germany in May 2026)"</blockquote>
+    <p class="history">History: &ldquo;Chase Europe&rdquo; appears in Q2 and Q3 2026 only. &ldquo;international consumer initiatives&rdquo; appears in every filing in the set; Q2 2025 recorded that the CCB chief executive had &ldquo;assumed oversight&rdquo; of them.</p>
+    <p>The second retail launch outside the U.S. sits in Corporate, so its losses do not show up in CCB&rsquo;s returns. Corporate&rsquo;s deposit growth and expense lines cite these initiatives in every 2026 10-Q, and Q3 2026 attributes part of Corporate&rsquo;s higher expense to them; no filing gives their revenue, loss or deposits separately.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- Q2 → Q3 2026 -->
+<div class="transition-header" id="q2q3-2026">
+  <h2>Q2 2026 &rarr; Q3 2026</h2>
+  <div class="sub">Filed Nov 3, 2026 | Net revenue $50.2B (+8%); NII $27.0B (+13%) | Net income $15.3B (+6%); diluted EPS $5.57 (+10%); ROTCE 20% | Provision $2.7B (&minus;19%); card net charge-off rate 2.91% | CET1 14.0% (Q2: 14.2%); SLR 5.5% | Buybacks $1.1B (Q2: $6.7B) | TBVPS $112.64 (Q2: $113.35) | FY2026 NII guide ~$106.2B, adjusted expense ~$108.6B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Capital &amp; Buybacks</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Buybacks fall from $6.7B to $1.1B, all of it in July; nothing repurchased in August or September, with $48.9B of the new $50B authorization unused</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant, repurchase table (&minus;); no wording change &mdash; the paragraph on how management sets repurchases is identical to Q2</p>
+    <blockquote>Q2 2026: "Aggregate purchase price of common stock repurchases (a) | 6,703 | 7,500 | 15,031 | 15,063"</blockquote>
+    <blockquote>Q3 2026: "Aggregate purchase price of common stock repurchases (a) | 1,057 | 8,315 | 16,088 | 23,378"</blockquote>
+    <blockquote>Q3 2026 (Part II, Item 2): "August | &mdash; | &mdash; | &mdash; | 48,943"</blockquote>
+    <blockquote>Q3 2026 (Part II, Item 2): "September | &mdash; | &mdash; | &mdash; | 48,943 | (c)"</blockquote>
+    <p class="history">History: quarterly repurchases in the downloaded 10-Qs ran from $5.3B (Q2 2024) to $8.3B (Q3 2025, Q1 2026); $1.057B is the smallest in the set. The sentence &ldquo;The Firm&rsquo;s common share repurchases may be suspended by management at any time&rdquo; has stood unchanged in every filing since the FY2024 10-K.</p>
+    <p>The MD&amp;A gives no reason for the stop. The same filing shows the CET1 ratio down to 14.0%, Standardized RWA up $196B in nine months and a $7.9B third-quarter hit from unrealized securities losses (next two findings). The repurchase paragraph lists &ldquo;the Firm&rsquo;s capital position&rdquo; and &ldquo;current and proposed future capital requirements&rdquo; among its factors, so the pause is consistent with management holding the CET1 ratio rather than a change in policy (inference). The $50B program announced in June started July 1 and was 2% used by September 30.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Equity paragraph adds "higher net unrealized losses in AOCI, driven by the impact of higher interest rates"; nine-month AFS loss in CET1 goes from $2.1B to $10.0B and tangible book value per share falls in the quarter</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: condition added, a rate-driven AOCI clause absent in Q2 (&minus;); quant: capital rollforward line $(2,081)M &rarr; $(9,974)M</p>
+    <blockquote>Q2 2026: "Stockholders&rsquo; equity increased, as a result of the Firm's net income, largely offset by the impact of capital actions, primarily net repurchases of common shares and dividend payments on common and preferred stock."</blockquote>
+    <blockquote>Q3 2026: "higher net unrealized losses in AOCI, driven by the impact of higher interest rates on the AFS securities portfolio and cash flow hedges in Treasury and CIO."</blockquote>
+    <blockquote>Q2 2026: "Unrealized gains/(losses) on investment securities | (2,081)"</blockquote>
+    <blockquote>Q3 2026: "Unrealized gains/(losses) on investment securities | (9,974)"</blockquote>
+    <blockquote>Q3 2026: "Over the next 12 months, the Firm expects that approximately $(2.6) billion (after-tax) of net losses recorded in AOCI at September 30, 2026, related to cash flow hedges will be recognized in income."</blockquote>
+    <p class="history">History: &ldquo;higher net unrealized losses in AOCI&rdquo; appears in Q1 2026 and Q3 2026, not Q2 2026; &ldquo;impact of higher interest rates&rdquo; appears in the FY2024 10-K, Q1 2026 and Q3 2026. Cash-flow-hedge losses expected to reach income over twelve months: $(1.5)B (Q1 2026) &rarr; $(1.7)B (Q2) &rarr; $(2.6)B (Q3).</p>
+    <p>About $7.9B of unrealized AFS losses went through CET1 in one quarter, roughly 36 basis points on $2.18T of Standardized RWA (our arithmetic), seven times the quarter&rsquo;s buybacks. Tangible book value per share fell from $113.35 to $112.64 in a quarter that earned $15.3B. Corporate also booked a loss on investment securities &ldquo;predominantly due to sales of U.S. Treasuries&rdquo; ($658M firmwide). Rates, not earnings, set the quarter&rsquo;s capital outcome.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Standardized RWA up $195.8B in nine months ($151.7B at six); CET1 14.0% against an 11.5% requirement, the thinnest cushion in the set alongside Q3 2025</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant, RWA rollforward and capital table (no wording change)</p>
+    <blockquote>Q2 2026: "Movement in portfolio levels (b) | 138,142 | 13,527 | 151,669 | 120,459 | 18,510 | 1,686 | 140,655"</blockquote>
+    <blockquote>Q3 2026: "Movement in portfolio levels (b) | 179,298 | 18,259 | 197,557 | 170,791 | 19,851 | (1,407) | 189,235"</blockquote>
+    <blockquote>Q3 2026: "CET1 capital ratio | 14.0 | 14.6 | 11.5 | 14.0 | 14.1 | 11.5"</blockquote>
+    <p class="history">History: Standardized CET1 15.3% (Q2&ndash;Q3 2024), 15.7% (FY2024), 15.4%, 15.1%, 14.8% (2025 10-Qs), 14.6% (FY2025), 14.3%, 14.2%, 14.0% (2026 10-Qs): seven straight filings, each lower than the one before, since FY2024. The cushion over the requirement was 3.4 points at FY2024 and is 2.5 points now, equal to Q3 2025 (14.8% vs 12.3%).</p>
+    <p>Third-quarter RWA growth ($45B) was slower than the second quarter&rsquo;s ($93B), but the AOCI loss replaced it as the drag. Advanced and Standardized CET1 are both 14.0%, and the highlights footnote again says &ldquo;the Advanced total capital ratio was more binding&rdquo;. A 14.0% ratio still sits 2.5 points above today&rsquo;s requirement; the issue is the 2028 step-up (see Capital Rules Arc).</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--gold);"></span>Regulation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">SCB rules finalized: the 2.5% buffer is frozen through December 31, 2027 (was September 30, 2027), but the 2028 buffer rests "solely" on the 2027 stress test</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized, proposal &rarr; final rule (+); date extended one quarter (+); condition added &ldquo;based solely on the results of the 2027 Federal Reserve stress test&rdquo;; reassurance removed, &ldquo;not expected to change materially the&rdquo; SCB (&minus;)</p>
+    <blockquote>Q2 2026: "In February 2026, the Federal Reserve released the final 2026 supervisory stress test scenarios, while announcing that SCB requirements for large banks, including the Firm, will remain at current levels through September 30, 2027 with new requirements to be calculated in 2027 based on revised models that incorporate public feedback."</blockquote>
+    <blockquote>Q3 2026: "The SCB requirement for firms, including JPMorganChase, will remain at current levels through December 31, 2027, with an updated SCB calculation effective January 1, 2028 based solely on the results of the 2027 Federal Reserve stress test. The first SCB inclusive of averaging will be effective January 1, 2029."</blockquote>
+    <blockquote>Q2 2026: "Based on the Federal Reserve&rsquo;s analysis, the proposed changes to the stress test models and scenarios are not expected to change materially the Stress Capital Buffer"</blockquote>
+    <blockquote>Q3 2026: "In conjunction with the rule finalization, the Federal Reserve has re-proposed new stress testing models for noninterest income."</blockquote>
+    <p class="history">History: the two-year averaging proposal first appears in Q1 2025 (April 2025); &ldquo;will remain at current levels&rdquo; first appears in the FY2025 10-K; &ldquo;through December 31, 2027&rdquo; and &ldquo;re-proposed new stress testing models&rdquo; appear in Q3 2026 only. The Federal Reserve&rsquo;s view that the changes are &ldquo;not expected to&rdquo; materially change the SCB ran from Q3 2025 to Q2 2026 and is not repeated in Q3 2026.</p>
+    <p>JPM&rsquo;s SCB is at the 2.5% floor, so the freeze keeps the lowest possible buffer one quarter longer. The cost is concentration: the 2028 buffer comes from one test, run on re-proposed noninterest-income models (noninterest revenue was about half of nine-month net revenue), and takes effect the same day as the 5.5% GSIB surcharge the firm disclosed in Q1 2026. Averaging, which was meant to damp a bad year, does not start until 2029, and the sentence saying the model changes would not materially move the SCB was not carried into the final-rule text.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Litigation</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Fair Access to Banking: OCC publishes a review of nine banks including JPM, and the CFPB says it will "address any customer harm"; the Trump suit moves to federal court in New York</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +OCC report, +nine banks, +CFPB (+ disclosure); realized, a review is now a published finding; reasonably possible loss range unchanged</p>
+    <blockquote>Q2 2026: "These include a civil lawsuit filed in January 2026 in Florida state court by President Donald J. Trump, in his personal capacity, and several affiliated corporate entities, against JPMorgan Chase Bank, N.A. and its CEO, which defendants have removed to federal court and plaintiffs are challenging."</blockquote>
+    <blockquote>Q3 2026: "In October 2026, the Office of the Comptroller of the Currency ... issued a report entitled ... following its review of the activities of nine banks, including JPMorganChase, reporting on, among other things, the banks' policies, processes and provisions of services to customers and potential customers."</blockquote>
+    <blockquote>Q3 2026: "The Consumer Financial Protection Bureau also announced its intent to address any customer harm caused by the practices identified in the OCC&rsquo;s report."</blockquote>
+    <blockquote>Q3 2026: "In October 2026, the Florida state court removed and transferred the lawsuit to federal court in New York. The defendants have filed a motion to dismiss the complaint."</blockquote>
+    <p class="history">History: the Fair Access to Banking matter first appears in Q3 2025 (August 2025 Executive Order); the Trump lawsuit enters in the FY2025 10-K; &ldquo;nine banks&rdquo;, &ldquo;customer harm&rdquo; and the motion to dismiss appear in Q3 2026 only. The range of reasonably possible losses has been $0 to about $1.3B since Q1 2026.</p>
+    <p>A year ago this matter was an Executive Order and information requests. It now has a published bank-supervisor report naming JPM and a consumer regulator stating an intent to remediate &ldquo;customer harm&rdquo;. The filing does not say whether any finding concerns JPM specifically or attach an amount, and the aggregate loss range did not move.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New interchange class action for merchants who began taking cards after January 2019, as opt-out settlements reach "over 95%" of card volume (was "over 90%")</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named +Eastern District of New York putative class (+ disclosure); quant 90% &rarr; 95% (+)</p>
+    <blockquote>Q2 2026: "The defendants have reached settlements with the merchants who opted out representing over 90% of the combined Mastercard-branded and Visa-branded payment card sales volume."</blockquote>
+    <blockquote>Q3 2026: "In October 2026, a merchant filed a new putative antitrust class action in the Eastern District of New York against the Firm, and other defendants seeking monetary damages for merchants who began to accept Visa-branded or Mastercard-branded credit cards after January 2019, the end of the period covered by the prior damages class action settlement."</blockquote>
+    <p class="history">History: &ldquo;over 90%&rdquo; stood from the FY2025 10-K to Q2 2026; &ldquo;over 95%&rdquo; and &ldquo;began to accept Visa-branded&rdquo; appear in Q3 2026 only. The Q2 2026 trial dates (April and September 2026) were resolved by settlement.</p>
+    <p>The 2018 damages-class settlement and the opt-out suits are nearly closed out; the new case opens the period after January 2019, which no settlement covers. The filing gives no estimate for it.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>Credit &amp; Allowance</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Adverse-weighted GDP gap widens from 2.1% to 2.3% below the central case; the wholesale build ($473M &rarr; $902M year to date) loses its two offsets and is now driven by lending commitments</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant, scenario severity up (&minus;); condition dropped, &ldquo;reduction in the allowance with respect to certain accounts receivable&rdquo; and &ldquo;update to loss assumptions on certain loans in Markets&rdquo;</p>
+    <blockquote>Q2 2026: "a weighted average U.S. real GDP level that is 2.1% lower than the central case at the end of the fourth quarter of 2027."</blockquote>
+    <blockquote>Q3 2026: "a weighted average U.S. real GDP level that is 2.3% lower than the central case at the end of the fourth quarter of 2027."</blockquote>
+    <blockquote>Q2 2026: "$473 million in wholesale, driven by a net increase in the loan portfolio and changes in the credit quality of certain exposures, partially offset by a reduction in the allowance with respect to certain accounts receivable and an update to loss assumptions on certain loans in Markets"</blockquote>
+    <blockquote>Q3 2026: "$902 million in wholesale, largely driven by the impact of net increases in the loan and lending-related commitment portfolios and changes in the credit quality of certain exposures"</blockquote>
+    <blockquote>Q3 2026: "The increase in criticized exposure was predominantly driven by certain exposures in Consumer &amp; Retail and Technology, Media &amp; Telecommunications, primarily resulting from downgrades and new lending-related commitments, including held-for-sale commitments."</blockquote>
+    <p class="history">History: weighted peak unemployment has been 5.6% in all three 2026 10-Qs; the GDP gap went 2.1% (FY2025) &rarr; 2.2% &rarr; 2.1% &rarr; 2.3%, the widest since Q1 2025 (2.6%). &ldquo;lending-related commitment portfolios&rdquo; was last used in Q3 2025 and the FY2025 10-K. The adverse-weight sentence (&ldquo;continued to include additional weight placed on the adverse scenarios&rdquo;) is unchanged since Q1 2026.</p>
+    <p>The quarter&rsquo;s $539M build was &ldquo;primarily in wholesale&rdquo; while card charge-offs ran at 2.91%, below the 3.2% full-year guide. The text attributes the wholesale build mainly to commitment growth, matching the RWA growth, rather than to named deterioration, but criticized exposure rose in Consumer &amp; Retail and TMT and the scenarios got harsher on GDP. The firm is reserving for size and a slightly worse downside at once.</p>
+  </div>
+</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Corporate &amp; Outlook</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Strategic Investment Group equity grows from $3.7B to $5.7B and is no longer described as "within the Firm&rsquo;s Security and Resiliency Initiative"; Corporate books a loss on equity investments</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope widened, the initiative becomes one use of the group rather than its definition (&minus;); quant $3.7B &rarr; $5.7B</p>
+    <blockquote>Q2 2026: "Included equity investments with a carrying value of $3.7 billion made by the Strategic Investment Group within the Firm&rsquo;s Security and Resiliency Initiative."</blockquote>
+    <blockquote>Q3 2026: "Included equity investments with a carrying value of $5.7 billion made by the Strategic Investment Group."</blockquote>
+    <blockquote>Q3 2026: "Other Corporate includes equity investments made by the Strategic Investment Group, including those associated with the Firm&rsquo;s Security and Resiliency Initiative"</blockquote>
+    <blockquote>Q3 2026: "a net loss compared with a gain in the prior year on certain equity investments."</blockquote>
+    <p class="history">History: the Security and Resiliency Initiative ($1.5T over ten years) was announced in Q3 2025; &ldquo;within the Firm&rsquo;s Security and Resiliency Initiative&rdquo; ran from the FY2025 10-K to Q2 2026 and is gone in Q3 2026; &ldquo;losses on certain equity investments&rdquo; appears in Q3 2026 only.</p>
+    <p>Two billion dollars of mostly measurement-alternative equity was added in a quarter, and the group&rsquo;s mandate is now written more broadly than the national-security program it was introduced under. Corporate&rsquo;s equity investments produced $763M of gains in Q2 and a net loss in Q3, and Corporate VaR now cites &ldquo;increased volatility in certain equity investments&rdquo;. Corporate earnings will carry more of this mark-to-market swing.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">2026 guidance raised again: NII $105.5B &rarr; $106.2B, adjusted expense $107.5B &rarr; $108.6B; card charge-off guide held at 3.2% after a 2.91% quarter</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures raised (+); a fourth-quarter guide added alongside the full year</p>
+    <blockquote>Q2 2026: "Management expects net interest income to be approximately $105.5 billion and net interest income excluding Markets to be approximately $96.5 billion, market dependent."</blockquote>
+    <blockquote>Q3 2026: "Management expects net interest income to be approximately $106.2 billion and net interest income excluding Markets to be approximately $97.2 billion, market dependent."</blockquote>
+    <blockquote>Q3 2026: "Management expects adjusted expense to be approximately $108.6 billion, market dependent."</blockquote>
+    <p class="history">History: the 2026 expense guide went $105B (FY2025 10-K, Q1 2026) &rarr; $107.5B (Q2) &rarr; $108.6B (Q3), +$3.6B; the NII guide went $103B &rarr; $105.5B &rarr; $106.2B, +$3.2B. The card guide went 3.4% &rarr; 3.2% in Q2 and held. Q3 2025 had replaced the full-year guide with a fourth-quarter one; Q3 2026 gives both.</p>
+    <p>Each raise to NII in 2026 came with a larger or equal raise to expense, so the guided operating spread did not widen. Nine-month NII of $77.9B implies about $28.3B for the fourth quarter, in line with the new &ldquo;approximately $28 billion&rdquo; quarterly guide. A 2.91% third-quarter card loss rate leaves room under 3.2%.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-outlook">
+  <div class="section-header"><h2>#1: Outlook vs. Actual</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> NII Guides Raised, Expense Guides Raised More, Card Losses Below Guide</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>NII guide (ex-Markets)</th><th>Adjusted expense guide</th><th>Card NCO guide</th><th>Card NCO in period</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td>2024: ~$91B for both</td><td>~$92B</td><td>~3.40%</td><td>3.50%</td></tr>
+        <tr><td>Q3 2024</td><td class="val-pos">~$92.5B (~$91.5B)</td><td class="val-pos">~$91.5B</td><td>~3.40%</td><td>3.24%</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-new">2025: ~$94.0B (~$90.0B)</td><td class="val-new">~$95.0B</td><td class="val-neg">~3.60%</td><td>3.34% (FY2024)</td></tr>
+        <tr><td>Q1 2025</td><td>~$94.5B (~$90.0B)</td><td>~$95.0B</td><td>~3.60%</td><td>3.58%</td></tr>
+        <tr><td>Q2 2025</td><td class="val-pos">~$95.5B (~$92.0B)</td><td>~$95.5B</td><td>~3.60%</td><td>3.40%</td></tr>
+        <tr><td>Q3 2025</td><td class="val-new">Q4 only: ~$25B (~$23.5B)</td><td class="val-new">Q4 only: ~$24.5B</td><td class="val-pos">~3.3%</td><td>3.15%</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-new">2026: ~$103B (~$95B)</td><td class="val-neg">~$105B</td><td>~3.4%</td><td>3.31% (FY2025)</td></tr>
+        <tr><td>Q1 2026</td><td>unchanged</td><td>unchanged</td><td>~3.4%</td><td>3.47%</td></tr>
+        <tr><td>Q2 2026</td><td class="val-pos">~$105.5B (~$96.5B)</td><td class="val-neg">~$107.5B</td><td class="val-pos">~3.2%</td><td>3.34%</td></tr>
+        <tr><td>Q3 2026</td><td class="val-pos">~$106.2B (~$97.2B); Q4 ~$28B</td><td class="val-neg">~$108.6B; Q4 ~$27.5B</td><td>~3.2%</td><td class="val-pos">2.91%</td></tr>
+      </tbody>
+    </table>
+    <p>Actual NII landed on the last guide each year ($92.6B in 2024, $95.4B in 2025). Both opening NII guides in the set were raised during the year, and the 2026 expense guide rose $3.6B against $3.2B for NII. The card charge-off guide was cut in both 2025 and 2026, and Q3 2026&rsquo;s 2.91% is the lowest quarterly rate in the set. Q3 2025 is the only filing that withheld a full-year NII and expense figure.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-capital">
+  <div class="section-header"><h2>#2: CET1 Cushion &amp; Buybacks</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> Seven Straight Declines in CET1, Then a Buyback Stop</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>CET1 Std.</th><th>Requirement</th><th>Cushion</th><th>CET1 Adv.</th><th>SLR (req.)</th><th>Buybacks</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td>15.3%</td><td>11.9%</td><td>3.4 pts</td><td>15.5%</td><td>6.1% (5.0%)</td><td>$5.3B</td></tr>
+        <tr><td>Q3 2024</td><td>15.3%</td><td>11.9%</td><td>3.4 pts</td><td>15.5%</td><td>6.0% (5.0%)</td><td>$6.4B</td></tr>
+        <tr><td>FY2024 10-K</td><td>15.7%</td><td>12.3%</td><td>3.4 pts</td><td>15.8%</td><td>6.1% (5.0%)</td><td>$18.8B (year)</td></tr>
+        <tr><td>Q1 2025</td><td>15.4%</td><td>12.3%</td><td>3.1 pts</td><td>15.6%</td><td>6.0% (5.0%)</td><td>$7.6B</td></tr>
+        <tr><td>Q2 2025</td><td>15.1%</td><td>12.3%</td><td>2.8 pts</td><td>15.2%</td><td>5.9% (5.0%)</td><td>$7.5B</td></tr>
+        <tr><td>Q3 2025</td><td>14.8%</td><td>12.3%</td><td class="val-neg">2.5 pts</td><td>14.9%</td><td>5.8% (5.0%)</td><td>$8.3B</td></tr>
+        <tr><td>FY2025 10-K</td><td>14.6%</td><td class="val-pos">11.5%</td><td>3.1 pts</td><td class="val-neg">14.1% (binding)</td><td>5.8% (5.0%)</td><td class="val-highlight">$31.6B (year)</td></tr>
+        <tr><td>Q1 2026</td><td>14.3%</td><td>11.5%</td><td>2.8 pts</td><td>14.1%</td><td class="val-pos">5.6% (4.3%)</td><td>$8.3B</td></tr>
+        <tr><td>Q2 2026</td><td>14.2%</td><td>11.5%</td><td>2.7 pts</td><td>14.2%</td><td>5.5% (4.3%)</td><td>$6.7B</td></tr>
+        <tr><td>Q3 2026</td><td>14.0%</td><td>11.5%</td><td class="val-neg">2.5 pts</td><td>14.0%</td><td>5.5% (4.3%)</td><td class="val-neg">$1.1B</td></tr>
+      </tbody>
+    </table>
+    <p>Repurchases ran $6&ndash;8B a quarter through Q1 2026 while CET1 fell from 15.7% to 14.3%; the requirement cut to 11.5% (SCB at the 2.5% floor) restored the cushion once, in the FY2025 10-K. Three things then compressed it at the same time: RWA growth of $196B in nine months of 2026, a $7.9B Q3 2026 AOCI loss, and a disclosed 2028 GSIB surcharge of 5.5% (a 12.5% requirement at today&rsquo;s SCB). Q3 2026 repurchases were the smallest in the set, with nothing bought in August or September. The repurchase-policy wording did not change.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-rules">
+  <div class="section-header"><h2>#3: Capital Rules Arc</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Relief Arrived in Pieces; the 2028 Step-Up Is the Open Item</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>What the filing says</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td>Resolution plan: &ldquo;no deficiencies and one shortcoming&rdquo; (dropped next quarter)</td></tr>
+        <tr><td>Q3 2024</td><td>No regulatory-developments paragraph</td></tr>
+        <tr><td>FY2024 10-K</td><td>Basel III and GSIB proposals (2023): finalization &ldquo;is uncertain&rdquo;; SCB 3.3% until September 30, 2025; GSIB surcharge 4.5%</td></tr>
+        <tr><td>Q1 2025</td><td class="val-new">SCB averaging proposal (April 2025); CFPB Late Fee Rule vacated, Overdraft Rule overturned</td></tr>
+        <tr><td>Q2 2025</td><td class="val-new">Enhanced SLR proposal (June 2025); SCB sentence: &ldquo;expects to disclose&rdquo; &rarr; &ldquo;will provide&rdquo;</td></tr>
+        <tr><td>Q3 2025</td><td class="val-new">Stress-test transparency proposals, &ldquo;not expected to materially change the SCB&rdquo;</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-pos">eSLR final rule; SCB 2.5% through September 30, 2027; requirement 11.5%; Basel still &ldquo;uncertain&rdquo;</td></tr>
+        <tr><td>Q1 2026</td><td class="val-highlight">Basel III Re-Proposal: required CET1 +~6%; GSIB surcharge 5.5% from January 1, 2028 under current rules (5.2% if re-proposal adopted); net +~4% vs the 2028 requirement; eSLR early adopted (SLR requirement 4.3%)</td></tr>
+        <tr><td>Q2 2026</td><td>Unchanged; comment-deadline sentence dropped; eSLR description shortened</td></tr>
+        <tr><td>Q3 2026</td><td class="val-neg">SCB final rules: 2.5% through December 31, 2027; 2028 SCB &ldquo;based solely&rdquo; on the 2027 test; averaging from 2029; noninterest-income models re-proposed; &ldquo;not expected to&rdquo; reassurance not carried</td></tr>
+      </tbody>
+    </table>
+    <p>Every regulatory change in the set lowered or delayed a requirement except one: the GSIB surcharge the firm calculates under current rules rises a full point in 2028. The Basel re-proposal&rsquo;s +6% is about a quarter of the 2023 proposal&rsquo;s +25%, but it is measured on top of that higher 2028 base.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-allowance">
+  <div class="section-header"><h2>#4: Allowance &amp; Adverse Weight</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> A Standing Overlay, Raised Once, Partly Reversed, Then Left Alone</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Allowance</th><th>Adverse-weight wording</th><th>Weighted peak unemployment</th><th>GDP below central case</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td>$25.5B</td><td>&ldquo;maintained the additional weight ... in the first quarter of 2023&rdquo;</td><td>5.3% (2Q25)</td><td>2.1%</td></tr>
+        <tr><td>Q3 2024</td><td>$26.5B</td><td>unchanged</td><td>5.6% (3Q25)</td><td>1.9%</td></tr>
+        <tr><td>FY2024 10-K</td><td>$26.9B</td><td class="val-new">&ldquo;qualitative adjustments continued to include&rdquo;</td><td>5.5% (4Q25)</td><td>1.9%</td></tr>
+        <tr><td>Q1 2025</td><td>$27.8B</td><td class="val-neg">raised: &ldquo;elevated risks and uncertainties&rdquo;</td><td>5.8% (1Q26)</td><td class="val-neg">2.6%</td></tr>
+        <tr><td>Q2 2025</td><td>$28.3B</td><td class="val-pos">&ldquo;partially reduced the increase&rdquo;</td><td>5.9% (2Q26)</td><td>2.0%</td></tr>
+        <tr><td>Q3 2025</td><td>$29.1B</td><td>unchanged; &ldquo;reduced borrower uncertainty&rdquo; added</td><td>5.9% (3Q26)</td><td>2.0%</td></tr>
+        <tr><td>FY2025 10-K</td><td>$31.2B</td><td class="val-new">&ldquo;During 2025, the Firm further increased&rdquo;</td><td>5.8% (4Q26)</td><td>2.1%</td></tr>
+        <tr><td>Q1 2026</td><td>$31.4B</td><td>&ldquo;continued to include&rdquo;</td><td>5.6% (1Q27)</td><td>2.2%</td></tr>
+        <tr><td>Q2 2026</td><td>$31.5B</td><td>unchanged</td><td>5.6% (2Q27)</td><td>2.1%</td></tr>
+        <tr><td>Q3 2026</td><td>$32.0B</td><td>unchanged</td><td>5.6% (3Q27)</td><td class="val-neg">2.3%</td></tr>
+      </tbody>
+    </table>
+    <p>The allowance rose $6.5B in nine filings, of which $2.2B was the Apple Card commitment. Only Q1 2025 attributed a build mainly to the macro outlook; the 2026 builds are wholesale, tied to commitments and &ldquo;credit quality of certain exposures&rdquo;, while consumer reserves were released on home prices. The weighted downside peaks lower in 2026 than in 2025, but the GDP gap widened again in Q3 2026.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-litigation">
+  <div class="section-header"><h2>#5: Litigation Note</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Federal Enforcement Out, Politics and Consumer Class Actions In</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Loss range (upper)</th><th>Matters added / removed</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td>$1.7B</td><td>11 headings: 1MDB, Amrapali, FX, Zelle inquiries, Interchange, LIBOR, Russian, SEC Inquiries, Securities Lending Antitrust, Shareholder, Trading Venues</td></tr>
+        <tr><td>Q3 2024</td><td>$1.7B</td><td class="val-neg">Russian judgments in five claims, one for $439M</td></tr>
+        <tr><td>FY2024 10-K</td><td class="val-pos">$1.4B</td><td>+Zelle Network Litigation (CFPB suit); &minus;Zelle inquiries, &minus;Securities Lending Antitrust, &minus;Trading Venues</td></tr>
+        <tr><td>Q1 2025</td><td class="val-pos">$1.1B</td><td>&minus;SEC Inquiries; Zelle dismissed at the CFPB&rsquo;s request</td></tr>
+        <tr><td>Q2 2025</td><td>$1.1B</td><td>&minus;Zelle Network Litigation</td></tr>
+        <tr><td>Q3 2025</td><td class="val-neg">$1.2B</td><td class="val-new">+Fair Access to Banking; Russian judgments &ldquo;now enforceable&rdquo;</td></tr>
+        <tr><td>FY2025 10-K</td><td>$1.2B</td><td>&minus;1MDB; Trump lawsuit (January 2026) named</td></tr>
+        <tr><td>Q1 2026</td><td class="val-neg">$1.3B</td><td class="val-new">+Cash Sweep Related Matters</td></tr>
+        <tr><td>Q2 2026</td><td>$1.3B</td><td>&minus;Shareholder Litigation (dismissed with prejudice)</td></tr>
+        <tr><td>Q3 2026</td><td>$1.3B</td><td class="val-new">OCC report on nine banks; CFPB &ldquo;customer harm&rdquo;; new post-2019 interchange class action</td></tr>
+      </tbody>
+    </table>
+    <p>The note shrank from eleven headings to seven as the SEC, CFPB and legacy matters closed, and the range fell to a $1.1B low in 2025. Both later increases coincide with new headings (Fair Access, cash sweep), and the Q3 2026 developments came with no change to the range.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-fls">
+  <div class="section-header"><h2>#6: Forward-Looking Factors (the 10-Q&rsquo;s Risk-Factor Proxy)</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> Item 1A Is a Pointer; This List Is Where Risks Move</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Factors</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td>30</td><td>Baseline; Item 1A refers to the 10-K</td></tr>
+        <tr><td>Q3 2024</td><td>30</td><td>Unchanged</td></tr>
+        <tr><td>FY2024 10-K</td><td>30</td><td class="val-new">&ldquo;qualified and diverse employees&rdquo; &rarr; &ldquo;qualified employees&rdquo;</td></tr>
+        <tr><td>Q1 2025</td><td>31</td><td class="val-new">+&ldquo;Changes in trade policies, including the imposition of tariffs and retaliatory responses&rdquo;</td></tr>
+        <tr><td>Q2 2025</td><td>31</td><td>Unchanged</td></tr>
+        <tr><td>Q3 2025</td><td>31</td><td>Unchanged</td></tr>
+        <tr><td>FY2025 10-K</td><td>29</td><td class="val-new">Tariff factor folded back; FDIC assessments dropped; &ldquo;social, environmental and sustainability concerns&rdquo; &rarr; &ldquo;public criticism&rdquo;; &ldquo;including AI&rdquo; added; pandemics wording dropped</td></tr>
+        <tr><td>Q1 2026</td><td>29</td><td>Punctuation only</td></tr>
+        <tr><td>Q2 2026</td><td>29</td><td>Unchanged</td></tr>
+        <tr><td>Q3 2026</td><td>29</td><td>Unchanged</td></tr>
+      </tbody>
+    </table>
+    <p>Every JPM 10-Q in the set says only &ldquo;Refer to Part I, Item 1A&rdquo; of the 10-K. The factor list changed in one 10-Q (tariffs, Q1 2025); every other edit was made at a 10-K. Nothing in the 2026 list reflects the buyback stop, the 2028 GSIB step-up or the OCC report.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-oneoffs">
+  <div class="section-header"><h2>#7: One-Off Items</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Visa Twice, Plus Tax and Remeasurement Items</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Items named in the MD&amp;A</th></tr></thead>
+      <tbody>
+        <tr><td>Q2 2024</td><td class="val-highlight">$7.9B net gain on Visa shares; $1.0B Visa-share contribution to the JPMorgan Chase Foundation; $546M securities losses</td></tr>
+        <tr><td>Q3 2024</td><td>None comparable</td></tr>
+        <tr><td>FY2024 10-K</td><td>The Q2 Visa items, in the full year</td></tr>
+        <tr><td>Q1 2025</td><td>$588M First Republic-related gain (FDIC payable reduced)</td></tr>
+        <tr><td>Q2 2025</td><td>$774M income tax benefit in Corporate</td></tr>
+        <tr><td>Q3 2025</td><td class="val-neg">Estimated losses on apparent borrower fraud (not quantified)</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">$2.2B allowance for the Apple Card commitment</td></tr>
+        <tr><td>Q1 2026</td><td>None comparable</td></tr>
+        <tr><td>Q2 2026</td><td class="val-highlight">$4.6B net gain on Visa shares; $1.0B gains on certain equity investments</td></tr>
+        <tr><td>Q3 2026</td><td class="val-neg">$658M investment securities losses; net loss on certain equity investments</td></tr>
+      </tbody>
+    </table>
+    <p>The two second quarters in the set are not run-rate quarters: Q2 2024 net income was $18.1B and Q2 2026 $21.2B, against $12.9B&ndash;$16.5B in the other 10-Qs. Q3 2026 runs the other way, with securities and equity losses in Corporate.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-corporate">
+  <div class="section-header"><h2>#8: Corporate Bets</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> International Consumer and the Strategic Investment Group Sit Outside the Segments</h3>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>International consumer</th><th>Security and Resiliency / Strategic Investment Group</th></tr></thead>
+      <tbody>
+        <tr><td>Q2&ndash;Q3 2024</td><td>Chase U.K., Nutmeg, C6 Bank stake</td><td>&mdash;</td></tr>
+        <tr><td>Q2 2025</td><td class="val-new">CCB chief executive &ldquo;has assumed oversight&rdquo;; head of the initiatives leaving</td><td>&mdash;</td></tr>
+        <tr><td>Q3 2025</td><td>Deposits in Corporate grow with client accounts</td><td class="val-new">$1.5T, 10-year initiative announced; &ldquo;up to $500 billion&rdquo; incremental</td></tr>
+        <tr><td>FY2025 10-K</td><td>Chase U.K. and others in Other Corporate</td><td>Strategic Investment Group named &ldquo;within&rdquo; the initiative</td></tr>
+        <tr><td>Q1 2026</td><td>Chase U.K., J.P. Morgan Personal Investing, C6 Bank stake</td><td>Within the initiative</td></tr>
+        <tr><td>Q2 2026</td><td class="val-new">+Chase Europe, launched in Germany in May 2026</td><td>$3.7B of equity investments</td></tr>
+        <tr><td>Q3 2026</td><td>Higher Corporate expense attributed partly to the initiatives</td><td class="val-neg">$5.7B; no longer described as &ldquo;within&rdquo; the initiative; loss on equity investments</td></tr>
+      </tbody>
+    </table>
+    <p>Both programs are reported in Corporate, so their costs and marks do not appear in segment returns. Neither has its own revenue, loss or deposit figure in any 10-Q in the set.</p>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. Capital Return Ran Ahead of the Ratio, Then Stopped</h3>
+      <p>Standardized CET1 fell in seven consecutive filings, from 15.7% (FY2024) to 14.0% (Q3 2026), while repurchases ran at $6&ndash;8B a quarter and $31.6B in 2025. The requirement cut to 11.5% made that look affordable. Q3 2026 changed the picture: RWA up $196B in nine months, a $7.9B AOCI loss as rates rose, and a 5.5% GSIB surcharge disclosed for 2028. Buybacks fell to $1.1B with nothing bought in August or September, and the MD&amp;A gave no reason. Whether that is a pause or a new pace is the first thing the FY2026 10-K has to answer.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. Regulatory Relief Is Real but Front-Loaded</h3>
+      <p>Each 2025&ndash;2026 rule change helped near-term capital: the SCB fell to the 2.5% floor and is frozen through 2027, the SLR requirement fell from 5.0% to 4.3%, the Apple Card RWA charge shrank from $110B to $30B, and the Basel rewrite now costs about 6% of required CET1 rather than 25%. The offsets land together on January 1, 2028: a 5.5% GSIB surcharge under current rules and an SCB set by a single 2027 test on re-proposed models. Q3 2026 dropped the sentence saying the stress-test changes would not materially move the SCB.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. Guidance Moves Up on Both Lines</h3>
+      <p>NII guides were raised in each year and landed where the last guide pointed. Expense guides rose with them and, in 2026, faster ($105B to $108.6B against $103B to $106.2B). Card charge-off guides were cut in 2025 and 2026 and actual rates (2.91% in Q3 2026) undercut them. The risk to earnings in the text is not credit or NII but cost growth, which the firm has guided at or above NII in every full-year guide since the FY2024 10-K.</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. Credit Language Names the Loss, Not the Borrower</h3>
+      <p>The credit story moved from card seasoning (2024) to the macro overlay (Q1 2025) to &ldquo;apparent borrower fraud in certain secured lending facilities&rdquo; (Q3 2025), firmed to &ldquo;borrower fraud&rdquo; in the 10-K and then dropped from the 2026 10-Qs. 2026 wholesale builds are attributed to commitment growth and &ldquo;certain exposures&rdquo;, with criticized exposure rising in Consumer &amp; Retail and TMT. None of these is sized individually.</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Legal Risk Changed Character</h3>
+      <p>The litigation note lost its federal enforcement matters (SEC, CFPB Zelle, trading venues) and its legacy cases (1MDB, the shareholder suits), and the loss range fell to $1.1B. What replaced them is political and consumer-facing: Fair Access to Banking (an Executive Order, a suit by the President against the bank and its CEO, an OCC report on nine banks and a CFPB statement about &ldquo;customer harm&rdquo;), cash sweep class actions, and a new interchange class for the post-2019 period. Russian judgments went from possible to enforceable. The range has moved only $0.2B through all of it.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Net Revenue</th>
+        <th>Net Income / Diluted EPS</th>
+        <th>NII</th>
+        <th>ROTCE</th>
+        <th>CET1 (Std.)</th>
+        <th>Allowance</th>
+        <th>Key Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q2 2024</strong></td><td>$50.2B</td><td>$18.1B / $6.12</td><td>$22.7B</td><td>28%</td><td>15.3%</td><td>$25.5B</td><td>$7.9B Visa gain; $1.0B Foundation contribution</td></tr>
+      <tr><td><strong>Q3 2024</strong></td><td>$42.7B</td><td>$12.9B / $4.37</td><td>$23.4B</td><td>19%</td><td>15.3%</td><td>$26.5B</td><td>Russian judgments in five claims; provision +125%</td></tr>
+      <tr><td><strong>FY2024 10-K</strong></td><td>$177.6B</td><td>$58.5B / $19.75</td><td>$92.6B</td><td>22%</td><td>15.7%</td><td>$26.9B</td><td>CFPB Zelle suit; First Republic integration complete; buybacks $18.8B</td></tr>
+      <tr><td><strong>Q1 2025</strong></td><td>$45.3B</td><td>$14.6B / $5.07</td><td>$23.3B</td><td>21%</td><td>15.4%</td><td>$27.8B</td><td>$588M First Republic gain; tariff factor; adverse weight raised</td></tr>
+      <tr><td><strong>Q2 2025</strong></td><td>$44.9B</td><td>$15.0B / $5.24</td><td>$23.2B</td><td>21%</td><td>15.1%</td><td>$28.3B</td><td>$774M tax benefit; eSLR proposal; adverse weight partly reversed</td></tr>
+      <tr><td><strong>Q3 2025</strong></td><td>$46.4B</td><td>$14.4B / $5.07</td><td>$24.0B</td><td>20%</td><td>14.8%</td><td>$29.1B</td><td>Borrower fraud losses; Fair Access matter; Russian judgments enforceable</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>$182.4B</td><td>$57.0B / $20.02</td><td>$95.4B</td><td>20%</td><td>14.6%</td><td>$31.2B</td><td>Apple Card commitment ($2.2B allowance); buybacks $31.6B; 2026 expense guide ~$105B</td></tr>
+      <tr><td><strong>Q1 2026</strong></td><td>$49.8B</td><td>$16.5B / $5.94</td><td>$25.4B</td><td>23%</td><td>14.3%</td><td>$31.4B</td><td>Basel re-proposal +6% / +4%; GSIB 5.5% from 2028; cash sweep suits</td></tr>
+      <tr><td><strong>Q2 2026</strong></td><td>$57.3B</td><td>$21.2B / $7.70</td><td>$25.5B</td><td>29%</td><td>14.2%</td><td>$31.5B</td><td class="val-highlight">$4.6B Visa gain; $1.0B equity gains; second $50B authorization</td></tr>
+      <tr><td><strong>Q3 2026</strong></td><td>$50.2B</td><td>$15.3B / $5.57</td><td>$27.0B</td><td>20%</td><td>14.0%</td><td>$32.0B</td><td class="val-neg">Buybacks $1.1B; ~$7.9B AOCI loss; SCB final rules; OCC fair-banking report</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:var(--text-dim); margin-top:8px;">Quarterly figures are for the quarter; 10-K rows are full-year. Common dividend per quarter: $1.15 &rarr; $1.25 (Q3 2024) &hellip; $1.50 &rarr; $1.65 (declared September 15, 2026). Total assets $5.09T and deposits $2.78T at September 30, 2026 (December 31, 2025: $4.42T and $2.56T); estimated uninsured deposits $1,780.9B (December 31, 2025: $1,558.6B). Nine-month 2026: net revenue $157.4B (+15%), net income $53.0B (+20%), diluted EPS $19.20, repurchases $16.1B. Diluted shares 2.89B (Q2 2024) &rarr; 2.68B (Q3 2026), XBRL.</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      if (el.classList.contains('finding')) findings.push(el);
+      if (el.classList.contains('finding-group')) el.querySelectorAll('.finding').forEach(f => findings.push(f));
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+</script>
+<!-- page-tools: newest filing first, expand / collapse all (scripts/page_tools.py) -->
+<style>
+.page-tools { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; gap: 6px; padding: 6px;
+  background: #fff; border: 1px solid #d6dbe1; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  font: 600 12px/1 -apple-system, 'Segoe UI', Roboto, sans-serif; }
+.page-tools button { font: inherit; padding: 7px 11px; border-radius: 5px; border: 1px solid #1B365D;
+  background: #fff; color: #1B365D; cursor: pointer; }
+.page-tools button:hover, .page-tools button:focus-visible { background: #1B365D; color: #fff; outline: none; }
+@media print { .page-tools { display: none; } }
+</style>
+<div class="page-tools" role="toolbar" aria-label="Page tools">
+  <button type="button" data-tools="expand">Expand all</button>
+  <button type="button" data-tools="collapse">Collapse all</button>
+</div>
+<script>
+(function () {
+  // Newest filing first: each transition (its header and everything up to the next transition
+  // or section) moves above the one before it.
+  var headers = Array.prototype.slice.call(document.querySelectorAll('.transition-header'));
+  if (headers.length > 1) {
+    var parent = headers[0].parentNode;
+    var spot = document.createComment('transitions');
+    parent.insertBefore(spot, headers[0]);
+    var blocks = headers.map(function (h) {
+      var nodes = [h], n = h.nextSibling;
+      while (n && !(n.nodeType === 1 && (n.classList.contains('transition-header') || n.classList.contains('section')))) {
+        nodes.push(n);
+        n = n.nextSibling;
+      }
+      return nodes;
+    });
+    var frag = document.createDocumentFragment();
+    for (var i = blocks.length - 1; i >= 0; i--) blocks[i].forEach(function (n) { frag.appendChild(n); });
+    parent.insertBefore(frag, spot);
+    parent.removeChild(spot);
+
+    // Same order in the sidebar
+    var ids = headers.map(function (h) { return '#' + h.id; });
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.sidebar a.nav-item')).filter(function (a) {
+      return ids.indexOf(a.getAttribute('href')) >= 0;
+    });
+    if (links.length > 1) {
+      var nav = links[0].parentNode, mark = document.createComment('links');
+      nav.insertBefore(mark, links[0]);
+      links.reverse().forEach(function (a) { nav.insertBefore(a, mark); });
+      nav.removeChild(mark);
+    }
+    if (location.hash) {
+      var target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView();
+    }
+  }
+
+  // Expand all / Collapse all (replaces the single toggle some pages had)
+  var old = document.getElementById('global-expand');
+  if (old) old.parentNode.style.display = 'none';
+  Array.prototype.forEach.call(document.querySelectorAll('.page-tools button'), function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('data-tools') === 'expand';
+      Array.prototype.forEach.call(document.querySelectorAll('.finding'), function (f) {
+        f.classList.toggle('open', open);
+      });
+    });
+  });
+})();
+</script>
+<!-- /page-tools -->
+</body>
+</html>
