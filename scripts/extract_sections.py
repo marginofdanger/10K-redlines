@@ -52,7 +52,7 @@ CONTINGENCY_HEADINGS = ["COMMITMENTS AND CONTINGENCIES", "Commitments and Contin
                         "LEGAL PROCEEDINGS AND CONTINGENCIES", "Legal Proceedings"]
 # MD&A sub-sections redlined on their own: they hold the commitments, funding and judgment
 # calls that a long results discussion buries. Each runs to the next top-level MD&A heading.
-MDA_SUBSECTIONS = {"mda_liquidity": r"liquidity(, financial condition)? and capital resources",
+MDA_SUBSECTIONS = {"mda_liquidity": r"(liquidity(, financial condition)? and capital resources|capital resources and liquidity)",
                    "mda_critical_estimates": r"critical accounting (policies and )?(estimates|policies)"}
 # Filers whose MD&A names a sub-section differently (GOOG: liquidity sits under "Financial Condition").
 # A tuple value is (start, end): JPM's MD&A runs its risk sections back to back, so liquidity
@@ -61,10 +61,15 @@ MDA_SUBSECTION_OVERRIDES = {"goog": {"mda_liquidity": r"financial condition\s*$"
                             "jpm": {"mda_liquidity": (r"LIQUIDITY RISK MANAGEMENT$", r"[A-Z ]+ RISK MANAGEMENT$"),
                                     "mda_critical_estimates": (r"CRITICAL ACCOUNTING ESTIMATES USED BY THE FIRM$",
                                                                r"ACCOUNTING AND REPORTING DEVELOPMENTS$")},
+                            # FICO: top-level MD&A headings are all caps; "Contractual Obligations" is a
+                            # sub-heading inside "CAPITAL RESOURCES AND LIQUIDITY", so liquidity runs to
+                            # the next all-caps heading (CRITICAL ACCOUNTING ...) rather than stopping there.
+                            "fico": {"mda_liquidity": (r"capital resources and liquidity\s*$", r"[A-Z][A-Z ,&-]{8,}$")},
                             # MSFT FY2019-21: "FINANCIAL CONDITION" and "APPLICATION OF CRITICAL ACCOUNTING POLICIES"
                             "msft": {"mda_liquidity": r"(liquidity and capital resources|financial condition)\s*$",
                                      "mda_critical_estimates": r"(application of )?critical accounting (policies|estimates)\s*$"}}
 MDA_TOP = re.compile(r"(overview|executive (overview|summary)|results of operations|liquidity(, financial condition)? and capital resources|"
+                     r"capital resources and liquidity|"
                      r"critical accounting|recent(ly)? (issued |adopted )?accounting|non-gaap|contractual obligations|"
                      r"off-balance sheet|segment (results|information|operating)|business outlook|forward-looking|"
                      r"market risk|quantitative and qualitative)", re.I)
