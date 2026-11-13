@@ -1,0 +1,72 @@
+APO Q3 2026 10-Q (filed November 5, 2026; quarter ended September 30, 2026)
+Fundamentals answers. Marker = versus the Q2 2026 10-Q. financials.py quarterly columns are
+year-to-date and do not match the filing's quarterly figures, so figures are quoted from the text
+unless marked XBRL.
+
+1. Growth and pricing [HELD]
+   FRE $802M vs $652M (+23.0%); nine months $2,315M (+26.0%). Management fees $1,017M (+17.8%):
+   Credit +17.7%, Equity +18.2%; capital solutions fees $290M (+36.8%); fee-related performance
+   fees $67M (-8.2%). Total AUM $1.07T (+$26.3B, +2.5% in the quarter) with no acquisition:
+   $12.8B credit and $8.5B equity subscriptions, $6.2B retirement services growth, $4.3B Athora
+   pension risk transfer inflows; total-AUM redemptions $3.0B (Q2 $7.3B). Fee-generating AUM
+   $880.0B. New: private credit $620B of $870B credit AUM; AUM table by sub-strategy. Comparability
+   caveat: PII now takes capital solutions fees "earned above certain performance thresholds"
+   (segment note), amount not given.
+
+2. Margins and unit economics [WORSE]
+   SRE $844M vs $871M (-3.1%); nine months $2.44B (-2.2%). Net investment spread 1.38% vs 1.60%
+   (-22bps; Q2 2026 1.47%); cost of funds 4.05% vs 3.79%, including $65M of unfavorable unlocking
+   net of noncontrolling interests; net investment earned rate 5.38% vs 5.34%, alternative 9.65%
+   vs 9.88%. FRE margin 58.4% of fee revenue ($1,374M) vs 56.8%.
+
+3. Earnings quality [WORSE]
+   GAAP net loss to AGM $(1,057)M vs income of $1,712M; nine months $(1,651)M. ANI $1,293M vs
+   $1,357M (-4.7%); nine months $3,815M (+4.4%). Retirement Services investment-related gains
+   $(3.4)B: mortgage loans $(2.2)B, reinsurance assets $(615)M, trading securities $(415)M on
+   higher Treasury rates. Athene annual unlocking: a $515M increase in benefits and expenses
+   (2025: a $55M decrease). Unnamed origination-platform asset written down on "the wind down of
+   select businesses". Income tax: a $344M benefit (23.5%); nine-month rate 134.1%.
+
+4. Cash conversion [WORSE]
+   Nine-month operating cash flow $4,637M vs $2,577M, so Q3 alone about $136M (XBRL derived) vs
+   $2,883M in Q2 and $303M in Q3 2025.
+
+5. Capital allocation [HELD]
+   Q3 buybacks 1,118,494 shares, about $118M (XBRL); nine months $847M vs $533M; $2.889B of the
+   $4.0B program left. Dividend $0.5625 declared November 3. Petros NewCo (C-PACE origination)
+   bought July 1 for $148M cash ($145M goodwill). Mubadala Capital Asset Management: $1.25B equity
+   investment agreed October 2026, cash in 2026 and 2027. Employee-partnership buyout: 1,039,632
+   shares (432,432 issued August 2026, the rest in 2029).
+
+6. Balance sheet and contingent exposure [WORSE]
+   Total debt $14,749M (Q2 $13,727M) after $1.0B of 6.150% 2036 AHL Senior Notes (August 7) and a
+   $174M nonrecourse warehouse facility. Unrestricted cash $21.3B (Q2 $25.4B). AGM stockholders'
+   equity $15.9B (Q2 $21.0B; end-2025 $23.3B); AOCI $(7,008)M (Q2 $(3,209)M). Big Sky: Athene
+   holds $691M, $4.9B more committed; consolidated VIEs $154M held, $1.3B committed. ACMP wrote a
+   $500M credit default swap for an Apollo-managed fund. Athene total investment commitments
+   $33.7B (Q2 $37.0B). AHL guarantee of 15% of WHCO's purchase obligation unchanged, no liability.
+
+7. Concentration [WORSE]
+   Concentration table re-based to 10% of AGM equity: 20 names (Q2: 8 at 10% of Athene equity).
+   Not in the June table though above its $2.4B floor: AP Falcon $3.8B, Paramount Skydance $3.6B,
+   SVF II Finco $3.1B, Valor Compute Infrastructure $2.8B, AMAPS 6 $2.7B; SoftBank Group $1.7B.
+   Athene's Atlas-affiliate AFS securities $6.5B (Q2 $4.8B). Fee growth led by Bridge, Atlas,
+   Athora, ABF, Chestnut Ridge, Credit Strategies Absolute Return Fund ($108M aggregate).
+
+8. Accounting judgments [WORSE]
+   Delinquent or non-accrual principal: commercial mortgage loans $1,393M (Q2 $1,027M; YE $992M),
+   residential $2,060M (Q2 $1,912M). Fair-value mark on the $106.4B mortgage book $(3,402)M (Q2
+   $(1,623)M). Annual unlocking $515M unfavorable, $439M of it in indexed-annuity embedded
+   derivatives ("changes to projected interest crediting and policyholder behavior"). PII
+   definition widened. Bridge purchase accounting finalized (+$19M goodwill).
+
+9. Legal, regulatory and governance [HELD]
+   No new proceedings. Anguilla derivative suit still stayed for mediation; oral argument on the
+   stockholders-agreement class action set for November 17, 2026; Epstein securities class
+   actions await a lead plaintiff; German assessments unchanged. No 10b5-1 plan adopted or
+   terminated in the quarter.
+
+10. Guidance and commitments [HELD]
+   Dividend $0.5625, on pace for the $2.25 intention. $4.0B buyback: $1.11B used. Mubadala
+   expected to close in Q4 2026. The Q2 employee-partnership expense "over the next three years"
+   moved: $61M of the remaining $131M was expensed in Q3. No new numeric targets.
