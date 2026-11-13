@@ -1,0 +1,104 @@
+MICROSOFT (MSFT): INVESTMENT THESIS PILLARS
+Written November 2026 from the 10-K redline dashboard (FY2019-FY2026) and the 10-Q scanner (Q3 FY2024
+to Q1 FY2027). The Bull / Bear page scores two filings: the FY2026 10-K (filed July 29, 2026) and the
+Q1 FY2027 10-Q (filed October 28, 2026). Microsoft's fiscal year ends June 30. Every pillar starts at
+Intact; the scanner's quarterly record since Q3 FY2024 is the background for each stance, and a stance
+moves only when the two scored filings point the same way. Figures are SEC XBRL unless quoted.
+
+P1 Azure and AI demand
+  Bull assumes: Azure and the Microsoft Cloud keep growing 30%+ on AI and cloud demand, and the
+    commercial backlog converts to revenue on schedule.
+  Bear fears: growth leans on a few AI labs (OpenAI first), the backlog is long-dated and partly
+    renegotiable, and redefined metrics hide a slowdown.
+  Stance: Strengthening, moved at the Q1 FY2027 10-Q.
+  History: Azure growth 31% (Q3 FY2024) -> 34% (FY2025) -> 41% (FY2026) -> 48% (Q1 FY2027, new
+    definition). Microsoft Cloud +23% (FY2025), +27% (FY2026), +30% (Q1 FY2027, new definition).
+    Commercial RPO $235B (March 2024) -> $678B (June 2026) -> $677B (September 2026); 12-month share
+    45% -> 25% (Q2 FY2026) -> 30%; weighted-average duration 2.5 -> 2.3 years. AI points were given
+    for three quarters of FY2025 and dropped; Q1 FY2027 redefines Azure with no old-basis growth.
+  Tests: Azure growth on the new basis, commercial RPO and its 12-month share, duration, any OpenAI
+    share of RPO.
+
+P2 Cloud margins and AI unit economics
+  Bull assumes: AI infrastructure costs are absorbed by scale and efficiency, so the Microsoft Cloud
+    gross margin stabilizes and operating margin rises.
+  Bear fears: AI capacity (GPU infrastructure) is structurally lower-margin, so mix keeps pulling the
+    margin down whatever the company calls the cause.
+  Stance: Weakening, moved at the FY2026 10-K.
+  History: Microsoft Cloud gross margin 72% (Q3 FY2024) -> 69% (FY2025) -> 66% (Q3 FY2026, FY2026 and
+    Q1 FY2027). Stated cause: "scaling our AI infrastructure" (from Q1 FY2025), plus "growing AI
+    product usage" (from Q1 FY2026), replaced in Q1 FY2027 by "sales mix shift to Azure". Company
+    gross margin 68.8% (FY2025) -> 67.9% (FY2026); operating margin 45.6% -> 46.8% -> 49.8% (Q1 FY2027).
+  Tests: Microsoft Cloud gross margin, Agents and Infra cost of revenue vs revenue, operating margin,
+    headcount and opex growth.
+
+P3 Capital intensity and cash conversion
+  Bull assumes: operating cash flow keeps pace with capex, so free cash flow still covers the dividend
+    and buybacks while the build-out earns its return.
+  Bear fears: capex grows faster than cash flow, free cash flow stalls and FCF / net income keeps
+    falling, and the stated capex plan stays open-ended.
+  Stance: Weakening, moved at the Q1 FY2027 10-Q.
+  History: capex $44.48B (FY2024), $64.55B (FY2025), $115.95B (FY2026), $39.37B in Q1 FY2027 alone.
+    FCF $74.07B -> $71.61B -> $66.99B; FCF / net income 84% -> 70% -> 50% (FY2026) and 51% (Q1
+    FY2027). Forward-capex sentence lost "increase" in the FY2025 10-K and gives no figure.
+  Tests: FCF and FCF / net income, capex vs operating cash flow, dividends and buybacks vs FCF.
+
+P4 OpenAI relationship
+  Bull assumes: OpenAI is a large paying customer and a valuable equity stake, and Microsoft keeps the
+    IP rights and a revenue share.
+  Bear fears: Microsoft depends on one counterparty for a growing share of revenue and receivables,
+    while exclusivity has gone and the stake is diluted.
+  Stance: Weakening, moved at the Q1 FY2027 10-Q.
+  History: FY2025 10-K: API "exclusive to Azure", "right of first refusal", "reciprocal revenue-sharing".
+    Q1 FY2026: first refusal ends; $250B incremental Azure commitment (stated once). Q3 FY2026: revenue
+    sharing described as one-way to Microsoft. FY2026: $24.1B revenue (7.3%), $6.0B receivable, ~25%
+    stake. Q1 FY2027: $10.0B revenue in the quarter (10.8%), $7.2B receivable (11.6%), ~24% stake.
+  Tests: OpenAI revenue and receivable share, stake, gains and losses, any change to the commercial
+    terms or to RPO concentration.
+
+P5 Off-balance-sheet commitments and supply
+  Bull assumes: leases and supplier arrangements lock in scarce capacity ahead of competitors on terms
+    Microsoft can fund.
+  Bear fears: commitments outrun demand: unstarted leases, supplier financing and restricted
+    investments become fixed costs and stranded capacity if AI demand slows.
+  Stance: Weakening, moved at the Q1 FY2027 10-Q.
+  History: leases not yet commenced $117.0B (FY2024) -> $92.7B (FY2025) -> $329.1B (FY2026, "subject
+    to certain contractual conditions") -> $364.6B (Q1 FY2027, commencing to FY2034). Server-component
+    receivables $8.2B (FY2025) -> $27.8B (FY2026) -> $35.7B; supplier-restricted investments $11.5B
+    (Q3 FY2026) -> $12.6B. Long-term debt $42.7B (FY2024) -> $31.1B.
+  Tests: leases not yet commenced and their conditions, component receivables, restricted investments,
+    finance lease liabilities, the FY2026 risk factor's "impairment of assets" language.
+
+P6 Productivity franchise (Microsoft 365 and Copilot)
+  Bull assumes: Copilot and premium suites (E5, E7) lift revenue per user on a large, still-growing
+    seat base.
+  Bear fears: seat growth slows and Copilot pricing does not offset it; AI usage raises the cost to
+    serve.
+  Stance: Intact (has not moved in the window).
+  History: Microsoft 365 Commercial cloud +17% in FY2026 and +17% in Q1 FY2027 (new definition, with
+    GitHub); seats +6% (FY2026) -> +5% (Q1 FY2027). The consumer subscriber count was dropped as a
+    metric in FY2026.
+  Tests: Microsoft 365 commercial cloud growth, seat growth, Copilot and E7 language, consumer cloud.
+
+P7 Consumer and devices
+  Bull assumes: Windows, XBOX and search are cash generators that hold their ground.
+  Bear fears: PC demand and gaming decline and impairments follow.
+  Stance: Weakening, moved at the Q1 FY2027 10-Q.
+  History: FY2026: XBOX revenue -7% with "impairment and other related expenses in our XBOX business";
+    Windows OEM and Devices "decreased slightly" with inventory "that remained elevated". Q1 FY2027:
+    Windows OEM and devices -22% on "inventory drawdowns"; XBOX -2%; search and advertising ex TAC +12%.
+  Tests: Devices and Consumer revenue and margin, Windows OEM, XBOX, impairment language.
+
+P8 Regulation, legal and tax
+  Bull assumes: legal accruals stay small relative to earnings and the IRS dispute is contested
+    successfully.
+  Bear fears: tariffs, AI rules and datacenter permitting become recurring costs, and the $28.9B IRS
+    claim is upheld.
+  Stance: Weakening, moved at the Q1 FY2027 10-Q.
+  History: reasonably possible losses beyond accruals $600M (FY2024) -> $800M -> $600M -> $300M ->
+    $400M (Q2 FY2026 to Q1 FY2027). IRS NOPAs seek "$28.9 billion plus penalties and interest"
+    (unchanged). FY2026: tariffs and export controls "has and may continue to increase operational
+    costs". Q1 FY2027: AI regulation "is increasing costs"; datacenter rules "are restricting and
+    delaying infrastructure development". None of these costs is quantified.
+  Tests: reasonably possible losses, IRS status, quantification of regulatory costs, LinkedIn GDPR
+    appeal.

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSFT Bull / Bear | latest: Q1 FY2027 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>Microsoft: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use SEC XBRL figures. A pillar's stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for Q1 FY2027 (quarter ended September 30, 2026), filed October 28, 2026 | Also scored: 10-K for FY2026 | Source: SEC EDGAR | Analysis: November 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Eight pillars (thesis.txt), scored over the FY2026 10-K and the Q1 FY2027 10-Q, with the 10-Q scanner's record since Q3 FY2024 as background. Every pillar started at Intact.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Azure and AI demand</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Azure +41% (FY2026) then +48% (Q1 FY2027, new definition); Microsoft Cloud +27% then +30%; commercial RPO $677B (+73%)</td><td class="ev-bear">Azure redefined with no old-basis growth rate; commercial RPO flat on June; ~70% of RPO due after 12 months</td><td>Q1 FY2027 10-Q</td></tr>
+<tr><td>P2 Cloud margins and AI unit economics</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Operating margin 45.6% &rarr; 46.8% (FY2026) &rarr; 49.8% (Q1 FY2027); opex +6% with headcount &minus;2%</td><td class="ev-bear">Microsoft Cloud gross margin 72% (Q3 FY2024) &rarr; 66%, held in Q1 FY2027 with the cause renamed "sales mix shift to Azure"</td><td>FY2026 10-K</td></tr>
+<tr><td>P3 Capital intensity and cash conversion</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Operating cash flow +34% (FY2026) and +29% (Q1 FY2027)</td><td class="ev-bear">FCF &minus;6% (FY2026) and &minus;27% (Q1 FY2027); FCF / net income 50% and 51%</td><td>Q1 FY2027 10-Q</td></tr>
+<tr><td>P4 OpenAI relationship</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">OpenAI revenue $24.1B (FY2026) and $10.0B in Q1 FY2027; Microsoft "will continue to receive revenue-sharing payments" and keeps IP rights</td><td class="ev-bear">OpenAI 7.3% &rarr; 10.8% of revenue and 7.4% &rarr; 11.6% of receivables; exclusivity and first refusal gone; stake ~27% &rarr; 24%</td><td>Q1 FY2027 10-Q</td></tr>
+<tr><td>P5 Off-balance-sheet commitments and supply</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Long-term debt $40.2B &rarr; $31.1B; capacity secured while components are "in short supply"</td><td class="ev-bear">Unstarted leases $92.7B &rarr; $329.1B &rarr; $364.6B; component receivables $35.7B plus $12.6B restricted</td><td>Q1 FY2027 10-Q</td></tr>
+<tr><td>P6 Productivity franchise</td><td class="stance s-intact">Intact</td><td class="ev-bull">Microsoft 365 commercial cloud +17% in both filings on revenue per user (Copilot, E5, E7)</td><td class="ev-bear">Seat growth 6% &rarr; 5%; consumer subscriber count no longer disclosed</td><td>&mdash;</td></tr>
+<tr><td>P7 Consumer and devices</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Search and advertising ex TAC +12%; Devices and Consumer operating income +2% (Q1 FY2027)</td><td class="ev-bear">XBOX &minus;7% with impairment (FY2026); Windows OEM and devices &minus;22% (Q1 FY2027)</td><td>Q1 FY2027 10-Q</td></tr>
+<tr><td>P8 Regulation, legal and tax</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Reasonably possible losses steady at $400M; IRS claim unchanged at $28.9B and contested</td><td class="ev-bear">Tariffs "has and may continue to increase operational costs" (FY2026); AI rules "is increasing costs" and datacenter rules "are restricting and delaying" (Q1 FY2027); none quantified</td><td>Q1 FY2027 10-Q</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q1 FY2027</h2>
+<p class="note">What the Q1 FY2027 10-Q adds, for and against. Operating income rose 21% and the OpenAI line, a $4.1B loss a year earlier, is now a small gain; against that, free cash flow fell 27%, commitments rose again, and OpenAI became 10.8% of revenue. The quarter also introduced two segments and a new Azure definition, so several growth rates have no like-for-like comparison.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Azure and AI demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Azure and AI demand</span><span class="chip">Stated</span></div>
+      <div class="title">Azure revenue +$10.8B (+48%); Agents and Infra revenue +$15.1B (+25%)</div>
+      <blockquote>Q1 FY2027: "Azure revenue increased $10.8 billion or 48% driven by demand for services across the platform with continued growth across all workloads."</blockquote>
+      <p class="magnitude"><b>Size:</b> Azure near $33.3B for the quarter, 36% of revenue (computed from $10.8B = 48%). Agents and Infra added more than the company's whole increase ($14.6B), as Devices and Consumer shrank.</p>
+      <p>Growth accelerated from 41% (FY2026, old definition) to 48%, but the definition changed this quarter (GPU infrastructure and Foundry in; GitHub and Health and Life Sciences out) and no old-basis rate is given, so part of the step-up may be definitional.</p>
+      <p class="next"><b>Next filing:</b> Azure growth on the new basis holds in the 40s; any bridge to the old definition; commercial RPO growth after June's $678B.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Cloud margins and AI unit economics" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Cloud margins and AI unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Operating margin 49.8% (48.9%): opex +6% with headcount down 2%</div>
+      <blockquote>Q1 FY2027: "Operating expenses increased $975 million or 6% driven by continued investments in research and development compute capacity and talent."</blockquote>
+      <p class="magnitude"><b>Size:</b> Operating income +$7.95B (+21%) on revenue +19%; sales and marketing flat at $5.72B; R&amp;D +11%.</p>
+      <p>Operating leverage more than offset a lower gross margin (67.8% vs 69.0%), the pattern of FY2026 (operating margin 46.8% vs 45.6%) continued for a second filing.</p>
+      <p class="next"><b>Next filing:</b> operating margin above 48% if the Microsoft Cloud gross margin falls below 66%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P6 Productivity franchise" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Productivity franchise</span><span class="chip">Stated</span></div>
+      <div class="title">Microsoft 365 commercial cloud +17% on revenue per user: Copilot, E5 and the new E7</div>
+      <blockquote>Q1 FY2027: "Microsoft 365 commercial cloud revenue increased 17% driven by higher revenue per user, reflecting continued upsell to premium seat offerings, including Microsoft 365 Copilot, E5, and E7, as well as increased consumption of usage-based services, primarily in GitHub Copilot."</blockquote>
+      <p class="magnitude"><b>Size:</b> Microsoft 365 cloud revenue +$4.1B. Growth matches FY2026 (+17%) on a new definition that adds GitHub cloud services.</p>
+      <p>Pricing, not seats, is carrying the franchise: seats grew 5%, so revenue per user rose about 11% (computed).</p>
+      <p class="next"><b>Next filing:</b> seat growth and the revenue-per-user language; any Copilot seat or revenue figure.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and cash conversion" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +$12.9B (+29%) to $58.0B</div>
+      <blockquote>Q1 FY2027: "Cash from operations increased $12.9 billion to $58.0 billion for the three months ended September 30, 2026, primarily due to an increase in cash received from customers and a decrease in cash used to pay income taxes, offset in part by an increase in cash paid to suppliers."</blockquote>
+      <p class="magnitude"><b>Size:</b> Operating cash flow is 158% of net income ($36.63B); current unearned revenue $66.87B (+13%).</p>
+      <p>Customers are paying ahead: the cash engine grew faster than revenue for a second filing (FY2026 +34%).</p>
+      <p class="next"><b>Next filing:</b> operating cash flow growth against capex growth (+103% this quarter).</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P4 OpenAI relationship" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 OpenAI relationship</span><span class="chip">Stated</span></div>
+      <div class="title">OpenAI revenue $10.0B in one quarter: 10.8% of revenue (FY2026: 7.3%); receivable $6.0B &rarr; $7.2B</div>
+      <blockquote>Q1 FY2027: "For the three months ended September 30, 2026, we recorded revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments, of $10.0 billion."</blockquote>
+      <blockquote>Q1 FY2027: "Accounts receivable from OpenAI as of September 30, 2026 and June 30, 2026 was $7.2 billion and $6.0 billion, respectively."</blockquote>
+      <p class="magnitude"><b>Size:</b> 10.8% of revenue and 11.6% of receivables ($62.08B); one quarter equals 41% of FY2026's $24.1B. The stake fell to an "approximate 24%" (25%).</p>
+      <p>One counterparty that no longer has an exclusive arrangement with Azure, and whose revenue share now runs one way to Microsoft, is a growing share of sales and of credit exposure. The FY2026 risk factor says such partners may cut consumption.</p>
+      <p class="next"><b>Next filing:</b> OpenAI revenue and receivable share; any disclosure of OpenAI's share of RPO or of collection terms.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and cash conversion" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">Free cash flow $18.63B vs $25.66B a year earlier (&minus;27%) as capex rises $20.0B</div>
+      <blockquote>Q1 FY2027: "Cash used in investing increased $7.4 billion to $42.0 billion for the three months ended September 30, 2026, primarily due to a $20.0 billion increase in additions to property and equipment and a $6.7 billion increase in cash used in other investing primarily to facilitate the purchase of components, offset in part by a $19.1 billion increase in cash from net investment purchases, sales, and maturities."</blockquote>
+      <p class="magnitude"><b>Size:</b> Capex $39.37B = 68% of operating cash flow; FCF / net income 51% (FY2026 50%, Q1 FY2026 92%). Cash and short-term investments fell $12.3B in the quarter to $64.5B.</p>
+      <p>The second filing in a row with FCF falling while net income rises; component financing adds $6.7B of investing cash outside capex.</p>
+      <p class="next"><b>Next filing:</b> FCF / net income above 50%; whether capex growth slows from +103%.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Off-balance-sheet commitments and supply" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Off-balance-sheet commitments and supply</span><span class="chip">Stated</span></div>
+      <div class="title">Leases not yet commenced $329.1B &rarr; $364.6B, now running to FY2034</div>
+      <blockquote>Q1 FY2027: "As of September 30, 2026, we had additional leases, primarily for datacenters, that had not yet commenced of $364.6 billion, with some arrangements subject to certain contractual conditions being met."</blockquote>
+      <p class="magnitude"><b>Size:</b> $364.6B = 3.1 times FY2026 capex ($115.95B); plus $35.7B of server-component receivables and $12.6B of supplier-restricted investments. Finance lease liabilities already $70.97B (June: $66.59B).</p>
+      <p>Fixed commitments keep rising ahead of revenue. The FY2026 10-K's new risk factor warns that overbuilding "may lead to impairment of assets on our balance sheet".</p>
+      <p class="next"><b>Next filing:</b> lease commencements, how much of the total is conditional, and any change to the impairment language.</p>
+    </div>
+    <div class="bb-card" data-pillar="P2 Cloud margins and AI unit economics" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P2 Cloud margins and AI unit economics</span><span class="chip">Inferred</span></div>
+      <div class="title">Agents and Infra cost of revenue +35% vs revenue +25%; Microsoft Cloud margin 66% (68%), now blamed on "sales mix shift to Azure"</div>
+      <blockquote>Q1 FY2027: "Cost of revenue increased $6.2 billion or 35% driven by investments in datacenter infrastructure to support growing customer demand across Azure and Microsoft 365 cloud."</blockquote>
+      <blockquote>Q1 FY2027: "Microsoft Cloud gross margin percentage decreased to 66% driven by sales mix shift to Azure, offset in part by product-level margin improvements, primarily in Azure."</blockquote>
+      <p class="magnitude"><b>Size:</b> Agents and Infra gross margin 68.9% vs 71.3% a year earlier (computed); company gross margin 67.8% (69.0%).</p>
+      <p>Azure now explicitly includes GPU infrastructure-as-a-service, so "mix shift to Azure" is a shift to the AI infrastructure business; the cause was renamed, not removed (inference).</p>
+      <p class="next"><b>Next filing:</b> Microsoft Cloud gross margin below 66%, or a stated stabilization.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Consumer and devices" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Consumer and devices</span><span class="chip">Stated</span></div>
+      <div class="title">Windows OEM and devices revenue &minus;22% on "inventory drawdowns" and "weaker PC market demand"</div>
+      <blockquote>Q1 FY2027: "Windows OEM and devices revenue decreased $1.0 billion or 22% driven by the benefit from Windows 10 end of support demand in the prior-year, inventory drawdowns by OEM and channel partners, as well as weaker PC market demand."</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$1.0B; Devices and Consumer revenue &minus;3%. XBOX &minus;2% after &minus;7% in FY2026.</p>
+      <p>The elevated channel inventory flagged since Q3 FY2025 ("due to tariff uncertainty") is unwinding, as the 10-Q scanner anticipated.</p>
+      <p class="next"><b>Next filing:</b> Windows OEM and devices growth; whether Devices and Consumer operating income keeps rising on lower Activision amortization.</p>
+    </div>
+    <div class="bb-card" data-pillar="P1 Azure and AI demand" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P1 Azure and AI demand</span><span class="chip">Inferred</span></div>
+      <div class="title">Commercial RPO $678B &rarr; $677B; growth slows from +84% to +73%</div>
+      <blockquote>Q1 FY2027: "Commercial remaining performance obligation increased 73% to $677 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$1B on June; about 70% is due after 12 months (weighted-average duration 2.3 years).</p>
+      <p>A first-quarter dip has precedent (Q1 FY2025: $269B &rarr; $259B), so this is weak evidence on its own, but backlog has added only $52B since December 2025 after $233B in the quarter before.</p>
+      <p class="next"><b>Next filing:</b> commercial RPO at December 2026 versus $625B a year earlier.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing, newest first. <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before (the 10-Q vs the FY2026 10-K; the 10-K vs the FY2025 10-K). Growth rates are year over year. Full answers: fy2027q1.txt and fy2026.txt.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q1 FY2027 10-Q</th><th>FY2026 10-K</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark better">&#9650;</span> Revenue +19%; Agents and Infra +25%; Azure +48% (new definition); Microsoft 365 commercial cloud +17%; commercial RPO $677B (+73%, $678B in June); OpenAI $10.0B.</td><td><span class="mark better">&#9650;</span> Revenue +18%; Microsoft Cloud +27%; Azure +41%; commercial RPO +84% to $678B, ~30% due in 12 months.</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark held">&#9679;</span> Operating margin 49.8% (48.9%); gross margin 67.8% (69.0%); Microsoft Cloud 66% (68%), cause now "sales mix shift to Azure"; opex +6%, headcount &minus;2%.</td><td><span class="mark worse">&#9660;</span> Microsoft Cloud gross margin 69% &rarr; 66%; company gross margin 68.8% &rarr; 67.9%; operating margin 45.6% &rarr; 46.8%.</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark better">&#9650;</span> OpenAI gain only $272M pre-tax (a $4.1B loss a year earlier); GAAP +32%, adjusted +18%; ETR 20%.</td><td><span class="mark worse">&#9660;</span> $6.5B OpenAI gain (mostly dilution) in pre-tax income; GAAP net income +31% vs adjusted +22%; XBOX impairment unquantified.</td></tr>
+<tr><td>4. Cash conversion</td><td><span class="mark worse">&#9660;</span> OCF $58.0B (+29%); capex $39.37B (+103%); FCF $18.63B (&minus;27%); FCF / NI 51%; $6.7B more for component purchases.</td><td><span class="mark worse">&#9660;</span> OCF $182.9B (+34%); capex $115.95B (+80%); FCF $66.99B (&minus;6%); FCF / NI 50% (70%).</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark held">&#9679;</span> Buybacks $2.9B ($4.0B); dividend $0.98 (+8%); returns 55% of FCF; $37.7B of authorization left.</td><td><span class="mark held">&#9679;</span> Buybacks $16.7B, dividends declared $27.0B (65% of FCF); no new debt.</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark worse">&#9660;</span> Cash and short-term investments $64.5B ($76.8B); unstarted leases $364.6B to FY2034; finance lease liabilities $70.97B; component receivables $35.7B; restricted $12.6B.</td><td><span class="mark worse">&#9660;</span> Unstarted leases $92.7B &rarr; $329.1B (conditional in part); long-term debt $40.2B &rarr; $31.1B; cash and short-term investments $94.6B &rarr; $76.8B.</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark worse">&#9660;</span> OpenAI 10.8% of revenue, 11.6% of receivables; supplier behind the restricted investments unnamed.</td><td><span class="mark worse">&#9660;</span> OpenAI first sized: 7.3% of revenue, 7.4% of receivables; partner-concentration risk factor added.</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark worse">&#9660;</span> Two segments; Azure, Microsoft Cloud and Microsoft 365 commercial cloud redefined with no old-basis Azure growth.</td><td><span class="mark held">&#9679;</span> RPO a critical estimate (as in the Q2-Q3 FY2026 10-Qs); HLBV for OpenAI; consumer subscriber count dropped.</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark worse">&#9660;</span> AI rules "is increasing costs"; datacenter rules "are restricting and delaying" build-outs; IDPC "has appealed"; reasonably possible losses $400M.</td><td><span class="mark worse">&#9660;</span> Tariffs and export controls "has and may continue to increase operational costs"; new AI-capex impairment risk; IRS $28.9B unchanged.</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark held">&#9679;</span> No numeric guidance; capex sentence unchanged; 12-month RPO share ~30%; 2030 goals face "challenging the viability"; lease window to FY2034.</td><td><span class="mark held">&#9679;</span> No numeric guidance; capex purpose reworded; lease window to FY2033; 2030 goals restated with the AI emissions concession.</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated, and what later filings said about it. Microsoft gave no revenue, margin or dollar capex guidance in any filing in the window.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>"OpenAI has contracted to purchase an incremental $250 billion of Azure services"</td><td>Q1 FY2026 10-Q (subsequent event)</td><td>Q2 FY2026 onward: not mentioned (dropped). FY2026 and Q1 FY2027 give OpenAI revenue instead ($24.1B; $10.0B).</td></tr>
+<tr><td>"total funding commitments of $13 billion" to OpenAI</td><td>Q1 FY2025 10-Q</td><td>FY2026: $11.9B funded. Q1 FY2027: $12.0B funded.</td></tr>
+<tr><td>"in 2020 we announced goals to become carbon negative, water positive, and zero waste by 2030"</td><td>Every filing in the window</td><td>FY2026: AI "making it harder to meet these goals". Q1 FY2027: "challenging the viability of these goals" (moved toward missed).</td></tr>
+<tr><td>"We expect capital expenditures to increase in coming years"</td><td>Q3 FY2024 10-Q to Q3 FY2025 10-Q</td><td>FY2025 10-K: dropped for "We will continue to invest in capital expenditures"; capex nonetheless +45% (FY2025) and +80% (FY2026).</td></tr>
+<tr><td>"We expect to recognize approximately 30% of both our total company remaining performance obligation revenue and commercial remaining performance obligation revenue over the next 12 months"</td><td>FY2026 10-K</td><td>Q1 FY2027: unchanged at ~30%.</td></tr>
+<tr><td>Leases that "will commence between fiscal year 2027 and fiscal year 2033"</td><td>FY2026 10-K</td><td>Q1 FY2027: moved to "fiscal year 2034".</td></tr>
+<tr><td>A share repurchase program "authorizing up to $60.0 billion"</td><td>Approved September 16, 2024</td><td>FY2026: $40.6B left. Q1 FY2027: $37.7B left ($2.9B used in the quarter).</td></tr>
+<tr><td>"We intend to continue returning capital to shareholders in the form of dividends"</td><td>Every filing in the window</td><td>Q1 FY2027: met; quarterly dividend $0.91 &rarr; $0.98.</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-K FY2026 (filed July 29, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Azure and AI demand" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Azure and AI demand</span><span class="chip">Stated</span></div>
+      <div class="title">Microsoft Cloud +27% to $214.4B; commercial RPO +84% to $678B</div>
+      <blockquote>FY2026 10-K: "Microsoft Cloud revenue increased 27% to $214.4 billion."</blockquote>
+      <blockquote>FY2026 10-K: "Commercial remaining performance obligation increased 84% to $678 billion."</blockquote>
+      <p class="magnitude"><b>Size:</b> Microsoft Cloud 65% of revenue; RPO 2.0 times annual revenue.</p>
+      <p>Growth accelerated from FY2025 (+23%), and the backlog nearly doubled.</p>
+      <p class="next"><b>Next filing:</b> conversion: the 12-month share (~30%) and duration (2.3 years).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and cash conversion" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">Operating cash flow +$46.8B (+34%) to $182.9B</div>
+      <blockquote>FY2026 10-K: "Cash from operations increased $46.8 billion to $182.9 billion for fiscal year 2026, primarily due to an increase in cash received from customers and a decrease in cash used to pay income taxes, offset in part by an increase in cash paid to suppliers."</blockquote>
+      <p class="magnitude"><b>Size:</b> Operating cash flow 137% of net income; capex $115.95B funded without new debt (long-term debt $40.2B &rarr; $31.1B).</p>
+      <p>Cash generation grew almost twice as fast as revenue.</p>
+      <p class="next"><b>Next filing:</b> operating cash flow growth against capex growth.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P2 Cloud margins and AI unit economics" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Cloud margins and AI unit economics</span><span class="chip">Stated</span></div>
+      <div class="title">Microsoft Cloud gross margin 69% &rarr; 66%</div>
+      <blockquote>FY2026 10-K: "Microsoft Cloud gross margin percentage decreased to 66% driven by continued investments in AI infrastructure and growing AI product usage, offset in part by efficiency gains in Azure and Microsoft 365 Commercial cloud."</blockquote>
+      <p class="magnitude"><b>Size:</b> Three points in a year; company gross margin 68.8% &rarr; 67.9%.</p>
+      <p>The cost is tied to AI usage as well as build-out, so it does not end when construction does.</p>
+      <p class="next"><b>Next filing:</b> Microsoft Cloud gross margin direction and stated cause.</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Off-balance-sheet commitments and supply" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Off-balance-sheet commitments and supply</span><span class="chip">Stated</span></div>
+      <div class="title">Leases not yet commenced $92.7B &rarr; $329.1B, some "subject to certain contractual conditions"</div>
+      <blockquote>FY2026 10-K: "As of June 30, 2026, we had additional leases, primarily for datacenters, that had not yet commenced of $329.1 billion, with some arrangements subject to certain contractual conditions being met."</blockquote>
+      <p class="magnitude"><b>Size:</b> 2.8 times FY2026 capex; component receivables $27.8B; restricted supplier investments $11.3B.</p>
+      <p>Off-balance-sheet commitments more than tripled in a year.</p>
+      <p class="next"><b>Next filing:</b> lease growth and the conditional share.</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 OpenAI relationship" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P4 OpenAI relationship</span><span class="chip">Stated</span></div>
+      <div class="title">OpenAI a related party: $24.1B of revenue; exclusivity and first refusal gone</div>
+      <blockquote>FY2026 10-K: "For fiscal year 2026, we recorded revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments, of $24.1 billion, and accounts receivable from OpenAI as of June 30, 2026 was $6.0 billion."</blockquote>
+      <blockquote>FY2026 10-K: "Microsoft is a major investor in OpenAI and will continue to receive revenue-sharing payments."</blockquote>
+      <p class="magnitude"><b>Size:</b> 7.3% of revenue; 7.4% of receivables.</p>
+      <p>The relationship is now sized as a customer concentration rather than a partnership with exclusivity.</p>
+      <p class="next"><b>Next filing:</b> OpenAI revenue and receivable shares.</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Capital intensity and cash conversion" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Capital intensity and cash conversion</span><span class="chip">Stated</span></div>
+      <div class="title">Free cash flow $71.61B &rarr; $66.99B as capex rises 80%</div>
+      <blockquote>FY2026 10-K: "We will continue to invest in capital expenditures to support growth in our cloud offerings and our investments in AI training and other infrastructure."</blockquote>
+      <p class="magnitude"><b>Size:</b> FCF &minus;6%; FCF / net income 50% (70%); capex $115.95B (35% of revenue).</p>
+      <p>Capex grew faster than operating cash flow, with no dollar outlook given.</p>
+      <p class="next"><b>Next filing:</b> FCF / net income.</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Consumer and devices" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Consumer and devices</span><span class="chip">Stated</span></div>
+      <div class="title">XBOX revenue &minus;7% with impairment charges</div>
+      <blockquote>FY2026 10-K: "XBOX revenue decreased $1.7 billion or 7% driven by declines in XBOX content and services and XBOX hardware."</blockquote>
+      <p class="magnitude"><b>Size:</b> &minus;$1.7B; impairment not quantified.</p>
+      <p>The business built on Microsoft's largest acquisition (Activision Blizzard, $75.4B) shrank and took an unquantified impairment.</p>
+      <p class="next"><b>Next filing:</b> XBOX revenue and any impairment figure.</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>

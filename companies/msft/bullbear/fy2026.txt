@@ -1,0 +1,57 @@
+MICROSOFT (MSFT) 10-K FOR FY2026 (filed July 29, 2026; fiscal year ended June 30, 2026)
+Fundamentals answers. Marker = versus the FY2025 10-K. Figures from SEC XBRL and the filing text.
+
+1. Growth and pricing [BETTER]
+   Revenue $331.84B, +18% (FY2025 +15%). "Microsoft Cloud revenue increased 27% to $214.4 billion"
+   (+23%). Azure and other cloud services +41% (34%). Microsoft 365 Commercial cloud +17%, seats +6%.
+   "Commercial remaining performance obligation increased 84% to $678 billion", 30% due in 12 months
+   (40%), weighted-average duration 2.3 years. OpenAI revenue $24.1B, 7.3% of the total.
+
+2. Margins and unit economics [WORSE]
+   Microsoft Cloud gross margin 66% (69%) "driven by continued investments in AI infrastructure and
+   growing AI product usage". Company gross margin 67.9% (68.8%). Operating margin 46.8% (45.6%):
+   operating leverage offset the gross-margin decline. Headcount 223,000 (228,000).
+
+3. Earnings quality [WORSE]
+   Net income $133.75B (+31%) includes $6.5B pre-tax ($5.0B after tax) of OpenAI gains, mostly the
+   dilution gain from the October 2025 recapitalization; adjusted net income $128.79B (+22%). FY2025
+   carried a $3.6B after-tax OpenAI loss. Effective tax rate 19.4% (17.6%). XBOX impairment cited,
+   not quantified.
+
+4. Cash conversion [WORSE]
+   Operating cash flow $182.94B (+$46.8B, +34%), "primarily due to an increase in cash received from
+   customers". Capex $115.95B (+80%). FCF $66.99B (-6%); FCF / net income 50% (70%). DSO 89 days (91).
+   Current portion of server-component receivables $27.8B ($8.2B).
+
+5. Capital allocation [HELD]
+   Buybacks under the program $16.7B ($13.0B); dividends declared $27.0B ($24.7B); together $43.7B,
+   65% of FCF. $40.6B of the $60.0B authorization left. OpenAI funding $11.9B of $13.0B. Capex
+   funded from operating cash flow; no new long-term debt.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Cash and short-term investments $76.8B ($94.6B). Long-term debt $31.07B ($40.15B). Leases not
+   yet commenced $329.1B ($92.7B), "with some arrangements subject to certain contractual conditions
+   being met", commencing FY2027-FY2033. Restricted supplier investments $11.3B. Finance lease
+   liabilities $66.6B.
+
+7. Concentration [WORSE]
+   OpenAI first disclosed as a related party: $24.1B revenue (7.3%), $6.0B receivable (7.4% of
+   receivables). New risk factor: partners that are "significant customers of Azure" may reduce
+   consumption. Supplier under the restricted-investment agreement not named.
+
+8. Accounting judgments [HELD]
+   RPO a critical accounting estimate ("potential renegotiation of commitments"), as in the Q2 and
+   Q3 FY2026 10-Qs. HLBV method for OpenAI. Microsoft 365 Consumer subscribers removed as a metric;
+   Gaming renamed XBOX. Useful-life range unchanged at two to six years, relabeled from "computer
+   equipment" to "servers and network equipment".
+
+9. Legal, regulatory and governance [WORSE]
+   Tariffs and export controls "has and may continue to increase operational costs" (could). New
+   risk factor on AI capex "in advance of fully developed revenue streams" that "may lead to
+   impairment of assets". AI "will likely continue to raise energy use and emissions". IRS NOPAs
+   $28.9B unchanged; reasonably possible losses $400M ($600M).
+
+10. Guidance and commitments [HELD]
+   No numeric guidance. Forward-capex sentence: "We will continue to invest in capital expenditures"
+   (purpose now "AI training and other infrastructure"). 2030 sustainability goals restated with
+   the AI concession. Lease commencement window extended to FY2033.

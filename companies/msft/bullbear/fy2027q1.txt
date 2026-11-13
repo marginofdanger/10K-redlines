@@ -1,0 +1,64 @@
+MICROSOFT (MSFT) Q1 FY2027 10-Q (filed October 28, 2026; quarter ended September 30, 2026)
+Fundamentals answers. Marker = versus the FY2026 10-K (growth rates are year on year against Q1
+FY2026). Figures from SEC XBRL and the filing text. Segments, Azure and Microsoft Cloud are reported
+on new definitions from this quarter, with prior periods recast.
+
+1. Growth and pricing [BETTER]
+   Revenue $92.28B, +19% (FY2026 +18%). Agents and Infra $76.80B, +25%; Devices and Consumer
+   $15.48B, -3%. "Azure revenue increased $10.8 billion or 48%" (new definition, no old-basis
+   figure); Microsoft Cloud $63.9B, +30% (new definition). Microsoft 365 commercial cloud +17% on
+   revenue per user (Copilot, E5, E7, GitHub Copilot); seats +5% (FY2026 +6%). Commercial RPO $677B
+   (+73% year on year, $678B in June), ~30% due in 12 months, duration 2.3 years. OpenAI revenue
+   $10.0B (10.8% of total). Better on growth; backlog flat on June (Q1 FY2025 also dipped).
+
+2. Margins and unit economics [HELD]
+   Operating margin 49.8% (48.9% a year earlier; FY2026 46.8%). Company gross margin 67.8% (69.0%).
+   Microsoft Cloud gross margin 66% (68%), now "driven by sales mix shift to Azure"; AI no longer
+   named as the cause. Agents and Infra: cost of revenue +35% vs revenue +25%, operating margin 52.8%
+   (53.1%). Opex +6% with headcount -2%. Gross margin worse, operating margin better.
+
+3. Earnings quality [BETTER]
+   Net income $36.63B (+32%); adjusted $36.42B (+18%). OpenAI net gain $272M pre-tax ($207M after
+   tax) vs a $4.1B loss a year earlier, so the GAAP/adjusted gap is now small. Other income $38M.
+   Effective tax rate 20% (19%). No one-off charges named.
+
+4. Cash conversion [WORSE]
+   Operating cash flow $58.00B (+$12.9B, +29%), "primarily due to an increase in cash received from
+   customers and a decrease in cash used to pay income taxes". Capex $39.37B (+$20.0B). FCF $18.63B
+   ($25.66B a year earlier, -27%); FCF / net income 51% (FY2026 50%; Q1 FY2026 92%). $6.7B more cash
+   used "to facilitate the purchase of components". DSO 61 days (62). Unearned revenue (current)
+   $66.87B (+13%).
+
+5. Capital allocation [HELD]
+   Repurchased $2.9B under the program ($4.0B); $37.7B left of $60.0B. Dividend $0.98 per share
+   ($0.91, +8%); dividends declared $7.3B. Buybacks plus dividends declared $10.2B = 55% of FCF.
+   Capex and component financing from operating cash flow; long-term debt flat at $31.09B, $4.9B
+   more debt repaid than a year earlier.
+
+6. Balance sheet and contingent exposure [WORSE]
+   Cash and short-term investments $64.5B ($76.8B in June). Leases not yet commenced $364.6B
+   ($329.1B), commencing FY2027-FY2034 (FY2033). Finance lease liabilities $70.97B ($66.59B);
+   operating lease liabilities $27.48B ($21.93B); interest expense up "primarily due to higher
+   finance lease interest expense". Server-component receivables $35.7B ($27.8B); restricted supplier
+   investments $12.6B ($11.3B).
+
+7. Concentration [WORSE]
+   OpenAI revenue $10.0B in the quarter = 10.8% of revenue (FY2026 7.3%); receivable $7.2B = 11.6% of
+   receivables (7.4%). Stake "approximate 24%" (25%). Supplier under the restricted agreement still
+   not named.
+
+8. Accounting judgments [WORSE]
+   Three segments become two; Azure, Microsoft 365 commercial cloud, Microsoft Cloud and Industry
+   solutions redefined; seat metric adds GitHub. Prior periods recast, but no old-basis Azure growth,
+   which breaks the series the AI thesis is tested on. RPO critical estimate unchanged.
+
+9. Legal, regulatory and governance [WORSE]
+   AI regulation "is increasing costs and may create liability" (could). New datacenter paragraph:
+   rules "are restricting and delaying infrastructure development, increasing costs". IDPC "has
+   appealed" a ruling in LinkedIn's GDPR case. Reasonably possible losses $400M (unchanged). IRS NOPAs
+   $28.9B unchanged. None of the regulatory costs is quantified.
+
+10. Guidance and commitments [HELD]
+   No numeric guidance. Forward-capex sentence unchanged ("We will continue to invest in capital
+   expenditures"). 12-month RPO share unchanged at ~30%. 2030 sustainability goals now face
+   "challenging the viability of these goals". Lease commencement window extended to FY2034.
