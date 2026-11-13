@@ -1,7 +1,8 @@
 APPLOVIN (APP): INVESTMENT THESIS PILLARS
 Written October 2026 from the 10-K dashboard themes (AXON/AI engine, Apps arc, EBITDA margin
 trajectory, capital structure, e-commerce expansion), the 10-Q scanner, and the eight filings from
-the Q3 2024 10-Q to the Q2 2026 10-Q. A stance moves only when two or more filings point the same way.
+the Q3 2024 10-Q to the Q2 2026 10-Q; updated November 2026 with the Q3 2026 10-Q (no stance moved).
+A stance moves only when two or more filings point the same way.
 Baseline: every pillar started the window (October 2024) at Intact.
 
 P1 Ad engine growth and pricing
@@ -10,9 +11,10 @@ P1 Ad engine growth and pricing
   Bear fears: growth is all price and no volume; installation volume stalls as mobile gaming
     saturates, and the growth rate keeps decaying toward the market.
   Stance: Strengthening (moved at the FY2024 10-K: Software Platform / Advertising revenue +66% in
-    Q3 2024 and +75% for 2024; then +71%, +77%, +68%, +70% (FY2025), +59%, +53%). Held there despite
+    Q3 2024 and +75% for 2024; then +71%, +77%, +68%, +70% (FY2025), +59%, +53%, +55%). Held there despite
     installation volume falling in Q3 2025 (-1%), Q1 2026 (-18%) and Q2 2026 (-2%), because revenue
-    growth in the same filings stayed above 50%.
+    growth in the same filings stayed above 50%. Q3 2026: installations +2% (first growth since Q2
+    2025) and revenue +13.6% sequentially; per-install growth slowed to +55% (from +93% in Q1 2026).
   Tests: revenue growth, net revenue per installation, installation volume, sequential revenue.
 
 P2 Margins and operating leverage
@@ -21,7 +23,7 @@ P2 Margins and operating leverage
   Bear fears: datacenter costs and stock-based compensation rise faster than revenue once the
     pricing gains slow.
   Stance: Strengthening (moved at the Q2 2025 10-Q: Adjusted EBITDA margin 67.7% in Q1 2025 and
-    80.9% in Q2 2025 after the Apps exit; 82.4%, 82.3%, 84.5%, 83.9% since).
+    80.9% in Q2 2025 after the Apps exit; 82.4%, 82.3%, 84.5%, 83.9%, 84.3% since).
   Tests: Adjusted EBITDA and operating margin, cost of revenue growth vs revenue, SBC.
 
 P3 Earnings quality
@@ -32,7 +34,9 @@ P3 Earnings quality
     EBITDA, climbs again.
   Stance: Weakening (moved at the Q1 2026 10-Q: FY2025 tax rate 13.1% vs 1.4% in 2024 (continuing operations) and
     unrecognized SBC $145.6M -> $489.0M; Q1 2026 tax +$154.7M on a smaller SBC benefit and R&D SBC
-    payroll +$36.5M; Q2 2026 SBC $85.8M vs $34.6M and tax +$126.8M).
+    payroll +$36.5M; Q2 2026 SBC $85.8M vs $34.6M and tax +$126.8M; Q3 2026 SBC $84.2M vs $33.8M, tax
+    rate 17.5%, private-fund marks $46.9M, Adjusted EBITDA add-back widened to "transaction-related
+    expense and other").
   Tests: effective tax rate, SBC expense and unrecognized balance, non-operating gains in other income.
 
 P4 Cash conversion and capital return
@@ -41,7 +45,9 @@ P4 Cash conversion and capital return
   Bear fears: buybacks outrun free cash flow (as in Q1 2025, when the FCF cap was loosened and the
     revolver drawn), receivables build, and net share settlement of awards eats the cash.
   Stance: Strengthening (moved at the FY2025 10-K: Q3 2025 and FY2025 both show buybacks inside
-    free cash flow with cash rising; FY2025 FCF $3.95B = 119% of net income).
+    free cash flow with cash rising; FY2025 FCF $3.95B = 119% of net income). Q2 2026 dipped to 68%
+    of net income on working capital; Q3 2026 recovered to 99% and funded a record ~$1.36B buyback;
+    authorization refilled by $3.2B in October 2026.
   Tests: FCF vs net income, receivables / DSO, buybacks and withholding taxes vs FCF, diluted shares.
 
 P5 Balance sheet and liquidity
@@ -50,7 +56,7 @@ P5 Balance sheet and liquidity
   Bear fears: debt-funded buybacks or a large acquisition (the TikTok indication of interest in
     2025) re-lever the company.
   Stance: Strengthening (moved at the Q2 2025 10-Q: FY2024 10-K refinancing of secured term loans
-    into unsecured notes; Q2 2025 revolver repaid and cash doubled to $1.19B; cash $3.05B by Q2 2026).
+    into unsecured notes; Q2 2025 revolver repaid and cash doubled to $1.19B; cash $3.17B by Q3 2026).
   Tests: cash vs $3.6B notes, revolver usage, net debt / EBITDA covenant (3.50x).
 
 P6 Expansion beyond gaming and concentration
@@ -72,5 +78,12 @@ P7 Legal, regulatory and reputation
     2025 amended complaint plus new risk language on "improper advertising practices" and misuse of
     user data; FY2025 adds "misleading or false statements" about the company). Bull offsets: two of
     three complaints voluntarily dismissed (Q2 2025); Google retired Privacy Sandbox (Q3 2025/FY2025).
-  Tests: ruling on the motion to dismiss (fully briefed February 2026), any government inquiry,
-    loss accrual.
+    Q3 2026 adds to the bear side: a second class action (September 2026, class period February 12 -
+    August 5, 2026) over "the pace of improvement" of the ad models and "a certain ad-generation tool",
+    a 2026 derivative suit, the Chief Administrative & Legal Officer moved to a consulting role, and
+    risk factors that now say the company "has faced" COPPA claims and that partner data misuse has
+    "impacted our business". Still Weakening; Broken would need an adverse ruling, an accrual or a
+    government action.
+  Tests: ruling on the motion to dismiss (fully briefed February 2026), consolidation and lead
+    plaintiff in the 2026 case, any named regulator or proceeding on data or children's privacy,
+    loss accrual, a named chief legal officer.
