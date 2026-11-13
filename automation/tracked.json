@@ -104,9 +104,9 @@
       "annual_covered_through": "2025-12-31",
       "quarterly": true,
       "quarterly_dashboard": "companies/unh/10q/",
-      "quarterly_covered_through": "2026-06-30",
+      "quarterly_covered_through": "2026-09-30",
       "annual_filed": "2026-03-02",
-      "quarterly_filed": "2026-08-10"
+      "quarterly_filed": "2026-11-03"
     },
     "HCA": {
       "cik": "0000860730",
