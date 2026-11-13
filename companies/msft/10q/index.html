@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSFT 10-Q Quarterly Scanner | Q3 FY2024 - Q1 FY2027</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --surface2: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-dim: #59636e;
+  --accent: #0969da;
+  --accent2: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+  --pink: #bf3989;
+  --cyan: #0e7c6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar Nav */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 250px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface);
+}
+.sidebar-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.sidebar-header h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+.sidebar-header .sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.nav-section {
+  padding: 8px 20px 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.nav-item {
+  display: block;
+  padding: 5px 20px 5px 28px;
+  font-size: 13px;
+  color: var(--text-dim);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(9,105,218,0.08);
+  border-left-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 32px 48px 80px;
+  max-width: 1000px;
+}
+
+/* Hero */
+.hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.hero h1 {
+  font-size: 30px; font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.hero .tagline { font-size: 15px; color: var(--text-dim); max-width: 700px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 12px; opacity: 0.7; }
+
+/* Transition header */
+.transition-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin: 48px 0 24px;
+  scroll-margin-top: 20px;
+}
+.transition-header:first-of-type { margin-top: 0; }
+.transition-header h2 { font-size: 20px; font-weight: 700; }
+.transition-header .sub { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+/* Finding groups */
+.finding-group { margin-bottom: 28px; }
+.finding-group h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.finding-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* Findings */
+.finding {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.finding-header {
+  padding: 12px 18px; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 10px; user-select: none;
+}
+.finding-header:hover { background: rgba(0,0,0,0.02); }
+.finding-header .arrow {
+  color: var(--text-dim); font-size: 11px; margin-top: 3px;
+  transition: transform 0.2s; flex-shrink: 0;
+}
+.finding.open .finding-header .arrow { transform: rotate(90deg); }
+.finding-header .title { font-size: 14px; font-weight: 600; }
+.finding-header .tag {
+  font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; margin-left: auto;
+}
+.tag-new { background: rgba(26,127,55,0.1); color: var(--accent2); }
+.tag-removed { background: rgba(207,34,46,0.1); color: var(--red); }
+.tag-changed { background: rgba(154,103,0,0.1); color: var(--orange); }
+.tag-signal { background: rgba(130,80,223,0.1); color: var(--purple); }
+.finding-body {
+  display: none; padding: 0 18px 14px 40px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+}
+.finding.open .finding-body { display: block; }
+.finding-body blockquote {
+  border-left: 3px solid var(--accent); padding: 8px 14px; margin: 10px 0;
+  background: rgba(9,105,218,0.06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--text);
+}
+.finding-body strong { color: var(--text); }
+.finding-body p.shift { margin: 4px 0 8px; font-size: 12px; font-weight: 600; color: var(--purple); }
+.finding-body p.history { margin: 6px 0 8px; font-size: 12px; color: var(--text-dim); border-left: 2px solid var(--border); padding-left: 10px; }
+
+/* Section headings */
+.section { margin-bottom: 56px; padding-top: 32px; border-top: 2px solid var(--border); scroll-margin-top: 20px; }
+.section:first-of-type { border-top: none; padding-top: 0; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; padding-bottom: 10px;
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px; background: var(--surface2);
+  border-bottom: 2px solid var(--border); font-weight: 600; font-size: 11px;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+}
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: rgba(0,0,0,0.02); }
+.val-pos { color: var(--accent2); font-weight: 600; }
+.val-neg { color: var(--red); font-weight: 600; }
+.val-new { color: var(--purple); font-weight: 600; }
+.val-highlight { color: var(--accent); font-weight: 600; }
+
+/* Signal Cards */
+.signal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 24px; }
+.signal-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px;
+}
+.signal-card.full { grid-column: 1 / -1; }
+.signal-card h3 {
+  font-size: 15px; font-weight: 700; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.signal-card h3 .num {
+  background: var(--accent); color: var(--bg); font-size: 11px;
+  width: 22px; height: 22px; display: inline-flex; align-items: center;
+  justify-content: center; border-radius: 50%; font-weight: 700;
+}
+.signal-card p, .signal-card li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.signal-card ul { padding-left: 18px; margin-top: 8px; }
+.signal-card li { margin-bottom: 5px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h1>MSFT 10-Q SCANNER</h1>
+    <div class="sub">Q3 FY2024 &ndash; Q1 FY2027 | SEC EDGAR</div>
+  </div>
+  <div class="nav-section">Overview</div>
+  <a class="nav-item" href="#hero-section">Executive Summary</a>
+
+  <div class="nav-section">Quarter-over-Quarter</div>
+  <a class="nav-item" href="#q3-fy2024-fy2024">Q3 FY2024 &rarr; FY2024 10-K</a>
+  <a class="nav-item" href="#fy2024-q1-fy2025">FY2024 10-K &rarr; Q1 FY2025</a>
+  <a class="nav-item" href="#q1q2-fy2025">Q1 &rarr; Q2 FY2025</a>
+  <a class="nav-item" href="#q2q3-fy2025">Q2 &rarr; Q3 FY2025</a>
+  <a class="nav-item" href="#q3-fy2025-fy2025">Q3 FY2025 &rarr; FY2025 10-K</a>
+  <a class="nav-item" href="#fy2025-q1-fy2026">FY2025 10-K &rarr; Q1 FY2026</a>
+  <a class="nav-item" href="#q1q2-fy2026">Q1 &rarr; Q2 FY2026</a>
+  <a class="nav-item" href="#q2q3-fy2026">Q2 &rarr; Q3 FY2026</a>
+  <a class="nav-item" href="#q3-fy2026-fy2026">Q3 FY2026 &rarr; FY2026 10-K</a>
+  <a class="nav-item" href="#fy2026-q1-fy2027">FY2026 10-K &rarr; Q1 FY2027</a>
+
+  <div class="nav-section">Tracked Signals</div>
+  <a class="nav-item" href="#sig-cloudgm">Microsoft Cloud Margin</a>
+  <a class="nav-item" href="#sig-azure">Azure Growth &amp; AI Points</a>
+  <a class="nav-item" href="#sig-rpo">Commercial RPO</a>
+  <a class="nav-item" href="#sig-leases">Unstarted Leases</a>
+  <a class="nav-item" href="#sig-capex">Capex</a>
+  <a class="nav-item" href="#sig-openai">OpenAI</a>
+  <a class="nav-item" href="#sig-supply">Supply Financing</a>
+  <a class="nav-item" href="#sig-tense">Could &rarr; Has</a>
+  <a class="nav-item" href="#sig-legal">Contingencies</a>
+  <a class="nav-item" href="#sig-metrics">Metric Resets</a>
+
+  <div class="nav-section">Synthesis</div>
+  <a class="nav-item" href="#themes">Themes</a>
+  <a class="nav-item" href="#ref-table">Financial Reference</a>
+
+  <div class="nav-section">Links</div>
+  <a class="nav-item" href="../index.html">MSFT 10-K dashboard</a>
+  <a class="nav-item" href="../../index.html">All companies</a>
+</nav>
+
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="hero-section">
+  <h1>MSFT 10-Q Quarterly Scanner</h1>
+  <div class="tagline">Quarter-over-quarter textual analysis of 11 SEC filings: eight 10-Qs plus the FY2024, FY2025 and FY2026 10-Ks (Microsoft's fiscal year ends June 30). The annual dashboard follows the argument year to year; this scanner shows the quarter each change arrived in: AI as the stated cause of a six-point cloud-margin decline and then its removal, leases and supplier financing that grew ahead of capex, a backlog that lengthened, OpenAI's path from an unquantified line to 10.8% of revenue, and the Q1 FY2027 two-segment reset.</div>
+  <div class="source">Source: SEC EDGAR (CIK 0000789019) | 11 Filings | Q3 FY2024 &ndash; Q1 FY2027 (March 2024 &ndash; September 2026) | 68 findings, 10 tracked signals | Analysis: November 2026</div>
+</div>
+
+
+<!-- ==================== QUARTER-OVER-QUARTER ==================== -->
+
+<!-- Q3 FY2024 -> FY2024 10-K -->
+<div class="transition-header" id="q3-fy2024-fy2024">
+  <h2>Q3 FY2024 &rarr; FY2024 10-K</h2>
+  <div class="sub">Filed Jul 30, 2024 | FY2024 revenue: $245.12B (+16%) | Operating income: $109.43B (44.6%) | Net income: $88.14B | Microsoft Cloud: $137.4B (+23%), gross margin 71% (Q3: 72%) | Azure: +30% | Capex: $44.48B (Q4 alone $13.88B) | Leases not yet commenced: $96.2B &rarr; $117.0B | RPO: $242B &rarr; $275B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cloud-margin warning drops its benchmark: "reduce the operating margins we have previously achieved" &rarr; "reduce the operating margins"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: benchmark dropped: "we have previously achieved" (&minus;); degree: costs &rarr; "significant costs" (+); heading adds "and AI"</p>
+    <blockquote>Q3 FY2024: "Besides software development costs, we are incurring costs to build and maintain infrastructure to support cloud computing and AI services. These costs will reduce the operating margins we have previously achieved."</blockquote>
+    <blockquote>FY2024 10-K: "We are incurring significant costs to build and maintain infrastructure to support cloud computing and AI services. These costs will reduce the operating margins."</blockquote>
+    <p class="history">History (phrase_history): "operating margins we have previously achieved" appears in the FY2023 10-K and the Q3 FY2024 10-Q and in no later filing; "These costs will reduce the operating margins" then runs from the FY2024 10-K to Q3 FY2025 before the FY2025 10-K turns it into "reducing operating margins".</p>
+    <p>The March 10-Q still measured cloud margins against the pre-cloud past. The 10-K drops the comparison, calls the costs "significant" and retitles the risk "Our focus on cloud-based and AI services presents execution and competitive risks." Microsoft Cloud gross margin was 72% in the March quarter and 71% for the year. The quarterly record shows the change was made in the 10-K, not in a 10-Q.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New-product margins softened: "will not be as high as the margins we have experienced historically" &rarr; "may not achieve operating margins as high"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: will not &rarr; may not (&minus;); condition dropped: "even if they are profitable"</p>
+    <blockquote>Q3 FY2024: "New products and services may not be profitable, and even if they are profitable, operating margins for some new products and businesses will not be as high as the margins we have experienced historically."</blockquote>
+    <blockquote>FY2024 10-K: "New products and services may not be profitable or may not achieve operating margins as high as we have experienced historically."</blockquote>
+    <p class="history">History (phrase_history): the "will not be as high" sentence appears in the FY2023 10-K and Q3 FY2024; the "may not achieve operating margins as high" version runs unchanged in all ten filings from the FY2024 10-K to Q1 FY2027.</p>
+    <p>The old sentence said as a fact that some new businesses would earn lower margins; the new one makes it a possibility. The same rewrite turned weaker PC demand from "our revenue will be adversely affected" into "our results of operations may be adversely affected". Both soften in the filing that drops "margins we have previously achieved", while the cloud margin was falling a point.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Ubiquitous computing and ambient intelligence" strategy and the IoT risk deleted; the section is rebuilt around AI services</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: deletion: strategic-vision sentence and IoT sub-risk (&minus;); de-named: Azure IoT Edge</p>
+    <blockquote>Q3 FY2024: "Our strategic vision is to compete and grow by building best-in-class platforms and productivity services that utilize ubiquitous computing and ambient intelligence to drive insights and productivity gains."</blockquote>
+    <blockquote>Q3 FY2024: "Our success in driving ubiquitous computing and ambient intelligence will depend on the level of adoption of our offerings such as Azure, Azure AI, and Azure IoT Edge."</blockquote>
+    <blockquote>FY2024 10-K: "Whether we succeed in cloud-based and AI services depends on our execution in several areas, including:"</blockquote>
+    <p class="history">History (phrase_history): "ubiquitous computing and ambient intelligence" appears in the FY2023 10-K and Q3 FY2024 only; "The development of the IoT presents security, privacy, and execution risks" is also gone from the FY2024 10-K on.</p>
+    <p>The cloud risk factor had been written around the "intelligent cloud and intelligent edge" strategy. The 10-K deletes the vision statement, the IoT paragraph and the product list, and frames success as execution in "cloud-based and AI services". The rewrite also removes named products from the R&amp;D sentence ("including the Windows operating system, Microsoft 365, Bing, SQL Server...").</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Notes &amp; Commitments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Finance leases not yet commenced jump $20.6B in a quarter: $87.8B &rarr; $108.4B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: total $96.2B &rarr; $117.0B (+); wording unchanged</p>
+    <blockquote>Q3 FY2024: "As of March 31, 2024, we had additional operating and finance leases, primarily for datacenters, that had not yet commenced of $8.4 billion and $87.8 billion, respectively."</blockquote>
+    <blockquote>FY2024 10-K: "As of June 30, 2024, we had additional operating and finance leases, primarily for datacenters, that had not yet commenced of $8.6 billion and $108.4 billion, respectively."</blockquote>
+    <p class="history">History (phrase_history): the FY2023 10-K gave $7.7B and $34.4B; the total of $117.0B here is the peak until Q1 FY2026, falling in each of the next four filings to $92.7B (FY2025).</p>
+    <p>$117.0B of signed, unstarted leases is 2.6 times FY2024 capex of $44.48B, and none of it is on the balance sheet yet. Almost all of it is finance leases, which arrive as debt-like liabilities when sites are handed over. The 10-K also discloses $35.4B committed "for the construction of new buildings, building improvements, and leasehold improvements, primarily related to datacenters", which the 10-Qs do not give.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- FY2024 10-K -> Q1 FY2025 -->
+<div class="transition-header" id="fy2024-q1-fy2025">
+  <h2>FY2024 10-K &rarr; Q1 FY2025</h2>
+  <div class="sub">Filed Oct 30, 2024 | Revenue: $65.58B (+16%) | Operating income: $30.55B (46.6%) | Net income: $24.67B | Microsoft Cloud: $38.9B (+22%), gross margin 71% | Azure: +33% (12 points from AI) | Capex: $14.92B | Free cash flow: $19.26B | Leases not yet commenced: $116.1B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A &amp; Metrics</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI infrastructure turns from part of a margin improvement into the cause of a decline: "decreased to 71% driven by scaling our AI infrastructure"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: cause reversed: "inclusive of scaling our AI infrastructure" (inside an increase) &rarr; "driven by scaling our AI infrastructure" (a decrease) (+ disclosure); qualifier dropped: "slightly"</p>
+    <blockquote>FY2024 10-K: "Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure."</blockquote>
+    <blockquote>Q1 FY2025: "Microsoft Cloud gross margin percentage decreased to 71% driven by scaling our AI infrastructure."</blockquote>
+    <p class="history">History (phrase_history): "inclusive of scaling our AI infrastructure" appears in Q3 FY2024 and the FY2024 10-K only; "driven by scaling our AI infrastructure" appears in Q1 FY2025, Q2 FY2025 and Q1 FY2026 (Q3 FY2025 and FY2025 say "the impact of scaling").</p>
+    <p>Until the 10-K, AI build-out costs sat inside a margin that was rising once the server-life accounting change was stripped out. From this 10-Q they are the stated reason it falls, with no offsetting improvement named. It then fell to 70% (Q2 FY2025), 69% (Q3 FY2025 and the 10-K), 68%, 67% and 66% (Q3 FY2026), where it has stayed (see tracked signal #1).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Azure's AI contribution quantified for the first time: "including 12 points from our AI services"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added: AI share of Azure growth (+); driver: "consumption-based services" &rarr; "portfolio of services"</p>
+    <blockquote>FY2024 10-K: "Azure and other cloud services revenue grew 30% driven by growth in our consumption-based services."</blockquote>
+    <blockquote>Q1 FY2025: "Azure and other cloud services revenue grew 33% driven by demand for our portfolio of services, including 12 points from our AI services."</blockquote>
+    <p class="history">History (phrase_history): "points from our AI services" appears in Q1, Q2 and Q3 FY2025 only (12, 13 and 16 points); no earlier downloaded filing splits out AI, and the FY2025 10-K drops it.</p>
+    <p>More than a third of Azure's growth came from AI services. Microsoft gave the figure for three quarters while it rose, then stopped. It never gave AI revenue in dollars.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Devices folded into "Windows OEM and Devices"; segments recast for the first of three times in the window</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: metrics combined (&minus; disclosure); recast: "changes to the composition of our segments"</p>
+    <blockquote>FY2024 10-K: "Devices revenue decreased $815 million or 15%."</blockquote>
+    <blockquote>Q1 FY2025: "Other changes include combining Windows OEM and Devices into a single revenue growth metric that brings revenue from PC market-driven businesses together, as well as elevating our cloud revenue growth metrics to align to our strategic focus on cloud growth."</blockquote>
+    <p class="history">History (phrase_history): "combining Windows OEM and Devices into a single revenue growth metric" appears in Q1 FY2025 to the FY2025 10-K; the segment composition changed again in Q1 FY2027, when three segments became two.</p>
+    <p>Devices revenue fell 15% in FY2024. From this quarter it is reported inside one PC-market line with Windows licensing, so hardware declines are netted against OEM royalties. Each Q1 in the window resets a yardstick: this one, the FY2026 removal of the consumer subscriber count, and the Q1 FY2027 two-segment structure.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>OpenAI &amp; Investments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OpenAI enters the notes: "$13 billion" of funding commitments; its losses folded into "Other, net" without a figure</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +OpenAI Global, LLC (+); quant: commitment stated (+), share of losses not stated (&minus;)</p>
+    <blockquote>FY2024 10-K: "Other, net primarily reflects net recognized losses on equity method investments."</blockquote>
+    <blockquote>Q1 FY2025: "We have an investment in OpenAI Global, LLC ... and have made total funding commitments of $13 billion."</blockquote>
+    <blockquote>Q1 FY2025: "Other, net primarily reflects net recognized losses on equity method investments, including OpenAI."</blockquote>
+    <p class="history">History (phrase_history): "have made total funding commitments of $13 billion" first appears in Q1 FY2025 and runs to Q3 FY2026; "including OpenAI" first appears in Q1 FY2025. The loss for this quarter, $688 million, was first given a year later, in the Q1 FY2026 10-Q.</p>
+    <p>Equity-method investments rose from $6.0B to $6.8B. The filing names OpenAI as a source of the equity-method losses but sizes neither the stake nor the loss; the $688M (2.3% of pre-tax income) only appeared as a prior-year comparison in Q1 FY2026.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors &amp; Contingencies</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unpatched old equipment admitted as a way in: patch failures "have and may continue to result in unauthorized access"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: added in the present perfect (+); named: "legacy network equipment"</p>
+    <blockquote>Q1 FY2025: "Challenges or failures in applying current security patches to all hardware and devices connected to our systems, including legacy network equipment, have and may continue to result in unauthorized access to our IT systems and data in the future."</blockquote>
+    <p class="history">History (phrase_history): "legacy network equipment" appears in Q1 FY2025 only; from Q2 FY2025 the sentence reads "including end-of-life and end-of-support equipment" and runs through Q1 FY2027, where "have and may continue" becomes "have resulted and may continue".</p>
+    <p>The same section already described the Midnight Blizzard breach, which began with "a legacy test account". The new sentence goes further: gaps in patching Microsoft's own older equipment "have" let attackers into its systems. It is an admission about Microsoft's infrastructure, not its customers'.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Nation-state attacks said to intensify "due to our transparency"; Ukraine dropped from the sentence</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: cause added: Microsoft's own disclosure (+); named: +elections; de-named: Ukraine</p>
+    <blockquote>FY2024 10-K: "Nation-state attacks against us, our customers, or our partners have and may continue to intensify during periods of intense diplomatic or armed conflict, such as the ongoing conflict in Ukraine."</blockquote>
+    <blockquote>Q1 FY2025: "Nation-state attacks against us, our customers, or our partners have and may continue to intensify due to our transparency to our customers, other stakeholders, and the public about cyberattacks, and during elections or periods of intense diplomatic or armed conflict."</blockquote>
+    <p class="history">History (phrase_history): "transparency to our customers, other stakeholders, and the public about cyberattacks" first appears in Q1 FY2025 and is in every filing through Q1 FY2027.</p>
+    <p>Microsoft now says that publishing details of attacks can itself draw more of them. Elections are added as a trigger. Ukraine remains named elsewhere in the risk factors.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">LinkedIn's GDPR case reaches a final decision; the fine is not stated</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: "no set timeline" &rarr; "final decision" (+); quant: fine not disclosed (&minus;)</p>
+    <blockquote>FY2024 10-K: "There is no set timeline for the IDPC to issue a final decision, at which time Microsoft will consider its options to appeal."</blockquote>
+    <blockquote>Q1 FY2025: "In October 2024, the IDPC provided LinkedIn with a final decision, and LinkedIn is considering its options to appeal."</blockquote>
+    <p class="history">History (phrase_history): "provided LinkedIn with a final decision" appears in every filing from Q1 FY2025 to Q1 FY2027; LinkedIn appealed in November 2024 (Q2 FY2025), and by Q1 FY2027 "the IDPC has appealed" a court ruling on the standard of review.</p>
+    <p>The note gives no amount for the fine. The aggregate estimate of reasonably possible losses beyond accruals stays at $600M this quarter and rises to $800M the next.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Q1 FY2025 -> Q2 FY2025 -->
+<div class="transition-header" id="q1q2-fy2025">
+  <h2>Q1 FY2025 &rarr; Q2 FY2025</h2>
+  <div class="sub">Filed Jan 29, 2025 | Revenue: $69.63B (+12%) | Operating income: $31.65B (45.5%) | Net income: $24.11B | Microsoft Cloud: $40.9B (+21%), gross margin 70% | Azure: +31% (13 points from AI) | Capex: $15.80B | Free cash flow: $6.49B | RPO: $304B, ~40% due in 12 months | Leases not yet commenced: $105.4B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Backlog &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Share of RPO due within 12 months cut: "approximately 45%" &rarr; "approximately 40%"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figure 45% &rarr; 40% (&minus;, longer-dated); quant: RPO $266B &rarr; $304B</p>
+    <blockquote>Q1 FY2025: "We expect to recognize approximately 45% of our total company remaining performance obligation revenue over the next 12 months and the remainder thereafter."</blockquote>
+    <blockquote>Q2 FY2025: "We expect to recognize approximately 40% of our total company remaining performance obligation revenue over the next 12 months and the remainder thereafter."</blockquote>
+    <p class="history">History (phrase_history): 45% in Q3 FY2024, the FY2024 10-K and Q1 FY2025; 40% from Q2 FY2025 to Q1 FY2026; 25% in Q2 FY2026; 30% total and 25% commercial in Q3 FY2026; 30% from the FY2026 10-K.</p>
+    <p>RPO rose $38B in the quarter, but the amount due within a year barely moved: about $120B to $122B (computed from the rounded shares). The growth came in longer contracts. This is the first of three steps that took the 12-month share from 45% to 25% in five quarters.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI services growth rate given once: "13 points from our AI services which grew 157%"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added: AI growth rate (+)</p>
+    <blockquote>Q1 FY2025: "Azure and other cloud services revenue grew 33% driven by demand for our portfolio of services, including 12 points from our AI services."</blockquote>
+    <blockquote>Q2 FY2025: "Azure and other cloud services revenue grew 31% driven by demand for our portfolio of services, including 13 points from our AI services which grew 157%."</blockquote>
+    <p class="history">History (phrase_history): "AI services which grew" appears in Q2 FY2025 only (157% for the quarter, 178% for six months); Q3 FY2025 gives 16 points and no growth rate.</p>
+    <p>Azure slowed from 33% to 31% while AI added a point, so the rest of Azure slowed from about 21 points to 18 (computed). The AI growth rate was offered in the quarter Azure decelerated and not repeated.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors &amp; Contingencies</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Reasonably possible legal losses raised: "approximately $600 million" &rarr; "approximately $800 million"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: $600M &rarr; $800M (+ exposure)</p>
+    <blockquote>Q1 FY2025: "While we intend to defend these matters vigorously, adverse outcomes that we estimate could reach approximately $600 million in aggregate beyond recorded amounts are reasonably possible."</blockquote>
+    <blockquote>Q2 FY2025: "While we intend to defend these matters vigorously, adverse outcomes that we estimate could reach approximately $800 million in aggregate beyond recorded amounts are reasonably possible."</blockquote>
+    <p class="history">History (phrase_history): $600M in every filing from the FY2023 10-K to Q1 FY2025; $800M in Q2 and Q3 FY2025; $600M in the FY2025 10-K; $300M in Q1 FY2026; $400M from Q2 FY2026 to Q1 FY2027.</p>
+    <p>The note does not say which matter moved. The quarter's only new litigation entry is LinkedIn's appeal of the GDPR decision ("In November 2024, LinkedIn appealed the final decision to the Irish courts"), and the cell-phone cases' appeal was argued in January 2025.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Midnight Blizzard: "we may discover additional impacts" deleted; the actor's past access restated as fact</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: hedge dropped: ongoing-examination caveat (+ firmer); certainty: "used and may continue to use" &rarr; "used" (+)</p>
+    <blockquote>Q1 FY2025: "Additionally, we may discover additional impacts of this or other incidents as part of our ongoing examination of this incident."</blockquote>
+    <blockquote>Q2 FY2025: "The threat actor used information it obtained to gain unauthorized access to some of our source code repositories and internal systems, and the threat actor may continue to utilize this and other information to attempt to gain access to our systems or otherwise adversely affect our business and results of operations."</blockquote>
+    <p class="history">History (phrase_history): "we may discover additional impacts" appears from Q3 FY2024 to Q1 FY2025; the incident paragraph ("password spray attack") stays in every filing to the FY2026 10-K and is gone from Q1 FY2027.</p>
+    <p>Microsoft no longer reserves room to find more damage, consistent with the examination being closed (inference). The access to source code is now stated in the past tense; only future attempts are hedged.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs enter the macro risk sentence: "restrictions on international trade, such as tariffs"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +tariffs, +controls on imports or exports (+)</p>
+    <blockquote>Q1 FY2025: "Global, regional, and local economic developments, monetary policy, inflation, and recession, as well as political and military disputes, may adversely affect our results of operations."</blockquote>
+    <blockquote>Q2 FY2025: "Global, regional, and local economic developments, monetary policy, restrictions on international trade, such as tariffs and other controls on imports or exports, inflation, and recession, as well as political and military disputes, may adversely affect our results of operations."</blockquote>
+    <p class="history">History (phrase_history): "restrictions on international trade, such as tariffs" first appears in Q2 FY2025 and runs through Q1 FY2027.</p>
+    <p>Filed January 29, 2025. The tariff thread then runs through every filing: Q3 FY2025 blames "tariff uncertainty" for elevated Windows inventory, the FY2025 10-K says tariffs "could increase operational costs", and the FY2026 10-K says they have.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI competition stated as fact: "We expect AI technology and services to be" &rarr; "AI technology and services are a highly competitive... market"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: expect &rarr; are (+)</p>
+    <blockquote>Q1 FY2025: "We expect AI technology and services to be a highly competitive and rapidly evolving market, and new competitors continue to enter the market."</blockquote>
+    <blockquote>Q2 FY2025: "AI technology and services are a highly competitive and rapidly evolving market, and new competitors continue to enter the market."</blockquote>
+    <p class="history">History (phrase_history): the "We expect" version stood in the FY2024 10-K and Q1 FY2025; the present-tense version runs from Q2 FY2025 to Q1 FY2027.</p>
+    <p>A forecast becomes a description. The FY2025 10-K later removed every named competitor from Item 1 (see the 10-K dashboard), so this sentence is what remains on AI rivalry.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Commitments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unstarted leases fall $10.7B: $116.1B &rarr; $105.4B, with no change in wording</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: finance leases $108.7B &rarr; $99.4B (&minus;); lease terms "1 year to 20 years" &rarr; "1 year to 25 years"</p>
+    <blockquote>Q1 FY2025: "As of September 30, 2024, we had additional operating and finance leases, primarily for datacenters, that had not yet commenced of $7.4 billion and $108.7 billion, respectively."</blockquote>
+    <blockquote>Q2 FY2025: "As of December 31, 2024, we had additional operating and finance leases, primarily for datacenters, that had not yet commenced of $6.0 billion and $99.4 billion, respectively."</blockquote>
+    <p class="history">History (phrase_history): $117.0B (FY2024), $116.1B, $105.4B, $99.2B and $92.7B (FY2025), then $106.2B, $155.1B, $196.6B, $329.1B and $364.6B (Q1 FY2027).</p>
+    <p>Leases were commencing faster than new ones were signed, so the pipeline shrank while capex kept rising ($14.92B to $15.80B). The filing gives no reason. The decline ran four filings before reversing in Q1 FY2026 and then more than tripling.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Q2 FY2025 -> Q3 FY2025 -->
+<div class="transition-header" id="q2q3-fy2025">
+  <h2>Q2 FY2025 &rarr; Q3 FY2025</h2>
+  <div class="sub">Filed Apr 30, 2025 | Revenue: $70.07B (+13%) | Operating income: $32.00B (45.7%) | Net income: $25.82B | Microsoft Cloud: $42.4B (+20%), gross margin 69% | Azure: +33% (16 points from AI) | Capex: $16.75B | Free cash flow: $20.30B | Leases not yet commenced: $99.2B | Buyback authorization left: $549M of $60B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI share of Azure growth rises to 16 of 33 points; the growth rate given last quarter is not repeated</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: 13 &rarr; 16 points (+); quant removed: AI services growth rate (&minus;)</p>
+    <blockquote>Q2 FY2025: "Azure and other cloud services revenue grew 31% driven by demand for our portfolio of services, including 13 points from our AI services which grew 157%."</blockquote>
+    <blockquote>Q3 FY2025: "Azure and other cloud services revenue grew 33% driven by demand for our portfolio of services, including 16 points from our AI services."</blockquote>
+    <p class="history">History (phrase_history): 12, 13 and 16 points in Q1-Q3 FY2025, the only filings that give the split; "AI services which grew" appears in Q2 FY2025 only.</p>
+    <p>Nearly half of Azure growth was AI, and the rest of Azure slowed again, to about 17 points from 18 (computed). This is the last filing to give the split.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs reach the MD&amp;A: Windows OEM growth "with inventory levels remaining elevated due to tariff uncertainty"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +tariff uncertainty (+); driver: "commercial inventory builds" &rarr; inventory "remaining elevated"</p>
+    <blockquote>Q2 FY2025: "Windows OEM and Devices revenue increased 4% as commercial inventory builds drove growth in Windows OEM, offset in part by a decline in Devices."</blockquote>
+    <blockquote>Q3 FY2025: "Windows OEM and Devices revenue increased 3% driven by growth in Windows OEM, with inventory levels remaining elevated due to tariff uncertainty."</blockquote>
+    <p class="history">History (phrase_history): "due to tariff uncertainty" appears in Q3 FY2025 only; the FY2026 10-K still cites "inventory levels that remained elevated"; Q1 FY2027 blames "inventory drawdowns by OEM and channel partners" for a 22% fall in Windows OEM and devices revenue.</p>
+    <p>Windows OEM revenue was supported by partners stocking up ahead of tariffs, revenue that is pulled forward. Q1 FY2027 shows the unwind.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Agentic AI enters the risk factors: human review may be needed "for agentic AI systems that can take actions autonomously"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +agentic AI (+); scope: "development and use" &rarr; "development, deployment, and use"</p>
+    <blockquote>Q2 FY2025: "Human review of certain inputs and outputs may be required."</blockquote>
+    <blockquote>Q3 FY2025: "Human review of certain inputs and outputs may be required, including for agentic AI systems that can take actions autonomously."</blockquote>
+    <p class="history">History (phrase_history): "agentic AI systems that can take actions autonomously" first appears in Q3 FY2025 and is in every filing through Q1 FY2027.</p>
+    <p>The first mention of agents, which by Q1 FY2027 give a segment its name ("Agents and Infra"). The same paragraph adds that AI rules show "rising divergence globally".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">U.S. AI Executive Order de-named; AI liability widened from "current copyright infringement" to "intellectual property, data privacy"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named: U.S. AI Executive Order (&minus;); scope: copyright &rarr; intellectual property and data privacy (+)</p>
+    <blockquote>Q2 FY2025: "These risks may arise from current copyright infringement and other claims related to AI training and output, new and proposed legislation and regulations, such as the European Union’s (“EU”) AI Act and the U.S.’s AI Executive Order, and new applications of data protection, privacy, consumer protection, intellectual property, and other laws."</blockquote>
+    <blockquote>Q3 FY2025: "These risks may arise from intellectual property, data privacy, and other claims related to AI training and output, new and proposed legislation and regulations, such as the European Union’s (“EU”) AI Act, and new applications of data protection, privacy, consumer protection, intellectual property, and other laws."</blockquote>
+    <p class="history">History (phrase_history): "AI Executive Order" appears from Q3 FY2024 to Q2 FY2025 and in no later filing.</p>
+    <p>The EU AI Act stays named; no U.S. federal AI rule replaces the order in the sentence. Claims are no longer limited to copyright, which broadens the exposure the sentence admits.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Content rules now pull both ways: "regulations... regarding freedom of expression may conflict with such content moderation regulations"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: condition added: conflicting regulation (+ disclosure)</p>
+    <blockquote>Q2 FY2025: "Regulations and other initiatives to make platforms responsible for preventing or eliminating harmful content online have been enacted, and we expect this to continue."</blockquote>
+    <blockquote>Q3 FY2025: "At the same time, regulations and other initiatives regarding freedom of expression may conflict with such content moderation regulations."</blockquote>
+    <p class="history">History (phrase_history): "regarding freedom of expression" appears in Q3 FY2025 to Q2 FY2026; from Q3 FY2026 it reads "protecting freedom of expression and user privacy may conflict with these platform regulations".</p>
+    <p>Microsoft now flags compliance risk from rules that require moderation and from rules that restrict it, so a single moderation decision can breach one regime or the other.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Source-code theft restated as fact: "also could increase the security risks" &rarr; "also increases the security risks"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: could increase &rarr; increases (+)</p>
+    <blockquote>Q2 FY2025: "Unauthorized access to or disclosure of source code or other intellectual property also could increase the security risks described elsewhere in these risk factors."</blockquote>
+    <blockquote>Q3 FY2025: "Unauthorized access to or disclosure of source code or other intellectual property also increases the security risks described elsewhere in these risk factors."</blockquote>
+    <p class="history">History (phrase_history): "also could increase the security risks" in every filing from the FY2023 10-K to Q2 FY2025; "also increases the security risks" from Q3 FY2025 to Q1 FY2027.</p>
+    <p>The same risk factors say the Midnight Blizzard actor reached "some of our source code repositories". The conditional becomes a statement about a risk Microsoft has already incurred.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Q3 FY2025 -> FY2025 10-K -->
+<div class="transition-header" id="q3-fy2025-fy2025">
+  <h2>Q3 FY2025 &rarr; FY2025 10-K</h2>
+  <div class="sub">Filed Jul 30, 2025 | FY2025 revenue: $281.72B (+15%) | Operating income: $128.53B (45.6%) | Net income: $101.83B | Microsoft Cloud: $168.9B (+23%), gross margin 69% | Azure: +34% | Capex: $64.55B (Q4 alone $17.08B) | Free cash flow: $71.61B | Leases not yet commenced: $92.7B | RPO: $375B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Capex &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Forward-capex sentence loses its verb: "We expect capital expenditures to increase in coming years" &rarr; "We will continue to invest in capital expenditures"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: growth claim dropped: "increase" &rarr; "continue to invest" (&minus;); certainty: expect &rarr; will (+)</p>
+    <blockquote>Q3 FY2025: "We expect capital expenditures to increase in coming years to support growth in our cloud offerings and our investments in AI infrastructure and training."</blockquote>
+    <blockquote>FY2025 10-K: "We will continue to invest in capital expenditures to support growth in our cloud offerings and our investments in AI infrastructure and training."</blockquote>
+    <p class="history">History (phrase_history): "We expect capital expenditures to increase in coming years" appears in every downloaded filing from the FY2023 10-K to Q3 FY2025 (6 of 6); "We will continue to invest in capital expenditures" runs from the FY2025 10-K to Q1 FY2027, with the purpose reworded to "AI training and other infrastructure" in the FY2026 10-K.</p>
+    <p>The only forward-looking capex sentence in the filings no longer says capex will rise. It did rise: $64.55B in FY2025 (+45%) and $115.95B in FY2026 (+80%). The filings have given no direction for capex since this 10-K.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI share of Azure growth dropped: "including 16 points from our AI services" &rarr; no figure</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed: AI points (&minus;)</p>
+    <blockquote>Q3 FY2025: "Azure and other cloud services revenue grew 33% driven by demand for our portfolio of services, including 16 points from our AI services."</blockquote>
+    <blockquote>FY2025 10-K: "Azure and other cloud services revenue grew 34% driven by demand for our portfolio of services."</blockquote>
+    <p class="history">History (phrase_history): AI points appear in Q1-Q3 FY2025 only; from Q1 FY2026 the sentence reads "with continued growth across all workloads", and no later filing separates AI.</p>
+    <p>The split disappears as Azure accelerates (34%, then 40% in Q1 FY2026). The filing gives no reason. From here investors get one Azure growth rate, and from Q1 FY2027 a redefined one.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cloud-cost risk moves to the present tense: "These costs will reduce the operating margins" &rarr; "reducing operating margins"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: will reduce &rarr; reducing (+)</p>
+    <blockquote>Q3 FY2025: "These costs will reduce the operating margins."</blockquote>
+    <blockquote>FY2025 10-K: "We are incurring significant costs to build and maintain infrastructure to support cloud-based and AI services, reducing operating margins."</blockquote>
+    <p class="history">History (phrase_history): "These costs will reduce the operating margins" appears from the FY2023 10-K (with "we have previously achieved") to Q3 FY2025; "reducing operating margins" from the FY2025 10-K to Q3 FY2026; the FY2026 10-K replaces the paragraph with a new AI-capex risk factor.</p>
+    <p>After three quarters of falling Microsoft Cloud margin (71%, 70%, 69%), the risk factor says it is happening.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>OpenAI</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OpenAI's terms described once: API "exclusive to Azure", a "right of first refusal", "reciprocal revenue-sharing arrangements"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: commercial terms of the partnership (+)</p>
+    <blockquote>Q3 FY2025: "Other, net primarily reflects net recognized losses on equity method investments, including OpenAI."</blockquote>
+    <blockquote>FY2025 10-K: "Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements."</blockquote>
+    <blockquote>FY2025 10-K: "The OpenAI API is exclusive to Azure, runs on Azure, and is available through the Azure OpenAI Service. We also have a right of first refusal on OpenAI's new capacity needs."</blockquote>
+    <p class="history">History (phrase_history): "The OpenAI API is exclusive to Azure" appears in the FY2025 10-K only; "right of first refusal" in FY2025 and Q1 FY2026 (where Microsoft "will no longer have" it); "reciprocal revenue-sharing" in FY2025, Q1 FY2026 and Q2 FY2026.</p>
+    <p>The first filing in the window to describe the partnership's economics. Each term had a short life: the right of first refusal ended three months later, and revenue sharing was described as one-way from Q3 FY2026.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Leases &amp; Contingencies</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Lease pipeline loses its operating/finance split: "$4.4 billion and $94.8 billion" &rarr; "$92.7 billion"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed: lease-type split (&minus;); horizon: FY2030 &rarr; FY2031</p>
+    <blockquote>Q3 FY2025: "As of March 31, 2025, we had additional operating and finance leases, primarily for datacenters, that had not yet commenced of $4.4 billion and $94.8 billion, respectively."</blockquote>
+    <blockquote>FY2025 10-K: "As of June 30, 2025, we had additional leases, primarily for datacenters, that had not yet commenced of $92.7 billion."</blockquote>
+    <p class="history">History (phrase_history): the operating/finance split appears in every downloaded filing from the FY2023 10-K to Q3 FY2025; every filing from the FY2025 10-K gives one figure.</p>
+    <p>Finance leases arrive on the balance sheet with interest expense; operating leases run through operating costs. The single figure hides that mix just before the pipeline grows from $92.7B to $364.6B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Nokia cell-phone litigation removed; reasonably possible losses back to "$600 million" from "$800 million"</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: deletion: named lawsuit (&minus; disclosure); quant: $800M &rarr; $600M (&minus; exposure)</p>
+    <blockquote>Q3 FY2025: "Microsoft Mobile Oy, a subsidiary of Microsoft, along with other handset manufacturers and network operators, is a defendant in 45 lawsuits filed in the Superior Court for the District of Columbia by individual plaintiffs who allege that radio emissions from cellular handsets caused their brain tumors and other adverse health effects."</blockquote>
+    <blockquote>FY2025 10-K: "While we intend to defend these matters vigorously, adverse outcomes that we estimate could reach approximately $600 million in aggregate beyond recorded amounts are reasonably possible."</blockquote>
+    <p class="history">History (phrase_history): "U.S. Cell Phone Litigation" appears in every filing from the FY2023 10-K to Q3 FY2025; the reasonably possible estimate was $800M in Q2-Q3 FY2025, $600M here and $300M in Q1 FY2026.</p>
+    <p>The 10-K does not say how the cases ended (the appeal was argued in January 2025). The contingencies note shrinks to the LinkedIn GDPR matter and unnamed "other contingencies".</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs and the AI Diffusion Rule named as cost risks: they "could increase operational costs"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +AI Diffusion Rule, +sovereignty initiatives (+)</p>
+    <blockquote>Q3 FY2025: "Global, regional, and local economic developments, monetary policy, restrictions on international trade, such as tariffs and other controls on imports or exports, inflation, and recession, as well as political and military disputes, may adversely affect our results of operations."</blockquote>
+    <blockquote>FY2025 10-K: "U.S. tariff and shifting AI export controls policies, like the AI Diffusion Rule, could increase operational costs, create uncertainty in the continuity of our products, and accelerate sovereignty initiatives among international partners and customers."</blockquote>
+    <p class="history">History (phrase_history): "AI Diffusion Rule" first appears in the FY2025 10-K and is in every later filing (as "rescinded" from Q1 FY2026); "could increase operational costs" becomes "has and may continue to increase operational costs" in the FY2026 10-K.</p>
+    <p>Tariffs move from one item in a macro list (Q2 FY2025) to a named cost risk with a product-continuity angle, and the 10-K adds that "The volatility of U.S. tariffs has triggered economic uncertainty".</p>
+  </div>
+</div>
+
+</div>
+
+<!-- FY2025 10-K -> Q1 FY2026 -->
+<div class="transition-header" id="fy2025-q1-fy2026">
+  <h2>FY2025 10-K &rarr; Q1 FY2026</h2>
+  <div class="sub">Filed Oct 29, 2025 | Revenue: $77.67B (+18%) | Operating income: $37.96B (48.9%) | Net income: $27.75B (OpenAI loss &minus;$3.1B after tax; adjusted EPS $4.13 vs GAAP $3.72) | Microsoft Cloud: $49.1B (+26%), gross margin 68% | Azure: +40% | Capex: $19.39B | Free cash flow: $25.66B | Commercial RPO: $392B (+51%) | Leases not yet commenced: $106.2B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>OpenAI</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OpenAI losses quantified for the first time: "$4.1 billion" in the quarter, "$688 million" a year earlier</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added: OpenAI share of losses (+); named: "net losses from investments in OpenAI"</p>
+    <blockquote>FY2025 10-K: "Other, net primarily reflects net recognized losses on equity method investments, including OpenAI."</blockquote>
+    <blockquote>Q1 FY2026: "For the three months ended September 30, 2025 and 2024, other income (expense), net included $4.1 billion and $688 million, respectively, of net losses from investments in OpenAI, primarily net recognized losses on our equity method investment reflected in other, net."</blockquote>
+    <p class="history">History (phrase_history): "net losses from investments in OpenAI" first appears in Q1 FY2026 and is in every later filing; no earlier downloaded filing gives a dollar figure for OpenAI.</p>
+    <p>The loss is 11.8% of pre-tax income ($34.30B) and six times the year-earlier figure. Equity-method investments fell from $6.0B to $1.8B as the losses used up the carrying value; $11.6B of the $13B commitment had been funded.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Non-GAAP measures return, to exclude OpenAI: adjusted EPS $4.13 against GAAP $3.72</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: non-GAAP reintroduced (+ disclosure); quant: &minus;$3.1B / &minus;$0.41 per share</p>
+    <blockquote>Q1 FY2026: "These non-GAAP financial measures exclude net losses from investments in OpenAI."</blockquote>
+    <blockquote>Q1 FY2026: "Current year net income and diluted EPS were negatively impacted by net losses from investments in OpenAI, which resulted in a decrease in net income and diluted EPS of $3.1 billion and $0.41, respectively."</blockquote>
+    <p class="history">History (phrase_history): "Adjusted net income" appears in the FY2023 10-K, Q3 FY2024 and the FY2024 10-K (for the Q2 FY2023 charge and tax items), in none of the FY2025 filings, and again from Q1 FY2026 to Q1 FY2027; the 10-K dashboard dates the OpenAI adjustment to the FY2026 10-K, three quarters after it began here.</p>
+    <p>From this quarter the headline the company steers to excludes OpenAI. The adjustment works both ways: it adds back a $3.1B loss here and strips out a $7.6B gain next quarter.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Subsequent event: OpenAI contracts "an incremental $250 billion of Azure services" and Microsoft loses its "right of first refusal"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added: $250B commitment (+); deletion: right of first refusal (&minus;); named: public benefit corporation, ~27% stake</p>
+    <blockquote>FY2025 10-K: "We also have a right of first refusal on OpenAI's new capacity needs."</blockquote>
+    <blockquote>Q1 FY2026: "Under the new agreement, OpenAI has contracted to purchase an incremental $250 billion of Azure services, and Microsoft will no longer have a right of first refusal to be OpenAI's compute provider."</blockquote>
+    <blockquote>Q1 FY2026: "As a result of the recapitalization, Microsoft holds approximately 27 percent in the PBC on an as-converted diluted basis."</blockquote>
+    <p class="history">History (phrase_history): "incremental $250 billion of Azure services" appears in Q1 FY2026 only; "right of first refusal" appears in the FY2025 10-K and here, and in no later filing.</p>
+    <p>$250B equals 64% of the $392B commercial RPO at September 30 (computed). The note does not say when it enters RPO; next quarter RPO jumps $233B and the $250B sentence is gone. The right of first refusal described in the 10-K lasted one filing.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Margins</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cloud-margin cause widened to usage: "scaling our AI infrastructure and growing usage of AI product features"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: cause added: AI usage (inference cost) (+ disclosure); offset widened to Microsoft 365 Commercial cloud</p>
+    <blockquote>FY2025 10-K: "Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure."</blockquote>
+    <blockquote>Q1 FY2026: "Microsoft Cloud gross margin percentage decreased to 68% driven by scaling our AI infrastructure and growing usage of AI product features, offset in part by efficiency gains in Azure and Microsoft 365 Commercial cloud."</blockquote>
+    <p class="history">History (phrase_history): "growing usage of AI product features" appears in Q1 FY2026 only; it becomes "growing AI product usage" from Q2 FY2026 to the FY2026 10-K and is gone in Q1 FY2027.</p>
+    <p>Build-out costs end when the build-out does; usage costs grow with every Copilot query. The margin was 71% a year earlier.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Commitments &amp; Supply</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Server-component receivables jump: $8.2B &rarr; $14.4B in a quarter</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: $8.2B &rarr; $14.4B (+76%); wording unchanged</p>
+    <blockquote>FY2025 10-K: "As of June 30, 2025 and 2024, other receivables related to activities to facilitate the purchase of server components were $8.2 billion and $10.5 billion, respectively, and are included in other current assets in our consolidated balance sheets."</blockquote>
+    <blockquote>Q1 FY2026: "As of September 30, 2025 and June 30, 2025, other receivables related to activities to facilitate the purchase of server components were $14.4 billion and $8.2 billion, respectively, and are included in other current assets in our consolidated balance sheets."</blockquote>
+    <p class="history">History (phrase_history): the balance was $9.2B-$11.4B in every filing from the FY2023 10-K to Q3 FY2025; after this it rises in every filing: $15.1B, $17.8B, $27.8B (FY2026, "current portion") and $35.7B (Q1 FY2027).</p>
+    <p>Microsoft finances suppliers' component purchases and carries the receivable in other current assets, outside capex. The quarter's increase ($6.2B) equals a third of the quarter's capex ($19.39B).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unstarted leases grow again after four declines: $92.7B &rarr; $106.2B</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: +$13.5B (+); wording unchanged</p>
+    <blockquote>FY2025 10-K: "As of June 30, 2025, we had additional leases, primarily for datacenters, that had not yet commenced of $92.7 billion."</blockquote>
+    <blockquote>Q1 FY2026: "As of September 30, 2025, we had additional leases, primarily for datacenters, that had not yet commenced of $106.2 billion."</blockquote>
+    <p class="history">History (phrase_history): $117.0B (FY2024), then four declines to $92.7B (FY2025); then $106.2B, $155.1B, $196.6B, $329.1B and $364.6B (Q1 FY2027).</p>
+    <p>The turn in the pipeline. The next four filings add $258B, all of it off the balance sheet until the sites are delivered.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Q1 FY2026 -> Q2 FY2026 -->
+<div class="transition-header" id="q1q2-fy2026">
+  <h2>Q1 FY2026 &rarr; Q2 FY2026</h2>
+  <div class="sub">Filed Jan 28, 2026 | Revenue: $81.27B (+17%) | Operating income: $38.27B (47.1%) | Net income: $38.46B (OpenAI gain +$7.6B after tax) | Microsoft Cloud: $51.5B (+26%), gross margin 67% | Azure: +39% | Capex: $29.88B | Free cash flow: $5.88B | RPO: $398B &rarr; $631B, ~25% due in 12 months | Leases not yet commenced: $155.1B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Backlog</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">RPO jumps $233B to $631B, but the share due in 12 months falls "40%" &rarr; "25%"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figure 40% &rarr; 25% (&minus;, longer-dated); quant: RPO $398B &rarr; $631B (+); commercial RPO +110%</p>
+    <blockquote>Q1 FY2026: "We expect to recognize approximately 40% of our total company remaining performance obligation revenue over the next 12 months and the remainder thereafter."</blockquote>
+    <blockquote>Q2 FY2026: "We expect to recognize approximately 25% of both our total company remaining performance obligation revenue and commercial remaining performance obligation revenue over the next 12 months and the remainder thereafter."</blockquote>
+    <p class="history">History (phrase_history): 45% (Q3 FY2024 to Q1 FY2025), 40% (Q2 FY2025 to Q1 FY2026), 25% here, 30% total and 25% commercial (Q3 FY2026), 30% (FY2026 and Q1 FY2027).</p>
+    <p>The amount due within a year was about $159B before and about $158B after (computed). All of the $233B increase is due later than 12 months. The OpenAI commitment disclosed in the Q1 subsequent-event note is the largest known contract signed in the period, but the filing does not tie the two.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Weighted-average duration disclosed for the first time: "approximately 2.5 years"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added: duration (+)</p>
+    <blockquote>Q2 FY2026: "Revenue allocated to remaining performance obligations related to the commercial portion of revenue was $625 billion as of December 31, 2025, with a weighted average duration of approximately 2.5 years."</blockquote>
+    <p class="history">History (phrase_history): "weighted average duration" first appears in Q2 FY2026 (2.5 years) and is in every later filing (2.5 years in Q3 FY2026, 2.3 years in FY2026 and Q1 FY2027). The 10-K dashboard dates it to the FY2026 10-K.</p>
+    <p>A new yardstick arrives in the quarter the old one (the 12-month share) worsened most. A 2.5-year average with only a quarter due in the first year implies a long tail (inference).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">RPO becomes a critical accounting estimate, citing "potential renegotiation of commitments"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: hedge added: renegotiation (&minus;); scope: RPO added to critical estimates (+ disclosure)</p>
+    <blockquote>Q2 FY2026: "Estimating the total consideration and revenue that will be allocated to remaining performance obligation can involve significant judgments, including identifying and assessing variable consideration and potential renegotiation of commitments."</blockquote>
+    <p class="history">History (phrase_history): "Remaining performance obligations represent the revenue we expect to recognize" and "potential renegotiation of commitments" first appear in Q2 FY2026, in the critical estimates and the notes, and are in every later filing (Q1 FY2027 keeps them in the critical estimates only). The 10-K dashboard dates both to FY2026.</p>
+    <p>In the quarter the backlog jumped 59%, Microsoft added that the figure depends on judgments about variable consideration and commitments that may be renegotiated. The filing names no customer.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>OpenAI</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Recapitalization books a "$10.0 billion" gain; equity income now uses "hypothetical liquidation at book value"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: dilution gain (+); named: +HLBV, +OpenAI Recapitalization, ~27% stake</p>
+    <blockquote>Q2 FY2026: "Other income (expense), net included $10.0 billion and $5.9 billion of net gains for the three and six months ended December 31, 2025, respectively, and $1.2 billion and $1.9 billion of net losses for the three and six months ended December 31, 2024, respectively, from investments in OpenAI, primarily net recognized gains (losses) on our equity method investment reflected in Other, net."</blockquote>
+    <blockquote>Q2 FY2026: "We calculate our equity method income or loss using the hypothetical liquidation at book value ... method because our liquidation rights and priorities differ from our underlying ownership interest."</blockquote>
+    <p class="history">History (phrase_history): "hypothetical liquidation at book value" and "OpenAI Recapitalization" first appear in Q2 FY2026; HLBV is in every later filing. The 10-K dashboard dates HLBV to the FY2026 10-K.</p>
+    <p>The gain is 20.7% of pre-tax income ($48.25B). GAAP net income rose 60%; adjusted net income, which excludes it, rose 23%. Under HLBV, income follows what Microsoft would receive in a book-value liquidation of OpenAI, not OpenAI's operating results.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"$250 billion of Azure services" stated once, then dropped</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant removed: OpenAI's Azure commitment (&minus;)</p>
+    <blockquote>Q1 FY2026: "Under the new agreement, OpenAI has contracted to purchase an incremental $250 billion of Azure services, and Microsoft will no longer have a right of first refusal to be OpenAI's compute provider."</blockquote>
+    <blockquote>Q2 FY2026: "In October 2025, we signed a new definitive agreement with OpenAI that extends this partnership."</blockquote>
+    <p class="history">History (phrase_history): "incremental $250 billion of Azure services" appears in Q1 FY2026 only; no later filing sizes OpenAI's Azure commitment, and the FY2026 10-K gives OpenAI revenue ($24.1B) instead.</p>
+    <p>The largest single commitment Microsoft has disclosed appears in one subsequent-event note and is not repeated in the quarter RPO rises by a similar amount. Readers cannot tell from the filings how much of RPO is OpenAI.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI emissions concession added: AI "has and may continue to raise energy use and emissions, making it harder to meet these goals"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: AI emissions stated as fact (+); condition: "may continue"</p>
+    <blockquote>Q1 FY2026: "In addition, in 2020 we announced goals to become carbon negative, water positive, and zero waste by 2030."</blockquote>
+    <blockquote>Q2 FY2026: "AI development and deployment has and may continue to raise energy use and emissions, making it harder to meet these goals."</blockquote>
+    <p class="history">History (phrase_history): "making it harder to meet these goals" first appears in Q2 FY2026, is unchanged in Q3 FY2026, firms to "will likely continue" in the FY2026 10-K, and is gone from Q1 FY2027. The 10-K dashboard first dated it to FY2026; corrected there.</p>
+    <p>The first filing to concede that the AI build-out works against the 2030 climate goals, two quarters before the 10-K said so.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Supply risk adds cost: components "unavailable or more expensive", "resulting in reduced sales, higher costs"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope: +price (&minus;); named: +higher costs; before-sentence unchanged since the FY2023 10-K</p>
+    <blockquote>Q1 FY2026: "If components are delayed or become unavailable, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, or other reasons, we may not obtain timely replacement supplies, resulting in reduced sales or inadequate datacenter capacity to support the delivery and continued development of our products and services."</blockquote>
+    <blockquote>Q2 FY2026: "If components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, or other reasons, we may not obtain timely replacement supplies, resulting in reduced sales, higher costs, or inadequate datacenter capacity to support the delivery and continued development of our products and services."</blockquote>
+    <p class="history">History (phrase_history): the old sentence stood unchanged in eight filings from the FY2023 10-K; "or more expensive" first appears in Q2 FY2026 and stays through Q1 FY2027; Q3 FY2026 changes "If" to "As".</p>
+    <p>Component inflation joins shortages as a stated risk, the first step of a three-filing sequence that ends with components "in short supply" (FY2026).</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"Impairment charges in our Gaming business" cited six times in the expense discussion, never sized</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: named: +Gaming impairment (+); quant absent (&minus;)</p>
+    <blockquote>Q2 FY2026: "Research and development expenses increased $1.2 billion or 8% driven by investments in compute capacity and AI talent and impairment charges in our Gaming business."</blockquote>
+    <p class="history">History (phrase_history): "impairment charges in our Gaming business" appears in Q2 FY2026 only; the FY2026 10-K calls it "impairment and other related expenses in our XBOX business".</p>
+    <p>The charge appears in R&amp;D and in segment operating expenses but is never sized. Gaming revenue fell 9% in the quarter.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Q2 FY2026 -> Q3 FY2026 -->
+<div class="transition-header" id="q2q3-fy2026">
+  <h2>Q2 FY2026 &rarr; Q3 FY2026</h2>
+  <div class="sub">Filed Apr 29, 2026 | Revenue: $82.89B (+18%) | Operating income: $38.40B (46.3%) | Net income: $31.78B | Microsoft Cloud: $54.5B (+29%), gross margin 66% | Azure: +40% | Capex: $30.88B | Free cash flow: $15.80B | RPO: $633B | Leases not yet commenced: $196.6B | Supplier-restricted investments: $11.5B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>OpenAI</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OpenAI revenue sharing becomes one-way: "reciprocal revenue-sharing arrangements" &rarr; Microsoft "will continue to receive revenue-sharing payments"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: scope: reciprocal &rarr; one-way receipt; named: +April 2026 extension</p>
+    <blockquote>Q2 FY2026: "Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements."</blockquote>
+    <blockquote>Q3 FY2026: "In October 2025 and April 2026, we extended this partnership and continue to build on our shared vision to advance artificial intelligence responsibly and make its benefits broadly accessible. Microsoft is a major investor in OpenAI and will continue to receive revenue-sharing payments."</blockquote>
+    <p class="history">History (phrase_history): "reciprocal revenue-sharing" appears in the FY2025 10-K, Q1 FY2026 and Q2 FY2026; "will continue to receive revenue-sharing payments" first appears here and is repeated in the FY2026 10-K and Q1 FY2027; "In October 2025 and April 2026" appears here and in the FY2026 10-K only. The 10-K dashboard first dated the one-way wording to FY2026; corrected there.</p>
+    <p>Microsoft no longer describes paying OpenAI a share of anything, only receiving one. The April 2026 extension is mentioned but not described in any filing.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Supply &amp; Commitments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New: "$11.5 billion" of investments restricted "pursuant to a supplier agreement"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added (+); unnamed counterparty: "a supplier agreement" (&minus;)</p>
+    <blockquote>Q2 FY2026: "As of December 31, 2025 and June 30, 2025, other receivables related to activities to facilitate the purchase of server components were $15.1 billion and $8.2 billion, respectively, and are included in other current assets in our consolidated balance sheets."</blockquote>
+    <blockquote>Q3 FY2026: "Additionally, as of March 31, 2026, restricted investments pursuant to a supplier agreement were $11.5 billion, with $2.8 billion included in short-term investments and $8.7 billion included in equity and other investments in our consolidated balance sheet."</blockquote>
+    <p class="history">History (phrase_history): "restricted investments pursuant to a supplier agreement" first appears in Q3 FY2026 ($11.5B), then FY2026 ($11.3B) and Q1 FY2027 ($12.6B). The 10-K dashboard dates it to FY2026; corrected there.</p>
+    <p>With $17.8B of component receivables, about $29B of the balance sheet now secures supply. The supplier is not named and the terms of the restriction are not given.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Shortages restated as current: "If components are delayed" &rarr; "As components are delayed or become unavailable or more expensive"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: condition dropped: if &rarr; as (+); realized: hypothetical &rarr; ongoing</p>
+    <blockquote>Q2 FY2026: "If components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, or other reasons, we may not obtain timely replacement supplies, resulting in reduced sales, higher costs, or inadequate datacenter capacity to support the delivery and continued development of our products and services."</blockquote>
+    <blockquote>Q3 FY2026: "As components are delayed or become unavailable or more expensive, whether because of supplier capacity constraint, industry shortages, legal or regulatory changes that restrict supply sources, or other reasons, we may not obtain timely replacement supplies, resulting in reduced sales, higher costs, or inadequate datacenter capacity to support the delivery and continued development of our products and services."</blockquote>
+    <p class="history">History (phrase_history): "If components are delayed" in every filing from the FY2023 10-K to Q2 FY2026; "As components are delayed" from Q3 FY2026 to Q1 FY2027.</p>
+    <p>One word turns a contingency into a description. The FY2026 10-K completes it: components "are in short supply".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Inventory costs restated as having happened: shortages "have and may increase our cost of revenue"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: may &rarr; have and may (+); before-sentence unchanged since the FY2023 10-K</p>
+    <blockquote>Q2 FY2026: "Component shortages, excess or obsolete inventory, or price reductions resulting in inventory adjustments may increase our cost of revenue."</blockquote>
+    <blockquote>Q3 FY2026: "Component shortages, excess or obsolete inventory, or price reductions resulting in inventory adjustments have and may increase our cost of revenue."</blockquote>
+    <p class="history">History (phrase_history): the "may increase our cost of revenue" sentence stood unchanged in nine filings from the FY2023 10-K; "have and may increase our cost of revenue" appears from Q3 FY2026 to Q1 FY2027.</p>
+    <p>The paragraph does not say which of shortages, obsolete inventory or price cuts raised costs. Inventory rose from $1.06B to $1.22B in the quarter.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Backlog &amp; MD&amp;A</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">12-month RPO share split: "30% of our total company" but "25% of our commercial" RPO</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: guidance figures: 25% (both) &rarr; 30% total / 25% commercial; quant: RPO $631B &rarr; $633B</p>
+    <blockquote>Q2 FY2026: "We expect to recognize approximately 25% of both our total company remaining performance obligation revenue and commercial remaining performance obligation revenue over the next 12 months and the remainder thereafter."</blockquote>
+    <blockquote>Q3 FY2026: "We expect to recognize approximately 30% of our total company remaining performance obligation revenue and 25% of our commercial remaining performance obligation revenue over the next 12 months and the remainder thereafter."</blockquote>
+    <p class="history">History (phrase_history): the split wording appears in Q3 FY2026 only; the FY2026 10-K returns to "approximately 30% of both".</p>
+    <p>Non-commercial RPO is only $6B, so the two shares can differ only through rounding to the nearest five points; both are near 27.5% (computed). Backlog growth stalled after Q2's jump: total RPO rose $2B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Headcount decline stated for the first time: "Total company headcount declined year-over-year"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: added: headcount direction (+ disclosure); quant absent</p>
+    <blockquote>Q2 FY2026: "Operating expenses increased $840 million or 5% driven by research and development investments in compute capacity and AI talent, as well as impairment charges in our Gaming business."</blockquote>
+    <blockquote>Q3 FY2026: "Operating expenses increased $1.5 billion or 9% primarily driven by continued investments in research and development compute capacity, AI talent, and data to support product development across the portfolio. Total company headcount declined year-over-year."</blockquote>
+    <p class="history">History (phrase_history): "Total company headcount" first appears in Q3 FY2026; the FY2026 10-K gives 223,000 against 228,000; Q1 FY2027 says headcount "decreased 2%".</p>
+    <p>Operating expenses rose 9% with fewer people: the growth is compute, not staff.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Deals and alliances "have been and may be subject to legal and regulatory challenge"; OpenAI's "significant update" dropped</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: "may be subject to challenge" &rarr; "have been and may be" (+); de-named: October 2025 update</p>
+    <blockquote>Q2 FY2026: "In addition, an acquisition may be subject to challenge even after it has been completed."</blockquote>
+    <blockquote>Q3 FY2026: "In addition, these transactions and arrangements have been and may be subject to legal and regulatory challenge."</blockquote>
+    <p class="history">History (phrase_history): "an acquisition may be subject to challenge even after it has been completed" stood in eight filings from Q3 FY2024; "have been and may be subject to legal and regulatory challenge" appears from Q3 FY2026 to Q1 FY2027.</p>
+    <p>The scope widens from completed acquisitions to "transactions and arrangements", the category the same paragraph uses for the OpenAI partnership. The filing does not say which challenge has occurred.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Q3 FY2026 -> FY2026 10-K -->
+<div class="transition-header" id="q3-fy2026-fy2026">
+  <h2>Q3 FY2026 &rarr; FY2026 10-K</h2>
+  <div class="sub">Filed Jul 29, 2026 | FY2026 revenue: $331.84B (+18%) | Operating income: $155.24B (46.8%) | Net income: $133.75B | Microsoft Cloud: $214.4B (+27%), gross margin 66% | Azure: +41% | Capex: $115.95B (Q4 alone $35.80B) | Free cash flow: $66.99B | RPO: $633B &rarr; $684B | Leases not yet commenced: $196.6B &rarr; $329.1B | OpenAI revenue: $24.1B</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent2);"></span>Commitments</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Unstarted leases $196.6B &rarr; $329.1B in one quarter, now "subject to certain contractual conditions being met"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: +$132.5B (+); condition added (&minus;); horizon FY2031 &rarr; FY2033</p>
+    <blockquote>Q3 FY2026: "As of March 31, 2026, we had additional leases, primarily for datacenters, that had not yet commenced of $196.6 billion."</blockquote>
+    <blockquote>FY2026 10-K: "As of June 30, 2026, we had additional leases, primarily for datacenters, that had not yet commenced of $329.1 billion, with some arrangements subject to certain contractual conditions being met."</blockquote>
+    <p class="history">History (phrase_history): no filing before the FY2026 10-K attaches a condition; "subject to certain contractual conditions being met" appears in FY2026 and Q1 FY2027; commencement runs to FY2033 (FY2031 in Q3 FY2026).</p>
+    <p>The quarter's increase alone exceeds FY2026 capex ($115.95B). The new clause means part of the total is not yet firm, but the note does not say how much.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI emissions concession firmed: "has and may continue" &rarr; "has and will likely continue to raise energy use and emissions"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: certainty: may &rarr; will likely (+)</p>
+    <blockquote>Q3 FY2026: "AI development and deployment has and may continue to raise energy use and emissions, making it harder to meet these goals."</blockquote>
+    <blockquote>FY2026 10-K: "AI development and deployment has and will likely continue to raise energy use and emissions, making it harder to meet these goals."</blockquote>
+    <p class="history">History (phrase_history): the "may continue" version appears in Q2 and Q3 FY2026; "will likely continue" in the FY2026 10-K only; Q1 FY2027 rewrites the sentence without "emissions".</p>
+    <p>The 10-K raises the odds that AI keeps pushing emissions up. One quarter later the sentence is replaced.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New AI-capex risk factor: spending "in advance of fully developed revenue streams" "may lead to impairment of assets"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: added risk factor (+ disclosure); condition added: revenue timing (&minus;)</p>
+    <blockquote>Q3 FY2026: "We are incurring significant costs to build and maintain infrastructure to support cloud-based and AI services, reducing operating margins."</blockquote>
+    <blockquote>FY2026 10-K: "These investments are being made at significant scale and on an accelerated timeline, require substantial and increasing capital expenditures and continued access to capital, and are in advance of fully developed revenue streams."</blockquote>
+    <blockquote>FY2026 10-K: "Overestimation of demand or misalignment of capacity investments may result in underutilization of infrastructure and may lead to impairment of assets on our balance sheet."</blockquote>
+    <p class="history">History (phrase_history): "in advance of fully developed revenue streams" and "may lead to impairment of assets" appear in the FY2026 10-K and Q1 FY2027 only; "reducing operating margins" ran from the FY2025 10-K to Q3 FY2026.</p>
+    <p>The margin sentence becomes a capital-risk paragraph: overbuilding, underutilization, impairment and "continued access to capital". It arrives with the $132.5B lease jump.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Shortages stated as fact: components "are in short supply"; "We have experienced and may continue to experience supply constraints"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized (+); named: +semiconductors, networking equipment, power systems, cooling equipment</p>
+    <blockquote>Q3 FY2026: "There are limited suppliers for certain device and datacenter components."</blockquote>
+    <blockquote>FY2026 10-K: "There are limited suppliers for certain critical device and datacenter components, and those items are in short supply."</blockquote>
+    <blockquote>FY2026 10-K: "We have experienced and may continue to experience supply constraints, including shortages of semiconductors, networking equipment, power systems, cooling equipment, and other key components."</blockquote>
+    <p class="history">History (phrase_history): "in short supply" and "We have experienced and may continue to experience supply constraints" appear in the FY2026 10-K and Q1 FY2027 only.</p>
+    <p>The end of the sequence that began with "or more expensive" (Q2 FY2026) and "As components are delayed" (Q3 FY2026). Server-component receivables rose to $27.8B, now labeled the "current portion".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Tariffs and export controls restated as having raised costs: "could increase" &rarr; "has and may continue to increase operational costs"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: could &rarr; has (+)</p>
+    <blockquote>Q3 FY2026: "U.S. tariff, shifting AI export controls policies, and disagreements among governments on sanctions policies toward third countries, could increase operational costs, create uncertainty in the continuity of our products, and accelerate sovereignty initiatives among international partners and customers."</blockquote>
+    <blockquote>FY2026 10-K: "U.S. tariffs, shifting AI export controls policies, and disagreements among governments on sanctions policies toward third countries, has and may continue to increase operational costs, create uncertainty in the continuity of our products, and accelerate sovereignty initiatives among international partners and customers."</blockquote>
+    <p class="history">History (phrase_history): "could increase operational costs" appears from the FY2025 10-K to Q3 FY2026; "has and may continue to increase operational costs" in the FY2026 10-K and Q1 FY2027.</p>
+    <p>Tariffs entered as a macro item in Q2 FY2025 and are now a realized cost. The filing does not size it.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>OpenAI &amp; Backlog</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OpenAI sized as a related party: "$24.1 billion" of FY2026 revenue; stake "approximately 27 percent" &rarr; "approximate 25%"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant added: revenue and receivable (+); stake diluted 27% &rarr; 25%</p>
+    <blockquote>Q3 FY2026: "We have an investment of approximately 27 percent of OpenAI on an as-converted basis accounted for under the equity method of accounting."</blockquote>
+    <blockquote>FY2026 10-K: "For fiscal year 2026, we recorded revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments, of $24.1 billion, and accounts receivable from OpenAI as of June 30, 2026 was $6.0 billion."</blockquote>
+    <p class="history">History (phrase_history): "approximately 27 percent" appears in Q1-Q3 FY2026; "approximate 25% interest" in FY2026; "approximate 24% interest" in Q1 FY2027; "inclusive of revenue-sharing payments" in FY2026 and Q1 FY2027.</p>
+    <p>OpenAI is 7.3% of FY2026 revenue and its $6.0B receivable is 7.4% of receivables. The stake fell two points between March and June; the note attributes the year's dilution to the recapitalization "and other funding activity".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Backlog gets shorter: weighted-average duration "2.5 years" &rarr; "2.3 years"; commercial 12-month share 25% &rarr; 30%</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: duration 2.5 &rarr; 2.3 years (+, nearer-dated); RPO $633B &rarr; $684B</p>
+    <blockquote>Q3 FY2026: "Revenue allocated to remaining performance obligations related to the commercial portion of revenue was $627 billion as of March 31, 2026, with a weighted average duration of approximately 2.5 years."</blockquote>
+    <blockquote>FY2026 10-K: "Revenue allocated to remaining performance obligations related to the commercial portion of revenue was $678 billion as of June 30, 2026, with a weighted average duration of approximately 2.3 years."</blockquote>
+    <p class="history">History (phrase_history): 2.5 years in Q2 and Q3 FY2026; 2.3 years in FY2026 and Q1 FY2027.</p>
+    <p>Contracts added in the June quarter were shorter-dated than the existing backlog (inference), reversing part of the lengthening that began in Q2 FY2025.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- FY2026 10-K -> Q1 FY2027 -->
+<div class="transition-header" id="fy2026-q1-fy2027">
+  <h2>FY2026 10-K &rarr; Q1 FY2027</h2>
+  <div class="sub">Filed Oct 28, 2026 | Revenue: $92.28B (+19%) | Operating income: $45.92B (49.8%) | Net income: $36.63B (adjusted $36.42B) | Microsoft Cloud: $63.9B (+30%, new definition), gross margin 66% | Azure: +48% (new definition, +$10.8B) | Capex: $39.37B | Free cash flow: $18.63B | Commercial RPO: $678B &rarr; $677B | Leases not yet commenced: $364.6B | OpenAI revenue: $10.0B (10.8% of revenue)</div>
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--accent);"></span>Segments &amp; Metrics</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Three segments become two: "Agents and Infra" and "Devices and Consumer"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: segment structure 3 &rarr; 2 (&minus; disclosure granularity); named: +Agents and Infra, +Devices and Consumer, +"multi-model system"</p>
+    <blockquote>FY2026 10-K: "We report our financial performance based on the following three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."</blockquote>
+    <blockquote>Q1 FY2027: "We report our financial performance based on the following two segments: Agents and Infra, and Devices and Consumer."</blockquote>
+    <blockquote>Q1 FY2027: "These changes align our segments with how we currently manage our business, creating the Agents and Infra segment that brings together our applications and agents, our multi-model system, and Azure infrastructure, and the Devices and Consumer segment that comprises our key consumer offerings."</blockquote>
+    <p class="history">History (phrase_history): the three-segment sentence is in every downloaded filing from the FY2023 10-K to the FY2026 10-K; "Agents and Infra" first appears in Q1 FY2027. Prior periods are recast.</p>
+    <p>Agents and Infra is 83% of revenue ($76.80B) and 88% of operating income ($40.56B), at a 52.8% margin (53.1% a year earlier); Devices and Consumer earns 34.6%. Office, Dynamics and Azure, which had separate segment margins, now share one, so Azure's lower-margin mix is netted inside the segment (inference).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Azure redefined around "GPU workloads"; growth 41% &rarr; 48% on the new basis, and the first dollar figure: "+$10.8 billion"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: definition changed: GitHub and Health and Life Sciences moved out, Foundry and GPU infrastructure named (+ naming, &minus; comparability); quant added: dollar increase (+)</p>
+    <blockquote>FY2026 10-K: "Revenue from Azure and other cloud services, including cloud and AI consumption-based services, GitHub cloud services, Health and Life Sciences cloud services (formerly Nuance Healthcare cloud services), virtual desktop offerings, and other cloud services"</blockquote>
+    <blockquote>Q1 FY2027: "Revenue from Azure, comprising consumption-based services across non-GPU workloads, including compute, data and analytics, storage, networking, and security; and GPU workloads, including GPU infrastructure-as-a-service and Foundry"</blockquote>
+    <blockquote>Q1 FY2027: "Azure revenue increased $10.8 billion or 48% driven by demand for services across the platform with continued growth across all workloads."</blockquote>
+    <p class="history">History (phrase_history): "Azure and other cloud services revenue growth" defined the metric in every filing from the FY2023 10-K to FY2026 (the old name survives once in Q1 FY2027, in the partner risk factor); "GPU infrastructure-as-a-service" and "Azure revenue increased $" appear in Q1 FY2027 only.</p>
+    <p>The 48% is not comparable with FY2026's 41%, and the filing gives no old-basis figure. The dollar change does let Azure be sized for the first time: about $33.3B for the quarter, 36% of revenue (computed from $10.8B = 48%). The definition names GPU workloads but gives no GPU / non-GPU split.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Cloud-margin cause rewritten: "continued investments in AI infrastructure and growing AI product usage" &rarr; "sales mix shift to Azure"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named: AI removed as the cause (&minus;); offset changed: "product-level margin improvements, primarily in Azure" (+)</p>
+    <blockquote>FY2026 10-K: "Microsoft Cloud gross margin percentage decreased to 66% driven by continued investments in AI infrastructure and growing AI product usage, offset in part by efficiency gains in Azure and Microsoft 365 Commercial cloud."</blockquote>
+    <blockquote>Q1 FY2027: "Microsoft Cloud gross margin percentage decreased to 66% driven by sales mix shift to Azure, offset in part by product-level margin improvements, primarily in Azure."</blockquote>
+    <p class="history">History (phrase_history): AI was the stated cause in every filing from Q1 FY2025 to FY2026 (as "scaling our AI infrastructure", then "growing AI product usage"); "sales mix shift to Azure, offset in part by product-level margin improvements" appears in Q1 FY2027 only.</p>
+    <p>Same 66%, new explanation: Azure is now said to be improving its own margin, and the decline is attributed to Azure growing faster than higher-margin software. Agents and Infra cost of revenue rose 35% against revenue up 25%, "driven by investments in datacenter infrastructure". With GPU infrastructure now inside Azure, the mix shift is largely the AI infrastructure business under another name (inference).</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">"AI" dropped from the margin warning that stood eleven filings: "cloud and AI infrastructure" &rarr; "cloud and datacenter infrastructure"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named: AI (&minus;); before-sentence unchanged since the FY2023 10-K</p>
+    <blockquote>FY2026 10-K: "The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins."</blockquote>
+    <blockquote>Q1 FY2027: "The investments we are making in cloud and datacenter infrastructure and devices will continue to increase our operating costs and may decrease our operating margins."</blockquote>
+    <p class="history">History (phrase_history): "cloud and AI infrastructure and devices" appears in all eleven downloaded filings from the FY2023 10-K to the FY2026 10-K; the "datacenter" version in Q1 FY2027 only.</p>
+    <p>With the margin-cause rewrite above, AI no longer appears in either MD&amp;A sentence about margins, while "growing demand for AI services" stays in the paragraph on datacenter expansion.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--purple);"></span>OpenAI</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">OpenAI revenue "$10.0 billion" in one quarter, 10.8% of revenue; receivable $6.0B &rarr; $7.2B; stake 25% &rarr; 24%</span>
+    <span class="tag tag-signal">Signal</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: quant: first quarterly OpenAI revenue figure (+); stake diluted again</p>
+    <blockquote>FY2026 10-K: "For fiscal year 2026, we recorded revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments, of $24.1 billion, and accounts receivable from OpenAI as of June 30, 2026 was $6.0 billion."</blockquote>
+    <blockquote>Q1 FY2027: "For the three months ended September 30, 2026, we recorded revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments, of $10.0 billion."</blockquote>
+    <blockquote>Q1 FY2027: "Accounts receivable from OpenAI as of September 30, 2026 and June 30, 2026 was $7.2 billion and $6.0 billion, respectively."</blockquote>
+    <p class="history">History (phrase_history): OpenAI revenue is first given in the FY2026 10-K ($24.1B for the year) and quarterly in Q1 FY2027; "approximate 24% interest" appears in Q1 FY2027 only.</p>
+    <p>One quarter of OpenAI revenue is 41% of all of FY2026's, and its share of Microsoft revenue rose from 7.3% to 10.8%. The receivable is now 11.6% of receivables ($62.08B). OpenAI added a $272M net gain to other income; $12.0B of the $13.0B commitment is funded.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="finding-group">
+<h3><span class="dot" style="background:var(--red);"></span>Risk Factors</h3>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">AI regulation restated as already raising costs: "could increase costs" &rarr; "is increasing costs and may create liability"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: realized: could &rarr; is increasing (+); degree: "evolving" &rarr; "evolving rapidly and accelerating"; named: +state audit and evaluation obligations</p>
+    <blockquote>FY2026 10-K: "AI: Legislative and regulatory action is evolving with respect to AI, which could increase costs or restrict opportunity."</blockquote>
+    <blockquote>Q1 FY2027: "AI: Legislative and regulatory action on AI is evolving rapidly and accelerating across multiple jurisdictions, which is increasing costs and may create liability and restrict opportunity."</blockquote>
+    <p class="history">History (phrase_history): "could increase costs or restrict opportunity" appears in all eleven filings from the FY2023 10-K to FY2026; "is increasing costs and may create liability" in Q1 FY2027 only.</p>
+    <p>The top-ranked change in the filing. The paragraph adds "new external audit and evaluation obligations for advanced AI models and systems in several U.S. states".</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">New: datacenter rules "are restricting and delaying infrastructure development, increasing costs"</span>
+    <span class="tag tag-new">New</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: added in the present tense: realized (+); named: energy and water use, grid reliability, community impacts</p>
+    <blockquote>FY2026 10-K: "Our ability to develop additional capacity is also subject to land availability, zoning restrictions, environmental reviews, permitting requirements, and other regulatory approvals."</blockquote>
+    <blockquote>Q1 FY2027: "Datacenter construction and operation: Emerging laws, regulations, and policies governing the siting, permitting, construction, and operation of datacenters are restricting and delaying infrastructure development, increasing costs, and imposing additional operational and reporting obligations."</blockquote>
+    <p class="history">History (phrase_history): "Datacenter construction and operation" and "are restricting and delaying infrastructure development" appear in Q1 FY2027 only; the FY2026 sentence on permitting is kept unchanged beside it.</p>
+    <p>The FY2026 10-K said such changes "may delay projects"; this one says rules already are delaying them, in the quarter unstarted leases reached $364.6B.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Emissions concession rewritten: "raise energy use and emissions, making it harder to meet these goals" &rarr; "challenging the viability of these goals"</span>
+    <span class="tag tag-changed">Changed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: de-named: emissions (&minus;); degree: "harder to meet" &rarr; "challenging the viability" (+); scope: +water, +land</p>
+    <blockquote>FY2026 10-K: "AI development and deployment has and will likely continue to raise energy use and emissions, making it harder to meet these goals."</blockquote>
+    <blockquote>Q1 FY2027: "AI development and deployment involves managing the demand for energy, water, land, and other resources, increasing operational costs and challenging the viability of these goals."</blockquote>
+    <p class="history">History (phrase_history): "making it harder to meet these goals" appears in Q2 FY2026, Q3 FY2026 and FY2026; "challenging the viability of these goals" in Q1 FY2027 only. The separate sentence "The long-term effects of climate change on the global economy and the IT industry are unclear" is also gone.</p>
+    <p>The word "emissions" leaves the sentence, but the new wording questions whether the 2030 goals are viable at all and turns the issue into an operating cost.</p>
+  </div>
+</div>
+
+<div class="finding">
+  <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+    <span class="arrow">&#9654;</span>
+    <span class="title">Midnight Blizzard example removed after ten filings; the breach risk is restated in general terms</span>
+    <span class="tag tag-removed">Removed</span>
+  </div>
+  <div class="finding-body">
+    <p class="shift">Shift: deletion: named incident and its reputational-harm admission (&minus; disclosure)</p>
+    <blockquote>FY2026 10-K: "... a nation-state associated threat actor used a password spray attack to compromise a legacy test account and, in turn, gain access to Microsoft email accounts."</blockquote>
+    <blockquote>Q1 FY2027: "Threat actors, including individual and groups of hackers and sophisticated organizations, including nation-states, state-sponsored organizations, or cybercriminal groups, continuously undertake attacks that pose threats to our customers and our internal infrastructure, and we have experienced cybersecurity incidents in which such actors have gained unauthorized access to our systems and data, as well as customer, partner, and supplier systems and data."</blockquote>
+    <p class="history">History (phrase_history): "password spray attack" is in every downloaded filing from Q3 FY2024 to the FY2026 10-K (ten filings) and absent from Q1 FY2027, as is "This incident has and may continue to result in harm to our reputation and customer relationships".</p>
+    <p>The only named breach leaves the risk factors, with its admission that it "has and may continue to result in harm to our reputation and customer relationships". What remains is the general statement, unchanged since the FY2026 10-K, that attackers "have gained unauthorized access" to Microsoft's and its partners' systems.</p>
+  </div>
+</div>
+
+</div>
+
+
+<!-- ==================== TRACKED SIGNALS ==================== -->
+
+<div class="section" id="sig-cloudgm">
+  <div class="section-header"><h2>#1: Microsoft Cloud Gross Margin and Its Stated Cause</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">1</span> 72% to 66%, and AI Named, Then Un-named, as the Reason</h3>
+    <p>The MD&amp;A gives one sentence a quarter on the Microsoft Cloud gross margin. The number fell six points; the stated cause changed four times.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Microsoft Cloud revenue (YoY)</th><th>Gross margin</th><th>Stated driver</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>$35.1B (+23%)</td><td>72%</td><td>"decreased slightly"; excluding the accounting change it "increased... inclusive of scaling our AI infrastructure"</td></tr>
+        <tr><td>FY2024 10-K</td><td>$137.4B (+23%)</td><td>71%</td><td>Same sentence</td></tr>
+        <tr><td>Q1 FY2025</td><td>$38.9B (+22%)</td><td>71%</td><td class="val-new">"driven by scaling our AI infrastructure": AI becomes the cause of the decline</td></tr>
+        <tr><td>Q2 FY2025</td><td>$40.9B (+21%)</td><td class="val-neg">70%</td><td>Same</td></tr>
+        <tr><td>Q3 FY2025</td><td>$42.4B (+20%)</td><td class="val-neg">69%</td><td>"driven by the impact of scaling our AI infrastructure"</td></tr>
+        <tr><td>FY2025 10-K</td><td>$168.9B (+23%)</td><td>69%</td><td>Adds "offset in part by efficiency gains in Azure"</td></tr>
+        <tr><td>Q1 FY2026</td><td>$49.1B (+26%)</td><td class="val-neg">68%</td><td class="val-new">Adds "growing usage of AI product features"</td></tr>
+        <tr><td>Q2 FY2026</td><td>$51.5B (+26%)</td><td class="val-neg">67%</td><td>"continued investments in AI infrastructure and growing AI product usage"</td></tr>
+        <tr><td>Q3 FY2026</td><td>$54.5B (+29%)</td><td class="val-neg">66%</td><td>Same</td></tr>
+        <tr><td>FY2026 10-K</td><td>$214.4B (+27%)</td><td>66%</td><td>Same</td></tr>
+        <tr><td>Q1 FY2027</td><td>$63.9B (+30%, new definition)</td><td>66%</td><td class="val-new">"driven by sales mix shift to Azure, offset in part by product-level margin improvements, primarily in Azure": AI not named</td></tr>
+      </tbody>
+    </table>
+    <p>Microsoft Cloud revenue grew faster in every year of the window (+20% at the low, +30% in Q1 FY2027), while the margin fell a point most quarters until Q3 FY2026. Q1 FY2027 also redefines Microsoft Cloud as Azure, Microsoft 365 commercial cloud and Industry solutions cloud, so the revenue line is not comparable with earlier rows.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-azure">
+  <div class="section-header"><h2>#2: Azure Growth and the AI Split</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">2</span> AI Points Given for Three Quarters; Azure Redefined in Q1 FY2027</h3>
+    <p>Azure growth is the most-watched figure in the filing. What Microsoft says about where it comes from changed more than the rate did.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Azure growth</th><th>AI contribution</th><th>Driver wording / definition</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>31%</td><td>Not given</td><td>"driven by growth in our consumption-based services"</td></tr>
+        <tr><td>FY2024 10-K</td><td>30%</td><td>Not given</td><td>Same</td></tr>
+        <tr><td>Q1 FY2025</td><td>33%</td><td class="val-new">12 points</td><td>"demand for our portfolio of services"</td></tr>
+        <tr><td>Q2 FY2025</td><td class="val-neg">31%</td><td class="val-new">13 points; "AI services which grew 157%"</td><td>Only quarter with an AI growth rate</td></tr>
+        <tr><td>Q3 FY2025</td><td>33%</td><td>16 points</td><td>Last quarter with AI points</td></tr>
+        <tr><td>FY2025 10-K</td><td>34%</td><td class="val-neg">Dropped</td><td>"driven by demand for our portfolio of services"</td></tr>
+        <tr><td>Q1 FY2026</td><td class="val-pos">40%</td><td>&mdash;</td><td>"with continued growth across all workloads"</td></tr>
+        <tr><td>Q2 FY2026</td><td>39%</td><td>&mdash;</td><td>Same</td></tr>
+        <tr><td>Q3 FY2026</td><td>40%</td><td>&mdash;</td><td>"demand for services across the platform"</td></tr>
+        <tr><td>FY2026 10-K</td><td>41%</td><td>&mdash;</td><td>Definition renames Nuance as "Health and Life Sciences cloud services"</td></tr>
+        <tr><td>Q1 FY2027</td><td class="val-new">48% (new basis); +$10.8B</td><td>&mdash;</td><td class="val-new">"Azure revenue growth": non-GPU and GPU workloads, "including GPU infrastructure-as-a-service and Foundry"; GitHub and Health and Life Sciences moved out</td></tr>
+      </tbody>
+    </table>
+    <p>The only Azure dollar figure in the window is Q1 FY2027's $10.8B increase, which puts the quarter's Azure revenue near $33.3B (computed). The 48% has no old-basis comparison.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-rpo">
+  <div class="section-header"><h2>#3: Remaining Performance Obligations</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">3</span> Backlog $242B to $683B; the Share Due in 12 Months Fell From 45% to 25%, Then 30%</h3>
+    <p>RPO is the contracted backlog. The notes give the total, the commercial part, the share due within 12 months and, from Q2 FY2026, a duration.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Total RPO</th><th>Commercial RPO</th><th>Due in 12 months</th><th>Wording change</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>$242B</td><td>$235B</td><td>~45%</td><td>&mdash;</td></tr>
+        <tr><td>FY2024 10-K</td><td>$275B</td><td>$269B</td><td>~45%</td><td>"of our total company remaining performance obligation revenue"</td></tr>
+        <tr><td>Q1 FY2025</td><td>$266B</td><td>$259B</td><td>~45%</td><td>Q1 dip (seasonal)</td></tr>
+        <tr><td>Q2 FY2025</td><td>$304B</td><td>$298B</td><td class="val-neg">~40%</td><td>First cut in the share</td></tr>
+        <tr><td>Q3 FY2025</td><td>$321B</td><td>$315B</td><td>~40%</td><td>&mdash;</td></tr>
+        <tr><td>FY2025 10-K</td><td>$375B</td><td>$368B</td><td>~40%</td><td>&mdash;</td></tr>
+        <tr><td>Q1 FY2026</td><td>$398B</td><td>$392B</td><td>~40%</td><td class="val-new">Commercial RPO becomes the first MD&amp;A highlight ("increased 51%")</td></tr>
+        <tr><td>Q2 FY2026</td><td class="val-pos">$631B</td><td class="val-pos">$625B</td><td class="val-neg">~25%</td><td class="val-new">"weighted average duration of approximately 2.5 years"; RPO made a critical accounting estimate; "potential renegotiation of commitments"</td></tr>
+        <tr><td>Q3 FY2026</td><td>$633B</td><td>$627B</td><td>~30% total / ~25% commercial</td><td>Split wording (both near 27.5%, computed)</td></tr>
+        <tr><td>FY2026 10-K</td><td>$684B</td><td>$678B</td><td>~30%</td><td>Duration 2.3 years</td></tr>
+        <tr><td>Q1 FY2027</td><td>$683B</td><td>$677B</td><td>~30%</td><td>Duration 2.3 years; commercial RPO +73% year on year, down $1B on June</td></tr>
+      </tbody>
+    </table>
+    <p>The 12-month amount was about $120B in Q1 FY2025, $159B in Q1 FY2026 and $205B in Q1 FY2027 (computed from the rounded shares): about 31% a year, against about 60% a year for total RPO. The Q2 FY2026 jump of $233B followed the October 2025 OpenAI agreement, which the Q1 FY2026 subsequent-event note sized at $250 billion of Azure services; no filing says how much of RPO is OpenAI.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-leases">
+  <div class="section-header"><h2>#4: Leases Not Yet Commenced</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">4</span> Four Declines, Then $92.7B to $364.6B in Five Filings</h3>
+    <p>Signed datacenter leases that have not started sit outside the balance sheet. The amount, the commencement window and the qualifiers are in one note sentence each quarter.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Not yet commenced</th><th>Change</th><th>Commence between</th><th>Wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>$96.2B ($8.4B operating, $87.8B finance)</td><td>&mdash;</td><td>FY2024&ndash;FY2030</td><td>Terms 1-20 years</td></tr>
+        <tr><td>FY2024 10-K</td><td>$117.0B ($8.6B, $108.4B)</td><td class="val-pos">+$20.8B</td><td>FY2025&ndash;FY2030</td><td>&mdash;</td></tr>
+        <tr><td>Q1 FY2025</td><td>$116.1B ($7.4B, $108.7B)</td><td class="val-neg">&minus;$0.9B</td><td>FY2025&ndash;FY2030</td><td>&mdash;</td></tr>
+        <tr><td>Q2 FY2025</td><td>$105.4B ($6.0B, $99.4B)</td><td class="val-neg">&minus;$10.7B</td><td>FY2025&ndash;FY2030</td><td>Terms 1-25 years</td></tr>
+        <tr><td>Q3 FY2025</td><td>$99.2B ($4.4B, $94.8B)</td><td class="val-neg">&minus;$6.2B</td><td>FY2025&ndash;FY2030</td><td>Terms 1-20 years</td></tr>
+        <tr><td>FY2025 10-K</td><td>$92.7B</td><td class="val-neg">&minus;$6.5B</td><td>FY2026&ndash;FY2031</td><td class="val-new">Operating/finance split dropped</td></tr>
+        <tr><td>Q1 FY2026</td><td>$106.2B</td><td class="val-pos">+$13.5B</td><td>FY2026&ndash;FY2031</td><td>&mdash;</td></tr>
+        <tr><td>Q2 FY2026</td><td>$155.1B</td><td class="val-pos">+$48.9B</td><td>FY2026&ndash;FY2031</td><td>&mdash;</td></tr>
+        <tr><td>Q3 FY2026</td><td>$196.6B</td><td class="val-pos">+$41.5B</td><td>FY2026&ndash;FY2031</td><td>Terms 1-21 years</td></tr>
+        <tr><td>FY2026 10-K</td><td>$329.1B</td><td class="val-pos">+$132.5B</td><td>FY2027&ndash;FY2033</td><td class="val-new">"with some arrangements subject to certain contractual conditions being met"</td></tr>
+        <tr><td>Q1 FY2027</td><td>$364.6B</td><td class="val-pos">+$35.5B</td><td>FY2027&ndash;FY2034</td><td>Same condition</td></tr>
+      </tbody>
+    </table>
+    <p>$364.6B is 3.1 times FY2026 capex ($115.95B). Recognized lease liabilities rose too: finance lease payments due were $28.5B at March 2024 and $95.2B at September 2026 (lease maturity tables).</p>
+  </div>
+</div>
+
+<div class="section" id="sig-capex">
+  <div class="section-header"><h2>#5: Capex and the Forward-Capex Sentence</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">5</span> Capex Up 3.6x a Quarter; the Only Forward Sentence Stopped Saying It Would Rise</h3>
+    <p>The 10-Qs give no capex guidance in dollars. The liquidity section has one forward sentence.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Capex (cash, period)</th><th>Forward-capex sentence</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>$10.95B</td><td>"We expect capital expenditures to increase in coming years to support growth in our cloud offerings and our investments in AI infrastructure and training"</td></tr>
+        <tr><td>FY2024 10-K</td><td>$44.48B (FY)</td><td>Unchanged</td></tr>
+        <tr><td>Q1 FY2025</td><td>$14.92B</td><td>Unchanged</td></tr>
+        <tr><td>Q2 FY2025</td><td>$15.80B</td><td>Unchanged</td></tr>
+        <tr><td>Q3 FY2025</td><td>$16.75B</td><td>Unchanged</td></tr>
+        <tr><td>FY2025 10-K</td><td>$64.55B (FY)</td><td class="val-new">"We will continue to invest in capital expenditures..." ("increase" dropped)</td></tr>
+        <tr><td>Q1 FY2026</td><td>$19.39B</td><td>Unchanged</td></tr>
+        <tr><td>Q2 FY2026</td><td class="val-pos">$29.88B</td><td>Unchanged</td></tr>
+        <tr><td>Q3 FY2026</td><td>$30.88B</td><td>Unchanged</td></tr>
+        <tr><td>FY2026 10-K</td><td>$115.95B (FY)</td><td class="val-new">Purpose reworded: "AI training and other infrastructure"</td></tr>
+        <tr><td>Q1 FY2027</td><td class="val-pos">$39.37B</td><td>Unchanged; investing cash adds "$6.7 billion increase in cash used in other investing primarily to facilitate the purchase of components"</td></tr>
+      </tbody>
+    </table>
+    <p>Quarterly capex rose from $10.95B to $39.37B. Free cash flow was $20.96B in Q3 FY2024 and $18.63B in Q1 FY2027, so more than all of the operating cash-flow growth ($31.92B to $58.00B) went into capex.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-openai">
+  <div class="section-header"><h2>#6: OpenAI Disclosure</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">6</span> From an Unquantified Line in Other, Net to 10.8% of Revenue</h3>
+    <p>What each filing says about OpenAI: the income-statement effect, the stake and funding, and the commercial terms.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>OpenAI gain (loss) in other income</th><th>Stake / funding</th><th>Wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>Not given</td><td>Not given</td><td>Risk factors: "third phase of our OpenAI strategic partnership"</td></tr>
+        <tr><td>FY2024 10-K</td><td>Not given</td><td>Not given</td><td>10-K: Azure is OpenAI's "exclusive cloud provider"</td></tr>
+        <tr><td>Q1 FY2025</td><td>Not given (later shown: &minus;$688M)</td><td class="val-new">"$13 billion" commitment</td><td class="val-new">"including OpenAI" in Other, net</td></tr>
+        <tr><td>Q2 FY2025</td><td>Not given (later: &minus;$1.2B)</td><td>Same</td><td>&mdash;</td></tr>
+        <tr><td>Q3 FY2025</td><td>Not given (later: &minus;$768M)</td><td>Same</td><td>&mdash;</td></tr>
+        <tr><td>FY2025 10-K</td><td>Not given (later: &minus;$4.8B for the year)</td><td>Same</td><td>API "exclusive to Azure"; "right of first refusal"; "reciprocal revenue-sharing arrangements"</td></tr>
+        <tr><td>Q1 FY2026</td><td class="val-neg">&minus;$4.1B (first figure)</td><td>$11.6B funded; ~27% after recapitalization</td><td class="val-new">"$250 billion" Azure commitment; first refusal ends; non-GAAP excludes OpenAI</td></tr>
+        <tr><td>Q2 FY2026</td><td class="val-pos">+$10.0B (dilution gain)</td><td>~27%; $11.7B funded</td><td>HLBV method; $250B sentence dropped</td></tr>
+        <tr><td>Q3 FY2026</td><td>&minus;$19M</td><td>~27%</td><td class="val-new">"will continue to receive revenue-sharing payments"; "October 2025 and April 2026"</td></tr>
+        <tr><td>FY2026 10-K</td><td>+$6.5B (year)</td><td>~25%; $11.9B funded</td><td class="val-new">Related party: $24.1B revenue, $6.0B receivable</td></tr>
+        <tr><td>Q1 FY2027</td><td>+$272M</td><td>~24%; $12.0B funded</td><td class="val-new">$10.0B revenue in the quarter; receivable $7.2B</td></tr>
+      </tbody>
+    </table>
+    <p>The losses of FY2025 were disclosed only as prior-year comparisons in the FY2026 10-Qs. The exclusivity and first-refusal terms lasted one filing each in the window; the one-way revenue share has been stated since Q3 FY2026.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-supply">
+  <div class="section-header"><h2>#7: Supply Financing and the Supply-Risk Wording</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">7</span> Component Receivables $8.2B to $35.7B, Plus $12.6B Restricted for a Supplier</h3>
+    <p>Microsoft funds component purchases for its suppliers and, from Q3 FY2026, holds investments restricted under a supplier agreement. The risk factor moved from a contingency to a description over the same quarters.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Server-component receivables</th><th>Restricted supplier investments</th><th>Supply-risk wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>$10.1B</td><td>&mdash;</td><td>"If components are delayed or become unavailable..."</td></tr>
+        <tr><td>FY2024 10-K</td><td>$10.5B</td><td>&mdash;</td><td>Same</td></tr>
+        <tr><td>Q1 FY2025</td><td>$11.4B</td><td>&mdash;</td><td>Heading reordered: "We may experience supply or quality problems"</td></tr>
+        <tr><td>Q2 FY2025</td><td>$11.4B</td><td>&mdash;</td><td>Same</td></tr>
+        <tr><td>Q3 FY2025</td><td>$10.8B</td><td>&mdash;</td><td>Same</td></tr>
+        <tr><td>FY2025 10-K</td><td>$8.2B</td><td>&mdash;</td><td>Same</td></tr>
+        <tr><td>Q1 FY2026</td><td class="val-pos">$14.4B</td><td>&mdash;</td><td>Same</td></tr>
+        <tr><td>Q2 FY2026</td><td>$15.1B</td><td>&mdash;</td><td class="val-new">"or more expensive"; "higher costs"</td></tr>
+        <tr><td>Q3 FY2026</td><td>$17.8B</td><td class="val-new">$11.5B</td><td class="val-new">"As components are delayed"; shortages "have and may increase our cost of revenue"</td></tr>
+        <tr><td>FY2026 10-K</td><td class="val-pos">$27.8B (current portion)</td><td>$11.3B</td><td class="val-new">"in short supply"; "We have experienced and may continue to experience supply constraints"</td></tr>
+        <tr><td>Q1 FY2027</td><td class="val-pos">$35.7B (current portion)</td><td>$12.6B</td><td>Same</td></tr>
+      </tbody>
+    </table>
+    <p>Together $48.3B at September 2026, more than the quarter's capex ($39.37B) and none of it in the capex line. The supplier is never named.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-tense">
+  <div class="section-header"><h2>#8: Risks Restated as Having Happened</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">8</span> The Tense Moved in Eight of Eleven Filings</h3>
+    <p>The strongest wording signal in Microsoft's filings is a risk factor that moves from "could" or "may" to "has". The table lists the first filing in which each moved.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Risk restated as happening</th><th>Earlier wording</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>FY2024 10-K</td><td>(Opposite direction) new-product margins "will not be as high" &rarr; "may not achieve"</td><td>&mdash;</td></tr>
+        <tr><td>Q1 FY2025</td><td class="val-new">Patch failures on legacy equipment "have and may continue to result in unauthorized access"</td><td>Not stated</td></tr>
+        <tr><td>Q2 FY2025</td><td>"AI technology and services are a highly competitive... market"</td><td>"We expect AI technology and services to be..."</td></tr>
+        <tr><td>Q3 FY2025</td><td>Source-code theft "also increases the security risks"</td><td>"also could increase"</td></tr>
+        <tr><td>FY2025 10-K</td><td>Infrastructure costs "reducing operating margins"</td><td>"These costs will reduce the operating margins"</td></tr>
+        <tr><td>Q1 FY2026</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Q2 FY2026</td><td class="val-new">AI "has and may continue to raise energy use and emissions"</td><td>Not stated</td></tr>
+        <tr><td>Q3 FY2026</td><td>"As components are delayed..."; shortages "have and may increase our cost of revenue"; deals "have been... subject to legal and regulatory challenge"</td><td>"If components are delayed..."; "may increase"</td></tr>
+        <tr><td>FY2026 10-K</td><td>Components "in short supply"; tariffs "has and may continue to increase operational costs"; emissions "will likely continue"</td><td>"could increase operational costs"</td></tr>
+        <tr><td>Q1 FY2027</td><td class="val-new">AI regulation "is increasing costs"; datacenter rules "are restricting and delaying infrastructure development"</td><td>"could increase costs or restrict opportunity"</td></tr>
+      </tbody>
+    </table>
+    <p>Eight of the eleven filings moved at least one risk into the present tense. Until FY2025 the moves concerned security and margins; from Q2 FY2026 they concern the physical build-out: power and emissions, components, tariffs and permits.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-legal">
+  <div class="section-header"><h2>#9: Contingencies Note</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">9</span> Reasonably Possible Losses $600M &rarr; $800M &rarr; $300M &rarr; $400M; LinkedIn Fine Never Sized</h3>
+    <p>The note gives one aggregate figure for losses that are reasonably possible beyond accruals, and the procedural status of the LinkedIn GDPR case.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Reasonably possible beyond accruals</th><th>LinkedIn / IDPC</th><th>Other</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>~$600M</td><td>Draft decision (April 2023)</td><td>U.S. cell-phone litigation (Nokia) pending</td></tr>
+        <tr><td>FY2024 10-K</td><td>~$600M</td><td>Revised draft (July 2024)</td><td>Same</td></tr>
+        <tr><td>Q1 FY2025</td><td>~$600M</td><td class="val-new">Final decision (October 2024); LinkedIn considering appeal</td><td>Same</td></tr>
+        <tr><td>Q2 FY2025</td><td class="val-neg">~$800M</td><td>LinkedIn appealed (November 2024)</td><td>Cell-phone appeal argued January 2025</td></tr>
+        <tr><td>Q3 FY2025</td><td>~$800M</td><td>Hearing set for May 2025</td><td>Same</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-pos">~$600M</td><td>Hearing set for December 2025</td><td class="val-new">Cell-phone litigation removed</td></tr>
+        <tr><td>Q1 FY2026</td><td class="val-pos">~$300M</td><td>Same</td><td>&mdash;</td></tr>
+        <tr><td>Q2 FY2026</td><td>~$400M</td><td>Preliminary hearing held December 2025</td><td>&mdash;</td></tr>
+        <tr><td>Q3 FY2026</td><td>~$400M</td><td>Same</td><td>&mdash;</td></tr>
+        <tr><td>FY2026 10-K</td><td>~$400M</td><td>"ruling on the standard of appeal, which the IDPC may appeal"</td><td>&mdash;</td></tr>
+        <tr><td>Q1 FY2027</td><td>~$400M</td><td class="val-new">"the IDPC has appealed"</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+    <p>The IRS claim is separate and unchanged in every filing: Notices of Proposed Adjustment for 2004-2013 seeking "an additional tax payment of $28.9 billion plus penalties and interest", which Microsoft contests; tax years 2014 to 2017 remain under audit.</p>
+  </div>
+</div>
+
+<div class="section" id="sig-metrics">
+  <div class="section-header"><h2>#10: Segment and Metric Changes</h2></div>
+  <div class="signal-card full">
+    <h3><span class="num">10</span> Each Q1 Resets a Yardstick</h3>
+    <p>Changes to what Microsoft measures and reports, by filing.</p>
+    <table class="data-table">
+      <thead><tr><th>Filing</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>Q3 FY2024</td><td>Three segments; Microsoft Cloud includes "other commercial cloud properties"</td></tr>
+        <tr><td>FY2024 10-K</td><td>&mdash;</td></tr>
+        <tr><td>Q1 FY2025</td><td class="val-new">Segments recast (August 2024); Windows OEM and Devices combined into one metric; AI points added to Azure</td></tr>
+        <tr><td>Q2 FY2025</td><td>AI services growth rate given once (157%)</td></tr>
+        <tr><td>Q3 FY2025</td><td>Microsoft 365 Consumer price increase named as a revenue driver</td></tr>
+        <tr><td>FY2025 10-K</td><td class="val-neg">AI points dropped; lease operating/finance split dropped</td></tr>
+        <tr><td>Q1 FY2026</td><td class="val-new">Non-GAAP measures excluding OpenAI; commercial RPO leads the highlights</td></tr>
+        <tr><td>Q2 FY2026</td><td class="val-new">RPO duration; RPO made a critical accounting estimate</td></tr>
+        <tr><td>Q3 FY2026</td><td>"Total company headcount declined year-over-year"</td></tr>
+        <tr><td>FY2026 10-K</td><td class="val-neg">Microsoft 365 Consumer subscriber count removed as a metric; Gaming renamed XBOX</td></tr>
+        <tr><td>Q1 FY2027</td><td class="val-new">Two segments (Agents and Infra; Devices and Consumer); Azure, Microsoft 365 commercial cloud and Microsoft Cloud redefined; Industry solutions cloud created; seat count includes GitHub</td></tr>
+      </tbody>
+    </table>
+    <p>New disclosures (RPO duration, OpenAI revenue, a dollar Azure increase) have arrived alongside removals (AI points, lease split, subscriber count) and redefinitions that break the time series.</p>
+  </div>
+</div>
+
+
+<!-- ==================== THEMES ==================== -->
+
+<div class="section" id="themes">
+  <div class="section-header"><h2>Themes</h2></div>
+  <div class="signal-grid">
+    <div class="signal-card">
+      <h3>1. AI Moved From the Margin Explanation to a Mix Effect</h3>
+      <p>The Microsoft Cloud gross margin fell from 72% (Q3 FY2024) to 66% (Q3 FY2026) and held there. AI infrastructure was first an item inside an improving margin (FY2024), then the stated cause of each decline from Q1 FY2025, joined by AI usage in Q1 FY2026. Q1 FY2027 removes AI from both margin sentences: the decline is now "sales mix shift to Azure", Azure is said to be improving its own margin, and Azure has been redefined to include "GPU infrastructure-as-a-service". The number did not recover; the explanation changed. The same filing restates AI regulation and datacenter permitting as costs already being incurred.</p>
+    </div>
+    <div class="signal-card">
+      <h3>2. The Build-Out Showed Up in Commitments Before Capex</h3>
+      <p>Unstarted leases fell four filings in a row to $92.7B (FY2025), then rose to $364.6B in five, with a new condition clause from the FY2026 10-K. Component receivables went from $8.2B to $35.7B and $12.6B of investments became restricted for a supplier (Q3 FY2026 on). RPO jumped $233B in Q2 FY2026 while the share due within a year fell to 25%, and the same filing made RPO a critical estimate subject to "potential renegotiation of commitments". Long-term debt fell from $42.66B to $31.09B: the financing is in leases, supplier arrangements and customer contracts, not bonds. This extends the 10-K dashboard's "buildout moved off the balance sheet" theme quarter by quarter.</p>
+    </div>
+    <div class="signal-card">
+      <h3>3. OpenAI: From "including OpenAI" to 10.8% of Revenue</h3>
+      <p>Q1 FY2025 named OpenAI inside Other, net without a figure. The FY2025 10-K described exclusivity, a right of first refusal and reciprocal revenue sharing; within three quarters the first refusal was gone (Q1 FY2026), the $250B Azure commitment had been stated once and dropped (Q1 to Q2 FY2026), and revenue sharing ran one way (Q3 FY2026). Losses were quantified only from Q1 FY2026, alongside non-GAAP measures that exclude them; a $10.0B dilution gain followed. By Q1 FY2027 OpenAI was $10.0B of quarterly revenue and $7.2B of receivables, and Microsoft's stake had been diluted from about 27% to 24%.</p>
+    </div>
+    <div class="signal-card">
+      <h3>4. The 10-Qs Said It First</h3>
+      <p>Several changes the annual dashboard dates to the FY2026 10-K first appeared in a 10-Q: the AI emissions concession (Q2 FY2026), the RPO duration and critical-estimate language (Q2 FY2026), HLBV accounting (Q2 FY2026), the OpenAI non-GAAP adjustment (Q1 FY2026), the one-way revenue share and the supplier-restricted investments (Q3 FY2026), and the headcount decline (Q3 FY2026). Microsoft restates its full risk factors every quarter, and the could-to-has moves (tracked signal #8) came mostly in 10-Qs. The 10-K history lines have been corrected to match.</p>
+    </div>
+    <div class="signal-card">
+      <h3>5. Each Q1 Resets the Yardsticks</h3>
+      <p>Q1 FY2025 merged Devices into Windows OEM and began AI points; the FY2025 10-K dropped the AI points and the lease split; the FY2026 10-K dropped the consumer subscriber count; Q1 FY2027 cut three segments to two and redefined Azure, Microsoft 365 commercial cloud and Microsoft Cloud without old-basis growth rates. Some disclosure was added (RPO duration, OpenAI revenue, an Azure dollar change), but the series that tested the AI story most directly (AI points, Azure on a constant definition, segment margins for the cloud businesses) were the ones that changed.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== FINANCIAL REFERENCE TABLE ==================== -->
+
+<div class="section" id="ref-table">
+  <div class="section-header"><h2>Financial Reference Table</h2></div>
+  <p style="font-size:13px; color:var(--text-dim);">Revenue, operating income, net income, EPS, cash flow, capex (additions to property and equipment), buybacks, dividends, long-term debt and current unearned revenue from SEC XBRL (quarterly values derived from year-to-date where only YTD is tagged). Free cash flow is operating cash flow less capex. Microsoft Cloud, its gross margin, Azure growth and the effective tax rate from the filing text. * Q1 FY2027 Microsoft Cloud and Azure use the new definitions.</p>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Revenue (YoY)</th>
+        <th>Op. income (margin)</th>
+        <th>Net income</th>
+        <th>Diluted EPS</th>
+        <th>Microsoft Cloud (YoY)</th>
+        <th>Cloud GM</th>
+        <th>Azure</th>
+        <th>ETR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q3 FY2024</strong></td><td>$61.86B (+17%)</td><td>$27.58B (44.6%)</td><td>$21.94B</td><td>$2.94</td><td>$35.1B (+23%)</td><td>72%</td><td>31%</td><td>17.9%</td></tr>
+      <tr><td><strong>FY2024 10-K</strong></td><td>$245.12B (+16%)</td><td>$109.43B (44.6%)</td><td>$88.14B</td><td>$11.80</td><td>$137.4B (+23%)</td><td>71%</td><td>30%</td><td>18.2%</td></tr>
+      <tr><td><strong>Q1 FY2025</strong></td><td>$65.58B (+16%)</td><td>$30.55B (46.6%)</td><td>$24.67B</td><td>$3.30</td><td>$38.9B (+22%)</td><td>71%</td><td>33%</td><td>18.5%</td></tr>
+      <tr><td><strong>Q2 FY2025</strong></td><td>$69.63B (+12%)</td><td>$31.65B (45.5%)</td><td>$24.11B</td><td>$3.23</td><td>$40.9B (+21%)</td><td>70%</td><td>31%</td><td>17.9%</td></tr>
+      <tr><td><strong>Q3 FY2025</strong></td><td>$70.07B (+13%)</td><td>$32.00B (45.7%)</td><td>$25.82B</td><td>$3.46</td><td>$42.4B (+20%)</td><td>69%</td><td>33%</td><td>17.7%</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>$281.72B (+15%)</td><td>$128.53B (45.6%)</td><td>$101.83B</td><td>$13.64</td><td>$168.9B (+23%)</td><td>69%</td><td>34%</td><td>17.6%</td></tr>
+      <tr><td><strong>Q1 FY2026</strong></td><td>$77.67B (+18%)</td><td>$37.96B (48.9%)</td><td>$27.75B</td><td>$3.72</td><td>$49.1B (+26%)</td><td>68%</td><td>40%</td><td>19.1%</td></tr>
+      <tr><td><strong>Q2 FY2026</strong></td><td>$81.27B (+17%)</td><td>$38.27B (47.1%)</td><td class="val-new">$38.46B</td><td>$5.16</td><td>$51.5B (+26%)</td><td>67%</td><td>39%</td><td>20.3%</td></tr>
+      <tr><td><strong>Q3 FY2026</strong></td><td>$82.89B (+18%)</td><td>$38.40B (46.3%)</td><td>$31.78B</td><td>$4.27</td><td>$54.5B (+29%)</td><td>66%</td><td>40%</td><td>19.2%</td></tr>
+      <tr><td><strong>FY2026 10-K</strong></td><td>$331.84B (+18%)</td><td>$155.24B (46.8%)</td><td>$133.75B</td><td>$17.95</td><td>$214.4B (+27%)</td><td>66%</td><td>41%</td><td>19.4%</td></tr>
+      <tr><td><strong>Q1 FY2027</strong></td><td>$92.28B (+19%)</td><td>$45.92B (49.8%)</td><td>$36.63B</td><td>$4.92</td><td>$63.9B (+30%)*</td><td>66%</td><td>48%*</td><td>20.3%</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:15px; font-weight:700; margin:28px 0 4px;">Cash Flow, Capital Returns &amp; Balance Sheet (Q3 FY2024 &ndash; Q1 FY2027)</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Op. cash flow</th>
+        <th>Capex</th>
+        <th>Free cash flow</th>
+        <th>FCF / NI</th>
+        <th>Buybacks</th>
+        <th>Dividends paid</th>
+        <th>Long-term debt</th>
+        <th>Unearned revenue (current)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q3 FY2024</strong></td><td>$31.92B</td><td>$10.95B</td><td>$20.96B</td><td>96%</td><td>$4.21B</td><td>$5.57B</td><td>$42.66B</td><td>$41.89B</td></tr>
+      <tr><td><strong>FY2024 10-K</strong></td><td>$118.55B</td><td>$44.48B</td><td>$74.07B</td><td>84%</td><td>$17.25B</td><td>$21.77B</td><td>$42.69B</td><td>$57.58B</td></tr>
+      <tr><td><strong>Q1 FY2025</strong></td><td>$34.18B</td><td>$14.92B</td><td>$19.26B</td><td>78%</td><td>$4.11B</td><td>$5.57B</td><td>$42.87B</td><td>$53.03B</td></tr>
+      <tr><td><strong>Q2 FY2025</strong></td><td>$22.29B</td><td>$15.80B</td><td>$6.49B</td><td>27%</td><td>$4.99B</td><td>$6.17B</td><td>$39.72B</td><td>$45.51B</td></tr>
+      <tr><td><strong>Q3 FY2025</strong></td><td>$37.04B</td><td>$16.75B</td><td>$20.30B</td><td>79%</td><td>$4.78B</td><td>$6.17B</td><td>$39.88B</td><td>$44.64B</td></tr>
+      <tr><td><strong>FY2025 10-K</strong></td><td>$136.16B</td><td>$64.55B</td><td>$71.61B</td><td>70%</td><td>$18.42B</td><td>$24.08B</td><td>$40.15B</td><td>$64.56B</td></tr>
+      <tr><td><strong>Q1 FY2026</strong></td><td>$45.06B</td><td>$19.39B</td><td>$25.66B</td><td>93%</td><td>$5.65B</td><td>$6.17B</td><td>$35.38B</td><td>$58.99B</td></tr>
+      <tr><td><strong>Q2 FY2026</strong></td><td>$35.76B</td><td>$29.88B</td><td class="val-neg">$5.88B</td><td class="val-neg">15%</td><td>$7.42B</td><td>$6.76B</td><td>$35.42B</td><td>$51.38B</td></tr>
+      <tr><td><strong>Q3 FY2026</strong></td><td>$46.68B</td><td>$30.88B</td><td>$15.80B</td><td>50%</td><td>$4.63B</td><td>$6.76B</td><td>$31.42B</td><td>$50.92B</td></tr>
+      <tr><td><strong>FY2026 10-K</strong></td><td>$182.94B</td><td>$115.95B</td><td>$66.99B</td><td class="val-neg">50%</td><td>$22.27B</td><td>$26.45B</td><td>$31.07B</td><td>$72.97B</td></tr>
+      <tr><td><strong>Q1 FY2027</strong></td><td>$58.00B</td><td>$39.37B</td><td>$18.63B</td><td>51%</td><td>$4.38B</td><td>$6.76B</td><td>$31.09B</td><td>$66.87B</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<script>
+// Open all findings in a transition when clicking the transition header
+document.querySelectorAll('.transition-header').forEach(h => {
+  h.style.cursor = 'pointer';
+  h.addEventListener('click', () => {
+    let el = h.nextElementSibling;
+    const findings = [];
+    while (el && !el.classList.contains('transition-header') && !el.classList.contains('section')) {
+      if (el.classList.contains('finding')) findings.push(el);
+      if (el.classList.contains('finding-group')) el.querySelectorAll('.finding').forEach(f => findings.push(f));
+      el = el.nextElementSibling;
+    }
+    const allOpen = findings.every(f => f.classList.contains('open'));
+    findings.forEach(f => {
+      if (allOpen) f.classList.remove('open');
+      else f.classList.add('open');
+    });
+  });
+});
+</script>
+<!-- page-tools: newest filing first, expand / collapse all (scripts/page_tools.py) -->
+<style>
+.page-tools { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; gap: 6px; padding: 6px;
+  background: #fff; border: 1px solid #d6dbe1; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  font: 600 12px/1 -apple-system, 'Segoe UI', Roboto, sans-serif; }
+.page-tools button { font: inherit; padding: 7px 11px; border-radius: 5px; border: 1px solid #1B365D;
+  background: #fff; color: #1B365D; cursor: pointer; }
+.page-tools button:hover, .page-tools button:focus-visible { background: #1B365D; color: #fff; outline: none; }
+@media print { .page-tools { display: none; } }
+</style>
+<div class="page-tools" role="toolbar" aria-label="Page tools">
+  <button type="button" data-tools="expand">Expand all</button>
+  <button type="button" data-tools="collapse">Collapse all</button>
+</div>
+<script>
+(function () {
+  // Newest filing first: each transition (its header and everything up to the next transition
+  // or section) moves above the one before it.
+  var headers = Array.prototype.slice.call(document.querySelectorAll('.transition-header'));
+  if (headers.length > 1) {
+    var parent = headers[0].parentNode;
+    var spot = document.createComment('transitions');
+    parent.insertBefore(spot, headers[0]);
+    var blocks = headers.map(function (h) {
+      var nodes = [h], n = h.nextSibling;
+      while (n && !(n.nodeType === 1 && (n.classList.contains('transition-header') || n.classList.contains('section')))) {
+        nodes.push(n);
+        n = n.nextSibling;
+      }
+      return nodes;
+    });
+    var frag = document.createDocumentFragment();
+    for (var i = blocks.length - 1; i >= 0; i--) blocks[i].forEach(function (n) { frag.appendChild(n); });
+    parent.insertBefore(frag, spot);
+    parent.removeChild(spot);
+
+    // Same order in the sidebar
+    var ids = headers.map(function (h) { return '#' + h.id; });
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.sidebar a.nav-item')).filter(function (a) {
+      return ids.indexOf(a.getAttribute('href')) >= 0;
+    });
+    if (links.length > 1) {
+      var nav = links[0].parentNode, mark = document.createComment('links');
+      nav.insertBefore(mark, links[0]);
+      links.reverse().forEach(function (a) { nav.insertBefore(a, mark); });
+      nav.removeChild(mark);
+    }
+    if (location.hash) {
+      var target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView();
+    }
+  }
+
+  // Expand all / Collapse all (replaces the single toggle some pages had)
+  var old = document.getElementById('global-expand');
+  if (old) old.parentNode.style.display = 'none';
+  Array.prototype.forEach.call(document.querySelectorAll('.page-tools button'), function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('data-tools') === 'expand';
+      Array.prototype.forEach.call(document.querySelectorAll('.finding'), function (f) {
+        f.classList.toggle('open', open);
+      });
+    });
+  });
+})();
+</script>
+<!-- /page-tools -->
+</body>
+</html>

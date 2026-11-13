@@ -188,10 +188,10 @@
       "annual_dashboard": "companies/msft/",
       "annual_covered_through": "2026-06-30",
       "quarterly": true,
-      "quarterly_dashboard": null,
-      "quarterly_covered_through": null,
+      "quarterly_dashboard": "companies/msft/10q/",
+      "quarterly_covered_through": "2026-09-30",
       "annual_filed": "2026-07-29",
-      "quarterly_filed": null
+      "quarterly_filed": "2026-10-28"
     }
   }
 }
