@@ -1,0 +1,93 @@
+JPMORGAN CHASE (JPM): INVESTMENT THESIS PILLARS
+Written November 2026 from the 10-K redline dashboard (FY2018-FY2025) and the 10-Q scanner (Q2 2024
+to Q3 2026). The Bull / Bear page scores two filings: the Q2 2026 10-Q (filed August 6, 2026) and the
+Q3 2026 10-Q (filed November 3, 2026). Every pillar starts at Intact; the scanner's record since
+Q2 2024 is the background for each stance, and a stance moves only when the two scored filings point
+the same way. Figures are from the filings' financial highlights and SEC XBRL unless quoted.
+
+P1 Net interest income and the deposit franchise
+  Bull assumes: deposit and loan growth carry NII higher even as rates fall, with ex-Markets NII
+    growing on the core balance sheet, not only on trading balances.
+  Bear fears: rate cuts compress deposit margins, NII growth leans on Markets NII that has offsets
+    in trading revenue, and a deposit base that is mostly uninsured wholesale money is less sticky.
+  Stance: Strengthening, moved at the Q3 2026 10-Q.
+  History: 2024 NII $92.6B; 2025 $95.4B, each landing on the last guide. 2026 guide $103B (FY2025
+    10-K) -> $105.5B (Q2) -> $106.2B (Q3); ex-Markets $95B -> $96.5B -> $97.2B. Quarterly NII +10%
+    (Q2 2026) and +13% (Q3 2026); ex-Markets +4% and +6%. Average deposits +7% and +8%; average
+    loans +10% in both. Corporate NII down on "the impact of lower rates" in both quarters.
+  Tests: ex-Markets NII growth, the NII guide, average deposits, deposit margin language, uninsured
+    deposit share.
+
+P2 Fee franchise: CIB, Markets and AWM
+  Bull assumes: investment banking, Markets and asset management take share and grow faster than
+    the balance sheet, so fee revenue compounds with low capital intensity.
+  Bear fears: Markets revenue is cyclical and consumes RWA; IB fees mean-revert; AWM flows follow
+    market levels.
+  Stance: Strengthening, moved at the Q3 2026 10-Q.
+  History: Markets revenue +35% (Q2 2026) and +15% (Q3 2026); investment banking fees +13% in Q3
+    with a #1 wallet ranking at 9.2% year to date; asset management fees +15%; AUM $5.2T (+13%).
+    Nine-month investment banking fees +24%. Capital allocated to CIB raised $8.5B in Q2 2026 "in
+    connection with growth in the business", and Standardized RWA rose $196B in nine months.
+  Tests: Markets and IB fees year on year, AWM net inflows, CIB capital and RWA consumption.
+
+P3 Expense discipline and operating leverage
+  Bull assumes: technology and marketing investment pays back in revenue, keeping the overhead
+    ratio stable and pre-provision profit growing with revenue.
+  Bear fears: expense growth outruns revenue: guides above NII, revenue-related pay, technology,
+    branches and international consumer launches that sit in Corporate.
+  Stance: Weakening, moved at the Q3 2026 10-Q.
+  History: adjusted expense guide at or above the NII guide since the FY2024 10-K. 2026 expense
+    guide $105B -> $107.5B (Q2) -> $108.6B (Q3), +$3.6B against +$3.2B for NII. Expense +15% in Q2
+    2026 (revenue +15% excluding the Visa and equity gains) and +12% in Q3 against revenue +8%;
+    Q3 pre-provision profit +3%. Chase Europe launched in Germany in May 2026.
+  Tests: expense growth vs revenue growth, the expense guide, Corporate expense, pre-provision profit.
+
+P4 Credit quality and reserves
+  Bull assumes: card losses stay below guide, wholesale losses stay idiosyncratic, and the
+    allowance (with a standing adverse overlay) is ample.
+  Bear fears: wholesale builds and criticized exposure rise with fast loan growth; borrower fraud
+    and private-credit style exposures surprise; Apple Card adds ~$107B of exposure at closing.
+  Stance: Intact (never moved in the window).
+  History: card net charge-off rate 3.34% (Q2 2026) and 2.91% (Q3 2026), guide cut to 3.2% in Q2;
+    consumer reserves released on home prices. Wholesale build $473M (H1) -> $902M (nine months);
+    criticized exposure up in Consumer & Retail and TMT (Q3); weighted GDP gap 2.1% -> 2.3%.
+    "Borrower fraud" (Q3 2025, FY2025) is not repeated in 2026. Allowance $31.5B -> $32.0B.
+  Tests: card NCO rate vs guide, wholesale build drivers, criticized and nonaccrual exposure,
+    adverse-scenario wording, Apple Card allowance.
+
+P5 Capital strength and capital return
+  Bull assumes: a CET1 ratio well above requirement, a 2.5% SCB and regulatory relief fund steady
+    buybacks of $6-8B a quarter plus a rising dividend.
+  Bear fears: balance sheet growth, AOCI losses and the 2028 GSIB step-up (4.5% -> 5.5% under
+    current rules) absorb the cushion and buybacks shrink.
+  Stance: Weakening, moved at the Q3 2026 10-Q.
+  History: CET1 15.7% (FY2024) fell in seven straight filings to 14.0% (Q3 2026); cushion 2.5
+    points. Q2 2026: CET1 14.2%, buybacks $6.7B, second $50B authorization, dividend to $1.65.
+    Q3 2026: buybacks $1.1B (none in August or September), ~$7.9B AOCI loss on higher rates. Relief
+    on the other side: SCB frozen at 2.5% through 2027, SLR requirement 4.3%, Basel re-proposal
+    sized at +6% (+4% net) versus +25% for the 2023 proposal.
+  Tests: CET1 vs requirement, quarterly buybacks, AOCI, RWA growth, 2028 GSIB and SCB outcomes.
+
+P6 Earnings quality
+  Bull assumes: reported earnings are recurring; one-off gains are disclosed and small relative to
+    a ~$15B quarterly run-rate.
+  Bear fears: Visa exchanges, equity remeasurements, tax benefits and securities repositioning
+    move reported profit by billions; Corporate equity marks grow.
+  Stance: Intact (never moved in the window).
+  History: Q2 2026 included $5.6B of pre-tax one-offs ($4.6B Visa, $1.0B equity investments) on
+    $27.5B pre-tax income. Q3 2026 ran the other way: $658M securities losses and a net loss on
+    certain equity investments. Strategic Investment Group equity $3.7B -> $5.7B, mostly at the
+    measurement alternative. Effective tax rate 23.1% and 24.0%.
+  Tests: named one-offs in each quarter, Corporate NIR, equity investment carrying values, tax rate.
+
+P7 Legal, regulatory and political exposure
+  Bull assumes: legacy and federal enforcement matters keep closing, the loss range stays near
+    $1-1.5B, and the regulatory climate stays favorable.
+  Bear fears: politically driven matters (Fair Access to Banking) and consumer class actions grow
+    into remediation or damages; Russian judgments are enforced abroad.
+  Stance: Intact (never moved in the window).
+  History: range $1.7B (2024) -> $1.1B (2025 low) -> $1.3B (2026). Q2 2026: Shareholder Litigation
+    dismissed with prejudice and removed; cash sweep plaintiffs move to certify a class. Q3 2026:
+    OCC report on nine banks including JPM; CFPB to "address any customer harm"; Trump suit moved
+    to federal court in New York; new post-2019 interchange class action; SCB rules finalized.
+  Tests: loss range, Fair Access developments, cash sweep class status, interchange, Russia.

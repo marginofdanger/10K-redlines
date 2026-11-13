@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPM Bull / Bear | latest: Q3 2026 10-Q</title>
+<style>
+/* Same palette and type as the redline dashboards; bull = green, bear = red. */
+:root {
+  --bg: #ffffff; --surface: #f6f8fa; --surface2: #eef1f5; --border: #d1d9e0;
+  --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+  --bull: #1a7f37; --bull-bg: rgba(26,127,55,0.08); --bear: #cf222e; --bear-bg: rgba(207,34,46,0.07);
+  --held: #59636e; --amber: #9a6700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+.top { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero { padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+.hero .tagline { color: var(--text-dim); max-width: 760px; font-size: 15px; }
+.hero .source { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+h2 { font-size: 20px; font-weight: 700; margin: 40px 0 14px; scroll-margin-top: 16px; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.note { font-size: 13px; color: var(--text-dim); margin: -6px 0 14px; max-width: 760px; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--surface); font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-dim); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.stance { font-weight: 700; white-space: nowrap; }
+.s-strengthening { color: var(--bull); } .s-intact { color: var(--held); }
+.s-weakening { color: var(--amber); } .s-broken { color: var(--bear); }
+.ev-bull::before { content: "+ "; color: var(--bull); font-weight: 700; }
+.ev-bear::before { content: "\2212 "; color: var(--bear); font-weight: 700; }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 820px) { .sides { grid-template-columns: 1fr; } }
+.side h3 { display: flex; align-items: center; gap: 8px; }
+.side.bull h3 { color: var(--bull); } .side.bear h3 { color: var(--bear); }
+.bb-card { border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface); }
+.bull .bb-card { border-left: 3px solid var(--bull); } .bear .bb-card { border-left: 3px solid var(--bear); }
+.bb-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { font-size: 10.5px; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .4px; font-weight: 600; background: var(--bg); }
+.bb-card .title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.bb-card blockquote { border-left: 3px solid var(--accent); padding: 6px 12px; margin: 8px 0; background: rgba(9,105,218,0.05);
+  font-size: 13px; font-style: italic; }
+.bb-card p { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.bb-card .magnitude { color: var(--text); font-variant-numeric: tabular-nums; }
+.bb-card .next b, .bb-card .magnitude b { color: var(--text); }
+.none { font-size: 13px; color: var(--text-dim); font-style: italic; }
+.mark { font-weight: 700; white-space: nowrap; }
+.better { color: var(--bull); } .worse { color: var(--bear); } .held { color: var(--held); }
+details.earlier { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; }
+details.earlier summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+details.earlier > div { padding: 0 14px 14px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="main">
+<div class="top"><a href="../../index.html">&larr; All companies</a><a href="../index.html">10-K redlines</a><a href="../10q/index.html">10-Q scanner</a></div>
+
+<div class="hero" id="hero-section">
+  <h1>JPMorgan Chase: Bull / Bear</h1>
+  <div class="tagline">What each filing does to the investment case, for and against, on fundamentals. Evidence is quoted from the filings; sizes use the filings&rsquo; financial highlights and SEC XBRL figures. A pillar&rsquo;s stance moves only when findings point the same way across two or more filings.</div>
+  <div class="source">Latest filing: 10-Q for Q3 2026 (quarter ended September 30, 2026), filed November 3, 2026 | Also scored: 10-Q for Q2 2026 | Source: SEC EDGAR | Analysis: November 2026</div>
+</div>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p class="note">Seven pillars (thesis.txt), scored over the Q2 2026 and Q3 2026 10-Qs, with the 10-Q scanner&rsquo;s record since Q2 2024 as background. Every pillar started at Intact.</p>
+<div class="scroll"><table>
+<thead><tr><th>Pillar</th><th>Stance</th><th>Strongest bull evidence</th><th>Strongest bear evidence</th><th>Last moved</th></tr></thead>
+<tbody>
+<tr><td>P1 Net interest income and deposits</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">NII +10% (Q2) and +13% (Q3); ex-Markets +4% then +6%; 2026 guide $103B &rarr; $105.5B &rarr; $106.2B</td><td class="ev-bear">Corporate NII down on &ldquo;the impact of lower rates&rdquo; in both quarters; 64% of deposits uninsured</td><td>Q3 2026 10-Q</td></tr>
+<tr><td>P2 Fee franchise: CIB, Markets, AWM</td><td class="stance s-strengthening">Strengthening</td><td class="ev-bull">Markets revenue +35% (Q2) and +15% (Q3); IB fees +13% in Q3, #1 with 9.2% wallet share; asset management fees +15%</td><td class="ev-bear">Growth consumes capital: CIB allocated +$8.5B; Standardized RWA +$196B in nine months</td><td>Q3 2026 10-Q</td></tr>
+<tr><td>P3 Expense discipline</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">Q2 underlying revenue growth (~15%) kept pace with expense (+15%)</td><td class="ev-bear">Q3 expense +12% vs revenue +8%, pre-provision profit +3%; 2026 expense guide +$3.6B vs NII guide +$3.2B</td><td>Q3 2026 10-Q</td></tr>
+<tr><td>P4 Credit quality and reserves</td><td class="stance s-intact">Intact</td><td class="ev-bull">Card net charge-off rate 3.34% then 2.91%, under a guide cut to 3.2%; wholesale charge-offs down $390M in Q3</td><td class="ev-bear">Wholesale build $473M (H1) &rarr; $902M (nine months); criticized exposure up in Consumer &amp; Retail and TMT; GDP gap 2.1% &rarr; 2.3%</td><td>&mdash;</td></tr>
+<tr><td>P5 Capital strength and return</td><td class="stance s-weakening">Weakening</td><td class="ev-bull">SCB frozen at the 2.5% floor through December 31, 2027; second $50B authorization; dividend to $1.65</td><td class="ev-bear">CET1 14.2% &rarr; 14.0%; buybacks $6.7B &rarr; $1.1B, none in August or September; ~$7.9B rate-driven AOCI loss</td><td>Q3 2026 10-Q</td></tr>
+<tr><td>P6 Earnings quality</td><td class="stance s-intact">Intact</td><td class="ev-bull">Q3 had no one-off gains and absorbed $658M of securities losses</td><td class="ev-bear">Q2 had $5.6B of pre-tax one-offs (Visa, equity remeasurement), about a fifth of pre-tax income; Corporate equity book $3.7B &rarr; $5.7B</td><td>&mdash;</td></tr>
+<tr><td>P7 Legal, regulatory and political</td><td class="stance s-intact">Intact</td><td class="ev-bull">Shareholder derivative suit dismissed with prejudice (Q2); Trump suit moved to federal court, motion to dismiss filed (Q3)</td><td class="ev-bear">OCC report on nine banks incl. JPM and a CFPB statement on &ldquo;customer harm&rdquo;; new post-2019 interchange class action</td><td>&mdash;</td></tr>
+</tbody></table></div>
+
+<h2 id="latest">Latest filing: 10-Q Q3 2026</h2>
+<p class="note">What this filing adds, for and against. The case for the franchise got stronger; the case for capital return got weaker.</p>
+<div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+
+    <div class="bb-card" data-pillar="P1 Net interest income and deposits" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Net interest income and deposits</span><span class="chip">Stated</span></div>
+      <div class="title">NII +13% to $27.0B with ex-Markets NII accelerating to +6%; 2026 NII guide raised again to ~$106.2B</div>
+      <blockquote>Q3 2026: "... of $27.0 billion, up 13%, driven by higher Markets net interest income, higher deposit balances, higher balances in Card Services, and higher wholesale loan balances, partially offset by the impact of lower rates. NII excluding Markets was $24.7 billion, up 6%."</blockquote>
+      <blockquote>Q3 2026: "Management expects net interest income to be approximately $106.2 billion and net interest income excluding Markets to be approximately $97.2 billion, market dependent."</blockquote>
+      <p class="magnitude"><b>Size:</b> ex-Markets NII +$1.3B year on year in the quarter; the 2026 NII guide is $3.2B (3%) above the FY2025 10-K&rsquo;s ~$103B.</p>
+      <p>Core NII growth rose from +4% in Q2 to +6% in Q3 while rates fell, on deposit and loan volume (average loans +10%, deposits +8%). The NII guide has been raised in two straight filings and actual NII landed on the last guide in 2024 and 2025.</p>
+      <p class="next"><b>Next filing:</b> FY2026 NII at or above ~$106.2B (Q4 ~$28B) and a 2027 ex-Markets guide above 2026&rsquo;s ~$97.2B.</p>
+    </div>
+
+    <div class="bb-card" data-pillar="P2 Fee franchise: CIB, Markets, AWM" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P2 Fee franchise: CIB, Markets, AWM</span><span class="chip">Stated</span></div>
+      <div class="title">Investment banking fees +14% in CIB with a #1 ranking; Markets +15%; asset management fees +15%</div>
+      <blockquote>Q3 2026: "Investment banking fees up 14% YoY, down 8% QoQ; #1 ranking for global investment banking fees with 9.2% wallet share year-to-date"</blockquote>
+      <blockquote>Q3 2026: "Markets revenue up 15%, with Fixed Income Markets down 4% and Equity Markets up 49%"</blockquote>
+      <p class="magnitude"><b>Size:</b> Markets revenue $10.3B (21% of net revenue); firmwide IB fees $2.96B (+13%); asset management fees $5.9B (+15%). Nine-month IB fees +24%.</p>
+      <p>Fee lines grew faster than the balance sheet in both scored quarters (Markets +35% in Q2). The Q3 mix leans on Equity Markets; Fixed Income fell 4%.</p>
+      <p class="next"><b>Next filing:</b> Full-year IB fees and Markets revenue up on 2025, and AWM net inflows holding with market levels.</p>
+    </div>
+
+    <div class="bb-card" data-pillar="P4 Credit quality and reserves" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Credit quality and reserves</span><span class="chip">Stated</span></div>
+      <div class="title">Card net charge-off rate 2.91%, the lowest in the scanner&rsquo;s ten filings, against a 3.2% full-year guide</div>
+      <blockquote>Q3 2026: "Average loans up 2% YoY and 1% QoQ; Card Services net charge-off rate of 2.91%"</blockquote>
+      <blockquote>Q3 2026: "Management expects the net charge-off rate in Card Services to be approximately 3.2%."</blockquote>
+      <p class="magnitude"><b>Size:</b> 29 basis points under the guide; firmwide net charge-offs $2.2B, down $389M year on year, &ldquo;driven by wholesale&rdquo;.</p>
+      <p>Consumer credit, the larger loss pool, is running below both guides in the window (3.4% then 3.2%), and consumer reserves were released on home prices this year.</p>
+      <p class="next"><b>Next filing:</b> FY2026 card rate at or under ~3.2% and a 2027 card guide no higher.</p>
+    </div>
+
+    <div class="bb-card" data-pillar="P5 Capital strength and return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Capital strength and return</span><span class="chip">Stated</span></div>
+      <div class="title">SCB final rules keep JPM&rsquo;s buffer at the 2.5% floor through December 31, 2027, a quarter longer than before</div>
+      <blockquote>Q3 2026: "The SCB requirement for firms, including JPMorganChase, will remain at current levels through December 31, 2027, with an updated SCB calculation effective January 1, 2028 based solely on the results of the 2027 Federal Reserve stress test."</blockquote>
+      <p class="magnitude"><b>Size:</b> the Standardized CET1 requirement stays at 11.5% through 2027 (it was 12.3% with a 3.3% SCB in 2025).</p>
+      <p>Requirement certainty for five more quarters, at the lowest SCB the rules allow.</p>
+      <p class="next"><b>Next filing:</b> the 2027 stress-test scenarios and the re-proposed noninterest-income models.</p>
+    </div>
+  </div>
+
+  <div class="side bear"><h3>Bear case</h3>
+
+    <div class="bb-card" data-pillar="P5 Capital strength and return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Capital strength and return</span><span class="chip">Stated</span></div>
+      <div class="title">Buybacks fall from $6.7B to $1.1B, all in July; nothing repurchased in August or September</div>
+      <blockquote>Q3 2026: "Aggregate purchase price of common stock repurchases (a) | 1,057 | 8,315 | 16,088 | 23,378"</blockquote>
+      <blockquote>Q3 2026: "September | &mdash; | &mdash; | &mdash; | 48,943 | (c)"</blockquote>
+      <p class="magnitude"><b>Size:</b> $1.1B against $6.7B (Q2) and $8.3B (Q3 2025); 2% of the $50B program used. Total Q3 payout (dividends plus buybacks) about 36% of net income applicable to common, against 59% in the first half.</p>
+      <p>The filing gives no reason; the repurchase policy text is unchanged. The stop coincides with CET1 at 14.0%, the same 2.5-point cushion as the Q3 2025 low, and a disclosed 2028 GSIB step-up that would cut the cushion to 1.5 points at today&rsquo;s ratio (our arithmetic).</p>
+      <p class="next"><b>Next filing:</b> Q4 repurchases in the FY2026 10-K; any stated CET1 target or buyback pace; whether the 2028 surcharge changes.</p>
+    </div>
+
+    <div class="bb-card" data-pillar="P5 Capital strength and return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Capital strength and return</span><span class="chip">Stated</span></div>
+      <div class="title">About $7.9B of unrealized securities losses hit CET1 in the quarter "driven by the impact of higher interest rates"; TBVPS falls</div>
+      <blockquote>Q3 2026: "higher net unrealized losses in AOCI, driven by the impact of higher interest rates on the AFS securities portfolio and cash flow hedges in Treasury and CIO."</blockquote>
+      <blockquote>Q3 2026: "Unrealized gains/(losses) on investment securities | (9,974)"</blockquote>
+      <p class="magnitude"><b>Size:</b> nine-month AFS loss in CET1 $(2.1)B at June &rarr; $(10.0)B at September, so about $7.9B in Q3, roughly 36 basis points of CET1 and about half of Q3 net income. TBVPS $113.35 &rarr; $112.64. Cash-flow-hedge losses due through income over 12 months $(2.6)B.</p>
+      <p>Rates now move JPM&rsquo;s capital as much as earnings do. The AOCI loss alone was seven times the quarter&rsquo;s buybacks.</p>
+      <p class="next"><b>Next filing:</b> AOCI direction in Q4 and the FY2026 CET1 ratio; whether securities repositioning continues.</p>
+    </div>
+
+    <div class="bb-card" data-pillar="P3 Expense discipline" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Expense discipline</span><span class="chip">Stated</span></div>
+      <div class="title">Expense +12% against revenue +8%; pre-provision profit +3%; 2026 expense guide raised to ~$108.6B</div>
+      <blockquote>Q3 2026: "Noninterest expense was $27.3 billion, up 12%, predominantly driven by higher compensation expense as a result of higher revenue-related compensation, wage inflation, and growth in the number of front office employees"</blockquote>
+      <blockquote>Q3 2026: "Management expects adjusted expense to be approximately $108.6 billion, market dependent."</blockquote>
+      <p class="magnitude"><b>Size:</b> expense +$3.0B vs revenue +$3.7B year on year; the 2026 expense guide is up $3.6B since the FY2025 10-K against +$3.2B for NII.</p>
+      <p>Negative operating leverage in a quarter without one-offs. Part of the growth is investment (front-office hires, technology, marketing, international consumer); the filing does not separate it.</p>
+      <p class="next"><b>Next filing:</b> the 2027 expense guide versus the 2027 NII guide, and Q4 adjusted expense against ~$27.5B.</p>
+    </div>
+
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and political" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and political</span><span class="chip">Stated</span></div>
+      <div class="title">OCC publishes a fair-banking review of nine banks including JPM; the CFPB says it will "address any customer harm"</div>
+      <blockquote>Q3 2026: "In October 2026, the Office of the Comptroller of the Currency ... issued a report entitled ... following its review of the activities of nine banks, including JPMorganChase"</blockquote>
+      <blockquote>Q3 2026: "The Consumer Financial Protection Bureau also announced its intent to address any customer harm caused by the practices identified in the OCC&rsquo;s report."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified in the filing; the aggregate range of reasonably possible losses stayed at $0 to ~$1.3B.</p>
+      <p>The matter moved from information requests to a published supervisory review and a stated remediation intent. A new interchange class action for the post-2019 period was filed the same month.</p>
+      <p class="next"><b>Next filing:</b> any CFPB action or remediation amount, the ruling on the motion to dismiss the Trump suit, and the loss range.</p>
+    </div>
+
+    <div class="bb-card" data-pillar="P4 Credit quality and reserves" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P4 Credit quality and reserves</span><span class="chip">Inferred</span></div>
+      <div class="title">Wholesale build doubles to $902M for nine months; criticized exposure rises in Consumer &amp; Retail and TMT; downside scenario harsher</div>
+      <blockquote>Q3 2026: "The increase in criticized exposure was predominantly driven by certain exposures in Consumer &amp; Retail and Technology, Media &amp; Telecommunications, primarily resulting from downgrades and new lending-related commitments, including held-for-sale commitments."</blockquote>
+      <blockquote>Q3 2026: "a weighted average U.S. real GDP level that is 2.3% lower than the central case at the end of the fourth quarter of 2027."</blockquote>
+      <p class="magnitude"><b>Size:</b> Q3 allowance build $539M, &ldquo;primarily in wholesale&rdquo;; allowance $32.0B; GDP gap 2.1% &rarr; 2.3%.</p>
+      <p>The text ties the build mainly to commitment growth, but downgrades in two sectors and a harsher downside point to some deterioration behind fast loan growth (inference). Not yet visible in charge-offs.</p>
+      <p class="next"><b>Next filing:</b> wholesale nonaccrual and criticized totals, wholesale charge-offs, and whether the adverse weight is raised.</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="fundamentals">Fundamentals</h2>
+<p class="note">The ten questions from the runbook, answered from each filing (full answers in fy2026q3.txt and fy2026q2.txt). <span class="better">&#9650; better</span> &middot; <span class="worse">&#9660; worse</span> &middot; <span class="held">&#9679; held</span> versus the filing before.</p>
+<div class="scroll"><table>
+<thead><tr><th>Question</th><th>Q3 2026 10-Q</th><th>Q2 2026 10-Q</th></tr></thead>
+<tbody>
+<tr><td>1. Growth and pricing</td><td><span class="mark better">&#9650;</span> Revenue +8%; NII +13%, ex-Markets +6%; Markets +15%; IB fees +13%; loans +10%, deposits +8%</td><td><span class="mark better">&#9650;</span> Revenue +28% (~+15% ex gains); NII +10%, ex-Markets +4%; Markets +35%</td></tr>
+<tr><td>2. Margins and unit economics</td><td><span class="mark worse">&#9660;</span> Expense +12% vs revenue +8%; pre-provision profit +3%; ROTCE 20%</td><td><span class="mark held">&#9679;</span> Expense +15%, about equal to underlying revenue growth; ROTCE 29% with gains</td></tr>
+<tr><td>3. Earnings quality</td><td><span class="mark better">&#9650;</span> No one-off gains; absorbed $658M securities losses and an equity-investment loss</td><td><span class="mark worse">&#9660;</span> $5.6B pre-tax one-offs (Visa $4.6B, equity remeasurement $1.0B), a fifth of pre-tax</td></tr>
+<tr><td>4. Cash conversion (capital generation)</td><td><span class="mark worse">&#9660;</span> ~$7.9B AOCI loss; TBVPS $113.35 &rarr; $112.64; payout 36% of Q3 earnings</td><td><span class="mark held">&#9679;</span> First-half payout 59% of earnings; TBVPS +10% year on year</td></tr>
+<tr><td>5. Capital allocation</td><td><span class="mark worse">&#9660;</span> Buybacks $1.1B (none in Aug&ndash;Sep); dividend $1.65; Strategic Investment Group equity $5.7B</td><td><span class="mark better">&#9650;</span> Buybacks $6.7B; second $50B program; dividend $1.50 &rarr; $1.65; CIB capital +$8.5B</td></tr>
+<tr><td>6. Balance sheet and contingent exposure</td><td><span class="mark worse">&#9660;</span> CET1 14.0% (cushion 2.5 pts); RWA +$196B YTD; hedge losses to income $(2.6)B; 2028 GSIB 5.5%</td><td><span class="mark worse">&#9660;</span> CET1 14.2%; RWA +$93B in the quarter; SLR 5.5% vs 4.3%</td></tr>
+<tr><td>7. Concentration</td><td><span class="mark held">&#9679;</span> Uninsured deposits $1,780.9B (64%); Apple Card exposure ~$107B; criticized up in Consumer &amp; Retail, TMT</td><td><span class="mark held">&#9679;</span> Uninsured deposits $1,743.9B; Apple Card ~$106B; criticized up in C&amp;I sectors</td></tr>
+<tr><td>8. Accounting judgments</td><td><span class="mark worse">&#9660;</span> GDP gap 2.1% &rarr; 2.3%; wholesale build offsets dropped; Apple still outside sensitivity</td><td><span class="mark worse">&#9660;</span> Apple Card excluded from sensitivity &ldquo;until after the completion of the acquisition&rdquo;</td></tr>
+<tr><td>9. Legal, regulatory and governance</td><td><span class="mark worse">&#9660;</span> OCC nine-bank report; CFPB &ldquo;customer harm&rdquo;; new interchange class; range $1.3B</td><td><span class="mark better">&#9650;</span> Shareholder suit dismissed and removed; range $1.3B; cash sweep class motion</td></tr>
+<tr><td>10. Guidance and commitments</td><td><span class="mark better">&#9650;</span> NII guide ~$106.2B; expense ~$108.6B; card 3.2% held vs 2.91% actual; Q4 guide added</td><td><span class="mark better">&#9650;</span> NII guide $103B &rarr; ~$105.5B; expense $105B &rarr; ~$107.5B; card 3.4% &rarr; ~3.2%</td></tr>
+</tbody></table></div>
+
+<h2 id="targets">Stated targets</h2>
+<p class="note">Every number, range or target management stated, and what later filings said about it.</p>
+<div class="scroll"><table>
+<thead><tr><th>Target</th><th>Stated in</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>&ldquo;Management expects net interest income to be approximately $103 billion and net interest income excluding Markets to be approximately $95 billion, market dependent.&rdquo;</td><td>FY2025 10-K</td><td>Q1 2026: not changed &middot; Q2 2026: moved up to ~$105.5B / ~$96.5B &middot; Q3 2026: moved up to ~$106.2B / ~$97.2B</td></tr>
+<tr><td>&ldquo;Management expects adjusted expense to be approximately $105 billion, market dependent.&rdquo;</td><td>FY2025 10-K</td><td>Q1 2026: not changed &middot; Q2 2026: moved up to ~$107.5B &middot; Q3 2026: moved up to ~$108.6B</td></tr>
+<tr><td>&ldquo;Management expects the net charge-off rate in Card Services to be approximately 3.4%.&rdquo;</td><td>FY2025 10-K</td><td>Q1 2026: not changed (3.47% in the quarter) &middot; Q2 2026: moved down to ~3.2% &middot; Q3 2026: held at ~3.2%, beaten in the quarter (2.91%)</td></tr>
+<tr><td>Fourth quarter 2026: NII ~$28B (ex-Markets ~$25.5B), adjusted expense ~$27.5B</td><td>Q3 2026 10-Q</td><td>Due in the FY2026 10-K</td></tr>
+<tr><td>&ldquo;Advanced RWA is expected to reduce to approximately $30 billion once the necessary modeling steps are completed, which is expected in the near term.&rdquo;</td><td>FY2025 10-K</td><td>Q1 2026: met (&ldquo;approximately $30 billion&rdquo;, modeling complete)</td></tr>
+<tr><td>&ldquo;The Firm's current SCB requirement is 2.5% and will remain in effect through September 30, 2027, based on the current rules.&rdquo;</td><td>FY2025 10-K</td><td>Q1&ndash;Q2 2026: not changed &middot; Q3 2026: moved, extended through December 31, 2027 by final rule</td></tr>
+<tr><td>Apple Card portfolio purchase: expected closing about 24 months after December 30, 2025</td><td>FY2025 10-K</td><td>Q1&ndash;Q3 2026: not changed; exposure ~$104B &rarr; ~$107B</td></tr>
+<tr><td>2025 guide: NII ~$94.0B (ex-Markets ~$90.0B); card net charge-off rate ~3.60%</td><td>FY2024 10-K</td><td>Q2 2025: moved up to ~$95.5B / ~$92.0B &middot; Q3 2025: card guide moved to ~3.3% &middot; FY2025 10-K: beaten, NII $95.4B, card 3.31%</td></tr>
+</tbody></table></div>
+
+<h2 id="earlier">Earlier filings</h2>
+<details class="earlier"><summary>10-Q Q2 2026 (filed August 6, 2026)</summary><div class="sides">
+  <div class="side bull"><h3>Bull case</h3>
+    <div class="bb-card" data-pillar="P1 Net interest income and deposits" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P1 Net interest income and deposits</span><span class="chip">Stated</span></div>
+      <div class="title">First 2026 guide change: NII $103B &rarr; ~$105.5B, ex-Markets $95B &rarr; ~$96.5B</div>
+      <blockquote>Q2 2026: "Management expects net interest income to be approximately $105.5 billion and net interest income excluding Markets to be approximately $96.5 billion, market dependent."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$2.5B (2.4%) on the year&rsquo;s NII guide, $1.5B of it ex-Markets.</p>
+      <p>Most of the raise is in the core balance sheet, not trading.</p>
+      <p class="next"><b>Next filing:</b> ex-Markets NII growth above Q2&rsquo;s +4% (Q3: +6%, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Credit quality and reserves" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P4 Credit quality and reserves</span><span class="chip">Stated</span></div>
+      <div class="title">Card charge-off guide cut from 3.4% to 3.2%</div>
+      <blockquote>Q2 2026: "Management expects the net charge-off rate in Card Services to be approximately 3.2%."</blockquote>
+      <p class="magnitude"><b>Size:</b> 20 basis points on Card Services loans; Q2 actual 3.34%.</p>
+      <p>The lowest card guide in the scanner&rsquo;s window, following consumer reserve releases on home prices.</p>
+      <p class="next"><b>Next filing:</b> a quarterly card rate under 3.2% (Q3: 2.91%, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Capital strength and return" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Capital strength and return</span><span class="chip">Stated</span></div>
+      <div class="title">Second $50B repurchase authorization and a 10% dividend increase</div>
+      <blockquote>Q2 2026: "On June 24, 2026, the Firm announced that its Board of Directors had authorized a new $50 billion common share repurchase program, effective July 1, 2026."</blockquote>
+      <p class="magnitude"><b>Size:</b> $50B is about 16% of CET1 capital ($303B); dividend $1.50 &rarr; $1.65.</p>
+      <p>The board renewed capacity at last year&rsquo;s size.</p>
+      <p class="next"><b>Next filing:</b> buybacks at the $6&ndash;8B quarterly pace (Q3: $1.1B, refuted).</p>
+    </div>
+    <div class="bb-card" data-pillar="P7 Legal, regulatory and political" data-side="bull" data-basis="stated">
+      <div class="meta"><span class="chip">P7 Legal, regulatory and political</span><span class="chip">Stated</span></div>
+      <div class="title">Shareholder derivative suit dismissed with prejudice and dropped from the litigation note</div>
+      <blockquote>Q1 2026: "In March 2026, the Court dismissed the case with prejudice."</blockquote>
+      <p class="magnitude"><b>Size:</b> not quantified; the note falls to seven headings from eleven in Q2 2024.</p>
+      <p>The last of the precious-metals and Treasuries derivative suits is gone.</p>
+      <p class="next"><b>Next filing:</b> no new derivative claims tied to Fair Access or cash sweep.</p>
+    </div>
+  </div>
+  <div class="side bear"><h3>Bear case</h3>
+    <div class="bb-card" data-pillar="P6 Earnings quality" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P6 Earnings quality</span><span class="chip">Stated</span></div>
+      <div class="title">$5.6B of one-off gains in a $21.2B net income quarter</div>
+      <blockquote>Q2 2026: "The Firm's results included a $4.6 billion net gain related to Visa shares in Corporate and $1.0 billion of gains on certain equity investments in Corporate and CIB."</blockquote>
+      <p class="magnitude"><b>Size:</b> $5.6B of $27.5B pre-tax income (about 20%); ROTCE 29% reported.</p>
+      <p>The headline quarter is not run-rate; Q3 net income was $15.3B.</p>
+      <p class="next"><b>Next filing:</b> net income without gains near $15B or better (Q3: $15.3B with losses, confirmed).</p>
+    </div>
+    <div class="bb-card" data-pillar="P3 Expense discipline" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P3 Expense discipline</span><span class="chip">Stated</span></div>
+      <div class="title">Expense guide raised by the same $2.5B as NII</div>
+      <blockquote>Q2 2026: "Management expects adjusted expense to be approximately $107.5 billion, market dependent."</blockquote>
+      <p class="magnitude"><b>Size:</b> +$2.5B on ~$105B; expense +15% in the quarter.</p>
+      <p>Every dollar of NII raise was matched in expense.</p>
+      <p class="next"><b>Next filing:</b> expense growth below revenue growth (Q3: +12% vs +8%, refuted).</p>
+    </div>
+    <div class="bb-card" data-pillar="P5 Capital strength and return" data-side="bear" data-basis="stated">
+      <div class="meta"><span class="chip">P5 Capital strength and return</span><span class="chip">Stated</span></div>
+      <div class="title">CET1 down to 14.2% as Standardized RWA rose $93B in the quarter</div>
+      <blockquote>Q2 2026: "CET1 capital was $303 billion, and the Standardized and Advanced CET1 ratios were each 14.2%."</blockquote>
+      <p class="magnitude"><b>Size:</b> cushion 2.7 points over 11.5%; six-month RWA growth $152B.</p>
+      <p>Growth absorbed the quarter&rsquo;s retained earnings despite the Visa gain.</p>
+      <p class="next"><b>Next filing:</b> CET1 stable or up (Q3: 14.0%, refuted).</p>
+    </div>
+    <div class="bb-card" data-pillar="P4 Credit quality and reserves" data-side="bear" data-basis="inferred">
+      <div class="meta"><span class="chip">P4 Credit quality and reserves</span><span class="chip">Inferred</span></div>
+      <div class="title">Apple Card left out of the allowance sensitivity until the acquisition closes</div>
+      <blockquote>Q2 2026: "The forecasted Apple credit card portfolio will be excluded from the modeled estimates sensitivity analysis above until after the completion of the acquisition of the portfolio."</blockquote>
+      <p class="magnitude"><b>Size:</b> ~$106B of exposure at closing, $2.2B allowance already held.</p>
+      <p>Readers cannot see how the largest pending consumer exposure would respond to the adverse scenario for about 18 more months.</p>
+      <p class="next"><b>Next filing:</b> any sensitivity or loss-rate disclosure for the Apple portfolio.</p>
+    </div>
+  </div>
+</div></details>
+
+</div>
+</body>
+</html>
