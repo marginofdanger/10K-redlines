@@ -17,6 +17,13 @@ body_html / html / cell values are trusted HTML written by the analysis agents
 
 Usage: python scripts/build_redline_page.py <ticker>
 Writes companies/<ticker>/index.html
+
+Quarterly scanner: python scripts/build_redline_page.py <ticker> --10q
+Reads companies/<ticker>/10q/dashboard/, writes companies/<ticker>/10q/index.html.
+Transitions are t{NN}.json, ordered by filename, each with an `id` (anchor) and
+no era_summary; page.json adds `range` (sidebar label) and optional `method`
+({title, html}, the "Reading This Filer" card). The sidebar links back to the
+10-K dashboard and the front page.
 """
 import glob, html, json, os, re, sys
 
@@ -61,24 +68,30 @@ def finding_html(f):
             f'<span class="tag {cls}">{esc(tag)}</span></div>'
             f'<div class="finding-body">{f.get("body_html", "")}</div></div>')
 
-def main(ticker):
-    base = os.path.join("companies", ticker)
+def main(ticker, quarterly=False):
+    base = os.path.join("companies", ticker, *(["10q"] if quarterly else []))
     ddir = os.path.join(base, "dashboard")
     page = load(os.path.join(ddir, "page.json"))
-    trans = sorted((load(p) for p in glob.glob(os.path.join(ddir, "fy*.json"))),
-                   key=lambda t: t["to"])
+    if quarterly:
+        trans = [load(p) for p in sorted(glob.glob(os.path.join(ddir, "t*.json")))]
+    else:
+        trans = sorted((load(p) for p in glob.glob(os.path.join(ddir, "fy*.json"))),
+                       key=lambda t: t["to"])
     sig_path = os.path.join(ddir, "signals.json")
     sig = load(sig_path) if os.path.exists(sig_path) else {"signals": [], "themes": []}
     style, script = template_parts()
 
     def yid(t):
-        return "yoy-" + re.sub(r"\D", "", t["to"])
+        return t["id"] if quarterly else "yoy-" + re.sub(r"\D", "", t["to"])
 
-    nav = [f'  <div class="sidebar-header">\n    <h1>{esc(page["ticker"])} 10-K REDLINES</h1>\n'
-           f'    <div class="sub">{esc(trans[0]["from"])} - {esc(trans[-1]["to"])} | SEC EDGAR</div>\n  </div>',
+    span = page.get("range") or f'{trans[0]["from"]} - {trans[-1]["to"]}'
+    nav = [f'  <div class="sidebar-header">\n    <h1>{esc(page["ticker"])} {"10-Q SCANNER" if quarterly else "10-K REDLINES"}</h1>\n'
+           f'    <div class="sub">{esc(span)} | SEC EDGAR</div>\n  </div>',
            '  <div class="nav-section">Overview</div>',
-           '  <a class="nav-item" href="#hero-section">Executive Summary</a>',
-           '  <div class="nav-section">Year-Over-Year</div>']
+           '  <a class="nav-item" href="#hero-section">Executive Summary</a>']
+    if page.get("method"):
+        nav.append('  <a class="nav-item" href="#method">Reading This Filer</a>')
+    nav.append(f'  <div class="nav-section">{"Quarter-over-Quarter" if quarterly else "Year-Over-Year"}</div>')
     nav += [f'  <a class="nav-item" href="#{yid(t)}">{esc(t["from"])} &rarr; {esc(t["to"])}</a>' for t in trans]
     if sig["signals"]:
         nav.append('  <div class="nav-section">Deep Signals</div>')
@@ -88,15 +101,24 @@ def main(ticker):
         nav.append('  <a class="nav-item" href="#themes">Themes</a>')
     if sig.get("ref_table"):
         nav.append('  <a class="nav-item" href="#ref-table">Financial Reference</a>')
+    if quarterly:
+        nav += ['  <div class="nav-section">Links</div>',
+                f'  <a class="nav-item" href="../index.html">{esc(page["ticker"])} 10-K dashboard</a>',
+                '  <a class="nav-item" href="../../../index.html">All companies</a>']
 
     body = [f'<div class="hero" id="hero-section">\n  <h1>{esc(page["title"])}</h1>\n'
             f'  <div class="tagline">{esc(page["tagline"])}</div>\n'
-            f'  <div class="source">{esc(page["source"])}</div>\n</div>',
-            '<div class="eras">']
-    for t in trans:
-        body.append(f'  <div class="era-card">\n    <div class="years">{esc(t["from"])} &rarr; {esc(t["to"])}</div>\n'
-                    f'    <h3>{esc(t["title"])}</h3>\n    <p>{esc(t["era_summary"])}</p>\n  </div>')
-    body.append('</div>')
+            f'  <div class="source">{esc(page["source"])}</div>\n</div>']
+    if not quarterly:
+        body.append('<div class="eras">')
+        for t in trans:
+            body.append(f'  <div class="era-card">\n    <div class="years">{esc(t["from"])} &rarr; {esc(t["to"])}</div>\n'
+                        f'    <h3>{esc(t["title"])}</h3>\n    <p>{esc(t["era_summary"])}</p>\n  </div>')
+        body.append('</div>')
+    m = page.get("method")
+    if m:
+        body.append('<div class="section" id="method">\n  <div class="section-header"><h2>Reading This Filer</h2></div>\n'
+                    f'  <div class="signal-card full">\n    <h3>{esc(m["title"])}</h3>\n    {m["html"]}\n  </div>\n</div>')
     body.append('<div style="display:flex;justify-content:flex-end;margin-bottom:8px">\n'
                 '  <button class="expand-btn" onclick="toggleAll()" id="global-expand">Expand all</button>\n</div>')
 
@@ -135,7 +157,8 @@ def main(ticker):
 
     out = ('<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n'
            '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-           f'<title>{esc(page["ticker"])} 10-K Redline Analysis | {esc(trans[0]["from"])}-{esc(trans[-1]["to"])}</title>\n'
+           f'<title>{esc(page["ticker"])} {"10-Q Quarterly Scanner" if quarterly else "10-K Redline Analysis"} | '
+           f'{esc(page.get("range") or trans[0]["from"] + "-" + trans[-1]["to"])}</title>\n'
            f'{style}\n</head>\n<body>\n\n<nav class="sidebar">\n' + "\n".join(nav) + '\n</nav>\n\n'
            '<div class="main">\n\n' + "\n\n".join(body) + '\n\n</div><!-- end .main -->\n\n'
            f'{script}\n</body>\n</html>\n')
@@ -145,4 +168,4 @@ def main(ticker):
     print(f"{base}/index.html: {len(trans)} transitions, {n} findings, {len(sig['signals'])} signal sections")
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], quarterly="--10q" in sys.argv[2:])

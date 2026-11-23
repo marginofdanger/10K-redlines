@@ -25,20 +25,20 @@ def main(ticker):
     os.makedirs(out_dir, exist_ok=True)
 
     quarters = sorted({re.match(r"(fy\d{4}q\d)_", os.path.basename(p)).group(1)
-                       for p in glob.glob(os.path.join(qdir, "fy*q*_mda.txt"))})
-    # Interleave the 10-K after each fiscal year's Q3
-    sequence = []
-    for q in quarters:
-        year = int(q[2:6])
-        sequence.append((q, qdir))
-        if q.endswith("q3") and os.path.exists(os.path.join(kdir, f"fy{year}_mda.txt")):
-            sequence.append((f"fy{year}", kdir))  # 10-K for that fiscal year
-
-    # "contingencies" covers filers (e.g. AMZN) whose Part II Item 1 is only a
-    # pointer to the commitments-and-contingencies note; tickers without those
-    # section files simply produce no diffs for it.
-    sections = ["mda", "risk_factors", "legal_proceedings", "contingencies"]
+                       for p in glob.glob(os.path.join(qdir, "fy*q*_full.txt"))})
+    # Every section file present except _full, e.g. mda / risk_factors /
+    # legal_proceedings, plus "contingencies" for filers (AMZN, MSFT) whose Part II
+    # Item 1 only points to the notes, or JPM's mda_* split of its integrated MD&A.
+    sections = sorted({re.match(r"fy\d{4}q\d_(.+)\.txt$", os.path.basename(p)).group(1)
+                       for p in glob.glob(os.path.join(qdir, "fy*q*_*.txt"))} - {"full"})
     for sn in sections:
+        # Interleave the 10-K after each fiscal year's Q3, where that 10-K has the section
+        sequence = []
+        for q in quarters:
+            year = int(q[2:6])
+            sequence.append((q, qdir))
+            if q.endswith("q3") and os.path.exists(os.path.join(kdir, f"fy{year}_{sn}.txt")):
+                sequence.append((f"fy{year}", kdir))
         for (p1, d1), (p2, d2) in zip(sequence, sequence[1:]):
             a = load(os.path.join(d1, f"{p1}_{sn}.txt"))
             b = load(os.path.join(d2, f"{p2}_{sn}.txt"))
